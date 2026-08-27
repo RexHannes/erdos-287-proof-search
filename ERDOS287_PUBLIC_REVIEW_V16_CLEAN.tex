@@ -1,0 +1,691 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=0.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\IfFileExists{buildmeta.tex}{\input{buildmeta.tex}}{%
+  \newcommand{\BuildCommit}{local-audit}%
+  \newcommand{\BuildDate}{28 August 2026}%
+}
+
+\definecolor{deepblue}{RGB}{25,55,92}
+\definecolor{softblue}{RGB}{235,242,249}
+\definecolor{softgray}{RGB}{245,245,245}
+\definecolor{softgreen}{RGB}{237,247,239}
+\definecolor{softred}{RGB}{252,239,239}
+\definecolor{softamber}{RGB}{255,247,230}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\E}{\mathcal E}
+\newcommand{\B}{\mathcal B}
+\newcommand{\WPS}{\operatorname{WindowPairSupply}}
+\newcommand{\status}[1]{\textsf{#1}}
+\newcommand{\lean}{\textsc{Lean}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Erd\H{o}s Problem \#287 -- Clean Public Review V16}
+\rhead{28 August 2026}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{2em}
+
+\title{\vspace{-1.2cm}\textbf{A Machine-Checked Finite Reduction for Erd\H{o}s Problem \#287\\
+and a Source-Explicit Large-$M$ Criterion}\\[1ex]
+\large Clean Public Review -- Version 16}
+\author{Research draft with Lean/Aristotle-assisted formal verification}
+\date{28 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{deepblue}{softblue}{\begin{minipage}{0.92\textwidth}
+\textbf{Status.} Erd\H{o}s Problem \#287 remains open.  Public repository \texttt{main}
+machine-checks the exact problem statement, the finite exclusion through maximum denominator
+$4\times10^9$, the conditional window-pair closure compiler, and the V14 finite/algebraic
+Vaughan source spine.  The later V15 $\Lambda=\mu*\log$ and balanced-seven Lean files are
+present in the supplied midpoint Aristotle archive, but were not yet on public \texttt{main}
+at this audit cutoff and were not independently rebuilt in the present execution environment.
+They are therefore labelled \emph{formalization source present -- public replay pending}, not
+public Lean theorems.  No prime-distribution estimate, Ford--Maynard lower bound, or final
+large-$M$ supply is claimed proved.  V16 source commit: \texttt{\BuildCommit}.
+\end{minipage}}
+\end{center}
+
+\begin{abstract}
+Erd\H{o}s Problem \#287 asks whether every representation
+\[
+1=\frac1{n_1}+\cdots+\frac1{n_k},\qquad 1<n_1<\cdots<n_k,
+\]
+contains a consecutive gap of size at least $3$.  This note separates the present work into
+three logically distinct layers.
+
+First, the finite layer is machine-checked: there is no counterexample whose maximum
+denominator is at most $4\times10^9$.  The proof uses a prime-power window obstruction,
+an adjacent-hole contradiction, and a chain of interval certificates rather than a search
+over all unit-fraction representations.
+
+Second, the large-$M$ conclusion is compiled from one explicit window-pair supply predicate.  It asks for two consecutive integers in the top half of $[1,M]$, each carrying
+a sufficiently large prime-power divisor.  A Lean theorem shows that an effective threshold
+$M_0\le4\times10^9$ together with $\WPS(M)$ for every $M\ge M_0$ implies the exact public
+statement.  No inhabitant of this large-$M$ predicate is presently known.
+
+Third, the current analytic research is made source-explicit.  The public V14 bank
+contains an exact Vaughan source spine.  A supplied midpoint V15 formalization develops the
+source-minimal identity $\Lambda=\mu*\log$, its affine specialization at $2mn\pm1$, an
+exact three-way factor partition, a determinant-one line parametrization, and finite
+balanced-seven polarization algebra.  Those V15 files are treated here as formalization
+source pending final public replay; the mathematical identities are displayed explicitly
+and do not depend on an analytic estimate.  The remaining analytic statements are a signed
+endpoint distribution estimate for a polarized family of $X^{1/7}$-smooth multiplicative
+functions at moduli $X^{3/5}$, its comparison/low-conductor matching statement, and the
+remaining source-minimal hard-line estimates.  These are open specifications, not theorems.
+\end{abstract}
+
+\section*{Status at a glance}
+\addcontentsline{toc}{section}{Status at a glance}
+\begin{center}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.31\textwidth}
+>{\raggedright\arraybackslash}p{0.19\textwidth}X}
+\toprule
+Item & Status & Meaning \\
+\midrule
+Exact public counterexample predicate & \status{PUBLIC LEAN-CHECKED} & Set form and ordered sequence form are connected without adding a hidden $k\ge2$ hypothesis. \\
+Finite range $M\le4\times10^9$ & \status{PUBLIC LEAN-CHECKED} & A 34-certificate interval chain excludes every exact counterexample in this range. \\
+Window-pair closure compiler & \status{PUBLIC LEAN-CHECKED, CONDITIONAL} & An explicit large-$M$ supply predicate implies the full conjecture when paired with the finite range. \\
+V14 Vaughan affine source spine & \status{PUBLIC LEAN-CHECKED ALGEBRA} & Exact decomposition and structural compilers; analytic inputs remain uninhabited. \\
+$\Lambda=\mu*\log$, hard-pair line, balanced-seven algebra & \status{FORMALIZATION REPLAY PENDING} & V15 source is present in the midpoint archive and statically audited; it was not yet replayed on public \texttt{main} at cutoff. \\
+Large-$M$ prime distribution & \status{OPEN} & No proof of $\WPS(M)$ for every sufficiently large $M$. \\
+Polarized signed endpoint estimate & \status{OPEN ANALYTIC} & Current exact V-branch residual at $(Q,y)=(X^{3/5},X^{1/7})$. \\
+Comparison/low-conductor matching & \status{OPEN SOURCE} & The physical comparison sequence must undergo the same decomposition. \\
+Erd\H{o}s Problem \#287 & \status{OPEN} & No unconditional proof is claimed. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{Status vocabulary.}
+\status{PUBLIC LEAN-CHECKED} means the declaration is on public repository
+\texttt{main}.  \status{EXACT ALGEBRA} means the identity is proved in the exposition.
+\status{FORMALIZATION REPLAY PENDING} means Lean source is present in the supplied midpoint
+archive but has not yet been promoted into the public bank.  \status{CONDITIONAL} means a
+compiler is proved from an explicit antecedent.  \status{OPEN} means that antecedent or
+analytic estimate is not proved.  \status{FALSE/RETIRED} is reserved for a literal failed
+dictionary or superseded route, never for the underlying general theorem.
+
+\tableofcontents
+
+\section{The problem and the scope of this note}
+
+The public problem asks whether, for distinct integers
+\[
+1<n_1<\cdots<n_k,\qquad \sum_{i=1}^k\frac1{n_i}=1,
+\]
+one necessarily has
+\[
+\max_{1\le i<k}(n_{i+1}-n_i)\ge3.
+\]
+It is listed as open in the Erd\H{o}s Problems archive and originates in the sources
+cited there \cite{ErdosGraham1980,ErdosProblems287}.
+
+For a finite set $A\subset\N$, write
+\[
+N=\min A,\qquad M=\max A.
+\]
+A counterexample is a finite set satisfying
+\[
+A\subset\{2,3,\dots\},\qquad \sum_{a\in A}\frac1a=1,
+\]
+and the local gap condition that every nonmaximal $a\in A$ is followed by $a+1$ or $a+2$
+in $A$.  The Lean development formalizes exactly this predicate and proves the ordered
+form from it.
+
+This note is deliberately not a chronological research diary.  It records only the
+current controlling finite theorem, the exact conditional closure interface, the
+source algebra with its precise public/formalization status, and the current open analytic
+obligations.  Earlier
+provider searches, hostile audits, and superseded residuals are retained in the separate
+technical verification ledger and immutable V15 archive.
+
+\section{The machine-checked finite theorem}
+
+\begin{theorem}[Finite exclusion]
+There is no exact counterexample to Erd\H{o}s Problem \#287 with
+\[
+3\le M\le4{,}000{,}000{,}000.
+\]
+Equivalently, every unit-fraction representation in the problem with maximum denominator
+at most $4\times10^9$ has a consecutive gap at least $3$.
+\end{theorem}
+
+The theorem is represented in the repository by
+\texttt{no\_Erdos287Counterexample\_of\_max\_le\_4e9}.  Its proof is not an exhaustive
+enumeration of finite subsets.  It is a certificate compiler built from the three ideas
+below.
+
+\subsection{Holes and the adjacent-hole contradiction}
+
+For a hypothetical counterexample, call an integer $x\in[N,M]$ a \emph{hole} when
+$x\notin A$.  The gap-$\le2$ condition implies that two consecutive integers in
+$[N,M]$ cannot both be holes.  This is the formal theorem
+\texttt{Gap2CE.holes\_isolated}.
+
+A second elementary fact places the top half of the interval above the minimum:
+\[
+N\le\left\lfloor\frac M2\right\rfloor.
+\]
+Thus, whenever $M\le2x$ and $x+1\le M$, the consecutive pair $x,x+1$ lies inside the
+closed window where the adjacent-hole contradiction applies.
+
+\subsection{Prime-power windows}
+
+For $j\ge0$, let $C(j)$ denote the largest reduced numerator arising from a nonempty
+partial reciprocal sum
+\[
+\sum_{s\in S}\frac1s,\qquad \varnothing\ne S\subseteq\{1,\dots,j\}.
+\]
+The formal development uses a certified upper table
+\[
+C_{\mathrm{val}}(0),\dots,C_{\mathrm{val}}(9)
+=1,1,3,11,25,137,137,1019,2143,7129.
+\]
+
+The prime-power window theorem says, schematically, that if $p$ is prime, $e\ge1$,
+$p^e\mid x$, and
+\[
+C\!\left(\left\lfloor\frac M{p^e}\right\rfloor\right)<p,
+\]
+then $x$ cannot belong to $A$.  The reason is that the top $p$-adic layer of the reciprocal
+sum would force a nonzero numerator to vanish modulo $p$.
+
+Consequently, if both $x$ and $x+1$ possess such prime-power divisors, then they are two
+adjacent holes.  This gives the central finite compiler.
+
+\begin{proposition}[Window-pair blocker]
+Suppose there are primes $p_u,p_v$, positive exponents $a_u,a_v$, and an integer $x$ such
+that
+\[
+p_u^{a_u}\mid x,\qquad p_v^{a_v}\mid x+1,
+\]
+\[
+\left\lfloor\frac M{p_u^{a_u}}\right\rfloor,
+\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\le9,
+\]
+\[
+C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_u^{a_u}}\right\rfloor\right)<p_u,
+\qquad
+C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\right)<p_v,
+\]
+and
+\[
+M\le2x,
+\qquad x+1\le M.
+\]
+Then a gap-$\le2$ counterexample with maximum $M$ cannot exist.
+\end{proposition}
+
+\subsection{The interval-certificate chain}
+
+One certificate can exclude an entire interval $L\le M\le U$.  The divisibility data are
+fixed at a chosen $x$, monotonicity controls the windows as $M$ varies, and $U\le2x$
+keeps the forced holes above the minimum.  The repository contains a chain of $34$
+certificates whose intervals meet end-to-end and cover
+\[
+[3,4\times10^9].
+\]
+All primality side conditions are discharged in the kernel; the construction does not use
+\texttt{native\_decide}.
+
+\section{The exact large-$M$ closure criterion}
+
+\begin{definition}[Window-pair supply]
+For $M\in\N$, $\WPS(M)$ is the assertion that there exist
+$x,p_u,a_u,p_v,a_v\in\N$ such that
+\[
+\begin{gathered}
+p_u,p_v\text{ are prime},\qquad a_u,a_v\ge1,\\
+p_u^{a_u}\mid x,\qquad p_v^{a_v}\mid x+1,\\
+\left\lfloor\frac M{p_u^{a_u}}\right\rfloor\le9,
+\quad C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_u^{a_u}}\right\rfloor\right)<p_u,\\
+\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\le9,
+\quad C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\right)<p_v,\\
+M\le2x,
+\qquad x+1\le M.
+\end{gathered}
+\]
+\end{definition}
+
+In plain terms, two consecutive integers in the top half of $[1,M]$ each have a
+prime-power divisor larger than roughly $M/10$, with a small local numerator condition.
+
+\begin{theorem}[End-to-end conditional compiler]
+Assume there is an explicit $M_0\le4\times10^9$ such that
+\[
+\WPS(M)\qquad\text{for every }M\ge M_0.
+\]
+Then Erd\H{o}s Problem \#287 is true.
+\end{theorem}
+
+This implication is machine-checked as
+\texttt{no\_Erdos287Counterexample\_of\_closure}.  The proof splits at
+$4\times10^9$: the finite theorem handles the lower range, while the window-pair blocker
+handles every larger maximum.
+
+The interface is weaker than a Sophie-Germain prime condition.  For example, if a prime
+$q$ in the interval $M/3<q\le(M-1)/2$ has $2q+1$ prime, then one may take
+$x=2q$.  The analogous minus case uses $x=2q-1$.  The Lean theorem
+\texttt{windowPairSupply\_of\_sophieWitness} formalizes this implication.  The present
+programme does not claim such Sophie witnesses for every large $M$.
+
+\section{The source-minimal affine algebra}
+
+This section concerns the analytic route toward a large-$M$ supply.  The formulas below
+are exact and are proved algebraically in this note.  Matching V15 Lean source is present in
+the supplied midpoint archive, but final public replay was pending at the audit cutoff;
+accordingly this section is not labelled public Lean-checked.  All cancellation estimates
+remain open.
+
+\subsection{The identity $\Lambda=\mu*\log$}
+
+For the genuine arithmetic functions, Dirichlet convolution gives
+\[
+\mu*\log=\mu*(\Lambda*1)=(\mu*1)*\Lambda=\Lambda,
+\]
+and hence
+\[
+\boxed{\Lambda(N)=\sum_{qr=N}\mu(q)\log r.}
+\]
+Equivalently,
+\[
+\Lambda(N)=\sum_{q\mid N}\mu(q)\log\frac Nq.
+\]
+The proof is carried out in the Dirichlet convolution ring from
+$\mu*1=\varepsilon$ and $\log=\Lambda*1$; it agrees definitionally with Mathlib's own
+identity.
+
+At the affine value
+\[
+N=2mn+s,
+\qquad s\in\{-1,+1\},
+\]
+one obtains the exact source
+\[
+\Lambda(2mn+s)=\sum_{qr=2mn+s}\mu(q)\log r.
+\]
+The sign is represented by a dedicated formal datatype, preventing illegal subtraction in
+$\N$ for the case $s=-1$.
+
+\subsection{Exact factor partition}
+
+For a cutoff $U$, the factor pairs are partitioned disjointly into
+\[
+q\le U,
+\qquad q>U,\ r\le U,
+\qquad q>U,\ r>U.
+\]
+The three classes are exhaustive and pairwise disjoint, so an arbitrary weighted sum
+recombines exactly over them.  The hard part is therefore
+\[
+\sum_{\substack{qr=2mn+s\\q>U,\ r>U}}\mu(q)\log r.
+\]
+No estimate for this sum is encoded.
+
+\subsection{The determinant-one line}
+
+Every hard pair satisfies
+\[
+qr-2mn=s,
+\qquad s=\pm1.
+\]
+This unit shift forces
+\[
+(r,2m)=1,
+\qquad(q,2n)=1.
+\]
+Fixing $r,m$ and one solution $(q_0,n_0)$, all integer solutions are exactly
+\[
+\boxed{q=q_0+2mt,
+\qquad n=n_0+rt,
+\qquad t\in\mathbb Z,}
+\]
+and the parameter $t$ is unique.  The forward direction, reverse direction, coprimality,
+nonvanishing, and multiplicity one are elementary consequences of the unit determinant;
+matching V15 Lean declarations are present in the midpoint archive pending public replay.
+
+The exact exponent ledger records, for the programme parameter
+$\sigma<1/6$,
+\[
+\sigma+\frac23+\frac16<1,
+\qquad
+\frac16-\frac{16623}{100000}=\frac{131}{300000}>0.
+\]
+These are exponent identities only; they are not bounds for an analytic sum.
+
+\begin{remark}[Relation to the V14 Vaughan route]
+The earlier exact Vaughan decomposition and prime-modulus M\"obius two-outer packet remain
+valid alternative source decompositions.  They are not false, but the identity
+$\Lambda=\mu*\log$ is source-minimal and does not require truncation parameters or an
+additional convolution with $1$.  The clean public paper therefore treats the Vaughan
+packet as an optional analytic child, not as the unique controlling source.
+\end{remark}
+
+\section{The balanced-seven polarization}
+
+One explicit V-branch cell has seven labelled prime boxes.  Put
+\[
+Q=X^{3/5},
+\qquad Y=X^{1/7},
+\]
+and consider
+\[
+\B_{7,s}(X)=
+\sum_{q\sim Q}\mu(q)
+\left[
+\sum_{\substack{p_1,\dots,p_7\sim Y\\2p_1\cdots p_7\equiv-s\pmod q}}
+\prod_{i=1}^7\omega_i(p_i)
+-\mathfrak M_{7,s}(q)
+\right].
+\]
+The desired scale is $o(X/\log X)$.
+
+\subsection{Why separate character energies do not close}
+
+Character orthogonality produces a sevenfold character product.  Splitting it $3+4$ and
+using the ordinary multiplicative large sieve gives the scale
+\[
+Q\,(X^{3/7}X^{4/7})^{1/2}
+=X^{3/5+1/2}
+=X^{11/10},
+\]
+a deficit of $X^{1/10}$.  Separate high-moment interpolation gives the same scale.  This
+explains why the current reduction does not simply repeat a standard large-sieve argument.
+
+\subsection{Exact squarefree polarization}
+
+For $\mathbf z=(z_1,\dots,z_7)\in\mathbb T^7$, define
+\[
+a_{\mathbf z}(p)=\frac17\sum_{i=1}^7z_i\omega_i(p).
+\]
+Extend this to a squarefree multiplicative function $f_{\mathbf z}$ supported on primes in
+the box $p\sim Y$ by
+\[
+f_{\mathbf z}(p)=a_{\mathbf z}(p),
+\qquad f_{\mathbf z}(p^\ell)=0\quad(\ell\ge2).
+\]
+Expanding the polynomial shows that the coefficient of $z_1\cdots z_7$ in
+\[
+\prod_{j=1}^7\left(\sum_{i=1}^7z_i\omega_i(p_j)\right)
+\]
+is exactly
+\[
+\sum_{\sigma\in S_7}\prod_{j=1}^7\omega_{\sigma(j)}(p_j),
+\]
+with each permutation appearing once.  The normalization factor is
+$7^{-7}=1/823543$, and $|S_7|=5040$.
+
+Repeated-prime tuples have only six free prime variables, hence contribute at most
+\[
+X^{6/7+o(1)},
+\]
+which is below $X/\log^A X$ for every fixed $A$.
+
+The same source audit gives the finite squarefree encoding and the binomial certificate
+\[
+\sum_{j=0}^{3}(-1)^j\binom7j=-20.
+\]
+It does not identify this number with a physical Ford weight; the statement is purely
+finite combinatorics.
+
+\subsection{The exact V-branch decomposition}
+
+Let $\Delta_{\mathrm{LC}}(f_{\mathbf z};X,q,a_s)$ denote the progression discrepancy after
+removing the chosen principal and low-conductor terms, where
+$a_s\equiv-s\overline2\pmod q$.  Coefficient extraction gives
+\[
+\begin{aligned}
+\B_{7,s}(X)
+={}&7^7\int_{\mathbb T^7}\overline{z_1\cdots z_7}
+\sum_{q\sim X^{3/5}}\mu(q)
+\Delta_{\mathrm{LC}}(f_{\mathbf z};X,q,a_s)\,d\mathbf z\\
+&+\sum_{q\sim Q}\mu(q)
+\bigl(\mathfrak M^{\mathrm{pol}}_{7,s}(q)-\mathfrak M_{7,s}(q)\bigr)
++O(X^{6/7+o(1)}).
+\end{aligned}
+\]
+Thus this cell is reduced to two source-exact statements.
+
+\paragraph{Polarized signed endpoint estimate.}
+\[
+\int_{\mathbb T^7}\overline{z_1\cdots z_7}
+\sum_{q\sim X^{3/5}}\mu(q)
+\Delta_{\mathrm{LC}}(f_{\mathbf z};X,q,a_s)\,d\mathbf z
+=o(X/\log X).
+\]
+Programme label:
+\path{AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45}.
+
+\paragraph{Comparison/low-conductor match.}
+\[
+\sum_{q\sim Q}\mu(q)
+\bigl(\mathfrak M^{\mathrm{pol}}_{7,s}(q)-\mathfrak M_{7,s}(q)\bigr)
+=o(X/\log X).
+\]
+Programme label:
+\path{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45}.
+
+Both are open.  The supplied V15 status source defines uninhabited specification structures
+for them, not proofs; that status file was not yet part of public \texttt{main} at the audit
+cutoff.
+
+\section{What existing distribution theorems do and do not supply}
+
+Ford and Maynard provide a general prime-producing sieve framework from Type I and Type II
+information for an actual nonnegative sequence \cite{FordMaynard2024}.  Their theorem is a
+downstream framework, not a proof of the specific affine correlations above.
+
+Drappeau, Granville and Shao prove distribution of smooth-supported multiplicative
+functions beyond the square-root barrier, up to moduli $x^{3/5-\varepsilon}$ under their
+stated hypotheses \cite{DGS2017}.  Pascadi obtains stronger exponents of distribution for
+primes and smooth numbers in a different weighted setting \cite{Pascadi2025}.  These
+results are close in scale to the polarized cell, but the current audit has not established
+a literal specialization at the endpoint
+\[
+(Q,y)=(X^{3/5},X^{1/7})
+\]
+with the signed M\"obius modulus average, torus coefficient, low-conductor subtraction, and
+physical comparison term all preserved.  This note therefore records a promising
+neighbourhood of existing technology, not a black-box closure.
+
+Several negative conclusions are also retained:
+\begin{itemize}[leftmargin=1.6em]
+\item the ordinary separate multiplicative large sieve misses by $X^{1/10}$;
+\item a three-block decomposition satisfying the relevant asymmetric ranges is unavailable
+for seven equal $1/7$ exponents;
+\item a termwise prime decomposition cannot remove every unsplit prime-box term;
+\item a modulus micro-switch cannot be exhaustive because prime moduli survive;
+\item the V14 truncated M\"obius cofactor is not literally a well-factorable modulus weight;
+\item the canonical Gate-1A determinant-$2k$ row does not directly match a determinant
+$\pm1$ affine source.
+\end{itemize}
+The detailed proofs and route-by-route provenance belong in the technical ledger, not in
+the main paper.
+
+\section{The current end-to-end dependency graph}
+
+The verified and open layers can now be displayed without historical notation:
+\[
+\boxed{\begin{array}{c}
+\text{exact problem statement}\\
+\downarrow\\
+\text{finite window compiler and certificates}\\
+\downarrow\\
+M\le4\times10^9\text{ excluded}
+\end{array}}
+\qquad
+\boxed{\begin{array}{c}
+\text{large-}M\ \WPS(M)\text{ supply}\\
+\downarrow\\
+\text{public Lean closure compiler}\\
+\downarrow\\
+\text{Erd\H{o}s \#287}
+\end{array}}
+\]
+The analytic programme seeks to produce the missing large-$M$ supply.  Its current
+source-explicit front is
+\[
+\boxed{\begin{array}{c}
+\Lambda=\mu*\log\text{ affine source}\\
++\ \text{balanced-seven polarization}\\
+\downarrow\\
+\text{hard affine-line cancellation}\\
++\ \text{polarized signed endpoint distribution}\\
++\ \text{comparison matching}\\
+\downarrow\\
+\text{positive affine prime/almost-prime mass}\\
+\downarrow\\
+\WPS(M)\text{ or a stronger Sophie-type witness}
+\end{array}}
+\]
+Every downward arrow in the second display contains open analysis.  The diagram is a
+research programme, not a proof.  Moreover, closing the displayed balanced-seven cell does
+not by itself close all remaining fixed-certificate packets or the full large-$M$ supply.
+
+\section{Formal verification and reproducibility}
+
+\subsection{Public Lean bank}
+At V16 source commit \texttt{\BuildCommit}, public repository \texttt{main} contains the
+exact problem predicate, finite exclusion through $4\times10^9$, the window-pair closure
+compiler, and the V14 Vaughan structural spine.  The public V14 status explicitly leaves
+\path{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45}, the $k=0$ smooth packet,
+fixed-certificate leakage, Gate closure, and the large-$M$ supply open.  The accompanying
+V14 report records a successful \texttt{lake build} of $8111$ jobs and no Lean-code use of
+\texttt{sorry}, \texttt{admit}, a user \texttt{axiom}, \texttt{opaque},
+\texttt{unsafe}, \texttt{native\_decide}, or \texttt{@[implemented\_by]}.
+
+\subsection{Midpoint V15 archive}
+The supplied \texttt{midway.gz} archive contains $92$ Lean files, including the
+$\Lambda=\mu*\log$ and balanced-seven modules and a V15 status file.  A static audit found
+no Lean-code occurrences of the prohibited declarations above, and the two analytic
+interfaces are deliberately uninhabited.  However:
+\begin{itemize}[leftmargin=1.6em]
+\item those V15 files were not yet present on public \texttt{main} at the audit cutoff;
+\item the archive's top-level build summary records the completed V14 replay, while the user
+reported that the V15 Lean run was still in progress;
+\item the present execution environment did not contain \texttt{lake}, so no independent
+local V15 kernel replay was performed.
+\end{itemize}
+V16 therefore does not promote the V15 formalization to \status{PUBLIC LEAN-CHECKED}.
+Once the ongoing replay completes and is merged, the formal-status table can be promoted
+without changing the mathematical exposition.
+
+\subsection{Document organization}
+The previous V15 PDF is preserved as an immutable technical patch-stack archive.  This
+V16 document is the coherent public paper; hostile audits, failed provider dictionaries,
+historical residuals, Gate-specific archaeology, and full chronological provenance live in
+the separate technical verification ledger.  The clean source is compiled reproducibly in
+the public repository, and the legacy forum PDF path is retained as an alias to the current
+clean paper.
+
+\section{Conclusion}
+
+The strongest unconditional result presently available in this project is finite:
+Erd\H{o}s Problem \#287 has no counterexample with maximum denominator at most
+$4\times10^9$.  The exact remaining global input is also clean: prove $\WPS(M)$ for every
+sufficiently large $M$ with an effective threshold inside the verified finite range.
+
+The recent analytic work has reduced parts of the source without claiming cancellation.
+The identity $\Lambda=\mu*\log$, the hard affine determinant-one line, and the
+balanced-seven polarization are now exact algebraic infrastructure with V15 formalization
+source present and final public replay pending.  The next
+mathematics is not another document-level reorganization: it is a genuine signed
+prime-distribution estimate and a source-matched comparison theorem.  Until those are
+proved and compiled into a large-$M$ supply, Erd\H{o}s Problem \#287 remains open.
+
+\appendix
+\section{Formal theorem and source map}
+
+\subsection*{Public Lean bank at the V16 cutoff}
+\begin{itemize}[leftmargin=1.6em,itemsep=0.45em]
+\item \textbf{Exact problem predicate and public ordered form.}
+  \path{RequestProject/Erdos287/ProblemStatement.lean}; declarations
+  \path{Erdos287Counterexample} and
+  \path{erdos287_seq_of_no_counterexample}.
+\item \textbf{Finite blocker and verified range.}
+  \path{Gap2CE.holes_isolated}, \path{Gap2CE.blocker_window}, and
+  \path{no_Erdos287Counterexample_of_max_le_4e9} in the finite-range files.
+\item \textbf{Large-$M$ conditional compiler.}
+  \path{WindowPairSupply} and
+  \path{no_Erdos287Counterexample_of_closure} in
+  \path{RequestProject/Erdos287/ClosureInputs.lean}.
+\item \textbf{Public analytic-source status through V14.}
+  \path{Erdos287VaughanV14Status.lean} in the public status directory; exact structural
+  spine banked, analytic child explicitly open.
+\end{itemize}
+
+\subsection*{Midpoint V15 formalization source -- public replay pending}
+\begin{itemize}[leftmargin=1.6em,itemsep=0.45em]
+\item \path{AffineMuLogIdentity.lean}: exact $\Lambda=\mu*\log$ identity and affine
+  specialization.
+\item \path{AffineMuLogHardSource.lean} and \path{AffineMuLogLine.lean}: exact
+  small-$q$/small-$r$/hard partition and determinant-one line.
+\item \path{BalancedSevenFinite.lean} and \path{BalancedSevenPolarization.lean}:
+  coefficient $-20$, finite collision/exponent routers, and labelled polarization.
+\item \path{PolarizedOmega7SignedEoD} and \path{MuLogComparisonLowCondMatch}:
+  deliberately uninhabited open specifications, not analytic proofs.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{ErdosGraham1980}
+P. Erd\H{o}s and R. L. Graham,
+\emph{Old and New Problems and Results in Combinatorial Number Theory},
+Monographies de L'Enseignement Math\'ematique, 1980, p.~33.
+
+\bibitem{ErdosProblems287}
+T. F. Bloom,
+\emph{Erd\H{o}s Problem \#287}, Erd\H{o}s Problems archive,
+problem provenance and status page, accessed August 2026.
+
+\bibitem{FordMaynard2024}
+K. Ford and J. Maynard,
+\emph{On the theory of prime producing sieves},
+arXiv:2407.14368, 2024.
+
+\bibitem{DGS2017}
+S. Drappeau, A. Granville and X. Shao,
+\emph{Smooth-supported multiplicative functions in arithmetic progressions beyond the
+$x^{1/2}$-barrier}, Mathematika 63 (2017), 895--918.
+
+\bibitem{Pascadi2025}
+A. Pascadi,
+\emph{On the exponents of distribution of primes and smooth numbers},
+arXiv:2505.00653, 2025.
+
+\bibitem{LeanMathlib}
+The Lean and Mathlib communities,
+\emph{Lean 4 and Mathlib}, formal proof assistant and mathematical library.
+\end{thebibliography}
+
+\end{document}

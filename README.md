@@ -1,135 +1,82 @@
-# Erdős Problem #287 — Lean-Verified Finite Reduction
+# Erdős Problem #287 — Lean-Verified Finite Reduction and Clean Public Review
 
-Status: partial formal verification / public research draft.  
-This repository does **NOT** claim an unconditional proof of Erdős #287.
+**Status:** partial formal verification / public research draft.  
+**This repository does not claim an unconditional proof of Erdős #287.**
 
-Machine-checked in Lean:
+## Start here
 
-- exact public Erdős-287 counterexample predicate;
-- public-counterexample -> Gap2CE bridge;
-- top-layer p-adic obstruction;
-- sign-sensitive Sophie blockers;
-- maximum-divisor prime blockers;
-- interval-certificate engine;
-- no exact counterexample with maximum denominator
-  `3 <= M <= 4,000,000,000`.
+- [Clean public review — current V16](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Legacy forum PDF path — same current V16 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Clean V16 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex)
+- [V16 consolidation audit](ERDOS287_V16_CLEAN_CONSOLIDATION_AUDIT.md)
+- [Current technical verification ledger](ERDOS287_TECHNICAL_VERIFICATION_LEDGER_CURRENT.md)
 
-Not formalised/proved here:
+The former V15 chronological patch stack is preserved immutably:
 
-- the large-`M` `WindowPairSupply` statement;
-- M/Vaughan branch `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`;
-- balanced-seven V-branch `AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45`;
-- `AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45`;
-- `VAUGHAN-TYPEI-GENERATED-KAPPA45` / comparison-side Vaughan source matching;
-- `k=0` smooth-parity closure;
-- the full fixed-certificate leakage estimate;
-- the remaining literal Gate-1B/provider stability dictionaries;
-- a Ford–Maynard analytic lower-bound application proving the large-`M` supply;
-- the final theorem Erdős #287.
+- [V15 technical dossier archive](archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf)
+- [V15 source archive](archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex)
 
-The exact formal remaining supply interface is `Erdos287.WindowPairSupply`. A Sophie-type
-prime witness is sufficient for it but is stronger than necessary.
+## What is publicly Lean-checked
 
-## Current public review / research frontier — 28 Aug 2026
+- exact Erdős-287 counterexample predicate;
+- ordered public-statement compiler;
+- top-layer / adjacent-hole / prime-power window obstruction;
+- no exact counterexample with maximum denominator at most `4,000,000,000`;
+- exact `WindowPairSupply` predicate;
+- end-to-end conditional compiler from eventual `WindowPairSupply`;
+- V14 finite/algebraic Vaughan source spine.
 
-**Stable public-review PDF (current V15 source update):**  
-[ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+## What is not yet publicly Lean-replayed
 
-Research/frontier material is in [`frontier/`](frontier/):
-
-- [Current frontier status](frontier/ERDOS287_FRONTIER_STATUS_2026-08-27.md)
-- [Balanced-seven polarized endpoint frontier](frontier/ERDOS287_PENDING_BALANCED7_POLARIZED_EOD_FRONTIER_2026-08-28.md)
-- [Next balanced-seven endpoint attack](frontier/ERDOS287_NEXT_POLARIZED_OMEGA7_SIGNED_EOD45.md)
-- [V15 controlling balanced-seven source update inserted into the public-review PDF](frontier/ERDOS287_LATEST_BALANCED7_UPDATE_V15.tex)
-- [M/Vaughan prime-modulus Möbius two-outer frontier](frontier/ERDOS287_PENDING_PRIME_MODULUS_MU_TWOOUTER_FRONTIER_2026-08-27.md)
-- [V14 controlling Vaughan source update](frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex)
-- [Earlier determinant-one hybrid frontier](frontier/ERDOS287_PENDING_DET1_HYBRID_FRONTIER_2026-08-27.md)
-- [Earlier singleton reduction](frontier/ERDOS287_PENDING_SINGLETON_FRONTIER_2026-08-27.md)
-
-### Current two-front analytic picture
-
-The V14 source audit remains in force on the M/Vaughan side:
-
-- exact affine Vaughan prime source: **PASS**;
-- proper prime-power outer terms: **PASS / negligible**;
-- literal Vaughan cofactor well-factorability: **FALSE**;
-- direct canonical Gate-1A adapter: **FAIL**;
-- prime-modulus Möbius two-outer structural map: **PASS**;
-- `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`: **OPEN**.
-
-The latest V15 audit concerns the balanced-seven V-branch. Set
+The supplied midpoint Aristotle archive contains V15 `Λ=μ*log`, determinant-one-line, and balanced-seven polarization source. At the V16 audit cutoff those files were not yet on public `main`, and the ongoing V15 replay was not independently rerun in the present environment. The clean paper therefore labels them:
 
 ```text
-Q = X^(3/5),   Y = X^(1/7).
+FORMALIZATION SOURCE PRESENT — PUBLIC REPLAY PENDING
 ```
 
-The raw seven labelled prime boxes admit an exact squarefree torus polarization into a family of
-ordinary smooth-supported multiplicative functions `f_z`. Repeated-prime tuples cost only
-`X^(6/7+o(1))`.
+rather than `PUBLIC LEAN-CHECKED`.
 
-The following broad routes are now explicitly nonclosing / unavailable for the exact cell:
+## Current research frontier
 
-- separate multiplicative large sieve: `X^(1/10)` deficit;
-- separated high-moment route: same deficit;
-- equal-seven Proposition 6.3 three-block dictionary: **FALSE**;
-- termwise prime-box Vaughan/Heath-Brown repair: **nonexhaustive**;
-- q-Möbius micro-switch as an exhaustive closure: **nonexhaustive** because the prime-q sector survives.
+The source-minimal affine identity is
 
-The first exact balanced-seven analytic residual is
+```math
+Λ(2mn+s)=Σ_{qr=2mn+s} μ(q)log r,
+```
 
-`AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45`.
+with a hard determinant-one line `qr-2mn=s`.
 
-It asks only for one signed torus coefficient:
+For the balanced-seven cell at
 
 ```text
-integral_{T^7} conjugate(z1...z7)
-  sum_{q~X^(3/5)} mu(q)
-  Delta_LC(f_z; X, q, -s/2)
-= o(X/log X).
+Q=X^(3/5), Y=X^(1/7),
 ```
 
-The same source decomposition also requires the comparison pin
+squarefree torus polarization reduces the current V-branch to two explicit open inputs:
 
-`AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45`.
+```text
+AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45
+AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45
+```
 
-Together these two statements imply
+The remaining hard μ-log cells, fixed-certificate packet census, FCL, positive prime/almost-prime mass, and eventual `WindowPairSupply` are also open.
 
-`AFFINE287-BALANCED7-MODULUS-AVERAGE45 CLOSED`.
+## Exact formal remaining global interface
 
-### Current distance ledger
+`Erdos287.WindowPairSupply M` asks for two adjacent positions in the top half of `[1,M]`, each carrying a prime-power divisor whose window is at most `9` and whose prime base exceeds the certified numerator bound.
 
-| Node | Status |
-|---|---|
-| fixed Ford certificate / transference | PASS (research/source layer) |
-| Ford generated depth | PASS, safe `N0=112` |
-| exact affine Vaughan prime source | PASS |
-| proper prime-power outer | PASS / negligible |
-| prime-modulus Möbius two-outer structural map | PASS |
-| `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45` | **M/VAUGHAN BRANCH OPEN** |
-| balanced-seven character parent | PASS |
-| separate multiplicative LS / high moments | NONCLOSING: `X^(1/10)` deficit |
-| P6.3 equal-seven dictionary | FALSE |
-| repeated-prime router | PASS: `X^(6/7+o(1))` |
-| squarefree torus polarization | PASS |
-| smooth multiplicative class dictionary | PASS |
-| `AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45` | **FIRST EXACT V-BRANCH ANALYTIC OPEN** |
-| `AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45` | SOURCE OPEN |
-| balanced-seven cell | REDUCED, NOT CLOSED |
-| `k=0` smooth packet | OPEN |
-| remaining fixed-`g_*` packet census | OPEN |
-| fixed-certificate leakage / FCL | OPEN |
-| Ford lower-bound completion | CONDITIONAL/OPEN |
-| Erdős #287 | OPEN |
+The public Lean theorem proves:
 
-This research frontier does not alter the trusted finite Lean status.
+```text
+effective eventual WindowPairSupply
++ finite exclusion through 4e9
+=> Erdős #287.
+```
 
-## Existing formal/update files
+No eventual supply theorem is proved here.
 
-- [Aristotle V13 update](ARISTOTLE_V13_UPDATE.md) — conservative formal-status update; no analytic
-  claim is promoted into the Lean bank.
-- [Gate 1A V13 draft update](ERDOS287_GATE1A_V13_DRAFT_UPDATE.md) — Gate 1A is treated as
-  an **optional analytic packet provider**, not a mandatory global prerequisite for #287.
-- `RequestProject/Status/Erdos287V13Frontier.lean` — records the repaired open
-  `LCBetaUpperHalf` interface and regression pins to the existing finite closure compiler.
+## Reproducibility and trust boundary
 
-AI assistance: The project used Aristotle and LLM-assisted mathematical research. All public claims are stated at the status level indicated above.
+The V16 paper and its two stable PDF filenames are generated from one clean LaTeX source by GitHub Actions. The source commit is printed inside the PDF.
+
+AI assistance: the project used Aristotle and LLM-assisted mathematical research. Every public claim is stated at the proof-status level indicated in the paper and ledger.

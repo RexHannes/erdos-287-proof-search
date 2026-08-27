@@ -1,0 +1,273 @@
+% --------------------------------------------------------------------
+% V15 controlling source update: balanced-seven polarization frontier
+% --------------------------------------------------------------------
+\section*{V15 controlling update: balanced-seven polarization and signed endpoint distribution}
+\addcontentsline{toc}{section}{V15 controlling update: balanced-seven polarization and signed endpoint distribution}
+
+\begin{status}[V15 two-front firewall]
+The V14 Vaughan/M\"obius prime-modulus branch is not withdrawn:
+\[
+ \texttt{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45}
+\]
+remains an open source-exact analytic theorem on the M/Vaughan side.
+The present V15 update concerns the balanced-seven V-branch.  It reduces that branch to a
+different exact endpoint-distribution residual and a comparison/source pin.  No implication
+between the two open branches is asserted here.
+\end{status}
+
+\subsection*{Balanced-seven literal source}
+
+Set
+\[
+ Q=X^{3/5},\qquad Y=X^{1/7},\qquad s\in\{-1,+1\},
+\]
+and let
+\[
+ a_s\equiv -s\overline 2\pmod q.
+\]
+The balanced-seven source cell is
+\[
+ \mathcal B_{7,s}(X)
+ =
+ \sum_{q\sim Q}\mu(q)
+ \left[
+   \sum_{\substack{p_1,\ldots,p_7\sim Y\\
+                   2p_1\cdots p_7\equiv -s\;(\bmod q)}}
+   \prod_{i=1}^{7}\omega_i(p_i)
+   -\mathfrak M_{7,s}(q)
+ \right].
+ \tag{V15-1}
+\]
+The required scale is $o(X/\log X)$.
+
+\subsection*{Character parent and the separate-energy death test}
+
+For
+\[
+ S_i(\chi):=\sum_{p\sim Y}\omega_i(p)\chi(p),
+\]
+unit orthogonality gives, after subtraction of the principal term,
+\[
+ D_q
+ =
+ \frac1{\phi(q)}
+ \sum_{\substack{\chi\bmod q\\ \chi\neq\chi_0}}
+ \overline{\chi(a_s)}\prod_{i=1}^{7}S_i(\chi).
+ \tag{V15-2}
+\]
+Splitting $3+4$ and applying the ordinary multiplicative large sieve separately gives
+\[
+ |\mathcal B_{7,s}^{\rm off}|
+ \ll
+ Q^{-1}(Q^2X^{3/7})^{1/2}(Q^2X^{4/7})^{1/2}X^{o(1)}
+ =
+ X^{11/10+o(1)}.
+ \tag{V15-3}
+\]
+Thus the separate-energy route misses the desired $X$ scale by $X^{1/10-o(1)}$.
+The analogous separated sixth/eighth moment interpolation gives the same $X^{11/10+o(1)}$
+scale, so no separated-$S_i$ high-moment argument closes this cell.
+
+The equal-seven exponent geometry also does not satisfy the three-block range constraints of
+the cited Proposition~6.3 route.  A termwise prime-box Vaughan/Heath--Brown split does not
+remove this obstruction, because on a prime input at least one nonzero term retains the prime
+unsplit in one factor slot.  Accordingly
+\[
+ \texttt{P63-BALANCED7-DICTIONARY: FALSE},
+ \qquad
+ \texttt{HB-PRIMEBOX-P63-UNSPLIT-NOGO45: PASS}.
+ \tag{V15-4}
+\]
+
+\subsection*{Exact squarefree polarization}
+
+For $\mathbf z=(z_1,\ldots,z_7)\in\mathbb T^7$ define, on primes $p\sim Y$,
+\[
+ a_{\mathbf z}(p):=\frac17\sum_{i=1}^{7}z_i\omega_i(p),
+ \qquad |a_{\mathbf z}(p)|\le1,
+ \tag{V15-5}
+\]
+and define the squarefree-supported multiplicative function
+\[
+ f_{\mathbf z}(p)=a_{\mathbf z}(p)\quad(p\sim Y),\qquad
+ f_{\mathbf z}(p^\ell)=0\quad(\ell\ge2),
+ \tag{V15-6}
+\]
+extended multiplicatively and set to zero if a prime factor lies outside the actual prime box.
+
+For distinct primes $p_1,\ldots,p_7$,
+\[
+ [z_1\cdots z_7]\,f_{\mathbf z}(p_1\cdots p_7)
+ =
+ 7^{-7}
+ \sum_{\sigma\in S_7}
+ \prod_{j=1}^{7}\omega_{\sigma(j)}(p_j).
+ \tag{V15-7}
+\]
+Consequently the ordered labelled squarefree source is recovered exactly as the torus
+coefficient
+\[
+ \begin{aligned}
+ &\sum_{\substack{p_1,\ldots,p_7\sim Y\\
+                  p_i\ {\rm distinct}\\
+                  2p_1\cdots p_7\equiv-s\;(\bmod q)}}
+ \prod_{i=1}^{7}\omega_i(p_i)
+ \\
+ &\qquad =
+ 7^7
+ \int_{\mathbb T^7}
+ \overline{z_1\cdots z_7}
+ \sum_{\substack{n\asymp X\\n\equiv a_s\;(\bmod q)}}
+ f_{\mathbf z}(n)W(n/X)\,d\mathbf z .
+ \end{aligned}
+ \tag{V15-8}
+\]
+This is a finite coefficient-extraction identity, not a heuristic symmetrisation.
+
+If two labelled primes coincide, at most six prime variables remain free.  Divisor
+multiplicity for $q\mid 2p_1\cdots p_7+s$ costs only $X^{o(1)}$, so
+\[
+ \mathcal E_{\rm rep}\ll Y^{6+o(1)}=X^{6/7+o(1)}
+ =o_A\!\left(\frac{X}{(\log X)^A}\right).
+ \tag{V15-9}
+\]
+Hence
+\[
+ \texttt{BALANCED7-SQUAREFREE-POLARIZATION45: PASS},
+ \qquad
+ \texttt{BALANCED7-REPEATED-PRIME45: PASS}.
+\]
+
+\subsection*{Smooth multiplicative class}
+
+The Euler factor of $f_{\mathbf z}$ is $1+a_{\mathbf z}(p)p^{-w}$.  Therefore
+\[
+ \Lambda_{f_{\mathbf z}}(p^\ell)
+ =
+ (-1)^{\ell-1}a_{\mathbf z}(p)^\ell\log p,
+\]
+and
+\[
+ |\Lambda_{f_{\mathbf z}}(p^\ell)|\le \log p=\Lambda(p^\ell).
+ \tag{V15-10}
+\]
+Thus uniformly in $\mathbf z$,
+\[
+ f_{\mathbf z}\in\mathcal C,
+\]
+in the standard smooth-supported multiplicative-function sense, and its support is
+$Y$-smooth with $Y=X^{1/7}$.
+We record
+\[
+ \texttt{BALANCED7-SMOOTH-MULTIPLICATIVE-DICTIONARY45: PASS}.
+ \tag{V15-11}
+\]
+
+Published smooth-supported distribution technology lies close to this point, but the
+literal endpoint dictionary needed here is not supplied by the statements used in the
+programme: the $3/5-\varepsilon$ theorem requires a sufficiently small smoothness exponent
+without an explicit threshold proving $1/7$ admissible, while the stronger smooth-number
+range is stated with a sufficiently large parameter $C$ and does not literally certify
+$C\le7$.  These are range/source mismatches, not proofs of impossibility.
+
+\subsection*{Polarized discrepancy identity and the two remaining V-branch pins}
+
+Let $\mathcal E_q(f_{\mathbf z};a_s)$ denote the principal plus low-conductor expected term
+in the chosen beyond-$1/2$ convention, and define
+\[
+ \Delta_{\rm LC}(f_{\mathbf z};X,q,a_s)
+ :=
+ \sum_{\substack{n\asymp X\\n\equiv a_s\;(\bmod q)}}
+ f_{\mathbf z}(n)W(n/X)
+ -
+ \mathcal E_q(f_{\mathbf z};a_s).
+ \tag{V15-12}
+\]
+Define the coefficient-extracted expected term
+\[
+ \mathfrak M^{\rm pol}_{7,s}(q)
+ :=
+ 7^7\int_{\mathbb T^7}
+ \overline{z_1\cdots z_7}\,
+ \mathcal E_q(f_{\mathbf z};a_s)\,d\mathbf z.
+ \tag{V15-13}
+\]
+Then the exact source reduction is
+\[
+ \begin{aligned}
+ \mathcal B_{7,s}(X)
+ ={}&
+ 7^7\int_{\mathbb T^7}
+ \overline{z_1\cdots z_7}
+ \sum_{q\sim X^{3/5}}
+ \mu(q)\,
+ \Delta_{\rm LC}(f_{\mathbf z};X,q,a_s)
+ \,d\mathbf z
+ \\
+ &+
+ \sum_{q\sim Q}\mu(q)
+ \bigl(\mathfrak M^{\rm pol}_{7,s}(q)-\mathfrak M_{7,s}(q)\bigr)
+ +O(X^{6/7+o(1)}).
+ \end{aligned}
+ \tag{V15-14}
+\]
+
+Accordingly the first exact analytic residual on the balanced-seven V-branch is
+\[
+ \boxed{\texttt{AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45}},
+\]
+namely
+\[
+ \boxed{
+ \int_{\mathbb T^7}
+ \overline{z_1\cdots z_7}
+ \sum_{q\sim X^{3/5}}\mu(q)
+ \Delta_{\rm LC}(f_{\mathbf z};X,q,-s\overline2)
+ \,d\mathbf z
+ =
+ o(X/\log X).
+ }
+ \tag{V15-15}
+\]
+This asks only for the degree-$(1,\ldots,1)$ torus coefficient of the signed modulus
+average; it is strictly weaker than first proving a uniform absolute Bombieri--Vinogradov
+bound for every $\mathbf z$.
+
+The source-matched comparison pin is
+\[
+ \boxed{\texttt{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45}},
+\]
+requiring
+\[
+ \boxed{
+ \sum_{q\sim Q}\mu(q)
+ \bigl(\mathfrak M^{\rm pol}_{7,s}(q)-\mathfrak M_{7,s}(q)\bigr)
+ =
+ o(X/\log X).
+ }
+ \tag{V15-16}
+\]
+If (V15-15) and (V15-16) hold, then by (V15-14)
+\[
+ \mathcal B_{7,s}(X)=o(X/\log X),
+\]
+so the balanced-seven modulus-average cell is closed.
+
+\begin{status}[V15 controlling balanced-seven verdict]
+\[
+\begin{array}{ll}
+\texttt{BALANCED7-CHARACTER-PARENT45} & \text{PASS},\\
+\texttt{BALANCED7-SEPARATE-MULT-LS} & \text{NONCLOSING: }X^{1/10}\text{ deficit},\\
+\texttt{P63-BALANCED7-DICTIONARY} & \text{FALSE},\\
+\texttt{BALANCED7-SQUAREFREE-POLARIZATION45} & \text{PASS},\\
+\texttt{BALANCED7-REPEATED-PRIME45} & \text{PASS: }X^{6/7+o(1)},\\
+\texttt{BALANCED7-SMOOTH-MULTIPLICATIVE-DICTIONARY45} & \text{PASS},\\
+\texttt{AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45} & \textbf{FIRST EXACT V-BRANCH ANALYTIC OPEN},\\
+\texttt{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45} & \text{SOURCE OPEN},\\
+\texttt{AFFINE287-BALANCED7-MODULUS-AVERAGE45} & \text{REDUCED, NOT CLOSED},\\
+\texttt{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45} & \text{M/Vaughan BRANCH OPEN},\\
+\texttt{FCL} & \text{OPEN},\\
+\text{Erd\H{o}s \#287} & \text{OPEN}.
+\end{array}
+\]
+\end{status}

@@ -1,0 +1,3408 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{claim}[theorem]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{status}[theorem]{Status}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\GapCE}{\mathrm{Gap2CE}}
+\newcommand{\SophieTI}{\mathrm{SOPHIE\mbox{-}FM\mbox{-}TYPEII}_{1/6}}
+\newcommand{\FullFM}{\mathrm{FullFMTypeII}_{1/6}}
+\newcommand{\FMRough}{\mathrm{FMRoughN2}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\statusbox}[1]{\begin{center}\fbox{\parbox{0.94\textwidth}{#1}}\end{center}}
+
+\title{\textbf{Erd\H{o}s Problem \#287: A Standalone Verification Dossier}\\
+\large Draft V12 -- explicit Ford certificate, smooth-parity counterguard, and corrected fixed-leakage frontier}
+\author{Research draft -- not a solution claim}
+\date{27 August 2026}
+
+\begin{document}
+\maketitle
+
+\statusbox{\textbf{Purpose and status.}
+This document is deliberately written so that the mathematical chain can be audited from this document alone.
+It does not use ``see the Lean bank'', ``see the Gate-1A paper'', or ``see the Gate-0/2 archive'' as substitutes
+for mathematical statements.  The finite Erd\H{o}s-287 reduction is proved explicitly below.  The Ford--Maynard
+sequence conditions are written out explicitly.  Gate 1A and Gate 1B are reproduced as mathematical theorem
+chains, with every load-bearing hypothesis stated.  Gate 2 is written as an explicit conditional endgame.
+Where a statement remains unproved, the statement itself is displayed rather than hidden behind a status label.
+No claim of Full Type II, twin-prime infinitude, or a solution of Problem \#287 is made.}
+
+\begin{abstract}
+Let $A$ be a finite set of distinct integers $1<n_1<\cdots<n_k$ with
+$\sum_{a\in A}1/a=1$.  Erd\H{o}s Problem \#287 asks whether some consecutive gap must be at least three.
+We first give a self-contained finite reduction.  The reciprocal identity implies a top-layer $p$-adic
+congruence.  Together with the elementary half-range bound $N\le\lfloor M/2\rfloor$, this shows that a prime
+$q>3$ with $3q>M$ and $q^2>M$ forces both $q$ and $2q$ to be absent, while any prime $p\in(M/2,M]$ is absent.
+Hence an interior prime pair $p=2q\pm1$ produces two adjacent holes and contradicts the gap-$\le2$ hypothesis.
+A fixed band $q\in(3X/4,4X/5)$ with $X=\lfloor M/2\rfloor$ suffices for every $M\ge9$.
+
+The analytic task is therefore to force such a Sophie-type witness.  We define the comparison density
+\[
+ B(n)=\mathfrak S_2\prod_{\ell\mid n,\ell>2}\frac{\ell-1}{\ell-2},
+\]
+and prove $Y^{-1}\sum_{m\le Y}B(dm)\to d/\varphi(2d)$, which is the exact local mean required by the two
+affine forms $2n\pm1$.  We then write out the Ford--Maynard Type-I, Type-II, growth, comparison and bounded-class hypotheses,
+the $1/6$ parameter geometry, the Gate-0 specialization, the complete current Gate-1A conditional mechanism,
+the complete current Gate-1B conductor reduction and its late pair-modulus reorganisation, the source-exhaustive
+Full-Type-II socket, and the Gate-2 rough endgame.  Draft V12 preserves the corrected Ford--Maynard $N_2$ replay
+from Draft V8 and incorporates the 26/27 August Gate-1B and Ford-side updates: H7 short-short now has a conditional joint-prime compiler
+with relative capacity $Y^{-1/2}=X^{-1/18}$; the H8 analogue has the same research-level fixed-power capacity but
+still lacks its formal source/robustness pin; the QK56 full-covariance parent is promoted internally to an analytic pass modulo literal source pins,
+while the principal Gate-1B analytic candidate moves to the balanced shifted-quotient child after a mandatory
+literal $TT^*$ source recovery.  The canonical Gate-1B additive zero mode remains an exact algebraic pass.
+Downstream, Ford--Maynard five-collar geometry now gives a source-specific organisation of the rough $N_2$
+sector, the grouped equation (7.23) remains the proof-specific Type-II landing point, and the first unresolved
+Gate-to-Ford interface is the literal weighted packet dictionary labelled SOURCE-ADAPTER45.
+A subsequent hostile census corrects the first interpretation of this fixed-certificate pivot.  Ford--Maynard
+supply an explicit certificate $g_0$ at their central point; after a small fixed shrink one obtains a literal
+certificate $g_*$ and arithmetic weight $H_*$.  The fixed-certificate transference identity is valid, but the
+resulting leakage family does \emph{not} collapse to only H8/H9 and QK56 packets.  Already the $k=0$, $J=\varnothing$
+cell contains an exact smooth-parity packet with the truncated M\"obius divisor detector
+$\sum_{d\mid n,\,d\le n^{1/2-\varepsilon_*}}\mu(d)$.  Balanced squarefree cells show nonzero contributions at
+orders $7,8,9,10,11,12,\ldots$, so an ``H8/H9-only'' census is false.  The generic seven-prime quadratic-Kummer
+estimate remains a useful conditional child provider with relative capacity $X^{-1/18+o(1)}$, but it is no longer
+the controlling first wall.  The first literal analytic open in the fixed-certificate route is the source-exact
+smooth-parity packet \texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45}; the full fixed-certificate leakage estimate
+and Problem~\#287 remain open.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\part{Erd\H{o}s \#287: the finite reduction written from first principles}
+
+\section{Problem, notation, and the hypothetical counterexample}
+
+Let
+\[
+ A=\{n_1<\cdots<n_k\}\subset\mathbb N,\qquad n_1>1,
+ \qquad \sum_{i=1}^k\frac1{n_i}=1.
+\]
+Write
+\[
+ N:=n_1,\qquad M:=n_k.
+\]
+Assume for contradiction that
+\[
+ n_{i+1}-n_i\le2\qquad(1\le i<k).
+\tag{G2}
+\]
+Call an integer $h\in[N,M]$ a \emph{hole} if $h\notin A$.
+
+\begin{lemma}[Two adjacent holes are impossible]\label{lem:isolated}
+Under \emph{(G2)}, there do not exist $x,x+1\in[N,M]$ which are both holes.
+\end{lemma}
+\begin{proof}
+Since $N,M\in A$, neither endpoint can be a hole.  Thus if $x,x+1$ are holes there is a largest denominator
+$a\in A$ with $a<x$ and a smallest denominator $b\in A$ with $b>x+1$.  Then $b-a\ge3$, contradicting (G2).
+\end{proof}
+
+\section{The half-range placement bound}
+
+\begin{lemma}[Half-range placement]\label{lem:half}
+Every hypothetical counterexample satisfies
+\[
+ N\le \left\lfloor\frac M2\right\rfloor.
+\]
+\end{lemma}
+\begin{proof}
+Suppose instead $N\ge\lfloor M/2\rfloor+1$.  Then $2N\ge M+1$, hence
+\[
+ k\le M-N+1\le N.
+\]
+Because the denominators are distinct and at least $N$,
+\[
+ \sum_{i=1}^k\frac1{n_i}
+ \le \frac1N+\frac{k-1}{N+1}
+ < \frac{k}{N}\le1,
+\]
+contradicting the reciprocal identity.  (If $k=1$, the sole denominator would be $1$, excluded by hypothesis.)
+\end{proof}
+
+\section{The top-layer congruence derived directly from the reciprocal identity}
+
+\begin{theorem}[Top-layer congruence]\label{thm:TL}
+Fix a prime $p$.  Let
+\[
+ E:=\max_{a\in A}v_p(a),
+ \qquad I_p:=\{a\in A:v_p(a)=E\}.
+\]
+For each $a\in I_p$ write $a=p^E m_a$ with $p\nmid m_a$.  Then
+\[
+ \boxed{\sum_{a\in I_p}m_a^{-1}\equiv0\pmod p.}
+\tag{TL}
+\]
+Here $m_a^{-1}$ is the inverse of $m_a$ modulo $p$.
+\end{theorem}
+\begin{proof}
+Let $L=\operatorname{lcm}(A)$ and write $L=p^E L_0$ with $p\nmid L_0$.  Multiplying
+$\sum_{a\in A}1/a=1$ by $L$ gives
+\[
+ L=\sum_{a\in A}\frac La.
+\]
+Reduce modulo $p$.  If $v_p(a)<E$, then $L/a$ is divisible by $p$, so these terms vanish.  If
+$a=p^E m_a\in I_p$, then
+\[
+ \frac La=\frac{L_0}{m_a}\equiv L_0m_a^{-1}\pmod p.
+\]
+Since $L\equiv0\pmod p$ and $L_0$ is a unit modulo $p$,
+\[
+ 0\equiv L_0\sum_{a\in I_p}m_a^{-1}\pmod p,
+\]
+which proves (TL).
+\end{proof}
+
+\section{Immediate prime exclusions}
+
+\begin{lemma}[A two-multiple prime fibre is empty]\label{lem:q2}
+Let $q>3$ be prime and suppose
+\[
+ 3q>M,\qquad q^2>M.
+\]
+Then neither $q$ nor $2q$ belongs to $A$.
+\end{lemma}
+\begin{proof}
+The only multiples of $q$ in $[1,M]$ are $q$ and $2q$, and $q^2>M$ ensures both have $q$-adic valuation one.
+If at least one belonged to $A$, the maximal $q$-adic fibre would be one of
+\[
+ \{q\},\qquad\{2q\},\qquad\{q,2q\}.
+\]
+By Theorem~\ref{thm:TL}, these would force respectively
+\[
+ 1\equiv0,\qquad 2^{-1}\equiv0,\qquad1+2^{-1}=\frac32\equiv0\pmod q,
+\]
+all impossible for $q>3$.
+\end{proof}
+
+\begin{lemma}[Every top-half prime is a hole]\label{lem:tophalf}
+If $p$ is prime and
+\[
+ \frac M2<p\le M,
+\]
+then $p\notin A$.
+\end{lemma}
+\begin{proof}
+The only multiple of $p$ in $[1,M]$ is $p$.  If $p\in A$, the top $p$-adic fibre is the singleton $\{p\}$,
+and (TL) gives $1\equiv0\pmod p$.
+\end{proof}
+
+\section{The direct $\pm$ Sophie blockers}
+
+\begin{proposition}[Plus-Sophie blocker]\label{prop:plus}
+Let $q>3$ and $p=2q+1$ be primes.  If
+\[
+ p\le M<3q,
+ \qquad q^2>M,
+\]
+then the assumed counterexample cannot exist.
+\end{proposition}
+\begin{proof}
+Lemma~\ref{lem:q2} makes $2q=p-1$ a hole.  Since
+\[
+ M<3q<4q+2=2p,
+\]
+we have $p>M/2$, so Lemma~\ref{lem:tophalf} makes $p$ a hole.  Lemma~\ref{lem:half} gives
+$N\le\lfloor M/2\rfloor<p-1$, and $p\le M$.  Hence $p-1,p$ are adjacent holes in $[N,M]$, contradicting
+Lemma~\ref{lem:isolated}.
+\end{proof}
+
+\begin{proposition}[Minus-Sophie blocker]\label{prop:minus}
+Let $q>3$ and $p=2q-1$ be primes.  If
+\[
+ p+1\le M<3q,
+ \qquad q^2>M,
+\]
+then the assumed counterexample cannot exist.
+\end{proposition}
+\begin{proof}
+Lemma~\ref{lem:q2} makes $2q=p+1$ a hole.  Since $q>3$,
+\[
+ M<3q<4q-2=2p,
+\]
+so $p>M/2$ and Lemma~\ref{lem:tophalf} makes $p$ a hole.  Lemma~\ref{lem:half} gives
+$N\le\lfloor M/2\rfloor<p$, while $p+1\le M$.  Hence $p,p+1$ are adjacent holes, contradiction.
+\end{proof}
+
+\section{A fixed analytic band}
+
+Put
+\[
+ X:=\left\lfloor\frac M2\right\rfloor
+\]
+and fix a non-negative $W\in C_c^\infty((3/4,4/5))$.
+
+\begin{lemma}[Band arithmetic]\label{lem:band}
+For every integer $M\ge9$, if $W(q/X)>0$, then
+\[
+ \boxed{q>3,\qquad M<3q,\qquad 2q+1\le M,\qquad q^2>M.}
+\]
+\end{lemma}
+\begin{proof}
+We have $3X/4<q<4X/5$ and $X=\lfloor M/2\rfloor$.  Since $M\ge9$, $X\ge4$, hence
+$q>3X/4\ge3$, and the strict inequality gives $q>3$.
+
+For the lower Sophie-band inequality, $X\ge(M-1)/2$, so
+\[
+ 3q>\frac{9X}{4}\ge\frac{9(M-1)}8\ge M,
+\]
+where the last inequality is equivalent to $M\ge9$.
+Also $q<4X/5\le2M/5$, hence
+\[
+ 2q+1<\frac{4M}{5}+1\le M\qquad(M\ge5).
+\]
+Finally, strictness is important at the endpoint.  From
+\[
+ q>\frac{3X}{4}\ge\frac{3(M-1)}8
+\]
+and
+\[
+ \left(\frac{3(M-1)}8\right)^2-M
+ =\frac{9M^2-82M+9}{64}
+ =\frac{9(M-9)(M-1/9)}{64}\ge0
+\]
+for $M\ge9$, we obtain
+\[
+ q^2>\left(\frac{3(M-1)}8\right)^2\ge M.
+\]
+Thus the threshold $M\ge9$ is valid; no replacement by $M\ge10$ is required.
+\end{proof}
+
+\begin{corollary}[Finite landing theorem]\label{cor:landing}
+For $M\ge9$, if there exists a prime $q$ with $W(q/X)>0$ such that at least one of $2q-1,2q+1$ is prime,
+then no counterexample with maximum denominator $M$ exists.
+\end{corollary}
+
+\section{The exact comparison density for the two affine prime forms}
+
+Define
+\[
+ \mathfrak S_2:=\prod_{\ell>2}\frac{\ell(\ell-2)}{(\ell-1)^2},
+ \qquad
+ B(n):=\mathfrak S_2\prod_{\substack{\ell\mid n\\\ell>2}}\frac{\ell-1}{\ell-2}.
+\]
+Let
+\[
+ a_X(n):=W(n/X)\bigl(\Lambda(2n-1)+\Lambda(2n+1)\bigr),
+\]
+\[
+ b_X(n):=4W(n/X)B(n),\qquad w_X(n):=a_X(n)-b_X(n).
+\]
+For odd squarefree $e$ set
+\[
+ g(e):=\prod_{\ell\mid e}\frac1{\ell-2},
+\]
+and put $g(e)=0$ otherwise.  Then
+\[
+ B(n)=\mathfrak S_2\sum_{e\mid n}g(e).
+\tag{7.1}
+\]
+
+\begin{proposition}[Local mean]\label{prop:Bmean}
+For each fixed positive integer $d$,
+\[
+ \lim_{Y\to\infty}\frac1Y\sum_{m\le Y}B(dm)=\frac d{\varphi(2d)}.
+\]
+\end{proposition}
+\begin{proof}
+The series
+\[
+ \sum_e\frac{|g(e)|}{e}=\prod_{\ell>2}\left(1+\frac1{\ell(\ell-2)}\right)
+\]
+converges absolutely.  Truncate at $e\le Z$, average, and then let $Y\to\infty$ followed by $Z\to\infty$.
+Since the density of $m$ with $e\mid dm$ is $(e,d)/e$,
+\[
+ \lim_{Y\to\infty}\frac1Y\sum_{m\le Y}B(dm)
+ =\mathfrak S_2\sum_e g(e)\frac{(e,d)}e.
+\]
+For an odd prime $\ell\nmid d$, the Euler factor is
+\[
+ \frac{\ell(\ell-2)}{(\ell-1)^2}\left(1+\frac1{\ell(\ell-2)}\right)=1.
+\]
+For $\ell\mid d$, it is
+\[
+ \frac{\ell(\ell-2)}{(\ell-1)^2}\left(1+\frac1{\ell-2}\right)=\frac\ell{\ell-1}.
+\]
+The prime $2$ contributes no factor.  Hence the product is
+$\prod_{\ell\mid d,\ell>2}\ell/(\ell-1)=d/\varphi(2d)$.
+\end{proof}
+
+\begin{remark}[Why the factor $4$ is exact]
+For each sign, the affine form $2dm\pm1$ has von Mangoldt mean $2d/\varphi(2d)$, so the two signs together
+have mean $4d/\varphi(2d)$, exactly matching $4B(dm)$.
+\end{remark}
+
+\part{The Ford--Maynard framework and Gate 0, written explicitly}
+
+\section{The exact Ford--Maynard sequence class}
+
+This section writes out the external sieve framework used downstream.  The notation follows Ford--Maynard
+\cite{FM24}, but the formulas needed here are reproduced so that the application can be audited locally.
+Fix parameters
+\[
+ 0<\gamma<1,\qquad0\le\theta<\frac12,\qquad0<\nu\le1-\theta,
+\]
+and non-negative sequences $(a_n),(b_n)$ supported on $x/2<n\le x$.  Put $w_n=a_n-b_n$.
+
+\subsection{Type I, Type II, and the growth condition}
+
+The Type-I hypothesis is
+\[
+ \boxed{
+ \sum_{m\le x^\gamma}\tau^B(m)
+ \max_{I\ \mathrm{interval}}
+ \left|\sum_{\substack{x/2<mn\le x\\ n\in I}}w_{mn}\right|
+ \le \frac{x}{(\log x)^B}.}
+\tag{I}
+\]
+The Type-II hypothesis is universal in the coefficients:
+\[
+ \boxed{
+ \left|\sum_{\substack{(x/2)^\theta<m\le x^{\theta+\nu}\\x/2<mn\le x}}
+ \xi_m\kappa_n w_{mn}\right|
+ \le\frac{x}{(\log x)^B}}
+\tag{II}
+\]
+for every pair of complex sequences satisfying
+$|\xi_m|\le\tau^B(m)$ and $|\kappa_n|\le\tau^B(n)$.
+The lower endpoint is $(x/2)^\theta$, not $x^\theta$.
+
+The ordinary growth condition is
+\[
+ \boxed{\sum_n|w_n|\tau(n)\le x(\log x)^\varpi,
+ \qquad w_n\ge -x^{\nu/10}\quad(x/2<n\le x).}
+\tag{w}
+\]
+
+\subsection{The comparison-sequence conditions}
+
+Let $P=(\gamma,\theta,\nu)$.  Define $R(P)$ to be the set of finite vectors
+$u=(u_1,\ldots,u_k)$ whose components lie in $(0,1-\gamma)$, sum to $1$, and have no proper subsum in
+$[\theta,\theta+\nu]$.  Let $C(R(P))$ denote all coagulations of vectors in $R(P)$.
+
+The first comparison condition is the prime-mass lower bound
+\[
+ \boxed{\sum_p b_p\ge \frac{x}{(\log x)^\varpi}.}
+\tag{b.1}
+\]
+The second is a generalized prime-number-theorem condition.  For every
+$2\le k\le1/\nu$, every convex
+\[
+ T\subset\{u\in\mathbb R^k\cap C(R(P)):\nu\le u_1\le\cdots\le u_k\},
+\]
+and every $1$-bounded Lipschitz function $f$ of Lipschitz constant at most $1$,
+\[
+ \boxed{
+ \sum_{\substack{n=p_1\cdots p_k\\p_1\le\cdots\le p_k}}
+ b_n f\!\left(\frac{\log p_1}{\log n},\ldots,\frac{\log p_k}{\log n}\right)
+ =\left(\sum_p b_p\right)
+ \left(\int_T\frac{f(u)\,du}{u_1\cdots u_k}+E\right),
+ \quad |E|\le\frac1B.}
+\tag{b.2}
+\]
+
+Ford--Maynard's ordinary sequence class consists of non-negative $(a_n),(b_n)$ satisfying
+(b.1), (b.2), with $w=a-b$ satisfying (I), (II), and (w).
+
+\subsection{The bounded class}
+
+For the bounded constants $C^\pm_{\mathrm{bd}}$, one additionally imposes, for some fixed $\varrho\ge1$,
+\[
+ \boxed{|w_n|\le\tau(n)^\varrho\quad(x/2<n\le x),
+ \qquad\sum_p b_p\ge\frac{x}{\varrho\log x}.}
+\tag{4.1}
+\]
+This extra pointwise condition is the source of the $N_2$ mismatch discussed later.
+
+\section{The published Ford--Maynard $1/6$ region and the class/shrinkage firewall}
+
+\begin{theorem}[Ford--Maynard, special family]\label{thm:FM27}
+Fix $\varrho\ge1$.  For
+\[
+ P=(1/2,0,\nu),\qquad P_\varepsilon=(1/2-\varepsilon,\varepsilon,\nu-2\varepsilon),
+\]
+Ford--Maynard prove that if $\nu\ge0.1663$, then
+\[
+ C^-(1/2,0,\nu)>0,
+ \qquad
+ \lim_{\varepsilon\to0^+}C^-_{\rm bd}(P_\varepsilon;\varrho)>0.
+\]
+\end{theorem}
+
+For the operating value $\nu_0=1/6$,
+\[
+ \frac16-0.1663=\frac{11}{30000}>0.
+\]
+The theorem therefore supplies two \emph{different} published facts:
+\begin{enumerate}[label=(\roman*)]
+\item positivity for the \emph{ordinary} class at the unshrunk point $P=(1/2,0,1/6)$;
+\item epsilon-stable positivity for the \emph{bounded} class at the shrunk points
+\[
+ P_\varepsilon=\left(\frac12-\varepsilon,\ \varepsilon,\ \frac16-2\varepsilon\right).
+\]
+\end{enumerate}
+It does \textbf{not} by itself assert ordinary-class positivity at $P_\varepsilon$.  Since the 287 prime source
+contains von Mangoldt weights, the pointwise bounded-class condition $|w_n|\le\tau(n)^\varrho$ is unavailable.
+Draft V8 therefore never applies $C^-_{\rm bd}(P_\varepsilon;\varrho)$ directly to the 287 source.
+
+The exact Type-II interval at the shrunk point is
+\[
+ \boxed{(x/2)^\varepsilon<m\le x^{1/6-\varepsilon}.}
+\tag{FM-window}
+\]
+The role of the published bounded theorem is instead to identify the central Ford--Maynard geometry and a
+positive limiting margin.  The source-specific application below replays the proof of their Theorem~8.2 and
+replaces the only pointwise-bounded exceptional step by an explicit $N_2$ estimate.
+
+\begin{status}[Class/shrinkage firewall]
+There is no theorem in this dossier asserting
+\[
+ C^-(P_\varepsilon)>0
+\]
+for the ordinary class.  Such a theorem is unnecessary if the source-specific replay in
+Theorem~\ref{thm:Gate2} is justified.  Conversely, if the replay/localization failed, ordinary-class positivity
+at a shrunk point would become a genuinely new obligation.
+\end{status}
+
+\section{Gate 0 before specialization: the actual shifted-prime source}
+\label{sec:g0-actual}
+
+The original programme does not begin with the 287 source $2n\pm1$.  Its Gate-0 physical sequence is a
+single fixed shift.  We record it because a reader must be able to distinguish the programme theorem from the
+later 287 specialization.
+
+For $z\ge2$ define the odd primorial and its finite sieve density
+\[
+ P_0(z):=\prod_{\substack{p\le z\\p\ {
+m prime},\ p>2}}p,
+ \qquad
+ V_0(z):=\frac12\prod_{\substack{p\le z\\p\ {
+m prime},\ p>2}}\left(1-\frac1p\right).
+\tag{G0-1}
+\]
+Let $I_x(n)=\1_{\{x/2<n\le x\}}$.  The shifted-prime detector, residue-aware comparison sequence and centered
+difference are
+\[
+ a_x(n):=I_x(n)\frac{\Lambda(n+2)}{\log x},
+\tag{G0-2}
+\]
+\[
+ b_{x,z}(n):=
+ \frac{I_x(n)\,\1_{\{n\ {
+m odd},\ (n+2,P_0(z))=1\}}}{\log x\,V_0(z)},
+ \qquad
+ w_{x,z}(n):=a_x(n)-b_{x,z}(n).
+\tag{G0-3}
+\]
+Both $a_x$ and $b_{x,z}$ are non-negative and supported on $(x/2,x]$; moreover $b_{x,z}(n)=0$ for even $n$.
+These are direct consequences of the definitions.
+
+\subsection{Finite local densities and the twin Euler product}
+
+Define
+\[
+ D_z(m):=\prod_{\substack{p\le z,\ p>2\\p\mid m}}
+ \left(1-\frac1p\right)^{-1}.
+\tag{G0-4}
+\]
+Then the exact finite local-density identity is
+\[
+ \boxed{
+ \frac12\prod_{\substack{p\le z,\ p>2\\p\nmid m}}
+ \left(1-\frac1p\right)=V_0(z)D_z(m).}
+\tag{G0-5}
+\]
+Indeed split the full product defining $V_0(z)$ into primes dividing $m$ and primes not dividing $m$, and cancel
+the first group against the inverse factors in $D_z(m)$.
+
+Consequently
+\[
+ D_z(1)=1,
+\tag{G0-6}
+\]
+and for an odd prime $p$,
+\[
+ D_z(p)=
+ \begin{cases}
+ (1-1/p)^{-1},&p\le z,\\
+ 1,&p>z.
+ \end{cases}
+\tag{G0-7}
+\]
+For every $a\ge1$, $D_z(p^a)=D_z(p)$; more generally $D_z(m)$ depends only on the radical of odd $m$.
+
+A second finite product is
+\[
+ W_0(z):=\prod_{\substack{p\le z\\p>2}}
+ \left(1-\frac1{p-1}\right).
+\tag{G0-8}
+\]
+The elementary local identity
+\[
+ \frac{p(p-2)}{(p-1)^2}=1-\frac1{(p-1)^2}
+\tag{G0-9}
+\]
+gives
+\[
+ \boxed{
+ \frac{W_0(z)}{V_0(z)}
+ =2\prod_{\substack{p\le z\\p>2}}
+ \frac{p(p-2)}{(p-1)^2}
+ =2\prod_{\substack{p\le z\\p>2}}
+ \left(1-\frac1{(p-1)^2}\right).}
+\tag{G0-10}
+\]
+This is an exact \emph{finite} singular-series identity; no convergence assertion is needed for it.
+
+\subsection{The elementary pointwise comparison bound}
+
+If a Mertens lower bound
+\[
+ V_0(z)\ge\frac{c}{\log z},\qquad c>0,
+\tag{G0-11}
+\]
+is available, then directly from (G0-3)
+\[
+ 0\le b_{x,z}(n)\le\frac{\log z}{c\log x}.
+\tag{G0-12}
+\]
+Thus pointwise boundedness of the comparison sequence is an ordinary finite-sieve consequence once (G0-11) is
+pinned; it is not a Type-II input.
+
+\section{Gate 0 / Gate 1 front algebra: centering, Fourier separation, CRT and the fixed determinant}
+\label{sec:g01-front}
+
+This section writes out the exact finite identities which precede the later analytic estimates.  They are useful
+because they show precisely where the expected main term disappears and where the fixed shift $2$ enters.
+
+\subsection{Nonzero additive orthogonality and E-separation}
+
+Write $e_q(t)=e^{2\pi i t/q}$.  For $q>0$,
+\[
+ \sum_{a\bmod q}e_q(at)=q\,\1_{q\mid t},
+\tag{G01-1}
+\]
+so after deleting the zero frequency,
+\[
+ \boxed{
+ \sum_{\substack{a\bmod q\\a\ne0}}e_q(at)
+ =q\,\1_{q\mid t}-1,}
+\tag{G01-2}
+\]
+and hence
+\[
+ \frac1q\sum_{a\ne0}e_q(at)=\1_{q\mid t}-\frac1q.
+\tag{G01-3}
+\]
+For a finite set $S$ and coefficients $c_x$, put
+\[
+ C_q:=\sum_{\substack{x\in S\\q\mid x+2}}c_x,
+ \qquad C:=\sum_{x\in S}c_x.
+\]
+Using (G01-3),
+\[
+ \boxed{
+ C_q=\frac Cq+
+ \frac1q\sum_{a\ne0}e_q(2a)\sum_{x\in S}c_xe_q(ax).}
+\tag{G01-4}
+\]
+Therefore for \emph{any} proposed expected value $E$,
+\[
+ C_q-E=\left(\frac Cq-E\right)
+ +\frac1q\sum_{a\ne0}e_q(2a)\widehat c_q(a).
+\tag{G01-5}
+\]
+The nonzero-frequency term is independent of the choice of $E$.  Thus an incorrect source normalization cannot
+be repaired by changing the nonzero Fourier analysis; the zero mode and the nonzero modes are logically separate.
+
+If $n\bar n\equiv1\pmod q$, then
+\[
+ \boxed{q\mid m+2\bar n\quad\Longleftrightarrow\quad q\mid mn+2.}
+\tag{G01-6}
+\]
+This follows by multiplying the first congruence by $n$ and using $n\bar n\equiv1$.
+
+\subsection{CRT centering}
+
+For $r\ge1$ define
+\[
+ \rho_r(y):=\1_{r\mid y}-\frac1r.
+\]
+If $(d,p)=1$, then $\1_{dp\mid y}=\1_{d\mid y}\1_{p\mid y}$, whence
+\[
+ \boxed{
+ \rho_{dp}(y)=\rho_d(y)\rho_p(y)+\frac{\rho_d(y)}p+\frac{\rho_p(y)}d.}
+\tag{G01-7}
+\]
+Thus a composite centered defect has a double-centered piece and two one-coordinate pieces; none may be silently
+removed.
+
+At the frequency level,
+\[
+ \frac{a_d}{d}+\frac{a_p}{p}=\frac{a_dp+a_pd}{dp},
+\tag{G01-8}
+\]
+and therefore
+\[
+ \boxed{e_{dp}((a_dp+a_pd)y)=e_d(a_dy)e_p(a_py).}
+\tag{G01-9}
+\]
+This is the exact CRT frequency split underlying the four mode classes: double-centered, $d$-only, $p$-only,
+and zero mode.
+
+\subsection{Shift inverses and the fixed-shift determinant}
+
+Suppose
+\[
+ v=n+hq,
+ \qquad q\bar q\equiv1\pmod n,
+ \qquad v\bar v\equiv1\pmod n.
+\]
+Then
+\[
+ \boxed{\bar q\equiv h\bar v\pmod n,}
+\tag{G01-10}
+\]
+so for every integer $a$,
+\[
+ e_n(-2a\bar q)=e_n(-2ah\bar v).
+\tag{G01-11}
+\]
+The proof of (G01-10) is direct: substitute $v=n+hq$ and compare the two inverse identities modulo $n$.
+
+If in addition
+\[
+ mn+2=qr_0,
+ \qquad v=n+hq,
+ \qquad s=r_0+hm,
+\]
+then
+\[
+ \boxed{r_0v-ns=2h.}
+\tag{G01-12}
+\]
+Indeed
+$r_0(n+hq)-n(r_0+hm)=h(qr_0-mn)=2h$.
+The determinant shift is therefore literally the original fixed shift $2$, multiplied only by the translation
+parameter $h$.
+
+\subsection{Prime covariance and the exact second moment}
+
+For a finite prime set $\mathcal P$, define
+\[
+ K_{\mathcal P}(u,v):=\sum_{p\in\mathcal P}\rho_p(u)\rho_p(v).
+\tag{G01-13}
+\]
+Expanding gives
+\[
+ \boxed{
+ K_{\mathcal P}(u,v)
+ =\sum_{\substack{p\in\mathcal P\\p\mid u,\ p\mid v}}1
+ -\sum_{\substack{p\in\mathcal P\\p\mid u}}\frac1p
+ -\sum_{\substack{p\in\mathcal P\\p\mid v}}\frac1p
+ +\sum_{p\in\mathcal P}\frac1{p^2}.}
+\tag{G01-14}
+\]
+On the diagonal,
+\[
+ K_{\mathcal P}(Y,Y)=
+ \sum_{\substack{p\in\mathcal P\\p\mid Y}}\left(1-\frac2p\right)
+ +\sum_{p\in\mathcal P}\frac1{p^2}.
+\tag{G01-15}
+\]
+For amplitudes $A_i$ and integers $Y_i$, the centered form
+\[
+ F_p:=\sum_iA_i\rho_p(Y_i)
+\]
+satisfies the exact Hermitian identity
+\[
+ \boxed{
+ \sum_{p\in\mathcal P}|F_p|^2
+ =\sum_{i,j}A_i\overline{A_j}\,K_{\mathcal P}(Y_i,Y_j).}
+\tag{G01-16}
+\]
+No analytic saving is contained in (G01-16); it only exposes the diagonal and off-diagonal kernels exactly.
+
+\subsection{Direct Gauss reassembly}
+
+For a unit $A$ modulo $c$, the congruence $Ax\equiv B\pmod c$ has the unique solution $x\equiv A^{-1}B$.
+Hence
+\[
+ \boxed{
+ \sum_{\substack{x\bmod c\\Ax\equiv B\ (c)}}e_c(x)=e_c(A^{-1}B).}
+\tag{G01-17}
+\]
+In the direct family this produces the physical phase
+\[
+ e_c\!\left(2kN\bigl((m+kr)p_1p_2\bigr)^{-1}\right)
+\tag{G01-18}
+\]
+on the unit sector.  If $A$ is not a unit, the correct solvability criterion is
+\[
+ \boxed{\exists x:\ Ax\equiv B\pmod c\quad\Longleftrightarrow\quad (A,c)\mid B.}
+\tag{G01-19}
+\]
+Thus non-unit strata have an explicit multiplicity/gcd structure and cannot be folded into the unique-solution
+formula.
+
+\subsection{Nine-block regrouping and the completion exponents}
+
+For nine equal logarithmic blocks, each has mass $1/9$.  The balanced binary regrouping has exponents
+\[
+ U=X^{4/9+o(1)},\qquad V=X^{5/9+o(1)},\qquad UV=X^{1+o(1)}.
+\tag{G01-20}
+\]
+At the hard modulus exponent
+\[
+ Q=X^{13/18+o(1)},\qquad \sqrt Q=X^{13/36+o(1)},
+\tag{G01-21}
+\]
+one has
+\[
+ \frac49-\frac{13}{36}=\frac1{12},
+ \qquad
+ \frac59-\frac{13}{36}=\frac7{36},
+\tag{G01-22}
+\]
+so both regrouped variables lie above the square-root modulus scale.  The natural progression-count exponent is
+\[
+ \frac49+\frac59-\frac{13}{18}=\frac5{18},
+\tag{G01-23}
+\]
+and
+\[
+ \frac{13}{36}-\frac5{18}=\frac1{12}.
+\tag{G01-24}
+\]
+These are exponent identities only; they do not themselves prove a square-root error term or an analytic
+completion theorem.
+
+
+\section{Gate 0: the 287 sequence dictionary}
+
+We now use the 287 sequences
+\[
+ a_X(n)=W(n/X)(\Lambda(2n-1)+\Lambda(2n+1)),\quad
+ b_X(n)=4W(n/X)B(n),\quad w_X=a_X-b_X.
+\]
+Because $\operatorname{supp}W\subset(3/4,4/5)$, these sequences are supported inside $(X/2,X]$.
+
+\subsection{The comparison prime mass (b.1) and the bounded-class prime mass}
+
+For prime $p$ in the support,
+\[
+ B(p)=\mathfrak S_2\frac{p-1}{p-2}=\mathfrak S_2(1+O(1/p)).
+\]
+The smooth prime number theorem gives
+\[
+ \sum_p b_X(p)
+ =4\mathfrak S_2\sum_p W(p/X)+o(X/\log X)
+ \sim 4\mathfrak S_2\left(\int_0^\infty W(t)\,dt\right)\frac X{\log X}.
+\tag{G0-b1}
+\]
+Therefore (b.1) holds for every fixed $\varpi>1$ once $X$ is large, and the second inequality in (4.1) holds
+for every fixed sufficiently large $\varrho$.
+
+\subsection{The ordinary growth condition (w): an explicit logarithmic proof}
+
+The comparison density has a fixed logarithmic bound, not merely an $X^{o(1)}$ bound.
+For every odd prime $\ell$,
+\[
+ \frac{\ell-1}{\ell-2}
+ =\frac{\ell}{\ell-1}
+ \left(1+\frac{1}{\ell(\ell-2)}\right).
+\]
+Since
+\[
+ \prod_{\ell>2}\left(1+\frac{1}{\ell(\ell-2)}\right)<\infty,
+\]
+we obtain
+\[
+ B(n)\ll \prod_{\substack{\ell\mid n\\\ell>2}}\frac{\ell}{\ell-1}
+ \ll \log\log(3n),
+\tag{G0-Bpoint}
+\]
+where the last estimate is the standard maximal-order/Mertens bound for $n/\varphi(n)$.
+
+On the support $n\asymp X$,
+\[
+ a_X(n)\ll_W\log X,\qquad b_X(n)\ll_W\log\log X,
+\]
+so
+\[
+ |w_X(n)|\ll_W\log X.
+\]
+Using $\sum_{n\asymp X}\tau(n)\ll X\log X$ gives the explicit fixed-power logarithmic estimate
+\[
+ \boxed{\sum_n|w_X(n)|\tau(n)\ll_W X(\log X)^2.}
+\tag{G0-w1}
+\]
+Thus the first part of (w) holds, for example, with any fixed $\varpi>2$.
+Moreover $a_X(n)\ge0$ and
+\[
+ w_X(n)\ge-b_X(n)\gg_W-\log\log X\ge-X^{\nu/10}
+\]
+for every fixed $\nu>0$ and sufficiently large $X$.  Hence the complete ordinary condition (w) is an
+\textbf{elementary PASS} for the 287 sequence.
+
+\subsection{Comparison condition (b.2)}
+
+For $n=p_1\cdots p_k$ in the region occurring in (b.2), every $p_i\ge n^\nu$, hence $k\le1/\nu$ and
+\[
+ B(n)=\mathfrak S_2\prod_{i=1}^k\frac{p_i-1}{p_i-2}
+ =\mathfrak S_2(1+O_\nu(X^{-\nu+o(1)})).
+\]
+Consequently (b.2) reduces to the classical fixed-$k$ multivariate prime number theorem with a smooth radial
+weight.  Repeated prime-number-theorem partial summation gives, for each fixed admissible $T$ and Lipschitz $f$,
+\[
+ \sum_{\substack{n=p_1\cdots p_k\\p_1\le\cdots\le p_k}}
+ b_X(n)f(v(n))
+ =\left(\sum_p b_X(p)\right)
+ \left(\int_T\frac{f(u)\,du}{u_1\cdots u_k}+o(1)\right).
+\tag{G0-b2}
+\]
+For the Ford--Maynard definition one must make the $o(1)$ uniform over their normalized class of convex sets
+and Lipschitz functions; this is a standard compactness/partial-summation task but should be written with an
+explicit reference or proof before publication.
+
+\subsection{Type I from a weighted maximal Bombieri--Vinogradov theorem}
+
+The prime part of the Type-I sum is
+\[
+ \sum_{m\le X^{1/2-\varepsilon}}\tau^A(m)
+ \max_I\left|
+ \sum_{\substack{X/2<mn\le X\\n\in I}}
+ W(mn/X)\Lambda(2mn\pm1)-\text{expected main term}\right|.
+\]
+For fixed $m$, the affine prime lies in a residue class $\pm1\pmod{2m}$.  Since
+$2m\le2X^{1/2-\varepsilon}$, a weighted maximal Bombieri--Vinogradov theorem at level
+$X^{1/2}(\log X)^{-C}$ has a fixed-power margin.  Partial summation inserts $W$, and divisor-weighted versions
+absorb $\tau^A(m)$.  The comparison term $4B(mn)$ is handled by (7.1) and Proposition~\ref{prop:Bmean} in
+progressions.  Thus the exact Gate-0 theorem needed is the following.
+
+\begin{hypothesis}[287 Type-I source theorem]\label{hyp:G0I}
+For every $A>0$ and fixed $\varepsilon>0$,
+\[
+ \boxed{
+ \sum_{m\le X^{1/2-\varepsilon}}\tau^A(m)
+ \max_I\left|\sum_{\substack{X/2<mn\le X\\n\in I}}w_X(mn)\right|
+ \ll_{A,W,\varepsilon}X(\log X)^{-A}.}
+\tag{287-I}
+\]
+\end{hypothesis}
+
+The preceding calculation explains why this is a source-dictionary theorem at the classical $1/2$ level,
+not the parity-breaking frontier.  The literal weighted/maximal citation and the comparison-progression error
+remain to be pinned.
+
+\part{Gate 1A: the complete current conditional mechanism}
+
+\section{Gate-1A parameters and canonical physical source}
+
+Let the Gate-1A ambient parameter be $X_1\to\infty$ and set
+\[
+ M=X_1^{1/3},\qquad R=X_1^a,\qquad L=X_1^b,
+\]
+\[
+ H=X_1^{a+2b-2/3},\qquad K=M/R,\qquad U=L/H,\qquad D=L^2/H.
+\]
+Then
+\[
+ RK=M,\qquad DH=L^2,\qquad M^2H=RL^2.
+\tag{1A-scale}
+\]
+The controlling vertices are
+\[
+ V_1=(5/18,1/3),\qquad V_2=(5/18,25/72),\qquad V_3=(7/24,1/3).
+\]
+For a prime $\ell$, put
+\[
+ \rho_\ell(n)=\1_{\ell\mid n}-\frac1\ell.
+\]
+
+A canonical row is $e=(r,k,m)$ with
+\[
+ r\asymp R\ \text{prime},\qquad1\le|k|\le K,\qquad m\asymp M,
+ \qquad m'=m+kr\asymp M.
+\]
+Choose $w_0\pmod r$ with $mw_0\equiv-2\pmod r$.  Since $m'\equiv m\pmod r$, the same $w_0$ works for $m'$.
+Define
+\[
+ \alpha=\frac{mw_0+2}{r},\qquad \beta=\frac{m'w_0+2}{r},
+\]
+\[
+ A_e(t)=\alpha+mt,\qquad B_e(t)=\beta+m't.
+\]
+
+\begin{lemma}[Determinant-two row identity]\label{lem:det2}
+For every row and integer $t$,
+\[
+ \boxed{m'A_e(t)-mB_e(t)=2k.}
+\tag{1A-det}
+\]
+\end{lemma}
+\begin{proof}
+The $t$-terms cancel, and
+\[
+ m'\alpha-m\beta
+ =\frac{m'(mw_0+2)-m(m'w_0+2)}r
+ =\frac{2(m'-m)}r=2k.
+\]
+\end{proof}
+
+Fix one common physical weight $W_D(t)=W(t/D)$.  For bounded prime coefficients $b_p,d_q$, define
+\[
+ P_e(t)=\sum_{p\asymp L}b_p\rho_p(A_e(t)),\qquad
+ Q_e(t)=\sum_{q\asymp L}d_q\rho_q(B_e(t)),
+\]
+\[
+ C_e(b,d)=\sum_{t\in\mathbb Z}W_D(t)P_e(t)Q_e(t).
+\tag{1A-source}
+\]
+The common-weight condition is substantive: later row dependence must be generated by the transform, not chosen
+independently on each row.
+
+\section{Fourier normalization and the determinant shell}
+
+The normalized pre-square coefficient has the schematic exact form
+\[
+ \widetilde C_{r,k,m}=
+ \sum_{p\asymp L}b_p\sum_{\substack{q\asymp L\\q\ne p}}d_q
+ \sum_h\omega_{m,p,q}(h)
+ \e_{mq}\!\left(\frac{2hkp}{m+kr}\right),
+\]
+with
+\[
+ \omega_{m,p,q}(h)=\frac{H}{pq}\widehat W_D(h/pq)
+ \e\!\left(-\frac{h\alpha}{pqm}\right).
+\tag{1A-omega}
+\]
+The source norms satisfy
+\[
+ \sum_h|\omega_{m,p,q}(h)|^2\ll H,
+ \qquad
+ \sum_h|\omega_{m,p,q}(h)|\ll H.
+\]
+Additive reciprocity separates the phase, and the $h$-Poisson/Gauss completion produces the determinant shell
+\[
+ \boxed{ms-prn=2.}
+\tag{1A-shell}
+\]
+If $\kappa_p(m)\pmod{pr}$ satisfies $m\kappa_p(m)\equiv2\pmod{pr}$, then all solutions are
+\[
+ s_j=\kappa_p(m)+jpr,
+ \qquad
+ n_j=\frac{m\kappa_p(m)-2}{pr}+jm.
+\]
+The quotient index has length $|j|\ll U=L/H$ and the corresponding amplitude has $\ell^2$ norm $\ll UX_1^{o(1)}$.
+
+\section{The source-preserving Poisson--Bruhat input}
+
+The next statement is a genuine Gate-1A hypothesis, not a consequence of the preceding algebra.
+
+\begin{hypothesis}[One-sided source transport and absolute ceiling]\label{hyp:PB}
+For every fixed $A_0$, the transported source splits into retained states and a discarded remainder whose Gate
+energy is $O_{A_0}(X_1^{-A_0})$ times the natural scale.  Every retained state $\xi$ has row amplitude
+\[
+ \boxed{c_r(\xi)=B_\xi F_\xi(r/R),}
+\tag{1A-PB}
+\]
+where $B_\xi$ is independent of $r$, $F_\xi$ is supported in a fixed compact subinterval of $(1,2)$, and for
+every fixed $J$,
+\[
+ \sup_\xi\sup_t|\partial_t^JF_\xi(t)|\ll_JX_1^{o(1)}.
+\]
+Retained states satisfy a non-negligibility cutoff relative to the Fourier truncation.  The transform is one-sided
+with $X_1^{o(1)}$ nuclear cost and supplies
+\[
+ T_{\rm abs}:=\sum_{r\asymp R\atop r\ \rm prime}
+ \left(\sum_\xi|c_r(\xi)|\right)^2
+ \ll M^2L^4X_1^{o(1)}.
+\tag{1A-ceiling}
+\]
+Finally the physical and normalized sources satisfy
+\[
+ C_e=H^{-1}\widetilde C_e+R_e,
+ \qquad
+ \sum_e|R_e|^2\ll_{A_0}X_1^{-A_0}\frac{ML^4}{H}.
+\tag{1A-bridge}
+\]
+\end{hypothesis}
+
+The scale identity behind the transport budget is elementary:
+\[
+ \frac{MK(MH)^2}{RL^4}=1.
+\tag{1A-budget}
+\]
+
+\section{Band-limited prime participation and the non-projective family energy}
+
+Put $a_{r,\xi}=|c_r(\xi)|$ and
+\[
+ M_\xi=|B_\xi|\sup_{1\le t\le2}|F_\xi(t)|.
+\]
+Choose Fourier degree $N_0=R^{1/4}$.  Smoothness gives a trigonometric approximation
+\[
+ F_\xi(t)=P_\xi(t)+O_A(R^{-A}).
+\]
+Bernstein's inequality $\|P'\|_\infty\le N_0\|P\|_\infty$ yields an interval $I_\xi\subset[R,2R]$ of length
+\[
+ |I_\xi|\gg R^{3/4}
+\]
+on which $|c_r(\xi)|\gg M_\xi$.
+
+\begin{hypothesis}[Fixed-state exclusion]\label{hyp:exclusion}
+For each retained state, every row prime excluded from the generic non-projective branch divides one of
+$X_1^{o(1)}$ fixed nonzero integers of polynomial height.
+\end{hypothesis}
+
+Huxley's prime theorem in intervals of length $x^{7/12+\epsilon}$ implies that each $I_\xi$ contains
+$R^{3/4-o(1)}$ primes; deleting polynomially many fixed divisors costs only $X_1^{o(1)}$ primes.  Define
+\[
+ A_\xi=\max_{r\asymp R}a_{r,\xi},
+ \qquad
+ N_\xi=\frac{\sum_{r\asymp R}a_{r,\xi}}{A_\xi}.
+\]
+Then
+\[
+ A_\xi\asymp M_\xi,
+ \qquad N_\xi\gg R^{3/4-o(1)}.
+\tag{1A-part}
+\]
+
+Let $S$ be the number of prime rows, so $S=R^{1+o(1)}$.  Cauchy gives the finite participation inequality
+\[
+ \left(\sum_\xi A_\xi\right)^2\le \frac{S}{P^2}T_{\rm abs}
+\tag{1A-Cauchy}
+\]
+whenever $N_\xi\ge P$ for all retained states.
+
+Each state carries projective coordinates $(Z_\xi,L_\xi)$ and determinant
+\[
+ \Delta(\xi,\eta)=Z_\xi L_\eta-Z_\eta L_\xi.
+\]
+For $\Delta(\xi,\eta)\ne0$, a row prime can couple the pair only if it divides the fixed nonzero determinant,
+so the pair occurs in only $X_1^{o(1)}$ rows.  With $P=R^{3/4-o(1)}$, one obtains
+\[
+ \boxed{E_{\rm np}\ll R^{-1/2+o(1)}T_{\rm abs}.}
+\tag{1A-energy}
+\]
+This is the genuine BPP family-energy contraction.
+
+\section{The outer square root: exact finite inequality and the source pin}
+
+The finite four-cycle inequality is
+\[
+ \sum_r\|A_r\|_{\rm op}
+ \le |\mathcal R|^{1/2}\left(\sum_r\operatorname{Tr}(A_r^*A_r)\right)^{1/2}.
+\tag{1A-root-alg}
+\]
+To turn this into the physical Gate contribution one still needs the following source identification.
+
+\begin{hypothesis}[Outer-root energy pin]\label{hyp:rootpin}
+Let $G_{\rm np}$ be the normalized Gate contribution of the non-projective transported branch.  Then
+\[
+ \boxed{G_{\rm np}\ll M^2L^4X_1^{o(1)}
+ \left(\frac{E_{\rm np}}{T_{\rm abs}}\right)^{1/2}.}
+\tag{1A-root-pin}
+\]
+\end{hypothesis}
+
+Combining with (1A-energy) gives
+\[
+ G_{\rm np}\ll R^{-1/4+o(1)}M^2L^4.
+\]
+The target comparison is
+\[
+ MR^{-1/4}\le H
+ \iff \frac54a+2b-1\ge0.
+\]
+At $V_1,V_2,V_3$ the margins are respectively
+\[
+ \boxed{\frac1{72},\qquad\frac1{24},\qquad\frac1{32}.}
+\tag{1A-margins}
+\]
+The binding margin is $1/72$: any later fixed-power loss must be explicitly budgeted against it.
+
+\section{The projective branch and the full state diagonal}
+
+If $\Delta(\xi,\eta)=0$, the exact collision relation is
+\[
+ Z_\xi L_\eta=Z_\eta L_\xi.
+\]
+For $L\ne0$, the correct equivalence class is the ratio $Z/L$.  For vectors $v_{Z,L}=A_Z\otimes B_L$, define
+\[
+ C_\rho=\sum_{(Z,L):Z/L=\rho}v_{Z,L}.
+\]
+Then the finite identity is
+\[
+ \boxed{
+ \sum_\rho\|C_\rho\|^2
+ =\sum_{(Z_1,L_1),(Z_2,L_2)}
+ \1_{Z_1L_2=Z_2L_1}
+ \operatorname{Re}\langle v_{Z_1,L_1},v_{Z_2,L_2}\rangle.}
+\tag{1A-proj-id}
+\]
+Since $\Delta(\xi,\xi)=0$, the entire state diagonal is in this branch.
+
+\begin{hypothesis}[Projective/diagonal source routing]\label{hyp:proj}
+The physical projective source is routed into positive primitive ratio classes of multiplicity $X_1^{o(1)}$;
+axis and non-primitive/rank-loss states are routed to explicit exceptional blocks.  Moreover
+\[
+ \boxed{\sum_{(Z,L)}\|A_Z\|^2\|B_L\|^2\ll MHL^4X_1^{o(1)},}
+\tag{1A-diag}
+\]
+and every exceptional block is bounded at the same target scale.
+\end{hypothesis}
+
+This is a load-bearing conditional statement: it controls a branch containing the complete diagonal at the
+final target scale.  It is not generated by the off-diagonal BPP contraction.
+
+\section{Recombination and the conditional Gate-1A theorem}
+
+\begin{hypothesis}[Literal source recombination estimate]\label{hyp:rec}
+The quotient-cell/source recombination error satisfies
+\[
+ \boxed{E_{\rm rec}\ll U^{-2+o(1)}M^2L^4.}
+\tag{1A-rec}
+\]
+\end{hypothesis}
+Since $U=L/H$ and $DH=L^2$,
+\[
+ \frac{U^{-2}M^2L^4}{MHL^4}=\frac{M}{D},
+\]
+and the margins at $V_1,V_2,V_3$ are $1/18,1/18,1/24$.
+
+\begin{theorem}[Conditional canonical Gate-1A estimate]\label{thm:G1A}
+Assume Hypotheses~\ref{hyp:PB}, \ref{hyp:exclusion}, \ref{hyp:rootpin}, \ref{hyp:proj}, and \ref{hyp:rec}.
+Then throughout the polytope generated by $V_1,V_2,V_3$,
+\[
+ \boxed{\sum_e|C_e(b,d)|^2\ll \frac{ML^4}{H}X_1^{o(1)}.}
+\tag{1A-main}
+\]
+Equivalently, in normalized form,
+\[
+ \sum_e|\widetilde C_e(b,d)|^2\ll MHL^4X_1^{o(1)}.
+\]
+\end{theorem}
+\begin{proof}
+The non-projective branch follows from (1A-energy) and the outer-root pin.  The complete projective branch,
+including the diagonal, follows from the exact ratio-class identity and Hypothesis~\ref{hyp:proj}.  The source
+recombination error is acceptable by Hypothesis~\ref{hyp:rec} and its exponent margin.  The physical/normalized
+bridge in Hypothesis~\ref{hyp:PB} gives the displayed physical estimate.
+\end{proof}
+
+\section{What Gate 1A does and does not give}
+
+The theorem above is an analytic theorem for the canonical common-weight operator.  It does not prove that every
+packet of an arbitrary global sieve decomposition is of this form.  A source-exhaustive compiler would need a
+decomposition
+\[
+ S_{\rm actual}=\sum_{\lambda\in\Lambda_{\rm gen}}a_\lambda D_\lambda U_\lambda S^\sharp_\lambda+S_{\rm exc},
+ \qquad
+ \sum_\lambda|a_\lambda|\|D_\lambda\|_{\rm op}\le X_1^{o(1)},
+\tag{1A-global}
+\]
+with exact packet identity, multiplicity control and exceptional routing.  This is a separate theorem.
+
+If Gate 1A is to be used for 287, a further scale dictionary is mandatory because Gate 1A uses
+$m\asymp X_1^{1/3}$ while the Ford--Maynard/287 Type-II variable lies in
+$(X/2)^\varepsilon<m\le X^{1/6-\varepsilon}$.  One must specify $X_1$ as a function of the 287 scale, identify
+the physical bilinear variable, recheck $R,L,H,K,U,D$, and preserve the $1/72$ margin.  No identity follows
+merely from the common letter $X$.
+
+\part{Gate 1B: exact conductor reduction, late parent-operator reorganisation, and the pair-modulus frontier}
+
+
+\section{Gate-1B front layer: fixed-shift determinant-2 algebra}
+\label{sec:g1b-det2-front}
+
+Before the H7 conductor calculation there is a source-native determinant layer which is independently checkable.
+It is useful to write it explicitly because it identifies which cancellation resources really exist.
+
+\subsection{M\"obius sign collapse at a distinguished prime}
+
+Suppose $q=dp$, $p$ is prime and $(d,p)=1$.  Multiplicativity of the M\"obius function gives
+\[
+ \mu(q)=\mu(d)\mu(p)=-\mu(d),
+\]
+so
+\[
+ \boxed{\mu(d)=-\mu(q).}
+\tag{1B-F1}
+\]
+On squarefree support, if $p\mid q$ and $d=q/p$, then $(d,p)=1$ automatically.  Hence all admissible distinguished
+prime representations of a fixed squarefree $q$ carry the \emph{same} M\"obius sign $-\mu(q)$.  There is no
+same-$q$ cancellation obtained merely by summing over the distinguished prime $p$.
+
+For a finite weighted cell
+\[
+ \lambda_{D,P}(q)=\sum_{\substack{dp=q\\p\in P}}\mu(d)\log p,
+ \qquad
+ L_{D,P}(q)=\sum_{\substack{dp=q\\p\in P}}\log p,
+\]
+this gives the exact squarefree identity
+\[
+ \boxed{\lambda_{D,P}(q)=-\mu(q)L_{D,P}(q).}
+\tag{1B-F2}
+\]
+
+\subsection{Complementary divisor and determinant-2 normal form}
+
+For positive integers $d,p,u,v$,
+\[
+ dp\mid uv+2
+ \quad\Longleftrightarrow\quad
+ \exists\ell\ge1:\ uv+2=dp\ell.
+\tag{1B-F3}
+\]
+Writing $q=dp$, the incidence is equivalently
+\[
+ \boxed{q\ell-uv=2.}
+\tag{1B-F4}
+\]
+The complementary divisor is unique and equals $(uv+2)/q$.
+
+Any common divisor of $u$ and $\ell$ divides both $uv$ and $q\ell$, hence divides their difference $2$:
+\[
+ \boxed{(u,\ell)\mid2.}
+\tag{1B-F5}
+\]
+Similarly
+\[
+ \boxed{(v,q)\mid2.}
+\tag{1B-F6}
+\]
+so on the odd sector these pairs are coprime.  This is the precise reason ordinary modular inverses become
+available there.
+
+If $(q_1,v_1)$ and $(q_2,v_2)$ lie on the same fixed $(u,\ell)$ determinant-2 line,
+\[
+ q_i\ell-uv_i=2,
+\]
+then subtraction yields
+\[
+ \boxed{u(v_2-v_1)=\ell(q_2-q_1).}
+\tag{1B-F7}
+\]
+Thus the solution set is an affine line; translation along the line preserves the determinant equation.
+
+\subsection{Source-native HFMV determinant identity}
+
+For two incidences
+\[
+ uv_i+2=d_ip_i\ell_i\qquad(i=1,2),
+\tag{1B-F8}
+\]
+one has the exact determinant identity
+\[
+ \boxed{
+ v_2d_1p_1\ell_1-v_1d_2p_2\ell_2=2(v_2-v_1).}
+\tag{1B-F9}
+\]
+Proof: substitute $d_ip_i\ell_i=uv_i+2$; the $uv_1v_2$ terms cancel.
+If $v_1=v_2$, then
+\[
+ d_1p_1\ell_1=d_2p_2\ell_2.
+\tag{1B-F10}
+\]
+Conversely, when $u\ne0$, equality of these products forces $v_1=v_2$ by (1B-F8).
+
+A finite B1 multiplicity statement also follows in the separated-prime regime: when $p_1\ne p_2$ are primes,
+$|h_1|,|h_1'|\le H$ and $2H<p_1$, the determinant congruence has at most one admissible $h_1$ in its interval.
+This supplies multiplicity one for that finite fibre.  What it does \emph{not} supply is the generic analytic
+off-diagonal estimate.
+
+The source-native HFMV reduction therefore isolates the following analytic obligations:
+\[
+ \boxed{\begin{array}{c}
+ \text{generic off-diagonal determinant variance}\\
+ +\ \text{diagonal divisor bound}\\
+ +\ \text{small proper-gcd sectors}\\
+ +\ \text{literal source centering}
+ \end{array}}
+\tag{1B-F11}
+\]
+The exact determinant algebra above is unconditional; the four displayed estimates are separate analytic/source
+theorems.
+
+\subsection{Near-top exponent geometry}
+
+In the high-modulus window $13/18\le\omega\le8/9$, write
+\[
+ Q_e=\omega,\qquad R_e=1-\omega,
+\qquad H_e=Q_e-R_e=2\omega-1.
+\tag{1B-F12}
+\]
+Then
+\[
+ \frac19\le R_e\le\frac5{18},\qquad 2R_e<Q_e,
+\tag{1B-F13}
+\]
+and at the binding endpoint $\omega=13/18$,
+\[
+ H_e=\frac49,
+ \qquad
+ \frac{H_e}{Q_e}=\frac8{13}.
+\tag{1B-F14}
+\]
+The associated near-top Kloosterman exponent ledger records
+\[
+ \frac13\frac8{13}-\frac15=\frac1{195}>0.
+\tag{1B-F15}
+\]
+Again, (1B-F15) is an exponent margin, not by itself a Kloosterman theorem.
+
+A useful exact local character identity is, for a nonzero field element $u$,
+\[
+ uv+2=u\left(v+2u^{-1}\right),
+\tag{1B-F16}
+\]
+hence for every multiplicative character $\chi$,
+\[
+ \boxed{\chi(uv+2)=\chi(u)\chi(v+2u^{-1}).}
+\tag{1B-F17}
+\]
+For odd prime modulus the map $u\mapsto2u^{-1}$ is injective on nonzero residues.  This is a finite
+reparametrization tool; it does not provide cancellation by itself.
+
+
+\section{High-order decomposition and the conductor split}
+
+The high-order source is expanded schematically as
+\[
+ a_{ubv}=\prod_{i=1}^9(f_i+\delta_i)
+ =\sum_{J\subset[9]}\delta_Jf_{J^c}.
+\tag{1B-exp}
+\]
+An order-$j$ term carries a determinant shell of the form
+\[
+ C_Ja_J-q\ell=-2,
+ \qquad C_J\asymp Y^j,
+ \qquad a_J\asymp Y^{9-j}.
+\tag{1B-shell}
+\]
+The exact centering, CRT, Gauss and determinant identities which feed the lower orders have been written out in
+Sections~\ref{sec:g01-front} and~\ref{sec:g1b-det2-front}.  Their role is to route the lower-complexity pieces
+and expose the fixed-shift determinant geometry; any analytic estimate beyond those identities must still be
+stated separately.  Order $6$ is regrouped with the order-$5$ geometry.  H7 and H8 admit one-dimensional
+character/Fourier representations, while H9 is the pure-defect child.
+
+For H7, write the induced character modulus
+\[
+ q=ce,
+ \qquad c\asymp C,
+ \qquad q\asymp Q.
+\]
+The corrected coefficient-state count is
+\[
+ \sum_{c,\chi^*,e}|\beta(ce)|^2\ll QCX^{o(1)}.
+\tag{1B-state}
+\]
+The coefficient-blind estimate has relative size
+\[
+ \frac{|H_7(C)|}{Y^9}\ll
+ \begin{cases}
+ C/Q,&C\le Y^4,\\[1mm]
+ C^2/(QY^4),&C\ge Y^4.
+ \end{cases}
+\tag{1B-blind}
+\]
+The formulae cross at $C=Y^4$, while the large-$C$ estimate loses all saving at
+\[
+ \boxed{C_0=Q^{1/2}Y^2.}
+\tag{1B-C0}
+\]
+Thus $C_0$, not $Y^4$, is the high-conductor zero-saving threshold.
+
+\section{Exact high-conductor source split and spent M\"obius sign}
+
+On the squarefree source,
+\[
+ \beta(q)=\sum_{dp=q}\mu(d)\log p,
+\]
+with physical restrictions $p>V$ and $q/p>U$.  In high conductor
+\[
+ e=q/c\le Y^2,
+ \qquad V=Y^{5/2-o(1)},
+\]
+so every distinguished source prime satisfies
+\[
+ p>V>e.
+\]
+Hence the lane $p\mid e$ is empty.  Write
+\[
+ c=pc_0,
+ \qquad d=c_0e,
+\]
+and on the clean squarefree sector
+\[
+ \boxed{\beta(ce)=\mu(e)\rho_{C,e}(c),
+ \qquad
+ \rho_{C,e}(c)=\sum_{pc_0=c}\mu(c_0)\log p,}
+\tag{1B-split}
+\]
+with the physical cell restrictions retained.
+
+Let $\chi^*$ be primitive modulo $c$ and let $\chi$ be its induction to $ce$.  For squarefree $(c,e)=1$,
+\[
+ \tau_{ce}(\chi)=\mu(e)\chi^*(e)\tau_c(\chi^*).
+\tag{1B-Gauss}
+\]
+Multiplying by (1B-split),
+\[
+ \boxed{\beta(ce)\tau_{ce}(\chi)
+ =\rho_{C,e}(c)\chi^*(e)\tau_c(\chi^*).}
+\tag{1B-spent}
+\]
+Thus the short-cofactor sign $\mu(e)$ is algebraically spent and cannot be counted again as an independent
+cancellation resource.
+
+\section{Prime-character collapse}
+
+Write $c=pc_0$ with $(p,c_0)=1$ and factor a primitive character as $\chi=\chi_p\chi_0$.  Put
+\[
+ N=r_1\cdots r_7x\asymp Y^8.
+\]
+The $p$-local argument has the form
+\[
+ A_p\equiv c_0eN(2h)^{-1}\pmod p.
+\]
+
+\begin{lemma}[Prime-character collapse]\label{lem:charcollapse}
+For $A\in\mathbb F_p^\times$,
+\[
+ \boxed{
+ \sum_{\chi_p\ne\chi_{0,p}}\frac{\tau_p(\chi_p)}{\sqrt p}\chi_p(A)
+ =\frac{p-1}{\sqrt p}\e_p(\bar A)+\frac1{\sqrt p}.}
+\tag{1B-char}
+\]
+\end{lemma}
+\begin{proof}
+Summing over all multiplicative characters gives $(p-1)\e_p(\bar A)$.  The principal character has Gauss sum
+$-1$, so removing it adds $1$.  Divide by $\sqrt p$.
+\end{proof}
+
+The main term converts the reciprocal character dependence on $h$ into the linear additive phase
+\[
+ \e_p(2hc_0eN).
+\tag{1B-linear}
+\]
+The correction is smaller than the main local multiplier by $p^{-1}$ and is power-negligible because
+$p>V=Y^{5/2-o(1)}$, provided the stated source ceiling is available.
+
+\section{Hybrid Poisson and the primitive projector}
+
+The long Fourier slot has length
+\[
+ H=Q/Y,
+ \qquad \frac cH=\frac Ye.
+\]
+Hence the dual $h$-frequency window has length $\asymp Y/e<p$.
+
+\begin{lemma}[Hybrid Poisson]\label{lem:hybrid}
+Let $p\nmid c_0$ and let $\chi_0$ be primitive modulo $c_0$.  With the Fourier convention
+$\widehat v(\xi)=\int v(x)\e(-x\xi)\,dx$,
+\[
+ \boxed{
+ \sum_{h\in\mathbb Z}v(h/H)\chi_0(h)\e_p(ah)
+ =\frac H{c_0}\tau_{c_0}(\chi_0)
+ \sum_{\substack{m\in\mathbb Z\\m\equiv ac_0\ (p)}}
+ \chi_0(-m\bar p)\widehat v\!\left(\frac{mH}{pc_0}\right).}
+\tag{1B-Poisson}
+\]
+\end{lemma}
+\begin{proof}
+Apply Poisson summation in residue classes modulo $pc_0$.  CRT separates the finite Fourier transform.  The
+$p$-factor enforces $m\equiv ac_0\pmod p$, while the $c_0$-factor is the twisted Gauss sum; the factor $p$ from
+the $p$-sum cancels the $p$ in the Poisson denominator.
+\end{proof}
+
+For $a=2c_0eN\pmod p$, the surviving dual frequency satisfies
+\[
+ \boxed{meN\equiv2\pmod p,
+ \qquad |m|\ll (Y/e)X^{o(1)}<p.}
+\tag{1B-dualfreq}
+\]
+
+\begin{lemma}[Primitive-character projector]\label{lem:projector}
+For odd squarefree $c_0$ and $(A,c_0)=1$,
+\[
+ \boxed{\sum_{\chi_0\ (\mathrm{mod}\ c_0)}^*\chi_0(A)
+ =\sum_{\substack{d\mid c_0\\d\mid A-1}}\mu(c_0/d)\varphi(d).}
+\tag{1B-proj}
+\]
+Consequently
+\[
+ \boxed{\frac{\mu(c_0)}{c_0}\sum_{\chi_0}^*\chi_0(A)
+ =\frac1{c_0}\sum_{\substack{d\mid c_0\\d\mid A-1}}\mu(d)\varphi(d).}
+\tag{1B-proj2}
+\]
+\end{lemma}
+\begin{proof}
+This is M\"obius inversion over the conductor.  For squarefree $c_0$,
+$\mu(c_0)\mu(c_0/d)=\mu(d)$.
+\end{proof}
+
+With $A=meN/2$, the prime congruence and primitive projector combine into
+\[
+ \boxed{pd\mid meN-2.}
+\tag{1B-detproj}
+\]
+
+\section{The H7 dual determinant and fixed-power repair}
+
+After the exact reductions, the H7 main term is
+\[
+ \begin{aligned}
+ D_7(C)=&\sum_{pc_0\asymp C\atop p>V}
+ \sum_{e\asymp Q/C}
+ \log p\left(1-\frac1p\right)
+ \sum_{N\asymp Y^8}a_7(N)
+ \sum_{|m|\ll(Y/e)X^{o(1)}\atop p\mid meN-2}
+ \widehat v(me/Y)\\
+ &\hspace{3cm}\times
+ \frac1{c_0}
+ \sum_{d\mid c_0\atop d\mid meN-2}\mu(d)\varphi(d).
+ \end{aligned}
+\tag{1B-D7}
+\]
+Here $a_7(N)$ is the literal seven-defect plus one-model source coefficient.
+
+\begin{hypothesis}[H7 source norm and cell multiplicity]\label{hyp:H7norm}
+The physical source satisfies
+\[
+ \sum_{N\asymp Y^8}|a_7(N)|\ll Y^8X^{o(1)},
+\]
+$\widehat v$ is rapidly decreasing with bounded supremum, the omitted dyadic/coprimality selectors have total
+multiplicity $X^{o(1)}$, and the primitive-character family above is the literal family generated by the source.
+\end{hypothesis}
+
+\begin{proposition}[H7 fixed-power repair]\label{prop:H7power}
+Under Hypothesis~\ref{hyp:H7norm},
+\[
+ \boxed{|D_7(C)|\ll Y^9X^{o(1)}.}
+\tag{1B-H7power}
+\]
+\end{proposition}
+\begin{proof}
+For fixed $(e,m,N)$, the nonzero integer $meN-2$ has only $O(1)$ prime divisors $p>V=Y^{5/2-o(1)}$.
+After $p$ is fixed, write $c_0=ds$.  The absolute divisor projector is bounded by
+\[
+ \sum_{d\mid meN-2}\sum_{s\asymp C/(pd)}\frac{\varphi(d)}{ds}\ll X^{o(1)},
+\]
+because the $s$-sum is harmonic on a dyadic interval and the divisor count is $X^{o(1)}$.  Summing
+$e\asymp E$ and $|m|\ll Y/e$ costs $O(YX^{o(1)})$; use the $\ell^1$ norm of $a_7$.
+\end{proof}
+
+Thus the previous coefficient-blind fixed-power loss $Q/Y^4$ has been recovered.  The target, however, is
+\[
+ \boxed{D_7(C)\ll_A Y^9(\log X)^{-A}.}
+\tag{H7-open}
+\]
+This arbitrary-log saving is still open.  The full divisor term $d=c_0$ reconstructs the original two-model
+determinant skeleton, so the character/Poisson transform is self-dual and cannot simply be iterated to closure.
+
+
+\section{Historical H7 natural-scale status and the late short-short promotion}
+\label{sec:g1b-h7-promotion}
+
+The natural-scale estimate (\ref{prop:H7power}) remains an important reduction: it removed the former
+coefficient-blind fixed-power deficit.  It is no longer the controlling final status for the entire H7 analysis.
+In the \emph{short-short} exponent region
+\[
+ \boxed{\alpha<\frac49,\qquad \beta<\frac49,}
+\tag{1B-SS}
+\]
+the late Gate-1B audit isolates a joint-prime character packet.  The deterministic compiler has the following
+conditional form.
+
+\begin{hypothesis}[H7 short-short common-sequence and energy inputs]\label{hyp:H7SS}
+After the source-exact H7 character reduction, the short-short packet is represented on one common sequence;
+its coefficient energy is bounded at the audited source scale; and the required multiplicative large-sieve
+estimate applies uniformly to that common sequence with the physical dyadic/coprimality restrictions retained.
+\end{hypothesis}
+
+\begin{proposition}[H7 short-short joint-prime capacity]\label{prop:H7SS}
+Under Hypothesis~\ref{hyp:H7SS}, the H7 short-short contribution gains the relative fixed power
+\[
+ \boxed{Y^{-1/2}=X^{-1/18}}
+\tag{1B-H7SS}
+\]
+against the natural target scale.
+\end{proposition}
+
+The statement above is a \emph{conditional analytic compiler}: the capacity is positive, but the source pins and common-sequence pins remain part of the theorem.  It should therefore not be described as an unconditional H7 closure.
+The high-prime complement is disjoint from (1B-SS) and is not absorbed by this compiler.
+
+The corresponding H8 audit reports the same fixed-power capacity after the analogous source-energy calculation.
+For publication purposes the status is deliberately asymmetric:
+\[
+ \boxed{\begin{array}{ll}
+ \text{H7 short-short:}&\text{conditional compiler with }X^{-1/18}\text{ capacity},\\
+ \text{H8 short-short:}&\text{same research capacity, but source/robustness interface still open}.
+ \end{array}}
+\tag{1B-H78-status}
+\]
+Thus the earlier H7 arbitrary-log determinant (H7-open) remains a valid historical source-specific target, but it
+is no longer the sole controlling description of the late H7 frontier.
+
+\section{The full $4/9$ complement and the square-root transition}
+\label{sec:g1b-49-complement}
+
+The complement of the short-short region is organised by the exponents of the large source primes.  At programme
+level one separates a high-$d$ wing and a high-$p$ wing.  Joint-prime machinery has positive capacity on the
+high-$d$ side and on the high-$p$ side away from the transition where the large prime approaches $X^{1/2}$.
+The square-root strip is not a formal consequence of the short-short compiler and must be routed separately.
+
+The purpose of this decomposition is logical as well as analytic: a bound in one exponent cell cannot be moved
+into a disjoint cell merely because both cells arise from the same order-$j$ source.  The square-root transition is
+therefore placed inside the shifted-quotient parent below.
+
+\section{The Full-Nine shifted-quotient parent}
+\label{sec:g1b-fullnine}
+
+The high-prime switch and the pure H9 specialization can be embedded in one parent operator.  Its source-exact
+schematic form is
+\[
+ \boxed{
+ \mathcal S_{\rm SQ}
+ =\sum_{mp\asymp X}\gamma(m)\lambda(p)\log p\;c_{\rm res}(mp-2).}
+\tag{1B-FullNine}
+\]
+Here $\gamma$ and $\lambda$ retain the actual source-generated convolution, M\"obius/sign and support structure;
+they are not replaced by arbitrary independent coefficients.  The high-prime $M$-switch is one subrange of
+(1B-FullNine), while H9 is the pure-nine-defect specialization.  Type-I or joint-large-sieve methods have capacity
+on strongly unbalanced sides.  The balanced square-root strip is the difficult transition.
+
+Equation (1B-FullNine) is a \emph{parent operator}, not a theorem asserted closed.  A successful estimate must
+control the complete source-generated coefficient family on the relevant subranges rather than a single fixed
+coefficient choice.
+
+\section{The QK56 full-covariance parent and its internal promotion}
+\label{sec:g1b-qk56}
+
+A second parent retains the complete covariance of the one-copy QK output.  If $Q(q;h,k)$ denotes the exact
+one-copy output after the local transforms, the full covariance has schematic form
+\[
+ \boxed{
+ \mathcal C_{\rm QK}
+ =\sum_{q_1,q_2}\sum_{h_1,k_1,h_2,k_2}
+ A(q_1,q_2;h_1,k_1,h_2,k_2)
+ Q(q_1;h_1,k_1)Q(q_2;h_2,k_2).}
+\tag{1B-QK56}
+\]
+The decomposition
+\[
+ \boxed{q_1=q_2\quad\text{versus}\quad q_1\ne q_2}
+\tag{1B-QKsplit}
+\]
+is the same-modulus diagonal versus cross-modulus off-diagonal of this one covariance parent.
+
+\subsection{Same-modulus covariance: character diagonal and cross-character Gram}
+
+For $q_1=q_2=q$, the source audit expands the remaining covariance into
+\[
+ \boxed{
+ \sum_{q\asymp Q}|\beta(q)|^2
+ \sum_{\chi_1,\chi_2\ (\mathrm{mod}\ q)}
+ \widehat R_q(\chi_1)\widehat R_q(\chi_2)W_q(\chi_1,\chi_2)
+ =G_{\rm diag}+G_{\rm off}.}
+\tag{1B-QK-same}
+\]
+The character diagonal $\chi_1=\chi_2$ carries the large $HK/q$ contribution and is routed to the existing
+coefficient-blind residue-energy/JQ7 estimate.  The cross-character term is a centred modular-hyperbola
+covariance.  The current internal audit estimates it through the corresponding square-root Weil/Kloosterman
+discrepancy and records the worst signed programme margin
+\[
+ \boxed{X^{-5/36+o(1)}.}
+\tag{1B-QK-margin}
+\]
+Accordingly the programme-level status is
+\[
+ \boxed{\mathrm{SAMEQ\!\mbox{-}QK56\!\mbox{-}CROSSCHAR\!\mbox{-}GRAM45}:
+ \text{ internal analytic pass,}}
+\tag{1B-QK-same-status}
+\]
+subject to the literal QK56/S1/S2 source transcription and a final hostile audit.  This is an internal analytic
+claim, not a published theorem and not a Lean-closed analytic leaf.
+
+\subsection{Cross-modulus no-wrap branch: source-spread certificate}
+
+For $q_1\ne q_2$, the late source audit uses the no-wrap regime: after the physical source parameter $\Theta$
+is fixed, the residues $B_1\pmod{q_1}$ and $B_2\pmod{q_2}$ are fixed.  The remaining product multiplicity is
+then measured by the push-forward of the source multiplier.  The internal audit records that the relevant
+$\ell^2/\ell^1$ spread lies within the required source budget.  We record
+\[
+ \boxed{\mathrm{CROSSQ\!\mbox{-}THETA\!\mbox{-}SPREAD45}:
+ \text{ internal finite/source pass,}}
+\tag{1B-QK-cross-status}
+\]
+again subject to final literal transcription of the physical source.
+
+Combining the two children gives the programme status
+\[
+ \boxed{\mathrm{QK56\!\mbox{-}FULL\!\mbox{-}COVARIANCE45}:
+ \text{ analytic pass modulo literal source pins}.}
+\tag{1B-QK-full-status}
+\]
+This is a substantial promotion relative to Draft V9: QK56 is no longer the controlling major analytic open,
+provided the internal same-$q$/cross-$q$ audits survive source transcription and hostile checking.
+
+\section{Canonical Gate-1B zero mode and the historical comparison fork}
+\label{sec:g1b-zero}
+
+The canonical additive zero mode is not part of the analytic frontier.  The finite/algebraic audit gives three
+exact statements:
+\begin{enumerate}[label=(\roman*)]
+\item the canonical additive-character baseline is recovered from the standard character system;
+\item the canonical discrepancy has zero additive Fourier frequency;
+\item if a historical formulation retains an auxiliary comparison $E(q)$, then
+\[
+ \boxed{S_{\rm hist}=S_{\rm can}-R_E.}
+\tag{1B-zero-hist}
+\]
+\end{enumerate}
+A perturbation of $E(q)$ changes $R_E$ while leaving the canonical nonzero-frequency packet unchanged.  Hence
+\[
+ \boxed{\text{canonical zero mode: algebraic PASS};\qquad
+        \text{historical }E(q)\text{ identification: separate source fork}.}
+\tag{1B-zero-status}
+\]
+
+\section{The balanced shifted child: recover the source before analysis}
+\label{sec:g1b-shifted-child}
+
+The balanced shifted-quotient branch must not be modelled as four independent arbitrary multipliers.  Its
+source action is cyclic.  Write the physical packet variables as $B_1,\ldots,B_4$ and let $\Theta$ denote the
+literal source map.  The multiplier relation has the form
+\[
+ \boxed{a_j=\Theta(B_j,B_{j+1})\qquad(j\bmod 4),}
+\tag{1B-shift-cycle}
+\]
+and the associated character moment has schematic source form
+\[
+ \boxed{
+ \sum_{B_1,\ldots,B_4}W(B)
+ \sum_h W_B(h)\,
+ \chi\!\left(
+ D\bigl(\Theta(B_1,B_2),\Theta(B_2,B_3),
+        \Theta(B_3,B_4),\Theta(B_4,B_1);h\bigr)
+ \right).}
+\tag{1B-shift-moment}
+\]
+The four-cycle discriminant algebra is already available, but the literal pre-support-enlargement $TT^*$ source
+formula has not yet been recovered.  Therefore the first required action is not another black-box estimate; it is
+\[
+ \boxed{\mathrm{SHIFT\!\mbox{-}TTSTAR\!\mbox{-}LITERAL\!\mbox{-}SOURCE\!\mbox{-}PIN}.}
+\tag{1B-shift-source-pin}
+\]
+This source theorem must print, without enlargement or abstraction:
+\begin{enumerate}[label=(\alph*)]
+\item the literal ranges of $B_1,\ldots,B_4$;
+\item the exact cyclic map $\Theta$ and all repeated-prime/collision constraints;
+\item the $h$-range, smooth weight, prefactor and normalization;
+\item the physical target before and after normalization;
+\item all zero/nonunit/shared-prime/degenerate strata and their routing;
+\item the multiplicity of every source packet under the $TT^*$ expansion.
+\end{enumerate}
+Only after this literal source recovery is the analytic child well posed:
+\[
+ \boxed{\mathrm{SHIFT\!\mbox{-}SOURCE\!\mbox{-}LINKED\!\mbox{-}CHAR45}.}
+\tag{1B-shift-open}
+\]
+Conditional on the QK56 promotion surviving final audit, (1B-shift-open) is the current first major analytic
+Gate-1B candidate.
+
+\section{Technology cards for the shifted source-linked child}
+\label{sec:g1b-shift-tech}
+
+The following published technologies are relevant only after the literal source has been reduced to their stated
+geometries.
+\begin{enumerate}
+\item Fouvry--Shparlinski estimate weighted multiplicative-character sums of the $2\times2$ determinant
+$ad-bc$ over four interval variables, with power saving once the interval length is at least $p^{1/8+\varepsilon}$.
+This is a serious candidate if the cyclic discriminant reduces source-exactly to determinant geometry.
+\item Shparlinski's multivariate character/exponential-sum results allow monomial and reciprocal-monomial
+kernels with bounded one-variable weights.  They become relevant if the $\Theta$-dictionary produces such a
+kernel.
+\item Bourgain--Garaev reciprocal sumset and multilinear Kloosterman technology is a secondary candidate after
+an actual reciprocal-product dictionary has been manufactured.
+\item General trace-function bilinear theorems require nontrivial geometric-monodromy hypotheses.  A rank-one
+Kummer/Legendre character is not automatically covered merely because it is a trace function, so such a theorem
+is not used here as a black box.
+\item Blomer--Pascadi remains a fixed-Kloosterman backend-capacity card and likewise does not by itself estimate
+the source-linked cyclic family.
+\end{enumerate}
+These are technology cards, not proof substitutions.
+
+\section{Historical pair-modulus umbrella and the updated controlling frontier}
+\label{sec:g1b-pairmod}
+
+The earlier pair-modulus formulation remains useful as an umbrella.  Both the balanced shifted $TT^*$ child and
+the QK cross-modulus child lead to product moduli, and fixed-multiplier Kloosterman technology has genuine
+positive capacity.  However the Draft-10 source split promotes the QK56 covariance internally and leaves the
+shifted child as the principal unresolved analytic family.  Consequently the historical labels
+\[
+ \mathrm{SOURCE\!\mbox{-}QUADRATIC\!\mbox{-}MULTIPLIER45},\qquad
+ \mathrm{FM\!\mbox{-}PERRON\!\mbox{-}PAIRMOD\!\mbox{-}SOURCE\!\mbox{-}MULT45}
+\]
+are retained as umbrella/source-grammar labels only; they are no longer the controlling first-open theorem.
+
+\section{Updated Gate-1B closure ledger}
+\label{sec:g1b-late-ledger}
+
+The current Gate-1B status is therefore:
+\begin{center}
+\begin{tabular}{p{0.38\textwidth}p{0.52\textwidth}}
+\toprule
+Component & Current status\\
+\midrule
+Orders 1--4 / low-order geometry & structural material available\\
+H6 regroup geometry & structural material available\\
+H7 short-short & conditional joint-prime compiler; $X^{-1/18}$ capacity\\
+H8 short-short & same research capacity; robustness/source pin open\\
+high-$d$/high-$p$ complement & routing/capacity programme; square-root strip routed to shift parent\\
+QK56 same-$q$ cross-character Gram & internal analytic pass; source pins pending\\
+QK56 cross-$q$ source spread & internal finite/source pass; transcription pending\\
+QK56 full covariance & analytic pass modulo literal source pins\\
+canonical additive zero mode & exact algebraic pass\\
+historical $E(q)$ residual & source-identification fork if retained\\
+SHIFT-$TT^*$ literal source pin & \textbf{SOURCE FIRST ACTION -- OPEN}\\
+SHIFT source-linked character child & \textbf{FIRST MAJOR ANALYTIC OPEN}\\
+S1/S2 literal source pins & narrow source interfaces remain\\
+degeneracy/collision/packet census & finite routing/reassembly remains\\
+\textbf{Gate 1B} & \textbf{NOT CLOSED}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Conditional on the QK56 internal audit surviving final source transcription, the current Gate-1B picture has one
+principal analytic child together with literal source and finite reassembly work.
+
+\part{Source-exhaustive Full Type II and Gate 2}
+
+
+\section{The F1 / F2 / F3 assembly that precedes Full Type II}
+\label{sec:F123}
+
+The phrase ``Full Type II'' hides three distinct families in the programme.  Their current dependency structure
+can be written without any formal-system terminology.
+
+\subsection{F1: global centering and the routable long-M\"obius sector}
+
+Suppose the physical sequence is decomposed into finitely many pieces
+\[
+ a(n)=\sum_P A_P(n),
+ \qquad
+ A_P(n)=MT_P(n)+OD_P(n),
+\]
+and define
+\[
+ b(n):=\sum_PMT_P(n),\qquad w(n):=a(n)-b(n).
+\]
+Then identically
+\[
+ \boxed{w(n)=\sum_POD_P(n).}
+\tag{F1-center}
+\]
+This is the exact F1 global-centering identity.  It does not prove that the chosen $MT_P$ are the correct physical
+main terms; that is the comparison/source problem.
+
+A long-M\"obius F1 piece is declared \emph{routable} when it contains a genuine M\"obius block of
+mesoscopic-or-longer length and a smooth $(1)$-block of exponent $w$ satisfying
+\[
+ w\ge w_*(\mu)+\delta,
+ \qquad \delta>0,
+\tag{F1-route}
+\]
+with M\"obius cancellation used exactly once before an absolute value and with no nonprincipal character placed
+on that M\"obius block.  The routing inequality is equivalent to the widened wedge
+\[
+ \boxed{122\mu+162\theta_j<1,
+ \qquad \theta_j=\frac12-w.}
+\tag{F1-wedge}
+\]
+Given a routed-F3 theorem on that wedge, such an F1 piece inherits an arbitrary logarithmic saving.  The missing
+global step is to show that \emph{every} long-M\"obius F1 piece either satisfies this route or is controlled by a
+separate theorem.  Hence routable F1 migration is not yet full F1.
+
+\subsection{F2: prime/unit sector, principal sectors and reciprocal tensor}
+
+The F2 family splits first into a prime/unit sector and excluded strata:
+\[
+ \boxed{\begin{array}{c}
+ \text{principal characters},\ \text{nonunits},\ \text{equal primes},\\
+ \text{prime powers},\ \text{repeated primes},\ \text{gcd strata}
+ \end{array}}
+\tag{F2-strata}
+\]
+On the prime/unit sector the required transformation is a double-Mellin / multiplicative-character expansion.
+A complete source-exact formula for that transformation is itself still an open source theorem.  Thus the
+statement to be proved is not replaced by a reference: one must derive the prime/unit character expansion from
+the physical F2 source, including principal-character subtraction, unit restrictions, repeated/equal-prime
+strata and all normalization factors, before the sector decomposition below is valid.
+
+After the prime/unit reduction, the character sectors are
+\[
+ PP,\\ PN,\\ NP,\\ NN.
+\]
+The required F2 dependency is
+\[
+ \boxed{\begin{array}{c}
+ \text{prime/unit reduction}\\
+ +\ PP\text{ main}+PN\text{ single-spectral}+NP\text{ single-spectral}\\
+ +\ NN\text{ reciprocal-character tensor}\\
+ +\ \text{composite/gcd reassembly}\\
+ \Downarrow\\
+ \text{Full F2}
+ \end{array}}
+\tag{F2-full}
+\]
+The $NN$ reciprocal-character tensor estimate is a genuine open analytic input.  A structured tensor theorem is
+Ford-ready only if it simultaneously preserves the fixed shift, arbitrary divisor-bounded coefficients, rank-one
+structure and composite moduli.  A theorem missing any of those four properties does not fill the F2 socket.
+
+\subsection{F3: fixed-depth routed pieces versus Full F3}
+
+For a fixed-depth routed F3 piece, the present interface distinguishes the high-conductor kernel from the entire
+piece.  The needed inputs are:
+\[
+ \begin{array}{ll}
+ (1)&\text{high-conductor kernel power saving},\\
+ (2)&\text{transfer of that kernel estimate to the routed source},\\
+ (3)&\text{low residual-conductor / conductor-window saving},\\
+ (4)&\text{routed main-term cancellation},\\
+ (5)&\text{middle-conductor large sieve}.
+ \end{array}
+\tag{F3-inputs}
+\]
+Together they give only the complete routed-piece logarithmic estimate
+\[
+ \boxed{\mathcal P_r\ll_A X(\log X)^{-A}.}
+\tag{F3-route}
+\]
+It is important that a high-conductor kernel power saving alone does \emph{not} imply (F3-route).
+
+The fixed-depth route does not exhaust Full F3.  In the current family decomposition the one-outer-variable
+piece is routed, the two-outer-variable kernel remains open, and the three-/four-outer source dictionaries remain
+separate obligations.  Thus
+\[
+ \boxed{\text{fixed-depth routable F3}\not\Rightarrow\text{Full F3}.}
+\tag{F3-notfull}
+\]
+
+\subsection{The actual Full-Type-II assembly theorem}
+
+Let $F_1,F_2,F_3$ denote the completed versions of the three families above.  The final project theorem has the
+logical shape
+\[
+ \boxed{
+ F_1+F_2+F_3
+ +\text{source-exhaustive packet census}
+ \Longrightarrow \text{uniform project Type II}.}
+\tag{F123-assemble}
+\]
+A separate transference theorem must then identify that uniform project estimate with the Ford--Maynard Type-II
+predicate for the actual $w_n$.  Only after both arrows have been proved does one obtain $\FullFM$.
+
+
+\section{The Full-Type-II theorem that the programme actually needs}
+
+A collection of source-specific estimates is not yet Ford--Maynard Type II.  The theorem required downstream is
+universal in divisor-bounded coefficients and covers the full interval.
+
+\begin{hypothesis}[Source-exhaustive Full Type II]\label{hyp:FullFM}
+For the actual shifted-prime difference sequence $w_n$ and every fixed $A>0$, sufficiently small fixed
+$\varepsilon>0$, and all divisor-bounded coefficient sequences $\xi_m,\kappa_n$,
+\[
+ \boxed{
+ \left|\sum_{\substack{(X/2)^\varepsilon<m\le X^{1/6-\varepsilon}\\X/2<mn\le X}}
+ \xi_m\kappa_n w_{mn}\right|
+ \ll_A X(\log X)^{-A}.}
+\tag{FullFM}
+\]
+Moreover the global source decomposition is exhaustive: every physical packet is either an exact instance of a
+proved packet theorem, a controlled finite-template specialization with total operator cost $X^{o(1)}$, or an
+exceptional packet already below target.
+\end{hypothesis}
+
+Gate 1A can be one provider for some canonical packets if its five source hypotheses are proved and its scale
+is matched.  Gate 1B is intended to provide the complementary signed/high-order packets.  In addition, the
+F1/F2/F3 assembly in Section~\ref{sec:F123} and the source-exhaustive packet census must be completed.  Neither
+Gate 1A nor Gate 1B, separately or by mere juxtaposition, is the universal theorem above.
+
+
+\section{Proof-specific Ford--Maynard Type-II landing and the source adapter}
+\label{sec:fm-structured}
+
+The universal hypothesis (FullFM) remains the clean published sufficient wrapper.  A proof audit of
+Ford--Maynard Proposition~7.22 identifies a narrower proof-specific landing point.  After the finite factor
+decomposition, the proof reaches their equation (7.23), a finite-depth product sum with one selected product in
+the Type-II interval.  Grouping the factors gives
+\[
+ Y_1(n')=
+ \sum_{n'=\prod_{e\in E}n_e}\prod_{e\in E}x_e(n_e),\qquad
+ Y_2(n'')=
+ \sum_{n''=\prod_{e\notin E}n_e}\prod_{e\notin E}x_e(n_e),
+\tag{FM-Y12}
+\]
+and the universal Type-II hypothesis is invoked only after the proof has reached
+\[
+ \boxed{
+ \sum_{n=n'n''\asymp x}Y_1(n')Y_2(n'')w_{n'n''}.}
+\tag{FM-7.23-gen}
+\]
+Therefore a theorem controlling every \emph{actual generated instance} of (FM-7.23-gen) is sufficient for this
+particular invocation of Type II.
+
+\begin{hypothesis}[FM-SIEVEGEN-TYPEII45]\label{hyp:FMSieveGen}
+Every grouped bilinear sum of the form (FM-7.23-gen) actually generated by the chosen rerun of the
+Ford--Maynard lower-bound proof satisfies the required uniform estimate.
+\end{hypothesis}
+
+This is a proof-specific sufficient target, not a Ford--Maynard theorem statement.  The factor depth is fixed by
+the sieve parameters: in the relevant decomposition
+\[
+ \boxed{N=k\ell+r+s,}
+\tag{FM-depth}
+\]
+with $k,\ell,r,s$ bounded in terms of the fixed sieve data.  Thus an ``unbounded convolution depth'' obstruction is
+not present at this stage.
+
+The generated one-variable factors belong to a finite-depth grammar built from M\"obius factors, box/support
+cutoffs, Mellin/Perron twists, least/greatest-prime-factor phases, perfect-power pullbacks and bounded-depth
+convolutions.  We retain the narrower target
+\[
+ \boxed{\mathrm{FM\!\mbox{-}PERRON\!\mbox{-}GENERATED\!\mbox{-}TYPEII45}.}
+\tag{FM-PerronGen}
+\]
+The current Ford-side archaeology records the following internal programme passes:
+\[
+\begin{array}{ll}
+\mathrm{FM\!\mbox{-}GENERATED\!\mbox{-}ONEVAR\!\mbox{-}ARCHAEOLOGY45} & \text{pass},\\
+\mathrm{FM\!\mbox{-}FINITE\!\mbox{-}NUCLEAR\!\mbox{-}COMPILER45} & \text{pass},\\
+\mathrm{FM\!\mbox{-}OUTER\!\mbox{-}COEFFICIENT\!\mbox{-}ABSORPTION45} & \text{pass},\\
+\mathrm{WEIGHT\!\mbox{-}DEPENDENCE\!\mbox{-}FINITE\!\mbox{-}COMPILER45} & \text{pass}.
+\end{array}
+\tag{FM-archaeology}
+\]
+These are programme-level source/compiler audits, not published Ford--Maynard theorems.
+
+\subsection{The unresolved Gate-output/Ford-source adapter}
+
+The next issue is not another abstract rank-reduction theorem.  It is the literal source dictionary from each
+actual Gate packet to the generated one-variable factors entering (FM-7.23-gen).  For every physical packet the adapter must provide all of the following data:
+\begin{center}
+\fbox{\begin{minipage}{0.86\textwidth}
+\begin{itemize}[leftmargin=1.5em,itemsep=1pt,topsep=2pt]
+\item operator and variable ranges;
+\item coefficient and multiplicity;
+\item weight law and centering;
+\item gcd and collision restrictions;
+\item original prefactor and normalized target;
+\item route into Gate 1A, Gate 1B, or a direct exceptional class.
+\end{itemize}
+\end{minipage}}
+\end{center}
+We label this source-exact splice
+\[
+ \boxed{\mathrm{SOURCE\!\mbox{-}ADAPTER45}.}
+\tag{SOURCE-ADAPTER45}
+\]
+Its current status is \emph{primary downstream source interface; source-exhaustive dictionary open}.  In
+particular the actual weight law must be identified, not guessed: a packet must be shown to have a common
+$W_D$, a finite-template $W_{D,e}$, or a genuinely edge-dependent $W_{D,e}$.
+
+The corresponding coordinate census is
+\[
+ \boxed{\mathrm{FM\!\mbox{-}TO\!\mbox{-}GATE\!\mbox{-}COORDINATE\!\mbox{-}CENSUS45}:
+ \text{ source-blocked}.}
+\tag{FM-Gate-census}
+\]
+Once the literal source census exists, the finite coordinate/reassembly compiler is already available at
+programme level.
+
+\begin{hypothesis}[Ford--Maynard replacement certificate $C_{\rm FM}$]\label{hyp:CFM}
+The source adapter and coordinate census are complete, every Type-II invocation in the chosen rerun lands in a
+grouped coefficient pair controlled by Hypothesis~\ref{hyp:FMSieveGen} (or the certified Perron-generated
+subclass), and all changes of variables, truncations, suprema, Mellin/Perron decompositions and nuclear
+expansions preserve the required norms uniformly.
+\end{hypothesis}
+
+Only
+\[
+ \boxed{\mathrm{SOURCE\!\mbox{-}ADAPTER45}+C_{\rm FM}
+ +\mathrm{FM\!\mbox{-}SIEVEGEN\!\mbox{-}TYPEII45}}
+\tag{FM-structured-package}
+\]
+(or the fully certified Perron-generated variant) can replace the published universal Type-II input.  Until the
+literal adapter and replacement certificate are constructed, the universal theorem remains the publication-safe
+sufficient route.
+
+\section{Ford--Maynard rough sieve weight}
+
+The published sieve construction uses a vector function $g$ and a weight $H(n)$.  In the central family, the
+relevant rough-support identity is the following published lemma.
+
+\begin{theorem}[Ford--Maynard rough-support identity, specialized notation]\label{thm:FM718}
+Let $g$ be an admissible vector function and $H$ the sieve weight constructed from it in the Ford--Maynard
+Section-7 procedure.  On the relevant set $\mathcal N$,
+\[
+ \boxed{H(n)=(1\star g)(v(n))\,\1_{\{P^-(n)\ge n^\nu\}},
+ \qquad |H(n)|\ll_g1.}
+\tag{FM-H}
+\]
+If $(1\star g)$ has fixed sign on the geometric region, then $H(n)$ has the same sign on $\mathcal N$.
+\end{theorem}
+
+For the epsilon-shrunk operating family set
+\[
+ \sigma:=\frac16-2\varepsilon.
+\]
+If $0\le\varepsilon\le(1/6)/100$, then
+\[
+ \sigma\ge\frac{49}{300}.
+\]
+
+\begin{lemma}[Rough numbers have at most six prime factors]\label{lem:omega6}
+If every prime divisor of $n>1$ is at least $n^\sigma$ and $\sigma\ge49/300$, then
+\[
+ \boxed{\Omega(n)\le6,}
+\]
+counting prime factors with multiplicity.
+\end{lemma}
+\begin{proof}
+If $k=\Omega(n)$, then $n\ge n^{k\sigma}$, hence $k\sigma\le1$.  Therefore
+$k\le1/\sigma\le300/49<7$.
+\end{proof}
+
+\section{Published Ford--Maynard five-collar geometry}
+\label{sec:fm-five-collar}
+
+For
+\[
+ P_\varepsilon=\left(\frac12-\varepsilon,\ \varepsilon,\ \nu-2\varepsilon\right),
+\]
+the proof of Ford--Maynard Theorem~8.3 places every exceptional vector $x\in H_2$ in a five-collar geometry:
+one coordinate has one of the forms
+\[
+ \boxed{
+ \frac12+u,\quad \nu+u,\quad 2\nu+u,\quad 1-\nu+u,\quad 1-2\nu+u,
+ \qquad |u|\le6\varepsilon.}
+\tag{FM-five-collars}
+\]
+Ford--Maynard Definition~5.1 uses
+\[
+ \boxed{v(n)=\left(\frac{\log p_1}{\log n},\ldots,
+                     \frac{\log p_k}{\log n}\right),\qquad n=p_1\cdots p_k,}
+\tag{FM-vn}
+\]
+so the collar coordinate corresponds to an individual prime factor.  At $\nu_0=1/6$ the five centres are
+\[
+ \boxed{\frac12,\ \frac16,\ \frac13,\ \frac56,\ \frac23.}
+\tag{FM-collar-centres}
+\]
+This is a published-source geometric input.  It gives a canonical way to select one collar prime in the rough
+exceptional sector and materially sharpens the $N_2$ source decomposition below.
+
+\section{Ford--Maynard Theorem 8.2: where pointwise boundedness is actually used}
+\label{sec:FM82-localization}
+
+The bounded theorem is useful here because its proof isolates the pointwise condition to one exceptional term.
+Let $\mathcal N_1$ be the rough vectors in the main geometric region $H_1$ and let
+$\mathcal N_2=\mathcal N\setminus\mathcal N_1$.  The proof of Ford--Maynard Theorem~8.2 begins with
+\[
+\begin{aligned}
+ \sum_p w_p
+ &\ge -\sum_p b_p+\sum_{n\in\mathcal P\cup\mathcal N_1}(w_n+b_n)H(n)\\
+ &=\sum_{n\in\mathcal N_1}b_nH(n)
+   +\sum_{n\in\mathcal P\cup\mathcal N}w_nH(n)
+   -\sum_{n\in\mathcal N_2}w_nH(n).
+\end{aligned}
+\tag{FM82-decomp}
+\]
+The first term is evaluated from the comparison condition (b.2) through their Lemma~7.20.  The second is
+controlled by the ordinary Type-I/Type-II/growth machinery (Proposition~7.19 and Lemma~7.21), giving
+\[
+ \sum_{n\in\mathcal P\cup\mathcal N}w_nH(n)\ll \frac{x}{(\log x)^2}.
+\tag{FM82-middle}
+\]
+Only at the final term does the published proof invoke the pointwise bounded-class hypothesis:
+\[
+ n\in\mathcal N_2:\qquad |w_n|\le\tau(n)^\varrho\ll_{\varrho,\nu}1.
+\tag{FM82-pointwise}
+\]
+It then converts the count of $\mathcal N_2$ into the geometric $H_2$ volume.
+
+Thus the pointwise component of (4.1) is not needed to obtain (FM82-decomp), the comparison main term, or
+(FM82-middle); it is used to estimate the last $\mathcal N_2$ contribution.  The other part of (4.1), the
+comparison prime-mass lower bound
+\[
+ \sum_p b_p\ge \frac{x}{\varrho\log x},
+\tag{FM82-mass}
+\]
+is still needed to normalize $x/\log x$-scale errors by $\sum_pb_p$.  For the 287 comparison sequence this
+lower bound follows from (G0-b1) for some fixed sufficiently large $\varrho$.
+
+\begin{proposition}[Source-specific replay of Ford--Maynard Theorem 8.2]\label{prop:FM82source}
+Fix $P=(\gamma,\theta,\nu)$ and a Ford--Maynard sieve function $g$ with main/exceptional regions $H_1,H_2$.
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item the ordinary sequence conditions (b.1), (b.2), (I), (II), and (w);
+\item for some fixed $\varrho_0\ge1$,
+\[
+ \sum_p b_p\ge \frac{x}{\varrho_0\log x};
+\]
+\item the source-specific exceptional estimate
+\[
+ \left|\sum_{n\in\mathcal N_2}w_nH(n)\right|
+ \le C_{N_2}\frac{x}{\log x}
+ \sum_k\int_{H_2\cap R_k}\frac{du}{u_1\cdots u_k}
+ +o\!\left(\sum_pb_p\right).
+\tag{FM82-source-N2}
+\]
+\end{enumerate}
+Then the same proof gives
+\[
+\begin{aligned}
+ \frac{\sum_pa_p}{\sum_pb_p}
+ \ge&\ 1+
+ \sum_k\int_{H_1\cap R_k}
+ \frac{(1\star g)(u)}{u_1\cdots u_k}\,du\\
+ &\quad -O_g(1/B)-o(1)
+ -C_{N_2}\varrho_0
+ \sum_k\int_{H_2\cap R_k}\frac{du}{u_1\cdots u_k}.
+\end{aligned}
+\tag{FM82-source}
+\]
+\end{proposition}
+\begin{proof}
+Insert the exact decomposition (FM82-decomp).  Lemma~7.20 gives the $b_nH(n)$ main integral with relative
+error $O_g(1/B)$.  Proposition~7.19 and Lemma~7.21 give (FM82-middle), which is
+$o(\sum_pb_p)$ because of the prime-mass lower bound.  Apply (FM82-source-N2) to the final term and use
+$x/\log x\le\varrho_0\sum_pb_p$.  Dividing by $\sum_pb_p$ yields (FM82-source).
+No pointwise bound $|w_n|\le\tau(n)^\varrho$ is used.
+\end{proof}
+
+\section{The source-specific rough $N_2$ replacement via the five collars}
+\label{sec:N2-collar}
+
+The common normalization $a_n,b_n\mapsto a_n/\log X,b_n/\log X$ is not used as a bounded-class repair: it also
+shrinks the comparison prime mass by an additional logarithm.  Instead we keep the physical source and use the
+rough geometry directly.
+
+Set
+\[
+ \nu_0=\frac16,\qquad \sigma=\nu_0-2\varepsilon.
+\]
+For $0<\varepsilon\le\nu_0/100$, Lemma~\ref{lem:omega6} gives $\Omega(n)\le6$ on the $\sigma$-rough sector.
+
+\subsection{Squareful rough terms are negligible}
+
+If $p^2\mid n\le X$ and $p\ge X^\sigma$, then the total von-Mangoldt-weighted squareful contribution is bounded by
+\[
+ \sum_{X^\sigma\le p\le X^{1/2}}
+ \left(\frac{X}{p^2}+1\right)\log X
+ \ll X^{1-\sigma}\log X+X^{1/2}\log X
+ =o\!\left(\frac{X}{\log X}\right).
+\tag{N2-squareful}
+\]
+Thus only the squarefree rough sector contributes at the lower-bound scale.
+
+\subsection{Squarefree sector: collar prime plus largest remaining prime}
+
+By (FM-five-collars), choose canonically a collar prime $q$ whose logarithmic coordinate lies in one of the five
+published collars.  Let $r$ be the largest remaining prime and write
+\[
+ \boxed{n=qdr.}
+\tag{N2-qdr}
+\]
+For the shifted-prime programme source, the active two-linear-form problem is
+\[
+ \boxed{r,\qquad qdr+2.}
+\tag{N2-twin-forms}
+\]
+For the 287 two-sign specialization the corresponding source forms are
+\[
+ \boxed{r,\qquad 2qdr-1,\qquad 2qdr+1,}
+\tag{N2-287-forms}
+\]
+with the two signs treated separately by the same upper-sieve mechanism.  The collar variable is narrow, and on
+the rough sector the local singular factor is uniformly bounded.
+
+\begin{hypothesis}[Uniform collar two-linear-form sieve]\label{hyp:N2cell}
+Uniformly in the five collar choices, the rough prefix $qd$, and the residual interval for the final prime $r$,
+the relevant pair of linear forms satisfies the standard upper-bound sieve at the scale
+\[
+ \sum_{\substack{r\in I(q,d)\\ r\ \mathrm{prime}}}
+ \Lambda(qdr+2)
+ \ll \frac{|I(q,d)|}{\log X}\,\mathfrak S(q,d)
+\tag{N2-twin-sieve}
+\]
+for the shifted-prime source, and analogously
+\[
+ \sum_{\substack{r\in I(q,d)\\ r\ \mathrm{prime}}}
+ \Lambda(2qdr\pm1)
+ \ll \frac{|I(q,d)|}{\log X}\,\mathfrak S_\pm(q,d)
+\tag{N2-287-sieve}
+\]
+for each 287 sign, with the local factors uniformly $O(1)$ on the rough sector.
+\end{hypothesis}
+
+The harmonic mass of a prime collar is
+\[
+ \sum_{q\ \text{in a collar}}\frac1q
+ \ll_{\nu_0}\varepsilon+\frac1{\log X}.
+\tag{N2-collar-mass}
+\]
+Consequently the source audit reduces the exceptional shifted-prime lane to
+\[
+ \boxed{
+ \sum_{n\in\mathcal N_2}a_n|H(n)|
+ \ll \left(\varepsilon+o(1)\right)\frac{X}{\log X},}
+\tag{N2-shifted-bound}
+\]
+modulo Hypothesis~\ref{hyp:N2cell}.  The comparison side is handled by the published rough-number geometry and
+the same five-collar volume.
+
+\begin{hypothesis}[Aggregate $N_2$ replacement]\label{hyp:N2agg}
+For the actual difference sequence used in the chosen application, the squareful disposal, collar decomposition,
+uniform upper-sieve input and comparison estimate combine to give
+\[
+ \boxed{
+ \left|\sum_{n\in\mathcal N_2}w(n)H(n)\right|
+ \le C_{N_2}\frac{X}{\log X}
+ \sum_k\int_{H_2\cap R_k}\frac{du}{u_1\cdots u_k}
+ +o\!\left(\sum_pb_p\right),}
+\tag{N2-agg}
+\]
+with $C_{N_2}$ uniform on the fixed compatible epsilon range.
+\end{hypothesis}
+
+We record the programme label
+\[
+ \boxed{\mathrm{FM\!\mbox{-}N2\!\mbox{-}SHIFTED\!\mbox{-}PRIME\!\mbox{-}COLLAR\!\mbox{-}SIEVE45}}
+\]
+with status: \emph{research pass modulo a standard uniform two-linear-form upper sieve and the literal source
+dictionary}.  This is a sharper source decomposition than the generic coarse-cell formulation in Draft V9, but
+it remains external/uninhabited until the uniform sieve and physical source specialization are supplied.
+
+\section{The epsilon-compatibility gate}
+\label{sec:epsilon-compat}
+
+The shrunk parameter is not free.  As $\varepsilon\downarrow0$,
+\[
+ (X/2)^\varepsilon<m\le X^{1/6-\varepsilon}
+\]
+widens at \emph{both} ends, so the Type-II theorem becomes harder, even though the Ford--Maynard geometric
+lower-bound error tends to zero.  The application must therefore freeze one positive epsilon rather than pass
+to a limit inside the arithmetic theorem.
+
+Let $g_{\rm FM}$ denote the fixed sieve function used in the published Ford--Maynard $1/6$ lower-bound
+certificate, and write
+\[
+ \eta_{\rm FM}:=
+ 1+\sum_k\int_{H(P)\cap R_k}
+ \frac{(1\star g_{\rm FM})(u)}{u_1\cdots u_k}\,du>0,
+ \qquad P=(1/2,0,1/6).
+\tag{FM-margin}
+\]
+Their central-family geometry gives
+\[
+ \sum_k\int_{H_2(P_\varepsilon)\cap R_k}\frac{du}{u_1\cdots u_k}
+ \ll_{g_{\rm FM}}\varepsilon.
+\tag{FM-H2-eps}
+\]
+
+\begin{hypothesis}[Compatible fixed epsilon]\label{hyp:epsstar}
+There exists one fixed
+\[
+ \boxed{0<\varepsilon_*\le1/600}
+\]
+such that:
+\begin{enumerate}[label=(\roman*)]
+\item the 287 Type-I theorem holds with exponent $1/2-\varepsilon_*$;
+\item the source-exhaustive Type-II theorem holds on
+$(X/2)^{\varepsilon_*}<m\le X^{1/6-\varepsilon_*}$;
+\item the rough $N_2$ replacement is valid uniformly at $\sigma=1/6-2\varepsilon_*$;
+\item the geometric loss in Proposition~\ref{prop:FM82source}, including the constant $C_{N_2}\varrho_0$,
+is $<\eta_{\rm FM}/2$.
+\end{enumerate}
+\end{hypothesis}
+
+If the Type-I, Type-II and $N_2$ statements are proved for every sufficiently small fixed epsilon, then
+Hypothesis~\ref{hyp:epsstar} follows by choosing one epsilon small enough after the Ford--Maynard constants are
+fixed.  No theorem in this dossier takes $\varepsilon\to0$ inside the arithmetic source.
+
+
+\section{Gate-2 conditional endgame -- corrected source-specific form with two Type-II entrances}
+
+\begin{theorem}[Conditional Gate-2 endgame]\label{thm:Gate2}
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item the exact Gate-0 comparison conditions (b.1), (b.2), (w) and Type I for the physical source;
+\item the rough-support identity and source dictionary needed to use the Ford--Maynard $H(n)$;
+\item the source-specific aggregate $N_2$ replacement, Hypothesis~\ref{hyp:N2agg};
+\item the compatible fixed epsilon, Hypothesis~\ref{hyp:epsstar};
+\item and \emph{one} of the following Type-II packages:
+  \begin{enumerate}[label=(\alph*)]
+  \item the published sufficient route: source-exhaustive Full Type II, Hypothesis~\ref{hyp:FullFM}; or
+  \item the proof-specific route: Hypotheses~\ref{hyp:FMSieveGen} and~\ref{hyp:CFM} (or a certified narrower
+  Perron-generated theorem together with the same replacement certificate).
+  \end{enumerate}
+\end{enumerate}
+Then the shifted-prime source has positive prime mass at scale $X$ for all sufficiently large $X$.
+\end{theorem}
+\begin{proof}
+Work at the single fixed point
+\[
+ P_{\varepsilon_*}=
+ \left(\frac12-\varepsilon_*,\ \varepsilon_*,\ \frac16-2\varepsilon_*\right).
+\]
+Conditions (i)--(iv) provide the ordinary sequence class, the Ford--Maynard rough weight and the direct
+source-specific replacement for the final $N_2$ term.  We do not place the unbounded von-Mangoldt source in the
+bounded sequence class and we do not apply $C^-_{\rm bd}$ directly to it.
+
+For route (a), Hypothesis~\ref{hyp:FullFM} supplies every Type-II invocation used in the ordinary Ford--Maynard
+machinery.  For route (b), the replacement certificate $C_{\rm FM}$ verifies invocation-by-invocation that the
+structured theorem supplies the same bilinear estimates.  In either case, Proposition~\ref{prop:FM82source}
+replays the Theorem-8.2 decomposition with the pointwise-bounded $N_2$ line replaced by
+Hypothesis~\ref{hyp:N2agg}.
+
+The central Ford--Maynard geometry supplies the positive limiting margin $\eta_{\rm FM}$, while
+(FM-H2-eps) and Hypothesis~\ref{hyp:N2agg} control the exceptional region.  By
+Hypothesis~\ref{hyp:epsstar}(iv), the total geometric/source-specific loss is less than half that margin.
+Taking the auxiliary parameter $B$ and then $X$ sufficiently large gives
+\[
+ \sum_pa_p\ge c_{\rm FM}\sum_pb_p
+\]
+for some fixed $c_{\rm FM}>0$.  Finally (G0-b1) gives $\sum_pb_p\asymp X/\log X$.
+\end{proof}
+
+\begin{status}[Downstream status after the late Gate-1B update]
+The published universal Type-II theorem remains a sufficient wrapper.  The structured route is strictly
+proof-specific and is \emph{not} activated until the analytic structured estimate, SOURCE-ADAPTER45 / the
+FM-to-Gate coordinate census, and the complete replacement certificate $C_{\rm FM}$ are proved.  In both routes the V8 class/shrinkage correction remains
+controlling: the unbounded source is handled in the ordinary class and the final pointwise-bounded $N_2$ step is
+replaced directly.
+\end{status}
+
+
+\part{Gold closure pivot: repaired log-cofactor lane, fixed certificate, and Kummer backend}
+
+\section{Status firewall for the corrected Gold update}
+
+The fixed-certificate pivot survives, but its first packet census does not simplify as far as Draft~V11
+suggested.  The explicit Ford certificate and the transference algebra are retained.  What is withdrawn is the
+expectation that the literal leakage census immediately reduces to H8/H9, QK56, Gate~1A and direct packets.
+A source-exact smooth-parity packet occurs before that reduction.
+
+\begin{center}
+\begin{tabular}{p{0.43\textwidth}p{0.42\textwidth}}
+\toprule
+Object & Draft-V12 status\\
+\midrule
+\texttt{LOG-COFACTOR-ASYMPTOTIC287} & proved below; alternative finite route only\\
+Current abstract \texttt{LCBeta} & specification incomplete; add $M\le2x$ placement condition\\
+\texttt{FIXED-CERTIFICATE287-PIN} & published/source pin PASS; explicit $g_0,g_*,H_*$ written below\\
+\texttt{FIXED-CERTIFICATE-TRANSFERENCE287} & proved below with the $\mathcal N_2$ error separated\\
+\texttt{FINITE-H8/H9-ONLY-CENSUS} & \textbf{FAIL}; exact counterguard written below\\
+Generic seven-prime quadratic-Kummer spectrum & conditional analytic child PASS modulo classical Weil/completion\\
+\texttt{H8H9-SOURCE-TO-KUMMER45} & open child/source interface, but not the first fixed-leakage open\\
+\texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45} & \textbf{FIRST LITERAL ANALYTIC OPEN}\\
+\texttt{287-FIXED-CERTIFICATE-LEAKAGE45} & open parent correlation (FCL)\\
+Full generated-(7.23) census $+C_{\rm FM}$ & still sufficient; fixed-$g_*$ specialization remains relevant\\
+Erd\H{o}s \#287 & open\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Repairing the log-cofactor supply interface}\label{sec:logcof-asym}
+
+The broad log-cofactor blocker is a useful alternative to the fixed Sophie band, but the abstract supply
+predicate must place its adjacent pair inside the actual denominator span.  The minimal repair is to demand
+\[
+ \boxed{M\le 2x,\qquad x+1\le M.}
+ \tag{LC-place}
+\]
+Indeed Lemma~\ref{lem:half} gives $N\le\lfloor M/2\rfloor\le x$, so $x,x+1\in[N,M]$.
+Consequently an abstract predicate which records only $x+1\le M$ is not yet a literal input to an
+adjacent-hole theorem.
+
+Let $C(j)$ denote the finite cofactor threshold from the finite obstruction architecture and assume the proved
+uniform comparison
+\[
+ C(j)\le U(j):=j\,j!.
+ \tag{LC-C}
+\]
+For a fixed $0<\eta<1/2$ put
+\[
+ J(M):=\left\lfloor \eta\frac{\log M}{\log\log M}\right\rfloor.
+ \tag{LC-J}
+\]
+
+\begin{proposition}[Log-cofactor asymptotic]\label{prop:logcof}
+For sufficiently large $M$, if a prime $q$ satisfies
+\[
+ M\le 2J(M)q,
+ \tag{LC-window}
+\]
+then
+\[
+ q^2>M,\qquad q>C(2J(M)).
+\]
+\end{proposition}
+\begin{proof}
+From (LC-window),
+\[
+ q\ge \frac{M}{2J(M)}=M^{1-o(1)},
+\]
+so $q^2>M$ for sufficiently large $M$.  On the other hand, by (LC-C),
+\[
+ \log C(2J)\le \log(2J)+\log((2J)!)
+ \le \log(2J)+2J\log(2J).
+\]
+Since
+\[
+ J=(\eta+o(1))\frac{\log M}{\log\log M},\qquad
+ \log(2J)=(1+o(1))\log\log M,
+\]
+we obtain
+\[
+ \log C(2J)\le (2\eta+o(1))\log M.
+\]
+Because $2\eta<1$,
+\[
+ C(2J)\le M^{2\eta+o(1)}<\frac{M}{2J}\le q
+\]
+for sufficiently large $M$.
+\end{proof}
+
+Thus the factorial growth of the finite cofactor threshold is not the remaining difficulty.  The genuine
+adjacent supply theorem would still have to produce
+\[
+ \boxed{\begin{aligned}
+ \exists x,q_0,q_1:\quad &M\le2x,\quad x+1\le M,\\
+ &q_0\mid x,\quad q_1\mid x+1,\\
+ &q_i\text{ prime},\quad M\le2J(M)q_i\quad(i=0,1).
+ \end{aligned}}
+ \tag{LC-supply}
+\]
+This simultaneous large-prime-factor correlation remains a deep alternative route; Draft~V12 does not use it as
+the controlling analytic theorem.
+
+\section{The explicit Ford certificate and corrected fixed-certificate transference}
+\label{sec:fixed-cert}
+
+\subsection{The actual certificate $g_*$}
+
+Ford--Maynard's central construction is not merely existential.  Write
+\[
+ \nu_0:=0.16623,\qquad P_0:=\left(\frac12,0,\nu_0\right).
+\]
+Their displayed certificate has
+\[
+ g_0(\varnothing)=1,\qquad
+ g_0(x)=-\mathbf 1_{x\le1/2},
+\]
+\[
+ g_0(x_1,x_2)
+ =\mathbf 1_{(1-\nu_0)/2<x_1+x_2<1/2},
+\]
+\[
+ g_0(x_1,x_2,x_3)
+ =-\mathbf 1_{x_1+x_2+x_3\le1/2},
+\]
+and is zero in the remaining dimensions.  The certificate inequality is
+\[
+ (1\star g_0)(\mathbf x)\le0\qquad(\mathbf x\in\mathcal H(P_0)),
+\]
+and the associated comparison constant satisfies
+\[
+ C_0=1+I_3+I_4+I_5+I'_5+I_6\ge 0.000006.
+ \tag{FC-1}
+\]
+These are the published Ford--Maynard certificate data used here.
+
+Fix sufficiently small $\varepsilon_*>0$ and put
+\[
+ P_*=
+ \left(\frac12-\varepsilon_*,\ \varepsilon_*,\ \nu_0-2\varepsilon_*\right),
+ \qquad
+ \gamma_*:=\frac12-\varepsilon_*,
+ \qquad
+ \sigma_*:=\nu_0-2\varepsilon_*.
+\]
+Use the truncated certificate
+\[
+ g_*(\mathbf x)
+ :=
+ g_0(\mathbf x)\,
+ \mathbf 1_{\{|\mathbf x|\le1/2-2\varepsilon_*\}}.
+ \tag{FC-2}
+\]
+The published shrink analysis gives
+\[
+ C_*(\varepsilon_*)=C_0+O(\varepsilon_*).
+ \tag{FC-3}
+\]
+Hence there exists at least one fixed $\varepsilon_*>0$ for which
+\[
+ \boxed{C_*(\varepsilon_*)\ge C_0/2>0.}
+ \tag{FC-4}
+\]
+This is an existence statement unless the implied constant in (FC-3) is made effective.
+
+\begin{status}[Fixed-certificate pin]
+The controlling certificate is the $1/2,0,\nu_0$ Ford--Maynard certificate above and its fixed small shrink.
+A numerical certificate from an unrelated parameter triple is not interchangeable with this one.
+We record \texttt{FIXED-CERTIFICATE287-PIN: PASS} at the published/source level, with effectiveness of a
+convenient decimal $\varepsilon_*$ still separate.
+\end{status}
+
+\subsection{Literal arithmetic weight $H_*$}
+
+For the canonical split $m=m_1m_2$ satisfying
+\[
+ P^+(m_1)<n^{\sigma_*}\le P^-(m_2),
+\]
+define
+\[
+ G_*(m;n)
+ =
+ \mathbf 1_{m\le n^{\gamma_*}}\,
+ \mu(m_1)\,
+ g_*\!\left(\mathbf v(m_2;n)\right),
+\qquad
+ \boxed{H_*(n):=\sum_{m\mid n}G_*(m;n).}
+ \tag{FC-5}
+\]
+This is the literal fixed-$g_*$ specialization of the Ford--Maynard arithmetic weight.
+
+For a prime $p\asymp X$, only $m=1$ contributes, so
+\[
+ \boxed{H_*(p)=g_*(\varnothing)=1.}
+ \tag{FC-6}
+\]
+Let $\mathcal N_1$ denote the main composite region where the certificate sign applies, and
+$\mathcal N_2$ the exceptional collar.  Then
+\[
+ H_*(n)\le0\qquad(n\in\mathcal N_1),
+ \tag{FC-7}
+\]
+while $\mathcal N_2$ must be controlled separately by the source-specific $N_2$ estimate; (FC-7) is not
+extended to all composites.
+
+\subsection{Corrected leakage decomposition}
+
+Put
+\[
+ w_X(n)=W(n/X)\,[\Lambda(2n-1)+\Lambda(2n+1)-4B(n)]
+\]
+and
+\[
+ \mathcal U_*:=(X/2,X]\setminus
+ \bigl(\mathcal P\cup\mathcal N_1\cup\mathcal N_2\bigr).
+\]
+Define
+\[
+ \boxed{\mathcal L_*(X):=\sum_{n\in\mathcal U_*}w_X(n)H_*(n).}
+ \tag{FC-8}
+\]
+Also put
+\[
+ B_X:=\sum_{p\in\mathcal P}b_X(p),\qquad
+ \mathcal E_{N_2}(X):=
+ \sum_{n\in\mathcal N_2}w_X(n)H_*(n).
+\]
+
+\begin{theorem}[Fixed-certificate transference]\label{thm:fixed-cert-transfer}
+Assume, for the fixed certificate above,
+\[
+ \sum_{X/2<n\le X}w_X(n)H_*(n)=o(B_X),
+ \tag{FC-9}
+\]
+\[
+ \mathcal L_*(X)=o(B_X),
+ \tag{FC-10}
+\]
+and
+\[
+ \mathcal E_{N_2}(X)=o(B_X),
+ \tag{FC-11}
+\]
+or more generally that the combined leakage and $N_2$ error are sufficiently small compared with the
+positive certificate margin.  Assume also the comparison asymptotic
+\[
+ \sum_{n\in\mathcal N_1}b_X(n)H_*(n)
+ =
+ \bigl(C_*(\varepsilon_*)-1+o(1)\bigr)B_X.
+ \tag{FC-12}
+\]
+Then
+\[
+ \boxed{
+ \sum_{p\in\mathcal P}a_X(p)
+ \ge
+ \bigl(C_*(\varepsilon_*)+o(1)\bigr)B_X.}
+ \tag{FC-13}
+\]
+In particular, if $B_X\gg X/\log X$, the affine prime mass is positive at the required scale.
+\end{theorem}
+
+\begin{proof}
+By (FC-9)--(FC-11),
+\[
+ \sum_{n\in\mathcal P\cup\mathcal N_1}w_X(n)H_*(n)=o(B_X).
+\]
+Since $a_X\ge0$, $H_*(p)=1$ on $\mathcal P$, and $H_*(n)\le0$ on $\mathcal N_1$,
+\[
+ \sum_{p\in\mathcal P}a_X(p)
+ \ge
+ \sum_{n\in\mathcal P\cup\mathcal N_1}a_X(n)H_*(n).
+\]
+Expanding $a_X=b_X+w_X$ and using (FC-12) yields (FC-13).
+\end{proof}
+
+For positivity one does not logically need an arbitrary logarithmic saving.  A sufficient quantitative target is
+\[
+ \boxed{
+ |\mathcal L_*(X)|+|\mathcal E_{N_2}(X)|
+ \le
+ \frac{C_*(\varepsilon_*)}{4}\,B_X
+ }
+ \tag{FC-14}
+\]
+for all sufficiently large $X$, together with a correspondingly small total-correlation error.  Because the
+available certificate margin is tiny, (FC-14) is still a strong analytic statement, but it is weaker than
+demanding $O_A(X(\log X)^{-A})$ for every $A$.
+
+\begin{remark}[What the pivot really saves]
+Fixing $g_*$ removes the need to prove a theorem uniformly over all Ford certificates.  It does \emph{not}
+make the actual $H_*$ packet family finite-dimensional in the sense needed to reduce immediately to H8/H9.
+The next section gives an exact counterguard.
+\end{remark}
+
+\section{The first literal fixed-certificate packet: smooth M\"obius parity}
+\label{sec:smooth-parity}
+
+The literal fixed-$g_*$ census contains a packet before any H8/H9-only reduction.  In the Ford factorisation
+take the cell
+\[
+ k=0,\qquad J=\varnothing.
+\]
+Then no prime factor exceeds the rough threshold:
+\[
+ P^+(n)\le n^{\sigma_*}.
+\]
+Because $g_*(\varnothing)=1$, the corresponding arithmetic weight is
+\[
+ H_*(n)
+ =
+ \sum_{\substack{d\mid n\\ d\le n^{\gamma_*}}}\mu(d)
+ =
+ \sum_{\substack{d\mid n\\ d\le n^{1/2-\varepsilon_*}}}\mu(d).
+ \tag{SP-1}
+\]
+Thus the fixed leakage contains the exact packet
+\[
+ \boxed{
+ \begin{aligned}
+ \mathcal P_{\rm sm}(X)
+ :=
+ \sum_{\substack{X/2<n\le X\\P^+(n)\le n^{\sigma_*}}}
+ &W(n/X)
+ \bigl[\Lambda(2n-1)+\Lambda(2n+1)-4B(n)\bigr]\\
+ &\times
+ \sum_{\substack{d\mid n\\d\le n^{1/2-\varepsilon_*}}}\mu(d).
+ \end{aligned}}
+ \tag{SP-2}
+\]
+We denote this exact source packet by
+\[
+ \boxed{\texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45}.}
+\]
+
+\subsection{Why the fixed census is not H8/H9-only}
+
+Consider a squarefree balanced $k$-prime cell
+\[
+ n=p_1\cdots p_k,
+ \qquad
+ \left|\frac{\log p_i}{\log n}-\frac1k\right|<\eta,
+\]
+where $1/k+\eta<\sigma_*$.  Choose $\eta$ so small that subset products of at most
+\[
+ r:=\lfloor k\gamma_*\rfloor
+\]
+primes are below $n^{\gamma_*}$ and subset products of at least $r+1$ primes are above it.  Then the canonical
+split has no large-prime component and
+\[
+ H_*(n)
+ =
+ \sum_{j=0}^{r}(-1)^j\binom{k}{j}
+ =
+ \boxed{(-1)^r\binom{k-1}{r}\ne0.}
+ \tag{SP-3}
+\]
+For small fixed $\varepsilon_*$ this gives, for example,
+\[
+\begin{array}{c|rrrrrr}
+k&7&8&9&10&11&12\\
+\hline
+H_*(n)&-20&-35&70&126&-252&-462.
+\end{array}
+\]
+Hence H9 genuinely occurs, but so do orders $10,11,12,\ldots$.  Therefore
+\[
+ \boxed{\texttt{FINITE-H8/H9-ONLY-CENSUS: FAIL}.}
+ \tag{SP-4}
+\]
+Any use of historical ``Full-Nine'' regrouping must prove source-exhaustiveness; the name of the parent operator
+does not imply that all larger $\Omega(n)$ cells have disappeared.
+
+\subsection{Parity character of the packet}
+
+At the unshrunk point $\gamma=1/2$, for squarefree $n$ with no exact square-root divisor, pairing
+$d\leftrightarrow n/d$ gives
+\[
+ \mu(n/d)=\mu(n)\mu(d).
+\]
+When $\mu(n)=1$, the paired full divisor sum forces cancellation below $\sqrt n$; when $\mu(n)=-1$, no analogous
+cancellation occurs.  The truncated divisor sum in (SP-1) is therefore a literal divisor-parity detector.
+Shrinking from $1/2$ to $1/2-\varepsilon_*$ only introduces a central-divisor collar; it does not remove this
+parity mechanism.
+
+The first required analytic estimate on this packet need not be arbitrary-log.  It is enough to obtain a
+certificate-compatible constant saving, for example
+\[
+ \boxed{
+ |\mathcal P_{\rm sm}(X)|
+ \le c_*\,\frac{X}{\log X},
+ \qquad
+ c_*<
+ \frac{C_*(\varepsilon_*)}{4}
+ \times(\text{comparison constant}),
+ }
+ \tag{SP-5}
+\]
+together with corresponding bounds for the other fixed-$g_*$ packets.  No provider for (SP-5) is presently
+identified in this dossier.
+
+\begin{status}[First literal open]
+The exact smooth-parity packet (SP-2) occurs before a reduction to H8/H9 or QK56.  Therefore
+\[
+ \boxed{\texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45}}
+\]
+is the first literal analytic open exposed by the fixed-certificate census.  The parent FCL correlation remains
+open as well.
+\end{status}
+
+\section{Generic quadratic-Kummer bilinear estimate}\label{sec:kummer}
+
+Let $p$ be an odd prime, let $\chi_p$ be the quadratic character modulo $p$, and let
+$F\in\mathbf F_p[X]$ be a quadratic polynomial with nonzero discriminant.  Put
+\[
+ K(x):=\chi_p(F(x)).
+\]
+Let $(\alpha_m)$ be supported on an interval of length $M$ and let $(\beta_n)$ be supported on a positive
+interval of length $N<p$ whose elements are nonzero modulo $p$.
+
+\begin{proposition}[Quadratic-Kummer bilinear bound]\label{prop:kummer-bilin}
+With the notation above,
+\[
+ \boxed{
+ \left|\sum_{m,n}\alpha_m\beta_nK(mn)\right|^2
+ \ll p^{o(1)}\|\alpha\|_2^2\|\beta\|_2^2
+ \left[M+\left(\frac{M}{\sqrt p}+\sqrt p\right)N\right].}
+ \tag{Kum-1}
+\]
+The only analytic input is the classical Weil bound for the complete non-square quadratic-character sum,
+combined with standard completion for an interval.
+\end{proposition}
+\begin{proof}
+By Cauchy--Schwarz in $m$,
+\[
+ |S|^2\le\|\alpha\|_2^2
+ \sum_m\left|\sum_n\beta_nK(mn)\right|^2.
+\]
+After expansion, the inner correlation is
+\[
+ C(n_1,n_2):=\sum_{m\in I}K(mn_1)\overline{K(mn_2)}.
+\]
+Let $r_1,r_2$ be the two roots of $F$ in an algebraic closure.  The polynomial
+$F(n_1X)F(n_2X)$ is a square only when multiplication by $n_2/n_1$ preserves the unordered set
+$\{r_1,r_2\}$; this stabilizer has at most two elements.  For these exceptional ratios use the trivial bound
+$|C(n_1,n_2)|\le M$.  For all other pairs the complete character sum is non-square, and completion plus Weil
+gives
+\[
+ C(n_1,n_2)\ll p^{o(1)}\left(\frac{M}{\sqrt p}+\sqrt p\right).
+\]
+The stabilizer pairs contribute $O(M)\|\beta\|_2^2$.  For the remaining pairs use
+\[
+ \left(\sum_n|\beta_n|\right)^2\le N\|\beta\|_2^2.
+\]
+Substitution gives (Kum-1).
+\end{proof}
+
+Relative to the Cauchy-trivial scale $\sqrt{MN}\,\|\alpha\|_2\|\beta\|_2$, the saving factor is
+\[
+ p^{o(1)}\left(\frac1N+\frac1{\sqrt p}+\frac{\sqrt p}{M}\right)^{1/2}.
+ \tag{Kum-2}
+\]
+For a seven-prime packet use the labelled $5|2$ split
+\[
+ m=r_1\cdots r_5\asymp Y^5,\qquad n=r_6r_7\asymp Y^2.
+\]
+The labelled prime-box multiplicity is $Y^{o(1)}$, so
+\[
+ \|\alpha\|_2^2\ll Y^{5+o(1)},\qquad
+ \|\beta\|_2^2\ll Y^{2+o(1)}.
+\]
+If
+\[
+ Y^{5/2-o(1)}\le p\le Y^8,
+\]
+then (Kum-2) gives
+\[
+ \left(Y^{-2}+p^{-1/2}+p^{1/2}Y^{-5}\right)^{1/2}
+ \le Y^{-1/2+o(1)}=X^{-1/18+o(1)}
+\]
+for $X=Y^9$.
+
+\begin{status}[Generic Kummer backend: conditional child provider]
+The separated generic quadratic-Kummer spectrum has fixed-power capacity $X^{-1/18+o(1)}$ once a physical
+packet has been source-exactly reduced to this model.  It is therefore a useful conditional analytic child
+provider, not a proof of the fixed-certificate leakage family.  The repeated-root locus and isolated pure
+multiplicative-character modes remain in their separate degeneracy routers.
+\end{status}
+
+\section{The literal Gate-1B source-to-Kummer interface}\label{sec:source-kummer}
+
+The generic estimate above does \emph{not} by itself close H8 or H9.  The remaining literal theorem is:
+
+\begin{hypothesis}[H8/H9 source-to-Kummer]\label{hyp:source-kummer}
+Every actual H8/H9 packet, before source-enlarging inequalities are applied, is decomposed source-exactly into
+\[
+ \begin{cases}
+ \text{a generic separated quadratic-Kummer packet covered by Proposition~\ref{prop:kummer-bilin}},\\
+ \text{a principal/zero-mode packet},\\
+ \text{a repeated-root degeneracy packet},\\
+ \text{an isolated quadratic-character packet routed separately},
+ \end{cases}
+\]
+while preserving the physical prefactor, the $q,p,e$ ranges, coefficient norms, the once-only use of each
+M\"obius sign, labelled multiplicity, smooth/Mellin cost and source centering.
+\end{hypothesis}
+
+This is the exact interface denoted
+\[
+ \boxed{\texttt{H8H9-SOURCE-TO-KUMMER45}.}
+\]
+Thus the generic character estimate is not itself an open spectral wall.  The literal H8/H9 source-to-Kummer
+transcription remains an open Gate-1B child interface.  For the fixed-certificate 287 route, however, the
+smooth-parity packet in Section~\ref{sec:smooth-parity} occurs earlier and is not known to reduce to this child.
+
+\section{Corrected fixed-certificate 287 route}\label{sec:fixed-leakage}
+
+The fixed-certificate route is logically valid but its packet family is richer than the V11 first census
+anticipated.  Define the full leakage parent
+\[
+ \boxed{
+ \mathcal L_*(X)=
+ \sum_{n\in\mathcal U_*}
+ H_*(n)W(n/X)
+ [\Lambda(2n-1)+\Lambda(2n+1)-4B(n)].
+ }
+ \tag{287-FCL}
+\]
+We continue to denote the required parent estimate by
+\[
+ \boxed{\texttt{287-FIXED-CERTIFICATE-LEAKAGE45}.}
+\]
+The exact smooth-parity child (SP-2) is one literal component of this parent and is presently the first exposed
+analytic open.
+
+\begin{status}[Controlling interpretation]
+The fixed certificate removes the need for uniformity over arbitrary Ford certificates, but it does not remove
+the generated smooth small-prime factors, the truncated M\"obius parity detector, subset-product Type-II
+positions, Perron/Mellin factors, or the $u,v$ fragmentations.  Consequently there is not yet evidence that the
+fixed-$g_*$ route is analytically much shorter than the fixed-$g_*$ specialization of the generated-(7.23)
+route.
+\end{status}
+
+The shortest honest dependency graph is therefore
+\[
+\boxed{
+\begin{array}{c}
+\text{explicit Ford certificate }g_*+
+\text{fixed-certificate transference}\\
+\Downarrow\\
+\texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45}
++\text{other fixed-}g_*\text{ polytopal packets}\\
+\Downarrow\\
+\begin{cases}
+\text{source-exhaustive Full-Nine/QK/Gate regrouping},\\
+\text{or a genuinely new direct smooth-parity theorem}
+\end{cases}\\
+\Downarrow\\
+\texttt{287-FIXED-CERTIFICATE-LEAKAGE45}\\
++\ \text{Gate 0 / comparison / }N_2\\
+\Downarrow\\
+\text{positive affine prime mass}\\
+\Downarrow\\
+\text{287 finite blocker}\\
++\ \text{effectivity / finite bridge}\\
+\Downarrow\\
+\text{Erd\H{o}s Problem \#287}.
+\end{array}}
+\tag{287-fixed-DAG}
+\]
+The universal Full-Type-II route and the proof-specific generated-(7.23) route remain valid sufficient
+alternatives.  They are not mandatory merely as logical wrappers, but the fixed-$g_*$ route has not yet
+demonstrated a much smaller analytic core.
+
+\part{The exact 287 splice and what remains}
+
+\section{The universal 287 Full-Type-II specialization (alternative sufficient route)}
+
+A clean publication-safe sufficient theorem for 287 is
+\[
+ \boxed{
+ \sum_{\substack{(X/2)^{\varepsilon_*}<m\le X^{1/6-\varepsilon_*}\\X/2<mn\le X}}
+ \xi_m\kappa_n W(mn/X)
+ \bigl[\Lambda(2mn-1)+\Lambda(2mn+1)-4B(mn)\bigr]
+ \ll_A X(\log X)^{-A}}
+\tag{287-II}
+\]
+for all divisor-bounded $\xi_m,\kappa_n$.  This is $\SophieTI$.  Draft~V12 retains it as a clean sufficient alternative.  The fixed-certificate route
+removes the universal-over-certificates wrapper, but its literal smooth-parity census still contains a genuine
+parity-breaking family and therefore has not been shown analytically shorter than the relevant fixed-$g_*$
+generated specialization.
+
+A future Full-Type-II theorem can be used only after verifying all of the following, explicitly:
+\begin{enumerate}
+\item the physical affine forms are exactly $2n-1$ and $2n+1$;
+\item the comparison term is exactly $4B(n)$ with the local density proved above;
+\item the coefficient quantifiers are universal over divisor-bounded sequences;
+\item the lower endpoint is $(X/2)^{\varepsilon_*}$ and the upper exponent is $1/6-\varepsilon_*$ at the \emph{same fixed compatible} $\varepsilon_*$ from Hypothesis~\ref{hyp:epsstar};
+\item the smooth support $W$ is permitted without changing the theorem class;
+\item no M\"obius sign, Gauss factor, spectral saving, or fixed-power margin is used twice.
+\end{enumerate}
+
+Gate 1A is not logically mandatory for this splice.  If Full Type II is proved directly from Gate-1B plus other
+packets, Gate 1A may remain an auxiliary theorem.  If Gate 1A is used, its scale dictionary and all five source
+hypotheses must be supplied.
+
+
+The universal estimate (287-II) remains the clean publication-safe sufficient socket.  If the proof-specific
+Ford--Maynard route in Section~\ref{sec:fm-structured} is completed, one may instead seek a narrower 287 theorem
+for only the generated coefficient pairs used by the sieve proof.  That replacement is legitimate only after a
+287-specific version of $C_{\rm FM}$ certifies that every grouped coefficient pair produced from
+\[
+ W(n/X)\,[\Lambda(2n-1)+\Lambda(2n+1)-4B(n)]
+\]
+belongs to the proved generated grammar.  The pair-modulus Gate-1B theorem (1B-FMPM45) is a candidate provider
+for this narrower route, but neither the grammar certificate nor the pair-modulus theorem is currently proved.
+
+\section{From the sieve lower bound to an interior Sophie witness}
+
+Assume Gate 0, the $N_2$ replacement and $\SophieTI$.  Gate 2 yields
+\[
+ \sum_{q\ \mathrm{prime}}W(q/X)
+ \bigl(\Lambda(2q-1)+\Lambda(2q+1)\bigr)
+ \gg_W\frac X{\log X}.
+\tag{287-mass}
+\]
+Proper prime powers among $2q\pm1$ contribute only
+$O(X^{1/2}(\log X)^{O(1)})=o(X/\log X)$, so (287-mass) forces a genuine prime $q$ in the support for which at
+least one of $2q\pm1$ is prime.  Corollary~\ref{cor:landing} then excludes every sufficiently large counterexample.
+
+\section{Effectivity and the finite remainder}
+
+A sufficiently-large contradiction is not yet a complete solution.  One must make effective every threshold
+used in:
+\begin{itemize}
+\item weighted maximal Bombieri--Vinogradov / progression estimates;
+\item the comparison-sequence asymptotics;
+\item the two-linear-form upper sieve and prefix-volume bounds;
+\item the Ford--Maynard lower-bound constant at the chosen $\varepsilon$;
+\item the smooth partitions and all $o(1)$ terms in the source compilers.
+\end{itemize}
+Let $M_0$ be the resulting computable threshold.  Below $M_0$, it is unnecessary to enumerate all subsets.
+A single Sophie witness $q$ certifies a whole interval of $M$ satisfying the blocker inequalities.  The finite
+certificate can therefore be a list
+\[
+ (q_i,p_i,[L_i,U_i])
+\]
+whose intervals cover the required range, with the deeper finite obstruction bank used only on uncovered values.
+
+\section{Full theorem-by-theorem closure ledger}
+
+\begin{longtable}{p{0.27\textwidth}p{0.18\textwidth}p{0.46\textwidth}}
+\toprule
+Statement & Status & Exact remaining obligation\\
+\midrule
+\endfirsthead
+\toprule
+Statement & Status & Exact remaining obligation\\
+\midrule
+\endhead
+Half-range placement & proved here & none\\
+Top-layer congruence & proved here & none\\
+Isolated-hole lemma & proved here & none\\
+$\pm$ Sophie finite blocker & proved here & none\\
+Fixed band $M\ge9$ and $q>3$ & proved here & none; strict endpoint in $q^2>M$ checked explicitly\\
+Comparison mean $B(dm)$ & proved here & none\\
+FM conditions (I),(II),(w),(b.1),(b.2),(4.1) & published definitions & application must satisfy them literally\\
+FM $1/6$ central/bounded geometry & published theorem & ordinary unshrunk and bounded shrunk classes kept distinct\\
+Gate-0 (b.1) / prime mass & derived here from PNT & make constants/source citation explicit\\
+Gate-0 (w) & elementary PASS & $B(n)\ll\log\log(3n)$ gives $\sum|w|\tau\ll X(\log X)^2$\\
+Gate-0 (b.2) & standard analytic reduction & write uniform multivariate-PNT proof/reference\\
+Gate-0 Type I & source theorem needed & exact weighted maximal BV + comparison progression error\\
+Gate-1A determinant / BPP finite mechanism & proved conditionally from displayed inputs & none in the finite algebra\\
+Gate-1A PB transport & open source theorem & prove (1A-PB), ceiling and bridge\\
+Gate-1A fixed-state exclusion & open source theorem & prove polynomial-height exclusion dictionary\\
+Gate-1A outer-root pin & open source theorem & prove physical energy identification (1A-root-pin)\\
+Gate-1A projective/diagonal bound & strong open source theorem & prove target-scale diagonal/projective bound (1A-diag)\\
+Gate-1A recombination & open source theorem & prove literal (1A-rec)\\
+Gate-1A canonical theorem & conditional theorem & follows when five preceding pins are supplied\\
+Gate-1B low/medium conductor & research derivation & retain source-normalisation pins\\
+Gate-1B source split / spent $\mu(e)$ & exact algebra & none on clean squarefree sector\\
+Gate-1B character collapse & proved here & none\\
+Gate-1B hybrid Poisson / projector & proved here at displayed algebraic level & literal source conventions must match\\
+Gate-1B H7 fixed-power repair & conditional proof & source norm Hypothesis~\ref{hyp:H7norm}\\
+Gate-1B historical H7 log target & historical open target & superseded as sole controlling frontier by the late short-short/source split\\
+Gate-1B H8 short-short & research capacity / source pin open & same $X^{-1/18}$ capacity audit; robustness/source theorem still required\\
+Full-Nine / H9 shifted parent & source-linked shifted child open & recover literal cyclic $TT^*$ source, then prove SHIFT-SOURCE-LINKED-CHAR45\\
+QK56 full covariance & internal analytic pass modulo source pins & same-$q$ cross-character margin $X^{-5/36+o(1)}$; cross-$q$ spread transcription pending\\
+Gate-0 physical source $a_x,b_{x,z},w_{x,z}$ & written explicitly & source-to-FM normalization / analytic inputs\\
+Gate-0 finite local density / Euler product & proved here & infinite-product and asymptotic source pins only where used\\
+Gate-0 E-separation / CRT / shift / covariance & proved here & no analytic saving claimed\\
+Gate-0/1 fixed determinant and Gauss reassembly & proved here & non-unit/gcd strata require separate routing\\
+Gate-1B determinant-2 front algebra & proved here & generic HFMV analytic estimate still separate\\
+F1 global centering & proved here & correct physical main-term identification remains source dependent\\
+F1 routable migration & conditional & must exhaust all long-M\"obius pieces\\
+F2 full family & open & PP/PN/NP/NN plus composite/gcd reassembly; NN tensor open\\
+F3 routed fixed-depth sector & conditional / partial & two-outer kernel and remaining source families prevent Full F3\\
+Full F1/F2/F3 assembly & open & prove (F123-assemble) and source-exhaustive census\\
+Source-exhaustive universal Full Type II & open sufficient wrapper & prove Hypothesis~\ref{hyp:FullFM} plus packet census\\
+FM-SIEVEGEN-TYPEII45 & proof-specific open interface & prove Hypothesis~\ref{hyp:FMSieveGen} for every actual generated (7.23) instance\\
+FM-PERRON-GENERATED-TYPEII45 & proof-specific sufficient target; grammar/source certificate open & fixed-depth grammar archaeology passed internally\\
+SOURCE-ADAPTER45 / FM-to-Gate coordinate census & primary source interface open & print every physical packet, ranges, weight law, multiplicity, prefactor, target and route\\
+Ford--Maynard replacement certificate $C_{\rm FM}$ & open finite/source theorem & after the source adapter, certify every generated Type-II invocation and transformation\\
+FM rough-support identity & published theorem & exact source instantiation\\
+$\Omega(n)\le6$ & proved here & none\\
+FM five-collar geometry & published-source pass & no new geometric theorem required\\
+$N_2$ squareful rough lane & elementary pass & negligible by (N2-squareful)\\
+$N_2$ collar two-form lane & research pass modulo standard upper sieve & prove Hypothesis~\ref{hyp:N2cell} uniformly for the physical source\\
+Aggregate $N_2$ replacement & source-specific open splice & instantiate collar sieve + comparison side uniformly at fixed $\varepsilon_*$\\
+Source-specific FM-8.2 replay & conditional theorem proved here & ordinary FM machinery + direct $N_2$ replacement; no direct use of $C^-_{\rm bd}$\\
+Compatible $\varepsilon_*$ & open compatibility gate & prove Hypothesis~\ref{hyp:epsstar} at one fixed positive epsilon\\
+Gate-2 endgame & corrected conditional theorem & Gate 0 + rough $N_2$ + compatible fixed epsilon + either universal Full Type II or certified proof-specific replacement\\
+Repaired log-cofactor placement & proved here & abstract supply must include $M\le2x$ as well as $x+1\le M$\\
+Log-cofactor threshold asymptotic & proved here & only the simultaneous adjacent large-factor supply remains open on that route\\
+Explicit fixed certificate $g_*$ & published/source PASS & effectiveness of a convenient decimal $\varepsilon_*$ remains separate\\
+Fixed-certificate transference & proved here & total correlation + leakage + $N_2$ error + positive comparison margin\\
+Smooth-parity fixed-certificate packet & FIRST LITERAL ANALYTIC OPEN & prove a certificate-compatible saving for (SP-2)\\
+Finite H8/H9-only census & FAIL & higher balanced defect orders occur literally by (SP-3)\\
+Generic quadratic-Kummer bilinear backend & conditional child provider & gives $X^{-1/18+o(1)}$ only after source-exact reduction\\
+H8/H9 source-to-Kummer & open child/source theorem & relevant to H8/H9 packets but not exhaustive for fixed leakage\\
+287 fixed-certificate leakage & open parent correlation & bound all fixed-$g_*$ packets, including smooth parity\\
+All-generated-(7.23) census $+C_{\rm FM}$ & alternative sufficient route & fixed-$g_*$ specialization may still be needed to treat smooth small-prime packets\\
+287 universal Type-II specialization & open alternative sufficient route & prove (287-II) only if using the universal/full-Type-II path\\
+Effectivity & open & compute all thresholds\\
+Finite remainder & finite task & interval-cover certificates below $M_0$\\
+\bottomrule
+\end{longtable}
+
+\section{End-to-end dependency graph}
+
+\begin{center}
+\fbox{\begin{minipage}{0.92\textwidth}
+\centering
+\textbf{Corrected fixed-certificate 287 route}\par
+explicit Ford certificate $g_*$
+$+$ fixed-certificate transference\par
+$\Downarrow$\par
+\texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45}
+$+$ other fixed-$g_*$ packets\par
+$\Downarrow$\par
+\texttt{287-FIXED-CERTIFICATE-LEAKAGE45}
+$+$ Gate 0/comparison/$N_2$\par
+$\Downarrow$\par
+positive affine prime mass\par
+$\Downarrow$\par
+interior Sophie witness\par
+$\Downarrow$\par
+287 finite blocker\par
+$\Downarrow$\par
+no sufficiently-large counterexample\par
+$+$ effectivity $+$ finite certificates\par
+$\Downarrow$\par
+\textbf{Erd\H{o}s Problem \#287.}
+\end{minipage}}
+\end{center}
+
+The Gate-1B generic high-order backend now has the separate internal chain
+\[
+\begin{array}{c}
+ \text{actual H8/H9 source}\\
+ \Downarrow\ \texttt{H8H9-SOURCE-TO-KUMMER45}\\
+ \text{generic quadratic-Kummer packet}\\
+ \Downarrow\ \text{Proposition~\ref{prop:kummer-bilin}}\\
+ X^{-1/18+o(1)}\text{ saving}.
+\end{array}
+\]
+plus the explicit zero/principal and degeneracy routers.  This is relevant both to the Twin-Prime programme and
+to any fixed-certificate leakage decomposition that produces those packets.
+
+\paragraph{Alternative sufficient routes.}
+The longer programme remains mathematically valid and important:
+\[
+\begin{array}{c}
+ \text{Gate 0 + Gate 1A + Gate 1B + F1/F2/F3}\\
+ +\ \texttt{SOURCE-ADAPTER45}\\[1mm]
+ \Downarrow\\[1mm]
+ \FullFM\\
+ \text{or a certified }C_{\rm FM}+\mathrm{FM\!\mbox{-}SIEVEGEN\!\mbox{-}TYPEII45}.
+\end{array}
+\]
+followed by the corrected rough-$N_2$ Gate-2 replay.  Draft~V12 no longer treats completion of this whole
+wrapper as logically mandatory for Problem~\#287 once the fixed-certificate route is available.
+
+\section{What this document claims and does not claim}
+
+The finite unit-fraction part through Corollary~\ref{cor:landing} is written as a complete mathematical proof.
+The comparison mean is also proved.  The Ford--Maynard theorem statements are external published inputs.
+Gate 0 is written from its physical shifted-prime detector through local densities, centering, CRT, fixed-shift
+determinants and the exact Ford--Maynard sequence conditions.  Gate 1A is a conditional theorem whose complete
+current mechanism and five load-bearing source hypotheses are displayed.  Gate 1B includes the determinant-2 and HFMV front algebra, the historical H7 dual-determinant repair, the late
+H7 short-short $X^{-1/18}$ conditional compiler, the H8 capacity audit, the full $4/9$ complement routing, the
+Full-Nine shifted-quotient parent, the QK56 covariance parent, the canonical zero-mode pass and the moving
+pair-modulus source-multiplier frontier.  The F1/F2/F3 assembly preceding universal Full Type II is written out
+separately, and the later Ford--Maynard proof audit adds a second, proof-specific structured Type-II entrance
+which remains conditional on the literal SOURCE-ADAPTER45 packet dictionary and a complete replacement certificate.  Gate 2 is a corrected conditional theorem: the dossier replays the Ford--Maynard Theorem-8.2 decomposition
+for the ordinary class and replaces the pointwise-bounded $N_2$ step by an explicit source-specific open lemma.
+It does not apply bounded-class positivity directly to the unbounded 287 source.
+Accordingly this dossier is designed to make the remaining mathematical work auditable; it is not a proof that
+the remaining hypotheses hold.
+
+Draft~V12 additionally pins the explicit Ford certificate, writes its literal arithmetic weight,
+proves the corrected fixed-certificate transference identity with the $N_2$ error separated, and exhibits an
+exact smooth-parity child of the leakage family.  Balanced squarefree cells prove that the fixed census is not
+H8/H9-only.  The generic quadratic-Kummer backend with $X^{-1/18+o(1)}$ capacity is retained only as a
+conditional child provider.  The document does not claim the H8/H9 source-to-Kummer transcription, the
+smooth-parity estimate, the full fixed-certificate leakage estimate, or Problem~\#287.
+
+\section{Draft V12 corrected Gold-pivot delta}
+
+Relative to Draft~V11, the controlling corrections are:
+\begin{enumerate}
+\item The fixed Ford certificate is no longer abstract: the dossier records the explicit central $g_0$, the
+shrunk fixed $g_*$, the positive certificate constant $C_*(\varepsilon_*)$, and the literal arithmetic weight
+$H_*$.
+\item The transference theorem is corrected to separate the main composite region $\mathcal N_1$ from the
+exceptional collar $\mathcal N_2$.  Total correlation, fixed leakage and the $N_2$ source error are distinct
+antecedents.
+\item Arbitrary-log leakage saving is no longer presented as logically necessary.  A sufficiently strong
+certificate-margin constant saving is enough for positivity.
+\item The expectation
+\[
+ \text{fixed leakage}\longrightarrow
+ \{\mathrm{H8/H9},\mathrm{QK56},\mathrm{1A},\mathrm{direct}\}
+\]
+is withdrawn.  The exact $k=0$, $J=\varnothing$ cell gives the smooth-parity packet (SP-2).
+\item Balanced squarefree $k$-prime cells give
+\[
+ H_*(n)=(-1)^r\binom{k-1}{r}\ne0,
+ \qquad r=\lfloor k\gamma_*\rfloor,
+\]
+so orders $10,11,12,\ldots$ occur literally.  Hence
+\texttt{FINITE-H8/H9-ONLY-CENSUS: FAIL}.
+\item \texttt{287-FIXED-CERTIFICATE-SMOOTH-PARITY45} is the first literal analytic open exposed by the
+fixed-certificate census.  The parent \texttt{287-FIXED-CERTIFICATE-LEAKAGE45} remains open.
+\item The seven-prime Kummer estimate remains useful with $X^{-1/18+o(1)}$ capacity, but only as a conditional
+analytic provider after source-exact reduction.  It does not close the smooth-parity packet.
+\item The fixed-certificate pivot remains logically valid, but the dossier no longer claims evidence that it is
+analytically much shorter than the fixed-$g_*$ generated-(7.23) route.
+\item All prior safeguards remain in force: the repaired log-cofactor placement, ordinary/bounded
+Ford--Maynard firewall, source-specific $N_2$ replacement, fixed compatible $\varepsilon_*$, Gate-1A source
+pins, Gate-1B provenance, effectivity and finite completion.
+\end{enumerate}
+
+\begin{thebibliography}{18}
+\bibitem{ErGr80}
+P. Erd\H{o}s and R. L. Graham,
+\emph{Old and New Problems and Results in Combinatorial Number Theory},
+Monographies de L'Enseignement Math\'ematique, 1980, p.~33.
+
+\bibitem{Va99}
+Various authors,
+\emph{Some of Paul's Favorite Problems},
+booklet for the conference ``Paul Erd\H{o}s and his mathematics'', Budapest, July 1999, Problem~1.15.
+
+\bibitem{FM24}
+K. Ford and J. Maynard,
+\emph{On the Theory of Prime-Producing Sieves}, arXiv:2407.14368 (2024).
+
+\bibitem{Hux72}
+M. N. Huxley,
+\emph{On the Difference between Consecutive Primes}, Invent. Math. 15 (1971/72), 164--170.
+
+\bibitem{Zyg02}
+A. Zygmund, \emph{Trigonometric Series}, 3rd ed., Cambridge University Press, 2002.
+
+\bibitem{BC18}
+S. Bettin and V. Chandee,
+\emph{Trilinear Forms with Kloosterman Fractions}, Adv. Math. 328 (2018), 1234--1262.
+
+\bibitem{Wri26}
+T. Wright,
+\emph{Trilinear Kloosterman Fractions I: Partially Fixed Moduli and Unbalanced Convolutions},
+arXiv:2604.25177 (2026).
+
+\bibitem{BP26}
+V. Blomer and A. Pascadi,
+\emph{Bilinear Forms with Kloosterman Sums via Quadratic Characters},
+arXiv:2607.24311 (2026).
+
+\bibitem{Pas25}
+A. Pascadi,
+\emph{Non-Abelian Amplification and Bilinear Forms with Kloosterman Sums},
+arXiv:2511.08445 (2025).
+\bibitem{FS22}
+E. Fouvry and I. E. Shparlinski,
+\emph{On Character Sums with Determinants}, arXiv:2210.15761 (2022).
+
+\bibitem{Shp13}
+I. E. Shparlinski,
+\emph{Multiple Exponential and Character Sums with Monomials}, arXiv:1309.0324 (2013).
+
+\bibitem{BG12}
+J. Bourgain and M. Z. Garaev,
+\emph{Sumsets of Reciprocals in Prime Fields and Multilinear Kloosterman Sums}, arXiv:1211.4184 (2012).
+
+\bibitem{FKMS25}
+E. Fouvry, E. Kowalski, P. Michel and W. Sawin,
+\emph{Bilinear Forms with Trace Functions}, arXiv:2511.09459 (2025).
+\end{thebibliography}
+
+\end{document}

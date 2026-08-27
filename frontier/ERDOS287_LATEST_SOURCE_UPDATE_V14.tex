@@ -1,0 +1,292 @@
+\clearpage
+\section*{Controlling V14 source update: exact Vaughan affine-prime source}
+\addcontentsline{toc}{section}{Controlling V14 source update: exact Vaughan affine-prime source}
+
+\noindent\textbf{Publication/status firewall.}
+This update supersedes the older controlling-frontier labels in the underlying Draft~13 wherever they conflict.
+It does not alter the finite Lean theorem and it does not claim Erd\H{o}s Problem~\#287 solved.  The purpose is to
+replace the previously over-broad determinant-one source model by the literal source obtained from
+$\Lambda(2mn\pm1)$ itself.
+
+\medskip
+\noindent The controlling research ledger is now
+\[
+\boxed{\begin{array}{ll}
+\texttt{FORD-GENERATED-DEPTH-N0-287} & \mathrm{PASS},\quad N_0=112,\\
+\text{fixed-}g_*\text{ depth} & N_0=76,\\
+\text{$k=0$ smooth depth} & 40,\\
+\texttt{AFFINE287-DET1-HYBRID-MQ45} & \mathrm{SUPERSEDED\ AS\ CONTROLLING\ SOURCE},\\
+\texttt{AFFINE287-VAUGHAN-PRIME-SOURCE45} & \mathrm{PASS},\\
+\texttt{AFFINE287-VAUGHAN-PRIMEPOWER45} & \mathrm{PASS},\\
+\texttt{VAUGHAN-COFACTOR-WELLFACTORABLE45} & \mathrm{FALSE\ (literal\ no\!\!-\!go)},\\
+\texttt{SINGLETON-TO-GATE1A-DIRECT45} & \mathrm{FAIL},\\
+\texttt{SINGLETON-TO-NATIVE-QK56-DIRECT45} & \mathrm{NO\ LITERAL\ DICTIONARY},\\
+\texttt{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45} & \mathbf{FIRST\ TRUE\ ANALYTIC\ OPEN},\\
+\texttt{FCL} & \mathrm{OPEN},\\
+\text{Erd\H{o}s \#287} & \mathrm{OPEN}.
+\end{array}}
+\tag{V14.1}
+\]
+
+\subsection*{1. Fixed-depth Ford source}
+Set
+\[
+\nu_0=\frac{16623}{100000},\qquad
+0<\varepsilon_*<\frac{\nu_0}{100},\qquad
+\sigma=\nu_0-2\varepsilon_*.
+\]
+Then $\sigma>0.98\nu_0=0.1629054$.  The Ford--Maynard fragmentation bound gives at most
+$\lfloor 3/\sigma\rfloor+2\le20$ pieces on each smooth side.  For the general source,
+$k\le\lfloor1/\sigma\rfloor\le6$, while with
+$\gamma=1/2-\varepsilon_*$ one has
+\[
+\ell=6\left\lceil\frac1{1-\gamma}\right\rceil=12.
+\]
+Hence a safe fixed depth is
+\[
+\boxed{N=k\ell+r+s\le6\cdot12+20+20=112.}
+\tag{V14.2}
+\]
+For the pinned fixed certificate $g_*$ the high-prime dimension is at most three, giving $N\le76$;
+for the present $k=0$ smooth packet, $N\le40$.  Thus no unbounded-convolution-depth premise is hidden in the
+source decomposition.
+
+\subsection*{2. Exact affine Vaughan decomposition}
+For arithmetic functions define
+\[
+\mu_{\le U}(d)=\mu(d)\mathbf1_{d\le U},\qquad
+\mu_{>U}=\mu-\mu_{\le U},
+\]
+\[
+\Lambda_{\le V}(e)=\Lambda(e)\mathbf1_{e\le V},\qquad
+\Lambda_{>V}=\Lambda-\Lambda_{\le V}.
+\]
+Using $\log=\Lambda*1$ and $\mu*1=\varepsilon$, the exact identity is
+\[
+\boxed{
+\Lambda=\Lambda_{\le V}+\mu_{\le U}*\log
+-\mu_{\le U}*\Lambda_{\le V}*1
++\mu_{>U}*\Lambda_{>V}*1.}
+\tag{V14.3}
+\]
+For
+\[
+L_s=2mn+s,\qquad s\in\{-1,+1\},
+\]
+and $U=V=X^{1/3}$, the large-$X$ affine prime source therefore splits as
+\[
+\Lambda(L_s)=\mathcal I_1(L_s)+\mathcal I_2(L_s)+\mathcal{II}(L_s),
+\tag{V14.4}
+\]
+where
+\[
+\mathcal I_1(L_s)=\sum_{\substack{d\mid L_s\\d\le U}}\mu(d)\log\frac{L_s}{d},
+\tag{V14.5}
+\]
+\[
+\mathcal I_2(L_s)=-\sum_{\substack{der=L_s\\d\le U,\ e\le V}}\mu(d)\Lambda(e),
+\tag{V14.6}
+\]
+and
+\[
+\boxed{
+\mathcal{II}(L_s)=\sum_{\substack{der=L_s\\d>U,\ e>V}}\mu(d)\Lambda(e).}
+\tag{V14.7}
+\]
+This is the literal affine-prime source.  The historical shifted-M\"obius/F3 object
+$\sum\alpha_m\beta_n\mu(mn+2)$ is not used as a surrogate for $\Lambda(2mn\pm1)$.
+
+\subsection*{3. Proper prime powers are negligible}
+In (V14.7), separate $e=p^j$, $j\ge2$.  Fixed source depth and divisor multiplicity cost only
+$X^{o(1)}$, so
+\[
+\mathcal E_{\rm pp}
+\ll X^{o(1)}\sum_{\substack{p^j>V\\j\ge2}}
+\left(\frac{X}{p^j}+1\right)
+\ll X^{5/6+o(1)},
+\tag{V14.8}
+\]
+for $V=X^{1/3}$, with higher powers smaller.  Thus the proper-prime-power child has relative margin
+$X^{-1/6+o(1)}$ and is negligible on the $X/\log X$ scale.
+
+\subsection*{4. The source-exact prime-outer packet}
+The hard part is $e=p$ prime.  On dyadic cells
+\[
+d\asymp D,\quad p\asymp P,\quad r\asymp R,
+\quad D,P>X^{1/3-o(1)},\quad DPR\asymp X,\quad R<X^{1/3+o(1)},
+\]
+with
+\[
+MN\asymp X,\qquad X^{\sigma/3}<M\le X^\sigma<X^{1/6},
+\]
+the literal source is
+\[
+\boxed{\begin{aligned}
+\mathcal V_{\pi,s}(D,P,R)
+={}&\sum_{\substack{m\sim M,\ n\sim N\\d\sim D,\ p\sim P,\ r\sim R\\dpr=2mn+s}}
+\xi_\pi(m)\kappa_\pi(n)\mu(d)(\log p)
+W_{\pi,s}(m,n,d,p,r)\\
+&-\mathfrak M_{\pi,s}(D,P,R).
+\end{aligned}}
+\tag{V14.9}
+\]
+Here $\mathfrak M_{\pi,s}$ is the comparison-sequence local-density packet derived from the same source
+partition; it is not an independently chosen normalizing constant.
+
+Folding $q=dr$, define
+\[
+\lambda_U(q)=\sum_{\substack{dr=q\\d>U}}\mu(d).
+\tag{V14.10}
+\]
+Then
+\[
+\boxed{\begin{aligned}
+\mathcal V_{\pi,s}(Q,P)
+={}&\sum_{\substack{m\sim M,\ n\sim N\\q\sim Q,\ p\sim P\\qp=2mn+s}}
+\xi_\pi(m)\kappa_\pi(n)\lambda_U(q)(\log p)W_{\pi,s}
+-\mathfrak M_{\pi,s}(Q,P),
+\end{aligned}}
+\tag{V14.11}
+\]
+where $QP\asymp X$ and $X^{1/3}\ll Q,P\ll X^{2/3}$.  Since
+$\sum_{d\mid q}\mu(d)=0$ for $q>1$,
+\[
+\boxed{\lambda_U(q)=-\sum_{\substack{d\mid q\\d\le U}}\mu(d)\qquad(q>U).}
+\tag{V14.12}
+\]
+Thus the modulus/cofactor weight is a coherent truncated M\"obius divisor sum, not an arbitrary divisor-bounded
+weight.
+
+\subsection*{5. Determinant-one prime parametrisation}
+The equation
+\[
+qp-2mn=s
+\tag{V14.13}
+\]
+implies
+\[
+(q,2m)=(p,n)=(q,n)=(p,m)=1.
+\tag{V14.14}
+\]
+For fixed $q,m$, choose one solution $qp_0-2mn_0=s$.  Then every integer solution is
+\[
+\boxed{p=p_0+2mt,\qquad n=n_0+qt.}
+\tag{V14.15}
+\]
+Hence the genuine analytic content is a source-matched version of
+\[
+\boxed{
+\sum_{q,m}\lambda_U(q)\xi_\pi(m)
+\sum_{t\in I_{q,m}}
+\log(p_0+2mt)\,\mathbf1_{p_0+2mt\ \mathrm{prime}}
+\,\kappa_\pi(n_0+qt),}
+\tag{V14.16}
+\]
+minus its literal comparison main term.
+
+\subsection*{6. Prime-modulus M\"obius two-outer orientation}
+Keeping $p$ as modulus gives the source-exact two-outer packet
+\[
+\boxed{\begin{aligned}
+\mathcal R^{(2)}_{\pi,s}(P;D,R)
+={}&\sum_{p\sim P}(\log p)
+\sum_{\substack{m\sim M,\ n\sim N\\2mn\equiv-s\pmod p}}
+\xi_\pi(m)\kappa_\pi(n)\,
+\Delta^{\mu,1}_{D,R}\!\left(\frac{2mn+s}{p}\right)
+-\mathfrak M_{\pi,s},
+\end{aligned}}
+\tag{V14.17}
+\]
+where
+\[
+\boxed{
+\Delta^{\mu,1}_{D,R}(u)
+=\sum_{\substack{dr=u\\d\sim D,\ r\sim R}}
+\mu(d)W_D(d)W_R(r).}
+\tag{V14.18}
+\]
+The modulus $p$ is prime, the first quotient outer is a M\"obius block, the second is a model block, and the
+affine residue is the fixed unit $-s\overline2\pmod p$.
+
+This establishes a structural intersection with the Gate-1B two-outer/F3 frontier, but not a pre-existing
+closed provider theorem.  The current analytic target is therefore
+\[
+\boxed{\texttt{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45}.}
+\tag{V14.19}
+\]
+A sufficient estimate is
+\[
+\boxed{|\mathcal R^{(2)}_{\pi,s}|=o(X/\log X),}
+\tag{V14.20}
+\]
+or a sufficiently small fixed constant multiple compatible with the fixed-certificate positivity margin.
+The presently available general estimate is only $X(\log X)^{O(1)}$.
+
+\subsection*{7. Two exact provider no-go statements}
+First, $\lambda_U$ is not a well-factorable modulus weight in the required literal sense.  For a prime
+$\ell>U$, $\lambda_U(\ell)=\mu(\ell)=-1$.  A dyadic well-factorable decomposition at a balanced level would
+force the convolution to vanish at primes in the top dyadic interval because neither short factor can support
+$\ell$.  Thus
+\[
+\boxed{\texttt{VAUGHAN-COFACTOR-WELLFACTORABLE45: FALSE}.}
+\tag{V14.21}
+\]
+Consequently well-factorable AP theorems do not directly fill the actual $\lambda_U$ socket.
+
+Second, the canonical Gate-1A row has determinant $2k$ with $k\in\mathbb Z$, whereas the affine Vaughan packet
+has determinant $s=\pm1$.  A direct identification would require $2k=s$, hence $k=\pm1/2$.  Therefore
+\[
+\boxed{\texttt{SINGLETON-TO-GATE1A-COMMONWEIGHT: DIRECT\ LITERAL\ ADAPTER\ FAILS}.}
+\tag{V14.22}
+\]
+This excludes only the existing canonical Gate-1A dictionary, not a future odd-determinant variant.
+
+\subsection*{8. Remaining sibling/source obligations}
+The Vaughan ``Type-I'' siblings (V14.5)--(V14.6) still carry the generated quotient coefficient
+$\kappa_\pi(n)$, so their name does not make them automatic consequences of the earlier Gate-0 Type-I theorem.
+The first source/standard adapter pin remains
+\[
+\boxed{\texttt{VAUGHAN-TYPEI-GENERATED-KAPPA45}.}
+\tag{V14.23}
+\]
+Comparison-side Vaughan matching is likewise a source pin.  Direct native QK56 identification has not been
+established.
+
+\subsection*{9. Current closure graph}
+\[
+\boxed{\begin{array}{c}
+\text{fixed }g_*+k=0\text{ leakage}+\text{singleton fragmentation}\quad\mathbf{PASS}\\
+\Downarrow\\
+\text{exact affine Vaughan decomposition}\quad\mathbf{PASS}\\
+\Downarrow\\
+\begin{cases}
+\text{proper prime-power outer} & \mathbf{NEGLIGIBLE},\\
+\text{Vaughan Type-I generated-}\kappa & \mathbf{SOURCE/STANDARD\ OPEN},\\
+\text{prime outer }p+\mu\text{-quotient} & \mathbf{FRONTIER},
+\end{cases}\\
+\Downarrow\\
+\boxed{\texttt{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45}}\\
+\Downarrow\\
+k=0\text{ smooth-parity packet closed}\\
+\Downarrow\\
+\text{remaining actual fixed-}g_*\text{ packets}\\
+\Downarrow\\
+\texttt{FCL-CLOSED}+\text{comparison}/N_2/\varepsilon_*\\
+\Downarrow\\
+\text{positive affine prime mass}\\
+\Downarrow\\
+\texttt{WindowPairSupply}/\text{finite Lean compiler}\\
+\Downarrow\\
+\text{Erd\H{o}s Problem \#287}.
+\end{array}}
+\tag{V14.24}
+\]
+
+\begin{center}
+\fbox{\parbox{0.91\textwidth}{\textbf{Controlling verdict.}
+The first source-exact analytic obstruction is no longer a vague generated Type-II theorem and no longer the
+over-broad generic determinant hybrid.  It is the prime-modulus, one-M\"obius-outer, one-model-outer affine
+packet \texttt{AFFINE287-PRIME-MODULUS-MU-TWOOUTER45}.  The $k=0$ packet, FCL, the large-$M$ bridge and
+Erd\H{o}s~\#287 remain open.}}
+\end{center}
+\clearpage

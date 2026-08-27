@@ -1,17 +1,12 @@
-name: Build public review PDF
+name: Build clean Erdos 287 public review V16
 
 on:
   push:
     branches: [main]
     paths:
-      - '.public-review-src/draft13.tex.gz.b64.part00'
-      - '.public-review-src/draft13.tex.gz.b64.gap00'
-      - '.public-review-src/draft13.tex.gz.b64.part01'
-      - '.public-review-src/draft13.tex.gz.b64.part02'
-      - '.public-review-src/draft13.tex.gz.b64.part03'
-      - '.public-review-src/references_draft13.bib.gz.b64'
-      - 'frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex'
-      - 'frontier/ERDOS287_LATEST_BALANCED7_UPDATE_V15.tex'
+      - '.v16-src/v16_bundle.tar.gz.b64.part00'
+      - '.v16-src/v16_bundle.tar.gz.b64.part01'
+      - '.v16-src/v16_bundle.tar.gz.b64.part02'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -25,70 +20,74 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct Draft 13 base sources
+      - name: Preserve V15 patch stack and reconstruct V16 source
         shell: bash
         run: |
+          set -euo pipefail
+          mkdir -p archive
+          if [ ! -e archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf ]; then
+            cp ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf \
+              archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf
+          fi
+          if [ ! -e archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex ]; then
+            cp PUBLIC_REVIEW_DRAFT15.tex \
+              archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex
+          fi
           cat \
-            .public-review-src/draft13.tex.gz.b64.part00 \
-            .public-review-src/draft13.tex.gz.b64.gap00 \
-            .public-review-src/draft13.tex.gz.b64.part01 \
-            .public-review-src/draft13.tex.gz.b64.part02 \
-            .public-review-src/draft13.tex.gz.b64.part03 \
-            | base64 --decode | gzip --decompress --stdout \
-            > PUBLIC_REVIEW_DRAFT13_BASE.tex
-          base64 --decode .public-review-src/references_draft13.bib.gz.b64 \
-            | gzip --decompress --stdout \
-            > references_draft13.bib
-          echo '70f3eba90346c15a99a7428831c47872b7f3b9b5dd5b46c0046b79401011c8b7  PUBLIC_REVIEW_DRAFT13_BASE.tex' | sha256sum -c -
-          echo '87acd67f6f0c7e1c7a4924c7298e432375996412388fb5ed076fe3916b5cd088  references_draft13.bib' | sha256sum -c -
+            .v16-src/v16_bundle.tar.gz.b64.part00 \
+            .v16-src/v16_bundle.tar.gz.b64.part01 \
+            .v16-src/v16_bundle.tar.gz.b64.part02 \
+            | base64 --decode > /tmp/v16_bundle.tar.gz
+          echo '0a95265c3f620099889d5ed1302e219f4b35add6839a9025fbabb51f6bc63f2c  /tmp/v16_bundle.tar.gz' \
+            | sha256sum -c -
+          tar -xzf /tmp/v16_bundle.tar.gz -C .
+          test -s ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
+          test -s ERDOS287_V16_CLEAN_CONSOLIDATION_AUDIT.md
+          test -s ERDOS287_TECHNICAL_VERIFICATION_LEDGER_CURRENT.md
 
-      - name: Apply V14 and V15 controlling source updates
+      - name: Write reproducibility metadata
         shell: bash
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          src = Path('PUBLIC_REVIEW_DRAFT13_BASE.tex').read_text()
-          old = r'\large Late 27 August snapshot: high-conductor square-complement audit, near-primitive signed child, and source-exact closure gaps'
-          new = r'\large 28 August V15: Vaughan M-branch plus balanced-seven polarized signed endpoint frontier'
-          if old not in src:
-              raise SystemExit('Expected Draft 13 subtitle not found')
-          src = src.replace(old, new, 1)
-          marker = '\\maketitle\n'
-          if marker not in src:
-              raise SystemExit('maketitle marker not found')
-          inserts = (
-              '\\input{frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex}\n'
-              '\\input{frontier/ERDOS287_LATEST_BALANCED7_UPDATE_V15.tex}\n'
-          )
-          src = src.replace(marker, marker + inserts, 1)
-          Path('PUBLIC_REVIEW_DRAFT15.tex').write_text(src)
-          PY
-          grep -q 'AFFINE287-PRIME-MODULUS-MU-TWOOUTER45' frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex
-          grep -q 'AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45' frontier/ERDOS287_LATEST_BALANCED7_UPDATE_V15.tex
-          grep -q 'ERDOS287_LATEST_SOURCE_UPDATE_V14.tex' PUBLIC_REVIEW_DRAFT15.tex
-          grep -q 'ERDOS287_LATEST_BALANCED7_UPDATE_V15.tex' PUBLIC_REVIEW_DRAFT15.tex
+          short_sha="${GITHUB_SHA::12}"
+          cat > buildmeta.tex <<META
+          \\newcommand{\\BuildCommit}{${short_sha}}
+          \\newcommand{\\BuildDate}{28 August 2026}
+          META
 
-      - name: Compile current public review
+      - name: Compile clean V16 public review
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: PUBLIC_REVIEW_DRAFT15.tex
+          root_file: ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
 
-      - name: Replace stable public-review PDF
+      - name: Stage canonical and legacy PDF paths
         shell: bash
         run: |
-          test -s PUBLIC_REVIEW_DRAFT15.pdf
-          cp PUBLIC_REVIEW_DRAFT15.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
-          sha256sum ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          test -s ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          sha256sum \
+            ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
+            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
-      - name: Commit reproducible V15 source and stable PDF
+      - name: Commit clean paper, audit, ledger, archive, and PDFs
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add PUBLIC_REVIEW_DRAFT15.tex references_draft13.bib ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          git add \
+            ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex \
+            ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
+            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf \
+            README.md \
+            ERDOS287_V16_CLEAN_CONSOLIDATION_AUDIT.md \
+            ERDOS287_TECHNICAL_VERIFICATION_LEDGER_CURRENT.md \
+            frontier/ERDOS287_FRONTIER_STATUS_CURRENT.md \
+            archive/README.md \
+            archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf \
+            archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex
           if git diff --cached --quiet; then
-            echo 'Public-review V15 already current.'
+            echo 'Clean V16 consolidation already current.'
             exit 0
           fi
-          git commit -m 'Update public review PDF to V15 balanced-seven polarization frontier'
+          git commit -m 'Publish clean Erdos 287 public review V16'
           git push

@@ -6,6 +6,8 @@ on:
     paths:
       - '.public-review-src/draft11.tex.gz.b64.part01'
       - '.public-review-src/draft11.tex.gz.b64.part02'
+      - '.public-review-src/draft11.tex.gz.b64.gap01'
+      - '.public-review-src/draft11.tex.gz.b64.gap02'
       - '.public-review-src/draft11.tex.gz.b64.part03'
       - '.public-review-src/references_draft11.bib.gz.b64'
       - '.github/workflows/build-public-review.yml'
@@ -24,14 +26,19 @@ jobs:
       - name: Reconstruct Draft 11 sources
         shell: bash
         run: |
-          cat .public-review-src/draft11.tex.gz.b64.part01 \
-              .public-review-src/draft11.tex.gz.b64.part02 \
-              .public-review-src/draft11.tex.gz.b64.part03 \
-            | base64 --decode | gzip --decompress --stdout \
+          {
+            head -c 8000 .public-review-src/draft11.tex.gz.b64.part01
+            cat .public-review-src/draft11.tex.gz.b64.part02
+            cat .public-review-src/draft11.tex.gz.b64.gap01
+            cat .public-review-src/draft11.tex.gz.b64.gap02
+            cat .public-review-src/draft11.tex.gz.b64.part03
+          } | base64 --decode | gzip --decompress --stdout \
             > twin_prime_programme_draft11.tex
           base64 --decode .public-review-src/references_draft11.bib.gz.b64 \
             | gzip --decompress --stdout \
             > references_draft11.bib
+          echo 'c1a9602c45d0a60a12b236879b01ddd17a4ae5d1a51f2ba31728dbbb500e6dac  twin_prime_programme_draft11.tex' | sha256sum -c -
+          echo '87acd67f6f0c7e1c7a4924c7298e432375996412388fb5ed076fe3916b5cd088  references_draft11.bib' | sha256sum -c -
 
       - name: Compile Draft 11
         uses: xu-cheng/latex-action@v4

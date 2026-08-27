@@ -40,6 +40,13 @@ jobs:
         with:
           root_file: frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex
 
+      - name: Stage compiled PDF
+        shell: bash
+        run: |
+          test -s ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf
+          mv ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf \
+             frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf
+
       - name: Verify PDF
         shell: bash
         run: |

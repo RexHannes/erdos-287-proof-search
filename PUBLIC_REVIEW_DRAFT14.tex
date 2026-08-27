@@ -1,0 +1,3469 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm,microtype,enumitem,booktabs,array,xcolor,mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{aliascnt}
+\usepackage[nameinlink,capitalize]{cleveref}
+\usepackage[backend=biber,style=alphabetic,maxnames=99]{biblatex}
+\addbibresource{references_draft13.bib}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+
+\newaliascnt{claim}{theorem}
+\newtheorem{claim}[claim]{Claim}
+\aliascntresetthe{claim}
+
+\newaliascnt{hypothesis}{theorem}
+\newtheorem{hypothesis}[hypothesis]{Hypothesis}
+\aliascntresetthe{hypothesis}
+
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+
+\newaliascnt{status}{theorem}
+\newtheorem{status}[status]{Status note}
+\aliascntresetthe{status}
+
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{claim}{Claim}{Claims}
+\Crefname{claim}{Claim}{Claims}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\Crefname{remark}{Remark}{Remarks}
+\crefname{status}{Status note}{Status notes}
+\Crefname{status}{Status note}{Status notes}
+
+\newcommand{\e}{\mathrm e}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\E}{\mathcal E}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\soft}{X^{o(1)}}
+
+\title{\textbf{A Source-Explicit Conditional Common-Weight All-$m$ Type-II Estimate\\
+and the Complementary Signed High-Order Frontier}\\
+\large Late 27 August V14: exact Vaughan affine-prime source and prime-modulus M\"obius two-outer frontier}
+\author{Research draft}
+\date{August 27, 2026}
+
+\begin{document}
+\maketitle
+\input{frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex}
+
+\begin{abstract}
+This note records an audited public-facing state of a parity-sensitive Type-II
+programme.  Part~I studies a canonical common-weight direct operator.  A row
+is indexed by a prime $r\asymp R$, a shift $k$, and $m\asymp M$, with
+$m'=m+kr\asymp M$.  Under five explicit source/analytic pins---one-sided
+Poisson--Bruhat transport and an absolute source ceiling, fixed-state
+exclusion, the outer-root energy pin, projective source routing, and the
+literal recombination estimate---band-limited prime participation yields the
+required $R^{-1/4+o(1)}$ contraction.  The finite participation inequality,
+projective ratio-class algebra, exponent ledger, and normalization compilers
+are separately machine-checked; the displayed source/analytic pins are not
+silently promoted into Lean theorems.
+
+Part~II records the complementary Gate-1B frontier.  Returning to the
+native order-five shell and opening the first $TT^\ast$ covariance gives an
+exact sector law: the same-modulus branch is a character Gram, the coprime
+cross-modulus branch is a CRT Kloosterman family, and the shared-divisor branch
+belongs to the existing GCD router.  The proper smooth same-$q$ cross-character
+child and the coprime cross-$q$ no-wrap operator remain useful positive
+analytic children.  The later high-conductor audit first recovered a signed
+primitive-conductor parent by writing $q=cr$: the induced Gauss square preserves
+one complement factor $\mu(r)$, forcing any sign-based high-conductor repair to
+recombine same-$q$ with common-conductor cross-$q$ covariance.  A subsequent
+hostile audit then shows that this common-conductor square norm is not the full
+parity-breaking parent.  It squares away the conductor sign $\mu(c)$; in
+particular the near-primitive slice $r=1$ retains no complement sign at all.
+The same audit proves an exact primitive-Kloosterman inversion and shows that
+the naive square-complement Pascadi dictionary is false: the physical inverse
+variable is $r^2B$, not $r^2$, the two genuine smooth slots are already occupied
+by the dual frequencies $h,k$, and the two legal Proposition~3.8 dictionaries
+are fixed-power nonclosing.  The common-conductor Pascadi closure route is
+therefore retired.  The present first analytic open is the near-primitive
+full-conductor five-defect signed packet isolated in Late update~V.  The actual
+switched $c_9$ dictionary and the literal shifted pre-enlargement $TT^\ast$
+source also remain source open.  The canonical Gate-1B additive zero mode
+remains an exact finite/algebraic pass in the V10 Lean bank.
+
+Part~III records a refined Ford--Maynard landing strip.  Ford--Maynard
+Theorem~8.3 gives a published five-collar description of the exceptional
+$H_2$ geometry, and Definition~5.1 identifies the coordinates of $\mathbf v(n)$
+with logarithms of the individual prime factors.  This permits a more
+source-specific treatment of the rough $N_2$ sector: squareful terms are
+negligible, while the squarefree shifted-prime lane reduces, at the research
+level, to a standard uniform upper sieve for two linear forms plus the published
+rough-number geometry.  A proof audit of Proposition~7.22 shows that the
+published universal Type-II hypothesis is invoked only after the proof has
+generated the grouped equation~(7.23), so controlling every \emph{actual
+generated} instance of that structured sum is a proof-specific sufficient
+landing point.  Internal Ford-side archaeology further indicates finite-depth
+generated one-variable factors and finite nuclear/weight-dependence compilers;
+however, the literal source-exact weighted high-complexity packet dictionary
+from Gate outputs to the Ford-generated factors remains missing.  We call this
+source interface \texttt{SOURCE-ADAPTER45}.  These are programme reductions,
+not weaker theorems published by Ford--Maynard.
+
+No claim of Gate-1B closure, Full Type-II reassembly, a Hardy--Littlewood
+prime-pair asymptotic, or twin-prime infinitude is made.
+\end{abstract}
+
+\tableofcontents
+\section{Introduction}
+A recurring obstruction in parity-breaking sieve arguments is that strong
+fixed-slice estimates need not survive coherent averaging over the true source
+family. The correct object is therefore the source-restricted family operator,
+not a collection of unrelated local norms.
+
+This note isolates a canonical direct Type-II operator and derives a conditional
+all-$m$ mean-square bound under explicit source and analytic pins. Four structural ingredients drive the proof:
+\begin{enumerate}[label=(\roman*)]
+  \item exact source and determinant-$2$ row geometry;
+  \item source-preserving Fourier/Poisson transport to a smooth moving-$r$
+        family;
+  \item band-limited prime participation, converting smoothness in $r$ into a
+        moving-family contraction;
+  \item an exact projective crossed-convolution identity for the zero-curvature
+        branch.
+\end{enumerate}
+
+The downstream motivation is the Ford--Maynard prime-producing sieve
+framework, where Type I and Type II information for an actual non-negative
+sequence is used simultaneously \cite{FordMaynard2024}. Their work also shows
+that a substantial Type II range is genuinely necessary for non-trivial lower
+bounds. We do not perform the full downstream reassembly here.
+
+\subsection{External analytic input}
+The participation step needs a prime number theorem in intervals of length
+$R^{3/4}$.  Huxley's classical short-interval prime number theorem gives,
+uniformly for $x\asymp R$,
+\[
+   \pi(x+H)-\pi(x)=(1+o(1))\frac{H}{\log x}
+   \qquad(H\ge x^{7/12+\varepsilon}),
+\]
+for every fixed $\varepsilon>0$ \cite{Huxley1972}.  Since $3/4>7/12$, the
+plateaux used below are longer than the range required by Huxley's theorem,
+so no modern strengthening is needed.  We also use the classical Bernstein
+inequality
+\[
+   \|P'\|_\infty\le N\|P\|_\infty
+\]
+for trigonometric polynomials of degree at most $N$ \cite{Zygmund2002}.
+
+\subsection{Scope}
+The theorem proved below concerns the canonical \emph{common-weight} direct
+source.  In the authoritative source, the physical smoothing datum is one
+weight $W_D$; row dependence that appears later is derived deterministically
+from this common datum through Fourier, reciprocity and Poisson transforms.
+An abstract interface allowing arbitrary independent edge-dependent weights
+is strictly more general and belongs to an upstream source-adaptation problem.
+Likewise, a global packet census and Full Type II reassembly are not part of
+the theorem proved here.  This distinction is also machine-checked in the
+formal development: the Gate-1A direct closure certificate contains no global
+packet-dictionary or edge-dependent-D2 field.
+
+\section{Parameters and notation}
+Let $X\to\infty$. Set
+\[
+    M=X^{1/3},\qquad R=X^a,\qquad L=X^b,
+\]
+and
+\[
+    H=X^{a+2b-2/3},\qquad
+    K=\frac{M}{R},\qquad
+    U=\frac{L}{H},\qquad
+    D=\frac{L^2}{H}.
+\]
+We repeatedly use
+\begin{equation}
+    RK=M,\qquad DH=L^2,\qquad M^2H=RL^2.
+    \label{eq:scale-identities}
+\end{equation}
+The three controlling vertices are
+\[
+   V_1=\left(\frac{5}{18},\frac13\right),\qquad
+   V_2=\left(\frac{5}{18},\frac{25}{72}\right),\qquad
+   V_3=\left(\frac{7}{24},\frac13\right).
+\]
+
+For a prime $\ell$, define
+\begin{equation}
+   \rho_\ell(n):=\1_{\ell\mid n}-\frac1\ell.
+   \label{eq:rho-def}
+\end{equation}
+Let $b_p,d_q$ be $1$-bounded coefficient sequences on primes $p,q\asymp L$.
+All harmless divisor and logarithmic losses are absorbed in $X^{o(1)}$.
+
+We use $e(z)=e^{2\pi iz}$ and $e_c(z)=e(z/c)$.  For a Schwartz function
+$f$ we use the Fourier convention
+\[
+   \widehat f(\xi)=\int_{\mathbb R} f(x)e(-x\xi)\,dx.
+\]
+Every inverse symbol in a modular phase is understood only on the explicitly
+routed unit/full-conductor sector.
+
+\section{The canonical physical source}
+\subsection{Rows and affine forms}
+A canonical row is $e=(r,k,m)$ with
+\[
+   r\asymp R \text{ prime},\qquad 1\le |k|\le K,\qquad
+   m\asymp M,\qquad m':=m+kr\asymp M,
+\]
+together with the generic unit/full-conductor conditions needed by the
+reciprocal phases. Let $\E^\sharp$ be this row family.
+
+Choose $w_0$ modulo $r$ such that
+\[
+   mw_0\equiv -2\pmod r.
+\]
+Since $m'=m+kr\equiv m\pmod r$, the same choice satisfies
+$m'w_0\equiv-2\pmod r$.  Hence
+\[
+   \alpha:=\frac{mw_0+2}{r},\qquad
+   \beta:=\frac{m'w_0+2}{r}
+\]
+are integers.  Define
+\[
+   A_e(t):=\alpha+mt,\qquad
+   B_e(t):=\beta+m't.
+\]
+
+\begin{lemma}[Determinant-$2$ row identity]
+For every canonical row and every integer $t$,
+\[
+   m'A_e(t)-mB_e(t)=2k.
+\]
+\end{lemma}
+\begin{proof}
+The $t$-terms cancel and
+\[
+  m'\alpha-m\beta
+  =\frac{m'(mw_0+2)-m(m'w_0+2)}{r}
+  =\frac{2(m'-m)}r=2k.
+\]
+\end{proof}
+
+\subsection{Common physical smoothing}
+Fix $W\in C_c^\infty(\R)$ and write $W_D(t)=W(t/D)$. The key point is that
+this weight is common to all rows. Define
+\[
+   P_e(t)=\sum_{p\asymp L}b_p\rho_p(A_e(t)),\qquad
+   Q_e(t)=\sum_{q\asymp L}d_q\rho_q(B_e(t)),
+\]
+and
+\begin{equation}
+   C_e(b,d):=\sum_{t\in\Z}W_D(t)P_e(t)Q_e(t).
+   \label{eq:Ce}
+\end{equation}
+
+\begin{remark}
+An arbitrary family $W_{D,e}$ is not part of the canonical theorem. Such
+weights arise only in a more general source-adaptation interface.
+\end{remark}
+
+\subsection{Source provenance and derived row dependence}
+The common-weight assertion is stronger than a notational convention.  After
+Fourier transformation the source coefficient factors as
+\begin{equation}
+  \omega_{m,p,q}(h)
+  = \underbrace{\frac{H}{pq}
+      \e\!\left(-\frac{h\alpha}{pqm}\right)}_{\text{derived row-dependent scalar}}
+    \,\underbrace{\widehat W_D\!\left(\frac{h}{pq}\right)}_{\text{one common physical weight}},
+  \label{eq:common-weight-factor}
+\end{equation}
+where the argument $h/(pq)$ has no row index.  Thus the later dependence on
+$m,r,p,q$ is \emph{derived dependence}; it is not freedom to choose an
+independent physical weight on each row.  This distinction is load-bearing:
+an arbitrary edge-dependent family would be a strictly stronger source class
+and is deliberately excluded from the canonical direct theorem.
+
+\section{Fourier normalization and determinant shell}
+The normalized pre-square source is
+\begin{equation}
+ \widetilde C_{r,k,m}
+   =\sum_{p\asymp L}b_p
+    \sum_{\substack{q\asymp L\\q\ne p}}d_q
+    \sum_h\omega_{m,p,q}(h)
+    \e_{mq}\!\left(2hk\overline{p(m+kr)}\right),
+ \label{eq:Ctilde}
+\end{equation}
+where
+\begin{equation}
+   \omega_{m,p,q}(h)
+   =\frac{H}{pq}\widehat W_D\!\left(\frac{h}{pq}\right)
+    \e\!\left(-\frac{h\alpha}{pqm}\right).
+   \label{eq:omega}
+\end{equation}
+The source norms satisfy
+\[
+   \sum_h|\omega_{m,p,q}(h)|^2\ll H,\qquad
+   \sum_h|\omega_{m,p,q}(h)|\ll H.
+\]
+
+Writing $m'=m+rk$, additive reciprocity separates the phase:
+\begin{equation}
+ \e_{mq}\!\left(2hk\overline{pm'}\right)
+ =
+ \e_{pr}\!\left(-2h\overline{qm}\right)
+ \e\!\left(\frac{2h}{prqm}\right)
+ \e_q\!\left(-2h\overline{prm'}\right).
+ \label{eq:addrec}
+\end{equation}
+Thus the exact $H$-scale smooth profile is
+\[
+ \beta_{m,r;p,q}(h/H)
+ =\frac{H}{pq}\widehat W_D(h/pq)
+  \e\!\left(-\frac{h\alpha}{pqm}+\frac{2h}{prqm}\right).
+\]
+The $h$-Poisson/Gauss completion gives the determinant shell
+\begin{equation}
+    ms-prn=2.
+    \label{eq:shell}
+\end{equation}
+Choose $\kappa_p(m)\in[0,pr)$ with $m\kappa_p(m)\equiv2\pmod{pr}$ and set
+\[
+    n_0(m,p,r)=\frac{m\kappa_p(m)-2}{pr}.
+\]
+Then every solution is parameterized by
+\[
+    s_j=\kappa_p(m)+jpr,\qquad n_j=n_0+jm.
+\]
+The quotient amplitude is
+\begin{equation}
+   \mathcal W_{m,r;p,q}(j)
+   :=\widehat\beta_{m,r;p,q}
+      \!\left(\frac{H(n_0+jm)}{qm}\right),
+   \label{eq:Wsrc}
+\end{equation}
+and, for $|j|\ll U=L/H$,
+\begin{equation}
+   \sum_{|j|\ll U}|\mathcal W_{m,r;p,q}(j)|^2\ll U X^{o(1)}.
+   \label{eq:Wsrcnorm}
+\end{equation}
+
+\section{Source-preserving Poisson--Bruhat transport}
+\label{sec:PB}
+The following source-specific statement is isolated because it is the exact
+bridge between the authoritative physical source and the finite BPP compiler.
+The scale identity in \cref{lem:PB-budget} is elementary; the uniform smooth
+envelope, the negligible-state disposal, and the numerical source ceiling are
+source/analytic inputs.
+
+For a transported state family put
+\[
+ a_{r,\xi}:=|c_r(\xi)|,
+ \qquad
+ \mathcal T_{\rm abs}:=
+ \sum_{\substack{r\in[R,2R]\\ r\ \mathrm{prime}}}
+      \left(\sum_{\xi} a_{r,\xi}\right)^2.
+\]
+
+\begin{hypothesis}[One-sided source transport and absolute ceiling]
+\label{hyp:PB}
+For every fixed $A_0>0$, the transported source splits into a retained finite
+state set $\mathfrak X_{\rm ret}$ and a discarded remainder with Gate-energy
+contribution $O_{A_0}(X^{-A_0})$ times the natural scale.  Every retained state
+has scalar moving-row amplitude
+\begin{equation}
+   c_r(\xi)=B_{\xi}F_{\xi}(r/R),
+   \label{eq:smooth-envelope}
+\end{equation}
+where $B_{\xi}$ is independent of $r$, $F_{\xi}$ is supported in a fixed compact
+subinterval of $(1,2)$, and for every fixed $J$,
+\[
+   \sup_{\xi}\sup_t |\partial_t^J F_{\xi}(t)|\ll_J X^{o(1)}.
+\]
+For every fixed truncation exponent $A$, the retained set is chosen so that
+$\|F_{\xi}\|_\infty\ge 10R^{-A}$; states failing this inequality are part of
+the discarded source remainder.  The transport is one-sided, has $X^{o(1)}$
+nuclear cost, and gives the explicit absolute source ceiling
+\begin{equation}
+   \boxed{\mathcal T_{\rm abs}\ll M^2L^4X^{o(1)}.}
+   \label{eq:Tabs-ceiling}
+\end{equation}
+No two-sided Hilbert--Schmidt equivalence is assumed.  Finally, the physical
+and normalized sources obey
+\[
+   C_e=H^{-1}\widetilde C_e+\mathcal R_e,
+   \qquad
+   \sum_{e\in\mathcal E^\sharp}|\mathcal R_e|^2
+     \ll_{A_0} X^{-A_0}\frac{ML^4}{H},
+\]
+for every fixed $A_0>0$.
+\end{hypothesis}
+
+\begin{status}[Source status]
+The finite Poisson--Bruhat algebra and the budget identity below are banked.
+The full assertion in \cref{hyp:PB}, including the literal source equality,
+uniform retained-state truncation, the physical-normalized bridge and \eqref{eq:Tabs-ceiling}, is an explicit
+source/analytic pin.  It is not inferred from the exponent arithmetic.
+\end{status}
+
+\begin{lemma}[Poisson--Bruhat budget identity]
+\label{lem:PB-budget}
+The scale identities imply
+\[
+   \boxed{\frac{MK(MH)^2}{RL^4}=1.}
+\]
+\end{lemma}
+\begin{proof}
+By \eqref{eq:scale-identities}, $MK=L^2/H$.  Therefore
+\[
+ \frac{MK(MH)^2}{RL^4}
+ =\frac{(L^2/H)M^2H^2}{RL^4}
+ =\frac{M^2H}{RL^2}=1.
+\]
+\end{proof}
+
+\begin{remark}
+The amplitude is smooth in $r$ but is not constant.  Thus a count of the prime
+divisors of a fixed determinant does not by itself give an $R^{-1}$ weighted
+family saving.
+\end{remark}
+
+\section{Band-limited prime participation}
+\label{sec:bpp}
+From now on $\xi$ ranges over the retained state set of \cref{hyp:PB}.  Put
+$a_{r,\xi}=0$ when the prime row $r$ is excluded for the state $\xi$, and define
+\[
+   M_{\xi}:=|B_{\xi}|\sup_{1\le t\le2}|F_{\xi}(t)|.
+\]
+Fix a large $A$ and put $N=R^{1/4}$.  A smooth periodic extension of $F_{\xi}$
+and repeated integration by parts give, uniformly in retained $\xi$,
+\begin{equation}
+   F_{\xi}(t)=P_{\xi}(t)+O_A(R^{-A}),
+   \label{eq:trunc}
+\end{equation}
+where $P_{\xi}$ is a trigonometric polynomial of degree at most $N$.
+
+\begin{lemma}[Bernstein plateau]
+\label{lem:bernstein-plateau}
+For every retained state $\xi$, there is an interval $I_{\xi}\subset[R,2R]$ of
+length $\gg R^{3/4}$ on which $|c_r(\xi)|\gg M_{\xi}$.
+\end{lemma}
+\begin{proof}
+Let $t_{\xi}$ maximize $|P_{\xi}|$.  Bernstein's inequality
+\cite{Zygmund2002} gives
+$\|P_{\xi}'\|_\infty\le N\|P_{\xi}\|_\infty$.  Hence on a one-sided or two-sided
+interval of $t$-length $\gg N^{-1}$ contained in $[1,2]$, $P_{\xi}$ retains a
+fixed proportion of its maximum.  The retained-state clause in
+\cref{hyp:PB} makes the error in \eqref{eq:trunc} smaller than that maximum.
+Multiplying the interval length by $R$ gives $R/N=R^{3/4}$.
+\end{proof}
+
+\begin{hypothesis}[Fixed-state exclusion]
+\label{hyp:fixed-state-exclusion}
+For each retained state $\xi$, every prime row excluded from the generic
+non-projective branch divides one of $X^{o(1)}$ fixed nonzero integers
+$N_{\xi,j}$ of polynomial height, $|N_{\xi,j}|\le X^{O(1)}$.
+\end{hypothesis}
+
+\begin{lemma}[Admissible prime participation]
+\label{lem:prime-participation}
+Assume \cref{hyp:fixed-state-exclusion}.  For every retained state $\xi$, the
+plateau $I_{\xi}$ contains $R^{3/4-o(1)}$ admissible prime rows.  In particular,
+if
+\[
+ A_{\xi}:=\max_{\substack{r\sim R\\r\ \mathrm{prime}}}a_{r,\xi},
+ \qquad
+ N_{\xi}:=\frac{\sum_{r\sim R,\ r\ \mathrm{prime}}a_{r,\xi}}{A_{\xi}},
+\]
+then $A_{\xi}>0$ and
+\begin{equation}
+   A_{\xi}\asymp M_{\xi},\qquad N_{\xi}\gg R^{3/4-o(1)}.
+   \label{eq:participation}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Huxley's short-interval prime number theorem applies to the interval from
+\cref{lem:bernstein-plateau}, since $3/4>7/12+\varepsilon$ for a fixed small
+$\varepsilon>0$ \cite{Huxley1972}.  Thus $I_{\xi}$ contains
+$R^{3/4-o(1)}$ primes.  A nonzero polynomial-height integer has $O(\log X)$
+distinct prime divisors, and only $X^{o(1)}$ such integers occur, so the
+exclusion removes only $X^{o(1)}$ primes.  On every remaining plateau prime,
+$a_{r,\xi}\gg M_{\xi}$, proving both claims.
+\end{proof}
+
+Let $\mathcal R$ be the primes in $[R,2R]$, let
+$S=|\mathcal R|=R^{1+o(1)}$, and retain the notation $\mathcal T_{\rm abs}$
+from \cref{sec:PB}.
+
+\begin{lemma}[Participation-to-envelope]
+\label{lem:participation-envelope}
+If $N_{\xi}\ge P$ for every retained state, then
+\[
+   \left(\sum_{\xi}A_{\xi}\right)^2
+   \le \frac{S}{P^2}\mathcal T_{\rm abs}.
+\]
+\end{lemma}
+\begin{proof}
+By Cauchy--Schwarz,
+\[
+ \left(\sum_{\xi}A_{\xi}N_{\xi}\right)^2
+ =\left(\sum_{r\in\mathcal R}\sum_{\xi}a_{r,\xi}\right)^2
+ \le S\mathcal T_{\rm abs}.
+\]
+Since $N_{\xi}\ge P$, the result follows.
+\end{proof}
+
+\subsection{Projective versus non-projective Gram pairs}
+The transport attaches to every retained state a pair $(Z_{\xi},L_{\xi})$ and the
+outer determinant
+\begin{equation}
+   \Delta(\xi,\eta):=Z_{\xi} L_{\eta}-Z_{\eta} L_{\xi}.
+   \label{eq:outer-delta}
+\end{equation}
+We split the Gram pair set before applying BPP:
+\[
+   \Delta(\xi,\eta)\ne0\qquad\text{or}\qquad\Delta(\xi,\eta)=0.
+\]
+The second class is the projective branch in \cref{sec:projective}.  Since
+$\Delta(\xi,\xi)=0$, the entire state diagonal lies in that branch.
+
+For $\Delta(\xi,\eta)\ne0$, a row prime can couple the fixed pair only if it
+divides the fixed nonzero polynomial-height integer $\Delta(\xi,\eta)$.  Hence
+\begin{equation}
+   \mathcal E_{\rm np}
+   \ll X^{o(1)}\left(\sum_{\xi}A_{\xi}\right)^2.
+   \label{eq:nonproj-codegree}
+\end{equation}
+
+\begin{proposition}[BPP family-energy contraction]
+\label{prop:bpp}
+Under \cref{hyp:PB,hyp:fixed-state-exclusion},
+\[
+   \boxed{\mathcal E_{\rm np}
+          \ll R^{-1/2+o(1)}\mathcal T_{\rm abs}.}
+\]
+In particular, by \eqref{eq:Tabs-ceiling},
+\[
+   \mathcal E_{\rm np}
+   \ll R^{-1/2+o(1)}M^2L^4.
+\]
+\end{proposition}
+\begin{proof}
+Use \cref{lem:participation-envelope} with
+$P=R^{3/4-o(1)}$ and $S=R^{1+o(1)}$ in
+\eqref{eq:nonproj-codegree}.
+\end{proof}
+
+\section{The unique outer square root}
+\label{sec:root}
+The finite outer four-cycle inequality gives a single square root, but its
+application to the canonical Gate energy requires an exact energy pin.  We
+state that pin explicitly.
+
+\begin{hypothesis}[Outer-root energy pin]
+\label{hyp:outer-pin}
+Let $\mathcal G_{\rm np}$ denote the normalized Gate contribution of the
+non-projective transported branch.  The source identification and the finite
+outer-four-cycle compiler give
+\begin{equation}
+   \mathcal G_{\rm np}
+   \ll M^2L^4X^{o(1)}
+      \left(\frac{\mathcal E_{\rm np}}{\mathcal T_{\rm abs}}\right)^{1/2}.
+   \label{eq:outer-pin}
+\end{equation}
+\end{hypothesis}
+
+The finite square-root algebra behind \eqref{eq:outer-pin} is
+\[
+ \sum_r\|A_r\|_{\rm op}
+ \le |\mathcal R|^{1/2}\left(\sum_r\mathcal T_r\right)^{1/2},
+\]
+and is machine-checked.  The equality identifying its abstract energy with
+the canonical Gate energy is the source pin in \cref{hyp:outer-pin}.
+Combining \cref{prop:bpp,hyp:outer-pin} gives
+\[
+   \mathcal G_{\rm np}
+   \ll R^{-1/4+o(1)}M^2L^4.
+\]
+The required comparison is $MR^{-1/4}\le H$, equivalently
+\[
+   \frac54a+2b-1\ge0.
+\]
+At $V_1,V_2,V_3$ the margins are respectively
+\[
+   \frac1{72},\qquad\frac1{24},\qquad\frac1{32}.
+\]
+
+\section{Projective reassembly: ratio classes}
+\label{sec:projective}
+The complementary branch is $\Delta(\xi,\eta)=0$, including $\xi=\eta$.  On $L\ne0$
+the correct class is the projective ratio $\kappa(Z,L)=Z/L$, not the product
+$ZL$.  For a finite transported state support $\mathcal S$, put
+$v_{Z,L}=A_Z\otimes B_L$ and
+\[
+   C_\xi:=\sum_{(Z,L)\in\mathcal S:\ \kappa(Z,L)=\xi}v_{Z,L}.
+\]
+Then the exact class-pushforward identity is
+\begin{equation}
+ \sum_{\xi}\|C_\xi\|^2
+ =\sum_{(Z_1,L_1),(Z_2,L_2)\in\mathcal S}
+   \1_{Z_1L_2=Z_2L_1}
+   \operatorname{Re}\langle v_{Z_1,L_1},v_{Z_2,L_2}\rangle.
+ \label{eq:ratio-energy}
+\end{equation}
+
+\begin{hypothesis}[Projective source routing]
+\label{hyp:projective}
+The transported $\Delta=0$ source is routed into positive primitive
+ratio-class packets of class multiplicity $X^{o(1)}$.  One-zero axes and
+non-primitive/rank-loss states are routed to explicit exceptional blocks.
+Moreover the diagonal/projective source mass satisfies
+\begin{equation}
+   \sum_{(Z,L)\in\mathcal S}\|A_Z\|^2\|B_L\|^2
+   \ll MHL^4X^{o(1)},
+   \label{eq:projective-source-ceiling}
+\end{equation}
+and every exceptional block is bounded at the same target.
+\end{hypothesis}
+
+Under \cref{hyp:projective}, Cauchy within each ratio class and
+\eqref{eq:ratio-energy} give
+\[
+   \mathcal G_{\rm proj}\ll MHL^4X^{o(1)}.
+\]
+The finite ratio-class identity, primitive rigidity and multiplicity lemma are
+machine-checked; \cref{hyp:projective} is the physical source-routing pin.
+
+\section{Recombination error}
+\begin{hypothesis}[Literal source recombination estimate]
+\label{hyp:recombination}
+The quotient-cell/source recombination error obeys
+\begin{equation}
+   \mathcal E_{\rm rec}
+   \ll U^{-2+o(1)}M^2L^4.
+   \label{eq:recombination-error}
+\end{equation}
+\end{hypothesis}
+Since $U=L/H$ and $DH=L^2$,
+\[
+ \frac{U^{-2}M^2L^4}{MHL^4}=\frac{M}{D}.
+\]
+The margins at $V_1,V_2,V_3$ are $1/18,1/18,1/24$.
+
+\section{Conditional main theorem}
+\begin{theorem}[Canonical all-$m$ common-weight estimate]
+\label{thm:main}
+Let the parameters lie in the polytope generated by $V_1,V_2,V_3$.  Let
+$\mathcal E^\sharp$ be the generic unit/full-conductor all-$m$ row family and
+let $C_e(b,d)$ be the covariance \eqref{eq:Ce}.  Assume
+\cref{hyp:PB,hyp:fixed-state-exclusion,hyp:outer-pin,hyp:projective,hyp:recombination}.
+Then
+\[
+   \boxed{\sum_{e\in\mathcal E^\sharp}|C_e(b,d)|^2
+          \ll \frac{ML^4}{H}X^{o(1)}.}
+\]
+Equivalently,
+\[
+   \boxed{\sum_{e\in\mathcal E^\sharp}|\widetilde C_e(b,d)|^2
+          \ll MHL^4X^{o(1)}.}
+\]
+\end{theorem}
+\begin{proof}
+The non-projective branch is bounded by
+\cref{prop:bpp,hyp:outer-pin}.  The complete $\Delta=0$ branch, including the
+state diagonal, is bounded by \cref{hyp:projective} and the exact ratio-class
+identity.  The discarded source and the recombination error are controlled by
+\cref{hyp:PB,hyp:recombination}.  These branches are exhaustive and disjoint.
+The normalized estimate follows.  The physical-normalized identity in
+\cref{hyp:PB}, together with its square-summable remainder, gives the physical
+estimate.
+\end{proof}
+
+\begin{corollary}[Clean-$P_3$ restriction]
+Every clean-$P_3$ subfamily of $\mathcal E^\sharp$ satisfies the same bound.
+\end{corollary}
+\begin{proof}
+The energy is a sum of non-negative row energies.
+\end{proof}
+
+\section{Scope separation: Gate 1A versus source routing}
+The theorem above is a conditional analytic theorem for the canonical direct operator.
+It does not assert that every packet in a global sieve decomposition has
+already been identified with this operator.
+
+Suppose an upstream source compiler gives an exact decomposition
+\[
+  \mathcal S_{\mathrm{actual}}
+  =\sum_{\lambda\in\Lambda_{\mathrm{gen}}}
+      a_\lambda D_\lambda U_\lambda\mathcal S_\lambda^\sharp
+    +\mathcal S_{\mathrm{exc}},
+\]
+where $U_\lambda$ is unitary/permutational and
+\[
+   \sum_\lambda |a_\lambda|\|D_\lambda\|_{\mathrm{op}}\le X^{o(1)}.
+\]
+Then the main theorem controls the generic packets by Minkowski, provided each
+packet is truly an instance of the canonical operator. Proving the source
+identity, packet multiplicity, and exceptional routing is a separate Gate-0
+compiler problem.
+
+In particular, a common physical weight routes directly into the theorem.
+A fixed-dimensional smooth family generated deterministically from the common
+source can be decomposed into $X^{o(1)}$ common templates.  By contrast, an
+arbitrary independently varying edge weight is a genuinely stronger object.
+In the formal development this more general datum is retained as an upstream
+Gate-0 source-adapter obligation; it is not a premise of the canonical
+Gate-1A direct theorem.
+
+This separation matters downstream. The Ford--Maynard framework applies to
+the actual non-negative sequence and its complete Type-I/Type-II information
+\cite{FordMaynard2024}; a convenient analytic model cannot replace an
+unverified source census.
+
+\section{Formal verification and provenance}
+\label{sec:formal-status}
+
+The accompanying Lean bank deliberately separates finite mathematics, source
+provenance, and deep analytic input.  This is useful here because a theorem
+compiler can be perfectly correct while its external analytic hypothesis is
+not itself formalized in Mathlib.
+
+\subsection{Machine-checked finite/source skeleton}
+The v9.8 formal bank verifies, without user axioms or admitted proofs:
+\begin{itemize}
+  \item the canonical pre-square direct source as a literal source
+        transcription, together with the fact that the physical transform
+        $\widehat W_D$ is one common datum;
+  \item the all-$m$ generic row type, with no clean-$P_3$ field;
+  \item the exact normalized and physical Gate-1A energies and their
+        $H^2$ normalization bridge;
+  \item the finite participation-to-family-energy inequality;
+  \item the exponent conversion
+        $R^{-1/2}\mapsto R^{-1/4}$ and the margins
+        $1/72,1/24,1/32$;
+  \item the projective/axis finite algebra and the $U^{-2}$ exponent budget;
+  \item the logical separation between the Gate-1A direct theorem and the
+        upstream global packet/source census.
+\end{itemize}
+
+The relevant files are
+\begin{center}
+\begin{tabular}{>{\ttfamily}l l}
+\toprule
+V98CanonicalDirectSource.lean & canonical source and common-weight firewall\\
+V98CanonicalAllMRows.lean & all-$m$ row family\\
+V98DirectEnergyPin.lean & exact energy objects and pinning interface\\
+V98BPPProvenance.lean & external BPP participation provenance\\
+V98DirectClosure.lean & deterministic normalized-to-physical compiler\\
+V98Gate0ScopeSplit.lean & Gate-0/Gate-1A scope separation\\
+V98Status.lean & axiom/status audit\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{What Lean does not prove}
+The formal development does \emph{not} manufacture an inhabitant of the deep
+analytic BPP source input.  In particular, the trigonometric Bernstein
+estimate, the source-specific smooth truncation, and Huxley's short-interval
+prime theorem are not currently formalized in the project.  They are recorded
+with external/source-specific provenance, and no global axiom is introduced.
+The state-diagonal issue is not external: the finite moving-family bank splits
+diagonal and off-diagonal exactly, and the corrected projective identity places
+the diagonal in the $\Delta=0$ branch.
+
+Likewise, the formal ``energy pin'' is an explicit equality/interface tying a
+generic BPP energy to the canonical Gate-1A energy; the development includes
+guards showing that an arbitrary abstract bound cannot manufacture this pin.
+Thus a successful compiler is not confused with an independently proved
+analytic estimate.
+
+\subsection{Research status versus formal status}
+Accordingly the appropriate status language is:
+\[
+ \boxed{\text{source-explicit conditional theorem under the displayed analytic/source pins}}
+\]
+for the mathematics of this note, and
+\[
+ \boxed{\text{external-uninhabited in Lean}}
+\]
+for the fully formal end-to-end analytic proof.  The latter is a provenance
+boundary, not an exponent deficit or an additional arithmetic obstruction.
+
+
+
+\subsection{Gate-1B v8.5 H7 short-short bank}
+The append-only v8.5 bank separates the H7 short-short region from the
+high-prime complement.  It machine-checks the finite common-sequence and
+joint-prime compiler and records the exact capacity conversion
+\[
+     Y^{-1/2}=X^{-1/18}.
+\]
+Its closure theorem is explicitly conditional on the source/common-sequence,
+source-energy and multiplicative-large-sieve inputs; no unconditional
+\texttt{H7\_CLOSED} theorem is exported.  The same bank leaves the high-prime
+complement open and records H8 only as an uninhabited robustness interface.
+This formal provenance is why the stronger H8 statements elsewhere in the
+draft are labelled research-capacity audits rather than banked closure
+theorems.
+
+\subsection{Gate-1B V10 zero/source/reassembly bank}
+The latest append-only Gate-1B V10 bank adds an exact finite/algebraic zero-mode
+and reassembly layer without altering the earlier Gate-1A bank.  In particular,
+it reproves the canonical additive-character baseline from the standard
+character system, proves that the canonical discrepancy has no additive
+zero-frequency, and proves the historical/canonical residual identity
+\[
+   S_{\mathrm{hist}}=S_{\mathrm{can}}-R_E.
+\]
+A perturbation counterguard shows that changing an abstract historical
+comparison $E(q)$ changes $R_E$ while leaving the nonzero-frequency packet
+unchanged.  Thus the canonical zero mode is closed at the finite/algebraic
+level, whereas identifying a historical $E(q)$ with a canonical comparison is
+an independent source question.
+
+The same V10 bank proves literal finite packet partitions and deterministic
+packet-budget/reassembly compilers, including conditional implications from
+exact leaf inputs to the project's local Gate-1B and Type-II predicates.  It
+does \emph{not} inhabit the analytic leaves.  A repository-wide audit in that
+run also found no literal declaration named \texttt{FullFMTypeII}\allowbreak\texttt{\_OneSixth};
+the formal compiler consequently targets the project's existing local Type-II
+predicate and must not be described as a formal Ford--Maynard one-sixth theorem.
+The V10 build is sorry-free and introduces no user axioms.
+
+\section{Relation to Kloosterman-fraction technology}
+Bettin--Chandee prove non-trivial bounds for separated trilinear Kloosterman
+fractions with arbitrary coefficient sequences \cite{BettinChandee2015}.
+Wright improves this architecture when a factor of the denominator is fixed
+\cite{Wright2026}.  Blomer--Pascadi obtain a $c^{-1/32}$ saving in the
+square-root critical range for fixed-modulus bilinear Kloosterman forms
+\cite{BlomerPascadi2026}, while Pascadi's non-abelian amplification gives, for
+example, a $c^{-1/12}$ saving for balanced products of two comparable primes
+\cite{Pascadi2025}.  These are important fixed-multiplier/fixed-modulus
+capacity inputs.  They do not, by their published statements, estimate the
+coherent moving source-multiplier family isolated in the Gate-1B appendix.
+The final Gate-1A direct proof likewise does not black-box any of these
+Kloosterman theorems; its decisive resource is smooth participation in the
+moving prime family.
+
+\section{What remains outside this theorem}
+The following are not conclusions of the main theorem:
+\begin{enumerate}
+  \item exhaustive routing of every global high-complexity source packet into
+        the canonical direct operator;
+  \item closure of the separate Gate-1B analytic frontier, whose present
+        high-conductor residual is recorded in \cref{app:gate1b-frontier,app:hicond-nearprim};
+  \item Full Type-II reassembly;
+  \item a Hardy--Littlewood prime-pair asymptotic or twin-prime infinitude.
+\end{enumerate}
+
+The point of the second item is structural.  The conditional Gate-1A theorem
+established here supplies one all-$m$ analytic engine once its displayed pins
+are verified.  The complementary programme has progressed beyond the earlier
+single H7 natural-scale residual, but the high-conductor audit now isolates an
+unavoidable near-primitive full-conductor signed packet.  Its five centred
+defect factors and conductor M\"obius sign remain linear, so it is not supplied
+by Gate~1A, by the common-conductor square norm, or by a coefficient-blind
+fixed-multiplier Kloosterman estimate.
+
+\section{Conclusion}
+The main conceptual point is that local sparsity alone does not give a
+moving-family saving. After source-preserving transport, the row coefficient
+remains $r$-dependent through a uniformly smooth envelope. Band-limited prime
+participation supplies the missing family coherence: smoothness creates a long
+plateau, prime distribution fills it with many moving rows, and finite Cauchy
+converts participation into the required $R^{-1/2+o(1)}$ energy contraction.
+After one and only one outer square root, the resulting $R^{-1/4+o(1)}$ gain
+closes the canonical all-$m$ common-weight Gate-1A direct estimate throughout
+the parameter polytope.
+
+A substantive feature of this mechanism is that its resource is the moving
+prime row $r$, not a prime factor of $m$.  No largest-prime-factor quantity of
+$m$ enters \cref{lem:bernstein-plateau,lem:prime-participation,prop:bpp}.
+Thus the argument applies uniformly to the canonical all-$m$ row family,
+including smooth values of $m$; clean-$P_3$ is a positive-restriction
+corollary rather than the source of the saving.
+
+
+On the complementary side, the latest Gate-1B audit is narrower and
+more source-explicit than the earlier ``full-covariance pass'' description.
+The same-$q$ cross-character proper smooth sector and the coprime cross-$q$
+no-wrap operator remain positive children.  Above the primitive-conductor
+threshold, writing $q=cr$ recovers a short-complement sign and an exact
+common-conductor square norm.  The subsequent square-complement audit, however,
+shows that this is not the full parity-breaking parent: the covariance squares
+away the conductor sign $\mu(c)$, the physical inverse variable in the complete
+Kloosterman representation is $r^2B$ rather than $r^2$, and both legal
+Pascadi-3.8 dictionaries are fixed-power nonclosing.  The common-conductor
+Pascadi closure lane is therefore retired.  The unavoidable first analytic
+child is now the near-primitive $r=1$ full-conductor five-defect signed packet
+\eqref{eq:nearprim-signed}--\eqref{eq:nearprim-target}; its top Kloosterman
+term admits an exact source adapter back to the native signed determinant shell,
+but no required estimate is yet proved.  The actual switched $c_9$ dictionary
+and the literal shifted pre-enlargement $TT^\ast$ source remain separate
+source-definition obligations.
+
+Downstream, Ford--Maynard's universal Type-II hypothesis remains the published
+sufficient wrapper.  Their proof of Proposition~7.22 identifies equation~(7.23)
+as a narrower proof-specific landing point, while the latest source archaeology
+suggests that the remaining Gate-to-Ford problem is first a source-exact packet
+dictionary rather than another abstract rank-reduction theorem.  We label that
+interface \texttt{SOURCE-ADAPTER45}.  Thus the uncertainty has narrowed
+substantially, but Gate~1B, the downstream source dictionary, the Ford--Maynard
+endgame, and twin-prime infinitude all remain open/conditional as stated.
+
+
+\appendix
+\section{Formal theorem map and scope ledger}
+\label{app:formal-map}
+\begin{center}
+\begin{tabular}{p{0.31\textwidth} p{0.23\textwidth} p{0.36\textwidth}}
+\toprule
+Component & Status & Role in this note\\
+\midrule
+Canonical source and common $W_D$ & source-pinned; finite identities checked & fixes the source class\\
+All-$m$ row family & Lean-constructed & removes clean-$P_3$ from the statement\\
+PB smooth envelope, retained-state disposal and $\mathcal T_{\rm abs}$ ceiling & \textbf{conditional source/analytic pin} & supplies the absolute comparator\\
+Finite BPP compiler & Lean-proved & participation $\Rightarrow$ family energy\\
+Huxley + fixed-state exclusion & published theorem + source pin & supplies prime participation\\
+Outer-root energy pin & \textbf{conditional source pin}; square-root algebra proved & identifies the abstract energy with the Gate energy\\
+Ratio-class projective algebra & Lean-proved finite algebra & includes the diagonal in $\Delta=0$\\
+Physical projective routing and source ceiling & \textbf{conditional source pin} & bounds the zero-curvature branch\\
+$U^{-2}$ exponent budget & Lean-proved arithmetic & checks the recombination margin\\
+Literal recombination estimate & \textbf{conditional source pin} & controls the source error\\
+Gate-1B canonical zero mode & V10 Lean-proved finite algebra & zero additive frequency removed canonically\\
+H7 short-short joint-prime compiler & conditional analytic compiler; $X^{-1/18}$ capacity & source/common-sequence pins remain\\
+H8 analogue & research capacity audit; formal robustness interface open & not a banked closure theorem\\
+Same-$q$ QK56 cross-character Gram & \textbf{internal analytic pass on proper smooth sector} & programme claim, not published/Lean-closed\\
+Cross-$q$ source spread & \textbf{internal finite/source pass} & programme source-spread audit; final transcription pending\\
+Shift $TT^*$ literal source pin & \textbf{source open} & recover the literal cyclic source before the analytic child\\
+Shifted source-linked character child & \textbf{first major analytic open} & balanced shifted-quotient source-linked character moment\\
+Arbitrary edge-dependent packet & outside theorem scope & upstream adapter obligation\\
+Global packet census / Full Type II & open & not implied here\\
+\bottomrule
+\end{tabular}
+\end{center}
+\section{Canonical source versus arbitrary edge dependence}
+\label{app:edge-dependence}
+
+It is useful to make the source distinction algebraically explicit.  The
+canonical coefficient has the form
+\[
+   \omega_e(p,q,h)
+   =R_e(p,q,h)\,\widehat W_D(h/(pq)),
+\]
+where $R_e$ is a deterministic scalar generated by the row and by exact
+reciprocity.  Hence the entire family is determined once the one physical
+weight $W_D$ is fixed.  This is fundamentally different from prescribing an
+arbitrary collection
+\[
+   \{W_{D,e}:e\in\E^\sharp\}
+\]
+with no relation between different rows.  The latter can have effective rank
+comparable with the number of rows and therefore cannot be reduced to the
+canonical theorem by functional analysis alone.  This is why the global
+source compiler must either identify a packet with the common-weight source,
+reduce it to finitely many smooth templates, or route it elsewhere.
+
+
+
+\section{Complementary programme boundary: Gate 1B}
+\label{app:gate1b-frontier}
+This appendix is a research-status calculation, not an ingredient in
+\cref{thm:main}.  ``Exact'' below refers to the displayed squarefree/unit
+source dictionary and Fourier convention.  The natural-scale estimate in
+\cref{prop:h7-natural} additionally uses the explicit source norm in
+\cref{hyp:h7-source-norm}.
+
+\subsection{Low/medium conductor and the high-conductor threshold}
+Write $q=ce$, $c\asymp C$, $q\asymp Q$.  After the corrected state count,
+\[
+   \sum_{c,\chi^\ast,e}|\beta(ce)|^2\ll QC\,X^{o(1)}.
+\]
+The coefficient-blind estimate has the relative shape
+\[
+ \frac{|\mathcal H_s(C)|}{Y^9}
+ \ll
+ \begin{cases}
+  C/Q,& C\le Y^4,\\
+  C^2/(QY^4),& C\ge Y^4.
+ \end{cases}
+\]
+The formulae cross at $C=Y^4$.  The large-$C$ estimate loses all saving at
+\[
+   C_0=Q^{1/2}Y^2,
+\]
+so $C_0$ is the zero-saving/high-conductor threshold, not the crossing point.
+
+\subsection{Exact source split and induced-Gauss cancellation}
+The squarefree coefficient is
+\[
+ \beta(q)=\sum_{dp=q}\mu(d)\log p,
+\]
+with $p>V$ and $q/p>U$.  In high conductor, $e=q/c\le Y^2$, whereas
+$V=Y^{5/2-o(1)}$, hence $p>V>e$ and the lane $p\mid e$ is empty.  Thus
+\[
+   c=pc_0,\qquad d=c_0e,
+\]
+and
+\begin{equation}
+   \beta(ce)=\mu(e)\rho_{C,e}(c),
+   \qquad
+   \rho_{C,e}(c)=
+   \sum_{pc_0=c}^{\rm physical}\mu(c_0)\log p.
+   \label{eq:beta-C}
+\end{equation}
+For a primitive $\chi^\ast\pmod c$ induced to $ce$,
+\begin{equation}
+   \tau_{ce}(\chi)=\mu(e)\chi^\ast(e)\tau_c(\chi^\ast).
+   \label{eq:induced-gauss2}
+\end{equation}
+Consequently the short-cofactor sign is spent exactly:
+\[
+   \beta(ce)\tau_{ce}(\chi)
+   =\rho_{C,e}(c)\chi^\ast(e)\tau_c(\chi^\ast).
+\]
+It cannot be used a second time as cancellation.
+
+\subsection{Prime-character collapse}
+Write $c=pc_0$, $(p,c_0)=1$, and factor a primitive character as
+$\chi=\chi_p\chi_0$.  Let
+$N=r_1\cdots r_7x\asymp Y^8$.  The $p$-local argument is
+\[
+   A_p\equiv c_0eN\,\overline{2h}\pmod p.
+\]
+For $A\in\mathbb F_p^\times$,
+\begin{lemma}[Prime-character collapse]
+\label{lem:prime-collapse}
+\[
+ \sum_{\chi_p\ne\chi_{0,p}}
+   \frac{\tau_p(\chi_p)}{\sqrt p}\chi_p(A)
+ =\frac{p-1}{\sqrt p}e_p(\bar A)+\frac1{\sqrt p}.
+\]
+\end{lemma}
+\begin{proof}
+Summing first over all multiplicative characters gives
+$(p-1)e_p(\bar A)$.  The principal character has Gauss sum $-1$, so removing
+it adds $1$.
+\end{proof}
+The main term therefore becomes the linear additive phase
+\[
+   e_p\!\left(2h\,\overline{c_0eN}\right).
+\]
+The correction is smaller than the main local multiplier by $p^{-1}$; since
+$p>V=Y^{5/2-o(1)}$, it is power-negligible under the same absolute source
+ceiling used below.
+
+\subsection{Hybrid Poisson formula and primitive projector}
+Use $\widehat v(\xi)=\int v(x)e(-x\xi)\,dx$.
+\begin{lemma}[Hybrid Poisson]
+\label{lem:hybrid-poisson}
+Let $p\nmid c_0$, and let $\chi_0$ be primitive modulo $c_0$.  With the
+consistent Fourier sign convention,
+\[
+ \sum_{h\in\mathbb Z}v(h/H)\overline{\chi_0(h)}e_p(ah)
+ =\frac{H}{c_0}\tau_{c_0}(\overline{\chi_0})
+  \sum_{\substack{m\in\mathbb Z\\m\equiv ac_0\ (p)}}
+   \chi_0(-m\bar p)\widehat v\!\left(\frac{mH}{pc_0}\right).
+\]
+\end{lemma}
+\begin{proof}
+Apply Poisson summation in residue classes modulo $pc_0$.  The finite Fourier
+sum factors by CRT.  The $p$-factor enforces the displayed congruence, while
+the $c_0$-factor is the twisted Gauss sum
+$\tau_{c_0}(\overline{\chi_0})\chi_0(-m\bar p)$.  The factor $p$ from the
+$p$-sum cancels the $p$ in the Poisson denominator.
+\end{proof}
+Here $a=2\overline{c_0eN}\pmod p$, so the surviving frequency obeys
+\[
+   meN\equiv2\pmod p,
+   \qquad |m|\ll(Y/e)X^{o(1)}<p.
+\]
+For odd squarefree $c_0$ and $(A,c_0)=1$,
+\begin{lemma}[Primitive-character projector]
+\label{lem:primitive-projector}
+\[
+  \sum_{\chi_0\ (\mathrm{mod}\ c_0)}^*\chi_0(A)
+  =\sum_{\substack{d\mid c_0\\d\mid A-1}}
+     \mu(c_0/d)\phi(d).
+\]
+Consequently
+\[
+ \frac{\mu(c_0)}{c_0}
+ \sum_{\chi_0}^*\chi_0(A)
+ =\frac1{c_0}
+  \sum_{\substack{d\mid c_0\\d\mid A-1}}\mu(d)\phi(d).
+\]
+\end{lemma}
+\begin{proof}
+This is Möbius inversion on the conductor of a character.  The second identity
+uses squarefreeness: $\mu(c_0)\mu(c_0/d)=\mu(d)$.
+\end{proof}
+With $A=meN/2$, the two projectors combine into $pd\mid meN-2$.
+
+\subsection{Dual determinant and the fixed-power repair}
+The main term is reduced to
+\begin{align}
+ \mathcal D_7(C)=
+ \sum_{\substack{pc_0\asymp C\\p>V\\e\asymp Q/C}}
+ &\log p\left(1-\frac1p\right)
+ \sum_{N\asymp Y^8}a_7(N)
+ \sum_{\substack{|m|\ll(Y/e)X^{o(1)}\\p\mid meN-2}}
+ \widehat v(me/Y) \notag\\
+ &\qquad\times\frac1{c_0}
+ \sum_{\substack{d\mid c_0\\d\mid meN-2}}\mu(d)\phi(d).
+ \label{eq:D7}
+\end{align}
+
+\begin{hypothesis}[H7 source norm and cell multiplicity]
+\label{hyp:h7-source-norm}
+The literal seven-defect plus one-model coefficient satisfies
+\[
+   \sum_{N\asymp Y^8}|a_7(N)|\ll Y^8X^{o(1)},
+\]
+$\widehat v$ is rapidly decreasing with bounded supremum, and the omitted
+physical dyadic/coprimality selectors have $X^{o(1)}$ total multiplicity.
+The primitive character family in \cref{lem:primitive-projector} is the
+literal family produced by the source dictionary (with any parity restriction
+separately accounted for).
+\end{hypothesis}
+
+\begin{proposition}[Natural-scale fixed-power repair]
+\label{prop:h7-natural}
+Under \cref{hyp:h7-source-norm},
+\[
+   |\mathcal D_7(C)|\ll Y^9X^{o(1)}.
+\]
+\end{proposition}
+\begin{proof}
+For fixed $(e,m,N)$, the nonzero integer $meN-2$ has $O(1)$ prime divisors
+$p>V=Y^{5/2-o(1)}$.  After $p$ is fixed, write $c_0=ds$.  The absolute divisor
+projector is bounded by
+\[
+ \sum_{d\mid meN-2}\ \sum_{s\asymp C/(pd)}
+   \frac{\phi(d)}{ds}
+ \ll X^{o(1)},
+\]
+because the $s$-sum is harmonic on a dyadic interval and the divisor count is
+$X^{o(1)}$.  Summing $e\asymp E$ and
+$|m|\ll Y/e$ costs $O(YX^{o(1)})$.  Finally use the $\ell^1$ source norm of
+$a_7$.
+\end{proof}
+Thus the former coefficient-blind fixed-power loss $Q/Y^4$ is recovered, but
+the target is $Y^9(\log X)^{-A}$.  The remaining problem is therefore the
+arbitrary-log estimate
+\[
+   \boxed{\mathcal D_7(C)\ll_A Y^9(\log X)^{-A}.}
+\]
+Equivalently, one may formulate a centred seven-defect determinant variance
+for
+\[
+   nN-pd\ell'=2,
+   \qquad n\ll Y,
+   \qquad N\asymp Y^8.
+\]
+This estimate is open.  The transform also has an anti-loop: the full divisor
+term $d=c_0$ reconstructs the original two-model determinant skeleton, so the
+Poisson/character transform is not an iteration-to-closure by itself.
+
+\subsection{Historical H7 natural-scale status and the later promotion}
+\label{sec:h7-historical-promotion}
+The natural-scale proposition above records an important historical reduction:
+it removes the former fixed-power high-conductor deficit.  It is no longer the
+controlling final status for the entire H7 analysis.  In the short-short region
+\[
+   \alpha<\frac49,\qquad \beta<\frac49,
+\]
+the v8.5 bank isolates a joint-prime character packet and proves a deterministic
+multiplicative-large-sieve compiler.  Under the explicit common-sequence,
+source-energy and multiplicative-large-sieve inputs, the resulting target has
+relative capacity
+\[
+    Y^{-1/2}=X^{-1/18}.
+\]
+This is a \emph{conditional analytic compiler}, not an unconditional H7
+closure theorem.  The high-prime complement is disjoint from this region and
+remains a separate source/routing problem in the formal v8.5 bank.
+
+The latest research audit further indicates that the H8 analogue has the same
+fixed-power capacity after the corresponding source-energy audit.  We record
+that as research-level analytic capacity only: the v8.5 formal development
+still leaves the H8 robustness interface uninhabited.  Thus the publication
+status is deliberately asymmetric:
+\[
+\begin{aligned}
+ \text{H7 short-short:}&\quad \text{conditional compiler with }X^{-1/18}\text{ capacity},\\
+ \text{H8:}&\quad \text{research capacity audit; formal source/robustness pin open}.
+\end{aligned}
+\]
+
+\subsection{The full \texorpdfstring{$4/9$}{4/9} complement and the square-root transition}
+The late source census organises the complement by prime exponents.  At the
+programme level one separates a high-$d$ wing and a high-$p$ wing.  Joint-prime
+machinery has favourable capacity on the high-$d$ side and on the high-$p$
+side away from the square-root transition.  The strip in which the large
+prime approaches $X^{1/2}$ is not absorbed by the short-short H7 compiler and
+is instead placed in the shifted-quotient parent introduced below.
+
+This subsection is a routing statement, not a completed analytic theorem.  In
+particular, the v8.5 formal bank still records the high-prime complement as
+open.  The purpose of the parent formulation is to avoid pretending that a
+bound on one exponent cell automatically transports to a disjoint cell.
+
+\subsection{The Full-Nine shifted-quotient parent}
+The high-prime switch and the pure H9 specialization are most economically
+viewed inside one shifted-quotient parent of the schematic form
+\begin{equation}
+   \mathcal S_{\mathrm{SQ}}
+   =\sum_{mp\asymp X}\gamma(m)\lambda(p)\log p\;c_{\mathrm{res}}(mp-2).
+   \label{eq:fullnine-shifted-quotient}
+\end{equation}
+Here $\gamma$ and $\lambda$ retain the actual source-generated convolution and
+sign structure.  The high-prime $M$-switch is a subrange of
+\eqref{eq:fullnine-shifted-quotient}, while H9 is a pure-nine-defect
+specialization.  Type-I and joint-large-sieve mechanisms are plausible on the
+strongly unbalanced sides; the balanced square-root strip is the hard
+transition.
+
+Equation~\eqref{eq:fullnine-shifted-quotient} is a programme parent operator,
+not a theorem asserted closed in this manuscript.
+
+\subsection{The QK56 full-covariance parent}
+A second parent keeps the complete covariance of the one-copy QK output.  If
+$\mathcal Q(q;h,k)$ denotes the one-copy output after the exact local
+transforms, the parent is schematically
+\begin{equation}
+   \mathcal C_{\mathrm{QK}}
+   =\sum_{q_1,q_2}\sum_{h_1,k_1,h_2,k_2}
+      A(q_1,q_2;h_1,k_1,h_2,k_2)\,
+      \mathcal Q(q_1;h_1,k_1)\overline{\mathcal Q(q_2;h_2,k_2)}.
+   \label{eq:qk56-covariance}
+\end{equation}
+The decomposition
+\[
+   q_1=q_2 \quad\text{versus}\quad q_1\ne q_2
+\]
+is precisely the same-$q$ diagonal versus cross-modulus off-diagonal of this
+single covariance parent.  The same-$q$ object does not collapse to a scalar
+residue-energy theorem in the source analysis; the surviving object is a
+multi-factor character Gram.  The cross-modulus term retains the moving
+source data and likewise cannot be replaced by an arbitrary fixed-modulus
+coefficient sequence.
+
+\subsection{Pair-modulus capacity and the moving source-multiplier frontier}
+Both the balanced shifted-quotient $TT^*$ child and the QK cross-modulus child
+lead to product moduli.  For a \emph{fixed} multiplier, current published
+Kloosterman technology has genuine power capacity: Blomer--Pascadi obtain a
+$c^{-1/32}$ saving in the square-root critical range
+\cite{BlomerPascadi2026}, and Pascadi's non-abelian amplification gives, for
+balanced products of two comparable primes, a $c^{-1/12}$ saving
+\cite{Pascadi2025}.  These results justify a backend-capacity statement only.
+
+The actual parent carries a coherent source family
+\begin{equation}
+    \sum_{\Theta} A_c(\Theta)\,\mathcal K_{c,\Theta},
+    \label{eq:moving-source-multiplier}
+\end{equation}
+where the multiplier $A_c(\Theta)$ varies with the physical packet.  A theorem
+for each fixed $\Theta$ does not by itself bound
+\eqref{eq:moving-source-multiplier}.  This pair-modulus formulation remains a
+useful historical umbrella.  The later audit recorded in
+\cref{app:late-update-II} splits the QK56 covariance into same-$q$ and cross-$q$
+children and moves the principal analytic candidate to a source-linked shifted
+child.  Accordingly the labels
+\[
+   \texttt{SOURCE-QUADRATIC-MULTIPLIER45},\qquad
+   \texttt{FM-PERRON-PAIRMOD-SOURCE-MULT45}
+\]
+are retained only as umbrella/source-grammar labels, not as the controlling
+first-open theorem of Draft~10.
+
+\subsection{Updated Gate-1B ledger}
+The current publication-facing ledger is:
+\begin{center}
+\begin{tabular}{p{0.43\textwidth}p{0.45\textwidth}}
+\toprule
+Component & Current status\\
+\midrule
+Orders $1$--$4$ / low-order finite geometry & banked structural material\\
+H6 regroup geometry & banked structural material\\
+H7 short-short & conditional joint-prime compiler; $X^{-1/18}$ capacity\\
+H8 short-short analogue & research capacity audit; formal robustness/source pin open\\
+High-$d$/high-$p$ complement & routing/capacity programme; square-root strip open\\
+Full-Nine shifted-quotient parent & research parent; source-linked shifted child remains open\\
+QK56 high-conductor covariance & \textbf{OPEN; common-conductor block is secondary after near-primitive audit}\\
+Canonical additive zero mode & V10 exact finite/Lean pass\\
+Historical $E(q)$ residual & source-identification fork if historical formulation retained\\
+Same-$q$ QK56 cross-character proper-smooth child & \textbf{internal analytic pass; not a standalone high-conductor sign closure}\\
+Coprime cross-$q$ no-wrap operator & \textbf{internal operator pass; high-conductor signed source family still open}\\
+High-conductor signed parent & \textbf{RECOVERED internally}\\
+Common-conductor signed covariance & exact square norm; \textbf{secondary $r>1$ child, not full parity parent}\\
+Old SHORT-RJ pre-Cauchy dictionary & \textbf{FALSE / RETRACTED}\\
+Square-complement Pascadi route & \textbf{retired: naive dictionary false; legal lanes power-nonclosing}\\
+Shift $TT^*$ literal source pin & \textbf{SOURCE OPEN}\\
+Near-primitive full-$c$ five-defect signed child & \textbf{FIRST HIGH-CONDUCTOR ANALYTIC OPEN}\\
+Shifted source-linked character child & source/analytic open, downstream of literal source pin\\
+S1/S2 literal source pins & narrow source interfaces remain\\
+Packet census / Gate-1B reassembly & open\\
+Gate 1B & \textbf{NOT CLOSED}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The older D12 bulk/spike/Pascadi shortcut remains retired; this does not erase
+the underlying cross-modulus contribution, which is now represented in the
+covariance/pair-modulus parent.
+
+\section{Gate 0, Gate 2, and the Ford--Maynard endgame}
+\label{sec:gate02}
+
+The preceding sections isolate the two Type-II analytic engines.  To make the
+programme as close to a complete conditional theorem as the present evidence
+permits, we now state the remaining Gate-0/Gate-2 interface explicitly.  This
+section is downstream bookkeeping and source analysis; it is not used in the
+proof of the conditional Gate-1A theorem.
+
+\subsection{Gate 0: deterministic Type-I compiler and research status}
+The separate Gate-0 bank works with a shifted-prime sequence $a_n$, a simpler
+comparison sequence $b_n$, and $w_n=a_n-b_n$.  Its deterministic compiler has
+the following logical form.  A suitable residue-class weighted maximal
+Bombieri--Vinogradov input for $a_n$, together with the comparison progression
+mean for $b_n$ and the exact reindexing bridge, implies the Ford--Maynard Type-I
+predicate for $w_n$.  The finite compiler is machine-checked, while the deep
+analytic inputs remain external to Lean.
+
+Accordingly we record the Gate-0 status as
+\[
+ \boxed{\text{research-level analytic pass; external-uninhabited in Lean}.}
+\]
+This status does not contain any Type-II information and therefore cannot by
+itself activate the Ford--Maynard lower-bound theorem.
+
+\subsection{The operating Ford--Maynard parameters}
+For the downstream application we choose the central operating width
+\[
+    \nu_0=\frac16.
+\]
+For $\varepsilon>0$ set
+\begin{equation}
+  P_\varepsilon
+   =\left(\frac12-\varepsilon,\,\varepsilon,\,
+            \frac16-2\varepsilon\right).
+  \label{eq:Peps}
+\end{equation}
+The corresponding Type-II interval in the Ford--Maynard convention is
+\begin{equation}
+    [\theta,\theta+\nu]
+    =\left[\varepsilon,\frac16-\varepsilon\right].
+    \label{eq:fm-typeii-window}
+\end{equation}
+The published central threshold in Ford--Maynard Theorem~2.7 is $0.1663$;
+our operating value is safely above it, irrespective of the harmless
+strict/non-strict convention at the printed endpoint:
+\begin{equation}
+   \frac16-0.1663
+   =\frac{11}{30000}>0.
+   \label{eq:fm-margin}
+\end{equation}
+Ford--Maynard also use precisely the shrunk family
+$(1/2-\varepsilon,\varepsilon,\nu-2\varepsilon)$ in Theorem~2.7
+\cite{FordMaynard2024}.  Thus the appearance of the third coordinate
+$\nu-2\varepsilon$ is part of the published parameter geometry rather than a
+new sieve hypothesis introduced here.
+
+\subsection{A finite roughness consequence}
+Write
+\[
+    \sigma=\nu_0-2\varepsilon.
+\]
+For $0\le\varepsilon\le\nu_0/100$, the Gate-0/2 finite bank proves
+\begin{equation}
+    \sigma\ge \frac{49}{300}.
+    \label{eq:sigma-49-300}
+\end{equation}
+The following elementary lemma is fully independent of the deeper
+Ford--Maynard analysis.
+
+\begin{lemma}[Rough numbers have at most six prime factors]
+\label{lem:omega6}
+Let $n>1$ and suppose every prime divisor of $n$ is at least $n^\sigma$,
+where $\sigma\ge49/300$.  Then
+\[
+    \Omega(n)\le6,
+\]
+where prime factors are counted with multiplicity.
+\end{lemma}
+\begin{proof}
+If $k=\Omega(n)$, then
+\[
+   n=\prod_{j=1}^k p_j\ge n^{k\sigma}.
+\]
+Hence $k\sigma\le1$, so
+\[
+   k\le\frac1\sigma\le\frac{300}{49}<7.
+\]
+Since $k$ is an integer, $k\le6$.
+\end{proof}
+This finite statement is machine-checked in the Gate-0/2 bank.  It is useful
+because the final rough $N_2$ contribution lies in a bounded-complexity class
+once the required Ford--Maynard roughness identity has been supplied.
+
+\subsection{The rough-weight input and the \texorpdfstring{$N_2$}{N2} cell sum}
+The remaining source-specific rough-weight input has the form
+\begin{equation}
+ H(n)=(1*g)(\mathbf v(n))\,
+       \mathbf 1_{\{P^-(n)\ge n^\sigma\}},
+ \qquad |H(n)|\ll_{g,\nu_0}1.
+ \label{eq:FM-H-rough}
+\end{equation}
+Ford--Maynard's Section~7 contains the corresponding rough-support mechanism;
+Lemma~7.18 is used in the proof of Theorem~7.3 to restrict the support by a
+least-prime-factor condition, while Theorem~8.2 combines the Section~7
+machinery with a small exceptional region \cite{FordMaynard2024}.  In the
+formal bank, however, the exact shifted-prime instantiation
+\eqref{eq:FM-H-rough} is deliberately left uninhabited until its complete
+source dictionary is certified.
+
+The Gate-0/2 development separately records the aggregate $N_2$ cell-sum
+repair: after choosing the largest prime as the final sieve variable, using a
+coarse geometric mesh and aggregating the cell errors, the desired $N_2$
+upper bound is reduced to the two-linear-forms upper-sieve and
+prefix-volume/Mertens--PNT inputs.  The finite compiler and the
+$\varepsilon$-uniformity bookkeeping are banked; the analytic source input is
+not promoted to a Lean theorem.
+
+\subsection{Gate 2 as a conditional endgame: published and proof-specific routes}
+The published Ford--Maynard framework is formulated with a general Type-II
+hypothesis for arbitrary divisor-bounded coefficient sequences.  We keep that
+statement as the clean published sufficient wrapper and denote the required
+operating-width input schematically by
+\[
+   \mathrm{FullFMTypeII}_{1/6}.
+\]
+Together with the source-exact rough $N_2$ input and the frozen Gate-0
+comparison/Type-I inputs, this gives the programme-level conditional implication
+\begin{equation}
+\begin{aligned}
+ &\mathrm{FullFMTypeII}_{1/6}
+ +\mathrm{FMRoughN2}
+ +\text{Gate-0 comparison inputs}\\
+ &\hspace{32mm}\Longrightarrow
+ \text{positive shifted-prime/twin mass at scale }x.
+\end{aligned}
+\label{eq:gate2-published-route}
+\end{equation}
+This is the published-route conditional wrapper; the analytic antecedents are
+not proved by the present manuscript.
+
+A proof audit suggests a potentially weaker route.  In the proof of
+Ford--Maynard Proposition~7.22, after the finite factor decomposition the
+left-hand side of their equation~(7.23) is written as a grouped bilinear sum
+\[
+    \sum_{n=n'n''\asymp x}Y_1(n')Y_2(n'')w_{n'n''},
+\]
+and the published Type-II bound is then invoked on this grouped object.  Thus
+a direct theorem controlling the complete family of structured sums actually
+created by the proof would be sufficient for that invocation.  We denote the
+corresponding \emph{proof-specific candidate interface} by
+\[
+   \boxed{\texttt{FM-SIEVEGEN-TYPEII45}}.
+\]
+This is a weaker-hypothesis reanalysis of the proof, not a Ford--Maynard theorem
+statement and not yet a completed theorem of this manuscript.
+
+A further proposed narrowing, labelled
+\[
+   \boxed{\texttt{FM-PERRON-GENERATED-TYPEII45}},
+\]
+tracks the pre-supremum coefficients to a generated grammar consisting of
+Möbius factors, box/support cutoffs, Mellin/Perron twists,
+least/greatest-prime-factor phases, perfect-power pullbacks and bounded-depth
+convolutions.  This generated grammar is a research target pending a complete
+grammar/source certificate; it is not asserted proved.
+
+Accordingly, a second conditional route may be written only after introducing
+an explicit \emph{replacement certificate} $\mathfrak C_{\mathrm{FM}}$ which
+verifies that every Type-II use in the rerun of the relevant Ford--Maynard
+lower-bound proof is covered by the structured theorem.  Conditional on such a
+certificate,
+\begin{equation}
+\begin{aligned}
+ &\mathfrak C_{\mathrm{FM}}
+ +\mathrm{FMRoughN2}
+ +\text{Gate-0 comparison inputs}\\
+ &\hspace{32mm}\Longrightarrow
+ \text{positive shifted-prime/twin mass at scale }x.
+\end{aligned}
+\label{eq:gate2-structured-route}
+\end{equation}
+Neither $\mathfrak C_{\mathrm{FM}}$ nor the Perron-generated theorem is
+constructed in the current paper.
+
+\begin{theorem}[Conditional endgame, publication-safe form]
+\label{thm:conditional-endgame}
+Assume the frozen Gate-0 comparison/Type-I inputs and the source-exact rough
+$N_2$ input.  If either
+\begin{enumerate}[label=(\alph*)]
+  \item the published universal Ford--Maynard Type-II hypothesis holds on the
+        interval $[\varepsilon,1/6-\varepsilon]$, or
+  \item a separately certified proof-specific replacement package
+        $\mathfrak C_{\mathrm{FM}}$ covers every Type-II invocation required in
+        the rerun of the downstream proof,
+\end{enumerate}
+then the corresponding conditional Gate-2 compiler yields positive
+shifted-prime/twin mass at scale $x$.  If the chosen package holds at
+arbitrarily large scales, the finite positivity implication yields infinitely
+many distinct twin-prime pairs.
+\end{theorem}
+\begin{proof}
+This is a conditional logical statement.  In route~(a), the published
+Ford--Maynard Type-II antecedent supplies the required bilinear estimates.  In
+route~(b), the replacement certificate is, by definition, required to verify
+that the structured theorem covers every Type-II invocation used by the
+rerun.  The rough-$N_2$ and comparison inputs supply the remaining analytic
+antecedents.  The finite Gate-2 compiler then produces positive mass at the
+scale.  Repeating on arbitrarily large scales yields distinct finite-support
+witnesses.  The present manuscript proves neither route's missing analytic
+antecedents.
+\end{proof}
+
+\subsection{Where Gate 1A and Gate 1B land in the downstream Type-II input}
+The published universal Type-II wrapper remains sufficient and should not be
+removed from the dependency graph.  What has changed is the programme's
+candidate minimal interface.  Gate~1A supplies a conditional all-$m$ analytic
+engine; the late Gate-1B architecture aims to supply the complementary
+source-coherent pair-modulus multiplier estimates.  A source-exhaustive
+compiler must then show that the actual generated coefficients required by the
+Ford--Maynard rerun lie in the chosen structured class.
+
+The honest dependency graph therefore has two possible Type-II entrances:
+\[
+\begin{gathered}
+ \text{Gate 0 inputs}\qquad
+ \text{Gate 1A engine}\qquad
+ \text{Gate 1B pair-modulus frontier}\\
+ \searrow\qquad\downarrow\qquad\swarrow\\[-1mm]
+ \begin{cases}
+  \mathrm{FullFMTypeII}_{1/6}, & \text{published sufficient wrapper},\\
+  \mathfrak C_{\mathrm{FM}}, & \text{proof-specific replacement, if certified},
+ \end{cases}\\
+ \downarrow\\[-1mm]
+ \text{Gate 2 Ford--Maynard endgame}\\
+ \downarrow\\[-1mm]
+ \text{positive twin mass at a scale}.
+\end{gathered}
+\]
+At present, the moving source-multiplier estimate, the generated-grammar
+certificate, the literal source pins and source-exhaustive reassembly remain
+open.  Thus neither entrance is presently activated by the manuscript.
+
+\subsection{Publication-facing Gate-0/2 status}
+For clarity, the downstream status is summarized as follows:
+\begin{center}
+\begin{tabular}{p{0.43\textwidth}p{0.45\textwidth}}
+\toprule
+Object & Current status\\
+\midrule
+Gate-0 deterministic Type-I compiler & Lean-banked finite compiler\\
+Gate-0 deep analytic inputs & research pass / external-uninhabited\\
+$1/6>0.1663$ and margin $11/30000$ & Lean-banked arithmetic\\
+$\sigma\ge49/300$ & Lean-banked arithmetic\\
+$\Omega(n)\le6$ for $\sigma$-rough $n$ & Lean-banked theorem\\
+Ford--Maynard rough-weight source dictionary & external/source pin; not a Lean inhabitant\\
+$N_2$ cell-sum and $\varepsilon$-uniform splice & conditional research pass; Lean-uninhabited\\
+Full FM Type II at width $1/6$ & OPEN / uninhabited\\
+Gate 2 & CLOSED ONLY CONDITIONALLY on the displayed antecedents\\
+Full Type-II reassembly & OPEN\\
+Twin-prime infinitude & NOT PROVED\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{status}[Full-programme closure status]
+The role of this section is to make the strongest currently defensible
+conditional closure explicit.  It does not upgrade any external,
+source-inspected or programme-generated interface to a theorem.  Gate~1B is
+not closed.  A subsequent source audit refines the earlier pair-modulus
+frontier into a same-$q$ cross-character Gram, a cross-$q$ source-spread
+certificate, and a source-linked shifted-quotient child; none is promoted to a
+theorem here.  Downstream, universal Ford--Maynard Type II remains a published
+sufficient wrapper, while \texttt{FM-SIEVEGEN-TYPEII45} and
+\texttt{FM-PERRON-GENERATED-TYPEII45} are progressively narrower
+proof-specific research targets.  The literal Gate-output/Ford-source adapter,
+the generated grammar certificate, source pins and source-exhaustive
+reassembly are not yet certified, and twin-prime infinitude is not proved.
+\end{status}
+
+
+\section{Late update: refined Gate-1B frontier and Ford--Maynard landing strip}
+\label{app:late-update}
+
+This late update records source audits completed after the main body of the
+draft.  It refines the dependency graph but does not alter the statement or
+proof status of the conditional Gate-1A theorem.  In particular, none of the
+programme labels introduced below is promoted to a theorem merely by being
+recorded here.
+
+\subsection{Refined Gate-1B source split}
+The earlier pair-modulus formulation remains a useful umbrella, but a later
+source audit suggests a finer decomposition.
+
+For the QK56 covariance parent, the cross-modulus branch $q_1\ne q_2$ lies in a
+product-modulus regime in which the relevant multiplicative product ranges
+are shorter than the product modulus.  In that no-wrap regime, weighted
+product-energy arguments reduce the remaining issue to a source-level
+spread/multiplicity statement for the push-forward multiplier.  We record the
+temporary programme label
+\[
+   \boxed{\texttt{CROSSQ-THETA-SPREAD45}}.
+\]
+The subsequent internal audit recorded in
+\cref{app:late-update-II} marks this source-spread step as an internal
+finite/source pass, subject to final literal transcription.  It remains neither
+a published theorem nor a Lean-closed analytic result.
+
+The same-modulus branch $q_1=q_2=q$, by contrast, retains genuine modular
+wraparound.  After character expansion the surviving object has schematic
+shape
+\[
+ \sum_{q\asymp Q}|\beta(q)|^2
+ \sum_{\chi_1,\chi_2\bmod q}
+ \widehat R_q(\chi_1)\,
+ \overline{\widehat R_q(\chi_2)}\,
+ \mathcal W_q(\chi_1,\chi_2).
+\]
+The diagonal $\chi_1=\chi_2$ does not exhaust this Gram, and fixed-multiplier
+Kloosterman estimates do not remove the cross-character terms.  The subsequent internal diagonal/off-diagonal audit recorded in
+\cref{app:late-update-II} gives this child an internal analytic pass, with the
+literal QK56/S1/S2 source dictionary still load-bearing:
+\[
+   \boxed{\texttt{SAMEQ-QK56-CROSSCHAR-GRAM45: internal analytic pass}}.
+\]
+This remains a programme claim subject to source transcription and hostile
+audit, not an externally published theorem.
+
+The balanced shifted-quotient branch likewise carries source-linked four-cycle
+multipliers rather than four independent arbitrary multipliers.  Its first
+required action is now the literal source recovery
+\[
+   \boxed{\texttt{SHIFT-TTSTAR-LITERAL-SOURCE-PIN}},
+\]
+after which the narrower research child
+\[
+   \boxed{\texttt{SHIFT-SOURCE-LINKED-CHAR45}}
+\]
+is the first major analytic candidate.  Published
+fixed-modulus Kloosterman results remain backend-capacity inputs only:
+Blomer--Pascadi give a $c^{-1/32}$ saving in the square-root critical range
+\cite{BlomerPascadi2026}, while Pascadi's non-abelian amplification gives
+$c^{-1/12}$ for balanced products of two comparable primes
+\cite{Pascadi2025}.  Neither published statement controls the above moving
+source-linked family automatically.
+
+Thus the refined Gate-1B research ledger is
+\[
+\begin{array}{ll}
+ \texttt{SAMEQ-QK56-CROSSCHAR-GRAM45}
+   & \text{internal analytic pass; source pin pending},\\
+ \texttt{CROSSQ-THETA-SPREAD45}
+   & \text{internal finite/source pass; transcription pending},\\
+ \texttt{SHIFT-TTSTAR-LITERAL-SOURCE-PIN}
+   & \text{source first action open},\\
+ \texttt{SHIFT-SOURCE-LINKED-CHAR45}
+   & \text{first major analytic open},\\
+ S1/S2\text{ literal normalisation}
+   & \text{narrow source pins},\\
+ \text{degeneracy/collision/packet census}
+   & \text{finite routing/reassembly}.
+\end{array}
+\]
+This supersedes only the research-level description of the common Gate-1B
+frontier.  Gate~1B remains open.
+
+\subsection{Published Ford--Maynard five-collar geometry}
+One downstream geometric source issue can be removed from the open ledger.
+For
+\[
+   P_\varepsilon=
+   \left(\frac12-\varepsilon,\,
+         \varepsilon,\,
+         \nu-2\varepsilon\right),
+\]
+Ford--Maynard's proof of Theorem~8.3 shows that every vector
+$x\in H_2$ has a component of one of the five forms
+\begin{equation}
+ \frac12+u,\qquad
+ \nu+u,\qquad
+ 2\nu+u,\qquad
+ 1-\nu+u,\qquad
+ 1-2\nu+u,
+ \qquad |u|\le 6\varepsilon.
+ \label{eq:FM-five-collars}
+\end{equation}
+This is a published source statement \cite{FordMaynard2024}.  Moreover,
+Ford--Maynard Definition~5.1 defines
+\[
+   \mathbf v(n)=
+   \left(
+     \frac{\log p_1}{\log n},\ldots,
+     \frac{\log p_k}{\log n}
+   \right),
+   \qquad n=p_1\cdots p_k,
+\]
+so the coordinates in \eqref{eq:FM-five-collars} correspond to individual
+prime factors.  At $\nu_0=1/6$ the collar centres are
+\[
+   \frac12,\qquad \frac16,\qquad \frac13,\qquad
+   \frac56,\qquad \frac23.
+\]
+We therefore record the programme status
+\[
+   \boxed{\texttt{FM-H2-FIVE-COLLARS45: published-source pass}.}
+\]
+
+\subsection{A source-specific repair of the rough \texorpdfstring{$N_2$}{N2} sector}
+The common normalization $a_n,b_n\mapsto a_n/\log x,b_n/\log x$ does not by
+itself place the shifted-prime comparison pair into the bounded Ford--Maynard
+class: it also reduces the prime mass by an additional factor of $\log x$.
+Accordingly, that normalization is not used as the $N_2$ repair.
+
+Instead set
+\[
+   \nu_0=\frac16,\qquad \sigma=\nu_0-2\varepsilon.
+\]
+For $0<\varepsilon\le \nu_0/100$ one has
+$\sigma\ge49/300$, and the finite bank proves that every $\sigma$-rough
+integer has at most six prime factors counted with multiplicity.
+
+The squareful rough subfamily is negligible.  Indeed, if $p^2\mid n\le x$
+and $p\ge x^\sigma$, then
+\begin{equation}
+ \sum_{x^\sigma\le p\le x^{1/2}}
+ \left(\frac{x}{p^2}+1\right)\log x
+ \ll
+ x^{1-\sigma}\log x+x^{1/2}\log x
+ =o\!\left(\frac{x}{\log x}\right).
+ \label{eq:N2-squareful}
+\end{equation}
+For the squarefree sector, the five-collar geometry permits one to choose
+canonically a collar prime $q$ and then the largest remaining prime $r$, writing
+$n=qdr$.  The present research reduction controls the shifted-prime part by a
+uniform upper-bound sieve for the two linear forms
+\[
+     r,\qquad qdr+2.
+\]
+On the rough sector the associated local factor is uniformly bounded, while
+the harmonic sum over the narrow prime collar contributes
+$O_{\nu_0}(\varepsilon+1/\log x)$.  This yields the research-level estimate
+\[
+   \sum_{n\in N_2} a_n|H(n)|
+   \ll
+   \left(\varepsilon+o(1)\right)\frac{x}{\log x},
+\]
+conditional on the standard uniform two-linear-forms upper-sieve input in the
+stated rough range.  The comparison side is compatible with the
+Ford--Maynard rough-number count and the same five-collar volume estimate.
+We record this as
+\[
+ \boxed{\texttt{FM-N2-SHIFTED-PRIME-COLLAR-SIEVE45}}
+\]
+with research status ``pass modulo a standard uniform two-linear-forms upper
+sieve''.  This remains external/uninhabited in Lean until the literal shifted-prime
+source dictionary and analytic upper-sieve input are instantiated.
+
+\subsection{The proof-specific Ford--Maynard landing point}
+The published Ford--Maynard Type-II hypothesis remains the clean sufficient
+wrapper.  However, Proposition~7.22 provides a more economical
+\emph{proof-specific} landing point.  After the finite factor decomposition,
+Ford--Maynard reduce the relevant estimate to their equation~(7.23), namely a
+finite-depth product sum with one selected product constrained to the Type-II
+interval.  They then group the factors into
+\[
+   Y_1(n')
+   =
+   \sum_{n'=\prod_{e\in E}n_e}
+      \prod_{e\in E}\mathfrak x_e(n_e),
+   \qquad
+   Y_2(n'')
+   =
+   \sum_{n''=\prod_{e\notin E}n_e}
+      \prod_{e\notin E}\mathfrak x_e(n_e),
+\]
+and invoke the universal Type-II bound only after reaching
+\[
+   \sum_{n=n'n''\asymp x}
+      Y_1(n')Y_2(n'')w_{n'n''}.
+\]
+This is a direct reading of the proof of Proposition~7.22
+\cite{FordMaynard2024}.  Consequently, a theorem controlling \emph{all actual
+generated instances} of Ford--Maynard equation~(7.23) is sufficient for this
+specific invocation:
+\[
+ \boxed{
+ \text{actual generated Ford--Maynard (7.23)}
+ \Longrightarrow
+ \text{Proposition 7.22}
+ \Longrightarrow
+ \text{Proposition 7.19}.}
+\]
+This is a proof audit, not a new theorem of Ford--Maynard and not a claim that
+the antecedent has been proved here.
+
+The factor depth is fixed by the sieve parameters.  In the proof,
+\[
+   N=k\ell+r+s,
+\]
+with $k,\ell,r,s$ bounded in terms of the fixed sieve data; thus the earlier
+concern that the generated landing point necessarily has unbounded convolution
+depth is not an independent obstruction.
+
+We retain the temporary label
+\[
+   \boxed{\texttt{FM-PERRON-GENERATED-TYPEII45}}
+\]
+with status:
+\[
+   \boxed{\text{proof-specific sufficient target; generated grammar/source certificate open}.}
+\]
+
+\subsection{The remaining Gate-output/Ford-source adapter}
+The present Gate-1A theorem controls a canonical common physical weight source,
+and the Gate-1B analysis has its own literal source classes.  Ford--Maynard's
+factor decomposition, however, generates a finite family of one-variable
+factors before equation~(7.23).  The next downstream question is therefore
+first a source dictionary problem:
+\[
+   \omega_{\Omega,j}\longmapsto
+   \begin{cases}
+     \text{Gate-1A source},\\
+     \text{Gate-1B source},\\
+     \text{direct exceptional source}.
+   \end{cases}
+\]
+We use the programme label
+\[
+   \boxed{\texttt{SOURCE-ADAPTER45}}
+\]
+for this literal Gate-output/Ford-source splice.  Its current status is:
+\[
+   \boxed{\text{primary candidate downstream interface; source-exhaustive dictionary open}.}
+\]
+Until the literal audit is complete, it is not known whether this is merely a
+finite compiler problem or whether one generated weight family exposes a
+stronger analytic child.
+
+\subsection{Revised downstream ledger}
+The late-update status is:
+\[
+\begin{array}{ll}
+ \text{Ford }H_2\text{ five-collar geometry}
+   & \text{published-source pass},\\
+ \sigma\text{-rough }\Omega(n)\le6
+   & \text{Lean-banked finite theorem},\\
+ N_2\text{ squareful disposal}
+   & \text{pass},\\
+ N_2\text{ shifted-prime two-form lane}
+   & \text{research pass modulo standard upper sieve},\\
+ \text{Ford (7.23) proof-specific landing}
+   & \text{proof-audit pass},\\
+ \text{unbounded-depth grammar concern}
+   & \text{retired},\\
+ \texttt{SOURCE-ADAPTER45}
+   & \text{primary downstream candidate interface},\\
+ \texttt{SAMEQ-QK56-CROSSCHAR-GRAM45}
+   & \text{internal analytic pass; source pins pending},\\
+ \texttt{SHIFT-SOURCE-LINKED-CHAR45}
+   & \text{first major Gate-1B analytic open},\\
+ \text{Gate 1B}
+   & \textbf{OPEN},\\
+ \text{Full Type-II reassembly}
+   & \textbf{OPEN},\\
+ \text{twin-prime infinitude}
+   & \textbf{NOT PROVED}.
+\end{array}
+\]
+
+The revised shortest dependency graph is
+\[
+\begin{gathered}
+ \text{Gate-0 Type-I/comparison inputs}
+ +\text{Gate-1A literal output}
+ +\text{Gate-1B literal output}\\
+ \downarrow\\
+ \boxed{\texttt{SOURCE-ADAPTER45 / source-exhaustive Ford-(7.23) compiler}}\\
+ \downarrow\\
+ \text{actual generated Ford--Maynard (7.23)}\\
+ \downarrow\\
+ \text{Proposition 7.22}\to\text{Proposition 7.19}
+ +\text{source-specific }N_2\text{ repair}\\
+ \downarrow\\
+ \text{Ford--Maynard lower-bound rerun at }\nu=1/6\\
+ \downarrow\\
+ \text{positive shifted-prime/twin mass at a scale}.
+\end{gathered}
+\]
+Every arrow after the source-exhaustive compiler remains conditional on the
+literal analytic antecedents displayed above.  This diagram does not assert
+the Twin Prime Conjecture.
+
+\begin{status}[Late-update publication firewall]
+The late update narrows the downstream uncertainty, but does not reduce the
+programme to one remaining theorem.  In particular:
+\begin{itemize}
+  \item Gate~1B is not closed;
+  \item \texttt{SAMEQ-QK56-CROSSCHAR-GRAM45} is an internal analytic pass
+        subject to literal source pins and hostile audit, not a published or
+        Lean-banked analytic theorem;
+  \item \texttt{SOURCE-ADAPTER45} has not yet been classified as finite-only
+        versus genuinely analytic;
+  \item \texttt{FM-PERRON-GENERATED-TYPEII45} is proof-specific and the
+        generated source grammar is not yet certified;
+  \item the Ford--Maynard endgame remains conditional;
+  \item twin-prime infinitude is not proved.
+\end{itemize}
+\end{status}
+
+
+\section{Late update II (historical): QK56 promotion, shifted source-linked child, and source-exact Ford adapter}
+\label{app:late-update-II}
+
+This section records an intermediate late-26/27-August programme audit.  It
+does not alter Theorem~\ref{thm:main} and does not assert Gate-1B closure, Full
+Type-II closure, or twin-prime infinitude.  The subsequent native first-$TT^*$
+derivation in \cref{app:native-ttstar} supersedes the stronger full-covariance
+status wording below: only the same-$q$ cross-character child and the
+cross-$q$ operator theorem survive as positive analytic children; the
+same-$q$ diagonal source energy and cross-$q$ physical source spread remain
+open.
+
+\subsection{QK56 full covariance: internal promotion}
+The same-modulus covariance is first split into the character diagonal and the
+cross-character part.  Schematically,
+\[
+ \sum_{q\sim Q}|\beta(q)|^2
+ \sum_{\chi_1,\chi_2\bmod q}
+ \widehat R_q(\chi_1)\overline{\widehat R_q(\chi_2)}
+ \mathcal W_q(\chi_1,\chi_2)
+ =\mathcal G_{\rm diag}+\mathcal G_{\rm off}.
+\]
+The internal audit places the large $HK/q$ contribution in
+$\mathcal G_{\rm diag}$ and routes that diagonal to the existing
+coefficient-blind residue-energy/JQ7 bank.  The off-diagonal is identified with
+a centred modular-hyperbola discrepancy and is estimated internally through a
+square-root Kloosterman/Weil discrepancy argument.  The current worst signed
+programme margin is
+\[
+       X^{-5/36+o(1)}.
+\]
+We therefore record
+\[
+ \boxed{\texttt{SAMEQ-QK56-CROSSCHAR-GRAM45: internal analytic pass}}
+\]
+subject to the literal S1/S2 source pin and final hostile audit.
+
+For $q_1\ne q_2$, the latest no-wrap/source audit uses the fact that fixing the
+source parameter $\Theta$ determines $B_1\bmod q_1$ and $B_2\bmod q_2$.
+The remaining product/numerical multiplicity is internally within the required
+$\ell^2/\ell^1$ spread budget.  We therefore record
+\[
+ \boxed{\texttt{CROSSQ-THETA-SPREAD45: historical candidate; source spread later reopened}},
+\]
+again without promoting the statement to a published theorem or a Lean-closed
+analytic result.
+
+At programme level the combined status is
+\[
+ \boxed{\begin{gathered}
+   \texttt{QK56-FULL-COVARIANCE45}\\
+   \text{historical programme promotion; superseded by Late update III}
+ \end{gathered}}
+\]
+
+\subsection{The shifted child: source action before analysis}
+The balanced shifted-quotient branch should not be modelled as four independent
+multipliers.  Its cyclic source relation has the form
+\[
+    a_j=\Theta(B_j,B_{j+1})\qquad(j\bmod4),
+\]
+and the schematic character moment is
+\[
+ \sum_{B_1,\ldots,B_4} W(\mathbf B)
+ \sum_h W_{\mathbf B}(h)\,
+ \chi\!\left(
+   \mathscr D\bigl(
+      \Theta(B_1,B_2),\Theta(B_2,B_3),
+      \Theta(B_3,B_4),\Theta(B_4,B_1);h
+   \bigr)
+ \right).
+\]
+The four-cycle discriminant algebra is banked in the programme, but the literal
+pre-support-enlargement $TT^*$ source formula has not yet been recovered.
+Consequently the first action is
+\[
+ \boxed{\texttt{SHIFT-TTSTAR-LITERAL-SOURCE-PIN}},
+\]
+which must print the literal $B_i$ ranges, the exact cyclic $\Theta$ map, the
+$h$-range and weight, prefactor and normalization, physical target, all
+zero/nonunit/collision/repeated-prime strata, and labelled multiplicity.
+Only after this transcription is the analytic target
+\[
+ \boxed{\texttt{SHIFT-SOURCE-LINKED-CHAR45}}
+\]
+well posed.  It is the current first major analytic Gate-1B candidate.
+
+\subsection{Technology cards for the shifted source-linked child}
+Several published results are relevant only after the literal source has been
+reduced to their stated geometries.
+
+Fouvry--Shparlinski estimate weighted multiplicative-character sums of the
+$2\times2$ determinant $ad-bc$ over four interval variables, with power saving
+for $N\ge p^{1/8+\varepsilon}$ \cite{FouvryShparlinski2022}.  This is a serious
+candidate if the cyclic discriminant is reduced source-exactly to determinant
+geometry.
+
+Shparlinski treats multivariate exponential and multiplicative-character sums
+with monomials, allowing bounded one-variable weights and both positive and
+negative monomial exponents \cite{Shparlinski2013}.  This is relevant if the
+cyclic $\Theta$ dictionary reduces to a monomial or reciprocal-monomial kernel.
+Bourgain--Garaev's reciprocal sumset and multilinear Kloosterman technology is
+a secondary candidate once an actual reciprocal-product dictionary has been
+manufactured \cite{BourgainGaraev2012}.
+
+The very general trace-function bilinear theorem of
+Fouvry--Kowalski--Michel--Sawin requires substantial structural hypotheses on
+the geometric monodromy group (for instance a simple connected identity
+component, or finite quasisimple monodromy in the displayed simplified
+theorem) \cite{FouvryKowalskiMichelSawin2025}.  A rank-one Kummer/Legendre
+character does not satisfy those displayed hypotheses merely by being a trace
+function, so that result is not cited as a black box for the present child.
+Blomer--Pascadi remains a fixed-Kloosterman backend card and likewise does not
+resolve the source-linked discriminant family by itself
+\cite{BlomerPascadi2026}.
+
+\subsection{Minimal current Gate-1B ledger}
+The late-update Gate-1B ledger is therefore
+\begin{center}
+\small
+\begin{tabular}{p{0.45\linewidth}p{0.43\linewidth}}
+\texttt{QK56-FULL-COVARIANCE45}
+  & historical promotion; full source-exact closure reopened\\
+\texttt{SHIFT-TTSTAR-LITERAL-SOURCE-PIN}
+  & source open; first action\\
+\texttt{SHIFT-SOURCE-LINKED-CHAR45}
+  & first major analytic open\\
+S1/S2 literal normalization
+  & narrow source pins\\
+$D=0$/shared-prime/nonunit/collision census
+  & finite closure/routing\\
+fixed/switched reassembly
+  & finite compiler
+\end{tabular}
+\end{center}
+Thus Gate~1B is still not closed.  The later native first-$TT^\ast$ source
+derivation shows that QK56 itself still contains two source-exact quantitative
+gaps---the same-$q$ character diagonal and cross-$q$ CRT source spread---before
+the shifted-source branch and finite reassembly can be assessed exhaustively.
+
+\subsection{Ford-generated one-variable archaeology and the Gate-output source dictionary}
+This source question is separate from Gate-1B analysis.  The latest internal
+Ford-side archaeology records the following programme passes:
+\[
+\begin{array}{ll}
+ \texttt{FM-GENERATED-ONEVAR-ARCHAEOLOGY45} & \text{pass},\\
+ \texttt{FM-FINITE-NUCLEAR-COMPILER45} & \text{pass},\\
+ \texttt{FM-OUTER-COEFFICIENT-ABSORPTION45} & \text{pass},\\
+ \texttt{WEIGHT-DEPENDENCE-FINITE-COMPILER45} & \text{pass}.
+\end{array}
+\]
+These are programme-level source/compiler audits, not published theorems.
+The first unresolved interface is the source-exact weighted high-complexity
+packet dictionary.  For each actual packet it must provide the operator,
+ranges, coefficient, multiplicity, weight law, centering, gcd/collision
+restrictions, original prefactor, normalized target and route.
+
+In particular the actual Gate weight law is not to be guessed: the relevant
+packet must be identified as a common $W_D$, a finite-template
+$W_{D,e}$, or a genuinely edge-dependent $W_{D,e}$.  We therefore retain
+\[
+   \boxed{\texttt{FM-TO-GATE-COORDINATE-CENSUS45: source-blocked}}
+\]
+rather than calling it a new analytic theorem.  Once this literal source
+census exists, the finite coordinate/reassembly compiler is already available
+at programme level.
+
+\subsection{Ford--Maynard scope}
+Ford--Maynard's published framework remains the general sufficient wrapper for
+non-negative sequences satisfying its Type-I/Type-II hypotheses
+\cite{FordMaynard2024}.  The programme's generated-one-variable and generated
+(7.23) routes are proof-specific weakenings under investigation; we do not
+attribute them to Ford--Maynard as theorem statements.  In particular, the
+latest source/compiler audits do not change the final publication firewall:
+\[
+ \boxed{\begin{gathered}
+   \text{Gate 1B open; downstream source dictionary open;}\\
+   \text{Ford--Maynard endgame conditional; twin primes not proved.}
+ \end{gathered}}
+\]
+
+\begin{status}[Draft 10 late-update firewall]
+The same-$q$ cross-character promotion remains an internal programme result;
+the cross-$q$ operator theorem is likewise internal and does not provide the
+physical source-spread estimate.  The stronger QK56 full-covariance status in
+this historical section is superseded by \cref{app:native-ttstar}.  None of
+these statements is a kernel-checked Lean analytic theorem or an externally
+published Gate-1B theorem.  Likewise, \texttt{SHIFT-SOURCE-LINKED-CHAR45}, the
+physical high-complexity packet dictionary, the FM-to-Gate coordinate census
+and the Ford lower-bound rerun must not be promoted without their actual
+proof/source objects.
+\end{status}
+
+
+
+\section{Late update III (partial child analysis): native first-\texorpdfstring{$TT^\ast$}{TT*} Gate-1B reduction}
+\label{app:native-ttstar}
+
+This section supersedes the stronger QK56 full-covariance status language in
+\cref{app:late-update-II}.  It is a source-explicit programme update, not a
+claim of Gate-1B closure.  The decisive correction is that the first
+$TT^\ast$ covariance has three different modulus geometries.  The two
+positive analytic children below remain valid on their stated proper-smooth
+sectors.  Late update~IV supersedes this section as the controlling
+high-conductor architecture: once the complement M\"obius sign is restored,
+same-$q$ and common-conductor cross-$q$ can no longer be closed sequentially.
+
+\subsection{Scope and current status}
+
+This note is deliberately not a claim of Gate--1B closure.  It isolates the
+part of the remaining analysis that can now be written in source-exact
+coordinates and separates it from source-definition and reassembly tasks.
+
+The controlling internal status is:
+\[
+\begin{array}{ll}
+\text{same-}q\text{ smooth cross-character discrepancy}
+  & \text{analytic pass on the proper smooth sector},\\
+\text{coprime cross-}q\text{ no-wrap moving-multiplier }L^2
+  & \text{proved at the kernel/operator level},\\
+\text{same-}q\text{ character diagonal}
+  & \text{source-energy open},\\
+\text{cross-}q\text{ CRT source spread}
+  & \text{source-norm open},\\
+\text{Full-Nine/Ford--Maynard reassembly}
+  & \text{source-exhaustive compiler open},\\
+\text{shifted four-cycle literal }TT^\ast\text{ source}
+  & \text{source definition open}.
+\end{array}
+\]
+
+Published Kloosterman and determinant-character technology is useful only
+after the literal source dictionary is fixed.  In particular, fixed-modulus
+bilinear Kloosterman estimates do not by themselves supply a moving source
+multiplier family theorem.
+
+\subsection{Native order-five source and two-slot completion}
+
+Let
+\[
+ Y=X^{1/9},\qquad q\asymp Q=X^\omega,\qquad
+ \frac{13}{18}\le \omega<\frac89,\qquad qR\asymp X=Y^9.
+\]
+In the critical order-five cell, write the product of five defect factors as
+$C_5\asymp Y^5$ and retain four model variables
+$x_1,x_2,x_3,x_4\asymp Y$.  Put
+\[
+   B=C_5x_2x_3\asymp Y^7.
+\]
+The native shifted relation is
+\begin{equation}
+   \boxed{Bx_1x_4-q\ell=-2.}
+   \label{eq:native-shell}
+\end{equation}
+This is the determinant shell generated by the $n+2$ source; it is not a
+replacement by a $2n\pm1$ model.
+
+For fixed $(B,q)$ the two physical Poisson variables are $x_1,x_4$.  With
+smooth source factors $f_1,f_4,W$, set
+\[
+ F_{B,q}(x_1,x_4)
+ =
+ f_1(x_1)f_4(x_4)
+ W\!\left(\frac{Bx_1x_4+2}{qR}\right)
+ \1_{Bx_1x_4\equiv-2\pmod q}.
+\]
+Two-dimensional completion gives
+\begin{equation}
+ \mathcal T_{B,q}
+ =
+ \frac{Y^2}{q^2}
+ \sum_{h,k\in\Z}
+   \Psi_{B,q}(h,k)
+   S(h,-2k\overline B;q).
+ \label{eq:two-poisson}
+\end{equation}
+On the proper unit sector $(kB,q)=1$, Kloosterman scaling yields
+\[
+  S(h,-2k\overline B;q)=S(hk\overline B,-2;q),
+\]
+so the actual one-copy multiplier is
+\begin{equation}
+   \boxed{a=hk\overline B\pmod q.}
+   \label{eq:one-copy-multiplier}
+\end{equation}
+The effective ranges are
+\[
+   |h|,|k|\ll q/Y,
+\]
+and the normalized smooth kernel has uniformly bounded derivatives on a
+fixed compact box.  Hence the smooth source can be separated into
+polylogarithmically controlled nuclear packets.  This separation is a
+source-normalization device, not an independent arithmetic saving.
+
+\subsection{The first \texorpdfstring{$TT^\ast$}{TT*} sector law}
+
+For one nuclear packet write
+\[
+ \mathcal F_q(h,k)
+ =
+ \sum_B c_{q,B}(h,k)S(hk\overline B,-2;q).
+\]
+Opening the covariance produces
+\[
+ \sum_{h,k}\left|\sum_q\mathcal F_q(h,k)\right|^2
+ =
+ \sum_{q_1,q_2,B_1,B_2,h,k}
+ c_{q_1,B_1}(h,k)\overline{c_{q_2,B_2}(h,k)}
+ \mathcal K_{12}(hk),
+\]
+where
+\[
+ \mathcal K_{12}(t)
+ =
+ S(t\overline{B_1},-2;q_1)
+ \overline{S(t\overline{B_2},-2;q_2)}.
+\]
+
+There are three genuinely different arithmetic sectors.
+
+\subsubsection{Same modulus}
+
+If $q_1=q_2=q$, the product is most naturally diagonalized by
+multiplicative characters.  For $(mn,q)=1$,
+\begin{equation}
+ S(m,n;q)
+ =
+ \frac1{\phi(q)}
+ \sum_{\chi\bmod q}
+   \tau_q(\chi)^2\overline{\chi}(mn).
+ \label{eq:kloos-char}
+\end{equation}
+Thus the same-$q$ covariance is a character Gram rather than a single
+moving Kloosterman sum.  Its character diagonal and cross-character pieces
+must be treated separately.
+
+\subsubsection{Coprime cross-modulus}
+
+If $q_1\ne q_2$ and $(q_1,q_2)=1$, CRT multiplicativity gives
+\begin{equation}
+ \boxed{\mathcal K_{12}(t)=S(t,\Theta_{12};q_1q_2),}
+ \label{eq:crossq-kloos}
+\end{equation}
+where $\Theta_{12}\pmod{q_1q_2}$ is uniquely determined by
+\[
+ \Theta_{12}\equiv-2q_2^2\overline{B_1}\pmod{q_1},
+ \qquad
+ \Theta_{12}\equiv-2q_1^2\overline{B_2}\pmod{q_2}.
+\]
+This is the actual first-$TT^\ast$ moving multiplier.
+
+\subsubsection{Shared divisor}
+
+When $(q_1,q_2)>1$, the product modulus cannot be treated by
+\cref{eq:crossq-kloos} without first extracting the common conductor.
+This branch belongs to the existing GCD/shared-prime router.
+
+\begin{proposition}[First-$TT^\ast$ sector law]
+The native QK56 covariance separates into:
+\[
+\begin{aligned}
+  \text{same-}q&=\text{character Gram},\\
+  (q_1,q_2)=1&=\text{CRT Kloosterman},\\
+  (q_1,q_2)>1&=\text{shared-conductor router}.
+\end{aligned}
+\]
+In particular, the first covariance is not a universal four-independent-
+multiplier character moment.
+\end{proposition}
+
+\subsection{Same-\texorpdfstring{$q$}{q} cross-character discrepancy}
+
+The cross-character part of the same-$q$ Gram admits a source-specific
+modular-hyperbola treatment.
+
+Let $G_q=(\Z/q\Z)^\times$.  For a pair of separated smooth frequency
+weights $u,v$ define
+\[
+  g_q(r)
+  =
+  \sum_{\substack{h,k\in G_q\\hk=r}}u(h)v(k)
+\]
+and
+\[
+  m_q
+  =
+  \frac1{\phi(q)}
+  \left(\sum_hu(h)\right)
+  \left(\sum_kv(k)\right).
+\]
+Set
+\[
+   \Delta_q(u,v)=\max_{r\in G_q}|g_q(r)-m_q|.
+\]
+
+\subsubsection{Prime modulus}
+
+For prime $q$, additive completion gives the exact identity
+\[
+ g_q(r)
+ =
+ \frac1{q^2}
+ \sum_{a,b\bmod q}
+   \widehat u(a)\widehat v(b)S(a,br;q).
+\]
+After removing the zero frequencies one obtains
+\[
+ g_q(r)-\frac{UV}{q-1}
+ =
+ \frac1{q^2}
+ \sum_{\substack{a,b\bmod q\\a,b\ne0}}
+   \widehat u(a)\widehat v(b)S(a,br;q)
+ -
+ \frac{UV}{q^2(q-1)},
+\]
+where $U=\sum u$ and $V=\sum v$.
+
+Define the discrete bounded-variation seminorm
+\[
+  \mathcal B(u)
+  =
+  \norm{u}_\infty+\sum_x|u(x+1)-u(x)|.
+\]
+Summation by parts gives
+\[
+ \sum_{a\ne0}|\widehat u(a)|
+ \ll
+ q\,\mathcal B(u)\log(2q),
+\]
+and similarly for $v$.  The Weil bound then yields
+\begin{equation}
+ \Delta_q(u,v)
+ \ll
+ q^{1/2}\mathcal B(u)\mathcal B(v)\log^2(2q)
+ +
+ O\!\left(\frac{|UV|}{q^3}\right).
+ \label{eq:prime-discrepancy}
+\end{equation}
+
+\subsubsection{Composite modulus}
+
+For general proper-unit $q$, the modular inverse graph has Fourier
+coefficients $S(a,br;q)$.  Combining the standard composite Kloosterman
+bound with a two-dimensional Erd\H{o}s--Tur\'an--Koksma inequality and
+partial summation gives the source-specific estimate
+\begin{equation}
+   \boxed{
+   \Delta_q(u,v)
+   \ll
+   q^{1/2+o(1)}
+   \mathcal B(u)\mathcal B(v).
+   }
+   \label{eq:composite-discrepancy}
+\end{equation}
+For the actual nuclear smooth weights,
+$\mathcal B(u),\mathcal B(v)\ll(\log X)^{O(1)}$.
+
+\begin{status}
+Equation \eqref{eq:composite-discrepancy} is an internal analytic
+derivation for the proper smooth source.  A formal proof assistant
+development should separate the finite Fourier identities from the external
+Kloosterman/ETK discrepancy input rather than encode the latter as an axiom.
+\end{status}
+
+\subsubsection{Fixed-power margin}
+
+For a nonprincipal ratio character $\eta=\psi\overline\chi\ne1$, the
+constant term $m_q$ cancels, and the cross-character convolution operator
+has norm
+\[
+   \norm{T_{\mathrm{off}}}_{\mathrm{op}}
+   =
+   \phi(q)\Delta_q(u,v)
+   \ll
+   q^{3/2}(\log X)^{O(1)}.
+\]
+The natural uncentered $(h,k)$ mass is
+\[
+   HK\asymp(Q/Y)^2.
+\]
+Hence the ratio is
+\[
+   \frac{q^{3/2}}{HK}
+   \asymp
+   \frac{Y^2}{Q^{1/2}}
+   =
+   X^{2/9-\omega/2}.
+\]
+At $\omega\ge13/18$,
+\[
+   2/9-\omega/2\le-5/36.
+\]
+Thus
+\begin{equation}
+ \boxed{
+ \text{same-}q\text{ cross-character contribution}
+ \ll
+ X^{-5/36+o(1)}
+ \times
+ \text{natural source energy}.
+ }
+ \label{eq:sameq-margin}
+\end{equation}
+This closes the proper smooth cross-character child, but not the character
+diagonal.
+
+\subsection{Cross-\texorpdfstring{$q$}{q} no-wrap moving-multiplier theorem}
+
+Let
+\[
+ c=q_1q_2,\qquad (q_1,q_2)=1,
+\]
+and for $D\in G_c$ define
+\[
+ T_c(D)
+ =
+ \sum_{\substack{|h|\le H\\|k|\le K}}
+ \alpha_h\beta_kS(Dh,k;c).
+\]
+Assume
+\begin{equation}
+   2HK<c.
+   \label{eq:no-wrap}
+\end{equation}
+In the actual regime
+\[
+   H,K\asymp Q/Y,\qquad c\asymp Q^2,
+\]
+so \eqref{eq:no-wrap} holds for large $X$.
+
+Character diagonalization gives
+\[
+ T_c(D)
+ =
+ \frac1{\phi(c)}
+ \sum_{\chi\bmod c}
+ \tau_c(\chi)^2\overline{\chi}(D)A_\chi B_\chi,
+\]
+with
+\[
+  A_\chi=\sum_h\alpha_h\overline{\chi}(h),
+  \qquad
+  B_\chi=\sum_k\beta_k\overline{\chi}(k).
+\]
+Orthogonality in $D$ yields
+\[
+ \sum_{D\in G_c}|T_c(D)|^2
+ =
+ \frac1{\phi(c)}
+ \sum_{\chi\bmod c}
+ |\tau_c(\chi)|^4|A_\chi|^2|B_\chi|^2.
+\]
+The character fourth moment expands into
+\[
+ \phi(c)
+ \sum_{h_1k_1\equiv h_2k_2\pmod c}
+ \alpha_{h_1}\beta_{k_1}
+ \overline{\alpha_{h_2}\beta_{k_2}}.
+\]
+By \eqref{eq:no-wrap}, the congruence lifts to the integer equality
+\[
+   h_1k_1=h_2k_2.
+\]
+The remaining multiplicative-convolution energy is bounded by divisor
+multiplicity:
+\[
+ \sum_n\left|\sum_{hk=n}\alpha_h\beta_k\right|^2
+ \ll
+ c^{o(1)}
+ \norm{\alpha}_2^2\norm{\beta}_2^2.
+\]
+Together with the standard Gauss-sum bound,
+\begin{equation}
+ \boxed{
+ \sum_{D\in G_c}|T_c(D)|^2
+ \ll
+ c^{2+o(1)}
+ \norm{\alpha}_2^2\norm{\beta}_2^2.
+ }
+ \label{eq:crossq-l2}
+\end{equation}
+Consequently, for any moving-source coefficient $A(D)$,
+\begin{equation}
+ \boxed{
+ \left|\sum_{D\in G_c}A(D)T_c(D)\right|
+ \ll
+ c^{1+o(1)}
+ \norm{A}_2\norm{\alpha}_2\norm{\beta}_2.
+ }
+ \label{eq:crossq-moving}
+\end{equation}
+
+\begin{remark}
+The analytic kernel in \eqref{eq:crossq-moving} is therefore controlled
+without a fixed-multiplier-to-family promotion.  The remaining issue is the
+physical CRT push-forward norm of $A(D)$.
+\end{remark}
+
+\subsection{A route that can be retired}
+
+A direct completion in the whole products $C,a$ formally gives
+\[
+ \sum_{C,a}F(C)G(a)\1_{Ca\equiv-2\pmod q}
+ =
+ \frac1{q^2}
+ \sum_{h,k\bmod q}
+ \widehat F_q(h)\widehat G_q(k)S(h,-2k;q).
+\]
+However, $F$ and $G$ are sparse divisor convolutions, not interval-smooth
+weights, so their Fourier transforms need not localize to short dual
+intervals.
+
+Even under the counterfactual assumption of such localization, at the
+endpoint
+\[
+ q=X^{13/18},\qquad C=X^{5/9},\qquad a=X^{4/9},
+\]
+one has
+\[
+ q/C=q^{3/13},\qquad q/a=q^{5/13}.
+\]
+The most favorable fixed-multiplier contraction supplied by the relevant
+bilinear Kloosterman range is still far smaller than the physical
+normalization requirement.  Thus the whole-product route is nonclosing even
+before addressing the moving-source family.  The slot-preserving
+$(x_1,x_4)$ completion and the same-/cross-$q$ sector split are the correct
+architecture.
+
+\subsection{The exact remaining closure system}
+
+The preceding analysis removes the need for a mysterious generic
+moving-multiplier theorem.  The remaining obligations are source-exact.
+
+\subsubsection{Same-\texorpdfstring{$q$}{q} character diagonal}
+
+For $\eta=\psi\overline\chi=1$, the centred modular-hyperbola discrepancy
+does not provide cancellation.  The required estimate has the schematic
+form
+\[
+ \sum_{q\sim Q}
+ \frac{|\beta(q)|^2Y^4}{q^4\phi(q)^2}
+ HK
+ \sum_{\chi\bmod q}
+ |\tau_q(\chi)|^4|A_{\nu,q}(\chi)|^2
+ \ll_A
+ \frac{X^2Y^2}{Q^2}(\log X)^{-2A}.
+\]
+This must be proved using the literal seven-box source energy, the exact
+normalization of $\beta(q)$, and the existing residue/JQ7 router.  It is not
+a consequence of the cross-character estimate.
+
+\subsubsection{Cross-\texorpdfstring{$q$}{q} physical source spread}
+
+The analytic operator is controlled by \eqref{eq:crossq-moving}.  What
+remains is to prove for the physical CRT push-forward
+\[
+ (B_1,B_2)\longmapsto \Theta_{12}
+\]
+a source norm of the form
+\begin{equation}
+  \boxed{
+  \norm{A_{q_1,q_2}}_2
+  \le
+  Y^{-1+o(1)}
+  \norm{A_{q_1,q_2}}_1,
+  }
+  \label{eq:source-spread}
+\end{equation}
+or any stronger equivalent estimate after restoring the full prefactor.
+This statement must include all labelled multiplicities and shared-prime
+strata.
+
+\subsubsection{Source-exhaustive Full-Nine/Ford reassembly}
+
+Closing the QK56 parent does not by itself prove that all balanced Full-Nine
+packets have been covered.  The source compiler must establish an exhaustive
+packet identity and then map the actual generated Ford--Maynard grouped
+Type-II instances into Gate-1A, Gate-1B, or explicitly controlled
+exceptional packets.
+
+A parallel source-definition obligation remains for the shifted four-cycle
+branch.  Existing archives contain the four-cycle matrix/discriminant
+algebra, but not the literal pre-support-enlargement $TT^\ast$ physical
+source.  Before a source-linked character theorem is well posed one must
+recover:
+\[
+\begin{aligned}
+ &B_1,\ldots,B_4,\qquad \Theta(B_i,B_{i+1}),\\
+ &h_i\text{-ranges and weights},\qquad \text{prefactor/target},\\
+ &\text{degenerate strata},\qquad \text{labelled multiplicity}.
+\end{aligned}
+\]
+
+\subsection{Minimal honest dependency graph}
+
+The current Gate--1B closure path is therefore:
+\[
+\begin{array}{c}
+\text{same-}q\text{ diagonal source energy}\\
++\text{cross-}q\text{ CRT source spread}\\
++\text{literal S1/S2/source normalizations}\\
++\text{finite shared-prime/nonunit/collision routing}\\[1mm]
+\downarrow\\
+\text{QK56 full covariance closed}\\[2mm]
++\text{actual switched nine-coordinate dictionary}\\
++\text{literal shifted }TT^\ast\text{ source}\\
++\text{source-linked shifted child if required}\\[1mm]
+\downarrow\\
+\text{Gate 1B closed}\\[2mm]
++\text{source-exhaustive Ford--Maynard packet compiler}\\
+\downarrow\\
+\text{downstream sieve rerun.}
+\end{array}
+\]
+
+\subsection{Literature positioning}
+
+The determinant-character bounds of Fouvry--Shparlinski \cite{FouvryShparlinski2022} and the
+monomial/reciprocal-monomial character-sum technology of Shparlinski
+\cite{Shparlinski2013} are natural candidates only after a literal shifted-source dictionary is
+recovered.  Bourgain--Garaev \cite{BourgainGaraev2012} provide reciprocal-set and multilinear
+Kloosterman technology that may become relevant to an explicit reciprocal
+product dictionary.  Blomer--Pascadi \cite{BlomerPascadi2026} provide strong fixed-modulus bilinear
+Kloosterman capacity, but their theorem does not by itself supply the
+physical source push-forward norm in \eqref{eq:source-spread}.  Thus the
+current first blockers are source-energy and source-definition problems,
+not the absence of another generic fixed-multiplier theorem.
+
+\subsection{Status before the high-conductor signed-parent correction}
+
+The following ledger records the positive children established before Late update~IV; it is not the controlling high-conductor status.  The ledger is:
+\[
+\begin{array}{ll}
+\text{native first-}TT^\ast\text{ sector law}
+ & \text{proved internally},\\
+\text{same-}q\text{ smooth modular-hyperbola discrepancy}
+ & \text{analytic pass on proper smooth sector},\\
+\text{same-}q\text{ cross-character Gram}
+ & \text{analytic pass},\\
+\text{cross-}q\text{ no-wrap moving-}D\ L^2
+ & \text{proved at operator level},\\
+\text{same-}q\text{ diagonal source energy}
+ & \text{open},\\
+\text{cross-}q\text{ physical source spread}
+ & \text{open},\\
+\text{actual switched }c_9\text{ dictionary}
+ & \text{source open},\\
+\text{shifted literal }TT^\ast\text{ source}
+ & \text{source open},\\
+\text{Gate 1B}
+ & \textbf{open},\\
+\text{Full Type II / twin-prime infinitude}
+ & \textbf{not proved}.
+\end{array}
+\]
+
+
+
+
+\section{Late update IV: high-conductor complement sign recovery and common-conductor covariance}
+\label{app:hicond-common-conductor}
+
+This section records the first high-conductor signed-parent correction.
+It is retained for audit history, but its final claim that the common-conductor
+covariance is the controlling atomic open is superseded by Late update~V.
+It records only identities and reductions supported by the current source
+derivation.  In particular, no application of Pascadi's Proposition~3.8 or of
+Blomer--Pascadi is claimed here.  The principal architectural correction is
+that a repair which genuinely uses the M\"obius sign of the modulus coefficient
+cannot close the same-$q$ high-conductor sector in isolation.
+
+\subsection{Banked low/mid-conductor material}
+
+We retain the previously audited same-$q$ collision dictionary and the
+low/mid-conductor same-$q$ estimate.  The latter still carries the source-audit
+requirement that the primitive large-sieve transcription use the correct
+$1/\phi(c)$ weighting and the actual common coefficient sequence.  These
+children are not reopened below.
+
+The native proper QK source remains
+\[
+ \sum_{C_5,x_2,x_3,q}
+ \Gamma_5(C_5)f_2(x_2)f_3(x_3)\beta(q)\frac{Y^2}{q^2}
+ \sum_{h,k}\Psi_{C_5,x_2,x_3,q}(h,k)
+ S(hk\overline B,\pm2;q),
+ \qquad
+ B=C_5x_2x_3\asymp Y^7,
+\]
+with $|h|,|k|\ll q/Y$.  The high-conductor correction below undoes only the
+outermost Cauchy/character-$L^2$ step needed to recover the signed parent; it
+does not replace the physical source by a new model.
+
+\subsection{Primitive conductor complement and exact sign factorisation}
+
+Write
+\[
+   q=cr,
+   \qquad
+   c\asymp C,
+   \qquad
+   C>C_*:=(QY^{11})^{1/3}.
+\]
+Then
+\[
+   r\ll \frac QC
+   \le \frac Q{C_*}
+   =\left(\frac{Q^2}{Y^{11}}\right)^{1/3}
+   \ll Y^{5/3+o(1)},
+\]
+since $Q<Y^8$.  The physical prime slot satisfies
+$p>V=Y^{5/2-o(1)}$, hence $p\nmid r$ in the residual band and the physical
+prime belongs to the primitive conductor $c$.  Writing $c=pc_0$ and
+$d=c_0r$, the literal high-conductor source factorisation is
+\begin{equation}
+   \boxed{\beta(cr)=\mu(r)\,\varrho_{C,r}(c),}
+   \label{eq:beta-complement}
+\end{equation}
+where
+\[
+ \varrho_{C,r}(c)
+ =
+ \sum_{\substack{pc_0=c\\
+                  p\text{ and }c_0r\text{ satisfy the physical boxes}}}
+   \mu(c_0)\log p.
+\]
+On the clean squarefree cell, $\mu(c_0)=-\mu(c)$ and therefore
+\begin{equation}
+  \boxed{
+  \beta(cr)=-\mu(c)\mu(r)L_{D,P}(cr),
+  }
+  \label{eq:beta-clean}
+\end{equation}
+with
+\[
+ L_{D,P}(cr)
+ =
+ \sum_{\substack{p\mid c,\ p\in\mathcal P\\
+                  (c/p)r\in\mathcal D}}
+ \log p\ge0.
+\]
+The selector $L_{D,P}(cr)$ is genuinely joint in $(c,r)$; no tensorisation
+$L_1(c)L_2(r)$ is used or claimed.  We record
+\[
+  \boxed{\texttt{BETA-HICOND-COMPLEMENT-FACTOR45: internal proof}.}
+\]
+
+\subsection{Induced Gauss square and survival of the complement sign}
+
+Let $\chi\pmod{cr}$ be induced by a primitive character
+$\chi^*\pmod c$.  On the proper squarefree sector,
+\begin{equation}
+   \tau_{cr}(\chi)=\mu(r)\chi^*(r)\tau_c(\chi^*).
+   \label{eq:induced-gauss}
+\end{equation}
+The QK character expansion contains the square of the Gauss sum, so
+\[
+   \tau_{cr}(\chi)^2
+   =\chi^*(r)^2\tau_c(\chi^*)^2.
+\]
+Combining this with \eqref{eq:beta-complement} gives the exact identity
+\begin{equation}
+  \boxed{
+  \beta(cr)\tau_{cr}(\chi)^2
+   =
+  \mu(r)\varrho_{C,r}(c)\chi^*(r)^2\tau_c(\chi^*)^2.
+  }
+  \label{eq:gauss-square-sign}
+\end{equation}
+Thus one factor $\mu(r)$ survives in the QK square-Gauss parent.  This is the
+key distinction from the earlier one-Gauss expression, in which the induced
+Gauss factor spends the short-cofactor sign.  We record
+\[
+ \boxed{\texttt{QK-GAUSS-SQUARE-SIGN-SURVIVES45: internal proof}.}
+\]
+
+\subsection{Exact signed parent before the sign-killing Cauchy step}
+
+For the proper unit sector define
+\[
+ \mathcal A_{c,r,\chi^*}(h,k)
+ :=
+ \sum_{\substack{B\asymp Y^7\\(B,cr)=1}}
+   \mathcal G_{cr}(B;h,k)\chi^*(B),
+\]
+where $\mathcal G_{cr}$ contains the literal factors
+$\Gamma_5(C_5)$, $f_2(x_2)$, $f_3(x_3)$,
+$\Psi_{C_5,x_2,x_3,cr}(h,k)$ and $B=C_5x_2x_3$.  Substituting
+\eqref{eq:beta-complement} and \eqref{eq:gauss-square-sign} into the one-copy
+character formula yields
+\begin{equation}
+\boxed{
+\begin{aligned}
+ \mathcal S_{\rm hi}^{\rm preC}
+ ={}&
+ Y^2\!\sum_{\substack{c>C_*\\cr\asymp Q\\(c,r)=1}}
+ \frac{\mu(r)\varrho_{C,r}(c)}{c^2r^2\phi(cr)}
+ \sum_{\chi^*\bmod c}^{*}
+ \tau_c(\chi^*)^2\chi^*(r)^2  \\
+ &\qquad\qquad\qquad\times
+ \sum_{h,k}\overline{\chi^*}(bhk)
+ \mathcal A_{c,r,\chi^*}(h,k),
+\end{aligned}}
+\label{eq:hicond-prec}
+\end{equation}
+with $b=\pm2$ according to the fixed source convention.  On the clean
+squarefree cell, \eqref{eq:beta-clean} gives the equivalent form with
+$-\mu(c)\mu(r)L_{D,P}(cr)$ in the numerator.  Axes, non-unit,
+repeated-prime and shared-prime strata remain in their existing routers.
+Hence
+\[
+  \boxed{\texttt{HICOND-SIGNED-PARENT-RECOVERED: internal proof}.}
+\]
+
+\subsection{Why the old SHORT-RJ pre-Cauchy geometry is false}
+
+The positive collision $B_2-B_1=jc$ arises only after opening
+$\sum_{\chi^*}|\mathcal A_{c,r,\chi^*}|^2$ and applying character
+orthogonality.  That same step replaces the linear source coefficient
+$\beta(cr)$ by $|\beta(cr)|^2$ and therefore destroys the complement M\"obius
+sign.  Conversely, after undoing that Cauchy step, the signed parent
+\eqref{eq:hicond-prec} contains one $B$ variable and no shift $j$.
+Consequently the numerical identity $R_*J_*=H^{1/3}$ belongs to the
+post-Cauchy positive collision geometry and cannot simultaneously be used as a
+pre-Cauchy signed entropy resource.  We therefore record the death
+certificate
+\[
+ \boxed{\texttt{SHORT-RJ-PRECAUCHY-SIMULTANEOUS-DICTIONARY45: false}.}
+\]
+
+\subsection{High conductor must recombine same-$q$ and common-conductor cross-$q$}
+
+For any family $T_q$,
+\[
+ \left|\sum_q\beta(q)T_q\right|^2
+ =
+ \sum_q|\beta(q)|^2|T_q|^2
+ +
+ \sum_{q_1\ne q_2}
+   \beta(q_1)\overline{\beta(q_2)}
+   T_{q_1}\overline{T_{q_2}}.
+\]
+The same-$q$ part only sees $|\beta(q)|^2$ and therefore cannot use the
+M\"obius sign.  Any high-conductor argument which genuinely uses the recovered
+sign must retain cross-$q$ covariance.  In the common-conductor sector
+$q_i=cr_i$, the sign carrier is $\mu(r_1)\mu(r_2)$ and the same-$q$ case
+$r_1=r_2$ is merely its positive diagonal.  Thus
+\[
+ \boxed{\texttt{HICOND-COMMON-CONDUCTOR-RECOMBINATION45: internal proof}.}
+\]
+This supersedes the earlier sequential plan ``close same-$q$, then cross-$q$''
+for the high-conductor floor.
+
+\subsection{Square-complement collision and the no-wrap threshold}
+
+If one now takes a character $L^2$ step while retaining the
+$(r_1,r_2)$ coherence, the primitive-character projector gives, on the proper
+unit sector,
+\begin{equation}
+\boxed{
+ \sum_{\chi^*\bmod c}^{*}
+ \chi^*(r_1^2B_1)\overline{\chi^*(r_2^2B_2)}
+ =
+ \sum_{d\mid(c,r_1^2B_1-r_2^2B_2)}
+ \phi(d)\mu(c/d).
+}
+\label{eq:primitive-projector-square}
+\end{equation}
+Hence the top $d=c$ stratum has the collision
+\begin{equation}
+   \boxed{r_1^2B_1-r_2^2B_2=j_{\rm sig}c,}
+   \label{eq:signed-square-collision}
+\end{equation}
+not $B_1-B_2=jc$.  If $r_i\asymp R=Q/C$ and $B_i\asymp Y^7$, then
+\[
+  |j_{\rm sig}|
+  \ll \frac{R^2Y^7}{C}
+  =\frac{Q^2Y^7}{C^3}.
+\]
+The corresponding no-wrap threshold is
+\begin{equation}
+   \boxed{C_{\rm nw}:=(Q^2Y^7)^{1/3}.}
+   \label{eq:cnw}
+\end{equation}
+Moreover
+\[
+   C_{\rm nw}<Q\quad\Longleftrightarrow\quad Q>Y^7,
+\]
+so the global phase boundary $\omega=7/9$ reappears for a precise reason:
+it is the point at which a signed square-complement no-wrap slice exists.
+For $C>C_{\rm nw}$, on the fully proper cross-coprime squarefree stratum,
+the top collision reduces to $r_1^2B_1=r_2^2B_2$; under
+$(B_1B_2,r_1r_2)=1$, unique factorisation forces $r_1=r_2$ and $B_1=B_2$.
+Thus the top projector is positive diagonal in the upper no-wrap slice; any
+cancellation must come from a proper-divisor projector or a separately routed
+shared-prime stratum.
+
+\subsection{Source-stage firewall against a direct MAM45/HFMV identification}
+
+The recovered parent \eqref{eq:hicond-prec} already lies after
+2-dimensional Poisson completion, Kloosterman completion and a
+primitive-conductor character projection.  Undoing the final Cauchy step does
+not invert these earlier transforms or remove the analytic selector
+$\operatorname{cond}(\chi)=c>C_*$.  Therefore the present source does not
+supply a literal operator identity from the high-conductor QK parent to the
+pre-completion MAM45 or HFMV parents.  We record
+\[
+ \boxed{\texttt{DIRECT HICOND-QK-PARENT} \to
+        \texttt{MAM45/HFMV}: \text{source-stage mismatch}.}
+\]
+A global MAM45/HFMV theorem could of course control the full physical parent
+and hence its high-conductor residual after subtraction of already-controlled
+pieces; that is a global theorem landing, not a local dictionary.
+
+\subsection{The exact atomic high-conductor covariance}
+
+Put
+\[
+ \mathcal Z_{c,r,\chi}(h,k)
+ :=
+ \overline\chi(bhk)\mathcal A_{c,r,\chi}(h,k).
+\]
+The exact common-conductor covariance is
+\begin{equation}
+\boxed{
+\begin{aligned}
+ \mathcal C_{\rm cc}^{\rm hi}
+ :={}&
+ Y^4\sum_{c>C_*}
+ \sum_{\substack{r_1,r_2\\cr_i\asymp Q}}
+ \frac{\mu(r_1)\mu(r_2)
+       \varrho_{C,r_1}(c)\overline{\varrho_{C,r_2}(c)}}
+      {c^4r_1^2r_2^2\phi(cr_1)\phi(cr_2)}  \\
+ &\times
+ \sum_{\chi^*\bmod c}^{*}|\tau_c(\chi^*)|^4
+ \chi^*\!\left(\frac{r_1^2}{r_2^2}\right)
+ \sum_{h,k}
+ \mathcal Z_{c,r_1,\chi^*}(h,k)
+ \overline{\mathcal Z_{c,r_2,\chi^*}(h,k)}.
+\end{aligned}}
+\label{eq:cc-hi}
+\end{equation}
+The required high-conductor theorem is
+\begin{equation}
+  \boxed{
+  \mathcal C_{\rm cc}^{\rm hi}
+  \ll_A
+  \frac{X^2Y^2}{Q^2}(\log X)^{-A}.
+  }
+  \label{eq:cc-hi-target}
+\end{equation}
+This single parent contains the positive same-$q$ floor $r_1=r_2$, the
+cross-$q$ terms which carry the only available complement M\"obius sign, the
+primitive-projector collision \eqref{eq:signed-square-collision}, and the
+actual five-defect QK coefficients.  It is therefore the controlling atomic
+high-conductor open.
+
+\subsection{Square-complement adapter: candidate only}
+
+Equation \eqref{eq:gauss-square-sign} shows that the complement phase is
+quadratic in $r$.  Formally, if a later source-preserving Kloosterman
+transcription produces $\overline r^{\,2}$, the positive-integer map
+$s=r^2$ is injective and preserves both $\ell^1$ and $\ell^2$ norms of the
+outer weights.  In the high-conductor range,
+\[
+  \frac{R^2}{C}=\frac{Q^2}{C^3}
+  < \frac{Q}{Y^{11}}
+  \ll Y^{-3+o(1)}.
+\]
+This makes $s=r^2$ a genuinely short outer variable relative to the primitive
+conductor.  It motivates a fresh audit against Pascadi's variable-family
+Kloosterman machinery \cite{Pascadi2025}, but no application is claimed here.
+Before such an invocation one must prove the literal $\overline r^{\,2}$
+Kloosterman slot, place the joint selector $\varrho_{C,r}(c)$ in a legal
+coefficient architecture, expose the genuine multiplicative smooth slots,
+verify the relevant exceptional-spectrum hypothesis, and recompute every
+geometric term after replacing the outer range $R$ by $R^2$.  These are open
+source/analytic tasks.
+
+\subsection{Controlling Gate--1B ledger after the correction}
+
+The current high-conductor ledger is
+\[
+\begin{array}{ll}
+\text{same-$q$ collision dictionary} & \text{banked},\\
+\text{same-$q$ low/mid conductor} & \text{banked; weighting audit tag retained},\\
+q=cr\text{ complement geometry} & \text{proved internally},\\
+\beta(cr)=\mu(r)\varrho_{C,r}(c) & \text{proved internally},\\
+\tau_{cr}(\chi)=\mu(r)\chi^*(r)\tau_c(\chi^*) & \text{proved internally},\\
+\beta(cr)\tau_{cr}(\chi)^2\text{ retains }\mu(r) & \text{proved internally},\\
+\text{signed pre-Cauchy parent} & \text{recovered},\\
+\text{old SHORT-RJ pre-Cauchy dictionary} & \textbf{false / retracted},\\
+\text{correct signed collision} & r_1^2B_1-r_2^2B_2=j_{\rm sig}c,\\
+C_{\rm nw}=(Q^2Y^7)^{1/3} & \text{proved threshold},\\
+\text{same-$q$ high conductor as standalone sign repair} & \text{invalid architecture},\\
+\text{common-conductor recombination} & \text{proved structurally},\\
+\text{direct high-QK to MAM45/HFMV} & \text{source-stage mismatch},\\
+\mathcal C_{\rm cc}^{\rm hi}\text{ target} & \textbf{first high-conductor analytic open},\\
+\text{square-complement Pascadi adapter} & \text{candidate/open},\\
+\text{Gate 1B} & \textbf{open}.
+\end{array}
+\]
+Accordingly this section replaces the old SHORT-RJ and standalone same-$q$
+high-conductor architectures.  The subsequent square-complement audit in
+Late update~V goes further: it proves that the common-conductor block is not
+the full parity-sensitive parent and retires the direct Pascadi-3.8 closure
+route.
+
+\section{Late update V: square-complement death certificate and the near-primitive first open}
+\label{app:hicond-nearprim}
+
+This section is the controlling Gate--1B update for the high-conductor range.
+It records the hostile audit of the common-conductor square-complement adapter.
+The outcome is a genuine DAG repair rather than a positive Pascadi splice:
+the short-$r$ square norm and a primitive-Kloosterman inversion are exact, but
+the naive $r^2$ dictionary is false, both legal Proposition~3.8 lanes are
+power-nonclosing, and the common-conductor covariance has already squared away
+the conductor M\"obius sign.  The unavoidable first analytic child is therefore
+the near-primitive full-conductor five-defect signed packet.
+
+\subsection{Exact short-complement square norm}
+
+Put
+\[
+ \lambda_{c,r}:=\frac{\mu(r)\varrho_{C,r}(c)}{r^2\phi(cr)}.
+\]
+Using
+\[
+ \chi^*\!\left(\frac{r_1^2}{r_2^2}\right)
+ =\chi^*(r_1)^2\overline{\chi^*(r_2)^2},
+\]
+the common-conductor covariance \eqref{eq:cc-hi} is exactly
+\begin{equation}
+\boxed{
+\begin{aligned}
+ \mathcal C_{\rm cc}^{\rm hi}
+ =Y^4\sum_{c>C_*}\frac1{c^4}
+ \sum_{\chi^*\bmod c}^{*}|\tau_c(\chi^*)|^4
+ \sum_{h,k}
+ \left|
+   \sum_{\substack{r\\cr\asymp Q}}
+      \lambda_{c,r}\chi^*(r)^2
+      \mathcal Z_{c,r,\chi^*}(h,k)
+ \right|^2.
+\end{aligned}}
+\label{eq:cc-short-r-square}
+\end{equation}
+No estimate is used in \eqref{eq:cc-short-r-square}; it is simply a reassembly
+of the $r_1,r_2$ covariance into a short-complement square norm.  We record
+\[
+ \boxed{\texttt{COMMON-CONDUCTOR-SHORT-r-SQUARE-NORM45: internal proof}.}
+\]
+
+\subsection{The genuinely short quantity and the physical aggregate variable}
+
+With $R=Q/C$ and $C>C_*=(QY^{11})^{1/3}$,
+\begin{equation}
+ \frac{R^2}{C}=\frac{Q^2}{C^3}<\frac{Q}{Y^{11}}
+ <Y^{-3+o(1)},
+ \qquad
+ R^2\ll CY^{-3+o(1)}.
+ \label{eq:r2-over-c}
+\end{equation}
+Thus $r^2$ by itself is a very short integer variable relative to the primitive
+conductor.  The decisive correction is that the physical Kloosterman inverse
+variable is not $r^2$ alone.  Since $B\asymp Y^7$, the aggregate scale is
+\begin{equation}
+ \frac{R^2Y^7}{C}=\frac{Q^2Y^7}{C^3},
+ \label{eq:r2B-scale}
+\end{equation}
+which is $<1$ only after $C>C_{\rm nw}=(Q^2Y^7)^{1/3}$.  Hence
+\eqref{eq:r2-over-c} does not supply a free short-variable theorem throughout
+the high-conductor range.
+
+\subsection{Primitive-Kloosterman inversion}
+
+For squarefree $c$ define the primitive kernel
+\[
+ \mathfrak P_c(x):=
+ \sum_{\chi\bmod c}^{*}\tau_c(\chi)^2\overline\chi(x).
+\]
+Decomposing every character modulo $c$ by its primitive conductor and using
+the induced-Gauss identity gives
+\[
+ \phi(c)S(1,x;c)
+ =\sum_{d\mid c}
+   \mathfrak P_d\!\left(x\overline{(c/d)^2};d\right).
+\]
+M\"obius inversion on the divisor lattice therefore yields the exact identity
+\begin{equation}
+ \boxed{
+ \mathfrak P_c(x)
+ =\sum_{d\mid c}\mu(c/d)\phi(d)
+ S\!\left(1,x\overline{(c/d)^2};d\right).
+ }
+ \label{eq:primitive-kloos-inversion}
+\end{equation}
+For $c=p$ prime this becomes
+$\mathfrak P_p(x)=(p-1)S(1,x;p)-1$, as expected from ``all characters minus
+principal''.  Substituting the physical
+$x=bhk\overline{r^2B}$ and writing $c=de$ gives
+\begin{equation}
+ \boxed{
+ \mathfrak P_c\!\left(bhk\overline{r^2B}\right)
+ =\sum_{de=c}\mu(e)\phi(d)
+ S\!\left(hk\overline{(er)^2B},b;d\right).
+ }
+ \label{eq:primitive-kloos-physical}
+\end{equation}
+Thus even the top $d=c$ term contains the inverse of $r^2B$, not the inverse
+of $r^2$ alone.  We record
+\[
+ \boxed{\texttt{PRIMITIVE-KLOOSTERMAN-INVERSION45: internal proof}.}
+\]
+
+\subsection{Why the naive Pascadi-3.8 square-complement dictionary is false}
+
+Pascadi's Proposition~3.8 is a theorem for a kernel of the schematic form
+\[
+ S(m_1m_2\overline{\mathfrak r},\pm n;\mathfrak s\mathfrak c)
+\]
+with two genuine multiplicative-convolution slots $m_1,m_2$ and an arithmetic
+sequence subject to its Assumption~3.2 \cite{Pascadi2025}.  The physical top
+kernel in \eqref{eq:primitive-kloos-physical} is
+\[
+ \boxed{S(hk\overline{r^2B},b;c),\qquad B=C_5x_2x_3.}
+\]
+The two multiplicative slots are already forced to be $m_1=h$ and $m_2=k$.
+Consequently the five defects and two model factors cannot be reassigned to
+those slots without changing the source.  There are only two legal broad
+arrangements.
+
+First, scaling $B$ into the second Kloosterman argument gives
+\[
+ S(hk\overline{r^2B},b;c)
+ =S(hk\overline{r^2},b\overline B;c),
+\]
+so one may take $\mathfrak r=r^2$ and encode
+$n\equiv b\overline B\pmod c$ in an inverse-residue coefficient sequence.
+This is structurally legal, and the general-sequence form of Assumption~3.2
+only inserts the positive norm
+\[
+ A_{r^2,c}^2=\sum_n|a_{n,r^2,c}|^2.
+\]
+The theorem therefore requires, rather than proves, the physical inverse-residue
+spread.  The literal parameter audit in the present source yields at best
+\begin{equation}
+ |\mathcal S_{\rm hi}(C)|
+ \ll X^{o(1)} C Q^{1/2}A_C.
+ \label{eq:p38-inverse-output}
+\end{equation}
+In the residue-injective upper range $C,Q\ge Y^7$, the natural value
+$A_C=Y^{7/2+o(1)}$ leaves a deficit at least $Y^5$.  Hence
+\[
+ \boxed{\texttt{LEGAL-P38-INVERSE-RESIDUE-LANE45: power-nonclosing}.}
+\]
+
+Second, one may put the entire product $r^2B$ into the outer inverse variable.
+Then
+\[
+ \mathfrak R\asymp R^2Y^7=\frac{Q^2Y^7}{C^2},
+\]
+and the resulting geometric factor and source norm are even larger; the
+source audit gives an output of size
+\[
+ Y^{23/2+o(1)}\sqrt{CQ},
+\]
+which is far above the physical target $Y^9$.  Hence
+\begin{center}
+\small\texttt{LEGAL-P38-PRODUCT-OUTER-LANE45}: 
+\textbf{EVEN-MORE-NONCLOSING}.
+\end{center}
+The common-conductor Pascadi closure route is therefore retired.  This is a
+capacity and source-decomposition death certificate; it is not a claim that
+Proposition~3.8 is incorrect.
+
+\subsection{The deeper sign loss inside the common-conductor covariance}
+
+On the clean cell,
+\[
+ \beta(cr)=-\mu(c)\mu(r)L_{D,P}(cr).
+\]
+But within a common-conductor covariance,
+\[
+ \beta(cr_1)\overline{\beta(cr_2)}
+ =\mu(c)^2\mu(r_1)\mu(r_2)L_{D,P}(cr_1)L_{D,P}(cr_2),
+\]
+so the conductor sign $\mu(c)$ has already been squared away.  The block only
+retains the complement pair $\mu(r_1)\mu(r_2)$.  In particular the
+near-primitive slice $r_1=r_2=1$ contains no complement sign at all.  Thus
+\[
+ \boxed{\texttt{COMMON-CONDUCTOR-ONLY-SIGN-REPAIR45: incomplete}.}
+\]
+The common-conductor square norm remains a legitimate secondary $r>1$ child,
+but it cannot be treated as the full parity-breaking high-conductor parent.
+
+\subsection{Representation-loop interpretation}
+
+Equation \eqref{eq:primitive-kloos-inversion} also explains why the
+square-complement route does not evade the earlier fixed-modulus death
+certificate.  If the primitive conductor $c$ is kept fixed, the quadratic
+complement phase remains visible but there is no single complete Kloosterman
+sum.  If one expands the primitive projector into complete Kloosterman sums,
+one must sum over $d\mid c$ and replace $r$ by $er$ with $e=c/d$; summing all
+primitive conductors reconstructs the original full-character QK5 source.
+The source energy therefore migrates into the inverse-residue norm or the
+outer-weight norm rather than disappearing.
+
+\subsection{The unavoidable near-primitive signed child}
+
+Every $r^2$-based complement argument must confront $r=1$.  After a fixed
+polylogarithmic nuclear separation, one near-primitive source packet has the
+form
+\begin{equation}
+\boxed{
+\begin{aligned}
+ \mathcal S_{\rm NP}^{(\nu)}
+ ={}&-Y^2\sum_{c\asymp Q}
+ \frac{\mu(c)L_{D,P}(c)}{c^2\phi(c)}
+ \sum_{\chi^*\bmod c}^{*}\tau_c(\chi^*)^2
+ \prod_{i=1}^5D_{i,\nu,c}(\chi^*)
+ F_{2,\nu,c}(\chi^*)F_{3,\nu,c}(\chi^*)\\
+ &\hspace{38mm}\times
+ \overline{H_{\nu,c}(\chi^*)K_{\nu,c}(\chi^*)}.
+\end{aligned}}
+\label{eq:nearprim-signed}
+\end{equation}
+Here the conductor M\"obius sign $\mu(c)$ and all five centred defect factors
+remain linear; there is no complement variable available for square-complement
+averaging.  The first unavoidable high-conductor theorem is therefore
+\begin{equation}
+ \boxed{
+ \mathcal S_{\rm NP}^{(\nu)}\ll_A X(\log X)^{-A}.
+ }
+ \label{eq:nearprim-target}
+\end{equation}
+Equivalently, at the pre-completion source stage one must bound the signed
+native determinant packet
+\begin{equation}
+ \boxed{
+ \sum_{\substack{B,x_1,x_4,c,\ell\\Bx_1x_4-c\ell=-2}}
+ \Gamma_5(C_5)f_2(x_2)f_3(x_3)
+ \mu(c)L_{D,P}(c)W(\cdots)
+ \ll_A X(\log X)^{-A}.
+ }
+ \label{eq:nearprim-precompletion}
+\end{equation}
+For $r=1$, the top $d=c$ term of
+\eqref{eq:primitive-kloos-inversion} is precisely
+$\phi(c)S(hk\overline B,b;c)$, the original QK5 complete kernel.  Thus the
+finite/source inversion back to the native determinant shell
+$Bx_1x_4-c\ell=-2$, while preserving
+$\beta(c)=-\mu(c)L_{D,P}(c)$, is an exact source adapter.  It is not an
+estimate.  We record
+\[
+ \boxed{\texttt{NEARPRIM-TOP-KLOOSTERMAN-TO-SIGNED-QK5/MAM45-ADAPTER: pass}.}
+\]
+
+\subsection{Revised Gate--1B high-conductor DAG}
+
+The controlling high-conductor path is now
+\[
+\boxed{
+\begin{array}{c}
+\text{low/mid conductor bank}
++\text{ cross-character bank}
++\text{ cross-$q$ no-wrap operator bank}
+\\[1mm]\downarrow\\[-1mm]
+\textbf{HIGH CONDUCTOR}
+\quad
+\begin{cases}
+ r=1:&\boxed{\texttt{NEARPRIM-FULL-c-FIVEDEFECT-SIGNED45}},\\
+ r>1:&\text{square-character complement family},
+\end{cases}
+\\[2mm]\downarrow\\
+\text{full }(c_1,r_1)\times(c_2,r_2)\text{ source reassembly}
+\\\downarrow\\
+\text{QK56 parent}
+\\\downarrow\\
+\text{exhaustiveness / shifted-child test}
+\\\downarrow\\
+\texttt{GATE1B CLOSED}.
+\end{array}}
+\]
+The common-conductor covariance is retained only as a secondary $r>1$ child.
+The present first analytic open is
+\texttt{NEARPRIM-FULL-c-FIVEDEFECT-SIGNED45}.
+
+\subsection{Controlling ledger after the square-complement audit}
+
+\[
+\begin{array}{ll}
+\text{common-conductor short-$r$ square norm} & \text{proved exactly},\\
+R^2/C\ll Y^{-3+o(1)} & \text{proved},\\
+\text{primitive-Kloosterman inversion} & \text{proved exactly},\\
+\text{actual inverse variable} & r^2B\text{, not }r^2,\\
+\text{naive }r^2\to\text{Pascadi-3.8 dictionary} & \textbf{false},\\
+\text{legal inverse-residue P3.8 lane} & \textbf{power-nonclosing},\\
+\text{legal product-outer P3.8 lane} & \textbf{even-more-nonclosing},\\
+\text{common-conductor }\mu(c) & \text{squared away},\\
+r=1\text{ near-primitive child} & \textbf{unresolved signed floor},\\
+\text{common-conductor P3.8 closure} & \textbf{retired},\\
+\text{new first high-conductor open} & \boxed{\texttt{NEARPRIM-FULL-c-FIVEDEFECT-SIGNED45}},\\
+\text{Gate 1B} & \textbf{open}.
+\end{array}
+\]
+
+\section{Working missing-literature and source-definition bank}
+\label{app:missing-source-bank}
+
+\begin{status}[Editorial working ledger]
+This appendix is a working retrieval ledger rather than part of the proof of
+any theorem above.  It is retained so that source and literature gaps can be
+cleared systematically in a later final audit.  In particular, a missing
+\emph{programme source definition} is not to be relabelled as a missing
+published theorem.
+\end{status}
+
+\subsection{ML/SOURCE-1: Gate-1B physical-source definition gap}
+\label{app:ml-source-1}
+
+The current archive search recovers substantial finite compiler mathematics,
+but does not recover the two physical source definitions needed to instantiate
+the remaining Gate-1B compiler.  We therefore bank a single item
+\[
+   \boxed{\texttt{ML/SOURCE-1 --- Gate1B physical-source definition gap}}.
+\]
+This is principally a \emph{source-definition} gap, not a missing-paper gap.
+
+\paragraph{Recovered finite/source algebra.}
+The supplied archives contain the switched operator and its exact multiplier
+reindexing, the $\mu*\Lambda$ divisor opening with ordered divisor-pair
+multiplicity retained, and the higher-prime-power/repeated-prime/generic
+switched partition.  They also contain the conditional Q5 support identity:
+if the relevant coefficient is literally a Dirichlet convolution $c=a*b$,
+then the generic switched term expands onto the determinant shell
+\[
+        mn+2=dpr.
+\]
+Likewise, the formal nine-coordinate ANOVA/distributive compiler and the
+finite packet-reassembly compiler are available.  None of these finite
+identities, however, identifies the actual physical nine-coordinate
+coefficient.
+
+\paragraph{Missing source definition 1: actual switched $R9$ cell.}
+The first source-open item is
+\[
+  \boxed{\texttt{ACTUAL-SWITCHED-R9-CELL-DICTIONARY45}}.
+\]
+The formal interface permits a relation of the form
+\[
+  c_9(t)=\kappa_j\,(\alpha_j*\beta_{9-j})(t)+E_j(t),
+\]
+but the supplied source does not prove that the actual physical $c_9$ has
+this form.  A source-safe dictionary must identify, for every actual packet,
+\begin{itemize}
+  \item the literal sequences $\alpha_j$ and $\beta_{9-j}$;
+  \item labelled versus symmetrised source coordinates and their dyadic
+        ranges;
+  \item the M\"obius, prime and model scalars;
+  \item ordered-factorisation multiplicity and repeated-prime correction;
+  \item smooth/Perron weights, the original prefactor and physical target;
+  \item exceptional and degeneracy routing.
+\end{itemize}
+Until this dictionary exists, the exact nine-coordinate convolution compiler
+is only conditional on its source antecedent.
+
+\paragraph{Missing source definition 2: shifted $TT^*$ physical source.}
+The second source-open item is
+\[
+  \boxed{\texttt{SHIFT-TTSTAR-LITERAL-SOURCE-PIN}}.
+\]
+The archive contains four-cycle matrix, trace, determinant and discriminant
+algebra, and counterguards against treating Cauchy copies as independent
+physical multipliers.  It does not contain the literal pre-support-enlargement
+$TT^*$ source formula from which the cyclic multipliers should be derived.
+Before \texttt{SHIFT-SOURCE-LINKED-CHAR45} is a fully source-posed theorem,
+the source pin must specify
+\begin{itemize}
+  \item the literal definitions and ranges of $B_1,\ldots,B_4$;
+  \item the exact cyclic law $\Theta(B_i,B_{i+1})$;
+  \item all $h_i$ ranges and source weights;
+  \item the prefactor, normalisation and physical target;
+  \item the $D=0$, non-unit, shared-prime, repeated-prime and collision strata;
+  \item labelled tuple multiplicity and the exact equality/error across any
+        support enlargement.
+\end{itemize}
+
+\paragraph{Why literature search cannot by itself close this item.}
+Published determinant-character, trace-function and Kloosterman estimates can
+be matched only \emph{after} the physical coefficient and multiplier family
+are defined.  They cannot determine a private programme coefficient such as
+$c_9$, the variables $B_i$, the cyclic map $\Theta(B_i,B_{i+1})$, or the
+packet multiplicity.  Ford--Maynard's published sieve framework likewise does
+not define these programme-specific objects \cite{FordMaynard2024}.
+Consequently the next action for this bank item is source archaeology or a
+literal source derivation, not broader theorem shopping.
+
+\paragraph{Current status and later final-audit checklist.}
+We retain
+\[
+\begin{array}{ll}
+ \text{switched finite compiler} & \text{pass},\\
+ \text{nine-coordinate convolution compiler} & \text{conditional pass},\\
+ \text{finite Gate-1B reassembly compiler} & \text{pass},\\
+ \text{actual switched $R9$ source dictionary} & \text{source open},\\
+ \text{shifted $TT^*$ physical source} & \text{source open},\\
+ \text{Gate 1B} & \text{open}.
+\end{array}
+\]
+When the final missing-literature/source audit is compiled, this item should
+be cleared only by one of the following: (i) an authoritative source file
+containing the missing literal definitions; (ii) a derivation from an earlier
+physical source which proves them exactly, including multiplicity and
+normalisation; or (iii) a proof that the corresponding packet is absent and
+therefore need not be routed.  A published black box matching only the later
+schematic kernel is not sufficient.
+
+\printbibliography
+\end{document}

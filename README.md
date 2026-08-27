@@ -17,7 +17,8 @@ Machine-checked in Lean:
 Not formalised/proved here:
 
 - the large-`M` `WindowPairSupply` statement;
-- `AFFINE287-DET1-HYBRID-MQ45`;
+- `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`;
+- `VAUGHAN-TYPEI-GENERATED-KAPPA45` / comparison-side Vaughan source matching;
 - `k=0` smooth-parity closure;
 - the full fixed-certificate leakage estimate;
 - the remaining literal Gate-1B/provider stability dictionaries;
@@ -27,59 +28,87 @@ Not formalised/proved here:
 The exact formal remaining supply interface is `Erdos287.WindowPairSupply`. A Sophie-type
 prime witness is sufficient for it but is stronger than necessary.
 
-## Current research frontier — 27 Aug 2026
+## Current public review / research frontier — 27 Aug 2026
+
+**Stable public-review PDF (current V14 source update):**
+[ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
 
 Research/frontier material is in [`frontier/`](frontier/):
 
 - [Current frontier status](frontier/ERDOS287_FRONTIER_STATUS_2026-08-27.md)
-- [Current determinant-one hybrid frontier](frontier/ERDOS287_PENDING_DET1_HYBRID_FRONTIER_2026-08-27.md)
-- [Next determinant-one hybrid attack](frontier/ERDOS287_NEXT_AFFINE287_DET1_HYBRID_MQ45.md)
+- [Prime-modulus Möbius two-outer frontier](frontier/ERDOS287_PENDING_PRIME_MODULUS_MU_TWOOUTER_FRONTIER_2026-08-27.md)
+- [V14 controlling source update inserted into the public-review PDF](frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex)
+- [Earlier determinant-one hybrid frontier](frontier/ERDOS287_PENDING_DET1_HYBRID_FRONTIER_2026-08-27.md)
 - [Earlier singleton reduction](frontier/ERDOS287_PENDING_SINGLETON_FRONTIER_2026-08-27.md)
-- [Earlier Aristotle V12 smooth-parity reproof prompt](frontier/ERDOS287_ARISTOTLE_V12_SMOOTH_PARITY_REPROOF.md)
 
-### Latest reduction
+### Latest source correction
 
-The singleton/provider audit has now been completed far enough to rule out the naive identification
-
-```text
-singleton generated Type II = Gate-1B common-conductor signed covariance.
-```
-
-Exact coprimality shows that the Ford outer Möbius carrier and the shifted-output Gate-1B complement Möbius carrier are different variables. The direct dictionary therefore fails.
-
-At the same time, the selected Type-II coefficient can be shortened further to
-
-```text
-1 <= |E| <= 2,
-X^epsilon* < m_E <= X^(3/20+o(1)).
-```
-
-Large shifted-output blocks are routed to the existing one-outer/F3 sector; a Wright-compatible AP child gives only a conditional low/moderate-modulus subrange; and all multiouter algebraic sources can be regrouped exactly into generated two-outer form.
-
-The current first general analytic open is therefore
+The older generic determinant-one object
 
 `AFFINE287-DET1-HYBRID-MQ45`
 
-with equivalent descriptive label
-
-`HYBRID-MQ-KLOOSTERMAN-LARGE-SIEVE`.
-
-The core determinant-one relation is
+is now **superseded as the controlling source**. The actual affine prime term is first decomposed literally from
 
 ```text
-(qa)b - (2m)n = +/-1,
+Lambda(2mn+s),  s = +/-1,
 ```
 
-hence after fixing `q,a,m` one has the exact affine parametrisation
+using the exact Vaughan identity with `U=V=X^(1/3)`.
+
+This gives:
+
+- `AFFINE287-VAUGHAN-PRIME-SOURCE45: PASS`;
+- proper prime-power outer terms: `PASS / negligible`, with relative margin `X^(-1/6+o(1))`;
+- literal Vaughan cofactor well-factorability: **FALSE**;
+- direct canonical Gate-1A adapter: **FAIL**;
+- direct native QK56 dictionary: **not established**;
+- prime-modulus Möbius two-outer structural map: **PASS**.
+
+The current first true analytic open is
+
+`AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`.
+
+Its source-exact prime-modulus form is schematically
 
 ```text
-b = b0 + 2m t,
-n = n0 + qa t.
+sum_{p~P} log p
+  sum_{2mn == -s (mod p)}
+    xi_pi(m) kappa_pi(n)
+    Delta^{mu,1}_{D,R}((2mn+s)/p)
+  - source-matched main term,
 ```
 
-The remaining theorem must control the resulting coherent `q,a,m` family with the actual generated outer coefficient grammar, affine sign, Möbius provenance, conductor structure and exceptional strata intact.
+where
 
-This frontier material is research-level and does not alter the trusted Lean status above.
+```text
+Delta^{mu,1}_{D,R}(u)
+ = sum_{dr=u, d~D, r~R} mu(d) W_D(d) W_R(r).
+```
+
+Required saving: `o(X/log X)` or a sufficiently small fixed constant multiple preserving the fixed-certificate margin.
+
+### Current distance ledger
+
+| Node | Status |
+|---|---|
+| fixed Ford certificate / transference | PASS (research/source layer) |
+| Ford generated depth | PASS, safe `N0=112` |
+| exact affine Vaughan prime source | PASS |
+| proper prime-power outer | PASS / negligible |
+| comparison Vaughan matching | OPEN source pin |
+| Vaughan Type-I generated-`kappa` | OPEN adapter |
+| Vaughan cofactor well-factorability | FALSE |
+| direct Gate-1A canonical map | FAIL |
+| direct native QK56 map | NOT ESTABLISHED |
+| prime-modulus Möbius two-outer structural map | PASS |
+| `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45` | **FIRST TRUE ANALYTIC OPEN** |
+| `k=0` smooth packet | OPEN |
+| remaining fixed-`g_*` packet census | OPEN |
+| fixed-certificate leakage / FCL | OPEN |
+| Ford lower-bound completion | CONDITIONAL/OPEN |
+| Erdős #287 | OPEN |
+
+This research frontier does not alter the trusted finite Lean status.
 
 ## Existing formal/update files
 
@@ -89,8 +118,5 @@ This frontier material is research-level and does not alter the trusted Lean sta
   an **optional analytic packet provider**, not a mandatory global prerequisite for #287.
 - `RequestProject/Status/Erdos287V13Frontier.lean` — records the repaired open
   `LCBetaUpperHalf` interface and regression pins to the existing finite closure compiler.
-
-Earlier public-review PDF:
-[ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
 
 AI assistance: The project used Aristotle and LLM-assisted mathematical research. All public claims are stated at the status level indicated above.

@@ -17,7 +17,9 @@ Machine-checked in Lean:
 Not formalised/proved here:
 
 - the large-`M` `WindowPairSupply` statement;
-- `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`;
+- M/Vaughan branch `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`;
+- balanced-seven V-branch `AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45`;
+- `AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45`;
 - `VAUGHAN-TYPEI-GENERATED-KAPPA45` / comparison-side Vaughan source matching;
 - `k=0` smooth-parity closure;
 - the full fixed-certificate leakage estimate;
@@ -28,64 +30,71 @@ Not formalised/proved here:
 The exact formal remaining supply interface is `Erdos287.WindowPairSupply`. A Sophie-type
 prime witness is sufficient for it but is stronger than necessary.
 
-## Current public review / research frontier — 27 Aug 2026
+## Current public review / research frontier — 28 Aug 2026
 
-**Stable public-review PDF (current V14 source update):**
+**Stable public-review PDF (current V15 source update):**  
 [ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
 
 Research/frontier material is in [`frontier/`](frontier/):
 
 - [Current frontier status](frontier/ERDOS287_FRONTIER_STATUS_2026-08-27.md)
-- [Prime-modulus Möbius two-outer frontier](frontier/ERDOS287_PENDING_PRIME_MODULUS_MU_TWOOUTER_FRONTIER_2026-08-27.md)
-- [V14 controlling source update inserted into the public-review PDF](frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex)
+- [Balanced-seven polarized endpoint frontier](frontier/ERDOS287_PENDING_BALANCED7_POLARIZED_EOD_FRONTIER_2026-08-28.md)
+- [Next balanced-seven endpoint attack](frontier/ERDOS287_NEXT_POLARIZED_OMEGA7_SIGNED_EOD45.md)
+- [V15 controlling balanced-seven source update inserted into the public-review PDF](frontier/ERDOS287_LATEST_BALANCED7_UPDATE_V15.tex)
+- [M/Vaughan prime-modulus Möbius two-outer frontier](frontier/ERDOS287_PENDING_PRIME_MODULUS_MU_TWOOUTER_FRONTIER_2026-08-27.md)
+- [V14 controlling Vaughan source update](frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex)
 - [Earlier determinant-one hybrid frontier](frontier/ERDOS287_PENDING_DET1_HYBRID_FRONTIER_2026-08-27.md)
 - [Earlier singleton reduction](frontier/ERDOS287_PENDING_SINGLETON_FRONTIER_2026-08-27.md)
 
-### Latest source correction
+### Current two-front analytic picture
 
-The older generic determinant-one object
+The V14 source audit remains in force on the M/Vaughan side:
 
-`AFFINE287-DET1-HYBRID-MQ45`
-
-is now **superseded as the controlling source**. The actual affine prime term is first decomposed literally from
-
-```text
-Lambda(2mn+s),  s = +/-1,
-```
-
-using the exact Vaughan identity with `U=V=X^(1/3)`.
-
-This gives:
-
-- `AFFINE287-VAUGHAN-PRIME-SOURCE45: PASS`;
-- proper prime-power outer terms: `PASS / negligible`, with relative margin `X^(-1/6+o(1))`;
+- exact affine Vaughan prime source: **PASS**;
+- proper prime-power outer terms: **PASS / negligible**;
 - literal Vaughan cofactor well-factorability: **FALSE**;
 - direct canonical Gate-1A adapter: **FAIL**;
-- direct native QK56 dictionary: **not established**;
-- prime-modulus Möbius two-outer structural map: **PASS**.
+- prime-modulus Möbius two-outer structural map: **PASS**;
+- `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`: **OPEN**.
 
-The current first true analytic open is
-
-`AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`.
-
-Its source-exact prime-modulus form is schematically
+The latest V15 audit concerns the balanced-seven V-branch. Set
 
 ```text
-sum_{p~P} log p
-  sum_{2mn == -s (mod p)}
-    xi_pi(m) kappa_pi(n)
-    Delta^{mu,1}_{D,R}((2mn+s)/p)
-  - source-matched main term,
+Q = X^(3/5),   Y = X^(1/7).
 ```
 
-where
+The raw seven labelled prime boxes admit an exact squarefree torus polarization into a family of
+ordinary smooth-supported multiplicative functions `f_z`. Repeated-prime tuples cost only
+`X^(6/7+o(1))`.
+
+The following broad routes are now explicitly nonclosing / unavailable for the exact cell:
+
+- separate multiplicative large sieve: `X^(1/10)` deficit;
+- separated high-moment route: same deficit;
+- equal-seven Proposition 6.3 three-block dictionary: **FALSE**;
+- termwise prime-box Vaughan/Heath-Brown repair: **nonexhaustive**;
+- q-Möbius micro-switch as an exhaustive closure: **nonexhaustive** because the prime-q sector survives.
+
+The first exact balanced-seven analytic residual is
+
+`AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45`.
+
+It asks only for one signed torus coefficient:
 
 ```text
-Delta^{mu,1}_{D,R}(u)
- = sum_{dr=u, d~D, r~R} mu(d) W_D(d) W_R(r).
+integral_{T^7} conjugate(z1...z7)
+  sum_{q~X^(3/5)} mu(q)
+  Delta_LC(f_z; X, q, -s/2)
+= o(X/log X).
 ```
 
-Required saving: `o(X/log X)` or a sufficiently small fixed constant multiple preserving the fixed-certificate margin.
+The same source decomposition also requires the comparison pin
+
+`AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45`.
+
+Together these two statements imply
+
+`AFFINE287-BALANCED7-MODULUS-AVERAGE45 CLOSED`.
 
 ### Current distance ledger
 
@@ -95,13 +104,17 @@ Required saving: `o(X/log X)` or a sufficiently small fixed constant multiple pr
 | Ford generated depth | PASS, safe `N0=112` |
 | exact affine Vaughan prime source | PASS |
 | proper prime-power outer | PASS / negligible |
-| comparison Vaughan matching | OPEN source pin |
-| Vaughan Type-I generated-`kappa` | OPEN adapter |
-| Vaughan cofactor well-factorability | FALSE |
-| direct Gate-1A canonical map | FAIL |
-| direct native QK56 map | NOT ESTABLISHED |
 | prime-modulus Möbius two-outer structural map | PASS |
-| `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45` | **FIRST TRUE ANALYTIC OPEN** |
+| `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45` | **M/VAUGHAN BRANCH OPEN** |
+| balanced-seven character parent | PASS |
+| separate multiplicative LS / high moments | NONCLOSING: `X^(1/10)` deficit |
+| P6.3 equal-seven dictionary | FALSE |
+| repeated-prime router | PASS: `X^(6/7+o(1))` |
+| squarefree torus polarization | PASS |
+| smooth multiplicative class dictionary | PASS |
+| `AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45` | **FIRST EXACT V-BRANCH ANALYTIC OPEN** |
+| `AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45` | SOURCE OPEN |
+| balanced-seven cell | REDUCED, NOT CLOSED |
 | `k=0` smooth packet | OPEN |
 | remaining fixed-`g_*` packet census | OPEN |
 | fixed-certificate leakage / FCL | OPEN |

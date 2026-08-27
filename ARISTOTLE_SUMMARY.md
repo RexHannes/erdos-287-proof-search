@@ -1,3 +1,141 @@
+# Summary of changes for run 0d849f24-cf9b-47cd-9af8-65f6801a897e
+## Erdős #287 — V14: exact Vaughan source / prime-modulus two-outer structural spine
+
+**Erdős #287 remains OPEN.** Nothing in this run proves it, nor `AFFINE287-PRIME-MODULUS-MU-TWOOUTER45`, smallness of the k = 0 smooth-parity packet, FCL, Gate 1A/1B closure, `WindowPairSupply` for all large M, or the Twin Prime Conjecture.
+
+### Workspace guard
+All eight named files (the four singleton V13 files and the four earlier fixed-certificate files) were verified present before any mathematics. `ERDOS287_ARISTOTLE_WORKSPACE_MISMATCH` does not apply; work resumed in place, append-only.
+
+### Files added
+`RequestProject/Erdos287/FordGeneratedDepth.lean`, `AffineVaughanIdentity.lean`, `AffineVaughanPrimeOuter.lean`, `AffineTwoOuterSource.lean`, `AffineTwoOuterCompiler.lean`, `RequestProject/Status/Erdos287VaughanV14Status.lean`, `ERDOS287_VAUGHAN_V14_REPORT.md`. (One file more than the suggested plan: the Part-2 finite arithmetic is kept separate from the Vaughan algebra.)
+
+### Files edited
+`RequestProject/Main.lean` — six import lines only. No historical statement was modified.
+
+### What was proved (all sorry-free, kernel-checked)
+- **Ford depth (PROVED_FINITE):** `general_ford_depth_le_112`, `fixed_certificate_depth_le_76` (+ factored form), `k0_depth_le_40`, with sharpness witnesses. The three input bounds (s ≤ 20, k ≤ 6, ell ≤ 12) are explicit hypotheses classified as published external input; Ford–Maynard Lemma 7.17 is not reproved.
+- **Exact Vaughan identity (PROVED_ALGEBRAIC):** `vaughan_identity_abstract` in any commutative ring from `μ∗1 = ε` and `Λ∗1 = log`, instantiated as `vaughan_identity_exact` in the Dirichlet ring with Mathlib's genuine von Mangoldt/Möbius/log/zeta — no coefficientwise postulate, no axiom. Pointwise divisor-sum form `vaughan_pointwise` with `I1/I2/II`, and `vaughan_pointwise_of_lt` proving the `Λ_{≤V}` term vanishes *from* the size hypothesis.
+- **Affine specialisation (PROVED_ALGEBRAIC):** `AffineSign`, `affineNat`, `affineNat_cast` (the ℕ-subtraction firewall for s = −1), `vaughan_affine_pointwise`.
+- **Outer router (PROVED_FINITE):** prime vs proper-prime-power partition of the Λ-support, exhaustive and disjoint, plus the rational exponent ledger 1 − (1/3)/2 = 5/6. The analytic prime-power bound is the uninhabited `PrimePowerOuterBound`.
+- **Prime-outer source cell:** `AffineVaughanPrimeCell` with only finite factorisation data; elementary consequences (divisibility, p odd, p ≥ 3).
+- **Cofactor fold (PROVED_ALGEBRAIC):** `lambdaU_eq_neg_truncMobius` for q > 1, tying the new `d > U` cutoff to the banked `truncMobius` `d ≤ T` cutoff explicitly; `lambdaU_prime = −1`.
+- **Support no-go (PROVED_FINITE):** `prime_support_obstruction_to_balanced_convolution` and `vaughan_cofactor_balanced_factorization_impossible`, scoped strictly to the stated balanced-support hypotheses.
+- **Prime-modulus orientation (PROVED_ALGEBRAIC):** congruence, unique residue class in `ZMod p` under the explicit invertibility hypothesis, and the two coprimality consequences of the unit shift.
+- **Two-outer quotient/packet:** `deltaMuOne` with exact unfolding, and `AffinePrimeModulusTwoOuterPacket` as a finite interface with no analytic field.
+- **Determinant-one line (PROVED_ALGEBRAIC):** coprimality from the unit shift, both directions as an iff, and uniqueness of the parameter.
+- **Exponent kernel:** strict bound 1/6 < 1 − exp(M) − exp(P), explicit-margin form, and the endpoint equality stated separately.
+- **Conditional compiler (PROVED_COMPILER):** `singletonTypeII_of_vaughan_twoOuter`, `smoothParity_of_vaughan_twoOuter`, `parentLeakage_of_vaughan_twoOuter`, keeping the Type-I, prime-power, two-outer and comparison channels separate (error `E_I + C·X^{5/6} + E₂`, never merged).
+
+### Open / blocked
+Uninhabited interfaces: `PrimePowerOuterBound`, `AffinePrimeModulusMuTwoOuterInput`, `VaughanTypeIGeneratedKappaInput`, `Affine287ToTwoOuterF3Adapter`. Source-blocked: `Affine287TwoOuterComparisonMatch`, and (unchanged) `K0CellIdentitySource`, `SingletonPacketReduction`. No Gate/F3 provider is inhabited by nomenclature.
+
+### Audit
+`lake build` succeeds (8111 jobs, no errors). A repository-wide search of all Lean sources for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `@[implemented_by]` finds **zero occurrences in Lean code** — every match is documentation prose. `#print axioms` is emitted at build time for all principal new theorems by the V14 status file; each reports only a subset of `[propext, Classical.choice, Quot.sound]`.
+
+### Failed targets
+None. No statement was found false; the one honest caveat is that the Part-2 depth model `2s + k·ell` is a definition chosen to reproduce the audited constants, and the `76` bound follows from the halved high-prime budget supplied as a hypothesis.
+
+The sixteen hostile checks are answered individually in the docstring of the V14 status file, and the full ledger, source map and theorem list are in `ERDOS287_VAUGHAN_V14_REPORT.md`. Everything is committed and pushed.
+
+
+# Summary of changes for run 3f26f1c6-6a1d-42e1-a3b1-69c782fc5917
+## Workspace check
+
+All six named files were verified present in the working tree before any mathematics was done, so `ERDOS287_ARISTOTLE_WORKSPACE_MISMATCH` does not apply: `RequestProject/Erdos287/FixedCertificateFordData.lean`, `FixedCertificateThreeError.lean`, `FixedCertificateSmoothParity.lean`, `FixedCertificateOrderCounterguard.lean`, `KummerDegeneracyRouters.lean`, and `RequestProject/Status/Erdos287GoldV12Status.lean`. Work resumed in place on the existing branch.
+
+**Erdős #287 remains OPEN.** Nothing here proves it, nor Gate 1A/1B closure, H8/H9 smallness, the seven-prime Kummer bound, full fixed-certificate leakage, or the Twin Prime Conjecture.
+
+## Source archaeology (A) — key finding
+
+`nu0`, `truncMobius`, `FixedCertificateSmoothParityPacket` (with its `cell_identity` field), the parent leakage compiler, the three-error transference theorem and the balanced-cell counterguard are all present and were reused unchanged. But there is **no** `gStar`, **no** `eps`/`epsilonStar`, and **no Ford factorisation or canonical split** anywhere in the tree, and no coagulation/forbidden-region abstraction. The full object-by-object map is in `ERDOS287_SINGLETON_V13_REPORT.md`.
+
+## B — verdict: `K0_CELL_IDENTITY_SOURCE_STILL_EXTERNAL`
+
+Because the canonical split is not encoded, the `k = 0`, `J = ∅` specialization could only be assumed, not proved. No fake Ford factorisation was created; `cell_identity` is left uninhabited; the missing statement is named exactly as `K0CellIdentitySource` and carried as an explicit antecedent by every downstream theorem.
+
+## What was proved (all sorry-free, kernel-checked)
+
+- **D — rational ledger** (exact ℚ, no floating point): `sigma_pos`, `epsilon_lt_sigma`, `epsilon_lt_sigma_div_three`, `sigma_lt_one_sixth`, `two_sigma_div_three_lt_one`, `two_sigma_lt_one`, `six_sigma_lt_one`, `seven_mul_sigma_gt_one`, plus `nu0R_eq_cast_nu0` tying the ledger to the previously banked ν₀ = 16623/100000, and `admissibleEps_nonempty`.
+- **C — `exists_subset_sum_in_typeII_window`**, the purely combinatorial smooth-vector lemma, by the two-case argument. The requested coagulation statement was *not* built: no such abstraction exists in the repository, and the missing object is recorded rather than invented.
+- **E — `FordSmoothFragmentCertificate`**, classified `CONDITIONAL_INTERFACE / PUBLISHED_SOURCE`, never inhabited. Lemma 7.17 is not reproved. A clearly-labelled toy witness certifies the specification is *satisfiable*, so no downstream conclusion is vacuous.
+- **F — `canonical_singleton_typeII`**, `canonical_singleton_card_eq_one`, `singleton_supersedes_depth_five`. Verdict `CANONICAL_SINGLETON_E45_KERNEL_PASS`.
+- **G — `singleton_real_power_window`** and its shifted form: the real-power translation was completed, so the "pending" fallback was not needed.
+- **H — `SingletonClass`** (tag only) and `singleton_complement_depth_le_39`, which also certifies the complement equals depth − 1.
+- **I — `SingletonGeneratedTypeIIInput`**, uninhabited; Λ, B, W, ξ, κ are abstract parameters, not claimed to be the analytic objects.
+- **J — `smoothParity_of_singletonTypeII`, `parentLeakage_of_singletonTypeII`, `primeMassPos_of_singletonTypeII`**: `PROVED_COMPILER / CONDITIONAL_ON_OPEN_ANALYTIC_INPUT`. The three error channels stay separate; `E2` is never merged into the sign region.
+
+## Hostile checks — one downgrade
+
+Check 3 failed as stated and was downgraded honestly. The interface does not force a singleton side to be terminal, so the requested `1 ≤ 2σ/3` route needs an extra hypothesis; it is kept as `fragment_singleton_terminal_contradiction`. The route actually used is the unconditional, strictly stronger `fragment_seven_le_card` (`s + r ≥ 7`, from `1 ≤ (s+r)σ` and `6σ < 1`). Check 6 passes only because the terminal-position convention is recorded explicitly as a field. All ten answers are in the status file's docstring.
+
+## Audit
+
+`lake build` succeeds (8105 jobs). Repository-wide scans find **zero** Lean-code occurrences of `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `@[implemented_by]` — every match is documentation prose. All 41 principal new theorems print `[propext, Classical.choice, Quot.sound]`, emitted at build time by the status file.
+
+## Files
+
+Added: `RequestProject/Erdos287/FixedCertificateSingletonParameters.lean`, `FixedCertificateSingletonFragment.lean`, `FixedCertificateSingletonCompiler.lean`, `RequestProject/Status/Erdos287SingletonV13Status.lean`, `ERDOS287_SINGLETON_V13_REPORT.md`. Edited: `RequestProject/Main.lean` (four import lines only). No historical theorem statement was touched. Everything is committed and pushed.
+
+## Final ledger
+
+`K0-SMOOTH-LEAKAGE-SOURCE45: SOURCE_BLOCKED` · `MU-SPLITTABLE45: PUBLISHED_EXTERNAL_INPUT` · `CANONICAL-SINGLETON-E45: PROVED_ALGEBRAIC` · `SINGLETON-COMPLEMENT-DEPTH39: PROVED_FINITE` · `287-SMOOTH-PARITY-FRAGMENT-TO-SINGLETON-TYPEII45: PROVED_COMPILER` · `287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45: OPEN_ANALYTIC` · `SMOOTH-PARITY: CONDITIONAL_INTERFACE / OPEN_ANALYTIC` · `FCL: OPEN_ANALYTIC` · `ERDOS287: OPEN_ANALYTIC`.
+
+# Summary of changes for run 65719825-9f98-4322-874e-6644b235a32e
+## Erdős 287 — V11 finalization + V12 gold reproof / Leanify run
+
+Everything is committed and pushed; `lake build` completes successfully (8101 jobs) with no `sorry`, `admit`, `axiom`, `opaque`, `native_decide`, `unsafe` or `@[implemented_by]` anywhere in Lean code (all matches are documentation prose). Every new theorem prints `depends on axioms: [propext, Classical.choice, Quot.sound]`.
+
+**Terminal status: ERDOS287 OPEN.** Nothing here proves #287.
+
+### Files added this run (append-only; only `RequestProject/Main.lean` was edited, import lines only)
+- `RequestProject/Erdos287/FixedCertificateFordData.lean` — Part G1: ν₀ = 16623/100000 as an exact rational, the four branch definitions (two-variable coefficient kept as a parameter, since only its support is given), window arithmetic (`twoVarWindow_nonempty`, `twoVarWindow_width`), the shrink and `shrink_le`, plus the never-inhabited `CertificatePinned` / `PositiveComparisonMargin` predicates.
+- `RequestProject/Erdos287/FixedCertificateThreeError.lean` — Part G2: four-region partition with **three separate errors**, `sum_a_P_identity4`, `sum_a_P_lower4` (`≥ (1+C)B − ET − EL − E2 − EM`), `sum_a_P_pos4`, `sum_a_P_pos4_fraction` (constant saving suffices), `transference4_nonvacuous`. N2 is never merged into the sign region.
+- `RequestProject/Erdos287/FixedCertificateSmoothParity.lean` — Parts G3/I: `truncMobius`, `truncMobius_prime`, `truncMobius_eq_zero_of_le`, the `FixedCertificateSmoothParityPacket` interface, `smoothParity_prime_normalization`, `smoothParity_missing_source`, and the parent leakage compiler `parent_leakage_of_children` / `parent_leakage_two_children` / `parent_prime_mass_pos`.
+- `RequestProject/Erdos287/FixedCertificateOrderCounterguard.lean` — Part G4: `alternating_partial_binomial` (∑_{j≤r}(−1)^j C(k,j) = (−1)^r C(k−1,r)), the balanced-cell model and cut lemma, `balancedCellWeight_ne_zero`, the explicit values at k = 7…12 (−20, −35, 70, 126, −252, −462; the k = 9 value matches the banked 70), and `finite_H8H9_only_census_fails`.
+- `RequestProject/Erdos287/KummerDegeneracyRouters.lean` — Part F: the four formalizable strata as predicates, `generic_disjoint_strata`, `generic_not_square`, `generic_not_pmExceptional`, `repeatedRoot_router_nonvacuous`.
+- `RequestProject/Status/Erdos287GoldV12Status.lean` — Part J route firewall + `#print axioms` for all new theorems.
+- `ERDOS287_GOLD_V12_REPORT.md` — the full A–M report (source map in the requested format, verdicts, file/axiom audit, final ledger). The earlier `ERDOS287_GOLD_V11_REPORT.md` was also committed.
+
+### Firewall finding
+Neither the V11 nor the V12 dossier is present in the repository (no `.tex`/`.pdf`, no `H8`/`H9`/Ford-(7.23)/principal-mode/conductor identifiers). All literal source-transcription obligations are therefore reported SOURCE BLOCKED and nothing was reconstructed.
+
+### FINAL LEDGER
+```
+LCBETA PLACEMENT: REPAIRED
+LOG-COFACTOR-ASYMPTOTIC287: KERNEL PASS
+FIXED-CERTIFICATE287-PIN: SOURCE BLOCKED
+FIXED-CERTIFICATE-TRANSFERENCE287: KERNEL PASS
+FIXED-CERTIFICATE-SMOOTH-PARITY PACKET: SOURCE BLOCKED
+FINITE-H8/H9-ONLY-CENSUS: FAIL (counterguard compiles)
+HIGH-ORDER COUNTERGUARD: KERNEL PASS
+QUADRATIC-KUMMER FINITE COMPILER: KERNEL PASS
+ROOT-STABILIZER ALGEBRA: KERNEL PASS
+WEIL / INTERVAL COMPLETION: EXTERNAL INTERFACE
+SEVEN-PRIME EXPONENT LEDGER: KERNEL PASS
+KUMMER DEGENERACY ROUTERS: PARTIAL
+SEVENPRIME-KUMMER: CONDITIONAL CHILD PASS
+H8H9-SOURCE-TO-KUMMER45: SOURCE BLOCKED
+287-FIXED-CERTIFICATE-SMOOTH-PARITY45 ANALYTIC ESTIMATE: OPEN
+FIXED-CERTIFICATE LEAKAGE COMPILER: KERNEL PASS
+287-FIXED-CERTIFICATE-LEAKAGE45 ANALYTIC ESTIMATE: OPEN
+GENERATED-(7.23) FIXED-gStar SPECIALIZATION: MAY STILL BE NEEDED
+ERDOS287: OPEN
+```
+
+```
+EXACT FIRST OPEN AFTER THIS RUN:
+287-FIXED-CERTIFICATE-SMOOTH-PARITY45 — the two fields of
+Erdos287.SmoothParity.FixedCertificateSmoothParityPacket (first the source
+obligation `cell_identity`, then the analytic bound).
+
+NEXT MATHEMATICAL ACTION:
+Obtain the literal Ford factorisation of G_{g*}(m;n) and prove that its k = 0,
+J = ∅ cell equals ∑_{d | n, d ≤ n^(1/2−ε)} μ(d) on the smooth sector, i.e.
+inhabit the `cell_identity` field.
+```
+
+The Properties table has been updated with the new V11 and V12 deliverables and their statuses.
+
 # Summary of changes for run fbe73b56-3c29-4b1a-926b-1a4159cafede
 **Erdős #287 is NOT solved, and nothing in the project claims it is.** All work is committed and pushed; `lake build` passes (8086 jobs) with no `sorry`, `admit`, `axiom`, `unsafe`, `native_decide` or `@[implemented_by]` anywhere, and every new theorem depends only on `propext`, `Classical.choice`, `Quot.sound`. No existing theorem was edited, renamed, weakened or deleted; the full written audit (sections A–AD, the Q1–Q30 matrix, counterguard check and final verdict block) is `ERDOS287_END_TO_END_CLOSURE_REPORT.md`.
 

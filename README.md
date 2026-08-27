@@ -1,6 +1,6 @@
 # Erdős Problem #287 — Lean-Verified Finite Reduction
 
-Status: partial formal verification / public research draft.
+Status: partial formal verification / public research draft.  
 This repository does **NOT** claim an unconditional proof of Erdős #287.
 
 Machine-checked in Lean:
@@ -17,9 +17,9 @@ Machine-checked in Lean:
 Not formalised/proved here:
 
 - the large-`M` `WindowPairSupply` statement;
-- the fixed-certificate smooth-parity analytic estimate;
+- `287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45`;
 - the full fixed-certificate leakage estimate;
-- Gate-1B H8/H9 source-to-Kummer analytic closure;
+- the remaining literal Gate-1B/provider dictionaries;
 - a Ford–Maynard analytic lower-bound application proving the large-`M` supply;
 - the final theorem Erdős #287.
 
@@ -28,21 +28,39 @@ prime witness is sufficient for it but is stronger than necessary.
 
 ## Current research frontier — 27 Aug 2026
 
-The latest standalone research dossier is in [`frontier/`](frontier/):
+Research/frontier material is in [`frontier/`](frontier/):
 
-- [V12 standalone verification dossier (PDF)](frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf)
-- [V12 LaTeX source](frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex)
 - [Frontier status](frontier/ERDOS287_FRONTIER_STATUS_2026-08-27.md)
+- [Pending singleton provider frontier](frontier/ERDOS287_PENDING_SINGLETON_FRONTIER_2026-08-27.md)
 - [Aristotle V12 hostile reproof prompt](frontier/ERDOS287_ARISTOTLE_V12_SMOOTH_PARITY_REPROOF.md)
 
-The controlling research correction is that fixing a Ford certificate does **not** reduce
-the leakage census to H8/H9 alone. The first literal uncovered analytic packet is
-`287-FIXED-CERTIFICATE-SMOOTH-PARITY45`, a truncated Möbius-parity correlation.
-The generic seven-prime Kummer estimate is retained only as a conditional child provider.
+### Latest reduction
 
-This frontier material is research-level and does not alter the trusted Lean status above.
+The literal `k=0` smooth-parity branch has now been structurally reduced to a **canonical singleton**
 
-## Existing update files
+```text
+X^(sigma/3) < m <= X^sigma < X^(1/6)
+```
+
+against a source-generated fixed-depth complement. The former depth-5 target is retired as controlling.
+
+The new first analytic open is
+
+`287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45`.
+
+The next research action is
+
+`SINGLETON-TO-GATE1B-LITERAL-PROVIDER-DICTIONARY45`.
+
+That audit must preserve the literal complement grammar rather than replacing it by an arbitrary `tau_39`
+coefficient class. Möbius-singleton, model-singleton, QK56/direct, and Gate-1A common-weight routes must be
+tested only by literal source dictionaries.
+
+The standalone V12 dossier remains the current local research manuscript; the repository mirror of its
+reproducible PDF/TeX is being kept separate from the trusted formal status and should not be read as a Lean
+result.
+
+## Existing formal/update files
 
 - [Aristotle V13 update](ARISTOTLE_V13_UPDATE.md) — conservative formal-status update; no analytic
   claim is promoted into the Lean bank.

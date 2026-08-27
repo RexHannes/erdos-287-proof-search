@@ -17,9 +17,10 @@ Machine-checked in Lean:
 Not formalised/proved here:
 
 - the large-`M` `WindowPairSupply` statement;
-- `287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45`;
+- `AFFINE287-DET1-HYBRID-MQ45`;
+- `k=0` smooth-parity closure;
 - the full fixed-certificate leakage estimate;
-- the remaining literal Gate-1B/provider dictionaries;
+- the remaining literal Gate-1B/provider stability dictionaries;
 - a Ford–Maynard analytic lower-bound application proving the large-`M` supply;
 - the final theorem Erdős #287.
 
@@ -30,35 +31,55 @@ prime witness is sufficient for it but is stronger than necessary.
 
 Research/frontier material is in [`frontier/`](frontier/):
 
-- [Frontier status](frontier/ERDOS287_FRONTIER_STATUS_2026-08-27.md)
-- [Pending singleton provider frontier](frontier/ERDOS287_PENDING_SINGLETON_FRONTIER_2026-08-27.md)
-- [Aristotle V12 hostile reproof prompt](frontier/ERDOS287_ARISTOTLE_V12_SMOOTH_PARITY_REPROOF.md)
+- [Current frontier status](frontier/ERDOS287_FRONTIER_STATUS_2026-08-27.md)
+- [Current determinant-one hybrid frontier](frontier/ERDOS287_PENDING_DET1_HYBRID_FRONTIER_2026-08-27.md)
+- [Next determinant-one hybrid attack](frontier/ERDOS287_NEXT_AFFINE287_DET1_HYBRID_MQ45.md)
+- [Earlier singleton reduction](frontier/ERDOS287_PENDING_SINGLETON_FRONTIER_2026-08-27.md)
+- [Earlier Aristotle V12 smooth-parity reproof prompt](frontier/ERDOS287_ARISTOTLE_V12_SMOOTH_PARITY_REPROOF.md)
 
 ### Latest reduction
 
-The literal `k=0` smooth-parity branch has now been structurally reduced to a **canonical singleton**
+The singleton/provider audit has now been completed far enough to rule out the naive identification
 
 ```text
-X^(sigma/3) < m <= X^sigma < X^(1/6)
+singleton generated Type II = Gate-1B common-conductor signed covariance.
 ```
 
-against a source-generated fixed-depth complement. The former depth-5 target is retired as controlling.
+Exact coprimality shows that the Ford outer Möbius carrier and the shifted-output Gate-1B complement Möbius carrier are different variables. The direct dictionary therefore fails.
 
-The new first analytic open is
+At the same time, the selected Type-II coefficient can be shortened further to
 
-`287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45`.
+```text
+1 <= |E| <= 2,
+X^epsilon* < m_E <= X^(3/20+o(1)).
+```
 
-The next research action is
+Large shifted-output blocks are routed to the existing one-outer/F3 sector; a Wright-compatible AP child gives only a conditional low/moderate-modulus subrange; and all multiouter algebraic sources can be regrouped exactly into generated two-outer form.
 
-`SINGLETON-TO-GATE1B-LITERAL-PROVIDER-DICTIONARY45`.
+The current first general analytic open is therefore
 
-That audit must preserve the literal complement grammar rather than replacing it by an arbitrary `tau_39`
-coefficient class. Möbius-singleton, model-singleton, QK56/direct, and Gate-1A common-weight routes must be
-tested only by literal source dictionaries.
+`AFFINE287-DET1-HYBRID-MQ45`
 
-The standalone V12 dossier remains the current local research manuscript; the repository mirror of its
-reproducible PDF/TeX is being kept separate from the trusted formal status and should not be read as a Lean
-result.
+with equivalent descriptive label
+
+`HYBRID-MQ-KLOOSTERMAN-LARGE-SIEVE`.
+
+The core determinant-one relation is
+
+```text
+(qa)b - (2m)n = +/-1,
+```
+
+hence after fixing `q,a,m` one has the exact affine parametrisation
+
+```text
+b = b0 + 2m t,
+n = n0 + qa t.
+```
+
+The remaining theorem must control the resulting coherent `q,a,m` family with the actual generated outer coefficient grammar, affine sign, Möbius provenance, conductor structure and exceptional strata intact.
+
+This frontier material is research-level and does not alter the trusted Lean status above.
 
 ## Existing formal/update files
 

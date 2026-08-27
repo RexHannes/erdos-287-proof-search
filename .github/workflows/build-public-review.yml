@@ -10,6 +10,7 @@ on:
       - '.public-review-src/draft13.tex.gz.b64.part02'
       - '.public-review-src/draft13.tex.gz.b64.part03'
       - '.public-review-src/references_draft13.bib.gz.b64'
+      - 'frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -23,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct and verify Draft 13 sources
+      - name: Reconstruct Draft 13 base sources
         shell: bash
         run: |
           cat \
@@ -33,34 +34,53 @@ jobs:
             .public-review-src/draft13.tex.gz.b64.part02 \
             .public-review-src/draft13.tex.gz.b64.part03 \
             | base64 --decode | gzip --decompress --stdout \
-            > PUBLIC_REVIEW_DRAFT13.tex
+            > PUBLIC_REVIEW_DRAFT13_BASE.tex
           base64 --decode .public-review-src/references_draft13.bib.gz.b64 \
             | gzip --decompress --stdout \
             > references_draft13.bib
-          echo '70f3eba90346c15a99a7428831c47872b7f3b9b5dd5b46c0046b79401011c8b7  PUBLIC_REVIEW_DRAFT13.tex' | sha256sum -c -
+          echo '70f3eba90346c15a99a7428831c47872b7f3b9b5dd5b46c0046b79401011c8b7  PUBLIC_REVIEW_DRAFT13_BASE.tex' | sha256sum -c -
           echo '87acd67f6f0c7e1c7a4924c7298e432375996412388fb5ed076fe3916b5cd088  references_draft13.bib' | sha256sum -c -
 
-      - name: Compile Draft 13
+      - name: Apply controlling V14 source update
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          src = Path('PUBLIC_REVIEW_DRAFT13_BASE.tex').read_text()
+          old = r'\large Late 27 August snapshot: high-conductor square-complement audit, near-primitive signed child, and source-exact closure gaps'
+          new = r'\large Late 27 August V14: exact Vaughan affine-prime source and prime-modulus M\"obius two-outer frontier'
+          if old not in src:
+              raise SystemExit('Expected Draft 13 subtitle not found')
+          src = src.replace(old, new, 1)
+          marker = '\\maketitle\n'
+          if marker not in src:
+              raise SystemExit('maketitle marker not found')
+          src = src.replace(marker, marker + '\\input{frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex}\n', 1)
+          Path('PUBLIC_REVIEW_DRAFT14.tex').write_text(src)
+          PY
+          grep -q 'AFFINE287-PRIME-MODULUS-MU-TWOOUTER45' PUBLIC_REVIEW_DRAFT14.tex
+
+      - name: Compile current public review
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: PUBLIC_REVIEW_DRAFT13.tex
+          root_file: PUBLIC_REVIEW_DRAFT14.tex
 
       - name: Replace stable public-review PDF
         shell: bash
         run: |
-          test -s PUBLIC_REVIEW_DRAFT13.pdf
-          cp PUBLIC_REVIEW_DRAFT13.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          test -s PUBLIC_REVIEW_DRAFT14.pdf
+          cp PUBLIC_REVIEW_DRAFT14.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           sha256sum ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
-      - name: Commit reproducible Draft 13 and stable PDF
+      - name: Commit reproducible V14 overlay and stable PDF
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add PUBLIC_REVIEW_DRAFT13.tex references_draft13.bib ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          git add PUBLIC_REVIEW_DRAFT14.tex references_draft13.bib ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           if git diff --cached --quiet; then
-            echo 'Public-review Draft 13 already current.'
+            echo 'Public-review V14 already current.'
             exit 0
           fi
-          git commit -m 'Update public review PDF to Draft 13'
+          git commit -m 'Update public review PDF to V14 Vaughan source frontier'
           git push

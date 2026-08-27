@@ -50,7 +50,7 @@ jobs:
         run: |
           test -s PUBLIC_REVIEW_DRAFT13.pdf
           cp PUBLIC_REVIEW_DRAFT13.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
-          echo '3eb94de4eceecc7e134c4a597354285b90579194eddb7df9808410059538e0b8  ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf' | sha256sum -c -
+          sha256sum ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
       - name: Commit reproducible Draft 13 and stable PDF
         shell: bash

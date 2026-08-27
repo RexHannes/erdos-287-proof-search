@@ -6,87 +6,148 @@
 
 The trusted Lean project still supplies the finite Erdős-287 reduction and finite verification only. Nothing in this research frontier is promoted into Lean merely by appearing here.
 
-## Fixed-certificate route
+## Fixed-certificate / smooth-parity route
 
-The explicit fixed Ford certificate and fixed-certificate transference remain valid research-level reductions. The fixed-certificate leakage census is not exhausted by H8/H9; the literal `k=0` branch contains a smooth truncated-Möbius parity packet.
+The explicit fixed Ford certificate and fixed-certificate transference remain valid research-level reductions. The literal `k=0` smooth-parity packet is source-exact, and Ford fragmentation has removed the earlier many-variable structural ambiguity.
 
-A later fragmentation audit now gives a stronger structural reduction of that packet.
+A previous audit reduced the selected Type-II factor to a canonical singleton. The latest provider audit goes further: it proves that the singleton is **not literally the existing Gate-1B common-conductor signed covariance**, and it isolates a narrower determinant-one hybrid residual.
 
-## New singleton reduction
+## Provider-dictionary correction
 
-Set
-
-```text
-sigma = nu0 - 2 epsilon*,   nu0 = 0.16623.
-```
-
-Ford–Maynard splittability/fragmentation yields smooth-factor decompositions with
+For a fixed sign
 
 ```text
-s,r <= 20,   total generated depth <= 40.
+s in {-1,+1},   L_s = 2mn+s,
 ```
 
-However the Type-II factor can be chosen canonically as one nonterminal chunk:
+one has the exact coprimality identities
 
 ```text
-E = {m},   |E| = 1,
-X^(sigma/3) < m <= X^sigma.
+(m,L_s)=1,   (n,L_s)=1.
 ```
 
-For sufficiently small fixed `epsilon*`,
+Therefore Ford outer Möbius factors attached to divisors of `m` or `n` are not the shifted-output modulus Möbius factors arising inside the Gate-1B high-conductor decomposition.
+
+Current verdict:
 
 ```text
-(X/2)^epsilon* < m < X^(1/6).
+SINGLETON-TO-GATE1B-DIRECT-DICTIONARY45: FAIL
+OUTER-vs-SHIFTED-MOBIUS-CARRIER-NOGO45: PASS
 ```
 
-Thus the old depth-5 selected-subproduct target is retired as controlling.
+Gate 1B remains a possible provider only after a literal shifted-output decomposition and a theorem stable under the actual generated outer coefficients.
 
-The resulting singleton packet is
+## Stronger short selection
+
+The canonical singleton remains valid, but for provider matching the generated short coefficient can be selected with
 
 ```text
-sum_{mn~X} xi(m) kappa(n) W(mn/X)
-  [Lambda(2mn-1)+Lambda(2mn+1)-4B(mn)],
+1 <= |E| <= 2,
+X^epsilon* < m_E <= X^(3/20+o(1)).
 ```
 
-where `xi` is one actual generated singleton factor and `kappa` retains the convolution grammar of at most 39 actual 1-bounded factors.
+Research verdict:
 
-Two source-faithful singleton branches are distinguished:
+```text
+287-SHORT-DEPTH2-TYPEII-SELECTION45: PASS
+```
 
-- Möbius singleton: `xi(m) = mu(m) * box/Mellin/order factors`;
-- model singleton: `xi(m) = m^(it) * box/Mellin/order factors`, with the Möbius carrier remaining in the complement grammar.
+The older depth-5 target remains retired as controlling.
 
-## First analytic open
+## Routed / conditional subranges
 
-The new controlling theorem is
+The current audit separates several children before the first general residual:
 
-`287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45`.
+- large shifted-output block -> existing one-outer/F3 route;
+- low/moderate-modulus AP child -> Wright-compatible route, conditional on the generated short coefficient satisfying the required Siegel-Walfisz adapter;
+- native QK5 child -> possible common-conductor covariance child, conditional on a literal QK5 source adapter and outer-generated-coefficient stability;
+- 3-/4-/higher-outer algebraic sources -> exact reduction to generated two-outer by Dirichlet-convolution associativity.
 
-A sufficient target is `o(X/log X)` uniformly over the **actual generated singleton/complement pairs**. It is not necessary, and would be stronger, to replace the complement by arbitrary `tau_39` coefficients.
+The last item is recorded as
 
-Current provider status: no direct published black box has been certified for this exact source class.
+```text
+MULTIOUTER-TO-GENERATED-TWOOUTER45: PASS.
+```
 
-## Next run
+The resulting generated two-outer analytic estimate is not thereby proved.
 
-The next research action is
+## Current first general analytic open
 
-`SINGLETON-TO-GATE1B-LITERAL-PROVIDER-DICTIONARY45`.
+After the routed sectors above, the exact residual can be written
 
-The provider dictionary must preserve every complement factor with its:
+\[
+\mathcal K^{(2)}_{s,\pi}
+=
+\sum_{q\sim Q}\lambda_\pi(q)
+\sum_{\substack{m\sim M,\ n\sim N\\qab=2mn+s}}
+\xi_\pi(m)\kappa_\pi(n)
+\Psi_{\pi,1}(a)\Psi_{\pi,2}(b),
+\]
 
-- Möbius/model/Mellin/cutoff type;
-- support exponent;
-- terminal/nonterminal status;
-- squarefree/coprimality condition;
-- coefficient norm.
+with
 
-Then split the affine signs `2mn+1` and `2mn-1`, perform one literal source completion, and allow only four outcomes:
+```text
+MN ~ X,
+M = X^mu,
+epsilon* < mu <= 3/20,
+QAB ~ X.
+```
 
-1. Möbius singleton -> Gate-1B signed/common-conductor source;
-2. model singleton -> QK56/direct affine source, retaining the complement Möbius carrier;
-3. Gate 1A only upon a literal common-weight physical match;
-4. otherwise state the first exact new residual theorem with ranges, norms, sign, prefactor and required saving.
+Since
 
-Structural resemblance alone is not a provider dictionary.
+```text
+(qa)b - (2m)n = s = +/-1,
+```
+
+one has
+
+```text
+(qa,2m)=1,   (b,n)=1,
+```
+
+and after fixing `q,a,m` and one particular solution,
+
+```text
+b = b0 + 2m t,
+n = n0 + qa t.
+```
+
+Thus the remaining problem is the coherent hybrid affine correlation
+
+```text
+sum_{q,a,m} lambda(q) Psi1(a) xi(m)
+  sum_{t in I(q,a,m)} Psi2(b0+2mt) kappa(n0+qa t),
+```
+
+with the actual generated source selectors and main-term subtraction retained.
+
+Programme label:
+
+`AFFINE287-DET1-HYBRID-MQ45`.
+
+Equivalent descriptive label:
+
+`HYBRID-MQ-KLOOSTERMAN-LARGE-SIEVE`.
+
+This is now the **FIRST GENERAL ANALYTIC OPEN** in the `k=0` smooth-parity route.
+
+## Where common-conductor covariance sits
+
+The existing common-conductor signed covariance is only a possible high-conductor child of the singleton/generated problem. Routing a packet there still requires
+
+```text
+SINGLETON-TO-NATIVE-QK5-SOURCE-ADAPTER45
+OUTER-GENERATED-COEFFICIENT-STABILITY-OF-CC45.
+```
+
+Therefore the correct relation is
+
+```text
+common-conductor signed covariance
+  subset of possible high-conductor children of the singleton-generated problem,
+```
+
+not equality.
 
 ## Current distance ledger
 
@@ -95,18 +156,28 @@ Structural resemblance alone is not a provider dictionary.
 | explicit fixed certificate | PASS |
 | fixed-certificate transference | PASS |
 | exact `k=0` smooth leakage source | PASS |
-| Möbius splittability | PASS |
-| fragmentation `s,r<=20`, depth `<=40` | PASS |
-| canonical singleton `E={m}` | PASS |
-| depth-5 target | RETIRED AS CONTROLLING |
-| singleton generated Type II | **FIRST ANALYTIC OPEN** |
-| singleton -> Gate-1B/1A/direct literal provider dictionary | **NEXT** |
-| singleton cancellation | OPEN |
+| Ford fragmentation / splittability | PASS |
+| canonical singleton | PASS |
+| direct singleton -> Gate-1B common-conductor dictionary | FAIL |
+| Ford outer Möbius = shifted-output Möbius | FALSE by exact coprimality |
+| short selection `|E|<=2`, exponent `<=3/20` | PASS |
+| Wright AP child | CONDITIONAL SUBRANGE PASS |
+| multiouter -> generated two-outer | PASS algebraically |
+| one-outer Gate-1B sector | conditional existing provider |
+| common-conductor covariance | possible open high-conductor child |
+| `AFFINE287-DET1-HYBRID-MQ45` | **FIRST GENERAL ANALYTIC OPEN** |
+| `k=0` smooth-parity closure | OPEN |
 | remaining fixed-`g_*` packet census | OPEN |
 | fixed-certificate leakage | OPEN |
 | Ford lower-bound completion | CONDITIONAL/OPEN |
 | Erdős #287 | OPEN |
 
+## Current next run
+
+See [`ERDOS287_NEXT_AFFINE287_DET1_HYBRID_MQ45.md`](ERDOS287_NEXT_AFFINE287_DET1_HYBRID_MQ45.md).
+
+The next attack should work on the exact determinant-one hybrid source, preserving the affine sign, generated outer coefficient grammar, prefactor, conductor data, Möbius provenance, norms, multiplicities and all exceptional strata. It should either close the hybrid estimate, specialize it literally to an existing theorem, or print a strictly narrower residual.
+
 ## Research firewall
 
-The universal Ford–Maynard Type-II route and the generated-(7.23) route remain valid sufficient alternatives. The singleton reduction solves structural routing for the first smooth-parity packet; it does **not** prove the analytic cancellation. Gate 1A and Gate 1B remain providers only when a literal source dictionary is proved.
+The universal Ford–Maynard Type-II route and generated-(7.23) route remain valid sufficient alternatives. The structural reductions above do **not** prove the determinant-one hybrid cancellation, `k=0` smooth-parity closure, FCL, the large-`M` supply, or Erdős #287. Gate 1A and Gate 1B are providers only when literal source dictionaries and stability hypotheses are proved.

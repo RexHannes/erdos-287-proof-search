@@ -58,7 +58,8 @@ jobs:
           src = src.replace(marker, marker + '\\input{frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex}\n', 1)
           Path('PUBLIC_REVIEW_DRAFT14.tex').write_text(src)
           PY
-          grep -q 'AFFINE287-PRIME-MODULUS-MU-TWOOUTER45' PUBLIC_REVIEW_DRAFT14.tex
+          grep -q 'AFFINE287-PRIME-MODULUS-MU-TWOOUTER45' frontier/ERDOS287_LATEST_SOURCE_UPDATE_V14.tex
+          grep -q 'ERDOS287_LATEST_SOURCE_UPDATE_V14.tex' PUBLIC_REVIEW_DRAFT14.tex
 
       - name: Compile current public review
         uses: xu-cheng/latex-action@v4

@@ -1,0 +1,53 @@
+name: Build Erdos 287 frontier V12
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.frontier-src/erdos287_v12.tex.gz.b64'
+      - '.github/workflows/build-erdos287-frontier-v12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-frontier-v12:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reconstruct V12 source
+        shell: bash
+        run: |
+          mkdir -p frontier
+          base64 --decode .frontier-src/erdos287_v12.tex.gz.b64 \
+            | gzip --decompress --stdout \
+            > frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex
+          echo '56ffe471ec9905a0bdad697f5b9e2060cf8f07d8ccd997be8bc6633c51b95ac2  frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex' | sha256sum -c -
+
+      - name: Compile V12 frontier dossier
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex
+
+      - name: Verify PDF
+        shell: bash
+        run: |
+          test -s frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf
+          sha256sum frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf
+
+      - name: Commit reproducible frontier source and PDF
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex \
+                  frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf
+          if git diff --cached --quiet; then
+            echo 'V12 frontier already current.'
+            exit 0
+          fi
+          git commit -m 'Build Erdos 287 V12 research frontier'
+          git push

@@ -4,12 +4,11 @@ on:
   push:
     branches: [main]
     paths:
-      - '.public-review-src/draft11.tex.gz.b64.part01'
-      - '.public-review-src/draft11.tex.gz.b64.part02'
-      - '.public-review-src/draft11.tex.gz.b64.gap01'
-      - '.public-review-src/draft11.tex.gz.b64.gap02'
-      - '.public-review-src/draft11.tex.gz.b64.part03'
-      - '.public-review-src/references_draft11.bib.gz.b64'
+      - '.public-review-src/draft13.tex.gz.b64.part00'
+      - '.public-review-src/draft13.tex.gz.b64.part01'
+      - '.public-review-src/draft13.tex.gz.b64.part02'
+      - '.public-review-src/draft13.tex.gz.b64.part03'
+      - '.public-review-src/references_draft13.bib.gz.b64'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -23,44 +22,43 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct Draft 11 sources
+      - name: Reconstruct and verify Draft 13 sources
         shell: bash
         run: |
-          {
-            head -c 8000 .public-review-src/draft11.tex.gz.b64.part01
-            cat .public-review-src/draft11.tex.gz.b64.part02
-            cat .public-review-src/draft11.tex.gz.b64.gap01
-            cat .public-review-src/draft11.tex.gz.b64.gap02
-            cat .public-review-src/draft11.tex.gz.b64.part03
-          } | base64 --decode | gzip --decompress --stdout \
-            > twin_prime_programme_draft11.tex
-          base64 --decode .public-review-src/references_draft11.bib.gz.b64 \
+          cat \
+            .public-review-src/draft13.tex.gz.b64.part00 \
+            .public-review-src/draft13.tex.gz.b64.part01 \
+            .public-review-src/draft13.tex.gz.b64.part02 \
+            .public-review-src/draft13.tex.gz.b64.part03 \
+            | base64 --decode | gzip --decompress --stdout \
+            > PUBLIC_REVIEW_DRAFT13.tex
+          base64 --decode .public-review-src/references_draft13.bib.gz.b64 \
             | gzip --decompress --stdout \
-            > references_draft11.bib
-          echo 'c1a9602c45d0a60a12b236879b01ddd17a4ae5d1a51f2ba31728dbbb500e6dac  twin_prime_programme_draft11.tex' | sha256sum -c -
-          echo '87acd67f6f0c7e1c7a4924c7298e432375996412388fb5ed076fe3916b5cd088  references_draft11.bib' | sha256sum -c -
+            > references_draft13.bib
+          echo '70f3eba90346c15a99a7428831c47872b7f3b9b5dd5b46c0046b79401011c8b7  PUBLIC_REVIEW_DRAFT13.tex' | sha256sum -c -
+          echo '87acd67f6f0c7e1c7a4924c7298e432375996412388fb5ed076fe3916b5cd088  references_draft13.bib' | sha256sum -c -
 
-      - name: Compile Draft 11
+      - name: Compile Draft 13
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: twin_prime_programme_draft11.tex
+          root_file: PUBLIC_REVIEW_DRAFT13.tex
 
       - name: Replace stable public-review PDF
         shell: bash
         run: |
-          test -s twin_prime_programme_draft11.pdf
-          cp twin_prime_programme_draft11.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
-          sha256sum ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          test -s PUBLIC_REVIEW_DRAFT13.pdf
+          cp PUBLIC_REVIEW_DRAFT13.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          echo '3eb94de4eceecc7e134c4a597354285b90579194eddb7df9808410059538e0b8  ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf' | sha256sum -c -
 
-      - name: Commit updated PDF
+      - name: Commit reproducible Draft 13 and stable PDF
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          git add PUBLIC_REVIEW_DRAFT13.tex references_draft13.bib ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           if git diff --cached --quiet; then
-            echo 'Public-review PDF already current.'
+            echo 'Public-review Draft 13 already current.'
             exit 0
           fi
-          git commit -m 'Update public review PDF to Draft 11'
+          git commit -m 'Update public review PDF to Draft 13'
           git push

@@ -1,11 +1,13 @@
-# Frontier V12 reproducible build; touching this file intentionally triggers the workflow.
 name: Build Erdos 287 frontier V12
 
 on:
   push:
     branches: [main]
     paths:
-      - '.frontier-src/erdos287_v12.tex.gz.b64'
+      - '.frontier-src/erdos287_v12.tex.gz.b64.part01'
+      - '.frontier-src/erdos287_v12.tex.gz.b64.part02'
+      - '.frontier-src/erdos287_v12.tex.gz.b64.part03'
+      - '.frontier-src/erdos287_v12.tex.gz.b64.part04'
       - '.github/workflows/build-erdos287-frontier-v12.yml'
   workflow_dispatch:
 
@@ -23,7 +25,12 @@ jobs:
         shell: bash
         run: |
           mkdir -p frontier
-          base64 --decode .frontier-src/erdos287_v12.tex.gz.b64 \
+          cat \
+            .frontier-src/erdos287_v12.tex.gz.b64.part01 \
+            .frontier-src/erdos287_v12.tex.gz.b64.part02 \
+            .frontier-src/erdos287_v12.tex.gz.b64.part03 \
+            .frontier-src/erdos287_v12.tex.gz.b64.part04 \
+            | base64 --decode \
             | gzip --decompress --stdout \
             > frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex
           echo '56ffe471ec9905a0bdad697f5b9e2060cf8f07d8ccd997be8bc6633c51b95ac2  frontier/ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex' | sha256sum -c -

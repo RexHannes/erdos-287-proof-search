@@ -28,6 +28,7 @@ import RequestProject.Erdos287.FiniteRemainder
 import RequestProject.Erdos287.FiniteRangeExtension
 import RequestProject.Erdos287.ClosureInputs
 import RequestProject.Status.Erdos287EndToEndStatus
+import RequestProject.Status.Erdos287V13Frontier
 
 open scoped BigOperators
 open scoped Real

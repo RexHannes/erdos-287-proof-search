@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.public-review-src/draft13.tex.gz.b64.part00'
+      - '.public-review-src/draft13.tex.gz.b64.gap00'
       - '.public-review-src/draft13.tex.gz.b64.part01'
       - '.public-review-src/draft13.tex.gz.b64.part02'
       - '.public-review-src/draft13.tex.gz.b64.part03'
@@ -27,6 +28,7 @@ jobs:
         run: |
           cat \
             .public-review-src/draft13.tex.gz.b64.part00 \
+            .public-review-src/draft13.tex.gz.b64.gap00 \
             .public-review-src/draft13.tex.gz.b64.part01 \
             .public-review-src/draft13.tex.gz.b64.part02 \
             .public-review-src/draft13.tex.gz.b64.part03 \

@@ -2,91 +2,111 @@
 
 **Status: OPEN problem / research frontier. This repository does not claim a proof of Erdős #287 or twin-prime infinitude.**
 
-This frontier snapshot accompanies the standalone verification dossier:
+## Formal layer remains unchanged
 
-- `ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.pdf`
-- `ERDOS287_STANDALONE_VERIFICATION_DOSSIER_V12.tex`
-- `ERDOS287_ARISTOTLE_V12_SMOOTH_PARITY_REPROOF.md`
+The trusted Lean project still supplies the finite Erdős-287 reduction and finite verification only. Nothing in this research frontier is promoted into Lean merely by appearing here.
 
-## What is currently firm
+## Fixed-certificate route
 
-The finite Erdős-287 compiler remains the strongest formal component of the repository. The current research dossier also records:
+The explicit fixed Ford certificate and fixed-certificate transference remain valid research-level reductions. The fixed-certificate leakage census is not exhausted by H8/H9; the literal `k=0` branch contains a smooth truncated-Möbius parity packet.
 
-- an explicit fixed Ford-certificate route and a finite transference identity;
-- the corrected separation of total correlation, fixed leakage, and the exceptional `N2` contribution;
-- a generic seven-prime quadratic-Kummer bilinear estimate as a **conditional child provider**;
-- the fact that the fixed-certificate packet census is **not** exhausted by H8/H9.
+A later fragmentation audit now gives a stronger structural reduction of that packet.
 
-## First literal analytic open in the fixed-certificate route
+## New singleton reduction
 
-The first source-exact uncovered packet is the smooth Möbius-parity correlation
+Set
 
 ```text
-P_sm(X) = sum_{X/2<n<=X, P+(n)<=n^sigma*}
-          W(n/X)[Lambda(2n-1)+Lambda(2n+1)-4B(n)]
-          * sum_{d|n, d<=n^(1/2-epsilon*)} mu(d).
+sigma = nu0 - 2 epsilon*,   nu0 = 0.16623.
 ```
 
-Programme label:
-
-`287-FIXED-CERTIFICATE-SMOOTH-PARITY45`
-
-A certificate-compatible constant saving would suffice; arbitrary-log saving is stronger than logically necessary.
-
-## Important counterguard
-
-For balanced squarefree `k`-prime cells, the truncated Möbius weight can be
+Ford–Maynard splittability/fragmentation yields smooth-factor decompositions with
 
 ```text
-H_*(n) = (-1)^r * binom(k-1,r) != 0,
-r = floor(k*gamma_*).
+s,r <= 20,   total generated depth <= 40.
 ```
 
-Therefore defect orders above 9 occur literally. In particular:
-
-`FINITE-H8/H9-ONLY-CENSUS = FAIL`.
-
-The seven-prime Kummer estimate remains useful for packets that are source-exactly reduced to its quadratic-Kummer model, but it does not close the full fixed-certificate leakage family.
-
-## Current honest dependency picture
+However the Type-II factor can be chosen canonically as one nonterminal chunk:
 
 ```text
-explicit fixed Ford certificate g*
-+ fixed-certificate transference
-        |
-        v
-287-FIXED-CERTIFICATE-SMOOTH-PARITY45
-+ other literal fixed-g* packets
-        |
-        v
-source-exhaustive regrouping
-or a new direct smooth-parity theorem
-        |
-        v
-287-FIXED-CERTIFICATE-LEAKAGE45
-+ Gate 0 / comparison / N2
-        |
-        v
-positive affine prime mass
-        |
-        v
-finite Erdős-287 blocker
-+ effectivity / finite bridge
-        |
-        v
-Erdős #287
+E = {m},   |E| = 1,
+X^(sigma/3) < m <= X^sigma.
 ```
 
-The universal Ford–Maynard Type-II route and the proof-specific generated-(7.23) route remain valid sufficient alternatives.
+For sufficiently small fixed `epsilon*`,
 
-## Formal / research firewall
+```text
+(X/2)^epsilon* < m < X^(1/6).
+```
 
-Do not promote any of the following into the trusted Lean result merely from this research note:
+Thus the old depth-5 selected-subproduct target is retired as controlling.
 
-- `287-FIXED-CERTIFICATE-SMOOTH-PARITY45`;
-- `287-FIXED-CERTIFICATE-LEAKAGE45`;
-- H8/H9 source-to-Kummer closure;
-- universal Ford–Maynard Type II;
-- the final theorem Erdős #287.
+The resulting singleton packet is
 
-The accompanying Aristotle prompt is explicitly hostile/append-only and forbids `sorry`, `admit`, or new axioms.
+```text
+sum_{mn~X} xi(m) kappa(n) W(mn/X)
+  [Lambda(2mn-1)+Lambda(2mn+1)-4B(mn)],
+```
+
+where `xi` is one actual generated singleton factor and `kappa` retains the convolution grammar of at most 39 actual 1-bounded factors.
+
+Two source-faithful singleton branches are distinguished:
+
+- Möbius singleton: `xi(m) = mu(m) * box/Mellin/order factors`;
+- model singleton: `xi(m) = m^(it) * box/Mellin/order factors`, with the Möbius carrier remaining in the complement grammar.
+
+## First analytic open
+
+The new controlling theorem is
+
+`287-SMOOTH-PARITY-SINGLETON-GENERATED-TYPEII45`.
+
+A sufficient target is `o(X/log X)` uniformly over the **actual generated singleton/complement pairs**. It is not necessary, and would be stronger, to replace the complement by arbitrary `tau_39` coefficients.
+
+Current provider status: no direct published black box has been certified for this exact source class.
+
+## Next run
+
+The next research action is
+
+`SINGLETON-TO-GATE1B-LITERAL-PROVIDER-DICTIONARY45`.
+
+The provider dictionary must preserve every complement factor with its:
+
+- Möbius/model/Mellin/cutoff type;
+- support exponent;
+- terminal/nonterminal status;
+- squarefree/coprimality condition;
+- coefficient norm.
+
+Then split the affine signs `2mn+1` and `2mn-1`, perform one literal source completion, and allow only four outcomes:
+
+1. Möbius singleton -> Gate-1B signed/common-conductor source;
+2. model singleton -> QK56/direct affine source, retaining the complement Möbius carrier;
+3. Gate 1A only upon a literal common-weight physical match;
+4. otherwise state the first exact new residual theorem with ranges, norms, sign, prefactor and required saving.
+
+Structural resemblance alone is not a provider dictionary.
+
+## Current distance ledger
+
+| Node | Status |
+|---|---|
+| explicit fixed certificate | PASS |
+| fixed-certificate transference | PASS |
+| exact `k=0` smooth leakage source | PASS |
+| Möbius splittability | PASS |
+| fragmentation `s,r<=20`, depth `<=40` | PASS |
+| canonical singleton `E={m}` | PASS |
+| depth-5 target | RETIRED AS CONTROLLING |
+| singleton generated Type II | **FIRST ANALYTIC OPEN** |
+| singleton -> Gate-1B/1A/direct literal provider dictionary | **NEXT** |
+| singleton cancellation | OPEN |
+| remaining fixed-`g_*` packet census | OPEN |
+| fixed-certificate leakage | OPEN |
+| Ford lower-bound completion | CONDITIONAL/OPEN |
+| Erdős #287 | OPEN |
+
+## Research firewall
+
+The universal Ford–Maynard Type-II route and the generated-(7.23) route remain valid sufficient alternatives. The singleton reduction solves structural routing for the first smooth-parity packet; it does **not** prove the analytic cancellation. Gate 1A and Gate 1B remain providers only when a literal source dictionary is proved.

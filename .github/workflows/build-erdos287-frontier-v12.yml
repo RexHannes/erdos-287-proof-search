@@ -1,3 +1,4 @@
+# Frontier V12 reproducible build; touching this file intentionally triggers the workflow.
 name: Build Erdos 287 frontier V12
 
 on:

@@ -1,82 +1,79 @@
-# Erdős Problem #287 — Lean-Verified Finite Reduction and Clean Public Review
+# Erdős Problem #287 — Self-Contained Gate 0–2 Theory Manual
 
-**Status:** partial formal verification / public research draft.  
+**Status:** public research draft / partial formal verification.  
 **This repository does not claim an unconditional proof of Erdős #287.**
 
 ## Start here
 
-- [Clean public review — current V16](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path — same current V16 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
-- [Clean V16 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex)
-- [V16 consolidation audit](ERDOS287_V16_CLEAN_CONSOLIDATION_AUDIT.md)
-- [Current technical verification ledger](ERDOS287_TECHNICAL_VERIFICATION_LEDGER_CURRENT.md)
+- [Current public review — V16.3 R4 self-contained theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Legacy forum PDF path — same current R4 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Immutable R4 PDF](ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf)
+- [R4 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex)
+- [R4 publication / self-containment audit](ERDOS287_V16_3_R4_SELF_CONTAINMENT_AUDIT.md)
 
-The former V15 chronological patch stack is preserved immutably:
+## What R4 is
 
-- [V15 technical dossier archive](archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf)
-- [V15 source archive](archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex)
-
-## What is publicly Lean-checked
-
-- exact Erdős-287 counterexample predicate;
-- ordered public-statement compiler;
-- top-layer / adjacent-hole / prime-power window obstruction;
-- no exact counterexample with maximum denominator at most `4,000,000,000`;
-- exact `WindowPairSupply` predicate;
-- end-to-end conditional compiler from eventual `WindowPairSupply`;
-- V14 finite/algebraic Vaughan source spine.
-
-## What is not yet publicly Lean-replayed
-
-The supplied midpoint Aristotle archive contains V15 `Λ=μ*log`, determinant-one-line, and balanced-seven polarization source. At the V16 audit cutoff those files were not yet on public `main`, and the ongoing V15 replay was not independently rerun in the present environment. The clean paper therefore labels them:
+R4 is the public self-contained version of the programme. It keeps the readable finite-#287 front half, but restores enough mathematical theory that a reader with no prior chats, old PDFs, or programme abbreviations can audit the proposed Gate architecture itself:
 
 ```text
-FORMALIZATION SOURCE PRESENT — PUBLIC REPLAY PENDING
+physical #287 source
+    -> Gate 0: source/comparison/Type-I validation
+    -> literal Ford-generated packet census
+    -> Gate 1A and/or Gate 1B providers, according to the actual generated source
+    -> source-exhaustive generated Type-II reassembly
+    -> Gate 2: source-specific Ford–Maynard lower-bound compiler
+    -> positive affine mass + effectivity
+    -> WindowPairSupply (or a stronger effective witness)
+    -> existing finite Lean compiler
+    -> Erdős #287.
 ```
 
-rather than `PUBLIC LEAN-CHECKED`.
+This is a dependency programme, not a completed proof.
 
-## Current research frontier
+The paper now gives theorem-shaped definitions, source formulas, verification boundaries, open inputs, closing implications, and non-implications for Gate 0, Gate 1A, Gate 1B, Gate 2, the Ford-generated-packet route, balanced `R9` / fixed-certificate leakage, and the current factorial-`Omega_7` #287 specialization.
 
-The source-minimal affine identity is
+## Strongest unconditional public result
+
+The repository contains the exact public counterexample predicate and the machine-checked finite result excluding every exact counterexample whose maximum denominator is at most
+
+```text
+4,000,000,000.
+```
+
+The exact global remaining compiler interface is `Erdos287.WindowPairSupply`. No eventual large-`M` supply theorem is claimed proved here.
+
+## Current analytic research status
+
+The detailed status is in the R4 paper. In particular, the public draft explicitly distinguishes:
+
+- machine-checked finite/algebraic statements;
+- externally audited or replay-reported algebra;
+- conditional compilers;
+- source-open identifications;
+- analytic-open estimates;
+- false / retired / superseded routes.
+
+The current balanced-seven representation uses the factorial Euler encoding
 
 ```math
-Λ(2mn+s)=Σ_{qr=2mn+s} μ(q)log r,
+F_z(p^e)=a_z(p)^e/e!,
 ```
 
-with a hard determinant-one line `qr-2mn=s`.
+which encodes repeated primes exactly. The paper keeps the factorial signed endpoint and physical comparison pin open, and it treats the post-dispersion `3221` DI/Kuznetsov splice as a narrower research candidate rather than a proved theorem.
 
-For the balanced-seven cell at
+The Gate-1B section distinguishes the public one-completion `1/104` interface from the later Motohashi/rank-one research frontier and does not hide the downstream Pure5 / defect / NearPrim / QK56 / shifted-reassembly firewall.
 
-```text
-Q=X^(3/5), Y=X^(1/7),
-```
+## Archives
 
-squarefree torus polarization reduces the current V-branch to two explicit open inputs:
+Earlier public versions are preserved rather than silently discarded:
 
-```text
-AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45
-AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45
-```
-
-The remaining hard μ-log cells, fixed-certificate packet census, FCL, positive prime/almost-prime mass, and eventual `WindowPairSupply` are also open.
-
-## Exact formal remaining global interface
-
-`Erdos287.WindowPairSupply M` asks for two adjacent positions in the top half of `[1,M]`, each carrying a prime-power divisor whose window is at most `9` and whose prime base exceeds the certified numerator bound.
-
-The public Lean theorem proves:
-
-```text
-effective eventual WindowPairSupply
-+ finite exclusion through 4e9
-=> Erdős #287.
-```
-
-No eventual supply theorem is proved here.
+- [Clean V16 PDF archive](archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf)
+- [Clean V16 source archive](archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex)
+- [V15 chronological technical dossier archive](archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf)
+- [V15 source archive](archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex)
 
 ## Reproducibility and trust boundary
 
-The V16 paper and its two stable PDF filenames are generated from one clean LaTeX source by GitHub Actions. The source commit is printed inside the PDF.
+GitHub Actions rebuilds the current R4 PDF from the committed R4 LaTeX source and writes the same compiled PDF to the canonical current path and the legacy forum path. The paper carries explicit nonclaims and proof-status labels; publishing the paper does not upgrade any open analytic or source statement into a theorem.
 
-AI assistance: the project used Aristotle and LLM-assisted mathematical research. Every public claim is stated at the proof-status level indicated in the paper and ledger.
+AI assistance: the project used Aristotle and LLM-assisted mathematical research. All claims should be read at the proof-status level stated in the paper and ledger.

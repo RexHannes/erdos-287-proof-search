@@ -1,16 +1,13 @@
-name: Build Erdos 287 public review V16.3 R4
+name: Build Erdos 287 public review V16.4 R5
 
 on:
   push:
     branches: [main]
     paths:
-      - '.r4-src/r4.tex.xz.b64.part00'
-      - '.r4-src/r4.tex.xz.b64.part01'
-      - '.r4-src/r4.tex.xz.b64.part02'
-      - '.r4-src/r4.tex.xz.b64.part03'
-      - '.r4-src/r4.tex.xz.b64.part04'
-      - '.r4-src/r4.tex.xz.b64.part05'
-      - 'ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex'
+      - '.r5-src/r5.tex.xz.b64.part00'
+      - '.r5-src/r5.tex.xz.b64.part01'
+      - '.r5-src/r5.tex.xz.b64.part02'
+      - 'ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -24,20 +21,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct R4 source
+      - name: Reconstruct R5 source
         shell: bash
         run: |
           set -euo pipefail
           cat \
-            .r4-src/r4.tex.xz.b64.part00 \
-            .r4-src/r4.tex.xz.b64.part01 \
-            .r4-src/r4.tex.xz.b64.part02 \
-            .r4-src/r4.tex.xz.b64.part03 \
-            .r4-src/r4.tex.xz.b64.part04 \
-            .r4-src/r4.tex.xz.b64.part05 \
+            .r5-src/r5.tex.xz.b64.part00 \
+            .r5-src/r5.tex.xz.b64.part01 \
+            .r5-src/r5.tex.xz.b64.part02 \
             | base64 --decode | xz -dc \
-            > ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex
-          echo 'eb8359b997b62fc9535e52a259aa8dfd6b115257e19a5883182dddb7716e3f47  ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex' | sha256sum -c -
+            > ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex
+          echo 'ea95a852dfae608e26882bcdee8d9ca672fa964de4d5613a98436c56a2dd5a0e  ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex' | sha256sum -c -
 
       - name: Write reproducibility metadata
         shell: bash
@@ -48,36 +42,36 @@ jobs:
           \\newcommand{\\BuildDate}{28 August 2026}
           META
 
-      - name: Compile self-contained R4 public review
+      - name: Compile R5 public review
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex
+          root_file: ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex
 
-      - name: Stage R4 publication paths
+      - name: Stage R5 publication paths
         shell: bash
         run: |
           set -euo pipefail
-          test -s ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf
-          cp ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
-          cp ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          test -s ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           sha256sum \
-            ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf \
+            ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
             ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
-      - name: Commit R4 source and public PDFs
+      - name: Commit R5 source and public PDFs
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
-            ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex \
-            ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf \
+            ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex \
+            ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
             ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           if git diff --cached --quiet; then
-            echo 'R4 public-review files already current.'
+            echo 'R5 public-review files already current.'
             exit 0
           fi
-          git commit -m 'Publish self-contained Erdos 287 theory manual R4'
+          git commit -m 'Publish Erdos 287 theory manual R5 frontier sync'
           git push

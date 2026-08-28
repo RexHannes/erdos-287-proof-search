@@ -1,0 +1,2867 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=0.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\_\do\-}
+\makeatother
+\usepackage[nameinlink,capitalize]{cleveref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\IfFileExists{buildmeta.tex}{\input{buildmeta.tex}}{%
+  \newcommand{\BuildCommit}{local-audit}%
+  \newcommand{\BuildDate}{28 August 2026}%
+}
+
+\definecolor{deepblue}{RGB}{25,55,92}
+\definecolor{softblue}{RGB}{235,242,249}
+\definecolor{softgray}{RGB}{245,245,245}
+\definecolor{softgreen}{RGB}{237,247,239}
+\definecolor{softred}{RGB}{252,239,239}
+\definecolor{softamber}{RGB}{255,247,230}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\E}{\mathcal E}
+\newcommand{\B}{\mathcal B}
+\newcommand{\WPS}{\operatorname{WindowPairSupply}}
+\newcommand{\status}[1]{\textsf{#1}}
+\newcommand{\lean}{\textsc{Lean}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Erd\H{o}s \#287 -- V16.3 Theory Manual R4}
+\rhead{28 August 2026}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{2em}
+
+\title{\vspace{-1.2cm}\textbf{A Machine-Checked Finite Reduction for Erd\H{o}s Problem \#287\\
+and a Source-Explicit Large-$M$ Criterion}\\[1ex]
+\large Clean Public Review + Self-Contained Gate Theory Manual\\[0.3ex]\normalsize Version 16.3 -- Prepublication Candidate R4 (not yet published)}
+\author{Research draft with Lean/Aristotle-assisted formal verification}
+\date{28 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fcolorbox{deepblue}{softblue}{\begin{minipage}{0.92\textwidth}
+\textbf{Status.} Erd\H{o}s Problem \#287 remains open.  The unconditional public
+Lean result excludes every exact counterexample with maximum denominator at most
+$4\times10^9$, and the large-$M$ conclusion is compiled from the explicit
+\texttt{WindowPairSupply} interface.  A later V15 Aristotle replay, supplied with this audit,
+reports a successful $8118$-job kernel build of the source-minimal identity
+$\Lambda=\mu*\log$, its affine source, the determinant-one line, the balanced-seven
+coefficient $-20$, and the squarefree labelled polarization.  Public repository
+\texttt{main} already contains individual V15 source modules, but its aggregate \texttt{Main.lean}/status replay is not yet synchronized; this note therefore distinguishes
+\emph{Lean-proved in the latest supplied replay} from \emph{public-main synchronized}.
+The latest supplied V16 factorial Aristotle replay reports the factorial Euler seven-box
+polarization, its repeated-prime fibre identity, the local Euler/generalized-von-Mangoldt
+algebra, expected-term linearity and the Pascadi parameter ledger as kernel-checked in an
+$8123$-job build.  Public-main synchronization remains a separate provenance question.  The first exact balanced-seven analytic open is
+\path{AFFINE287-FACTORIAL-OMEGA7-SIGNED-ENDPOINT45}; the physical comparison match,
+remaining packets, large-$M$ supply, and Problem \#287 remain open.  This R4 candidate
+has not been pushed to the stable public PDF.
+\end{minipage}}
+\end{center}
+
+\begin{abstract}
+Erd\H{o}s Problem \#287 asks whether every representation
+\[
+1=\frac1{n_1}+\cdots+\frac1{n_k},\qquad 1<n_1<\cdots<n_k,
+\]
+contains a consecutive gap of size at least $3$.  The present project has one unconditional
+machine-checked result and one explicit conditional large-$M$ interface.  Lean excludes
+all exact counterexamples with maximum denominator at most $4\times10^9$, while an
+effective eventual \texttt{WindowPairSupply} theorem would close the remaining range.
+
+For the analytic programme we use the source-minimal identity
+\[
+\Lambda(2mn+s)=\sum_{qr=2mn+s}\mu(q)\log r,\qquad s=\pm1,
+\]
+together with its exact small-$q$/small-$r$/hard partition and determinant-one affine line.
+A supplied V15 Aristotle replay reports these identities, the balanced-seven coefficient
+$-20$, and the earlier squarefree polarization as kernel-checked.  The current balanced-seven
+representation is sharper: for
+\[
+a_{\mathbf z}(p)=\frac17\sum_{i=1}^7z_i\omega_i(p)
+\]
+we introduce the factorial Euler multiplicative function
+\[
+F_{\mathbf z}(p^e)=\frac{a_{\mathbf z}(p)^e}{e!}.
+\]
+Its degree-$(1,\ldots,1)$ torus coefficient recovers the ordered seven labelled prime-box
+source \emph{including repeated primes exactly}; hence the previous
+$X^{6/7+o(1)}$ collision remainder is no longer part of the controlling formula.
+Polarization also commutes with every linear expected-term operator.  The remaining
+balanced-seven inputs are therefore (i) one signed factorial endpoint distribution estimate
+at $(Q,y)=(X^{3/5},X^{1/7})$, and (ii) identification of the factorial expected term with
+the physical comparison/main term.
+
+The endpoint estimate required here is strictly narrower than a Bombieri--Vinogradov theorem
+for all class-$\mathcal C$ functions, an absolute modulus average, a theorem uniform in
+$\mathbf z$, or a general smooth-number theorem.  A direct audit of Pascadi's current
+arXiv v2 proof parameters is nonclosing for this particular route: the proof architecture
+uses $Q\le x^{5/8-100\eta}$ together with $y\le x^\eta$; setting
+$Q=x^{3/5}$ forces $\eta\le1/4000$, whereas $y=x^{1/7}$ requires
+$\eta\ge1/7$.  This is a limitation of that written proof route, not a theorem excluding
+future extensions.  The paper also states the Gate 0--2 theory itself in theorem form, so that each source, target, pin and non-implication can be audited without the historical dossier.  No analytic endpoint estimate, comparison identification, eventual
+large-$M$ supply, or proof of Erd\H{o}s \#287 is claimed.
+\end{abstract}
+
+\section*{Status at a glance}
+\addcontentsline{toc}{section}{Status at a glance}
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.29\textwidth}
+>{\raggedright\arraybackslash}p{0.22\textwidth}X}
+\toprule
+Item & Status & Meaning \\
+\midrule
+Exact public counterexample predicate & \status{PUBLIC LEAN-CHECKED} & Exact set formulation and ordered public statement are connected. \\
+Finite range $M\le4\times10^9$ & \status{PUBLIC LEAN-CHECKED} & A certificate chain excludes every exact counterexample in this range. \\
+Window-pair closure compiler & \status{PUBLIC LEAN-CHECKED / CONDITIONAL} & Eventual effective \texttt{WindowPairSupply} plus the finite theorem implies \#287. \\
+$\Lambda=\mu*\log$, affine source, determinant-one line & \status{LEAN-PROVED IN LATEST V15 REPLAY} & User-supplied V15 report records an $8118$-job kernel build; public-main synchronization is still pending. \\
+Balanced-seven $-20$ and squarefree polarization & \status{LEAN-PROVED IN LATEST V15 REPLAY} & Finite/algebraic only; no analytic cancellation follows. \\
+Factorial Euler seven-box polarization & \status{LEAN-PROVED IN LATEST V16 FACTORIAL REPLAY} & Exact ordered-source encoding including repeated primes; analytic endpoint remains open. \\
+Expected-term/polarization linearity & \status{RESEARCH/ALGEBRAIC PASS} & Coefficient extraction commutes with every linear expected-term operator. \\
+Gate 0 & \status{MIXED / NOT CLOSED} & $b.1$ and growth are controlled; uniform $b.2$, the literal Type-I source theorem and comparison/source pins remain open or external. \\
+Gate 1A & \status{CONDITIONAL POSSIBLE PROVIDER} & Canonical common-weight mean-square theorem under explicit source pins; current source/fibre instantiation remains open and its necessity for \#287 is census-dependent. \\
+Gate 1B & \status{OPEN COMPLEMENTARY PROVIDER} & Centered/M\"obius source algebra is banked; a source-to-convolution-BV/provider theorem remains open. \\
+Ford generated-packet census & \status{OPEN SOURCE/REASSEMBLY} & Universal Type II is stronger than the proof-specific family actually generated at Ford--Maynard (7.23). \\
+Gate 2 & \status{CONDITIONAL ENDGAME / NOT ACTIVATED} & Consumes Gate-0 data, a complete Type-II package, the $N_2$ replacement and compatible $\varepsilon$ to yield positive prime mass. \\
+Direct Pascadi v2 proof route at $(3/5,1/7)$ & \status{AUDITED NONCLOSING} & Written parameters force $\eta\le1/4000$ but the source requires $\eta\ge1/7$. \\
+Factorial signed endpoint estimate & \status{OPEN ANALYTIC} & \texttt{FACTORIAL-OMEGA7-SIGNED-ENDPOINT45} (full programme label given in Section~\ref{sec:factorial-endpoint}). \\
+Physical comparison identification & \status{OPEN SOURCE} & Principal local density plus the literal exceptional-character convention must match the physical comparison term. \\
+Remaining packets / FCL / eventual supply & \status{OPEN} & Balanced-seven closure alone does not finish the large-$M$ programme. \\
+Erd\H{o}s Problem \#287 & \status{OPEN} & No unconditional solution claim. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\paragraph{Status vocabulary.}
+\status{PUBLIC LEAN-CHECKED} means present on public repository \texttt{main}.
+\status{LEAN-PROVED IN LATEST V15 REPLAY} means the supplied Aristotle V15 build report
+records a successful kernel replay, while public-main synchronization remains a separate
+provenance step.  \status{LEAN-PROVED IN LATEST V16 FACTORIAL REPLAY} means the exact mathematical
+derivation has passed the current hostile audit but no completed Lean replay is claimed.
+\status{OPEN ANALYTIC} and \status{OPEN SOURCE} denote deliberately unproved inputs.
+\status{AUDITED NONCLOSING} refers only to the literal cited theorem/proof dictionary, not
+to a statement that no future extension can work.
+
+\tableofcontents
+
+\section{The problem and the scope of this note}
+
+The public problem asks whether, for distinct integers
+\[
+1<n_1<\cdots<n_k,\qquad \sum_{i=1}^k\frac1{n_i}=1,
+\]
+one necessarily has
+\[
+\max_{1\le i<k}(n_{i+1}-n_i)\ge3.
+\]
+It is listed as open in the Erd\H{o}s Problems archive and originates in the sources
+cited there \cite{ErdosGraham1980,ErdosProblems287}.
+
+For a finite set $A\subset\N$, write
+\[
+N=\min A,\qquad M=\max A.
+\]
+A counterexample is a finite set satisfying
+\[
+A\subset\{2,3,\dots\},\qquad \sum_{a\in A}\frac1a=1,
+\]
+and the local gap condition that every nonmaximal $a\in A$ is followed by $a+1$ or $a+2$
+in $A$.  The Lean development formalizes exactly this predicate and proves the ordered
+form from it.
+
+This note is deliberately not a chronological research diary.  It records only the
+current controlling finite theorem, the exact conditional closure interface, the
+source-minimal algebra, the factorial Euler balanced-seven reduction, and the current open
+analytic obligations.  Earlier squarefree/collision routers, Vaughan decompositions, failed
+provider dictionaries, hostile audits, and superseded residuals belong to the separate technical
+verification ledger and immutable V15 archive.
+
+\section{The machine-checked finite theorem}
+
+\begin{theorem}[Finite exclusion]
+There is no exact counterexample to Erd\H{o}s Problem \#287 with
+\[
+3\le M\le4{,}000{,}000{,}000.
+\]
+Equivalently, every unit-fraction representation in the problem with maximum denominator
+at most $4\times10^9$ has a consecutive gap at least $3$.
+\end{theorem}
+
+The theorem is represented in the repository by
+\texttt{no\_Erdos287Counterexample\_}\\\texttt{of\_max\_le\_4e9}.  Its proof is not an exhaustive
+enumeration of finite subsets.  It is a certificate compiler built from the three ideas
+below.
+
+\subsection{Holes and the adjacent-hole contradiction}
+
+For a hypothetical counterexample, call an integer $x\in[N,M]$ a \emph{hole} when
+$x\notin A$.  The gap-$\le2$ condition implies that two consecutive integers in
+$[N,M]$ cannot both be holes.  This is the formal theorem
+\texttt{Gap2CE.holes\_isolated}.
+
+A second elementary fact places the top half of the interval above the minimum:
+\[
+N\le\left\lfloor\frac M2\right\rfloor.
+\]
+Thus, whenever $M\le2x$ and $x+1\le M$, the consecutive pair $x,x+1$ lies inside the
+closed window where the adjacent-hole contradiction applies.
+
+\subsection{Prime-power windows}
+
+For $j\ge0$, let $C(j)$ denote the largest reduced numerator arising from a nonempty
+partial reciprocal sum
+\[
+\sum_{s\in S}\frac1s,\qquad \varnothing\ne S\subseteq\{1,\dots,j\}.
+\]
+The formal development uses a certified upper table
+\[
+C_{\mathrm{val}}(0),\dots,C_{\mathrm{val}}(9)
+=1,1,3,11,25,137,137,1019,2143,7129.
+\]
+
+The prime-power window theorem says, schematically, that if $p$ is prime, $e\ge1$,
+$p^e\mid x$, and
+\[
+C\!\left(\left\lfloor\frac M{p^e}\right\rfloor\right)<p,
+\]
+then $x$ cannot belong to $A$.  The reason is that the top $p$-adic layer of the reciprocal
+sum would force a nonzero numerator to vanish modulo $p$.
+
+Consequently, if both $x$ and $x+1$ possess such prime-power divisors, then they are two
+adjacent holes.  This gives the central finite compiler.
+
+\begin{proposition}[Window-pair blocker]
+Suppose there are primes $p_u,p_v$, positive exponents $a_u,a_v$, and an integer $x$ such
+that
+\[
+p_u^{a_u}\mid x,\qquad p_v^{a_v}\mid x+1,
+\]
+\[
+\left\lfloor\frac M{p_u^{a_u}}\right\rfloor,
+\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\le9,
+\]
+\[
+C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_u^{a_u}}\right\rfloor\right)<p_u,
+\qquad
+C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\right)<p_v,
+\]
+and
+\[
+M\le2x,
+\qquad x+1\le M.
+\]
+Then a gap-$\le2$ counterexample with maximum $M$ cannot exist.
+\end{proposition}
+
+\subsection{The interval-certificate chain}
+
+One certificate can exclude an entire interval $L\le M\le U$.  The divisibility data are
+fixed at a chosen $x$, monotonicity controls the windows as $M$ varies, and $U\le2x$
+keeps the forced holes above the minimum.  The repository contains a chain of $34$
+certificates whose intervals meet end-to-end and cover
+\[
+[3,4\times10^9].
+\]
+All primality side conditions are discharged in the kernel; the construction does not use
+\texttt{native\_decide}.
+
+
+\subsection{Sign-sensitive Sophie witnesses and the free maximum blocker}
+
+The latest supplied finite bank sharpens the final analytic-to-finite landing and is worth stating because it
+prevents small endpoint mistakes later.  A \emph{plus} Sophie witness at $M$ is a prime $q$ with
+\[
+ q\ge5,\qquad M<3q,\qquad 2q+1\le M,\qquad 2q+1\ \hbox{prime},
+\]
+equivalently $M/3<q\le (M-1)/2$ with the integer endpoints understood literally.  A \emph{minus} witness is
+\[
+ q\ge5,\qquad M<3q,\qquad 2q\le M,\qquad 2q-1\ \hbox{prime},
+\]
+so the correct minus endpoint is
+\[
+ \boxed{q\le\left\lfloor\frac M2\right\rfloor.}
+\]
+Either witness contradicts an exact counterexample.  The hypothesis $q\ge5$ is not cosmetic: for a prime it is
+the same as $q>3$, which is the finite window threshold needed by the cofactor-two obstruction.
+
+There is also a free maximum-divisor blocker.  If $q>3$ is prime, $q\mid M$ and $M<3q$, then necessarily
+$M\in\{q,2q\}$; in either case the top-layer/cofactor-two exclusion contradicts $M\in A$.  Thus a counterexample
+cannot have prime maximum and cannot have $M=2q$ with $q>3$ prime.  These are finite repairs, not analytic
+inputs; they should be used when translating positive affine mass into an actual blocker.
+
+\section{The exact large-$M$ closure criterion}
+
+\begin{definition}[Window-pair supply]
+For $M\in\N$, $\WPS(M)$ is the assertion that there exist
+$x,p_u,a_u,p_v,a_v\in\N$ such that
+\[
+\begin{gathered}
+p_u,p_v\text{ are prime},\qquad a_u,a_v\ge1,\\
+p_u^{a_u}\mid x,\qquad p_v^{a_v}\mid x+1,\\
+\left\lfloor\frac M{p_u^{a_u}}\right\rfloor\le9,
+\quad C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_u^{a_u}}\right\rfloor\right)<p_u,\\
+\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\le9,
+\quad C_{\mathrm{val}}\!\left(\left\lfloor\frac M{p_v^{a_v}}\right\rfloor\right)<p_v,\\
+M\le2x,
+\qquad x+1\le M.
+\end{gathered}
+\]
+\end{definition}
+
+In plain terms, two consecutive integers in the top half of $[1,M]$ each have a
+prime-power divisor larger than roughly $M/10$, with a small local numerator condition.
+
+\begin{theorem}[End-to-end conditional compiler]
+Assume there is an explicit $M_0\le4\times10^9$ such that
+\[
+\WPS(M)\qquad\text{for every }M\ge M_0.
+\]
+Then Erd\H{o}s Problem \#287 is true.
+\end{theorem}
+
+This implication is machine-checked as
+\texttt{no\_Erdos287Counterexample\_of\_closure}.  The proof splits at
+$4\times10^9$: the finite theorem handles the lower range, while the window-pair blocker
+handles every larger maximum.
+
+The interface is weaker than a Sophie-Germain prime condition.  For example, if a prime
+$q$ in the interval $M/3<q\le(M-1)/2$ has $2q+1$ prime, then one may take
+$x=2q$.  The analogous minus case uses $x=2q-1$.  The Lean theorem
+\texttt{windowPairSupply\_of\_sophieWitness} formalizes this implication.  The present
+programme does not claim such Sophie witnesses for every large $M$.
+
+
+
+\clearpage
+\part{Theory and Verification Manual: Gate 0--2}
+\label{part:theory-manual}
+
+\section{What the Gate theory is trying to do}
+\label{sec:theory-purpose}
+
+This Part is written for a reader who has never seen the earlier chats, the V15 patch stack,
+or the repository.  The Gate labels are not theorem substitutes: each Gate is a literal
+mathematical package with an input source, a target theorem, a verification boundary, and
+specified downstream consequences.
+
+Conceptually, the programme separates four jobs.
+
+\begin{description}[leftmargin=2.3cm,style=nextline]
+\item[Gate 0.] Construct and validate the physical sequence/comparison class: prime mass,
+comparison regularity, growth, Type I, and the exact expected-term convention.
+\item[Gate 1.] Supply parity-breaking Type-II estimates for the actual generated packets.
+\item[Gate 1A.] One canonical common-weight moving-source provider.
+\item[Gate 1B.] A complementary signed/M\"obius/high-order provider that preserves the
+arithmetic sign resource through completion/dispersion.
+\item[Gate 2.] Consume a source-exhaustive Type-II package, the Ford arithmetic weight,
+the exceptional $N_2$ sector, and one compatible $\varepsilon_\ast$ to run the
+Ford--Maynard lower-bound endgame.
+\end{description}
+
+The intended dependency graph is
+\[
+\boxed{
+\begin{array}{c}
+\text{PHYSICAL \#287 SOURCE}\\
+\downarrow\\
+\text{GATE 0: source/comparison/Type-I validation}\\
+\downarrow\\
+\text{FORD GENERATED-PACKET CENSUS}\\
+\downarrow\\
+\begin{array}{ccc}
+\text{GATE 1A}&&\text{GATE 1B}\\[-1mm]
+\text{common-weight provider}&&\text{signed/M\"obius provider}
+\end{array}\\
+\downarrow\\
+\text{SOURCE-EXHAUSTIVE TYPE-II REASSEMBLY}\\
+\downarrow\\
+\text{GATE 2: source-specific Ford lower-bound compiler}\\
+\downarrow\\
+\text{POSITIVE AFFINE MASS + EFFECTIVITY}\\
+\downarrow\\
+\text{EFFECTIVE LARGE-}M\text{ WITNESS}\\
+\downarrow\\
+\WPS(M)\\
+\downarrow\\
+\text{finite Lean compiler}\\
+\downarrow\\
+\text{ERD\H{o}S \#287.}
+\end{array}}
+\tag{Theory-DAG}
+\]
+This is a dependency graph, not a proof.
+
+The following non-implications are load-bearing:
+\[
+\boxed{
+\begin{gathered}
+\text{Gate 1A closed}\not\Rightarrow\text{Gate 1B closed},\qquad
+\text{Gate 1B closed}\not\Rightarrow\text{Gate 1A closed},\\
+\text{Gate 1A + Gate 1B}\not\Rightarrow\text{Full Type II without source exhaustiveness},\\
+\text{generated Type II}\not\Rightarrow\text{Gate 2 without Gate-0/$N_2$/source inputs},\\
+\text{Balanced7 closed}\not\Rightarrow\text{FCL closed},\\
+\text{FCL closed}\not\Rightarrow\WPS(M),\\
+\text{none of the preceding statements alone proves Erd\H{o}s \#287.}
+\end{gathered}}
+\tag{Theory-firewall}
+\]
+
+\subsection{Verification vocabulary}
+
+Every major object below is assigned one of the following meanings.
+\begin{center}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\textwidth}{>{\ttfamily\raggedright\arraybackslash}p{0.26\textwidth}X}
+\toprule
+Label & Meaning\\
+\midrule
+LEAN-PROVED & Proved by a cited/current Lean kernel replay.\\
+PROVED-FINITE / PROVED-ALGEBRAIC & Exact finite/combinatorial/algebraic mathematics;
+may or may not also be Lean formalized.\\
+EXTERNALLY-AUDITED & A sourced mathematical theorem or source audit, not formalized here.\\
+CONDITIONAL-COMPILER & The implication is proved, but one or more explicit antecedents remain open.\\
+SOURCE-OPEN & The physical/source identification, normalization or dictionary is missing.\\
+ANALYTIC-OPEN & The source object is sufficiently fixed; a deep estimate remains unproved.\\
+SOURCE-BLOCKED & The literal source object/prefactor needed even to state the final theorem is not yet printed.\\
+CAPACITY-ONLY & Exponent arithmetic passes, but no analytic theorem follows.\\
+FALSE / RETIRED & The literal proposed route is disproved or withdrawn.\\
+SUPERSEDED & Historically valid but no longer the controlling representation.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Gate 0: the physical sequence/comparison theorem}
+\label{sec:gate0-theory}
+
+\subsection{The physical \#287 sequence}
+
+Fix a nonnegative smooth weight $W$ supported inside the analytic blocker band; the
+finite blocker itself only needs the corresponding interval to lie in the top half.
+Define
+\[
+\mathfrak S_2
+=
+\prod_{\ell>2}\frac{\ell(\ell-2)}{(\ell-1)^2},
+\qquad
+B(n)
+=
+\mathfrak S_2
+\prod_{\substack{\ell\mid n\\\ell>2}}
+\frac{\ell-1}{\ell-2},
+\]
+and
+\[
+\boxed{
+a_X(n)
+=
+W(n/X)\bigl(\Lambda(2n-1)+\Lambda(2n+1)\bigr),
+}
+\]
+\[
+\boxed{
+b_X(n)=4W(n/X)B(n),\qquad
+w_X(n)=a_X(n)-b_X(n).
+}
+\tag{G0-source}
+\]
+The role of $b_X$ is to model the expected local density of the two affine prime forms;
+$w_X$ is the discrepancy on which Type I/II cancellation is sought.
+
+The elementary comparison algebra includes
+\[
+B(n)
+=
+\mathfrak S_2
+\sum_{\substack{e\mid n\\e\ {\rm odd\ squarefree}}}
+\prod_{\ell\mid e}\frac1{\ell-2},
+\]
+and for each fixed $d$,
+\[
+\lim_{Y\to\infty}
+\frac1Y\sum_{m\le Y}B(dm)
+=
+\frac{d}{\phi(2d)}.
+\tag{G0-Bmean}
+\]
+Thus one sign has mean $2d/\phi(2d)$ and the two-sign model has mean
+$4d/\phi(2d)$ at the fixed-$d$ level.  Also
+\[
+B(n)\ll\log\log(3n),\qquad
+|w_X(n)|\ll\log X,
+\]
+and, in the present source class,
+\[
+\sum_{n\asymp X}|w_X(n)|\tau(n)\ll X(\log X)^2.
+\tag{G0-growth}
+\]
+
+\subsection{Gate-0 target package}
+
+\begin{definition}[Gate-0 package]
+Gate 0 is \emph{closed for the \#287 source at scale $X$} if the following seven items
+hold with one common physical normalization.
+\begin{enumerate}[label=\textup{G0.\arabic*},leftmargin=2.0em]
+\item $a_X(n)\ge0$ and the comparison sequence $b_X$ belongs to the Ford--Maynard
+ordinary sequence class used in the lower-bound theorem.
+\item Prime mass:
+\[
+\sum_p b_X(p)\gg \frac{X}{\log X}.
+\]
+\item Growth/divisor control, including a bound of the form (G0-growth)
+(or the exact stronger divisor-weight norm required by the chosen Ford invocation).
+\item Comparison regularity: the physical $b_X$ satisfies the Ford--Maynard
+condition $(b.2)$ uniformly over every coagulation region actually used downstream.
+At the fixed-$d$ level this is compatible with (G0-Bmean); the required
+uniform publication-level statement must be source-pinned.
+\item Literal maximal/weighted Type I:
+\[
+\boxed{
+\sum_{m\le X^{1/2-\varepsilon}}
+\tau(m)^A
+\max_I
+\left|
+\sum_{\substack{X/2<mn\le X\\n\in I}}
+w_X(mn)
+\right|
+\ll_{A,W,\varepsilon}
+X(\log X)^{-A}.}
+\tag{G0-I}
+\]
+\item One fixed principal/small-conductor/exceptional-character expected-term
+convention is used consistently by both the prime source and the comparison source.
+\item Even, nonunit, prime-power and boundary strata created by the affine forms
+$2n\pm1$ are either included in the source theorem or routed with a proved error.
+\end{enumerate}
+\end{definition}
+
+\paragraph{Current verification.}
+Items G0.1--G0.3 have elementary/source-level proofs in the dossier; the exact finite
+problem statement and finite blocker are Lean-proved.  G0.4 and G0.5 are
+\status{SOURCE-OPEN / EXTERNALLY-AUDITED TARGETS} at the exact publication normalization;
+G0.6 is the same physical comparison convention that later appears in the factorial
+balanced-seven and Pure5 comparison pins.
+
+\paragraph{What Gate 0 closing buys.}
+It supplies the non-parity hypotheses needed by the Ford lower-bound compiler and removes
+the possibility that a later Type-II estimate is being applied to the wrong comparison
+sequence.
+
+\paragraph{What it does not buy.}
+Gate 0 does not prove Type II, parity breaking, Gate~1A, Gate~1B, Gate~2, a large-$M$
+witness, or Erd\H{o}s~\#287.
+
+\section{Gate 1A: canonical common-weight Type-II provider}
+\label{sec:gate1a-theory}
+
+\subsection{Parameters, rows and physical source}
+
+At an auxiliary scale $X_1$, set
+\[
+M=X_1^{1/3},\qquad
+R=X_1^a,\qquad
+L=X_1^b,
+\]
+\[
+H=X_1^{a+2b-2/3},\qquad
+K=\frac MR,\qquad
+U=\frac LH,\qquad
+D=\frac{L^2}{H}.
+\tag{G1A-scales}
+\]
+Thus
+\[
+RK=M,\qquad DH=L^2,\qquad M^2H=RL^2.
+\]
+A row is
+\[
+e=(r,k,m),\qquad
+r\asymp R\ {\rm prime},\quad
+1\le|k|\le K,\quad
+m\asymp M,\quad
+m'=m+kr\asymp M.
+\]
+Choose the canonical affine forms $A_e(t),B_e(t)$ so that
+\[
+\boxed{m'A_e(t)-mB_e(t)=2k.}
+\tag{G1A-det}
+\]
+For
+\[
+\rho_\ell(y)=\mathbf 1_{\ell\mid y}-\frac1\ell
+\]
+and bounded prime coefficients $b_p,d_q$, the \emph{one common physical-weight} source is
+\[
+\boxed{
+C_e(b,d)
+=
+\sum_{t\in\mathbb Z}W_D(t)
+\left(\sum_{p\asymp L}b_p\rho_p(A_e(t))\right)
+\left(\sum_{q\asymp L}d_q\rho_q(B_e(t))\right).
+}
+\tag{G1A-source}
+\]
+The word ``common'' is literal: $W_D$ is one datum.  Arbitrary independently chosen
+weights $W_{D,e}$ are a stronger source class and are not covered by the canonical theorem.
+
+\subsection{Gate-1A target theorem}
+
+\begin{theorem}[Canonical common-weight Gate-1A provider -- conditional form]
+Assume the five source/analytic pins G1A-A through G1A-E below.  Then, uniformly for the
+canonical all-$m$ row family $\mathcal E^\sharp$,
+\[
+\boxed{
+\sum_{e\in\mathcal E^\sharp}|C_e(b,d)|^2
+\ll
+\frac{ML^4}{H}X_1^{o(1)}
+\left(\sum_{p\asymp L}|b_p|^2\right)
+\left(\sum_{q\asymp L}|d_q|^2\right).
+}
+\tag{G1A-target}
+\]
+The exact normalized variant used by the formal compiler is equivalent after the banked
+$H^2$ normalization bridge.
+\end{theorem}
+
+The theorem is a \status{CONDITIONAL-COMPILER}: the finite/operator part is substantially
+banked, but the physical source pins are not all inhabited.
+
+\subsection{The five load-bearing pins}
+
+\paragraph{G1A-A: Poisson--Bruhat/source transport.}
+After the one-sided physical transform and reciprocity, every retained source state
+$\xi$ must have moving-prime coefficient
+\[
+\boxed{c_r(\xi)=B_\xi\,F_\xi(r/R),}
+\tag{G1A-PB}
+\]
+where $F_\xi$ is a uniformly smooth envelope generated from the one physical $W_D$,
+not an arbitrary row weight.  The transport must preserve the physical/normalized energy
+up to a square-summable source error.
+
+\[
+\status{STATUS: SOURCE-OPEN / CONDITIONAL PIN.}
+\]
+Without this pin, the later moving-prime participation argument would apply to a convenient
+model rather than to the physical packet.
+
+\paragraph{G1A-B: absolute source ceiling.}
+The transported physical source must satisfy
+\[
+\boxed{
+\mathcal T_{\rm abs}
+\ll
+M^2L^4X_1^{o(1)}.
+}
+\tag{G1A-abs}
+\]
+This is the absolute comparator against which the moving-family contraction is measured.
+
+\[
+\status{STATUS: SOURCE/ANALYTIC PIN.}
+\]
+
+\paragraph{G1A-C: fixed-state exclusion and prime participation.}
+A fixed nonprojective state must not absorb the moving prime variable.  Smoothness of
+$F_\xi$ produces a long plateau; the short-interval prime theorem then gives
+\[
+\boxed{N_\xi\gg R^{3/4-o(1)}}
+\tag{G1A-part}
+\]
+participating prime rows for each retained state.  The finite BPP compiler converts this
+participation into
+\[
+\boxed{
+E_{\rm np}
+\ll
+R^{-1/2+o(1)}\mathcal T_{\rm abs}.
+}
+\tag{G1A-np}
+\]
+The project kernel-checks the finite participation-to-energy implication; it does not
+formalize the entire physical smooth-envelope/short-interval input.
+
+\noindent\textbf{Status.}
+\status{FINITE COMPILER LEAN-PROVED}; the physical participation statement is
+\status{EXTERNAL / SOURCE-OPEN}.
+
+\paragraph{G1A-D: outer-root physical energy and projective routing.}
+The abstract nonprojective energy must be identified with the physical Gate energy, and
+the projective/axis/diagonal branch must be routed in the same source normalization.
+The finite ratio-class algebra includes the state diagonal in the zero-curvature branch,
+and the physical projective mass target is
+\[
+\boxed{
+E_{\rm proj}
+\ll
+MHL^4X_1^{o(1)}.
+}
+\tag{G1A-proj}
+\]
+Exactly one outer square root converts (G1A-np) to an $R^{-1/4+o(1)}$ contraction.
+At the three controlling vertices the signed margins are
+\[
+\boxed{\frac1{72},\qquad\frac1{24},\qquad\frac1{32}.}
+\tag{G1A-margins}
+\]
+
+\noindent\textbf{Status.}
+\status{FINITE SQUARE-ROOT / PROJECTIVE ALGEBRA BANKED}; the physical energy
+identification is \status{SOURCE-OPEN}.
+
+\paragraph{G1A-E: recombination/discarded-sector bound.}
+After all source truncations, exceptional routes and recombinations, the physical error must
+satisfy
+\[
+\boxed{
+E_{\rm rec}
+\ll
+U^{-2+o(1)}M^2L^4,
+}
+\tag{G1A-rec}
+\]
+with the source-exact prefactor and without spending the same saving twice.  The exponent
+margins at the controlling vertices are
+\[
+\boxed{\frac1{18},\qquad\frac1{18},\qquad\frac1{24}.}
+\]
+
+\noindent\textbf{Status.}
+\status{EXPONENT BUDGET BANKED}; literal source recombination is \status{SOURCE-OPEN}.
+
+\subsection{What the BPP mechanism proves and what it does not}
+
+The finite BPP mechanism is a local-to-family compiler:
+\[
+\begin{gathered}
+\text{smooth moving-prime participation}\\
+\Downarrow\\
+R^{-1/2+o(1)}\text{ family-energy contraction}\\
+\Downarrow\\
+R^{-1/4+o(1)}\text{ after one outer root}.
+\end{gathered}
+\]
+It does \emph{not} prove the source transport, absolute source ceiling, physical energy
+identification or recombination estimate.  Those are separate statements precisely so that
+a reader can attack or falsify them independently.
+
+\subsection{The source-glue/SB-$\nu$ problem}
+
+The current source-glue question is whether the same physical packet can simultaneously
+satisfy the common-weight representation, the BPP state representation and the final
+routing representation with fibre multiplicity
+\[
+\boxed{N_\nu=X_1^{o(1)}}
+\tag{G1A-SBnu}
+\]
+in the synchronized two-view model.  This is a source-identification frontier rather than
+a new exponent computation.
+
+Finally,
+\[
+\boxed{\texttt{GATE1A\_REQUIRED\_FOR\_287 = UNKNOWN}.}
+\]
+The Ford-generated packet census, not programme nomenclature, decides whether a needed
+\#287 packet truly belongs to the canonical common-weight source class.
+
+\section{Gate 1B: signed/M\"obius parity-breaking provider}
+\label{sec:gate1b-theory}
+
+\subsection{Native centering, sign and complementary-divisor geometry}
+
+For coprime $d,p$,
+\[
+\boxed{
+\rho_{dp}(y)
+=
+\rho_d(y)\rho_p(y)
++\frac{\rho_d(y)}p
++\frac{\rho_p(y)}d.
+}
+\tag{G1B-center}
+\]
+If $q$ is squarefree and $p\mid q$ is the distinguished prime, then
+\[
+\boxed{\mu(q/p)=-\mu(q).}
+\tag{G1B-sign}
+\]
+This is the sign resource that must not be squared away accidentally.
+
+The native complementary-divisor source exposes
+\[
+\boxed{q\ell-uv=2.}
+\tag{G1B-det}
+\]
+This determinant-two geometry is separate from the Gate-1A determinant $2k$ and from the
+\#287 $\mu*\log$ determinant-one line.
+
+\subsection{The banked one-completion source}
+
+On dyadic windows $d\sim D$ and $p\sim P$, the authoritative one-completion coefficient is
+\[
+\boxed{
+\beta_{D,P}(d,p)=\mu_D(d)\Lambda_P(p),
+}
+\tag{G1B-beta}
+\]
+where $\mu_D,\Lambda_P$ are the physical truncated M\"obius and prime weights on the stated
+windows.  The public formal challenge proves the separate linearity/bilinearity of this
+coefficient and an exact level-of-distribution budget requiring
+\[
+\boxed{
+\theta\ge\frac12+\frac1{104}.
+}
+\tag{G1B-104}
+\]
+It also proves the implication from an inhabited source-to-convolution-BV interface to the
+abstract Gate conclusion.  Producing that interface from the literal physical source remains
+open.  This is a valid formal provider socket, but it is no longer the first research-level
+analytic obstruction.
+
+\subsection{The Motohashi line}
+
+Fix $u,\ell$ and a base solution to
+\[
+\boxed{uv_0+2=\ell z_0.}
+\tag{G1B-base}
+\]
+All solutions on the complementary-divisor line are
+\[
+\boxed{
+v_t=v_0+\ell t,\qquad
+z_t=z_0+ut.
+}
+\tag{G1B-line}
+\]
+Let $H$ be the physical line length and write $e_H(x)=e^{2\pi ix/H}$.
+For the exact one-completion coefficient and a smooth cutoff $W_1$ define
+\[
+\boxed{
+\mathcal Z_{u,\ell}(k)
+=
+\sum_t
+\beta_{D,P}(z_t)\,
+W_1(t/H)e_H(-kt).
+}
+\tag{G1B-Z}
+\]
+For the five centred defect factors
+\[
+b_5=\delta_1*\delta_2*\delta_3*\delta_4*\delta_5
+\]
+and a second physical cutoff $W_2$, define
+\[
+\boxed{
+\mathcal B_{u,\ell}(k)
+=
+\sum_t
+b_5(v_t)\,
+W_2(t/H)e_H(-kt).
+}
+\tag{G1B-B}
+\]
+The Motohashi pairing is
+\[
+\boxed{
+\mathcal M_{u,\ell}
+=
+\frac1H
+\sum_k
+\mathcal Z_{u,\ell}(k)\,
+\overline{\mathcal B_{u,\ell}(k)}.
+}
+\tag{G1B-M}
+\]
+The current supplied research ledger reports the exact A/B/C source pin, the twisted-defect
+A/B/C reduction and the fivefold Motohashi iteration as passed source algebra; the
+fixed-polylogarithmic-$k$ interior is closed modulo the comparison convention.
+
+\subsection{Endpoint residue coefficient and diagonal/off-diagonal split}
+
+At the endpoint define, for a unit residue $a\bmod\ell$,
+\[
+\boxed{
+A_{\ell,a,k}
+=
+\sum_{\substack{u\equiv-2a^{-1}\pmod\ell}}
+a_4(u)\,\mathcal Z_{u,\ell}(k),
+}
+\tag{G1B-A}
+\]
+where $a_4$ is the four-defect coefficient inherited from the physical source.
+The endpoint Cauchy energy is
+\[
+\boxed{
+\mathcal E_{\rm end}(k)
+=
+\sum_{\ell\sim L}
+\sum_{a\in(\mathbb Z/\ell\mathbb Z)^\times}
+|A_{\ell,a,k}|^2.
+}
+\tag{G1B-Eend}
+\]
+Opening the square gives
+\[
+\mathcal E_{\rm end}(k)
+=
+\sum_{\ell,a}
+\sum_{\substack{u_1,u_2\equiv-2a^{-1}\,(\ell)}}
+a_4(u_1)\overline{a_4(u_2)}
+\mathcal Z_{u_1,\ell}(k)
+\overline{\mathcal Z_{u_2,\ell}(k)}.
+\]
+The diagonal is $u_1=u_2$.  The off-diagonal is parametrized by
+\[
+\boxed{u_2=u_1+j\ell,\qquad j\ne0.}
+\tag{G1B-j}
+\]
+For corresponding line parameters $t_1,t_2$,
+\[
+\boxed{
+z_2(t_2)-z_1(t_1)
+=
+u(t_2-t_1)+j\,v_{t_2},
+}
+\tag{G1B-off-source}
+\]
+and, after opening $\beta=\mu_D\Lambda_P$,
+\[
+\boxed{
+d_2p_2-d_1p_1
+=
+u(t_2-t_1)+j\,v_{t_2}.
+}
+\tag{G1B-off-beta}
+\]
+These identities are the literal arithmetic object behind the current endpoint
+off-diagonal problem.
+
+The latest supplied research ledger records
+\[
+\boxed{
+\text{endpoint }u\text{-diagonal}
+=
+\text{power closed with }X^{-1/12+o(1)}.
+}
+\tag{G1B-diag-status}
+\]
+
+\subsection{Current first Gate-1B analytic theorem}
+
+Let $\mathfrak T_{1B}(X)$ denote the physical target scale of the Gate-1B parent after
+restoring the dyadic prefactor from the source decomposition.  The current source materials
+provided to this editorial run specify the off-diagonal object (G1B-Eend)--(G1B-off-beta)
+but do not print the final numerical parent prefactor in a form that can be independently
+reconstructed here.  We therefore do \emph{not} invent it.
+
+The current theorem slot is:
+\[
+\boxed{
+\sum_{\text{endpoint dyadic packets}}
+\mathcal E_{\rm end}^{\rm off}
+=
+o\!\left(\mathfrak T_{1B}(X)\right),
+}
+\tag{G1B-off-target}
+\]
+with the exact physical prefactor/normalization to be copied verbatim from the controlling
+Gate-1B source before publication.  Programme label:
+\[
+\boxed{\begin{gathered}\text{\ttfamily RANKONE-ENDPOINT-}\\\text{\ttfamily U-OFFDIAG45}\end{gathered}}
+\]
+Its source formula is exact; the missing printed normalization in this candidate is
+\status{SOURCE-BLOCKED NORMALIZATION}, and the cancellation itself is
+\status{ANALYTIC-OPEN}.  This explicit split is preferable to guessing a power.
+
+\subsection{Downstream Gate-1B theorem objects}
+
+The first endpoint theorem is not the whole Gate.  The current dependency chain is:
+
+\paragraph{PURE5 comparison/main-term pin.}
+The five-defect physical source and its comparison source must use the same principal,
+small-conductor and exceptional-character convention.
+\[
+\status{\path{PURE5-COMPARISON-MAINTERM-PIN}: SOURCE-OPEN.}
+\]
+Closing an oscillatory estimate with the wrong main term does not close the physical packet.
+
+\paragraph{High-$k$ sector.}
+The same Motohashi pairing (G1B-M) restricted to the complementary high-frequency
+range defines \path{RANKONE-HIGHK45}.  Its target is the Gate-1B parent bound on that
+frequency sector.
+\[
+\status{ANALYTIC-OPEN.}
+\]
+
+\paragraph{Pure-five signed distinguished-prime packet.}
+After recombining interior, endpoint and high-$k$ sectors, the source is the signed
+five-centred-defect distinguished-prime packet, schematically
+\[
+\sum \mu_D(d)\Lambda_P(p)
+\prod_{i=1}^5\delta_i(\cdot)
+\times(\text{physical cutoffs}),
+\]
+with all congruence and gcd restrictions inherited from (G1B-det).
+The literal final prefactor is part of the source packet.
+\[
+\status{\path{PURE5-DP-SIGNED45}: DOWNSTREAM ANALYTIC/REASSEMBLY OPEN.}
+\]
+
+\paragraph{Lower defect orders.}
+The $|J|=4,3,2,1$ packets are separate centred-defect strata obtained by selecting which
+defect factors remain nontrivial.  They do not follow automatically from the Pure5 theorem;
+each requires its own source routing or a proved monotonicity/reduction theorem.
+
+\paragraph{Near-primitive and conductor complement.}
+The near-primitive $r=1$ full-conductor slice is denoted
+\texttt{NEARPRIM-DP-SIGNED45}.  The $r>1$ family, the
+$(C_\ast,C_{\rm nw})$ transition, and proper-divisor recursion must then restore the
+remaining conductor ranges without losing the M\"obius sign.
+
+\paragraph{QK56 parent.}
+The full covariance parent has the schematic but literal two-modulus form
+\[
+\boxed{
+\mathcal C_{\rm QK}
+=
+\sum_{q_1,q_2}
+\sum_{h_1,k_1,h_2,k_2}
+A(q_1,q_2;h_1,k_1,h_2,k_2)
+Q(q_1;h_1,k_1)
+\overline{Q(q_2;h_2,k_2)}.
+}
+\tag{QK56-parent}
+\]
+The branch $q_1=q_2$ is the same-modulus character Gram; $q_1\ne q_2$ is the
+cross-modulus/CRT branch.  The canonical zero mode and substantial finite/source
+decompositions are banked, but \path{QK56-EXHAUSTIVENESS} must prove that all physical
+children are covered.  QK56 is downstream of the rank-one endpoint in the current
+closure order, not the present first analytic open.
+
+\paragraph{Shifted $TT^\ast$ and finite reassembly.}
+The final shifted source must be recovered before any support enlargement; all zero/nonunit,
+collision and repeated-prime strata must be routed; then the finite source compiler
+reassembles the leaves into the Gate-1B parent.
+
+Only after these steps may one write \texttt{GATE1B CLOSED}.
+
+\section{Ford--Maynard generated packets and proof-specific Type II}
+\label{sec:ford-theory}
+
+\subsection{Published universal wrapper}
+
+The Ford--Maynard lower-bound framework uses a universal Type-II hypothesis.  In the
+present $1/6$ specialization a safe sufficient form is
+\[
+\boxed{
+\left|
+\sum_{\substack{(X/2)^{\varepsilon}<m\le X^{1/6-\varepsilon}\\X/2<mn\le X}}
+\xi_m\kappa_n w_X(mn)
+\right|
+\ll_A X(\log X)^{-A}
+}
+\tag{FM-universal-II}
+\]
+for every allowed divisor-bounded coefficient pair.  The project does \emph{not} claim
+that Ford--Maynard publish the weaker proof-specific theorem described next.
+
+\subsection{What their proof actually generates}
+
+The Ford arithmetic source has
+\[
+G(m;n)
+=
+\mathbf 1_{m\le n^\gamma}\lambda(m_1)\,
+g(\mathbf v(m_2;n)),
+\qquad
+\boxed{H(n)=\sum_{d\mid n}G(d;n),}
+\tag{FM-GH}
+\]
+with the canonical rough/smooth split $m=m_1m_2$.
+After finite decomposition and condition removal, Proposition~7.22 reaches a fixed-depth
+product sum (equation~(7.23) in the source)
+\[
+\sum_{n=n_1\cdots n_N\asymp x}
+w_n\,x_1(n_1)\cdots x_N(n_N),
+\tag{FM-7.23}
+\]
+and chooses a product $\prod_{e\in E}n_e$ in the Type-II range.
+Grouping the selected factors and their complement gives
+\[
+\boxed{
+\sum_{n=n'n''\asymp x}
+Y_1(n')Y_2(n'')w_{n'n''}.
+}
+\tag{FM-generated-II}
+\]
+The published proof then invokes the universal Type-II hypothesis.
+
+Hence an invocation-by-invocation replacement theorem would be enough for this proof:
+\[
+\boxed{
+\begin{gathered}
+\text{every actual generated (FM-generated-II) packet}\\
+\text{has a proved source-exact provider}\\
+\Downarrow\\
+\text{every Type-II invocation in Proposition 7.22 is covered}
+\end{gathered}}
+\tag{FM-replacement-logic}
+\]
+This implication additionally requires a source-exhaustive census and a replacement
+certificate; it is not obtained merely by identifying some packets.
+
+\subsection{The three source obligations}
+
+\begin{definition}[SOURCE-ADAPTER45]
+For every generated packet, print the literal operator, physical ranges, coefficient
+class, weight dependence, centering/expected term, gcd/collision restrictions, original
+prefactor and normalized target, and map it to a proved provider without changing the
+source class.
+\end{definition}
+
+\begin{definition}[FM-TO-GATE-COORDINATE-CENSUS45]
+Enumerate every Type-II packet actually generated by the Ford decomposition, with enough
+coordinate information to decide whether it belongs to Gate~1A, Gate~1B or a direct
+exceptional/standard class.
+\end{definition}
+
+\begin{definition}[$C_{\rm FM}$ replacement certificate]
+Verify invocation by invocation that the generated census covers every use of the universal
+Type-II hypothesis in the chosen Ford proof, with no omitted packet, no multiplicity loss
+and no double-spending of an analytic saving.
+\end{definition}
+
+All three remain open source/reassembly obligations.
+
+\subsection{Provider-facing generated families}
+
+\begin{longtable}{p{0.19\textwidth}p{0.20\textwidth}p{0.20\textwidth}p{0.30\textwidth}}
+\toprule
+Family & Literal source/scale & Candidate provider & Why it matches / what is missing\\
+\midrule
+\endfirsthead
+\toprule
+Family & Literal source/scale & Candidate provider & Why it matches / what is missing\\
+\midrule
+\endhead
+M\"obius singleton &
+one selected $m<X^{1/6}$ factor carries M\"obius weight; complement remains generated &
+Gate~1B signed source &
+M\"obius sign is in the correct physical slot only after a literal completion dictionary;
+generated outer-factor stability is still required.\\
+Model singleton &
+selected factor is model/Mellin-like; M\"obius carrier may remain in the complement &
+QK56 or direct affine completion &
+provider cannot be inferred from the word ``singleton''; native packet dictionary is open.\\
+Balanced-seven V-cell &
+seven fixed prime boxes at $Y=X^{1/7}$ &
+factorial-$\Omega_7$ source, then the fixed-degree-seven attack &
+factorial Euler encoding is exact; endpoint/3221 analytic theorem and comparison remain.\\
+Pure5/high-order family &
+five centred defect factors with distinguished-prime/M\"obius source &
+Gate~1B Motohashi/rank-one chain &
+current first analytic object is the endpoint off-diagonal; high-$k$ and downstream
+defect/conductor families remain.\\
+Balanced $R_9$ &
+nine-coordinate Ford-generated leakage cell &
+fixed-certificate/FCL lane &
+finite binomial $70$ is proved; literal physical $G(d;n)$ specialization is source-open.\\
+Common-weight packets &
+actual generated source must preserve one physical $W_D$ after scale conversion &
+Gate~1A &
+requires exact scale/source dictionary and all five Gate-1A pins.\\
+Remaining fixed-$g_\ast$ packets &
+not yet exhaustively censused &
+TBD from literal source &
+the finite census/provider assignment itself is still open.\\
+\bottomrule
+\end{longtable}
+
+\section{Balanced $R_9$, fixed-certificate leakage and FCL}
+\label{sec:r9-fcl-theory}
+
+The balanced order-nine finite identity is
+\[
+\boxed{
+\sum_{j=0}^{4}(-1)^j\binom9j=70.
+}
+\tag{R9-70}
+\]
+This is \status{PROVED-FINITE}; by itself it is not the physical Ford statement
+$H(n)=70$.
+
+To obtain $H(n)=70$ one must prove that the literal Ford specialization of $G(d;n)$ on the
+balanced $R_9$ cell selects exactly the corresponding low/high divisor orders and has the
+required value of $g(\varnothing)$.  That is
+\[
+\boxed{\text{literal }G(d;n)\text{ specialization: SOURCE-OPEN}.}
+\tag{R9-G-open}
+\]
+Therefore balanced $R_9$ is a \emph{Ford-generated leakage candidate}, not a completed
+leakage theorem.
+
+For one fixed positive Ford certificate $g_\ast$, define its arithmetic weight
+\[
+H_\ast(n)=\sum_{d\mid n}G_\ast(d;n).
+\]
+Let $\mathcal P$ be the desired prime region, $\mathcal N_1$ the certificate-sign composite
+region, $\mathcal N_2$ the exceptional collar, and
+\[
+\mathcal U_\ast
+=
+(X/2,X]\setminus(\mathcal P\cup\mathcal N_1\cup\mathcal N_2).
+\]
+The fixed-certificate leakage is
+\[
+\boxed{
+\mathcal L_\ast(X)
+=
+\sum_{n\in\mathcal U_\ast}w_X(n)H_\ast(n).
+}
+\tag{FCL}
+\]
+The $N_2$ error is
+\[
+\mathcal E_{N_2}(X)
+=
+\sum_{n\in\mathcal N_2}w_X(n)H_\ast(n).
+\]
+If the total correlation, leakage, $N_2$ error and comparison error are all small relative
+to the positive certificate margin $C_\ast(\varepsilon_\ast)$, then the fixed-certificate
+transference gives positive affine prime mass.  A sufficient quantitative form is
+\[
+|\mathcal L_\ast(X)|+|\mathcal E_{N_2}(X)|
+\le
+\frac{C_\ast(\varepsilon_\ast)}4\,B_X,
+\tag{FCL-margin}
+\]
+together with the corresponding total-correlation/comparison bounds.
+This is a conditional compiler; it does not itself prove FCL.
+
+Balanced $R_9$ may contribute to $\mathcal L_\ast$ once the source obligation (R9-G-open) is discharged,
+but closing that one cell does not close the full leakage family.
+
+\section{Gate 2: source-specific Ford--Maynard lower-bound compiler}
+\label{sec:gate2-theory}
+
+Fix one compatible
+\[
+P_{\varepsilon_\ast}
+=
+\left(
+\frac12-\varepsilon_\ast,\,
+\varepsilon_\ast,\,
+\frac16-2\varepsilon_\ast
+\right).
+\]
+Gate~2 is the theorem-shaped endgame package:
+
+\begin{theorem}[Gate-2 lower-bound compiler -- conditional]
+Assume:
+\begin{enumerate}[label=\textup{G2.\arabic*},leftmargin=2.0em]
+\item the Gate-0 source/comparison/Type-I package;
+\item the literal Ford $G(d;n)$/$H(n)$ source and its sign properties;
+\item a source-specific aggregate $N_2$ estimate;
+\item one common fixed $\varepsilon_\ast>0$ compatible with every source range;
+\item either the universal Type-II theorem (FM-universal-II), or a complete
+generated-packet provider package together with
+\path{SOURCE-ADAPTER45},
+\path{FM-TO-GATE-COORDINATE-CENSUS45} and $C_{\rm FM}$;
+\item the ordinary/bounded-class firewall and every comparison/exceptional-character
+normalization needed by the chosen Ford theorem;
+\item effective versions of all inputs at a computable threshold.
+\end{enumerate}
+Then the Ford--Maynard lower-bound geometry yields positive affine mass of the form
+\[
+\boxed{
+\sum_{p\in\mathcal P}a_X(p)
+\ge
+\bigl(C_\ast(\varepsilon_\ast)+o(1)\bigr)B_X
+\gg \frac{X}{\log X},
+}
+\tag{G2-positive}
+\]
+for the physical \#287 source and the chosen certificate.
+\end{theorem}
+
+\[
+\status{STATUS: CONDITIONAL-COMPILER / NOT ACTIVATED.}
+\]
+
+The theorem still does not by itself produce \texttt{WindowPairSupply}.  One additional effective witness
+extraction theorem must convert the positive affine mass into a Sophie/safe-prime or
+prime-power blocker configuration, or directly into the $\WPS(M)$ predicate of the finite
+compiler.  That final conversion/effectivity step remains open.
+
+\section{Current \#287 specialization: $\mu*\log$, factorial $\Omega_7$, and the 3221 attack}
+\label{sec:287-specialization-theory}
+
+The source-minimal identity used in the current \#287 branch is
+\[
+\boxed{
+\Lambda(2mn+s)
+=
+\sum_{qr=2mn+s}\mu(q)\log r,
+\qquad s=\pm1.
+}
+\tag{287-mulog}
+\]
+The latest supplied V15 replay reports the exact three-way split into small-$q$,
+small-$r$, and hard pairs as kernel-checked, together with the determinant-one line
+\[
+\boxed{qr-2mn=s.}
+\]
+For fixed $r,m$ and one solution,
+\[
+q=q_0+2mt,\qquad n=n_0+rt.
+\]
+
+\subsection{Factorial Euler seven-box source}
+
+For the balanced-seven cell
+\[
+Q=X^{3/5},\qquad Y=X^{1/7},
+\]
+let
+\[
+a_{\mathbf z}(p)=\frac17\sum_{i=1}^7z_i\omega_i(p),
+\qquad
+\boxed{
+F_{\mathbf z}(p^e)=\frac{a_{\mathbf z}(p)^e}{e!}.
+}
+\tag{Omega7-factorial}
+\]
+Then the degree-$(1,\ldots,1)$ torus coefficient exactly recovers the ordered seven-labelled
+prime source, including repeated primes:
+\[
+\boxed{
+7^7[z_1\cdots z_7]F_{\mathbf z}(n)
+=
+\sum_{\substack{p_1\cdots p_7=n\\p_i\ {\rm ordered}}}
+\prod_{i=1}^7\omega_i(p_i).
+}
+\tag{Omega7-coeff}
+\]
+The latest supplied V16 factorial replay reports the general/seven-slot polarization,
+repeated-prime fibre cardinality, formal local Euler algebra and expected-term linearity as
+Lean-proved in an $8123$-job build.
+
+The exact balanced-seven source therefore reduces to
+\[
+\int_{\mathbb T^7}\overline{z_1\cdots z_7}
+\sum_{q\sim X^{3/5}}\mu(q)
+\Delta_{\mathcal E}(F_{\mathbf z};X,q,-s\overline2)\,d\mathbf z
+\]
+plus the physical comparison identification.  The exact broad endpoint theorem is
+\[
+\boxed{\begin{gathered}\text{\ttfamily AFFINE287-FACTORIAL-OMEGA7-}\\\text{\ttfamily SIGNED-ENDPOINT45}\end{gathered}}
+\tag{Omega7-endpoint}
+\]
+It is strictly narrower than a BV theorem for all class-$\mathcal C$ functions, an
+absolute modulus average, a theorem uniform in every $\mathbf z$, or a general
+smooth-number theorem.
+
+\subsection{Why the direct existing Pascadi proof route does not splice}
+
+In the audited current v2 proof architecture, a small parameter $\eta$ is arranged so that
+\[
+Q\le x^{5/8-100\eta},
+\qquad
+y\le x^\eta.
+\]
+At $Q=x^{3/5}$,
+\[
+\eta\le\frac1{4000},
+\]
+whereas $y=x^{1/7}$ requires
+\[
+\eta\ge\frac17.
+\]
+Hence the direct written proof route is nonclosing at the required smoothness scale.  This is
+a parameter/dictionary audit, not a theorem ruling out future extensions.
+
+\subsection{The current 1+2+2+2 / 3221 research reduction}
+
+The latest supplied Pro reduction keeps the source at fixed degree seven and groups the
+seven prime boxes as
+\[
+\boxed{1+2+2+2.}
+\]
+Use the scale ledger
+\[
+\boxed{
+E=X^{1/7},\qquad
+M=N=L=X^{2/7},\qquad
+Q=X^{3/5}.
+}
+\tag{3221-scales}
+\]
+The ordinary three-block comparison sees
+\[
+\frac47-\frac35=-\frac1{35},
+\]
+so the naive $Q<NL$ geometry misses by $X^{1/35}$.
+Retaining the actual seventh box inside Cauchy changes the controlling comparison to
+\[
+\boxed{Q<ENL}
+\]
+with exponent margin
+\[
+\boxed{\frac57-\frac35=\frac4{35}.}
+\tag{3221-margin}
+\]
+The source-assisted diagonal audit gives an amplitude saving
+\[
+\boxed{X^{-2/35+o(1)}.}
+\tag{3221-saving}
+\]
+After opening the two copies, the literal difference relation is
+\[
+\boxed{
+e_1n_1\ell_1-e_2n_2\ell_2=qt,
+\qquad
+|t|\ll X^{4/35+o(1)}.
+}
+\tag{3221-diff}
+\]
+The line-length ledger is
+\[
+\boxed{
+H=X^{11/35},
+\qquad
+EH=X^{16/35}<Q.
+}
+\tag{3221-H}
+\]
+
+The current proposed narrower source socket is
+\[
+\boxed{\begin{gathered}\text{\ttfamily 3221-DI-KUZNETSOV-}\\\text{\ttfamily LITERAL-SPLICE45}\end{gathered}}
+\tag{3221-label}
+\]
+Its theorem is not ``prove Kuznetsov''.  It is the source-dictionary/analytic statement:
+after the above post-dispersion decomposition, identify the literal off-diagonal
+(3221-diff) with a DI/Kuznetsov-type bilinear form \emph{without changing the physical
+weights, M\"obius sign, prefactor or multiplicity}, and obtain a fixed-power saving sufficient
+to recover at least the source-assisted margin (3221-saving).  If such a literal splice
+is proved, it is a narrower sufficient route toward (Omega7-endpoint).
+
+\[
+\status{STATUS: RESEARCH CANDIDATE / SOURCE-DICTIONARY + ANALYTIC OPEN.}
+\]
+The supplied materials do not contain a completed hostile audit of this splice, so it is not
+promoted above the exact factorial endpoint theorem.
+
+\section{Verification manual: what is actually proved}
+\label{sec:verification-manual}
+
+\subsection{Table 1: machine-checked objects}
+
+{\footnotesize\begin{longtable}{p{0.20\textwidth}p{0.22\textwidth}p{0.23\textwidth}p{0.20\textwidth}}
+\toprule
+Object / declaration & File or replay & Exact content & Does not prove\\
+\midrule
+\endfirsthead
+\toprule
+Object / declaration & File or replay & Exact content & Does not prove\\
+\midrule
+\endhead
+\parbox[t]{0.19\textwidth}{\raggedright\scriptsize\ttfamily no\_Erdos287\\Counterexample\_\\of\_max\_le\_4e9} &
+\path{FiniteRangeExtension.lean} &
+No exact counterexample with maximum denominator at most $4\cdot10^9$. &
+No large-$M$ theorem.\\
+\parbox[t]{0.19\textwidth}{\raggedright\scriptsize\ttfamily WindowPairSupply;\\no\_Erdos287\\Counterexample\_\\of\_closure} &
+\path{ClosureInputs.lean} / end-to-end status bank &
+Exact conditional compiler from effective eventual supply plus finite range. &
+No inhabitant of eventual supply.\\
+\path{vaughan_identity_exact}; source compilers &
+V14 affine Vaughan files &
+Exact alternative source decomposition and structural algebra. &
+No Type-II estimate.\\
+\parbox[t]{0.19\textwidth}{\raggedright\scriptsize\ttfamily
+vonMangoldt\_eq\_\\mobius\_mul\_log;\\muLog\_affine\_\\pointwise} &
+latest supplied V15 replay:
+\path{AffineMuLogIdentity.lean} &
+$\Lambda=\mu*\log$ and its affine specialization. &
+No cancellation.\\
+three-way pair partition / \texttt{muLogHard} &
+\path{AffineMuLogHardSource.lean} &
+Exact disjoint small-$q$/small-$r$/hard decomposition. &
+No smallness of any piece.\\
+determinant-one line family &
+latest supplied V15 replay:
+\path{AffineMuLogLine.lean} &
+Coprimality, affine parametrization and multiplicity-one uniqueness. &
+No dispersion estimate.\\
+balanced-seven $-20$ &
+\path{BalancedSevenFinite.lean} in latest supplied V15 replay &
+Finite alternating-binomial coefficient. &
+No physical Ford source specialization.\\
+squarefree labelled polarization &
+\parbox[t]{0.21\textwidth}{\raggedright\scriptsize latest supplied V15 replay:\\{\ttfamily BalancedSeven\\Polarization.lean}} &
+Exact squarefree coefficient extraction and normalization. &
+Superseded as controlling by factorial encoding.\\
+\parbox[t]{0.19\textwidth}{\raggedright\scriptsize\ttfamily OMEGA7-FACTORIAL-\\EULER-\\POLARIZATION45} &
+latest supplied V16 factorial replay; exact public filename synchronization pending &
+General/seven-slot factorial polarization, including repeated-prime fibre accounting. &
+No endpoint distribution estimate.\\
+\parbox[t]{0.19\textwidth}{\raggedright\scriptsize\ttfamily POLARIZED-\\EXPECTED-TERM-\\LINEARITY45} &
+latest supplied V16 factorial replay &
+Coefficient extraction commutes with every linear expected-term operator. &
+No physical identification $\mathfrak M^{\rm fac}=\mathfrak M^{\rm phys}$.\\
+Pascadi $(3/5,1/7)$ parameter ledger &
+latest supplied V16 factorial replay &
+Formal rational inequality $\eta\le1/4000$ versus $\eta\ge1/7$. &
+No theorem against future analytic extensions.\\
+\bottomrule
+\end{longtable}
+
+The supplied V16 factorial report states \texttt{lake build}: $8123$ jobs, zero errors; no
+Lean-code occurrences of \texttt{sorry}, \texttt{admit}, user \texttt{axiom},
+\texttt{opaque}, \texttt{unsafe}, \texttt{native\_decide} or
+\texttt{@[implemented\_by]}; principal axiom reports use only the standard logical
+principles \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}.
+These are replay-status claims supplied with the project; public aggregate synchronization
+is tracked separately.
+
+\subsection{Table 2: externally audited / mathematical inputs}
+
+\begin{longtable}{p{0.30\textwidth}p{0.22\textwidth}p{0.38\textwidth}}
+\toprule
+Input & Status & Role / limitation\\
+\midrule
+\endfirsthead
+\toprule
+Input & Status & Role / limitation\\
+\midrule
+Huxley short-interval prime theorem &
+\status{EXTERNALLY-AUDITED} &
+Supplies prime participation once the Gate-1A physical smooth envelope is source-pinned.\\
+Ford--Maynard lower-bound framework &
+\status{EXTERNALLY-AUDITED} &
+Publishes the universal Type-II sufficient wrapper and lower-bound geometry; does not
+publish the project's proof-specific replacement theorem.\\
+Drappeau--Granville--Shao class-$\mathcal C$ distribution &
+\status{EXTERNALLY-AUDITED / RANGE MISMATCH} &
+Relevant multiplicative-function technology; does not literally give the exact
+$Q=X^{3/5}$ endpoint at the required source.\\
+Pascadi smooth-number proof architecture &
+\status{EXTERNALLY-AUDITED / DIRECT ROUTE NONCLOSING} &
+At $Q=X^{3/5}$ its written parameter architecture forces $\eta\le1/4000$, incompatible
+with $y=X^{1/7}$.\\
+Latest Motohashi/rank-one Gate-1B reductions &
+\status{RESEARCH-AUDITED, NOT PUBLIC THEOREMS} &
+Source reductions supplied after the V15 snapshot; first analytic object is the endpoint
+off-diagonal, with exact parent normalization still to be copied into the publication draft.\\
+Latest 3221 reduction &
+\status{RESEARCH CANDIDATE} &
+Narrows the factorial endpoint to a post-dispersion fixed-degree-seven source socket if
+the DI/Kuznetsov literal splice survives hostile audit.\\
+\bottomrule
+\end{longtable}
+
+\subsection{Table 3: open source identifications}
+
+{\footnotesize\begin{longtable}{p{0.30\textwidth}p{0.24\textwidth}p{0.31\textwidth}}
+\toprule
+Source object & Status & What must be printed/proved\\
+\midrule
+\endfirsthead
+\toprule
+Source object & Status & What must be printed/proved\\
+\midrule
+Gate-0 comparison $(b.2)$/Type-I normalization &
+\status{SOURCE-OPEN} &
+Uniform physical progression/coagulation convention and literal weighted/maximal theorem.\\
+Gate-1A PB/source glue and physical energy pin &
+\status{SOURCE-OPEN} &
+Exact transport, common-weight preservation, absolute ceiling, participation state, energy
+identification, projective routing and recombination.\\
+Gate-1B endpoint physical target prefactor &
+\status{SOURCE-BLOCKED NORMALIZATION} &
+Copy the literal parent prefactor/target accompanying (G1B-off-target); do not infer it
+from the programme label.\\
+\path{PURE5-COMPARISON-MAINTERM-PIN} &
+\status{SOURCE-OPEN} &
+Principal/small-conductor/exceptional-character physical main-term convention.\\
+Ford generated-(7.23) census &
+\status{SOURCE-OPEN} &
+Every actual packet, scale, coefficient class, weight law, multiplicity and provider.\\
+\path{SOURCE-ADAPTER45} / $C_{\rm FM}$ &
+\status{SOURCE-OPEN} &
+Literal Gate/provider dictionary and invocation-by-invocation replacement certificate.\\
+Balanced-$R_9$ physical $G(d;n)$ specialization &
+\status{SOURCE-OPEN} &
+Show that the physical Ford cell really realizes the divisor-order split leading to $70$.\\
+Factorial/physical comparison &
+\status{SOURCE-OPEN} &
+Prove $\mathfrak M^{\rm fac}_{7,s}=\mathfrak M^{\rm phys}_{7,s}$ in the exact local-density
+and exceptional-character convention.\\
+3221 DI/Kuznetsov completed-source dictionary &
+\status{SOURCE-OPEN} &
+Identify the post-dispersion source with the intended theorem socket with no loss of sign,
+weights, prefactor or multiplicity.\\
+\bottomrule
+\end{longtable}
+
+\subsection{Table 4: open analytic theorems in current dependency order}
+
+{\footnotesize\begin{longtable}{p{0.22\textwidth}p{0.31\textwidth}p{0.32\textwidth}}
+\toprule
+Open theorem & Exact task & What remains even if proved\\
+\midrule
+\endfirsthead
+\toprule
+Open theorem & Exact task & What remains even if proved\\
+\midrule
+\path{3221-DI-KUZNETSOV-LITERAL-SPLICE45} &
+Prove the literal post-dispersion 1+2+2+2 source admits a DI/Kuznetsov-type estimate with a
+fixed-power saving sufficient for the source-assisted margin (3221-saving). &
+Physical comparison and the rest of the factorial endpoint/source census; status remains a
+research candidate until the source dictionary is hostile-audited.\\
+\path{AFFINE287-FACTORIAL-OMEGA7-SIGNED-ENDPOINT45} &
+Bound the signed degree-$(1,\ldots,1)$ torus coefficient of the $F_{\mathbf z}$ discrepancy
+by $o(X/\log X)$. &
+Physical comparison match; other V-cells and M-branch.\\
+\path{RANKONE-ENDPOINT-U-OFFDIAG45} &
+Bound the off-diagonal endpoint energy (G1B-Eend)--(G1B-off-beta) relative to
+the physical Gate-1B parent target. &
+Pure5 comparison, high-$k$, lower defects, conductor recursion, QK56 and reassembly.\\
+\path{RANKONE-HIGHK45} &
+Control the high-frequency part of (G1B-M) in the physical source normalization. &
+Pure5/lower-defect/conductor/QK56 chain.\\
+Remaining generated packet providers &
+Prove each uncensused Ford-generated packet has a valid Gate~1A, Gate~1B or direct provider. &
+Replacement certificate, FCL, Gate~2.\\
+FCL &
+Control the leakage sum (FCL) and the associated total-correlation/$N_2$/comparison errors within the
+fixed certificate margin. &
+Gate~2 source package/effectivity and large-$M$ witness extraction.\\
+$N_2$/Gate-2 analytic inputs &
+Prove the source-specific aggregate exceptional-collar estimate and all remaining
+lower-bound hypotheses at one $\varepsilon_\ast$. &
+Positive mass still must be converted effectively to \texttt{WindowPairSupply}.\\
+eventual \texttt{WindowPairSupply} &
+Prove $\WPS(M)$ for every sufficiently large $M$, or prove a stronger effective witness
+implying it. &
+Nothing analytic: the existing finite Lean compiler then gives Erd\H{o}s~\#287.\\
+\bottomrule
+\end{longtable}
+
+\section{Current numbered route to Erd\H{o}s \#287}
+\label{sec:numbered-route}
+
+The current literal route, subject to future simplification, is:
+\begin{enumerate}[leftmargin=2.1em]
+\item finish or supersede the current fixed-degree-seven/3221 socket;
+\item prove the factorial physical comparison identification;
+\item complete the remaining balanced-seven/V-cell census;
+\item control the M\"obius singleton and model singleton packets;
+\item control the $k=0$ smooth-parity family;
+\item complete the remaining fixed-$g_\ast$ packet census;
+\item assign every generated packet to a proved Gate~1A, Gate~1B or direct provider;
+\item complete the generated-(7.23) replacement certificate $C_{\rm FM}$;
+\item close the full fixed-certificate leakage/correlation package;
+\item prove the source-specific $N_2$ estimate;
+\item activate Gate~2 at one compatible $\varepsilon_\ast$ and obtain positive affine mass;
+\item make the lower-bound/witness extraction effective;
+\item prove eventual $\WPS(M)$ (or a stronger effective witness);
+\item invoke the existing finite Lean compiler.
+\end{enumerate}
+A future theorem may collapse several steps; the list is a current dependency audit, not a
+claim of logical minimality.
+
+\section{How an external reviewer can falsify or improve the programme}
+\label{sec:review-invitation}
+
+A serious review is most useful if it attacks one of the following:
+\begin{enumerate}[leftmargin=2.0em]
+\item a source dictionary that changes the physical packet;
+\item a theorem-slot mismatch between an actual generated packet and a claimed provider;
+\item a missing normalization or prefactor;
+\item a multiplicity or support-enlargement loss;
+\item double-spending of a M\"obius sign or analytic saving;
+\item an incorrect comparison/principal/exceptional-character main term;
+\item an incomplete Ford-generated packet census;
+\item an invalid invocation-by-invocation replacement of Ford--Maynard's universal Type II;
+\item an endpoint/effectivity gap;
+\item a mismatch between a claimed Lean status and the actual kernel/public bank.
+\end{enumerate}
+Failure of any conditional provider does \emph{not} invalidate the machine-checked finite
+theorem through $4\times10^9$; it invalidates only the corresponding large-$M$ route.
+
+\section{Glossary of recurring programme terms}
+\label{sec:glossary}
+
+\begin{description}[leftmargin=3.4cm,style=nextline]
+\item[Gate 0] The physical \#287 source/comparison/Type-I package.
+\item[Gate 1A] Canonical common-weight moving-source Type-II provider (G1A-source).
+\item[Gate 1B] Complementary signed/M\"obius/high-order Type-II provider based on
+(G1B-center)--(G1B-M).
+\item[Gate 2] Source-specific Ford--Maynard lower-bound compiler.
+\item[BPP] Band-limited prime-participation mechanism converting moving-prime participation
+to a family-energy saving in Gate~1A.
+\item[SB-$\nu$] Synchronized two-view/source-glue fibre condition in the Gate-1A source
+adapter.
+\item[Pure5] Five-centred-defect distinguished-prime source family in the Gate-1B chain.
+\item[NearPrim] Near-primitive/full-conductor slice ($r=1$) of the Gate-1B conductor family.
+\item[QK56] Full same-/cross-modulus covariance parent (QK56-parent).
+\item[SOURCE-ADAPTER45] Literal source dictionary from actual Ford-generated packets to
+proved providers.
+\item[$C_{\rm FM}$] Invocation-by-invocation certificate replacing the universal Type-II
+hypothesis in the chosen Ford proof by generated-packet estimates.
+\item[$R_9$] Balanced nine-coordinate Ford-generated leakage candidate; finite binomial
+coefficient $70$ is proved, physical $G(d;n)$ specialization is not.
+\item[FCL] Fixed-certificate leakage/correlation package (FCL).
+\item[$N_2$] Exceptional Ford collar requiring a separate source-specific aggregate bound.
+\item[Balanced7] Fixed-degree seven-prime-box V-cell at $Y=X^{1/7}$.
+\item[V-cell] A generated packet in the model/factorial seven-prime branch.
+\item[M\"obius singleton] Generated short Type-II factor carrying the M\"obius sign.
+\item[fixed-$g_\ast$] One fixed positive Ford certificate used in the leakage transference.
+\item[\texttt{WindowPairSupply}] The exact large-$M$ adjacent prime-power window predicate consumed by the finite
+Lean compiler.
+\end{description}
+
+
+\section{The source-minimal affine algebra}
+
+The current clean narrative starts from the exact identity $\Lambda=\mu*\log$.  The supplied
+V15 Aristotle replay report records a successful $8118$-job kernel build of the declarations
+summarized below.  Because public repository \texttt{main} has not yet synchronized that replay,
+their status in this candidate is \status{LEAN-PROVED IN LATEST V15 REPLAY}, not
+\status{PUBLIC LEAN-CHECKED}.  No analytic estimate is encoded by these identities.
+
+\subsection{The identity $\Lambda=\mu*\log$}
+
+For the genuine arithmetic functions,
+\[
+\mu*\log=\mu*(\Lambda*1)=(\mu*1)*\Lambda=\Lambda,
+\]
+and hence
+\[
+\boxed{\Lambda(N)=\sum_{qr=N}\mu(q)\log r.}
+\]
+At the affine value $N=2mn+s$, $s\in\{-1,+1\}$,
+\[
+\boxed{\Lambda(2mn+s)=\sum_{qr=2mn+s}\mu(q)\log r.}
+\]
+The V15 replay also preserves the natural-number sign firewall for the minus case.
+
+\subsection{Exact factor partition and determinant-one line}
+
+For a cutoff $U$, factor pairs split disjointly into
+\[
+q\le U,\qquad q>U,\ r\le U,\qquad q>U,\ r>U.
+\]
+The hard class is exact rather than heuristic:
+\[
+\sum_{\substack{qr=2mn+s\\q>U,\ r>U}}\mu(q)\log r.
+\]
+Every hard pair satisfies
+\[
+qr-2mn=s,\qquad s=\pm1.
+\]
+This implies
+\[
+(r,2m)=1,\qquad(q,2n)=1.
+\]
+Fixing $r,m$ and one solution $(q_0,n_0)$, all integer solutions are
+\[
+\boxed{q=q_0+2mt,\qquad n=n_0+rt,\qquad t\in\mathbb Z,}
+\]
+with unique $t$.  The V15 replay report records nonvanishing, the coprimality statements,
+both directions of this parametrization, and multiplicity-one uniqueness as kernel-checked.
+
+The same replay proves only the finite exponent ledger, not an asymptotic estimate.  In
+particular,
+\[
+\frac16-\frac{16623}{100000}=\frac{131}{300000}>0.
+\]
+
+\section{The balanced-seven factorial Euler reduction}
+
+Freeze the literal balanced-seven source
+\[
+Q=X^{3/5},\qquad Y=X^{1/7},
+\]
+and
+\[
+\B_{7,s}(X)=
+\sum_{q\sim Q}\mu(q)
+\left[
+\sum_{\substack{p_1,\ldots,p_7\sim Y\\2p_1\cdots p_7\equiv-s\pmod q}}
+\prod_{i=1}^7\omega_i(p_i)\,W(p_1\cdots p_7/X)
+-\mathfrak M^{\mathrm{phys}}_{7,s}(q)
+\right].
+\]
+For odd $q$, write
+\[
+ a_s(q)\equiv -s\,2^{-1}\pmod q.
+\]
+The target is $o(X/\log X)$.  The V15 Lean replay already proves the finite coefficient
+\[
+\sum_{j=0}^3(-1)^j\binom7j=-20
+\]
+and the earlier squarefree labelled polarization.  The controlling representation below is
+newer and removes the collision remainder entirely.
+
+\subsection{Factorial Euler polarization}
+
+For $\mathbf z=(z_1,\ldots,z_7)\in\mathbb T^7$, define
+\[
+a_{\mathbf z}(p)=\frac17\sum_{i=1}^7z_i\omega_i(p)
+\]
+for primes in the actual box, and $a_{\mathbf z}(p)=0$ outside it.  Define a multiplicative
+function $F_{\mathbf z}$ by the prime-power data
+\[
+\boxed{F_{\mathbf z}(p^e)=\frac{a_{\mathbf z}(p)^e}{e!},\qquad e\ge0.}
+\]
+This is ordinary multiplicativity; complete multiplicativity is neither required nor
+desirable here.
+
+Its local Dirichlet factor is
+\[
+\sum_{e\ge0}F_{\mathbf z}(p^e)p^{-es}
+=\exp\!\left(a_{\mathbf z}(p)p^{-s}\right),
+\]
+so the generalized von Mangoldt coefficients satisfy
+\[
+\Lambda_{F_{\mathbf z}}(p)=a_{\mathbf z}(p)\log p,\qquad
+\Lambda_{F_{\mathbf z}}(p^e)=0\quad(e\ge2).
+\]
+Since $|a_{\mathbf z}(p)|\le1$,
+\[
+|\Lambda_{F_{\mathbf z}}(n)|\le\Lambda(n),
+\]
+so $F_{\mathbf z}$ lies in the multiplicative class $\mathcal C$ used by
+Drappeau--Granville--Shao.  This is a research/algebraic derivation; the factorial
+polarization has not yet completed a Lean replay.
+
+\subsection{Exact labelled coefficient extraction, including repeated primes}
+
+Let
+\[
+n=\prod_pp^{e_p},\qquad\Omega(n)=\sum_pe_p=7.
+\]
+Then
+\[
+F_{\mathbf z}(n)=
+\prod_p\frac1{e_p!}
+\left(\frac17\sum_i z_i\omega_i(p)\right)^{e_p}.
+\]
+The factors $e_p!$ cancel exactly the multiplicity from permuting equal prime occurrences.
+Therefore
+\[
+\boxed{
+7^7[z_1\cdots z_7]F_{\mathbf z}(n)
+=
+\sum_{\substack{p_1\cdots p_7=n\\p_i\ {\rm ordered}}}
+\prod_{i=1}^7\omega_i(p_i).
+}
+\]
+Consequently,
+\[
+\boxed{
+\begin{aligned}
+&\sum_{\substack{p_1,\ldots,p_7\sim Y\\
+2p_1\cdots p_7\equiv-s\pmod q}}
+\prod_{i=1}^7\omega_i(p_i)\,W(p_1\cdots p_7/X)
+\\
+&\qquad =
+7^7\int_{\mathbb T^7}\overline{z_1\cdots z_7}
+\sum_{\substack{n\asymp X\\n\equiv a_s(q)\pmod q}}
+F_{\mathbf z}(n)W(n/X)\,d\mathbf z .
+\end{aligned}}
+\]
+This identity is exact for repeated primes.  Hence the former
+$O(X^{6/7+o(1)})$ repeated-prime correction is retired from the controlling proof
+architecture.  The earlier collision router remains a valid historical check in the
+technical dossier.
+
+\subsection{Expected-term linearity and the exact comparison pin}
+
+Let $\mathcal E_q(f;a)$ be any expected-term operator that is linear in $f$:
+principal projection, small-conductor subtraction, exceptional-character contribution, or
+the literal combination adopted by the eventual analytic theorem.  Linearity gives
+\[
+\boxed{
+7^7[z_1\cdots z_7]\mathcal E_q(F_{\mathbf z};a)
+=
+\mathcal E_q\!\left(7^7[z_1\cdots z_7]F_{\mathbf z};a\right).
+}
+\]
+Thus polarization itself creates no comparison obstruction.
+
+Define
+\[
+\mathfrak M^{\mathrm{fac}}_{7,s}(q)
+=
+7^7\int_{\mathbb T^7}\overline{z_1\cdots z_7}\,
+\mathcal E_q(F_{\mathbf z};a_s(q))\,d\mathbf z
+\]
+and
+\[
+\Delta_{\mathcal E}(F_{\mathbf z};X,q,a)
+=
+\sum_{\substack{n\asymp X\\n\equiv a\pmod q}}
+F_{\mathbf z}(n)W(n/X)-\mathcal E_q(F_{\mathbf z};a).
+\]
+Then
+\[
+\boxed{
+\begin{aligned}
+\B_{7,s}(X)
+={}&7^7\int_{\mathbb T^7}\overline{z_1\cdots z_7}
+\sum_{q\sim X^{3/5}}\mu(q)
+\Delta_{\mathcal E}(F_{\mathbf z};X,q,a_s(q))\,d\mathbf z\\
+&+\sum_{q\sim Q}\mu(q)
+\bigl(\mathfrak M^{\mathrm{fac}}_{7,s}(q)
+-\mathfrak M^{\mathrm{phys}}_{7,s}(q)\bigr).
+\end{aligned}}
+\]
+There is no repeated-prime remainder.
+
+The comparison problem is therefore not ``does polarization commute with the main term?''
+It does.  The remaining source question is the physical identification
+\[
+\boxed{\mathfrak M^{\mathrm{fac}}_{7,s}(q)
+=\mathfrak M^{\mathrm{phys}}_{7,s}(q)}
+\]
+at the required aggregate precision: principal local density together with the literal
+exceptional-character convention.  This remains
+\path{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45}; it is not closed.
+
+\subsection{The first exact V-branch analytic residual}\label{sec:factorial-endpoint}
+
+The controlling analytic statement is now
+\[
+\boxed{
+\begin{aligned}
+\int_{\mathbb T^7}\overline{z_1\cdots z_7}
+\sum_{q\sim X^{3/5}}\mu(q)\,
+\Delta_{\mathcal E}
+\left(F_{\mathbf z};X,q,a_s(q)\right)\,d\mathbf z
+=o(X/\log X).
+\end{aligned}}
+\]
+Programme label:
+\[
+\boxed{\begin{gathered}\text{\ttfamily AFFINE287-FACTORIAL-OMEGA7-}\\\text{\ttfamily SIGNED-ENDPOINT45}\end{gathered}}
+\]
+It is deliberately narrower than each of the following:
+\begin{itemize}[leftmargin=1.6em]
+\item a Bombieri--Vinogradov theorem for every $f\in\mathcal C$;
+\item an absolute average $\sum_q|\Delta_q|$;
+\item a theorem uniform in every $\mathbf z\in\mathbb T^7$;
+\item a general smooth-number distribution theorem.
+\end{itemize}
+Only the signed $\mu(q)$-average of one degree-$(1,\ldots,1)$ torus coefficient is needed.
+
+Together,
+\[
+\boxed{
+\begin{array}{c}
+\begin{gathered}\text{\ttfamily AFFINE287-FACTORIAL-OMEGA7-}\\\text{\ttfamily SIGNED-ENDPOINT45}\end{gathered}\\
++\ \texttt{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45}\\[1mm]
+\Downarrow\\
+\texttt{AFFINE287-BALANCED7-MODULUS-AVERAGE45\ CLOSED}.
+\end{array}}
+\]
+Both antecedents remain open.
+
+\section{Published distribution results and the exact dictionary audit}
+
+Drappeau--Granville--Shao work with the class $\mathcal C$ of
+\emph{multiplicative} functions satisfying
+$|\Lambda_f(n)|\le\Lambda(n)$; complete multiplicativity is only a special case.
+Their theorem reaches moduli $x^{3/5-\varepsilon}$ for sufficiently smooth support, so it
+does not literally supply the exact endpoint $Q=X^{3/5}$ required above.
+
+For Pascadi's current arXiv v2, the relevant stated result is the smooth-number theorem
+(Theorem 1.5, refined as Theorem 6.4).  Immediately after Theorem 1.5 the paper remarks
+that a similar result for smooth-supported multiplicative functions can be deduced by a
+slight extension of Proposition 6.3; the current v2 does not state a separate
+``Theorem 1.7'' giving the black box required here.  More importantly, the written proof
+architecture itself is quantitatively nonclosing at the seven-prime smoothness scale.
+
+Indeed, renaming the proof's internal small parameter as $\eta$, the proof arranges
+\[
+Q\le x^{5/8-100\eta},\qquad y\le x^\eta.
+\]
+At the required modulus
+\[
+Q=x^{3/5},
+\]
+the first inequality implies
+\[
+\frac35\le\frac58-100\eta
+\quad\Longrightarrow\quad
+\boxed{\eta\le\frac1{4000}}.
+\]
+But the source has
+\[
+y=x^{1/7},
+\]
+so the second inequality would require
+\[
+\boxed{\eta\ge\frac17}.
+\]
+These conditions are incompatible.  Thus the \emph{direct existing Pascadi proof route},
+with its written parameters, does not furnish the factorial endpoint theorem at
+$(Q,y)=(X^{3/5},X^{1/7})$.  This is a theorem-dictionary/proof-parameter audit, not a
+claim that no future extension of Pascadi's technology can succeed.
+
+This explains the current research direction: preserve the literal fixed degree seven rather than forcing a
+generic smooth-factorization parameter, carry that structure through dispersion, and test a post-dispersion
+four-block arrangement.  The ``fixed-degree-seven / four-block'' programme is a research direction, not a
+proved theorem or an already matched Gate-1B provider.  Its purpose is precisely to attack the narrower signed
+torus coefficient without paying for a theorem uniform over all smooth-supported functions.
+
+The earlier V14 Vaughan decomposition remains mathematically valid as a nonminimal
+alternative source audit.  It is no longer presented as a co-equal controlling branch in
+this public narrative; its prime-modulus two-outer packet and related failed dictionaries
+belong in the technical provenance appendix.
+
+\section{The current end-to-end dependency graph}
+
+The unconditional finite theorem and the conditional large-$M$ interface remain the two endpoints of the
+project:
+\[
+\boxed{\begin{array}{c}
+\text{exact public problem}\\
+\downarrow\\
+\text{prime-power window compiler + finite certificates}\\
+\downarrow\\
+M\le4\times10^9\text{ excluded}
+\end{array}}
+\]
+while the conditional completion is
+\[
+\boxed{\begin{array}{c}
+\text{eventual }\WPS(M)\text{ supply}\\
+\downarrow\\
+\text{public Lean closure compiler}\\
+\downarrow\\
+\text{Erd\H{o}s \#287.}
+\end{array}}.
+\]
+
+Between them sits the restored analytic gate architecture:
+\[
+\boxed{
+\begin{array}{c}
+\text{Gate 0: physical sequence class, comparison and Type I}\\
+\downarrow\\
+\text{Ford-generated packet census / source adapter}\\
+\downarrow\\
+\text{Gate 1A}\quad\vert\quad\text{Gate 1B}\quad\vert\quad\text{direct providers}\\
+\downarrow\\
+\text{generated-(7.23) or universal Full-Type-II reassembly }+C_{\rm FM}\\
+\downarrow\\
+\text{Gate 2: physical }H(n),\ N_2,\ \varepsilon_*\text{ and lower-bound geometry}\\
+\downarrow\\
+\text{positive affine mass and effectivity}\\
+\downarrow\\
+\WPS(M)\text{ or a stronger sign-sensitive witness.}
+\end{array}}
+\]
+
+The current 287 overlays enter this spine at the generated-packet level:
+\[
+\Lambda=\mu*\log,\qquad
+F_{\mathbf z}(p^e)=a_{\mathbf z}(p)^e/e!,\qquad
+\texttt{FACTORIAL-OMEGA7-SIGNED-ENDPOINT45},
+\]
+together with the physical comparison identification.  Even if the balanced-seven pair of residuals is closed,
+one still needs the remaining V-cells/M-branch, the fixed-$g_*$ packet census, provider assignment, balanced
+$R_9$ source specialization where relevant, FCL/leakage reassembly, $N_2$, the Gate-2 lower bound and an
+effective large-$M$ witness.  This is why the clean paper retains the Gate spine rather than compressing every
+analytic arrow into the phrase ``hard cancellation''.
+
+\section{Formal verification and reproducibility}
+
+\subsection{Public Lean bank}
+
+Public repository \texttt{main} presently contains the exact problem predicate, the
+finite exclusion through $4\times10^9$, the \texttt{WindowPairSupply} closure compiler,
+the V14 structural source bank, and at least some individual V15 source modules such as
+\path{AffineMuLogHardSource.lean}.  The aggregate \path{Main.lean} import spine and V15
+status file are not yet synchronized.  The claims labelled \status{PUBLIC LEAN-CHECKED}
+are therefore limited to declarations directly verified on public \texttt{main}; the full V15 replay status
+below is tracked separately.
+
+\subsection{Latest supplied V15 Aristotle replay}
+
+A newer user-supplied Aristotle archive and build report contain the following V15 files:
+\begin{itemize}[leftmargin=1.7em,itemsep=0.15em]
+\item \path{AffineMuLogIdentity.lean};
+\item \path{AffineMuLogHardSource.lean};
+\item \path{AffineMuLogLine.lean};
+\item \path{AffineMuLogExponentLedger.lean};
+\item \path{BalancedSevenFinite.lean};
+\item \path{BalancedSevenPolarization.lean};
+\item \path{Erdos287V15Status.lean}.
+\end{itemize}
+The report states:
+\begin{itemize}[leftmargin=1.6em]
+\item \texttt{lake build} succeeded with $8118$ jobs and no errors;
+\item a Lean-code scan found no \texttt{sorry}, \texttt{admit}, user
+  \texttt{axiom}, \texttt{opaque}, \texttt{unsafe}, \texttt{native\_decide}, or
+  \texttt{@[implemented\_by]};
+\item \texttt{\#print axioms} for the principal new theorems used only subsets of
+  \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound};
+\item the analytic structures \path{PolarizedOmega7SignedEoD} and
+  \path{MuLogComparisonLowCondMatch} were deliberately left uninhabited.
+\end{itemize}
+Accordingly this candidate labels the exact V15 algebra
+\status{LEAN-PROVED IN LATEST V15 REPLAY}.  At the time of this editorial audit,
+public \texttt{main} still did not display that full replay, so public synchronization
+is kept as a separate provenance fact rather than silently conflated with kernel status.
+
+\subsection{Factorial Euler layer}
+
+The latest supplied V16 factorial Aristotle replay reports the factorial Euler polarization,
+exact repeated-prime encoding, formal local Euler-series/generalized-$\Lambda$ identities,
+expected-term linearity, and the Pascadi parameter ledger as kernel-checked.  The build report
+states $8123$ jobs, zero errors, no unfinished-proof or unsafe-code markers, and principal axiom
+reports restricted to the standard logical principles \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}.  Because the exact factorial replay has not
+been independently synchronized into every public aggregate status file, this paper labels it
+\status{LEAN-PROVED IN LATEST V16 FACTORIAL REPLAY} rather than silently equating replay status
+with public-main synchronization.
+
+\subsection{Prepublication state}
+
+This R4 candidate preserves the clean front half, inserts a self-contained Gate 0--2 theory and verification manual, and retains the organized current frontier ledger.  It is not a GitHub publication candidate until the current Gate-1B research ledger and any newer Aristotle replay are re-audited.
+
+This file is a local prepublication candidate.  It has not been pushed to the canonical
+GitHub PDF or the legacy forum PDF path.  The existing public V16 and the immutable V15
+archive remain untouched while this candidate is reviewed.
+
+\section{Conclusion}
+
+The strongest unconditional result in the project remains finite: there is no exact
+counterexample to Erd\H{o}s Problem \#287 with maximum denominator at most
+$4\times10^9$.  The exact global remaining interface is equally clear: establish effective
+eventual \texttt{WindowPairSupply}.
+
+On the analytic side, the source-minimal $\Lambda=\mu*\log$ algebra and determinant-one
+line have now been reported kernel-checked in the latest V15 replay.  For the balanced-seven
+cell, the controlling representation is no longer the squarefree polarization plus a
+collision remainder.  The factorial Euler function
+\[
+F_{\mathbf z}(p^e)=a_{\mathbf z}(p)^e/e!
+\]
+recovers the ordered seven labelled source exactly, including repeated primes, and
+polarization commutes with every linear expected-term operator.
+
+The first exact V-branch analytic open is therefore
+\[
+\boxed{\begin{gathered}\text{\ttfamily AFFINE287-FACTORIAL-OMEGA7-}\\\text{\ttfamily SIGNED-ENDPOINT45}\end{gathered}},
+\]
+together with the source identification
+\[
+\boxed{\texttt{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45}}.
+\]
+The endpoint theorem is much narrower than a general class-$\mathcal C$ Bombieri--Vinogradov
+statement.  The current DGS and Pascadi theorems do not literally furnish it, and the
+direct written Pascadi proof parameters are incompatible with
+$(Q,y)=(X^{3/5},X^{1/7})$.
+
+Closing those two balanced-seven inputs would still leave the remaining V-cells and M-branch, the literal
+Ford-generated packet census and provider assignment, the $k=0$ smooth packet, any balanced-$R_9$ physical
+$G(d;n)$ specialization actually generated by the sieve, fixed-certificate leakage/FCL, the source-specific
+$N_2$ and Gate-2 lower-bound compiler, effectivity, and eventual large-$M$ supply.  Gate 1A is required only if
+the literal census routes a needed packet to its common-weight provider.  Erd\H{o}s Problem \#287 therefore
+remains open.
+
+
+\clearpage
+\part{Current Frontier and Provenance Ledger}
+\label{part:technical-ledger}
+
+\section{Purpose, coverage baseline and status firewall}
+\label{sec:technical-baseline}
+
+Part~\ref{part:technical-ledger} restores the \emph{technical depth} of the earlier public
+dossier without restoring its chronological patch-stack format.  Its coverage floor is the
+V15 public-review snapshot committed as
+\[
+\boxed{\texttt{7fc3797105519c4e6a1669f174ce7394336bdc18}},
+\]
+which published the former 50-page-style Gate-1A/Gate-1B/Ford programme together with the
+then-current balanced-seven update.  That snapshot is used here only as a coverage baseline:
+when later work changes the controlling route, the later status wins.
+
+Three time/status layers are kept separate throughout:
+\begin{enumerate}[leftmargin=1.7em]
+\item \textbf{public/formal bank}: theorem or compiler actually present in the public Lean
+  project;
+\item \textbf{latest supplied research ledger}: a mathematically audited frontier supplied
+  after the V15 snapshot but not silently promoted to a public Lean or published theorem;
+\item \textbf{open/source interfaces}: deliberately unproved analytic or source-identification
+  obligations.
+\end{enumerate}
+
+This is important for Gate~1B.  The public formal socket still records the one-completion
+coefficient
+\[
+\beta_{D,P}(d,p)=\mu_D(d)\Lambda_P(p)
+\]
+and the exact $1/104$ distribution-margin budget.  That socket is neither false nor erased.
+However, the latest supplied analytic work has moved beyond it to a Motohashi/rank-one
+frontier.  The formal socket is therefore a \emph{banked abstraction/alternative provider
+interface}, while the rank-one chain below is the current research frontier.
+
+Detailed dead-route archaeology remains outside the main narrative.  What is restored here
+is every current component needed to reconstruct the proof programme: Gate~1A source class,
+Gate~1B current frontier and downstream firewall, the Ford-generated packet census,
+balanced-$R_9$/fixed-certificate leakage, Gate~2, and the relation of the current
+factorial-$\Omega_7$ source to those providers.
+
+\section{Gate 1A: current canonical-provider ledger}
+\label{sec:gate1a-ledger}
+
+Gate~1A is a conditional theorem for one canonical common-weight physical operator.  It is
+not a universal theorem for arbitrary row-dependent source weights and it is not assumed
+globally necessary for Erd\H{o}s~\#287.
+
+For a row
+\[
+e=(r,k,m),\qquad m'=m+kr,
+\]
+the affine forms satisfy
+\[
+m'A_e(t)-mB_e(t)=2k,
+\]
+and the canonical physical operator is
+\[
+C_e(b,d)=
+\sum_tW_D(t)
+\left(\sum_{p\asymp L}b_p\rho_p(A_e(t))\right)
+\left(\sum_{q\asymp L}d_q\rho_q(B_e(t))\right).
+\]
+The conditional target remains
+\[
+\sum_{e\in\mathcal E^\sharp}|C_e(b,d)|^2
+\ll
+\frac{ML^4}{H}X_1^{o(1)}
+\sum_{p\asymp L}|b_p|^2
+\sum_{q\asymp L}|d_q|^2,
+\]
+with the same normalization conventions as in Part~I.
+
+\subsection{What is banked and what is still external}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.31\textwidth}
+>{\raggedright\arraybackslash}p{0.20\textwidth}X}
+\toprule
+Gate-1A component & Status & Current interpretation\\
+\midrule
+Determinant/row algebra and all-$m$ row family & \status{BANKED FINITE/OPERATOR} &
+The theorem is not restricted to clean-$P_3$ rows.\\
+Canonical common physical weight $W_D$ & \status{SOURCE FIREWALL BANKED} &
+Later row dependence must be deterministically derived from this one datum.\\
+Scale ledger, row-energy conservation and normalization bridge & \status{BANKED} &
+Includes the $H^2$ conversion and the signed vertex margins.\\
+Finite BPP participation-to-energy compiler & \status{BANKED} &
+Participation implies a moving-family energy saving once the physical participation input is supplied.\\
+Projective ratio-class/axis algebra & \status{BANKED FINITE ALGEBRA} &
+The state diagonal is routed inside the zero-curvature/projective branch rather than discarded.\\
+Outer-square-root algebra and exponent budget & \status{BANKED} &
+The formal compiler checks the square-root conversion but does not manufacture the physical energy pin.\\
+Poisson--Bruhat transport/source ceiling & \status{SOURCE/ANALYTIC PIN} &
+Must preserve the literal physical packet and absolute comparator.\\
+Fixed-state exclusion and prime participation & \status{EXTERNAL/SOURCE PIN} &
+The finite compiler is present; the physical smooth-envelope/short-interval input is external.\\
+Outer-root physical energy identification & \status{SOURCE OPEN} &
+Identifies the abstract BPP energy with the actual Gate energy.\\
+Projective/diagonal physical source routing & \status{SOURCE OPEN} &
+Finite algebra exists; the physical source ceiling must be supplied at target scale.\\
+Literal recombination estimate & \status{SOURCE OPEN} &
+Controls discarded/excision/recombination errors without spending the same saving twice.\\
+Arbitrary edge-dependent $D_2$ family & \status{OUTSIDE CANONICAL THEOREM} &
+Requires an upstream Gate-0 adapter or finite-template/nuclear reduction.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+The current source-glue issue can be summarized as a synchronized two-view/fibre problem:
+the same physical packet has to satisfy the common-weight representation, the BPP
+participation representation and the final source-routing representation simultaneously.
+We refer to this compactly as the \emph{SB-$\nu$/source-glue interface}.  It is a
+source-identification problem, not an exponent deficit in the already-banked finite
+operator algebra.
+
+\subsection{When Gate 1A is required for \#287}
+
+The correct logical statement is
+\[
+\boxed{
+\texttt{GATE1A\_REQUIRED}
+\ \text{is decided by the literal Ford-generated packet census.}
+}
+\]
+An actual generated packet may use Gate~1A only after a scale/source dictionary supplies:
+\begin{itemize}[leftmargin=1.6em]
+\item the relation between the Gate ambient scale $X_1$ and the \#287 scale $X$;
+\item the identification of the physical bilinear variables with the Gate row variables;
+\item the induced $R,L,H,K,U,D$ ranges;
+\item preservation of the one common physical weight, or a proved finite-template/nuclear
+  reduction with acceptable total cost;
+\item survival of the binding fixed-power margin after truncation, multiplicity and
+  scale conversion.
+\end{itemize}
+No global Gate-1A closure is assumed if the generated census never routes a needed packet
+to this source class.
+
+\section{Gate 1B: from the banked one-completion socket to the current rank-one frontier}
+\label{sec:gate1b-ledger}
+
+Gate~1B is the complementary signed/parity-breaking provider.  Its defining feature is
+that the M\"obius sign and shifted congruence data must remain attached to the physical
+source; squaring or replacing the source by an arbitrary coefficient family can destroy
+the resource that is meant to break parity.
+
+\subsection{Banked one-completion socket}
+
+The public challenge file records the authoritative one-completion coefficient
+\[
+\boxed{\beta_{D,P}(d,p)=\mu_D(d)\Lambda_P(p)}
+\]
+as separately linear in the M\"obius and prime variables.  It also proves the exact dyadic
+budget
+\[
+\theta_{\rm req}=\frac12+\frac1{104}
+\]
+and the implication
+\[
+\begin{gathered}
+\text{literal source-to-convolution-BV interface}\\
+\text{at level }\theta\ge\theta_{\rm req}\\
+\Downarrow\\
+\text{abstract Gate-1B convolution conclusion}
+\end{gathered}
+\]
+The source-to-interface theorem is deliberately open.  This formal socket remains useful,
+but it no longer describes the first research-level analytic obstruction.
+
+\subsection{Latest supplied Motohashi/rank-one chain}
+
+The latest Gate-1B research ledger supplied for this candidate gives the following
+controlling progression.  These labels are \emph{research-status labels}, not claims of
+public Lean or published theorems.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.17}
+\begin{tabularx}{\textwidth}{>{\ttfamily\raggedright\arraybackslash}p{0.42\textwidth}
+>{\raggedright\arraybackslash}p{0.22\textwidth}X}
+\toprule
+Node & Latest status & Role\\
+\midrule
+MOTOHASHI-ABC-EXACT-PIN45 & \status{PASS} &
+Exact A/B/C source pin for the Motohashi decomposition.\\
+TWISTED-DEFECT-ABC45 & \status{PASS} &
+Carries the centred/twisted defect data through the A/B/C split.\\
+FIVEFOLD-MOTOHASHI-ITERATION45 & \status{PASS} &
+Iterates the exact five-defect source without replacing it by unrelated coefficient norms.\\
+RANKONE-POLYLOGK-INTERIOR45 & \status{CLOSED MODULO COMPARISON} &
+Fixed-polylogarithmic-$k$ interior reduced to the comparison/main-term convention.\\
+RANKONE-ENDPOINT-U-DIAGONAL45 & \status{POWER CLOSED} &
+Endpoint $u$-diagonal carries a saving $X^{-1/12+o(1)}$.\\
+RANKONE-ENDPOINT-U-OFFDIAG45 & \status{FIRST ANALYTIC OPEN} &
+Current first analytic frontier in the rank-one endpoint family.\\
+RANKONE-HIGHK45 & \status{OPEN} &
+High-$k$ regime is not covered by the fixed-polylogarithmic-$k$ interior analysis.\\
+PURE5-COMPARISON-MAINTERM-PIN & \status{SOURCE / COMP. OPEN} &
+Literal physical main-term normalization must match the pure-five source.\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Thus the present first research question is no longer the abstract $1/104$ socket and no
+longer a broad ``full covariance'' theorem.  It is the source-preserving endpoint
+off-diagonal problem
+\[
+\boxed{\begin{gathered}\text{\ttfamily RANKONE-ENDPOINT-}\\\text{\ttfamily U-OFFDIAG45}\end{gathered}}
+\]
+The comparison pin is logically parallel: closing the off-diagonal estimate without the
+physical main-term convention does not close the pure-five packet.
+
+\subsection{Downstream Gate-1B firewall}
+
+Even a solution of the first endpoint off-diagonal does not jump directly to Gate~1B.
+The current source ledger keeps the following downstream structure explicit:
+\[
+\boxed{
+\begin{array}{c}
+\text{Motohashi A/B/C + twisted fivefold source}\\
+\downarrow\\
+\text{fixed-polylog }k\text{ interior}
+\quad+\quad
+u\text{-diagonal endpoint}\\
+\downarrow\\
+\boxed{\begin{gathered}\text{\ttfamily RANKONE-ENDPOINT-}\\\text{\ttfamily U-OFFDIAG45}\end{gathered}}\\
+\parallel\\
+\text{\ttfamily PURE5-COMPARISON-MAINTERM-PIN}\\
+\downarrow\\
+\text{high-}k\text{ sector}\\
+\downarrow\\
+\text{\ttfamily PURE5-DP-SIGNED45}\\
+\downarrow\\
+|J|=4,3,2,1\text{ defect strata}\\
+\downarrow\\
+\text{\ttfamily NEARPRIM}\\
+\downarrow\\
+r>1\text{ complement}+\text{transition}+\text{recursion}\\
+\downarrow\\
+\text{\ttfamily QK56-FULL-PARENT}\\
+\downarrow\\
+\text{\ttfamily QK56-EXHAUSTIVENESS}\\
+\downarrow\\
+\text{shifted }TT^\ast\text{ source/reassembly}\\
+\downarrow\\
+\texttt{GATE1B}.
+\end{array}}
+\]
+This diagram is a \emph{dependency firewall}: later nodes are not declared solved merely
+because an earlier parent is controlled.
+
+\subsection{Where QK56 sits}
+
+The QK56 parent is a full covariance object of the form
+\[
+\mathcal C_{\rm QK}
+=
+\sum_{q_1,q_2}
+\sum_{h_1,k_1,h_2,k_2}
+A(q_1,q_2;h_1,k_1,h_2,k_2)
+Q(q_1;h_1,k_1)\,Q(q_2;h_2,k_2).
+\]
+The split $q_1=q_2$ versus $q_1\ne q_2$ is the same-modulus/cross-modulus split of one
+parent, not two unrelated theorems.  Earlier work established substantial same-$q$ and
+cross-$q$ children and the canonical zero mode at the finite/algebraic level.  The present
+rank-one chain places QK56 later in the exhaustiveness/reassembly firewall rather than at
+the first analytic open.
+
+The exact status therefore is:
+\[
+\boxed{
+\begin{gathered}
+\text{QK56 remains structurally live, but}\\
+\begin{gathered}\text{\ttfamily RANKONE-ENDPOINT-}\\\text{\ttfamily U-OFFDIAG45}\end{gathered}\\
+\text{is earlier in the current closure order}
+\end{gathered}}
+\]
+
+\section{Ford--Maynard generated packets: census before provider}
+\label{sec:ford-census}
+
+The Ford--Maynard universal Type-II hypothesis is a clean published sufficient wrapper,
+but Proposition~7.22 does not invoke arbitrary coefficient pairs out of thin air.  After a
+finite decomposition it generates the grouped equation-(7.23) family
+\[
+\sum_{n=n'n''\asymp x}Y_1(n')Y_2(n'')w_{n'n''}.
+\]
+A proof-specific replacement is therefore legitimate only after two source obligations:
+\begin{enumerate}[leftmargin=1.7em]
+\item a \emph{literal generated-packet census} listing every coefficient family produced by
+  the proof;
+\item a replacement certificate $C_{\rm FM}$ proving that every Type-II invocation is
+  covered by one proved provider after all Mellin/Perron, support and norm transformations.
+\end{enumerate}
+
+The programme labels
+\[
+\begin{gathered}
+\text{\ttfamily SOURCE-ADAPTER45},\\
+\text{\ttfamily FM-TO-GATE-COORDINATE-CENSUS45}
+\end{gathered}
+\]
+refer to this source dictionary.  Neither can be replaced by the slogan ``the packet looks
+Type-II''.
+
+\subsection{Current provider-facing census}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.22\textwidth}
+>{\raggedright\arraybackslash}p{0.23\textwidth}
+>{\raggedright\arraybackslash}p{0.22\textwidth}X}
+\toprule
+Generated family & Literal status & Candidate provider & Current blocker\\
+\midrule
+M\"obius singleton & source-specific generated packet &
+Gate~1B / signed source &
+literal dictionary and stability under generated outer factors\\
+Model singleton & source-specific generated packet &
+QK56/direct affine completion &
+native packet dictionary; short M\"obius carrier may sit in the complement\\
+Balanced-seven V-cell & explicit fixed-degree source &
+factorial-$\Omega_7$ endpoint theorem &
+signed endpoint + physical comparison identification\\
+Balanced $R_9$ leakage & Ford-generated leakage candidate &
+fixed-certificate/FCL lane &
+literal $G(d;n)$ specialization and source reassembly\\
+Common-weight/edge packets & census-dependent &
+Gate~1A only after exact match &
+scale/source adapter and common-weight preservation\\
+Pure-five/high-order packets & Gate-1B source family &
+Motohashi/rank-one chain &
+endpoint off-diagonal, comparison, high-$k$, downstream strata\\
+Remaining fixed-$g_\ast$ packets & not exhaustively censused &
+TBD from literal packet shape &
+finite census and provider assignment\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+This table encodes the main logical correction:
+\[
+\boxed{
+\text{provider assignment follows the generated source; it is not imposed globally.}
+}
+\]
+In particular, Gate~1A is neither deleted nor assumed universally necessary.
+
+\section{Balanced $R_9$, fixed-certificate leakage and the Gate-2 landing}
+\label{sec:r9-fcl}
+
+The balanced order-nine identity
+\[
+\sum_{j=0}^{4}(-1)^j\binom9j=70
+\]
+is a genuine finite/binomial fact.  The formal bank also records the complementary
+alternating identity.  What is \emph{not} automatically proved is that Ford's actual
+arithmetic weight $G(d;n)$ selects exactly this divisor-order specialization on the physical
+balanced-$R_9$ cell.
+
+Therefore the correct status is:
+\[
+\boxed{
+\text{balanced }R_9
+=
+\text{Ford-generated leakage candidate,}
+}
+\]
+with
+\[
+\boxed{
+H(n)=70
+\quad\text{only after the literal }G(d;n)\text{ specialization is proved.}
+}
+\]
+The old $R_9$ death certificate and the abandoned unbalanced-$1/5$ redesign are not
+revived.
+
+The fixed-certificate architecture uses one explicit positive Ford certificate $g_\ast$
+and its arithmetic weight
+\[
+H_\ast(n)=\sum_{d\mid n}G_\ast(d;n).
+\]
+Its transference identity separates:
+\begin{itemize}[leftmargin=1.6em]
+\item total correlation;
+\item leakage outside the prime/main-composite regions;
+\item the exceptional $N_2$ collar;
+\item the positive comparison margin.
+\end{itemize}
+Balanced $R_9$ is one generated leakage family that can feed this architecture once the
+physical source dictionary is proved; it is not the whole fixed-certificate leakage
+problem.
+
+\subsection{Gate 2 consumes, rather than invents, the packet bounds}
+
+Gate~2 is the Ford--Maynard lower-bound/endgame compiler.  It fixes one compatible
+$\varepsilon_\ast$ and the shrunk parameter triple
+\[
+P_{\varepsilon_\ast}
+=
+\left(
+\frac12-\varepsilon_\ast,\,
+\varepsilon_\ast,\,
+\frac16-2\varepsilon_\ast
+\right).
+\]
+Its source-specific replay requires:
+\begin{enumerate}[leftmargin=1.7em]
+\item Gate-0 comparison regularity, growth and exact Type-I input;
+\item the literal $G(d;n)/H(n)$ dictionary and the Ford-generated packet census;
+\item the source-specific aggregate $N_2$ estimate;
+\item one compatible fixed $\varepsilon_\ast$;
+\item either the universal Type-II wrapper, or all generated-(7.23) packet estimates
+  together with \path{SOURCE-ADAPTER45} and $C_{\rm FM}$.
+\end{enumerate}
+Thus the correct closure order is
+\[
+\text{packet census}
+\to
+\text{Gate providers}
+\to
+\text{generated Type-II reassembly}
+\to
+\text{Gate 2 lower bound},
+\]
+not Gate~2 followed by a later packet census.
+
+\section{Current \#287 fixed-degree-seven direction inside the gate programme}
+\label{sec:fixed-degree-seven-ledger}
+
+Part~I gives the controlling factorial Euler encoding
+\[
+F_{\mathbf z}(p^e)=\frac{a_{\mathbf z}(p)^e}{e!},
+\qquad
+a_{\mathbf z}(p)=\frac17\sum_{i=1}^{7}z_i\omega_i(p),
+\]
+which exactly includes repeated primes.  The first V-branch analytic residual is
+\[
+\boxed{\begin{gathered}\text{\ttfamily AFFINE287-FACTORIAL-OMEGA7-}\\\text{\ttfamily SIGNED-ENDPOINT45}\end{gathered}}
+\]
+and the physical comparison identification
+\[
+\boxed{\texttt{AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45}}
+\]
+remains separate.
+
+The direct equal-seven three-block dictionary into Pascadi Proposition~6.3 fails its range
+geometry, and the direct smooth-number/multiplicative-function proof architecture is
+nonclosing at $y=X^{1/7}$ for the exact parameter reason proved in Part~I.  The current
+research direction is therefore \emph{post-dispersion fixed-degree seven}: keep the degree
+seven source literal, perform the relevant dispersion/completion first, and search for a
+four-block or comparable structured theorem only after the physical source has exposed the
+correct variables.  This is a research direction, not a theorem or an already-identified
+published provider.
+
+If the factorial endpoint and comparison pin are both proved, the balanced-seven cell
+closes.  That implication is deliberately local:
+\[
+\boxed{
+\text{Balanced7 closed}
+\not\Longrightarrow
+\text{FCL closed}
+\not\Longrightarrow
+\texttt{WindowPairSupply}.
+}
+\]
+The remaining packet census and Gate-provider assignment still intervene.
+
+\section{Master current-status ledger}
+\label{sec:master-ledger}
+
+{\footnotesize\begin{longtable}{>{\raggedright\arraybackslash}p{0.32\textwidth}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}}
+\toprule
+Node & Current status & Publication interpretation\\
+\midrule
+\endfirsthead
+\toprule
+Node & Current status & Publication interpretation\\
+\midrule
+\endhead
+Finite exclusion $M\le4\times10^9$ & \status{PUBLIC LEAN-CHECKED} &
+strongest unconditional theorem\\
+\texttt{WindowPairSupply} compiler & \status{PUBLIC LEAN-CHECKED / CONDITIONAL} &
+exact global large-$M$ interface\\
+Gate 0 comparison/growth framework & \status{MIXED PASS / SOURCE PINS} &
+literal Type-I/publication dictionary still matters\\
+Gate 1A finite/operator mechanism & \status{SUBSTANTIALLY BANKED} &
+conditional canonical common-weight provider\\
+Gate 1A physical five-pin/source glue & \status{OPEN SOURCE/ANALYTIC} &
+needed only for packets censused into Gate~1A\\
+Gate 1B one-completion $1/104$ socket & \status{BANKED FORMAL INTERFACE} &
+valid abstraction, not first research frontier\\
+Motohashi A/B/C and twisted fivefold source & \status{LATEST RESEARCH PASS} &
+current Gate-1B source reduction\\
+Rank-one polylog-$k$ interior & \status{CLOSED MODULO COMPARISON} &
+latest supplied research ledger\\
+Rank-one $u$-diagonal endpoint & \status{POWER CLOSED }$X^{-1/12+o(1)}$ &
+latest supplied research ledger\\
+\path{RANKONE-ENDPOINT-U-OFFDIAG45} & \status{FIRST GATE-1B ANALYTIC OPEN} &
+current rank-one frontier\\
+\path{RANKONE-HIGHK45} & \status{OPEN} &
+separate high-$k$ regime\\
+\path{PURE5-COMPARISON-MAINTERM-PIN} & \status{SOURCE OPEN} &
+parallel normalization requirement\\
+Pure-five $\to$ defect strata $\to$ near-primitive chain & \status{DOWNSTREAM OPEN/ROUTING} &
+must not be skipped after rank-one closure\\
+QK56 full parent/exhaustiveness & \status{LATER GATE-1B FIREWALL} &
+structurally live, not first current open\\
+Ford generated-(7.23) census & \status{OPEN SOURCE/FINITE CENSUS} &
+decides provider assignment\\
+\path{SOURCE-ADAPTER45}, $C_{\rm FM}$ & \status{OPEN} &
+required for proof-specific replacement of universal Type II\\
+Balanced $R_9$ binomial $70$ & \status{FINITE PASS} &
+physical $G(d;n)$ specialization still source open\\
+Factorial Euler $\Omega_7$ encoding & \status{RESEARCH PASS / LEAN PENDING} &
+current balanced-seven representation\\
+Factorial signed endpoint & \status{OPEN ANALYTIC} &
+current exact V-branch residual\\
+Factorial/physical comparison match & \status{OPEN SOURCE} &
+principal local density + literal exceptional-character convention\\
+Remaining fixed-$g_\ast$ census & \status{OPEN} &
+balanced-seven is only one generated family\\
+FCL / positive affine mass & \status{OPEN} &
+requires all leakage/provider inputs\\
+Gate 2 lower-bound replay & \status{CONDITIONAL / NOT ACTIVATED} &
+consumes generated packet bounds, $N_2$, $G/H$, $\varepsilon_\ast$\\
+Eventual large-$M$ supply/effectivity & \status{OPEN} &
+needed before the finite Lean compiler applies globally\\
+Erd\H{o}s Problem \#287 & \status{OPEN} &
+no unconditional proof claim\\
+\bottomrule
+\end{longtable}}
+
+\section{Superseded, false and provenance-only routes}
+\label{sec:provenance-only}
+
+The following are preserved for auditability but are not allowed to displace the current
+frontier:
+\begin{itemize}[leftmargin=1.6em]
+\item the V15 squarefree polarization plus $X^{6/7+o(1)}$ repeated-prime router:
+  valid historical representation, superseded as controlling by the factorial Euler encoding;
+\item complete multiplicativity as a required repair: \emph{false}; ordinary multiplicativity
+  in class $\mathcal C$ is enough for the relevant dictionary;
+\item a stated Pascadi ``Theorem 1.7'' multiplicative-function black box:
+  not present in the audited current arXiv v2;
+\item the direct Pascadi v2 proof route at $(Q,y)=(X^{3/5},X^{1/7})$:
+  audited nonclosing because $\eta\le1/4000$ conflicts with $\eta\ge1/7$;
+\item the V14 Vaughan/prime-modulus M\"obius two-outer route:
+  mathematically valid but nonminimal, retained as source audit/provenance;
+\item direct singleton $=$ existing Gate-1B common-conductor covariance:
+  false as a literal source dictionary;
+\item direct canonical Gate-1A determinant adapter for the affine determinant-one source:
+  fails literally ($2k$ versus $\pm1$);
+\item equal-seven Pascadi Proposition~6.3 three-block dictionary:
+  false at the literal equal-seven geometry;
+\item ordinary separated multiplicative large sieve / separated high moments:
+  nonclosing by the previously audited $X^{1/10}$ deficit;
+\item modulus micro-switch as an exhaustive closure:
+  nonexhaustive because the prime-modulus sector survives.
+\end{itemize}
+
+The public paper therefore retains V15's \emph{diagnostic density} while keeping obsolete
+routes visually and logically subordinate to the current closure chain.
+
+
+\appendix
+\section{Formal theorem and provenance map}
+
+\subsection*{Public Lean bank}
+\begin{itemize}[leftmargin=1.6em,itemsep=0.4em]
+\item \path{RequestProject/Erdos287/ProblemStatement.lean}: exact problem predicate and
+  ordered public-statement compiler.
+\item Finite-range files: adjacent-hole obstruction, prime-power window blocker, and
+  \path{no_Erdos287Counterexample_of_max_le_4e9}.
+\item \path{RequestProject/Erdos287/ClosureInputs.lean}: \path{WindowPairSupply} and
+  the end-to-end conditional closure compiler.
+\item V14 source files/status: valid Vaughan structural audit, retained as provenance rather
+  than the controlling source-minimal route.
+\end{itemize}
+
+\subsection*{Lean-proved in the latest supplied V15 replay}
+The supplied V15 build report records kernel-checked proofs of:
+\begin{itemize}[leftmargin=1.6em,itemsep=0.35em]
+\item $\Lambda=\mu*\log$ and its affine specialization;
+\item exhaustive small-$q$/small-$r$/hard recombination;
+\item the determinant-one line, coprimality, iff parametrization, and uniqueness;
+\item the finite exponent ledger;
+\item the balanced-seven binomial coefficient $-20$;
+\item the repeated-prime finite router;
+\item the squarefree labelled polarization and its $7^{-7}$ normalization.
+\end{itemize}
+The same status source leaves the analytic endpoint and comparison structures uninhabited.
+
+\subsection*{Research-proved / Lean pending}
+The current hostile audit adds:
+\begin{itemize}[leftmargin=1.6em,itemsep=0.35em]
+\item factorial Euler polarization
+  $F_{\mathbf z}(p^e)=a_{\mathbf z}(p)^e/e!$;
+\item exact ordered coefficient extraction including repeated primes;
+\item $F_{\mathbf z}\in\mathcal C$ from its Euler logarithmic derivative;
+\item exact commutation with every linear expected-term operator;
+\item the proof-parameter obstruction
+  $\eta\le1/4000$ versus $\eta\ge1/7$ for the direct Pascadi v2 route.
+\end{itemize}
+The latest supplied V16 factorial replay is claimed as kernel-checked; public-main synchronization remains separate.
+
+\subsection*{Gate and Ford--Maynard source provenance}
+The Gate architecture in Section~\ref{sec:theory-purpose} is a compressed restoration of the earlier
+standalone verification dossier, not a reconstruction from theorem names alone.  The latest supplied formal
+bank further records: the Gate-1A abstract synchronized two-view fibre challenge
+$N_\nu=X^{o(1)}$ together with unit-twist portability; the Gate-1B one-completion coefficient
+$\beta_{D,P}=\mu_D\Lambda_P$, fixed-unit reciprocal-source invariance, the exact $1/104$ dyadic margin,
+and the open source-to-convolution-BV interface; and the balanced-$R_9$ finite binomial certificate.
+The physical Ford $G(d;n)$ specialization, the generated-(7.23) census, the replacement certificate
+$C_{\rm FM}$, the Gate-1A necessity decision and all Gate-2 analytic inputs remain open.
+
+\subsection*{Historical technical provenance}
+The following remain useful diagnostics but are not part of the controlling public proof
+architecture:
+\begin{itemize}[leftmargin=1.6em,itemsep=0.35em]
+\item the squarefree polarization plus the $X^{6/7+o(1)}$ repeated-prime router;
+\item the V14 Vaughan/prime-modulus M\"obius two-outer route;
+\item failed direct Gate-1A and native-QK dictionaries;
+\item separate multiplicative-large-sieve and equal-seven three-block death tests.
+\end{itemize}
+They belong in the technical verification dossier rather than in the main narrative.
+
+\begin{thebibliography}{9}
+\bibitem{ErdosGraham1980}
+P. Erd\H{o}s and R. L. Graham,
+\emph{Old and New Problems and Results in Combinatorial Number Theory},
+Monographies de L'Enseignement Math\'ematique, 1980, p.~33.
+
+\bibitem{ErdosProblems287}
+T. F. Bloom,
+\emph{Erd\H{o}s Problem \#287}, Erd\H{o}s Problems archive,
+problem provenance and status page, accessed August 2026.
+
+\bibitem{FordMaynard2024}
+K. Ford and J. Maynard,
+\emph{On the theory of prime producing sieves},
+arXiv:2407.14368, 2024.
+
+\bibitem{DGS2017}
+S. Drappeau, A. Granville and X. Shao,
+\emph{Smooth-supported multiplicative functions in arithmetic progressions beyond the
+$x^{1/2}$-barrier}, Mathematika 63 (2017), 895--918.
+
+\bibitem{Pascadi2025}
+A. Pascadi,
+\emph{On the exponents of distribution of primes and smooth numbers},
+arXiv:2505.00653v2, 29 June 2025.
+
+\bibitem{LeanMathlib}
+The Lean and Mathlib communities,
+\emph{Lean 4 and Mathlib}, formal proof assistant and mathematical library.
+\end{thebibliography}
+
+\end{document}

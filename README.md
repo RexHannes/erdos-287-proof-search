@@ -1,79 +1,78 @@
-# Erdős Problem #287 — Self-Contained Gate 0–2 Theory Manual
+# Erdős Problem #287 — Gate 0–2 Theory Manual / Current R5 Frontier
 
 **Status:** public research draft / partial formal verification.  
 **This repository does not claim an unconditional proof of Erdős #287.**
 
 ## Start here
 
-- [Current public review — V16.3 R4 self-contained theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path — same current R4 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
-- [Immutable R4 PDF](ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf)
-- [R4 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex)
-- [R4 publication / self-containment audit](ERDOS287_V16_3_R4_SELF_CONTAINMENT_AUDIT.md)
+- [Current public review — V16.4 R5 frontier-sync theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Legacy forum PDF path — same current R5 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Immutable R5 PDF](ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf)
+- [R5 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex)
+- [R4 → R5 change log](ERDOS287_R4_TO_R5_CHANGELOG_FINAL.md)
+- [R5 hostile consistency check](ERDOS287_V16_4_R5_HOSTILE_CONSISTENCY_CHECK_FINAL.md)
 
-## What R4 is
+The previous R4 self-contained theory manual remains preserved as an immutable public version.
 
-R4 is the public self-contained version of the programme. It keeps the readable finite-#287 front half, but restores enough mathematical theory that a reader with no prior chats, old PDFs, or programme abbreviations can audit the proposed Gate architecture itself:
+## Unconditional theorem and global compiler
 
-```text
-physical #287 source
-    -> Gate 0: source/comparison/Type-I validation
-    -> literal Ford-generated packet census
-    -> Gate 1A and/or Gate 1B providers, according to the actual generated source
-    -> source-exhaustive generated Type-II reassembly
-    -> Gate 2: source-specific Ford–Maynard lower-bound compiler
-    -> positive affine mass + effectivity
-    -> WindowPairSupply (or a stronger effective witness)
-    -> existing finite Lean compiler
-    -> Erdős #287.
-```
-
-This is a dependency programme, not a completed proof.
-
-The paper now gives theorem-shaped definitions, source formulas, verification boundaries, open inputs, closing implications, and non-implications for Gate 0, Gate 1A, Gate 1B, Gate 2, the Ford-generated-packet route, balanced `R9` / fixed-certificate leakage, and the current factorial-`Omega_7` #287 specialization.
-
-## Strongest unconditional public result
-
-The repository contains the exact public counterexample predicate and the machine-checked finite result excluding every exact counterexample whose maximum denominator is at most
+The machine-checked finite theorem excludes every exact counterexample with maximum denominator
 
 ```text
-4,000,000,000.
+M <= 4,000,000,000.
 ```
 
-The exact global remaining compiler interface is `Erdos287.WindowPairSupply`. No eventual large-`M` supply theorem is claimed proved here.
+The exact conditional large-`M` interface remains `Erdos287.WindowPairSupply`. No eventual supply theorem is claimed proved.
 
-## Current analytic research status
+## Current Balanced7 / 3221 frontier
 
-The detailed status is in the R4 paper. In particular, the public draft explicitly distinguishes:
+The broad physical endpoint remains
 
-- machine-checked finite/algebraic statements;
-- externally audited or replay-reported algebra;
-- conditional compilers;
-- source-open identifications;
-- analytic-open estimates;
-- false / retired / superseded routes.
-
-The current balanced-seven representation uses the factorial Euler encoding
-
-```math
-F_z(p^e)=a_z(p)^e/e!,
+```text
+AFFINE287-FACTORIAL-OMEGA7-SIGNED-ENDPOINT45 : OPEN.
 ```
 
-which encodes repeated primes exactly. The paper keeps the factorial signed endpoint and physical comparison pin open, and it treats the post-dispersion `3221` DI/Kuznetsov splice as a narrower research candidate rather than a proved theorem.
+The V20 high-high-high shifted Gram is retained as a public formal/source object, but is **superseded as the controlling frontier**; the old schematic HHH inclusion–exclusion closure proof is **retracted**.
 
-The Gate-1B section distinguishes the public one-completion `1/104` interface from the later Motohashi/rank-one research frontier and does not hide the downstream Pure5 / defect / NearPrim / QK56 / shifted-reassembly firewall.
+The current first exact residual is source-theoretic:
 
-## Archives
+```text
+BALANCED7-OMEGA-FM723-SOURCE-ADAPTER45 : SOURCE_OPEN / FIRST RESIDUAL.
+```
 
-Earlier public versions are preserved rather than silently discarded:
+The candidate two-high-projector mechanism uses:
 
-- [Clean V16 PDF archive](archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf)
-- [Clean V16 source archive](archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex)
-- [V15 chronological technical dossier archive](archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf)
-- [V15 source archive](archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex)
+```text
+exact AA - BA - AB + BB projector algebra;
+double character orthogonality;
+short-t one-dimensional upper sieve;
+Shiu divisor average;
+corrected #Bad_q << D^2 logarithmic ledger.
+```
 
-## Reproducibility and trust boundary
+Its physical closure remains conditional on:
 
-GitHub Actions rebuilds the current R4 PDF from the committed R4 LaTeX source and writes the same compiled PDF to the canonical current path and the legacy forum path. The paper carries explicit nonclaims and proof-status labels; publishing the paper does not upgrade any open analytic or source statement into a theorem.
+```text
+BALANCED7-PRIMEBOX-L1-NORMALIZATION45;
+3221-HIGHPROJECTOR-CUTOFF-COMPAT45;
+3221-PHYSICAL-LOG-PREFAC45;
+outer-two / inner-five ownership;
+C_var(B0) > 2 C_ext.
+```
 
-AI assistance: the project used Aristotle and LLM-assisted mathematical research. All claims should be read at the proof-status level stated in the paper and ledger.
+The factorial/physical comparison remains independently source-open and downstream of this test.
+
+## Formal provenance
+
+Public aggregate `RequestProject/Main.lean` imports the V15–V19 banks. Their supplied reports record successful builds of 8118, 8123, 8131, 8135 and 8140 jobs, respectively, with zero errors. The V20 HHH source file is public, but R5 does not infer a separate aggregate V20 replay merely from that file's presence.
+
+## Global firewall
+
+```text
+Balanced7 closed !=> FCL closed.
+FCL closed !=> WindowPairSupply.
+Gate providers !=> generated Full Type II without source exhaustiveness.
+No local analytic packet closure alone proves Erdős #287.
+```
+
+**ERDŐS PROBLEM #287 REMAINS OPEN.**

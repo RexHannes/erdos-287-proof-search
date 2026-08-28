@@ -1,10 +1,11 @@
-name: Build clean Erdos 287 public review V16
+name: Build Erdos 287 public review V16.3 R4
 
 on:
   push:
     branches: [main]
     paths:
-      - 'ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex'
+      - '.r4-src/r4.tex.xz.b64'
+      - 'ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -18,15 +19,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Verify clean-source layout
+      - name: Bootstrap R4 source and preserve previous V16
         shell: bash
         run: |
           set -euo pipefail
-          test -s ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
-          test -s ERDOS287_V16_CLEAN_CONSOLIDATION_AUDIT.md
-          test -s ERDOS287_TECHNICAL_VERIFICATION_LEDGER_CURRENT.md
-          test -s archive/ERDOS287_TECHNICAL_DOSSIER_V15_PATCHSTACK.pdf
-          test -s archive/PUBLIC_REVIEW_DRAFT15_PATCHSTACK.tex
+          mkdir -p archive
+          if [ ! -e archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf ] && [ -s ERDOS287_PUBLIC_REVIEW_CURRENT.pdf ]; then
+            cp ERDOS287_PUBLIC_REVIEW_CURRENT.pdf archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf
+          fi
+          if [ ! -e archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex ] && [ -s ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex ]; then
+            cp ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
+          fi
+          if [ ! -s ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex ]; then
+            base64 --decode .r4-src/r4.tex.xz.b64 | xz -dc > ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex
+          fi
+          echo 'eb8359b997b62fc9535e52a259aa8dfd6b115257e19a5883182dddb7716e3f47  ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex' | sha256sum -c -
 
       - name: Write reproducibility metadata
         shell: bash
@@ -37,30 +44,38 @@ jobs:
           \\newcommand{\\BuildDate}{28 August 2026}
           META
 
-      - name: Compile clean V16 public review
+      - name: Compile self-contained R4 public review
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
+          root_file: ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex
 
-      - name: Stage canonical and legacy PDF paths
+      - name: Stage R4 publication paths
         shell: bash
         run: |
-          test -s ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf
-          cp ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
-          cp ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          set -euo pipefail
+          test -s ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           sha256sum \
+            ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
             ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
-      - name: Commit generated clean PDFs
+      - name: Commit R4 source, archive and public PDFs
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add ERDOS287_PUBLIC_REVIEW_CURRENT.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          git add \
+            ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex \
+            ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf \
+            ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
+            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf \
+            archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf \
+            archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
           if git diff --cached --quiet; then
-            echo 'Clean V16 public-review PDFs already current.'
+            echo 'R4 public-review files already current.'
             exit 0
           fi
-          git commit -m 'Rebuild clean Erdos 287 public review V16'
+          git commit -m 'Publish self-contained Erdos 287 theory manual R4'
           git push

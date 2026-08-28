@@ -54,6 +54,35 @@ import RequestProject.Erdos287.AffineVaughanPrimeOuter
 import RequestProject.Erdos287.AffineTwoOuterSource
 import RequestProject.Erdos287.AffineTwoOuterCompiler
 import RequestProject.Status.Erdos287VaughanV14Status
+import RequestProject.Erdos287.AffineMuLogIdentity
+import RequestProject.Erdos287.AffineMuLogHardSource
+import RequestProject.Erdos287.AffineMuLogLine
+import RequestProject.Erdos287.AffineMuLogExponentLedger
+import RequestProject.Erdos287.BalancedSevenFinite
+import RequestProject.Erdos287.BalancedSevenPolarization
+import RequestProject.Status.Erdos287V15Status
+import RequestProject.Erdos287.FactorialEulerPolarization
+import RequestProject.Erdos287.FactorialEulerLocal
+import RequestProject.Erdos287.FactorialPolarizationLinearity
+import RequestProject.Erdos287.PascadiParameterLedger
+import RequestProject.Status.Erdos287V16Status
+import RequestProject.Erdos287.Exponent3221Ledger
+import RequestProject.Erdos287.BalancedSeven3221Grouping
+import RequestProject.Erdos287.SourceAssistedDiagonal3221
+import RequestProject.Erdos287.OffDiagonal3221
+import RequestProject.Erdos287.EHNoWrap3221
+import RequestProject.Erdos287.DIKuznetsov3221Interface
+import RequestProject.Erdos287.BalancedSeven3221Compiler
+import RequestProject.Status.Erdos287V17Status
+import RequestProject.Erdos287.NormalForm3221
+import RequestProject.Erdos287.MovingPhaseProvider3221
+import RequestProject.Erdos287.FactorialEndpoint3221Adapter
+import RequestProject.Status.Erdos287V18Status
+import RequestProject.Erdos287.PrePoissonDensity3221
+import RequestProject.Erdos287.HighConductorVariance3221
+import RequestProject.Erdos287.CharacterGram3221
+import RequestProject.Erdos287.BalancedSevenV19Compiler
+import RequestProject.Status.Erdos287V19Status
 
 open scoped BigOperators
 open scoped Real

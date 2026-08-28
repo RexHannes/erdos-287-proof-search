@@ -4,7 +4,12 @@ on:
   push:
     branches: [main]
     paths:
-      - '.r4-src/r4.tex.xz.b64'
+      - '.r4-src/r4.tex.xz.b64.part00'
+      - '.r4-src/r4.tex.xz.b64.part01'
+      - '.r4-src/r4.tex.xz.b64.part02'
+      - '.r4-src/r4.tex.xz.b64.part03'
+      - '.r4-src/r4.tex.xz.b64.part04'
+      - '.r4-src/r4.tex.xz.b64.part05'
       - 'ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
@@ -19,20 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Bootstrap R4 source and preserve previous V16
+      - name: Reconstruct R4 source
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p archive
-          if [ ! -e archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf ] && [ -s ERDOS287_PUBLIC_REVIEW_CURRENT.pdf ]; then
-            cp ERDOS287_PUBLIC_REVIEW_CURRENT.pdf archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf
-          fi
-          if [ ! -e archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex ] && [ -s ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex ]; then
-            cp ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
-          fi
-          if [ ! -s ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex ]; then
-            base64 --decode .r4-src/r4.tex.xz.b64 | xz -dc > ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex
-          fi
+          cat \
+            .r4-src/r4.tex.xz.b64.part00 \
+            .r4-src/r4.tex.xz.b64.part01 \
+            .r4-src/r4.tex.xz.b64.part02 \
+            .r4-src/r4.tex.xz.b64.part03 \
+            .r4-src/r4.tex.xz.b64.part04 \
+            .r4-src/r4.tex.xz.b64.part05 \
+            | base64 --decode | xz -dc \
+            > ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex
           echo 'eb8359b997b62fc9535e52a259aa8dfd6b115257e19a5883182dddb7716e3f47  ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex' | sha256sum -c -
 
       - name: Write reproducibility metadata
@@ -61,7 +65,7 @@ jobs:
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
             ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
-      - name: Commit R4 source, archive and public PDFs
+      - name: Commit R4 source and public PDFs
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
@@ -70,9 +74,7 @@ jobs:
             ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex \
             ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
-            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf \
-            archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.pdf \
-            archive/ERDOS287_PUBLIC_REVIEW_V16_CLEAN.tex
+            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           if git diff --cached --quiet; then
             echo 'R4 public-review files already current.'
             exit 0

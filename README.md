@@ -1,18 +1,18 @@
-# Erdős Problem #287 — Gate 0–2 Theory Manual / Current R5 Frontier
+# Erdős Problem #287 — Gate 0–2 Theory Manual / Current R7 Post-Audit Frontier
 
 **Status:** public research draft / partial formal verification.  
 **This repository does not claim an unconditional proof of Erdős #287.**
 
 ## Start here
 
-- [Current public review — V16.4 R5 frontier-sync theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path — same current R5 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
-- [Immutable R5 PDF](ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf)
-- [R5 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex)
-- [R4 → R5 change log](ERDOS287_R4_TO_R5_CHANGELOG_FINAL.md)
-- [R5 hostile consistency check](ERDOS287_V16_4_R5_HOSTILE_CONSISTENCY_CHECK_FINAL.md)
+- [Current public review — V16.6 R7 post-audit theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Legacy forum PDF path — same current R7 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Immutable R7 PDF](ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf)
+- [R7 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex)
+- [R5 -> R7 change log](ERDOS287_R5_TO_R7_CHANGELOG.md)
+- [R7 hostile consistency check](ERDOS287_V16_6_R7_HOSTILE_CONSISTENCY_CHECK.md)
 
-The previous R4 self-contained theory manual remains preserved as an immutable public version.
+Immutable earlier R4/R5 public versions remain in repository history / named files.
 
 ## Unconditional theorem and global compiler
 
@@ -24,53 +24,72 @@ M <= 4,000,000,000.
 
 The exact conditional large-`M` interface remains `Erdos287.WindowPairSupply`. No eventual supply theorem is claimed proved.
 
-## Current Balanced7 / 3221 frontier
+## Current Balanced7 status
 
-The broad physical endpoint remains
-
-```text
-AFFINE287-FACTORIAL-OMEGA7-SIGNED-ENDPOINT45 : OPEN.
-```
-
-The V20 high-high-high shifted Gram is retained as a public formal/source object, but is **superseded as the controlling frontier**; the old schematic HHH inclusion–exclusion closure proof is **retracted**.
-
-The current first exact residual is source-theoretic:
+The controlling source is the direct fixed-certificate SP-2 seven-prime cell.  Its literal source has
 
 ```text
-BALANCED7-OMEGA-FM723-SOURCE-ADAPTER45 : SOURCE_OPEN / FIRST RESIDUAL.
+H_*(P) = -20,
+Lambda(2P+s) = sum_{qr=2P+s} mu(q) log r,
+C_ext = 1.
 ```
 
-The candidate two-high-projector mechanism uses:
+The completed hostile audit now records research-level passes for:
 
 ```text
-exact AA - BA - AB + BB projector algebra;
-double character orthogonality;
-short-t one-dimensional upper sieve;
-Shiu divisor average;
-corrected #Bad_q << D^2 logarithmic ledger.
+full-q Euler principal uniformity;
+SmallQ 3+4 conductor-split multiplicative large sieve;
+general-modulus SmallR large sieve and owner subtraction;
+physical hard range delta = 1/21;
+short-t upper sieve + Shiu divisor average;
+ALL-Q-NO-DOUBLE-SPENDING45;
+ALL-Q-PROVIDER-REASSEMBLY45.
 ```
 
-Its physical closure remains conditional on:
+Accordingly:
 
 ```text
-BALANCED7-PRIMEBOX-L1-NORMALIZATION45;
-3221-HIGHPROJECTOR-CUTOFF-COMPAT45;
-3221-PHYSICAL-LOG-PREFAC45;
-outer-two / inner-five ownership;
-C_var(B0) > 2 C_ext.
+SP2-BALANCED7-FULL-Q45:
+    CLOSED AT CURRENT RESEARCH/PAPER LEVEL.
+
+BALANCED7:
+    HOSTILE-AUDITED RESEARCH/PAPER PASS,
+    subject to exact literal SP-2 source sealing in this manuscript repository.
 ```
 
-The factorial/physical comparison remains independently source-open and downstream of this test.
+This is **not** an effective theorem: the SmallQ low-conductor argument presently uses classical Siegel–Walfisz, whose threshold is generally ineffective.
+
+## Main next frontier
+
+```text
+287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45:
+    OPEN / NEXT PARENT.
+
+287-K0-SP2-THREE-SMALLPRIME-PREFIX-TYPEII45:
+    OPEN / CANDIDATE FIRST CHILD.
+
+287-EFFECTIVE-LOWCOND-EXCEPTIONAL-PNT45:
+    OPEN EFFECTIVITY LANE.
+```
+
+FCL remains open; `N2` and Gate 2 are not yet activated; eventual `WindowPairSupply` remains open.
 
 ## Formal provenance
 
-Public aggregate `RequestProject/Main.lean` imports the V15–V19 banks. Their supplied reports record successful builds of 8118, 8123, 8131, 8135 and 8140 jobs, respectively, with zero errors. The V20 HHH source file is public, but R5 does not infer a separate aggregate V20 replay merely from that file's presence.
+Public aggregate `RequestProject/Main.lean` is verified through the V15–V19 banks.  A later supplied safe-bank report records an 8213-job zero-error build for post-Balanced7 source/compiler modules, but those named modules are not presently aggregate-synchronized in this manuscript repository.  R7 therefore labels that layer:
+
+```text
+SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING.
+```
+
+External multiplicative-large-sieve, one-dimensional upper-sieve and Shiu inputs are not described as Lean analytic theorems.
 
 ## Global firewall
 
 ```text
-Balanced7 closed !=> FCL closed.
-FCL closed !=> WindowPairSupply.
+Balanced7 research closure !=> effective Balanced7.
+Balanced7 !=> FCL.
+FCL !=> WindowPairSupply.
 Gate providers !=> generated Full Type II without source exhaustiveness.
 No local analytic packet closure alone proves Erdős #287.
 ```

@@ -1,13 +1,19 @@
-name: Build Erdos 287 public review V16.4 R5
+name: Build Erdos 287 public review V16.6 R7
 
 on:
   push:
     branches: [main]
     paths:
-      - '.r5-src/r5.tex.xz.b64.part00'
-      - '.r5-src/r5.tex.xz.b64.part01'
-      - '.r5-src/r5.tex.xz.b64.part02'
-      - 'ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex'
+      - '.r7-src/r7.tex.xz.b64.part00'
+      - '.r7-src/r7.tex.xz.b64.part01a'
+      - '.r7-src/r7.tex.xz.b64.part01b'
+      - '.r7-src/r7.tex.xz.b64.part01c'
+      - '.r7-src/r7.tex.xz.b64.part01d'
+      - '.r7-src/r7.tex.xz.b64.part01e'
+      - '.r7-src/r7.tex.xz.b64.part01f'
+      - '.r7-src/r7.tex.xz.b64.part02a'
+      - '.r7-src/r7.tex.xz.b64.part02b'
+      - 'ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -21,17 +27,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct R5 source
+      - name: Reconstruct R7 source
         shell: bash
         run: |
           set -euo pipefail
           cat \
-            .r5-src/r5.tex.xz.b64.part00 \
-            .r5-src/r5.tex.xz.b64.part01 \
-            .r5-src/r5.tex.xz.b64.part02 \
+            .r7-src/r7.tex.xz.b64.part00 \
+            .r7-src/r7.tex.xz.b64.part01a \
+            .r7-src/r7.tex.xz.b64.part01b \
+            .r7-src/r7.tex.xz.b64.part01c \
+            .r7-src/r7.tex.xz.b64.part01d \
+            .r7-src/r7.tex.xz.b64.part01e \
+            .r7-src/r7.tex.xz.b64.part01f \
+            .r7-src/r7.tex.xz.b64.part02a \
+            .r7-src/r7.tex.xz.b64.part02b \
             | base64 --decode | xz -dc \
-            > ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex
-          echo 'ea95a852dfae608e26882bcdee8d9ca672fa964de4d5613a98436c56a2dd5a0e  ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex' | sha256sum -c -
+            > ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex
+          echo '3b3c5959f555177427ca7971f5d50cc2f900dafc2d083334026755cd26848e93  ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex' | sha256sum -c -
 
       - name: Write reproducibility metadata
         shell: bash
@@ -39,39 +51,39 @@ jobs:
           short_sha="${GITHUB_SHA::12}"
           cat > buildmeta.tex <<META
           \\newcommand{\\BuildCommit}{${short_sha}}
-          \\newcommand{\\BuildDate}{28 August 2026}
+          \\newcommand{\\BuildDate}{29 August 2026}
           META
 
-      - name: Compile R5 public review
+      - name: Compile R7 public review
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex
+          root_file: ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex
 
-      - name: Stage R5 publication paths
+      - name: Stage R7 publication paths
         shell: bash
         run: |
           set -euo pipefail
-          test -s ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf
-          cp ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
-          cp ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          test -s ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
+          cp ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           sha256sum \
-            ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf \
+            ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
             ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
 
-      - name: Commit R5 source and public PDFs
+      - name: Commit R7 source and public PDFs
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
-            ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.tex \
-            ERDOS287_PUBLIC_REVIEW_V16_4_R5_FRONTIER_SYNC.pdf \
+            ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex \
+            ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
             ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
           if git diff --cached --quiet; then
-            echo 'R5 public-review files already current.'
+            echo 'R7 public-review files already current.'
             exit 0
           fi
-          git commit -m 'Publish Erdos 287 theory manual R5 frontier sync'
+          git commit -m 'Publish Erdos 287 theory manual R7 post-audit Balanced7 update'
           git push

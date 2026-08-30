@@ -2,9 +2,7 @@
 
 Last reconciled: 2026-08-30
 
-Purpose: this file is the current-state locator for the active Gate 1B and Erdős #287 programmes. It is not itself a proof. It should be updated whenever a frontier name, status, bound, or immediate child changes. Historical provenance belongs in the two append-only proof indexes in this directory.
-
-Mirror rule: the same research-frontier directory is mirrored in both `twin-prime-proof-search` and `erdos-287-proof-search`. If they ever disagree, reconcile before the next proof run and keep the newest reconciled timestamp only after checking both programmes.
+Purpose: current-state locator for Gate 1B and Erdős #287. This is not itself a proof. Historical provenance belongs in the append-only proof indexes. The directory is mirrored in both research repositories.
 
 ---
 
@@ -12,197 +10,201 @@ Mirror rule: the same research-frontier directory is mirrored in both `twin-prim
 
 **Status:** `GATE1B OPEN`
 
-**Current first analytic residual:**
+**Current first analytic residual (research-exact; quantitative promotion audit pending):**
 
-`C4SHIFT-OFFDIAG-CENTERED-AP5/8-GRAM45`
+`C4SHIFT-BEZOUT-DUAL-R0ELL45`
 
-**Source-exact alias:**
-
-`C4SHIFT-1M-BEZOUT-2PLUS2-GRAM45`
+**Parent strictly reduced:** `C4SHIFT-OFFDIAG-CENTERED-AP5/8-GRAM45`.
 
 **Parallel local/source residual:**
 
-`TOPBAND-BROAD-MAJOR-TREE-MATCH45` — source open / not yet closed.
+`C4SHIFT-BEZOUT-ZEROMODE-LOCALMATCH45`, as the current Bézout-fibre component of `TOPBAND-BROAD-MAJOR-TREE-MATCH45`.
 
-**True analytic target:**
-
-\[
-\int_{\mathbb T}\Bigl(\sum_v |\widehat H_j^{\,\perp}(\theta,v)|^2\Bigr)^{1/2}\,d\theta
-\ll Y^{3/4}L^C.
-\]
-
-**Current generic/source-energy scale:** `Y^(3/2) L^(C0)`.
-
-**Signed deficit:** `Y^(3/4) = X^(1/12)`.
-
-### Latest exact reduction
-
-The one-minor Fourier problem has been physicalised into a centered AP discrepancy:
+**True target:**
 
 \[
-\mathscr R_{1m}=\mathscr R_{\rm full}-\mathscr R_{\rm MM},
+\|\widehat H_j^\perp\|_{L^1_\theta\ell_v^2}\ll Y^{3/4}L^C.
 \]
 
-with
+### Latest exact geometry
+
+On the clean determinant-two sector,
 
 \[
-\mathscr R_{\rm full}(A_1,A_2)
-=1_{A_1\equiv A_0\,(\ell)}1_{A_2\equiv A_0\,(\ell)}.
+(A_i,\ell)=1,\qquad X_i\mid A_i
 \]
 
-The physical `2+2` source satisfies
+forces
 
 \[
-X_2Z_2-X_1Z_1=\ell r,\qquad r\ne0,
+(d,\ell)=1,
 \]
 
-and after
+so the previous `g0, d0, ell0` bookkeeping disappears from the analytic child. With
 
 \[
 X_1=da,\quad X_2=db,\quad (a,b)=1,
 \]
 
-plus the gcd split of `d` and `ell`, the collision fibre becomes the literal Bézout line
+and `r=d r0`, the physical shift is exactly
 
 \[
-bZ_2-aZ_1=\ell_0r_0,
+bZ_2-aZ_1=\ell r_0.
 \]
 
-with
+A Bézout parametrisation is
 
 \[
-Z_1=Z_1^{(0)}+bt,\qquad Z_2=Z_2^{(0)}+at.
+Z_1=\ell r_0\kappa_{a,b}+bt,\qquad
+Z_2=\ell r_0\bar b_a+at,
 \]
 
-Thus the first analytic problem is square-root dispersion for the actual centered, nonzero-shift `2+2` multiplicative-convolution source at the exact `5/8` AP level, not a scalar minor-arc estimate.
+with physical line length `T_d ~ d` in interior packets.
 
-### Do not reopen / do not reuse as closure
+The physical AP condition becomes one residue independent of `r0`:
 
-- `C4SHIFT-ONE-FOURPRODUCT-MINOR45:CLOSED` — **RETRACTED**.
-- Pointwise four-product minor supremum — valid only as a pointwise estimate; power-nonclosing for the pushed norm.
-- Scalar minor `L2` energy — natural scale only.
-- False additive factorisation of a Dirichlet convolution — **FALSE / SUPERSEDED**.
-- Old reciprocal-residue incidence tax — removed by the `q,v` pushforward; do not charge it again.
-- `r=0` positive diagonal — already routed upstream; current source keeps `r != 0` at tuple level.
+\[
+t\equiv -2\overline{usdab}\pmod\ell.
+\]
 
-### Next analytic attack
+The run reports a rigidity statement that for fixed `(d,a,b,ell)` at most one physical `(r0,t)` survives. This statement is source-critical and should be checked in the next promotion audit including the possibility that two admissible `t` values differ by a multiple of `ell`.
 
-Bézout-line Fourier/Poisson dispersion; determine whether the zero dual mode is exactly the local-major model, then exploit only the nonzero dual frequencies using the `d`-fibre, `r0/ell0` averaging, actual `alpha_j/gamma_j` source, and the top-band condition.
+### Centered t-dual decomposition
+
+The exact cyclic Fourier coefficient of the centered line kernel is
+
+\[
+\widehat K_{\rm cent}(\nu)
+=
+\frac{e_\ell(-\nu\tau)}{\ell}
+\left[1-\frac1\ell\sum_{k\bmod\ell}
+\mathcal M_1(k+\nu\bar c)\overline{\mathcal M_2(k)}\right],
+\]
+
+where `c=dab mod ell` and `tau=A0 inverse(c) mod ell`.
+
+The zero dual mode is **not zero**; it is routed to the local/source branch:
+
+`C4SHIFT-BEZOUT-ZEROMODE-LOCALMATCH45`.
+
+The analytic branch retains only `nu != 0` and has reciprocal phase
+
+\[
+e_\ell\!\left(2\nu\overline{usdab}\right)
+\]
+
+against the exact shifted two-coordinate gamma source.
+
+After opening
+
+\[
+\gamma_j(Z)=\sum_{xy=Z}g_{j,1}(x)g_{j,2}(y),
+\]
+
+the source satisfies
+
+\[
+bx_2y_2-a x_1y_1=\ell r_0
+\]
+
+and the nonzero dual phase can be represented using
+
+\[
+e_\ell(\nu t)=e_\ell(\nu\bar b\,x_1y_1).
+\]
+
+No literal published/banked Kloosterman provider has yet been matched to this coupled source.
+
+### Provisional quantitative D-census (PROMOTION AUDIT PENDING)
+
+Let
+
+\[
+T=Y^{3/2}L^{O(1)},\qquad d\sim D.
+\]
+
+The latest run claims the source-energy estimate
+
+\[
+\mathcal N_D
+\ll
+Y^{3/4}\sqrt{\min(D,T/D)}L^C.
+\]
+
+Consequences claimed in that run:
+
+- boundary bands `D <= L^B` or `D >= T L^{-B}` close;
+- central band `L^B < D < T L^{-B}` remains;
+- worst point `D=T^{1/2}=Y^{3/4}` gives achieved `Y^(9/8)` versus required `Y^(3/4)`;
+- residual deficit is reduced from `Y^(3/4)=X^(1/12)` to `Y^(3/8)=X^(1/24)`.
+
+These are **provisional analytic promotions** until a narrow hostile audit checks the rigidity/multiplicity step and the row/column norm derivation. Do not yet treat the boundary closure or `X^(1/24)` deficit as publication-banked.
+
+### Current missing mechanism
+
+Joint cancellation of the nonzero `t`-dual reciprocal phase
+
+\[
+e_\ell\!\left(2\nu\overline{usdab}\right)
+\]
+
+against the exact shifted two-coordinate gamma source, preserving the coupled `r0, ell` family. The kernel itself has no `r0` phase, so any `r0` gain must come from the gamma-line source.
+
+### Do not reopen
+
+- pointwise one-four-product minor norm promotion — retracted;
+- scalar minor `L2` energy — natural scale only;
+- false additive factorisation of Dirichlet convolution;
+- old reciprocal-residue incidence tax;
+- `r=0` positive diagonal;
+- generic `5/8` BV as a substitute for the source-exact theorem.
+
+### Next action
+
+Before a broader construction run, hostile-audit the D-census promotion: fixed `(d,a,b,ell)` physical multiplicity, alpha/gamma source-energy claims, row/column bounds, boundary-D closure, and the claimed `X^(1/24)` residual. If it passes, attack `C4SHIFT-BEZOUT-DUAL-R0ELL45` directly.
 
 ---
 
 ## Erdős Problem #287
 
-**Status:** `ERDOS287 OPEN`
+**Status:** `ERDOS287 OPEN`.
 
-**Uniform `k=0`:** open.
-
-**FCL:** not reached.
+**Uniform `k=0`:** open.  **FCL:** not reached.
 
 **Current first main-line residual:**
 
-`287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45`
+`287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45`.
 
-**Exact current operator shape:**
+**Exact operator shape:**
 
 \[
-\sum_d \frac{\lambda_H(d)}{d^2}
+\sum_d\frac{\lambda_H(d)}{d^2}
 \sum_{a\sim A}\rho(a)
-\left|\sum_{m\asymp G/d}\frac{\mu(m)}m V_{dm}(a)\right|^2.
+\left|\sum_{m\asymp G/d}\frac{\mu(m)}mV_{dm}(a)\right|^2.
 \]
-
-Here the primitive `t` family, reciprocal `b` source, friable `a` weight, harmonic/Perron parameters, and shared-gcd projector must be retained.
 
 **Current generic bound:**
 
 \[
-\frac{(A+G)(GB+B^2)}{H}(\log X)^{o(1)}.
+\frac{(A+G)(GB+B^2)}H(\log X)^{o(1)}.
 \]
 
-**Required bound:**
+**Required:**
 
 \[
 AB^2(\log X)^{-6-2\eta-C_{\rm route}}.
 \]
 
-### Latest exact reduction
+Latest structural pivot: the shared-gcd Gram-as-square identity replaces the apparent two-level `G^2/H` pair bookkeeping by harmonic divisor mass plus a one-level signed Möbius `m`-operator. Product-modulus compression also gives `mu(g1)mu(g2)=mu(n)` with `(D,n)=1`, but the fixed-`n` two-state kernel is not ordinarily multiplicative in `n`, so a naive `1/zeta` route is unavailable.
 
-The old signed two-level pair problem has been reorganised exactly by a shared-gcd projector. With
+**Retractions:** old `LARGESHAREDG0:CLOSED` and `PRIMITIVE-NEARFREQ:CLOSED` are retracted; the hard-denominator core was not promoted. Complete primitive-`t` Ramanujan reassembly is nonclosing because it neutralises the remaining Möbius sign.
 
-\[
-\lambda_H=\mu*\Omega_H,
-\qquad
-\Omega_H((g_1,g_2))
-=\sum_{d\mid g_1,\ d\mid g_2}\lambda_H(d),
-\]
+**Provisional audit item:** `DET1-SHAREDGCD-ONELEVEL-ENERGY45` strict-subpolytope closure remains promotion-audit pending.
 
-one gets the one-level signed operator above. The apparent `G^2/H` pair combinatorics is replaced by harmonic divisor mass (research-level `~ 1/H`) plus a single Möbius `m`-family.
-
-A complementary product-modulus compression also gives, for
-
-\[
-g_1=g_0r_1,\quad g_2=g_0r_2,\quad n=r_1r_2,
-\]
-
-\[
-\mu(g_1)\mu(g_2)=\mu(n),\qquad (D,n)=1,
-\]
-
-and the Farey kernel is
-
-\[
-\Phi_A\!\left(\frac{D}{g_0n}\right),
-\]
-
-independent of the divisor split `r | n`. Fixed-`n` prime assignment is a two-state product, but the resulting coefficient is not ordinarily multiplicative in `n` because local phases contain `inverse(n/p) mod p`; therefore a naive `1/zeta` single-`mu(n)` contour is unavailable.
-
-### Verified / surviving structural results
-
-- Short-lift Euler uniformity repair — NANC-verified research pass with `eta = c/sqrt(log D)` and `D_sharp = exp(C (log log X)^2)`; corresponding Lean analytic input remains uninhabited unless separately formalised.
-- Primitive Ramanujan / local-profile finite algebra — banked in the formal programme.
-- Shared-`g0` primitive `u` router and averaged `b1,b2` gcd identities — exact finite core survives.
-- Reduced denominator algebra `(D,Lambda) | g0` and `den(D/Lambda) >= g1 g2 / g0^2` — exact.
-- Shared-gcd Gram-as-square — latest key exact structural pivot.
-
-### Retracted / nonclosing routes
-
-- `DET1-LARGESHAREDG0-CELLS45:CLOSED` — **RETRACTED / OPEN** after restoring full cross-level normalisation.
-- `DET1-PRIMITIVE-NEARFREQ45:CLOSED` — **RETRACTED / NONCLOSING BY THAT CAUCHY ROUTE**; final amplitude density exponent is `1/4`, but outer normalisation removes the claimed physical saving.
-- `PRIMITIVE-SMALLGCD-FAR-HARDDEN-GRAM45` — **NOT PROMOTED** as the current residual.
-- Single-`mu(n)` ordinary Euler-product route — nonclosing.
-- Complete primitive-`t` Ramanujan zero-free route — nonclosing / representation loop: generic local Ramanujan sign neutralises the remaining Möbius sign and produces a zeta-pole structure rather than a `1/zeta` zero.
-
-### Provisional research result requiring hostile promotion audit
-
-`DET1-SHAREDGCD-ONELEVEL-ENERGY45` closes a strict exponent subpolytope at research level when
-
-\[
-\kappa>\max(\alpha,\theta)+\max(\beta,\theta)-1+\delta,
-\]
-
-but this should remain labelled provisional until a narrow promotion audit verifies the complete source-normalisation ledger.
-
-### Next analytic attack
-
-Exploit the one-level Möbius sign **before** complete primitive-`t` Ramanujan reassembly neutralises it. First split the exact Ramanujan completion into the `r=1` pole/local-main term plus the `r>1`, `r | 2ab+s` divisor-defect; determine whether the `r=1` term has an existing local owner, then exploit the progression sparsity and signed divisor structure of the defect.
+**Next attack:** split the one-level Ramanujan completion into the `r=1` local-main/pole component and the `r>1`, `r | 2ab+s` divisor-defect, preserving the Möbius resource before complete primitive-`t` reassembly.
 
 ---
 
 ## Mandatory update rule
 
-Whenever either programme changes frontier, update this file and append an entry to the corresponding proof index with:
-
-- exact status;
-- parent and immediate children;
-- first deriving report/run;
-- hostile-audit status;
-- formal Lean module/declarations if banked;
-- commit SHA when verified in the repository;
-- superseded/retracted predecessors;
-- key equations;
-- current bound;
-- required bound;
-- sole missing mechanism;
-- next attack.
-
-Never delete historical provenance from the proof indexes.
+Whenever either programme changes frontier, update this file and append the corresponding proof index with status, parent/children, deriving run, hostile-audit status, Lean provenance if banked, supersessions/retractions, key equations, current/required bounds, missing mechanism, and next attack. Never delete historical provenance.

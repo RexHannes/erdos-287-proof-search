@@ -1,61 +1,48 @@
-# Erdős #287 V16.6/R7 — hostile consistency check
+# R7 hostile consistency check
 
-## Publication firewall
+**Required global verdict: ERDOS287 OPEN.**
 
-PASS:
-- finite `M <= 4e9` theorem unchanged;
-- conditional `WindowPairSupply` compiler unchanged;
-- Gate 0-2 theory manual retained;
-- Ford-generated vs source-specific provider distinction retained;
-- `Balanced7 -> FCL -> Gate2 -> WindowPairSupply` is not collapsed;
-- `ERDOS287` remains OPEN.
+## Controlling-status sweep
+The R7 manuscript must use the following controlling statuses everywhere:
 
-## Controlling Balanced7 status
+- finite M <= 4e9: PUBLIC LEAN-CHECKED;
+- Balanced7: HOSTILE-AUDITED RESEARCH/PAPER PASS, conditional on exact SP-2 public source seal;
+- Balanced7 effective: OPEN;
+- uniform k=0: OPEN / CURRENT MAIN PARENT;
+- FCL: NOT REACHED / OPEN;
+- N2 / Gate2: NOT ACTIVATED;
+- effectivity: OPEN;
+- WindowPairSupply: OPEN;
+- first exact main-line analytic residual:
+  `287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45`.
 
-Consistent across cover/status box, abstract, Status at a glance, Section 11, verification manual, numbered route, technical Balanced7 section, dependency graph, conclusion, Part II fixed-degree ledger, master ledger and provenance:
+## Retraction sweep
+The following may appear only as historical/superseded:
+- `DET1-LARGESHAREDG0-CELLS45: CLOSED`;
+- `DET1-PRIMITIVE-NEARFREQ45: CLOSED`;
+- `SHAREDG0-CAUCHY-CONFIGURATION45` as *the* current frontier;
+- `PRIMITIVE-SMALLGCD-FAR-HARDDEN-GRAM45` as controlling;
+- SmallQ Gate-0 Type-I as the Balanced7 provider;
+- DI/Kuznetsov or HHH Gram as current 3221 residual;
+- Ford-(7.23) unique Balanced7 packet source.
 
-- `C_ext = 1`;
-- SmallQ old Gate-0 Type-I route = SUPERSEDED / SOURCE MISMATCH / NOT FALSE;
-- SmallQ 3+4 conductor-split LS = HOSTILE-AUDITED RESEARCH PASS;
-- SmallR owner subtraction = HOSTILE-AUDITED PASS;
-- hard physical delta = `1/21`, HOSTILE-AUDITED PASS;
-- hard RR exponent = `-5`;
-- full-q no-double-spending/reassembly = HOSTILE-AUDITED PASS;
-- `Balanced7` = RESEARCH/PAPER PASS, source seal pending;
-- `Balanced7 effective` = OPEN;
-- next parent = `287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45`;
-- candidate child = `287-K0-SP2-THREE-SMALLPRIME-PREFIX-TYPEII45`;
-- effectivity child = `287-EFFECTIVE-LOWCOND-EXCEPTIONAL-PNT45`;
-- FCL = OPEN;
-- N2 = NOT YET ACTIVATED;
-- Gate 2 = CONDITIONAL / NOT ACTIVATED;
-- WindowPairSupply = OPEN;
-- Erdős #287 = OPEN.
+## Formalization sweep
+- Do not mark product-modulus sign compression, fixed-D rigidity, CRT reciprocal normal form or Gram-square as public Lean unless the later bank is actually synchronized.
+- Do not mark external Balanced7 analytic inputs or zero-free-region short-lift input as Lean theorems.
+- The supplied 8213-job safe bank is `SUPPLIED / REPOSITORY SYNC PENDING` unless verified on public main.
 
-## Stale-claim scan
+## Source-preservation firewall
+- fixed-n two-state factorization is not multiplicativity in n;
+- one `mu(n)` sign does not automatically create a 1/zeta zero;
+- complete primitive-t Ramanujan completion is nonclosing because it neutralizes the sign;
+- provisional one-level strict-subpolytope energy is not a global theorem.
 
-PASS:
-- no controlling `Balanced7 OPEN — NARROW REPAIR` remains;
-- no controlling `C_ext=0` remains;
-- no controlling SmallQ 34LS OPEN status remains;
-- no controlling comparison-first-residual statement remains;
-- no controlling HHH/DI frontier remains;
-- historical occurrences are explicitly marked superseded/provenance-only.
+## Gate 1B current-node sweep
+- Current first exact Gate-1B research residual: `C4SHIFT-BEZOUT-DUAL-R0ELL45`.
+- `SHIFTED-MAM-TOPBAND45` and `RANKONE-ENDPOINT-U-OFFDIAG45` are historical/provenance only.
+- Feeding `D`-census is HOSTILE-AUDIT PENDING; its provisional boundary-band consequences are not promoted.
+- `C4SHIFT-BEZOUT-ZEROMODE-LOCALMATCH45` is SOURCE OPEN and cannot be skipped.
+- Gate1B remains OPEN.
 
-## Formal provenance
-
-PASS:
-- public aggregate bank described only through V19;
-- later 8213-job bank labelled `SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING`;
-- no planned replay is called completed;
-- external analytic inputs are not relabelled Lean proofs.
-
-## PDF QA
-
-PASS:
-- 42 pages;
-- three-pass pdflatex build;
-- zero overfull boxes in final log;
-- zero undefined references in final log;
-- all 42 pages rendered at 200 dpi and visually inspected by contact sheet;
-- key SmallQ/SmallR/Hard/owner/Balanced7 pages inspected at full resolution.
+## Final line
+`ERDŐS PROBLEM #287 REMAINS OPEN.`

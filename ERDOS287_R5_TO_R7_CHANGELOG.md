@@ -1,41 +1,57 @@
-# Erdős #287 — R5 -> R7 consolidated change log
+# Erdős #287 — R5 → R7 Consolidated Change Log
 
-**Living manuscript:** `ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf`
+R7 folds all post-R5 hostile-audited updates directly into the same living manuscript.
+No intermediate R6/R7 publication is treated as canonical.
 
-R6 was never published as an intermediate public manuscript. R7 folds the post-R7-plan hostile-audited Balanced7 results directly into the public R5 master while preserving the Gate 0-2 / Ford-Maynard / FCL / WindowPairSupply architecture.
+## Stable architecture preserved
+- finite Lean theorem through M <= 4e9;
+- WindowPairSupply conditional compiler;
+- self-contained Gate 0 / Gate 1A / Gate 1B / Gate 2 theory;
+- Ford–Maynard universal-vs-generated packet distinction;
+- fixed-certificate / R9 / FCL architecture;
+- status vocabulary and non-implication firewalls.
 
-## Controlling changes
+## Balanced7 synchronized
+- physical `C_ext` corrected to 1;
+- full-q Euler principal identity retained;
+- SmallQ Gate-0 Type-I retired as wrong provider;
+- SmallQ 3+4 conductor-split multiplicative large sieve promoted to hostile-audited pass;
+- general-modulus SmallR conductor LS and owner subtraction promoted to hostile-audited pass;
+- Hard physical delta fixed at 1/21 and hard short-t/Shiu analysis promoted to hostile-audited pass;
+- corrected raw–raw variance log exponent -5;
+- ALL-Q no-double-spending/provider reassembly promoted to hostile-audited pass;
+- Balanced7 promoted to hostile-audited research/paper pass, conditional on exact SP-2 public source seal;
+- Balanced7 effectivity kept separately OPEN.
 
-- Corrected the physical source ledger from `C_ext=0` to `C_ext=1` because
-  `Lambda(2P+s)=sum_{qr=2P+s} mu(q) log r`.
-- Added the full-q Euler principal identity with `H_P(0)=2B(P)` and uniform `H_P(w)=O(1)`.
-- Kept the exact sharp SmallQ / SmallR / Hard partition at `U=X^(1/3)`.
-- Demoted the old SmallQ Gate-0 Type-I adapter to `SUPERSEDED / SOURCE MISMATCH / NOT FALSE`.
-- Promoted `AFFINE287-SP2-SMALLQ-34LS-NORMALIZATION45` from OPEN to hostile-audited research-level PASS.
-- Added the general-modulus SmallR induced-character large sieve and exact owner subtraction; `AFFINE287-SP2-SMALLR-OWNER-SUBTRACTION45` is a hostile-audited PASS.
-- Replaced endpoint-uniform hard-theta wording by the physical range `1/3<theta<2/3`, with `delta=1/21` and `log z >= (log X)/420`.
-- Corrected the hard variance ledger: raw-raw log exponent `-5`, principal square `-10`, cross `-15/2`; with `C_ext=1`, the hard total is `X log^(-3/2+o(1)) = o(X/log X)` after dyadic reassembly.
-- Promoted `ALL-Q-NO-DOUBLE-SPENDING45` and `ALL-Q-PROVIDER-REASSEMBLY45` to hostile-audited PASS.
-- Updated Balanced7 to `HOSTILE-AUDITED RESEARCH/PAPER PASS`, subject to exact SP-2 source sealing in the present manuscript repository.
-- Separated Balanced7 asymptotic status from Balanced7 effectivity; introduced/retained `287-EFFECTIVE-LOWCOND-EXCEPTIONAL-PNT45 : OPEN`.
-- Moved the main frontier downstream to `287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45`, with candidate child `287-K0-SP2-THREE-SMALLPRIME-PREFIX-TYPEII45`.
-- Preserved FCL, N2, Gate 2, effectivity, WindowPairSupply and Erdős #287 as OPEN/not activated as appropriate.
+## Main frontier moved to uniform k=0
+- current parent: `287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45`;
+- large-shared-g0 and primitive-near-frequency global closure claims retracted;
+- short-lift Euler collapse repaired;
+- product-modulus sign compression added;
+- fixed-D frequency rigidity added;
+- CRT n-reciprocal normal form added;
+- fixed-n two-state factorization added with non-multiplicativity firewall;
+- shared-gcd Gram-as-square added as principal new exact structural reduction;
+- coefficient-blind strict-subpolytope one-level energy marked PROVISIONAL;
+- complete primitive-t Ramanujan route marked NONCLOSING;
+- first exact main-line analytic residual:
+  `287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45`.
 
-## Provenance corrections
+## Provenance
+- public-main V15–V19 banks retained;
+- later supplied 8213-job post-Balanced7 bank marked `SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING`;
+- product-modulus / fixed-D / CRT / Gram-square layer marked `RESEARCH-EXACT / FORMAL BANKING PENDING`.
 
-- Public manuscript repo `RequestProject/Main.lean` is verified aggregate-synchronized through V19.
-- A later supplied safe-bank run reports 8213 jobs, zero errors, and post-Balanced7 source/compiler modules; these are labelled `SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING` because the named modules are not presently aggregate-imported in this manuscript repository.
-- External multiplicative-large-sieve, one-dimensional upper-sieve and Shiu inputs are not described as Lean analytic theorems.
+## Gate 1B synchronized to latest public research index
+- `SHIFTED-MAM-TOPBAND45` retained only as historical repair provenance;
+- parent `C4SHIFT-OFFDIAG-CENTERED-AP5/8-GRAM45` recorded as strictly reduced;
+- current first exact Gate-1B research residual:
+  `C4SHIFT-BEZOUT-DUAL-R0ELL45`;
+- clean Bézout geometry, cyclic dual kernel and nonzero reciprocal phase printed;
+- `C4SHIFT-BEZOUT-ZEROMODE-LOCALMATCH45` recorded as the parallel source/local owner;
+- provisional `D`-local bound retained as HOSTILE-AUDIT PENDING, not promoted;
+- worst provisional central deficit recorded as `Y^(3/8)=X^(1/24)`;
+- no Kloosterman/spectral provider claimed matched.
 
-## Historical-only controlling routes
-
-The following remain only as provenance where useful:
-
-- `C_ext=0`;
-- `AFFINE287-SP2-SMALLQ-TYPEI-ADAPTER45` as the SmallQ provider;
-- `AFFINE287-SP2-SMALLQ-34LS-NORMALIZATION45` as an open residual;
-- comparison splice as the first Balanced7 residual;
-- DI/Kuznetsov and HHH lanes as the controlling Balanced7 frontier;
-- unique Ford-(7.23) Balanced7 packet interpretation.
-
-**Global status remains:** `ERDOS287: OPEN`.
+## Global status
+`ERDOS287: OPEN`.

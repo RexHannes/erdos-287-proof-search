@@ -1,22 +1,22 @@
-# Erdős Problem #287 — Gate 0–2 Theory Manual / Current R7 Post-Audit Frontier
+# Erdős Problem #287 — Gate 0–2 Theory Manual / Current R7 Frontier
 
 **Status:** public research draft / partial formal verification.  
 **This repository does not claim an unconditional proof of Erdős #287.**
 
 ## Start here
 
-- [Current public review — V16.6 R7 post-audit theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Current public review — V16.6 R7 current-frontier theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
 - [Legacy forum PDF path — same current R7 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
-- [Immutable R7 PDF](ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.pdf)
-- [R7 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_6_R7_POSTAUDIT_BALANCED7.tex)
-- [R5 -> R7 change log](ERDOS287_R5_TO_R7_CHANGELOG.md)
+- [Immutable current R7 PDF](ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.pdf)
+- [R7 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex)
+- [R5 → R7 change log](ERDOS287_R5_TO_R7_CHANGELOG.md)
 - [R7 hostile consistency check](ERDOS287_V16_6_R7_HOSTILE_CONSISTENCY_CHECK.md)
 
-Immutable earlier R4/R5 public versions remain in repository history / named files.
+Earlier R4/R5 and the earlier R7 post-audit Balanced7 snapshot remain preserved in repository history / named immutable files.
 
-## Unconditional theorem and global compiler
+## Strongest unconditional result
 
-The machine-checked finite theorem excludes every exact counterexample with maximum denominator
+The public Lean theorem excludes every exact counterexample with maximum denominator
 
 ```text
 M <= 4,000,000,000.
@@ -24,72 +24,75 @@ M <= 4,000,000,000.
 
 The exact conditional large-`M` interface remains `Erdos287.WindowPairSupply`. No eventual supply theorem is claimed proved.
 
-## Current Balanced7 status
+## Balanced7 current bank
 
-The controlling source is the direct fixed-certificate SP-2 seven-prime cell.  Its literal source has
+The fixed-certificate SP-2 balanced seven-prime packet has passed the completed hostile analytic audit at the **research/paper level**, subject to the exact literal SP-2 seven-box source seal.
 
-```text
-H_*(P) = -20,
-Lambda(2P+s) = sum_{qr=2P+s} mu(q) log r,
-C_ext = 1.
-```
-
-The completed hostile audit now records research-level passes for:
+The current bank records:
 
 ```text
-full-q Euler principal uniformity;
-SmallQ 3+4 conductor-split multiplicative large sieve;
-general-modulus SmallR large sieve and owner subtraction;
-physical hard range delta = 1/21;
-short-t upper sieve + Shiu divisor average;
-ALL-Q-NO-DOUBLE-SPENDING45;
-ALL-Q-PROVIDER-REASSEMBLY45.
+SmallQ 3+4 conductor-split multiplicative large sieve: PASS
+General-modulus SmallR owner subtraction: PASS
+Hard physical delta: 1/21, PASS
+ALL-Q no-double-spending / provider reassembly: PASS
+Balanced7: HOSTILE-AUDITED RESEARCH/PAPER PASS
+Balanced7 effective: OPEN
 ```
 
-Accordingly:
+This is not a Lean analytic proof. A later supplied 8213-job post-Balanced7 safe bank is not yet synchronized into this manuscript repository.
+
+## Current #287 main frontier
+
+The main line has moved downstream to the uniform `k=0` SP-2 source. The former global closure claims for large shared `g0` and primitive near-frequency cells are retracted; their local fixed-pair gains remain valid.
+
+The principal new exact structural reduction is the shared-gcd Gram-as-square:
+
+```math
+Q_H
+=
+\sum_d \frac{\lambda_H(d)}{d^2}
+\sum_a \rho(a)
+\left|
+  \sum_m \frac{\mu(m)}{m} V_{dm}(a)
+\right|^2.
+```
+
+Accordingly the current first exact main-line analytic residual is:
 
 ```text
-SP2-BALANCED7-FULL-Q45:
-    CLOSED AT CURRENT RESEARCH/PAPER LEVEL.
-
-BALANCED7:
-    HOSTILE-AUDITED RESEARCH/PAPER PASS,
-    subject to exact literal SP-2 source sealing in this manuscript repository.
+287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45 : OPEN.
 ```
 
-This is **not** an effective theorem: the SmallQ low-conductor argument presently uses classical Siegel–Walfisz, whose threshold is generally ineffective.
+The remaining task is to exploit the one-level Möbius sign **before** complete primitive-frequency Ramanujan reassembly neutralizes it.
 
-## Main next frontier
+## Gate 1B current research node
+
+Gate 1B remains independent and OPEN. Its latest public research index reduces the shifted parent to:
 
 ```text
-287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45:
-    OPEN / NEXT PARENT.
-
-287-K0-SP2-THREE-SMALLPRIME-PREFIX-TYPEII45:
-    OPEN / CANDIDATE FIRST CHILD.
-
-287-EFFECTIVE-LOWCOND-EXCEPTIONAL-PNT45:
-    OPEN EFFECTIVITY LANE.
+C4SHIFT-BEZOUT-DUAL-R0ELL45 : FIRST EXACT GATE-1B RESEARCH RESIDUAL / OPEN.
 ```
 
-FCL remains open; `N2` and Gate 2 are not yet activated; eventual `WindowPairSupply` remains open.
+The parallel zero-dual local owner `C4SHIFT-BEZOUT-ZEROMODE-LOCALMATCH45` is source-open; the feeding `D`-census remains hostile-audit pending. No Kloosterman/spectral provider is claimed matched.
 
 ## Formal provenance
 
-Public aggregate `RequestProject/Main.lean` is verified through the V15–V19 banks.  A later supplied safe-bank report records an 8213-job zero-error build for post-Balanced7 source/compiler modules, but those named modules are not presently aggregate-synchronized in this manuscript repository.  R7 therefore labels that layer:
+Public aggregate `RequestProject/Main.lean` imports the V15–V19 banks. Their reports record successful builds of 8118, 8123, 8131, 8135 and 8140 jobs, respectively, with zero errors.
+
+The later post-Balanced7 safe bank reported at 8213 jobs is labeled:
 
 ```text
 SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING.
 ```
 
-External multiplicative-large-sieve, one-dimensional upper-sieve and Shiu inputs are not described as Lean analytic theorems.
+The newest product-modulus sign compression, fixed-`D` rigidity, CRT reciprocal normal form and shared-gcd Gram-square are currently **research-exact / formal banking pending** in this manuscript repository.
 
 ## Global firewall
 
 ```text
-Balanced7 research closure !=> effective Balanced7.
-Balanced7 !=> FCL.
-FCL !=> WindowPairSupply.
+Balanced7 research closure !=> uniform k=0.
+uniform k=0 !=> FCL without source exhaustiveness.
+FCL !=> effective Gate 2 or WindowPairSupply.
 Gate providers !=> generated Full Type II without source exhaustiveness.
 No local analytic packet closure alone proves Erdős #287.
 ```

@@ -1,100 +1,128 @@
-# Erdős Problem #287 — Gate 0–2 Theory Manual / Current R7 Frontier
+# Erdős Problem #287 — Gate 0–2 Theory Manual / Current Public Frontier
 
-**Status:** public research draft / partial formal verification.  
-**This repository does not claim an unconditional proof of Erdős #287.**
+**Status:** open research programme / partial formal verification.  
+**ERDŐS PROBLEM #287 REMAINS OPEN.**
+
+The authoritative concise ledger is [`CURRENT_STATUS.md`](CURRENT_STATUS.md). Historical R4/R5/R7 manuscripts and research reports remain preserved for provenance; where an older frontier conflicts with the 31-August-2026 ledger, the later ledger controls.
 
 ## Start here
 
-- [Current public review — V16.6 R7 current-frontier theory manual](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path — same current R7 content](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
-- [Immutable current R7 PDF](ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.pdf)
-- [R7 LaTeX source](ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex)
-- [R5 → R7 change log](ERDOS287_R5_TO_R7_CHANGELOG.md)
-- [R7 hostile consistency check](ERDOS287_V16_6_R7_HOSTILE_CONSISTENCY_CHECK.md)
+- [Living public review — stable path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Legacy forum PDF path — same living manuscript](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Authoritative current status](CURRENT_STATUS.md)
+- [Current research frontiers](RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md)
+- [31 Aug 2026 checkpoint changelog](CHANGELOG_2026-08-31.md)
+- [Corrections and retractions](CORRECTIONS_AND_RETRACTIONS.md)
 
-Earlier R4/R5 and the earlier R7 post-audit Balanced7 snapshot remain preserved in repository history / named immutable files.
+The Gate 0–2 theory manual remains part of the living manuscript: the repository is not being converted into a status-only note.
 
-## Strongest unconditional result
+## Strongest unconditional public theorem
 
-The public Lean theorem excludes every exact counterexample with maximum denominator
+The existing Lean-checked finite theorem excludes every exact counterexample with maximum denominator
 
 ```text
 M <= 4,000,000,000.
 ```
 
-The exact conditional large-`M` interface remains `Erdos287.WindowPairSupply`. No eventual supply theorem is claimed proved.
+The conditional large-`M` interface `Erdos287.WindowPairSupply` remains separate. No eventual supply theorem, effective final threshold, or unconditional solution of Erdős #287 is claimed.
 
-## Balanced7 current bank
+## Latest analytic milestone — C0
 
-The fixed-certificate SP-2 balanced seven-prime packet has passed the completed hostile analytic audit at the **research/paper level**, subject to the exact literal SP-2 seven-box source seal.
+The canonical C0 exact-product / double-Type-II analytic core is now **analytically closed conditional on the separately identified physical-normalisation source pin**.
 
-The current bank records:
+Banked C0 statements include:
 
 ```text
-SmallQ 3+4 conductor-split multiplicative large sieve: PASS
-General-modulus SmallR owner subtraction: PASS
-Hard physical delta: 1/21, PASS
-ALL-Q no-double-spending / provider reassembly: PASS
-Balanced7: HOSTILE-AUDITED RESEARCH/PAPER PASS
-Balanced7 effective: OPEN
+FIXEDRATIO-BALANCED-b-UNITARYFOURIER45: PASS WITH REPAIRS
+EXACT PRODUCT COLLISION: ANALYTICALLY CLOSED
+DOUBLE TYPE II: ANALYTICALLY CLOSED
+C0: ANALYTICALLY CLOSED / CONDITIONAL ON FORMAL NORMALISATION
 ```
 
-This is not a Lean analytic proof. A later supplied 8213-job post-Balanced7 safe bank is not yet synchronized into this manuscript repository.
-
-## Current #287 main frontier
-
-The main line has moved downstream to the uniform `k=0` SP-2 source. The former global closure claims for large shared `g0` and primitive near-frequency cells are retracted; their local fixed-pair gains remain valid.
-
-The principal new exact structural reduction is the shared-gcd Gram-as-square:
+The exact finite contraction is
 
 ```math
-Q_H
-=
-\sum_d \frac{\lambda_H(d)}{d^2}
-\sum_a \rho(a)
-\left|
-  \sum_m \frac{\mu(m)}{m} V_{dm}(a)
-\right|^2.
+\eta_b^2
+\ll
+L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
 ```
 
-Accordingly the current first exact main-line analytic residual is:
+This is a finite-Fourier / `L^2` closure. It uses neither conjectural Möbius cancellation nor a new spectral black box.
+
+The remaining formal/source pin is
 
 ```text
-287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45 : OPEN.
+SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
 ```
 
-The remaining task is to exploit the one-level Möbius sign **before** complete primitive-frequency Ramanujan reassembly neutralizes it.
+plus the complete physical Perron/nuclear normalisation unless it is absorbed into the same source pin.
 
-## Gate 1B current research node
+## Transverse long-conductor — strictly reduced, still OPEN
 
-Gate 1B remains independent and OPEN. Its latest public research index reduces the shifted parent to:
+Banked research/paper-level reductions:
 
 ```text
-C4SHIFT-BEZOUT-DUAL-R0ELL45 : FIRST EXACT GATE-1B RESEARCH RESIDUAL / OPEN.
+THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45: PASS
+THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45: PASS
+THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45: CLOSED ON EXPLICIT HYPOTHESES
 ```
 
-The parallel zero-dual local owner `C4SHIFT-BEZOUT-ZEROMODE-LOCALMATCH45` is source-open; the feeding `D`-census remains hostile-audit pending. No Kloosterman/spectral provider is claimed matched.
+These close a strict dense-`q_C` subregion only. They do **not** close all transverse packets.
 
-## Formal provenance
+The naïve full-CRT two-signless-carrier DFT is **RETRACTED**: the fused numerator retains cross-modulus inverse coefficients.
 
-Public aggregate `RequestProject/Main.lean` imports the V15–V19 banks. Their reports record successful builds of 8118, 8123, 8131, 8135 and 8140 jobs, respectively, with zero errors.
-
-The later post-Balanced7 safe bank reported at 8213 jobs is labeled:
+The current first analytic residual is
 
 ```text
-SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING.
+THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45 : OPEN
 ```
 
-The newest product-modulus sign compression, fixed-`D` rigidity, CRT reciprocal normal form and shared-gcd Gram-square are currently **research-exact / formal banking pending** in this manuscript repository.
+The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. The next research test is whether a missing second Fourier axis can be supplied by the Bézout numerator, an opposite-packet dominant carrier, the `m` variable after `TT*`, a signed `L^2` carrier, grouped short factors, or both source orientations. None is yet promoted as proved.
 
-## Global firewall
+## Parallel b-diagonal
+
+Kept visibly separate:
 
 ```text
-Balanced7 research closure !=> uniform k=0.
-uniform k=0 !=> FCL without source exhaustiveness.
-FCL !=> effective Gate 2 or WindowPairSupply.
-Gate providers !=> generated Full Type II without source exhaustiveness.
-No local analytic packet closure alone proves Erdős #287.
+BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45 : OPEN
+```
+
+C0 or transverse Fourier gain is not automatically spent on this branch.
+
+## Formal / Aristotle checkpoint
+
+The supplied 31-August Aristotle bundle records a completed C0 unitary-Fourier / transverse-carrier-interface bank with
+
+```text
+default lake build: PASS
+8298 jobs
+0 errors
+```
+
+and declaration axiom audits reporting only ordinary Mathlib foundations such as `propext`, `Classical.choice`, and `Quot.sound`, with no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
+
+The newest named formal files depend on a larger unpublished `CurrentProgramme` / hostile-audit dependency graph than is currently present under public `RequestProject/Main.lean`. The repository therefore records the attached verified bank without falsely claiming that the public main tree has already reproduced the same 8298-job build. No newer transverse one-conductor formal module is fabricated or pre-promoted.
+
+## Explicit corrections
+
+Retained historically but no longer controlling:
+
+- old C0 post-conditioning index `n = j inverse(u') mod x` — **RETRACTED**;
+- old C0 wrap `1 + UU'/B` — **RETRACTED**;
+- naïve transverse full-CRT two-signless DFT — **RETRACTED**;
+- `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45` as first frontier — **SUPERSEDED**;
+- the 30-August R7 uniform-`k=0` / one-level-Möbius residual as the controlling public first frontier — **SUPERSEDED AS CONTROLLING**, while its historical/local research content remains preserved.
+
+See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md).
+
+## Dependency firewall
+
+```text
+C0 analytic closure != full transverse closure.
+Dense-qC transverse closure != all transverse packets.
+Transverse progress != parallel b-diagonal closure.
+Local analytic closure != Gate 0–2 / FCL / effective WindowPairSupply.
+Erdős #287 progress != Twin Prime closure.
 ```
 
 **ERDŐS PROBLEM #287 REMAINS OPEN.**

@@ -33,6 +33,8 @@ default lake build: PASS
 
 and axiom reports containing only ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) for the audited declarations, with no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
 
+The public repository now also carries the supplied formal-bank report as [`ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md`](ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md), with a synchronization preface separating its historical formal-run frontier from the newer research-only transverse frontier.
+
 The named newest files depend on a larger `CurrentProgramme` / hostile-audit graph that is not yet dependency-complete in the public main tree. Therefore this checkpoint records the verified attached formal bank without falsely claiming that the public `RequestProject/Main.lean` has already reproduced the same 8298-job build.
 
 No newer transverse one-conductor formal bank is claimed unless a completed, dependency-complete, kernel-checked run is actually available.

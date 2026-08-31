@@ -1,14 +1,16 @@
-name: Build Erdos 287 public review V16.6 R7 current frontier
+name: Build Erdos 287 public review V16.7 R8 C0 transverse sync
 
 on:
   push:
     branches: [main]
     paths:
-      - '.r7-src/r4-to-r7.zstpatch.b64.part00'
-      - '.r7-src/r4-to-r7.zstpatch.b64.part01'
-      - '.r7-src/r4-to-r7.zstpatch.b64.part02'
-      - 'ERDOS287_R5_TO_R7_CHANGELOG.md'
-      - 'ERDOS287_V16_6_R7_HOSTILE_CONSISTENCY_CHECK.md'
+      - 'scripts/build_r8_sync.py'
+      - 'CURRENT_STATUS.md'
+      - 'README.md'
+      - 'CHANGELOG_2026-08-31.md'
+      - 'CORRECTIONS_AND_RETRACTIONS.md'
+      - 'RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md'
+      - 'frontier/ERDOS287_FRONTIER_STATUS_CURRENT.md'
       - '.github/workflows/build-public-review.yml'
   workflow_dispatch:
 
@@ -22,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct R7 source from immutable R4
+      - name: Reconstruct immutable R7 source from R4 provenance
         shell: bash
         run: |
           set -euo pipefail
@@ -37,43 +39,92 @@ jobs:
           zstd -d --patch-from="$R4" /tmp/r4-to-r7.zstpatch -o "$R7"
           echo '8e08c3a6340b513a356bf0cbf39e25377c46230d4a430e85e11379878c8397a1  '"$R7" | sha256sum -c -
 
+      - name: Generate consolidated R8 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          R7='ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex'
+          R8='ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex'
+          python3 scripts/build_r8_sync.py "$R7" "$R8"
+          sed -i 's/ANALICALLY/ANALYTICALLY/g' "$R8"
+          grep -F 'Erd\H{o}s Problem \#287 remains open' "$R8"
+          grep -F 'SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45' "$R8"
+          grep -F 'THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45' "$R8"
+          grep -F 'BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45' "$R8"
+          grep -F '8298 jobs' "$R8"
+          if grep -Fq 'The controlling main line has therefore moved downstream to the uniform $k=0$' "$R8"; then
+            echo 'stale R7 controlling language survived' >&2
+            exit 1
+          fi
+
       - name: Write reproducibility metadata
         shell: bash
         run: |
           short_sha="${GITHUB_SHA::12}"
           cat > buildmeta.tex <<META
           \\newcommand{\\BuildCommit}{${short_sha}}
-          \\newcommand{\\BuildDate}{30 August 2026}
+          \\newcommand{\\BuildDate}{31 August 2026}
           META
 
-      - name: Compile R7 public review
+      - name: Compile R8 public review
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex
+          root_file: ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex
 
-      - name: Stage R7 publication paths
+      - name: Stage immutable and living public PDF paths
         shell: bash
         run: |
           set -euo pipefail
-          PDF='ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.pdf'
+          PDF='ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.pdf'
           test -s "$PDF"
           cp "$PDF" ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
           cp "$PDF" ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
-          sha256sum "$PDF" ERDOS287_PUBLIC_REVIEW_CURRENT.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          sha256sum "$PDF" ERDOS287_PUBLIC_REVIEW_CURRENT.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf | tee /tmp/r8-sha.txt
+          a=$(sha256sum "$PDF" | awk '{print $1}')
+          b=$(sha256sum ERDOS287_PUBLIC_REVIEW_CURRENT.pdf | awk '{print $1}')
+          c=$(sha256sum ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf | awk '{print $1}')
+          test "$a" = "$b"
+          test "$a" = "$c"
 
-      - name: Commit R7 source and public PDFs
+      - name: Write R8 synchronization audit
+        shell: bash
+        run: |
+          cat > ERDOS287_V16_7_R8_SYNC_AUDIT.md <<'EOF'
+          # V16.7 / R8 public synchronization audit
+
+          Checkpoint: 31 August 2026.
+
+          - Stable living PDF path preserved: `ERDOS287_PUBLIC_REVIEW_CURRENT.pdf`.
+          - Legacy/forum PDF path preserved: `ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf`.
+          - Immutable R7 source/PDF preserved.
+          - New immutable R8 source/PDF created.
+          - Gate 0-2 self-contained theory manual retained.
+          - C0 headline updated to analytically closed conditional on formal normalization.
+          - Exact-product collision / Double Type II marked analytically closed.
+          - Full transverse branch remains OPEN / strictly reduced.
+          - First transverse residual set to `THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45`.
+          - Parallel `BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45` remains OPEN.
+          - Naive two-signless transverse DFT marked retracted.
+          - R7 uniform-k0 residual retained as historical/superseded-as-controlling provenance.
+          - Supplied Aristotle bank recorded as 8298 jobs / 0 errors, without claiming dependency-complete public-main reproduction.
+          - Erdős #287 remains OPEN.
+          - No separate repair paper was created.
+          EOF
+
+      - name: Commit R8 source and public PDFs
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
-            ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex \
-            ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.pdf \
+            ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex \
+            ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.pdf \
             ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
-            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf \
+            ERDOS287_V16_7_R8_SYNC_AUDIT.md
           if git diff --cached --quiet; then
-            echo 'R7 current-frontier public-review files already current.'
+            echo 'R8 public-review files already current.'
             exit 0
           fi
-          git commit -m 'Publish Erdos 287 theory manual R7 current frontier'
+          git commit -m 'Publish Erdos 287 theory manual R8 C0 transverse sync'
           git push

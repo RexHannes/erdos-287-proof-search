@@ -54,7 +54,23 @@ jobs:
           R7='ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex'
           R8='ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex'
           python3 scripts/build_r8_sync.py "$R7" "$R8"
-          sed -i 's/ANALICALLY/ANALYTICALLY/g' "$R8"
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(r'\texttt{implemented_by}', r'\texttt{implemented\_by}')
+          s = s.replace(r'\texttt{native_decide}', r'\texttt{native\_decide}')
+          s = s.replace(
+              r'\texttt{SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45} & \status{OPEN SOURCE PIN}',
+              r'\path{SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45} & \status{OPEN SOURCE PIN}')
+          s = s.replace(
+              r'\texttt{THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45} & \status{FIRST ANALYTIC RESIDUAL / OPEN}',
+              r'\path{THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45} & \status{FIRST ANALYTIC RESIDUAL / OPEN}')
+          s = s.replace(
+              r'\texttt{BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45} & \status{PARALLEL OPEN}',
+              r'\path{BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45} & \status{PARALLEL OPEN}')
+          p.write_text(s, encoding='utf-8')
+          PY
           grep -F 'Erd\H{o}s Problem \#287 remains open' "$R8"
           grep -F 'SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45' "$R8"
           grep -F 'THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45' "$R8"
@@ -78,6 +94,22 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex
+
+      - name: PDF typesetting quality gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          LOG='ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.log'
+          test -s "$LOG"
+          if grep -F 'Overfull \hbox' "$LOG"; then
+            echo 'R8 has an overfull box; refusing publication.' >&2
+            exit 1
+          fi
+          if grep -E 'LaTeX Warning: (Reference|Citation).*undefined|There were undefined references' "$LOG"; then
+            echo 'R8 has unresolved references/citations; refusing publication.' >&2
+            exit 1
+          fi
+          echo 'R8 typesetting quality gate: PASS'
 
       - name: Stage immutable and living public PDF paths
         shell: bash
@@ -117,6 +149,7 @@ jobs:
           - Supplied Aristotle bank recorded as 8298 jobs / 0 errors, without claiming dependency-complete public-main reproduction.
           - Erdős #287 remains OPEN.
           - No separate repair paper was created.
+          - PDF typesetting quality gate passed: no overfull boxes and no unresolved references/citations.
           EOF
 
       - name: Commit R8 source and public PDFs

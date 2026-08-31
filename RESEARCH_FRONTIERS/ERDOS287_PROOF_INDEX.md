@@ -2,23 +2,128 @@
 
 Append-only provenance map. Do not delete superseded or retracted entries. The current-state snapshot lives in `CURRENT_FRONTIERS.md`.
 
-Last reconciled: 2026-08-30
+Last reconciled: 2026-08-31
 
 ---
 
-## Current node
+## 31 August 2026 controlling checkpoint
+
+### `C0 / EXACTPRODUCT / DOUBLE-TYPE-II`
+
+**Status:** C0 analytic core CLOSED conditional on the separately named formal/physical normalisation source pin; exact-product collision and Double Type II analytically closed.
+
+**Hostile-audit repairs preserved:** product energy is source-specific to the literal bounded dyadic physical packet; the complete unit branch is `gcd(b*a_rho*b_rho*u_rho,x)=1` with nonunit cells routed to D4; the exact finite contraction retains the `x^(-1/2)` term and small-`x` packets route to the short-conductor / low-`Q` owner.
+
+**Exact contraction:**
+
+\[
+\eta_b^2\ll L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
+\]
+
+**Formal/source residual:**
+
+`SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45`, plus the complete physical Perron/nuclear normalisation unless absorbed into the same pin.
+
+**Mechanism:** canonical reduced-projective conditioning removes the balanced `b` source from the Kloosterman kernel; residue aggregation and inversion on unit residues give a restricted finite Fourier matrix of norm `sqrt(x)`, combined with fixed-depth source product energy. No conjectural Möbius cancellation and no new spectral black box are used.
+
+### `THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45`
+
+**Status:** research/paper analytic PASS.
+
+For
+
+\[
+\Phi_P=e_q(A\overline{rm})e_r(B\overline{qm}),
+\]
+
+reciprocate only the `q` component. With
+
+\[
+\Gamma_P=-A+mB\overline m\pmod r,
+\qquad g_P=(B-A,r),
+\qquad m_P=rm/g_P,
+\]
+
+one has
+
+\[
+\Phi_P=\operatorname{Arch}_P e_{m_P}(\Gamma_P^{\rm red}\bar q),
+\qquad (\Gamma_P^{\rm red},m_P)=1.
+\]
+
+### `THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45`
+
+**Status:** research/paper analytic PASS.
+
+For a grouping `q=S1*S2`, the relative contraction is
+
+\[
+\eta_P^2\ll L^C\left(\frac{m_P}{L_1L_2}+\frac1{L_1}+\frac1{L_2}+\frac1{m_P}\right).
+\]
+
+The theorem accepts arbitrary `L^2` coefficient vectors and uses no Möbius cancellation. `Omega_H` remains a physical/formal normalisation pin, not the analytic blocker in this finite-Fourier step.
+
+### `THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45`
+
+**Status:** CLOSED ON EXPLICIT HYPOTHESES / strict subregion only.
+
+Do not promote this to all transverse packets.
+
+### `THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45`
+
+**Status:** analytic OPEN; **current first transverse analytic residual**.
+
+**Supersedes as first frontier:** `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45`.
+
+**Surviving cells:** nondominant `q_C`; nondominant `q_C'`; every `q` partition with one short side; single atomic-carrier dominance; critical `q ~ r*m` geometry.
+
+**Sole missing mechanism:** a second usable finite-Fourier axis while preserving the full Bézout-dependent reciprocal numerator and both source orientations.
+
+**Next attack:** test the Bézout numerator variable, an opposite-packet dominant carrier, the `m` variable after `TT*`, a signed-but-`L^2` carrier, grouped short factors, and both orientations. None is yet promoted.
+
+### Parallel branch: `BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45`
+
+**Status:** OPEN / parallel; do not merge with the transverse residual or automatically spend C0/transverse Fourier gain there.
+
+### 31-August formal/Aristotle checkpoint
+
+The supplied C0 unitary-Fourier / transverse-carrier-interface bank reports:
+
+```text
+default lake build: PASS
+8298 jobs
+0 errors
+```
+
+and axiom reports containing only ordinary Mathlib foundations such as `propext`, `Classical.choice`, and `Quot.sound`, with no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
+
+The newest named modules depend on a larger formal dependency graph than is currently dependency-complete in public `RequestProject/Main.lean`. The verified 8298-job bank is therefore recorded without pretending that public main has already reproduced it. No later one-conductor formal bank is inferred from the research-only result.
+
+### 31-August corrections / supersessions
+
+- old post-conditioning index `n=j inverse(u') mod x` as controlling C0 architecture: **RETRACTED**;
+- old wrap `1+UU'/B`: **RETRACTED**;
+- naïve full-CRT transverse two-signless DFT: **RETRACTED**;
+- `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45` as first frontier: **SUPERSEDED**;
+- the 30-August R7 node `287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45` as the controlling public first frontier: **SUPERSEDED AS CONTROLLING**, while its historical/local mathematics remains preserved below.
+
+**ERDOS287:** OPEN.
+
+---
+
+## Historical 30 August node — superseded as controlling
 
 ### `287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45`
 
-**Status:** analytic OPEN; current first exact main-line residual.
+**Status:** historical analytic OPEN; superseded as the controlling public first frontier on 31 August 2026.
 
 **Parent:** `SHAREDG0-SIGNED-LEVELPAIR-GRAM45`, strictly reduced by exact shared-gcd Gram reorganisation.
 
 **First deriving research run:** 2026-08-30, “GOLD PIVOT / EXPLOIT 287 — Signed level-pair Gram → product modulus → single Möbius sign → exact one-level operator”.
 
-**Hostile audit:** no final analytic closure claimed. A narrow audit is still required before treating the strict-subpolytope one-level energy estimate as publication-bank closure.
+**Hostile audit:** no final analytic closure claimed. A narrow audit was still required before treating the strict-subpolytope one-level energy estimate as publication-bank closure.
 
-**Formal bank:** product-modulus / shared-gcd Gram-as-square delta should be banked append-only; until that layer is reconciled in the active Aristotle repository, the current node remains research-exact and analytically uninhabited.
+**Formal bank:** product-modulus / shared-gcd Gram-as-square delta was to be banked append-only; until that layer is reconciled in the active Aristotle repository, this node remains research-exact and analytically uninhabited.
 
 **Exact operator:**
 
@@ -29,7 +134,7 @@ Last reconciled: 2026-08-30
 \sum_{t\bmod dm}^{*}\widetilde G_{dm,s,\tau}(t)e_{dm}(ta)\right|^2.
 \]
 
-**Current bound:**
+**Current bound at that checkpoint:**
 
 \[
 \frac{(A+G)(GB+B^2)}{H}(\log X)^{o(1)}.
@@ -41,13 +146,13 @@ Last reconciled: 2026-08-30
 AB^2(\log X)^{-6-2\eta-C_{\rm route}}.
 \]
 
-**Sole missing mechanism:** cancellation in the one-level signed Möbius operator `sum_m mu(m)/m V_{dm}(a)` before complete primitive-`t` Ramanujan reassembly neutralises the sign, averaged over the friable `a` source and the exact shared-gcd projector.
+**Missing mechanism at that checkpoint:** cancellation in the one-level signed Möbius operator `sum_m mu(m)/m V_{dm}(a)` before complete primitive-`t` Ramanujan reassembly neutralises the sign, averaged over the friable `a` source and the exact shared-gcd projector.
 
-**Next attack:** controlled Ramanujan pole/defect separation: isolate the `r=1` local/pole term, determine its existing local owner, and exploit the `r>1`, `r | 2ab+s` signed divisor-defect using progression sparsity and the remaining `mu(r)` sign.
+**Historical next attack:** controlled Ramanujan pole/defect separation: isolate the `r=1` local/pole term, determine its existing local owner, and exploit the `r>1`, `r | 2ab+s` signed divisor-defect using progression sparsity and the remaining `mu(r)` sign.
 
 ---
 
-## Latest key exact pivot
+## Latest key exact pivot in the 30-August branch
 
 ### `DET1-SHAREDGCD-GRAM-SQUARE45`
 
@@ -278,9 +383,9 @@ For generic `p \nmid N`, `c_p(N)=-1` and `mu(p)c_p(N)=+1`. Thus complete primiti
 
 ## Downstream firewall
 
-- `UNIFORM k=0`: OPEN.
+- `UNIFORM k=0`: historical R7 downstream branch; not the controlling 31-August first frontier.
 - `FCL`: NOT REACHED.
-- `N2`, Gate 2, and WindowPairSupply: do not promote until the current analytic descendant is genuinely closed.
+- `N2`, Gate 2, and WindowPairSupply: do not promote until their actual current analytic descendants are genuinely closed and source-sealed.
 - `ERDOS287`: OPEN.
 
 ---

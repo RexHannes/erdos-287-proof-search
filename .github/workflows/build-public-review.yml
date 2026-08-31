@@ -9,6 +9,7 @@ on:
       - 'README.md'
       - 'CHANGELOG_2026-08-31.md'
       - 'CORRECTIONS_AND_RETRACTIONS.md'
+      - 'ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md'
       - 'RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md'
       - 'frontier/ERDOS287_FRONTIER_STATUS_CURRENT.md'
       - '.github/workflows/build-public-review.yml'
@@ -24,20 +25,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Reconstruct immutable R7 source from R4 provenance
+      - name: Verify or reconstruct immutable R7 source from R4 provenance
         shell: bash
         run: |
           set -euo pipefail
           R4='ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex'
           R7='ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex'
-          echo 'eb8359b997b62fc9535e52a259aa8dfd6b115257e19a5883182dddb7716e3f47  '"$R4" | sha256sum -c -
-          cat \
-            .r7-src/r4-to-r7.zstpatch.b64.part00 \
-            .r7-src/r4-to-r7.zstpatch.b64.part01 \
-            .r7-src/r4-to-r7.zstpatch.b64.part02 \
-            | base64 --decode > /tmp/r4-to-r7.zstpatch
-          zstd -d --patch-from="$R4" /tmp/r4-to-r7.zstpatch -o "$R7"
-          echo '8e08c3a6340b513a356bf0cbf39e25377c46230d4a430e85e11379878c8397a1  '"$R7" | sha256sum -c -
+          R4SUM='eb8359b997b62fc9535e52a259aa8dfd6b115257e19a5883182dddb7716e3f47'
+          R7SUM='8e08c3a6340b513a356bf0cbf39e25377c46230d4a430e85e11379878c8397a1'
+          echo "$R4SUM  $R4" | sha256sum -c -
+          if [ -f "$R7" ] && echo "$R7SUM  $R7" | sha256sum -c -; then
+            echo 'Using already committed, checksum-verified immutable R7 source.'
+          else
+            rm -f "$R7"
+            cat \
+              .r7-src/r4-to-r7.zstpatch.b64.part00 \
+              .r7-src/r4-to-r7.zstpatch.b64.part01 \
+              .r7-src/r4-to-r7.zstpatch.b64.part02 \
+              | base64 --decode > /tmp/r4-to-r7.zstpatch
+            zstd -f -d --patch-from="$R4" /tmp/r4-to-r7.zstpatch -o "$R7"
+            echo "$R7SUM  $R7" | sha256sum -c -
+          fi
 
       - name: Generate consolidated R8 source
         shell: bash

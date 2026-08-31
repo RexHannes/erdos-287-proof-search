@@ -40,6 +40,7 @@ Erdős #287 remains OPEN; Balanced7 remains OPEN.
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
+set_option maxRecDepth 4000
 
 open scoped BigOperators
 
@@ -120,25 +121,42 @@ concludes nothing unconditionally and `BALANCED7` stays `OPEN`. -/
 theorem balancedSeven_of_v20_package
     {Dat : InverseSampledHighCond3221Data} {Hdat : HHHGramData}
     {X Q Dcut B0 srcVal Sphys prefactor naturalScale Lsave E err : ℝ}
-    {vdiag vlow vmod vhhh bound : ℝ}
+    {Qmod R W5 logC cL2 srcL2 vdiag vlow vmod vhhh bound : ℝ}
     (hX : 1 < X) (hQ : Q = X ^ (3 / 5 : ℝ))
     (hcert : CauchyPrefactor3221Certificate Dat srcVal prefactor)
     (hdec : LogVarChannelDecomposition Dat vdiag vlow vmod vhhh)
     (hscale : 0 < naturalScale) (hL : 0 < Lsave)
-    (hdiag : vdiag ≤ naturalScale / (4 * Lsave))
+    (hLS : PrimitiveConductorLargeSieve3221Input Qmod R W5 logC cL2 vdiag Dcut B0)
+    (hsrcL2 : cL2 ≤ srcL2)
+    (hdiagBudget :
+      logC * (Qmod / R) * (R ^ 2 + W5) * srcL2 ≤ naturalScale / (4 * Lsave))
     (hlow : vlow ≤ naturalScale / (4 * Lsave))
     (hmod : vmod ≤ naturalScale / (4 * Lsave))
     (hHHH : HighQuotientFiveBoxShiftedGram3221Input Hdat bound)
     (hchannel : vhhh ≤ ‖hhhGram Hdat‖)
     (hbudget : bound ≤ naturalScale / (4 * Lsave))
     (hE : 0 ≤ E) (hEbudget : prefactor * (naturalScale / Lsave) ≤ E ^ 2)
-    (hcomp : MuLogComparisonAtCutoff X Dcut B0 Sphys srcVal err)
-    (hcutoff : Dcut = highConductorCutoff B0 X) :
+    (hcomp : MuLogComparisonAtCutoff X Dcut B0 Sphys srcVal err) :
     Erdos287.V16Status.BalancedSevenPacketInput X Sphys (E + err) := by
+  have hdiag : vdiag ≤ naturalScale / (4 * Lsave) :=
+    highCondDiagonal_of_largeSieve hLS hsrcL2 hdiagBudget
   have hlogvar : InverseSampledHighCondLogVar3221Input Dat naturalScale Lsave :=
     logVar_of_four_channels hdec hscale hL hdiag hlow hmod hHHH hchannel hbudget
   exact balancedSeven_of_highCondLogVar hX hQ hcert hlogvar hE hEbudget
     (comparisonAtCutoff_to_base hcomp)
+
+/-- **`v20_package_cutoff_consistent`.**  `LEAN_PROVED` (the anti-retuning firewall).
+
+In the package above, the *same* real cutoff `Dcut` and the *same* exponent `B0` occur in
+the analytic high-conductor input and in the physical comparison, and the comparison pins
+them to `Dcut = log^{B0} X`.  There is therefore no freedom to retune `B0` after the
+analytic decomposition has been fixed. -/
+theorem v20_package_cutoff_consistent
+    {X Dcut B0 Qmod R W5 logC cL2 vdiag Sphys srcVal err : ℝ}
+    (hLS : PrimitiveConductorLargeSieve3221Input Qmod R W5 logC cL2 vdiag Dcut B0)
+    (hcomp : MuLogComparisonAtCutoff X Dcut B0 Sphys srcVal err) :
+    Dcut = highConductorCutoff B0 X ∧ 0 < B0 ∧ 0 < Dcut :=
+  ⟨hcomp.cutoff_at_B0, hLS.B0_pos, hLS.Dcut_pos⟩
 
 /-! ## §35. Non-vacuity and anti-circularity -/
 

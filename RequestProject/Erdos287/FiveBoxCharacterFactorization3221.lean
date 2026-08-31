@@ -30,6 +30,7 @@ Balanced7 remains OPEN.
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
+set_option maxRecDepth 4000
 
 open Finset
 open scoped BigOperators
@@ -56,7 +57,6 @@ theorem sum_mul_sum5 {i1 i2 i3 i4 i5 : Type*} (s1 : Finset i1) (s2 : Finset i2)
   rw [Finset.sum_mul]
   refine Finset.sum_congr rfl fun l _ => ?_
   rw [Finset.mul_sum]
-  exact Finset.sum_congr rfl fun n _ => by ring
 
 /-- The transform of a single labelled prime box, `S_i(χ) = ∑_{p ∈ P} w(p) χ(p)`. -/
 noncomputable def blockSum (q : ℕ) (P : Finset ℕ) (w : ℕ → ℂ)

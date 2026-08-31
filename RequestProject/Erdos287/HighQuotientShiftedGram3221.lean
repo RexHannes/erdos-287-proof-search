@@ -31,6 +31,7 @@ Erdős #287 remains OPEN; Balanced7 remains OPEN.
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
+set_option maxRecDepth 4000
 
 open Finset
 open scoped BigOperators

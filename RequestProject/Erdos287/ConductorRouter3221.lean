@@ -43,6 +43,7 @@ Erdős #287 remains OPEN; Balanced7 remains OPEN.
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
+set_option maxRecDepth 4000
 
 open Finset DirichletCharacter
 open scoped BigOperators
@@ -110,8 +111,8 @@ theorem highCondDiagonal_of_largeSieve {Qmod R W5 logC cL2 energy Dcut B0 srcL2 
     energy ≤ target := by
   have hfac : 0 ≤ logC * (Qmod / R) * (R ^ 2 + W5) := by
     have h1 : 0 < Qmod / R := div_pos hin.Qmod_pos hin.R_pos
-    have h2 : 0 < R ^ 2 + W5 := by nlinarith [hin.R_pos, hin.W5_pos]
-    positivity
+    have h2 : (0 : ℝ) < R ^ 2 + W5 := by nlinarith [hin.R_pos, hin.W5_pos]
+    exact le_of_lt (mul_pos (mul_pos hin.logC_pos h1) h2)
   have hmono : logC * (Qmod / R) * (R ^ 2 + W5) * cL2
       ≤ logC * (Qmod / R) * (R ^ 2 + W5) * srcL2 :=
     mul_le_mul_of_nonneg_left hsrc hfac
@@ -209,7 +210,11 @@ theorem lowQuotient_child_le {ι : Type*} (T : Finset ι) (w G A : ι → ℂ)
     have h1 := hw x hx
     have h2 := hG x hx
     have h3 := hA x hx
-    nlinarith [norm_nonneg (w x), norm_nonneg (G x), norm_nonneg (A x)]
+    have hb1 : ‖w x‖ * ‖G x‖ ≤ 1 * Mbound :=
+      mul_le_mul h1 h2 (norm_nonneg _) zero_le_one
+    have hb2 : ‖w x‖ * ‖G x‖ * ‖A x‖ ≤ (1 * Mbound) * Eq :=
+      mul_le_mul hb1 h3 (norm_nonneg _) (by rw [one_mul]; exact hM)
+    linarith [hb2]
   calc ‖∑ x ∈ T, w x * G x * A x‖ ≤ ∑ x ∈ T, ‖w x * G x * A x‖ := norm_sum_le _ _
     _ ≤ ∑ _x ∈ T, Mbound * Eq := Finset.sum_le_sum hterm
     _ = (T.card : ℝ) * (Mbound * Eq) := by rw [Finset.sum_const, nsmul_eq_mul]

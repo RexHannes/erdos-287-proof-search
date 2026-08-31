@@ -44,6 +44,7 @@ Erdős #287 remains OPEN; Balanced7 remains OPEN.
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
+set_option maxRecDepth 4000
 
 open Finset
 open scoped BigOperators
@@ -59,7 +60,7 @@ open Erdos287.CharGram3221
 theorem mem_highSet_iff_lt_conductor {q Dcut : ℕ} (chi : DirichletCharacter ℂ q) :
     chi ∈ highSet q Dcut ↔ Dcut < chi.conductor := by
   rw [highSet, Finset.mem_filter]
-  simp [Nat.lt_iff_add_one_le, Nat.not_le]
+  exact ⟨fun h => Nat.not_le.mp h.2, fun h => ⟨Finset.mem_univ _, Nat.not_le.mpr h⟩⟩
 
 /-- Rewriting a sum over the high-conductor set as a full character sum with an explicit
 conductor test. -/
@@ -121,6 +122,13 @@ theorem conj_char_apply {q : ℕ} (chi : DirichletCharacter ℂ q) {a : ZMod q} 
     simpa [IsUnit.unit_spec] using this
   rw [← Complex.inv_eq_conj h2]
   exact inv_eq_of_mul_eq_one_right h1
+
+/-- Conjugation of a character value at a unit is the value of the inverse character. -/
+theorem conj_char_eq_inv_char {q : ℕ} (chi : DirichletCharacter ℂ q) {a : ZMod q}
+    (ha : IsUnit a) : (starRingEnd ℂ) (chi a) = chi⁻¹ a := by
+  rw [MulChar.inv_apply_eq_inv', ← Complex.inv_eq_conj]
+  have := chi.unit_norm_eq_one ha.unit
+  simpa [IsUnit.unit_spec] using this
 
 /-- **`affineSample_character_factor`.**  `LEAN_PROVED`.
 
@@ -259,17 +267,8 @@ theorem charSource_variance_eq_gram (q : ℕ) [NeZero q] (F : DirichletCharacter
               (chi * psi⁻¹) ((m : ℕ) : ZMod q) := by
       rw [Finset.sum_mul_sum]
       refine Finset.sum_congr rfl fun chi _ => Finset.sum_congr rfl fun psi _ => ?_
-      rw [map_mul, map_mul, MulChar.inv_apply_eq_inv' psi t,
-        MulChar.inv_apply_eq_inv' psi ((m : ℕ) : ZMod q)] at *
-      rw [MulChar.mul_apply, MulChar.mul_apply, MulChar.inv_apply_eq_inv',
-        MulChar.inv_apply_eq_inv']
-      have h1 : (starRingEnd ℂ) (psi t) = (psi t)⁻¹ := by
-        rw [← MulChar.inv_apply_eq_inv', ← conj_char_apply psi ht, MulChar.inv_apply_eq_inv',
-          ← conj_char_apply psi ht]
-      have h2 : (starRingEnd ℂ) (psi ((m : ℕ) : ZMod q)) = (psi ((m : ℕ) : ZMod q))⁻¹ := by
-        rw [← MulChar.inv_apply_eq_inv', ← conj_char_apply psi hmu,
-          MulChar.inv_apply_eq_inv', ← conj_char_apply psi hmu]
-      rw [h1, h2]
+      rw [map_mul, map_mul, MulChar.mul_apply, MulChar.mul_apply,
+        ← conj_char_eq_inv_char psi ht, ← conj_char_eq_inv_char psi hmu]
       ring
     calc Phi m * (charSrc q F t m * (starRingEnd ℂ) (charSrc q F t m))
         = (q.totient : ℂ)⁻¹ ^ 2 * (Phi m *
@@ -374,7 +373,8 @@ theorem fixedModulus_ne_of_lift_ne {q r : ℕ} (hr : r ∣ q)
 
 The exact finite decomposition `V = V_diag + V_offdiag`, separating the principal
 character `ξ = 1`. -/
-theorem characterGram_diag_split (q : ℕ) (T : DirichletCharacter ℂ q → ℂ) :
+theorem characterGram_diag_split (q : ℕ) [DecidableEq (DirichletCharacter ℂ q)]
+    (T : DirichletCharacter ℂ q → ℂ) :
     ∑ xi : DirichletCharacter ℂ q, T xi
       = T 1 + ∑ xi ∈ Finset.univ.erase (1 : DirichletCharacter ℂ q), T xi := by
   rw [← Finset.add_sum_erase _ _ (Finset.mem_univ (1 : DirichletCharacter ℂ q))]
@@ -520,7 +520,8 @@ theorem separateL2_compiler (q : ℕ) (w G A : DirichletCharacter ℂ q → ℂ)
     refine le_trans (norm_sum_le _ _) (Finset.sum_le_sum fun xi _ => ?_)
     rw [norm_mul, norm_mul]
     have h := hw xi
-    nlinarith [norm_nonneg (G xi), norm_nonneg (A xi), norm_nonneg (w xi)]
+    have hGA : (0 : ℝ) ≤ ‖G xi‖ * ‖A xi‖ := mul_nonneg (norm_nonneg _) (norm_nonneg _)
+    nlinarith [hGA, h, norm_nonneg (w xi)]
   have h2 := sum_mul_sq_le_sq_mul_sq Finset.univ (fun xi : DirichletCharacter ℂ q => ‖G xi‖)
     (fun xi : DirichletCharacter ℂ q => ‖A xi‖)
   have hGnn : (0 : ℝ) ≤ ∑ xi : DirichletCharacter ℂ q, ‖G xi‖ ^ 2 :=

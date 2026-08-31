@@ -30,6 +30,7 @@ OPEN.
 
 set_option autoImplicit false
 set_option relaxedAutoImplicit false
+set_option maxRecDepth 4000
 
 open Finset
 open scoped BigOperators
@@ -145,7 +146,7 @@ The Hölder step over the modulus box: if at each modulus the sampled square-sum
 controlled by the local sixth moment with a uniform prefactor, then the total is controlled
 by the global sixth moment. -/
 theorem sixthMoment_holder_over_q (Qbox : Finset ℕ) (C : (q : ℕ) → ZMod q → ℂ)
-    (V : ℕ → ℝ) (pref : ℝ) (hpref : 0 ≤ pref)
+    (V : ℕ → ℝ) (pref : ℝ)
     (hloc : ∀ q ∈ Qbox, V q ≤ pref * ∑ a ∈ unitResidues q, ‖C q ((a : ℕ) : ZMod q)‖ ^ 6) :
     ∑ q ∈ Qbox, V q ≤ pref * sixthMoment Qbox C := by
   rw [sixthMoment, Finset.mul_sum]
@@ -189,7 +190,7 @@ theorem sixthMoment_variance_exponent {Qbox : Finset ℕ} {C : (q : ℕ) → ZMo
     (hloc : ∀ q ∈ Qbox, V q ≤ pref * ∑ a ∈ unitResidues q, ‖C q ((a : ℕ) : ZMod q)‖ ^ 6)
     (hbudget : pref * (Qscale ^ 2 * Tscale ^ 3 * polylog) ≤ target) :
     ∑ q ∈ Qbox, V q ≤ target := by
-  have h1 := sixthMoment_holder_over_q Qbox C V pref hpref hloc
+  have h1 := sixthMoment_holder_over_q Qbox C V pref hloc
   have h2 : pref * sixthMoment Qbox C ≤ pref * (Qscale ^ 2 * Tscale ^ 3 * polylog) :=
     mul_le_mul_of_nonneg_left hin.sixth_bound hpref
   linarith

@@ -1,3 +1,912 @@
+# Summary of changes for run 0a482901-8cc2-4fd0-97db-6b9300048e52
+Completed the append-only dual-level / simultaneous-critical extension of the Erdős #287 formal bank, plus the semantic re-anchoring hygiene layer. Everything is committed and pushed.
+
+FILES ADDED (all new, nothing deleted or rewritten)
+- `RequestProject/CurrentProgramme/Erdos287TransverseBezoutRowAffine.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseBezoutThreeAxisFourier.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseDualLevelReciprocity.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseDualLevelXiReduction.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseDualPairwiseFourier.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseAffineProductEnergyInterface.lean`
+- `RequestProject/CurrentProgramme/Erdos287ReciprocalDensityDuality.lean`
+- `RequestProject/Status/CurrentStatusErdos287SimultaneousCritical.lean`
+- `RequestProject/Status/AxiomAuditErdos287DualLevel.lean`
+- `RequestProject/Status/SemanticFirewallsErdos287.lean`
+- `RequestProject/Status/CurrentAuthoritativeStatusErdos287.lean`
+- `RequestProject/Status/AxiomAuditErdos287SemanticReanchor.lean`
+- `ERDOS287_DUALLEVEL_SIMULTANEOUSCRITICAL_SAFE_BANK_REPORT.md`
+- `ERDOS287_HOSTILE_SEMANTIC_REANCHOR_AUDIT.md`
+
+FILES MODIFIED: only `RequestProject/Main.lean`, twelve appended import lines (no reordering, no deletions). Diff against the pre-delta commit: 15 files changed, 4095 insertions(+), 0 deletions(−) — the previous one-conductor/q_C bank is byte-identical and preserved, and the reciprocal Fourier theorem and one-conductor Γ reduction were reused, not re-proved.
+
+UNCONDITIONAL RESULTS PROVED: Bézout-row affine CRT algebra (`gammaG_mod_m`, `gammaG_mod_r0`, affine slope and injectivity, `affineGcd_divisor_residue_class` with the exact interval count ≤ H/d+1); the three-axis frequency map with both fibre congruences, the exact fibre count (Q/m+1)(H₀/r₀+1), the finite L² inequality `bezoutRowThreeAxisFourier_bound`, and the exact eight-term `bezoutThreeAxis_contraction_identity`; the dual CRT split under exact coprimality, `additiveReciprocity_coprime` in integer/character form, `Cmqg` congruences, `Xi_affine_slope`; the Ξ reduction (constant gcd dividing every Ξ, reduced modulus with explicit divisibility, `xiRed_coprime`, `xi_divisor_affine_residue_unique`, plus a witness that constant and variable Ξ-gcds genuinely differ); dual frequency fibre counts and the three dual pairwise finite Fourier bounds with `dualPairwise_min_bound` and a countermodel showing min ≠ product; affine-product pushforward and collision identities; reciprocal-density product/ratio identities with their safe deterministic consequences and an exact monomial scale-saturation instance.
+
+KEPT AS EXPLICIT INTERFACES (never discharged, each with a kernel-checked "not automatic" companion): grouped-q product energy, `XiGcdTailBound`, `AffineProductEnergyBound` (Cochrane–Shi type, with the conditional compiler `dualAffineProductFourier_of_energy`), `OmegaWeightedDivisorMomentBound`, and `SimultaneousCriticalPacket` whose analytic fields are provably unfilled. No asymptotic/physical item was converted into a theorem, and no theorem concludes `True`.
+
+HYGIENE LAYER: authoritative status/precedence record, semantic object ledger, q-role split, x/X and pointwise-vs-aggregate countermodels, three-level C0 split, four-way Ω-norm split, coverage scope labels, Type-II naming split, `WindowPairSupply` classified as a sufficient compiler input, a one-way `Gap2CE` firewall with the explicit `{1}` countermodel, frontier DAG, retraction ledger (superseded ≠ false), resource/constant/source-normalisation ledgers, S2–S6 risk counts with guards, and five undischarged pre-closure blockers.
+
+BUILD AND AUDIT: every new module builds individually; the default `lake build` completes successfully with 8317 jobs and 0 errors (the previous run's 8305 figure was not reused). `#print axioms` over 161 + 65 new declarations shows 53 + 41 axiom-free and the rest depending only on `propext`, `Classical.choice`, `Quot.sound`: no `sorryAx`, no custom axiom, no `native_decide`, `unsafe`, `opaque` or `implemented_by`; those words occur in the new files only inside docstring prose.
+
+Erdős #287 remains OPEN, the b-diagonal face remains open and untouched, and the current first analytic residual is recorded as THREEFACTOR-TRANSVERSE-BRANCHI-SIMULTANEOUSCRITICAL-DUALLEVEL-AFFINEPRODUCT-MOBIUS45. `ARISTOTLE_SUMMARY.md` was not edited.
+
+# Summary of changes for run 717cb9a6-645a-4a02-a1e8-74ae784b9ed4
+Appended a new, kernel-checked transverse one-conductor / `q_C` bank to the Erdős #287 project. Strictly append-only: nothing existing was deleted, renamed, weakened, relocated or overwritten; `RequestProject/Main.lean` received seven appended `import` lines only. Full detail is in `ERDOS287_TRANSVERSE_ONECONDUCTOR_SAFE_BANK_REPORT.md`.
+
+FILES ADDED
+- `RequestProject/CurrentProgramme/Erdos287TransverseReducedConductor.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseOneConductorReciprocity.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseGammaReduction.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseQCUnitaryCompiler.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseDenseQCInterface.lean`
+- `RequestProject/Status/CurrentStatusErdos287TransverseBezoutSingleCarrier.lean`
+- `RequestProject/Status/AxiomAuditErdos287TransverseOneConductor.lean`
+- `ERDOS287_TRANSVERSE_ONECONDUCTOR_SAFE_BANK_REPORT.md`
+
+FILES MODIFIED: `RequestProject/Main.lean` (appended imports only, no reordering, no deletion).
+
+NEW UNCONDITIONAL THEOREMS. Source factorisation: `TransversePacket` (with the divisibility fields `a₁ ∣ e`, `c₂ ∣ r₂`, so every quotient is justified), the exact quotient lemmas `E_mul_a1`, `R_mul_c2`, `twoCirc_mul_delta2`, `ECirc_mul_deltaE`, `BCirc_mul_deltaB`, `qBar_mul_deltas` (`q̄·δ₂δ_Eδ_B = q_C`), `qBar_dvd_qC`, `RHat_eq`, plus positivity. Primed packet reuses the same structure (`primed_packet_symmetric`). Cross-packet: `lcm_eq_mul_div_gcd`, `QStarRed_mul_dStar`, `QStarRed_exact_normal_form`, `QStarRed_eq_div`. Carrier metadata `carrierClass_table` (E°,R signless; B°,M₀ signed; z²,2° fixed) with `carrierClass_is_metadata`. `Rcarrier_harmonic_square_bound` with explicit constant 1. One-conductor: `exists_inverse_of_coprime`, `transverseGammaInt_modEq_m/_r` and the ZMod forms `transverseGamma_mod_m`, `transverseGamma_mod_r`; the Archimedean factor is a parameter (`reducedPhase`, `reducedPhase_norm`). Reduction: `transverseGamma_gcd_eq` (`gcd(Γ,rm)=gcd(B−A,r)`), `transverseGammaRed_coprime` (`gcd(Γ^red,m_P)=1`), `transverseGammaRed_isUnit`, with the bundled `OneConductorData`. `q_C` compiler: `inv_mul_factorisation_zmod(_nat)`, `transverseQCUnitaryFourier_bound`/`_l2_bound` (the previously banked reciprocal unitary Fourier theorem instantiated at `(m_P, Γ^red)` — no new Fourier proof), `transverseQCUnitary_omegaH_blind`. Finite sanity tests for the Γ congruences, the gcd reduction (Γ=104, g_P=2, Γ^red=52, m_P=15) and the composite-modulus inverse split.
+
+NEW CONDITIONAL COMPILERS (every analytic input an explicit hypothesis): `transverseQCGroupedUnitary_of_productEnergy` (reuses the existing product-energy hypothesis shell) and `denseQC_closed_of_unitary_margin` together with the `DenseQCAdmissible` interface of explicit finite inequalities; the margin hypothesis is proved non-automatic and admissibility alone is proved not to give the bound.
+
+SCOPE NOTE ON HYPOTHESES: the gcd normal form consumes `gcd(A,m)=1`; `gcd(r,m)=1` turned out not to be needed and is therefore not assumed, while `gcd(m,r)=1` is stated exactly where it is used (existence of the inverse `t`).
+
+STATUS / FIREWALLS: C0 recorded only as ANALYTICALLY CLOSED CONDITIONAL ON FORMAL NORMALISATION; Ω_H and Perron/nuclear normalisation, source-length bounds and product-energy comparisons remain explicit interfaces; the naive full-CRT signless-pair DFT is recorded as retracted (no universal non-equality theorem asserted); the pair-existence label is preserved and marked superseded as first frontier, with `THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45` open as the current frontier; the b-diagonal row stays separate and open; Erdős #287 stays OPEN.
+
+BUILD AND AUDIT: each new module builds individually (PASS); default `lake build` PASS with 8305 jobs and 0 errors. `#print axioms` is run for all 134 new declarations: every one depends only on a subset of `propext`, `Classical.choice`, `Quot.sound` (58 depend on no axioms). No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `implemented_by` occurs as code in any new file.
+
+FINAL FORMAL VERDICT: SAFE APPEND-ONLY BANK UPDATED.
+
+# Summary of changes for run 5fff01ff-dc20-488e-994e-09d148f8e653
+Appended a new, kernel-checked C0 unitary-Fourier / transverse-carrier bank to the Erdős #287 project. Nothing existing was deleted, renamed, weakened or relocated; `RequestProject/Main.lean` received appended `import` lines only. Full detail is in `ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md`.
+
+FILES ADDED
+- `RequestProject/CurrentProgramme/Erdos287ReciprocalUnitaryFourier.lean`
+- `RequestProject/CurrentProgramme/Erdos287BalancedBUnitaryFourierCompiler.lean`
+- `RequestProject/CurrentProgramme/Erdos287AffineBilinearReciprocalNumerator.lean`
+- `RequestProject/CurrentProgramme/Erdos287C0PhysicalNormalisationInterface.lean`
+- `RequestProject/CurrentProgramme/Erdos287TransverseCarrierInterface.lean`
+- `RequestProject/Status/CurrentStatusErdos287C0UnitaryFourier.lean`
+- `RequestProject/Status/CurrentStatusErdos287TransverseCarrier.lean`
+- `RequestProject/Status/AxiomAuditErdos287C0UnitaryFourier.lean`
+- `ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md`
+(Paths follow the repository's existing `CurrentProgramme/` + `Status/` layout rather than a new top-level directory.)
+
+FILES MODIFIED: `RequestProject/Main.lean` (eight appended imports).
+
+NEW UNCONDITIONAL THEOREMS (all proved, no placeholders)
+- Full Fourier Gram `unitaryFourier_mulConj_sum` (`F_C F_C* = x·I`) and the exact column energy `unitaryFourier_column_energy`, for an arbitrary unit `C` and an arbitrary positive modulus — no squarefree or primality hypothesis; a composite-modulus instance is certified at `x = 12`, `C = 5`.
+- `unitaryFourier_bilinear_bound`, `unitaryFourier_finset_bilinear_bound` (zero-extension / support-restricted form), the inversion permutation of the units (`isUnit_zmod_inv`, `zmod_inv_inv_of_isUnit`, `zmod_inv_bijOn_units`) and the principal new theorem `reciprocalUnitaryFourier_bilinear_bound`, with the alias `transverseTwoCarrierUnitaryFourier` (reused, not re-proved).
+- Residue aggregation: `residueAggregate_l2_le_maxFiber`, the interval fibre count `interval_residue_fibre_card_le` (`≤ N/x + 1`, integer form) and `intervalResidueAggregate_l2_bound`; the regrouping `reciprocalPhase_fiberwise` and the compiler `balancedReciprocalFourier_compiler`.
+- The exact four-term contraction identity `balancedFourier_contraction_identity`.
+- Coprimality firewall `coprime_product_left/_middle/_right/_all`.
+- Affine and bilinear moving-numerator algebra `affineBilinearNumerator_reciprocal_decomposition` and its character factorisation / rank-one reduction.
+
+CONDITIONAL COMPILERS (every analytic input an explicit hypothesis)
+`threeCarrierReciprocalFourier_of_productEnergy`, `c0_balanced_branch_bound_of`, `perronNuclear_total_of_normalisation`, `omegaHL2_of_pointwise_normalisation`, `transverseTwoCarrier_bound_of_unitSupport`, `transverseTwoCarrier_bound_with_fibre_weights`. Their conclusions are explicit finite inequalities; no conclusion is `True` and none asserts C0 closure. Each hypothesis shell (product-convolution energy, Perron/nuclear, Ω_H ℓ²) is proved both non-automatic and satisfiable, so nothing can be silently discharged. The existing Ω_H pointwise shell is reused rather than duplicated.
+
+INTERFACES / METADATA
+`TransverseCarrierPacket` with unfilled `Prop` fields, `UsableTwoCarrierPair`, the bare trichotomy datatype (no exhaustiveness claimed), a `ResearchStatus` datatype with the requested status values, the `x` vs `X` firewall (`inv_sqrt_comparison_not_automatic`), the acyclic constant-selection order, and preservation theorems for the earlier ledgers. C0 is recorded only as "ANALYTICALLY CLOSED CONDITIONAL ON FORMAL NORMALISATION"; the b-diagonal row stays open and separate (`no_double_spending`); Erdős #287 stays open.
+
+BUILD AND AUDIT
+Each new module builds individually: PASS. Default `lake build`: PASS (8298 jobs, 0 errors). `#print axioms` for every new declaration reports only subsets of `propext`, `Classical.choice`, `Quot.sound`; several depend on no axioms. No `sorry`, `axiom`, `unsafe`, `opaque`, `implemented_by` or `native_decide` occurs as code in any new file. Not proved and not encoded: the carrier factorisation of `Q_*^red`, the `B_*^red` dependence, two-long-carrier existence, and any single-carrier residual classification.
+
+# Summary of changes for run dd15ae7d-1759-4b7b-8bc7-0f355114010b
+Appended the requested C0 source-lift / reduced-projective bank as new files only; no existing module was edited or weakened, and no statement claims C0 closed or Erdős #287 proved.
+
+FILES CREATED
+- `RequestProject/CurrentProgramme/Erdos287A0C0SourceLift.lean`
+- `RequestProject/CurrentProgramme/Erdos287ReducedProjectivePair.lean`
+- `RequestProject/CurrentProgramme/Erdos287BPrimeH0Energy.lean`
+- `RequestProject/CurrentProgramme/Erdos287ConditionedInverseConvInterface.lean`
+- `RequestProject/Status/CurrentStatusErdos287C0SourceLift.lean`
+- `RequestProject/Status/AxiomAuditErdos287C0SourceLift.lean` (placed in `Status/` to match the existing `AxiomAudit*` convention)
+- `ERDOS287_C0_SOURCELIFT_SAFE_BANK_REPORT.md`
+
+FILES MODIFIED
+- `RequestProject/Main.lean` — six appended `import` lines only.
+
+UNCONDITIONAL THEOREMS (all kernel-checked)
+- Source data: `Erdos287.SourceLift.SourceRow` (signed `s, s', Δ₀, Δ₀' : ℤ`; remaining slots `ℕ` with positivity fields) and `u, u', Γ₁, Γ₂, β₂, A0row, C0`.
+- Primitive forms: `erdos287_gamma1_primitive`, `erdos287_gamma2_primitive`, `erdos287_A0row_primitive`, `erdos287_C0_primitive`, plus `erdos287_u_pos`, `erdos287_u'_pos`, `erdos287_b_pos`.
+- Row representative: `erdos287_Q2_dvd` (`x ∣ d₁' v x`), `erdos287_A0pre_sub_A0row`, `erdos287_A0pre_dvd_sub`, `erdos287_A0pre_congr_A0row` (`A0pre ≡ A0row [ZMOD x]`), `erdos287_A0pre_congr_A0row_row`.
+- Raw→reduced: `erdos287_F_pos`, `erdos287_F_ne_zero`, `erdos287_Praw_factor`, `erdos287_Rraw_factor`, `projective_collision_iff_of_row_factor`, `erdos287_raw_projective_collision_iff_reduced`, `projective_collision_invariant_under_row_scaling`, `row_factors_may_differ`.
+- Depth record: `erdos287_Pnat_slot_product`, `erdos287_Rnat_slot_product`, `erdos287_numerator_depth`, `erdos287_denominator_depth` (both 8), `erdos287_fixed_depth_exponent` ((8+8)²−2 = 254).
+- Finite energy: `product_fibre_l2_bound_of_fibre_card`, `productFibre_card_le_of_second_mem`, `product_fibre_l2_bound_of_second_cardinality`, `bprime_h0_global_energy`, `product_fibre_l2_bound_of_filtered`, `bprime_h0_global_energy_congruence_filter`.
+- Firewall witnesses: `conditionedInverseConv_hypothesis_not_automatic`, `conditionedInverseConv_hypothesis_satisfiable`, `omegaH_normalization_not_automatic`; ledger theorems `banked_children_are_unconditional`, `open_owners`, `global_rows_not_closed`, `no_analytic_row_is_banked`, `depth_bound_not_formalised`, `sourcelift_pass_does_not_imply_c0_closure`, `commonX_ledger_still_preserved`.
+
+CONDITIONAL THEOREMS (explicit named hypotheses only)
+`energy_transfer_of_depth_bound` and `bprime_h0_global_energy_with_depth_bound` (hypothesis `d₁' ≤ Lparam^K`), `erdos287_C0_after_conditioned_transfer` (hypothesis `ConditionedInverseConvHypothesis`), `omegaH_energy_of_normalization` (hypothesis `OmegaHNormalizationHypothesis`). `d₁' ≤ L^K`, the Ω_H normalisation and the conditioned transfer are never asserted; both shells are proved non-automatic.
+
+BUILD AND AUDIT
+`lake build` on the default target: PASS (8290 jobs, 0 errors). A token search over all new files finds no `sorry`, `axiom`, `unsafe`, `native_decide`, `opaque` or `implemented_by` as code (only in docstring prose in the audit file). `#print axioms` on every new declaration reports only subsets of `propext`, `Classical.choice`, `Quot.sound`; several depend on no axioms.
+
+HOSTILE-AUDIT POINTS
+Casts are explicit with no `Nat` subtraction; sign slots carry no positivity; `F = b u'` is only cancelled via the proved `F ≠ 0`; the collision equivalence is stated for two independent rows with independent factors (`row_factors_may_differ` witnesses `F₁ ≠ F₂`); the energy lemma bounds fibre cardinality (via injectivity of `p ↦ p.2` on fibres over `n ≠ 0`), not a pointwise divisor maximum.
+
+STATUS FREEZE (recorded in the ledger and proved there): banked children A0C0-PRIMITIVE-SOURCEFORM45, A0C0-SOURCELIFT45, A0C0-BPRIME-ABSORPTION45, BPRIME-H0-GLOBALENERGY45, PROJECTIVE-RAW-TO-REDUCED45, fixed depth (8,8); OPEN analytic owner EXACTPRODUCT-CONDITIONED-INVERSECONV-LEVELLS45; OPEN source pin SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45; EXACT PRODUCT COLLISION / DOUBLE TYPE II / C0: PARTIAL; ERDOS287: OPEN.
+
+# Summary of changes for run e3eda94c-ae28-4753-ad56-d37dec60d2c5
+## COMMON-x / fractional-linear C0 bank — appended, kernel-checked, build green
+
+The new bank is appended strictly after the existing HYBRID-2 / critical-rectangle bank. No previously banked module was edited, no previously proved theorem was altered or weakened, no historical status layer was replaced or deleted. Full detail is in `ERDOS287_COMMONX_FRACTIONALLINEAR_SAFE_BANK_REPORT.md`.
+
+### FILES ADDED
+- `RequestProject/CurrentProgramme/Erdos287CommonXArithmetic.lean`
+- `RequestProject/CurrentProgramme/Erdos287FractionalLinearC0.lean`
+- `RequestProject/CurrentProgramme/Erdos287CommonXCollisionFirewall.lean`
+- `RequestProject/Status/CurrentStatusErdos287CommonXFrontier.lean`
+- `RequestProject/Status/AxiomAuditErdos287CommonX.lean`
+- `ERDOS287_COMMONX_FRACTIONALLINEAR_SAFE_BANK_REPORT.md`
+
+### FILES MODIFIED
+- `RequestProject/Main.lean` — five new `import` lines appended only. No import path of any existing module changed.
+
+### UNCONDITIONAL THEOREMS (all kernel-checked, no analytic hypothesis)
+`Erdos287.CommonX` — §2 common-x conductors: `commonX_gcd` (`gcd(a₁x,a₂x) = x·gcd(a₁,a₂)`), `commonX_mul`, `commonX_lcm`, `commonX_gcd_coprime`, `commonX_lcm_coprime`, `commonX_dvd_left`, `commonX_dvd_right`, `commonX_dvd_gcd`, `commonX_gcd_mul_lcm`. §3 centered-κ CRT: `kappa_crt_exists`, `kappa_mod_small`, `kappa_mod_long`, `kappa_unit_long`, `kappa_sub_one_coprime_long`, `kappa_sub_one_gcd_long_eq_one`, `gcd_kappa_sub_one_fullConductor`, `gcd_kappa_sub_one_fullConductor_of_crt`. §4 graph-diagonal firewall: `graph_diagonal_forces_full_gcd`, `gcd_eq_natAbs_of_dvd`, `graph_literal_diagonal_impossible`, `graph_diagonal_impossible_of_centered`. §7–§8: `commonDivisor_residue_compatible`, `commonDivisor_residue_cancel_unit`, `commonDivisor_residue_iff_unit`, `centered_kappa_satisfiable`, `xRowDiagonal_not_excluded`.
+
+`Erdos287.FractionalLinear` — §5–§6: `fractionalLinear_to_linear`, `oppositeRow_linearized`, `oppositeRow_unique_residue`, `oppositeRow_unique_residue_of_source`, `oppositeRow_unique_residue_zmod`, `kappa_fractionalLinear_of_source`, `kappa_fractionalLinear_of_source_zmod`, `denominator_ne_zero_of_unit`. §11 local change of variables: `affine_leftInverse`, `affine_rightInverse`, `affine_bijective`, `affine_pole_iff`, `sum_affine_reindex`, `sum_affine_reindex_nonzero`.
+
+Conservatism points honoured: the full-conductor gcd equality carries its literal hypotheses (`κ−1 = d·s` with `s` coprime to `qLong`) rather than being overstated; cancellation by `b` exposes `IsUnit b` explicitly; congruences are written as literal divisibilities so no modular inverse is chosen implicitly.
+
+### CONDITIONAL / STATUS-ONLY
+`Erdos287.CommonXFrontierStatus`: ledger data (`CommonXNode`, `CommonXLabel`, `stage`, `commonXLedger`, `DiagonalKind`, `DiagonalStatus`, `diagonalLedger`) plus eighteen bookkeeping theorems, including the three demanded non-implications (`commonX_arithmetic_pass_does_not_imply_c0_closure`, `fractionalLinear_pass_does_not_imply_kloosterman_estimate`, `local_kloosterman_arithmetic_does_not_imply_spectral_closure`), `no_false_promotions`, `status_does_not_encode_xRow_exclusion` (the graph/x-row separation, backed by the witness theorem, not by fiat), `transverse_status_rows`, `bdiagonal_status_rows`, and `hybrid2_ledger_still_preserved` / `caseB_ledger_still_preserved`. The Type-I / Type-II rows carry labels deliberately distinct from `provedUnconditional`, so they are records of the research status and cannot read as proofs of an analytic estimate.
+
+### NOT FORMALISED
+Double-Type-II Kloosterman saving; level-averaged Kuznetsov / spectral closure; Weil bound; transverse analytic closure; b-diagonal analytic closure (numerical vertex dictionary absent); Ω_H source normalization. None is admitted or assumed.
+
+### AUDITS AND BUILD
+- Axiom audit: all 58 new principal declarations depend only on a subset of `propext`, `Classical.choice`, `Quot.sound`; several depend on no axioms at all. No new custom axiom.
+- Token audit: no `sorry`, `axiom`, `unsafe`, `native_decide`, `opaque` or `implemented_by` as a code construct in any new file (only the docstring sentence listing the forbidden tokens). Decidable ledger facts use `decide +kernel`.
+- `lake build` on the default target: **PASS**, 8284 jobs, 0 errors.
+
+FORMAL FIRST RESIDUAL: `SharedGcdOmegaHNormalizationSourcePin`
+RESEARCH FIRST ANALYTIC RESIDUAL: `CommonXFractionalLinearDoubleTypeIIKloosterman45`
+C0 / TRANSVERSE / b-DIAGONAL: researchStrictlyReducedOpen
+ERDOS287: OPEN
+
+# Summary of changes for run dcdd0861-ffe6-4fe2-afa9-fb4fd3080e2b
+The HYBRID-2 / critical-rectangle bank is appended, kernel-checked, and the full repository builds. Full detail is in `ERDOS287_HYBRID2_CRITICALRECT_SAFE_BANK_REPORT.md`.
+
+FILES ADDED:
+- `RequestProject/CurrentProgramme/Erdos287Hybrid2Arithmetic.lean`
+- `RequestProject/CurrentProgramme/Erdos287Hybrid2AnalyticCompiler.lean`
+- `RequestProject/CurrentProgramme/Erdos287Hybrid2CriticalRectangle.lean`
+- `RequestProject/CurrentProgramme/Erdos287Hybrid2ShortEdgeFirewall.lean`
+- `RequestProject/CurrentProgramme/Erdos287BDiagonalProductMod.lean`
+- `RequestProject/Status/CurrentStatusErdos287Hybrid2Frontier.lean`
+- `RequestProject/Status/AxiomAuditErdos287Hybrid2.lean`
+- `ERDOS287_HYBRID2_CRITICALRECT_SAFE_BANK_REPORT.md`
+
+EXISTING FILES MODIFIED:
+- `RequestProject/Main.lean` — seven new `import` lines appended only. No prior mathematical module edited; no previously proved theorem altered; no source firewall replaced.
+
+UNCONDITIONAL THEOREMS:
+`Erdos287.Hybrid2`: `mobius_opening_of_squarefree`, `mobius_opening_needs_squarefree`, `coprime_left_of_mul_coprime`, `coprime_right_of_mul_coprime`, `coprime_both_of_mul_coprime`, `isCoprime_both_of_mul_isCoprime`, `isCoprime_of_isInverseMod`, `reciprocal_cancel_common_factor`, `isCoprime_ell_of_inverse`, `baseConductor_gcd`, `fullConductor_gcd`, `fullConductor_needs_coprime`, `pairwise_factors_dvd`, `lcm_dvd_e`, `mul_eq_gcd_mul_lcm`, `g0_mul_g0prime_dvd_e_mul_difference`, `g0_mul_g0prime_does_not_divide_difference`, `sum_inv_Icc_le_one_add_log`, `ell_sum_harmonic`, `ell_sum_harmonic_two_min`, `eta_sq_expand`, `eta1_nonneg`, `rectangle_side1`, `rectangle_side2`, `rectangle_product`, `rectangle_intersection`, `topShell_e_lower_bound`, `noncontraction_shortEdge_or_rectangle`, `hybrid2_survivor_union`, `rectangle_alone_does_not_capture_all_survivors`, `shortD_is_not_automatic`.
+`Erdos287.BDiagonal`: `isCoprime_of_dvd_mul_sub_one`, `bdiag_crt_inverse_congr`, `bdiag_phase_product_modulus`, `bdiag_moebius_mul`, `bdiag_moebius_levelPair`, `bdiag_squarefree_split`, `bdiag_reduced_conductor`, `bdiag_reduced_unit`, `bdiag_survivor_union`.
+Ledger (`Erdos287.Hybrid2FrontierStatus`): `caseB_strictly_before_hybrid2_frontier`, `primitiveFractionCritical_not_frontier`, `omegaNormalization_is_formal_first_residual`, `hybrid2_analytic_descendants_all_open`, `hybrid2_longEdge_passedThrough_only_if_appropriate`, `erdos287_open`, `only_arithmetic_rows_are_unconditional`, `hybrid2_survivor_union`, `hybrid2_longEdge_pass_does_not_capture_survivors`, `caseB_ledger_still_preserved`, `primitiveFraction_ledger_still_preserved`.
+
+CONDITIONAL THEOREMS:
+`Erdos287.Hybrid2.fixedEll_bound`; `Erdos287.Hybrid2.hybrid2_bound`; `Erdos287.BDiagonal.bdiag_delta_contraction_conditional`.
+
+EXPLICIT ANALYTIC HYPOTHESES:
+- `fixedEll_bound`: `hArch : Bell ≤ Carch * sqrt Sell`; `hPacket : Pell ≤ L1^2/(ell*M1)`; `hLS : Sell ≤ (D/ell + Q)*(1 + M1/(ell*Q))*Pell`.
+- `hybrid2_bound`: `hArch : Btot^2 ≤ Carch^2*Etot`; `hPacket : Etot ≤ Lell^2*Wsep`; `hLS : Wsep ≤ 1/D + 1/M1 + 1/Q + Q/(D*M1)`.
+- `bdiag_delta_contraction_conditional`: `hArchB`, `hPacketB`, `hLSB` (same shapes).
+- Source gcd identities of §5 exposed as hypotheses `h1`, `h2` (option B). No equivalent literal separated-frequency large sieve exists in the repository, so `hLS` is passed rather than instantiated. None of these is an axiom.
+
+SHORT-D: FORMALISED OPEN
+SHORT-M: FORMALISED OPEN
+SHORT-Q: FORMALISED OPEN
+(exact pigeonhole with explicit constants `C_short = C_rect = 4`; no closure proof was available, none invented)
+
+LONG-EDGE RECTANGLE: FORMALISED PASS (algebraic compiler `rectangle_side1/2`, `rectangle_product`, `rectangle_intersection`); ledger node stays `conditionalOpen`.
+
+g0g0' DIVISIBILITY: FORMALISED PASS. The stronger `g0*g0' | (b2-b1)` was not formalised — it is false and is explicitly refuted.
+
+b-DIAGONAL ALGEBRA: FORMALISED PARTIAL (exact CRT phase collapse, Möbius product, gcd reduction all PASS; the Δ-large-sieve contraction is conditional only).
+
+AXIOM AUDIT: every one of the 63 new declarations depends only on `propext`, `Classical.choice`, `Quot.sound`; several depend on no axioms at all. No new custom axiom.
+
+UNSAFE-TOKEN AUDIT: no `sorry`, `axiom`, `unsafe`, `native_decide`, `opaque` or `implemented_by` in any new file (only prose mentions inside docstrings). Decidable facts use `decide +kernel`.
+
+FULL BUILD: PASS — `lake build` on the default target completes with 8279 jobs and 0 errors.
+
+OMEGA_H: SOURCE PIN (unchanged; B and G polynomial margins also unchanged)
+
+ERDOS287: OPEN
+
+FIRST EXACT FORMAL RESIDUAL: `SharedGcdOmegaHNormalizationSourcePin` (Ω_H normalisation source pin), with the conditional analytic frontier being the union `Hybrid2ShortD ∪ Hybrid2ShortM ∪ Hybrid2ShortQ ∪ Hybrid2LongEdgeTwoSidedRectangle ∪ BDiagonalDeltaProductModRectangle`.
+
+§12 note: the top-shell comparability lower bound on `e` is formalised (`topShell_e_lower_bound`); the exponent-level consequence for `kappa` is recorded as NOT YET FORMALISED, since the source-exact dictionary it needs is not present in the repository.
+
+STOP.
+
+# Summary of changes for run 207d670f-9cdd-4c86-b15d-ef7ea07a5160
+## What I did
+
+I re-verified the CASE-B primitive-fraction bank you sent and then added the statements from it that were **not** yet available as literal Lean theorems. The work is append-only: no previously banked module was edited, and the only change to an existing file is three new `import` lines in `RequestProject/Main.lean`.
+
+### Files added
+* `RequestProject/CurrentProgramme/CaseBPrimitiveFractionReproof.lean` — the new mathematics
+* `RequestProject/Status/CurrentStatusErdos287CaseBFrontier.lean` — reproof rows + frontier ledger
+* `RequestProject/Status/AxiomAuditErdos287CaseBReproof.lean` — `#print axioms` for every new declaration
+* `ERDOS287_CASEB_PRIMITIVEFRACTION_REPROOF_BANK_REPORT.md` — the delta report
+
+### New theorems proved (all kernel-checked)
+* `Erdos287.CaseBReproof.separation_of_distinct_pairs` — spacing in the form a large sieve actually uses: the hypothesis is that the two standard representatives `(m,t)` are *distinct* (injectivity, which needs only `(t,m)=1`, supplies the nonzero numerator), conclusion `≥ d/(4G²)`, `G = dM`. Unconditional.
+* `Erdos287.CaseBReproof.caseB_pipeline_QH_bound` — the end-to-end composition energy → fixed `d` → `S1`/`S2` → global `Q_H`, giving `|Q_H| ≤ B(1+B/G)L·(A c₁(1+log⌊X/H⌋) + 8c₁G²/H)` with the coefficient-energy bound inserted verbatim instead of an abstract hypothesis. The analytic inputs (`hLS`, the `E_g` bound, the Ω_H support/mass normalisation) remain explicit hypotheses, and the extra comparability `G ≤ M` is stated openly.
+* `Erdos287.CaseBReproof.normalised_ratio_le_of_comparable` — the `AB ≍ X` source firewall: from `c₀X ≤ AB` the four-term decomposition survives, with the comparability constant appearing on the `G²/(HX)` term only.
+* `Erdos287.CaseBReproof.kappa_le_of_critical_range` (with `rpow_max_eq`, `loglog_div_log_tendsto_zero`, `kappa_le_eventually`, `kappa_le_max_zero`) — the exponential critical range in exact form, `κ ≤ max(2θ−1, θ−α) + K·loglog X/log X`, plus the `o(1)` version `κ ≤ max(0, 2θ−1, θ−α) + ε`.
+* `Erdos287.CaseBReproof.projector_S1_at_two_G` — the audited `X = 2G` truncation, `S1 ≤ c₁(1 + log(2G/H))`.
+* Frontier ledger (`CaseBFrontierStatus`): `frontier_no_closed_rows`, `frontier_unique`, `primitiveFractionCritical_strictly_before_frontier`, `primitiveFractionCritical_not_frontier`, `chain_is_strictly_increasing`, `frontier_erdos287_open`, `caseB_ledger_preserved`. These are bookkeeping statements about the ledger only — `passedThrough` records that a strictly later reduction exists, not that any node is closed — and they assert no mathematical content about the descendant nodes.
+
+### Verification
+* Full build of the default target: **PASS** (`Build completed successfully`, 8272 jobs), which also re-checks every previously banked CASE-B module.
+* No `sorry`, `axiom`, `unsafe`, `native_decide`, `opaque` or `implemented_by` in the new material.
+* Axiom audit: every new declaration depends only on `propext`, `Classical.choice`, `Quot.sound`; several ledger rows depend on no axioms at all.
+* Every hypothesis of the pipeline theorem was checked to be load-bearing.
+
+### Unchanged status
+The Ω_H normalisation and the `B`/`G` polynomial margins remain **source pins** — nothing was promoted, `SMALL-B` and `SMALL-G` stay open, and Erdős #287 remains **OPEN**. Nothing in this delta claims otherwise.
+
+
+# Summary of changes for run 22bf2afd-9633-4f07-b525-d9b7294d5167
+## CASE-B one-level primitive-fraction large sieve — audit banked
+
+I did not assume any of the incoming statuses: Sections 2–10 were re-derived from scratch in Lean, and each row is backed by a kernel-checked statement. The build succeeds and there is no `sorry`, `axiom`, `unsafe`, `native_decide` or other placeholder in the new material; every new declaration depends only on `propext`, `Classical.choice`, `Quot.sound`.
+
+### Files added
+Exact mathematics (`RequestProject/CurrentProgramme/`): `OneLevelPrimitiveFractionSpacing.lean` (§2), `OneLevelCoefficientEnergy.lean` (§4), `OneLevelProjectorS1S2.lean` (§6), `OneLevelWeightedLargeSieve.lean` (§§3, 5), `OneLevelPrimitiveFractionGlobal.lean` (§§7–10).
+Status/audit (`RequestProject/Status/`): `CurrentStatusErdos287PrimitiveFractionCaseB.lean`, `AxiomAuditErdos287PrimitiveFractionCaseB.lean`.
+Report: `ERDOS287_CASEB_ONELEVEL_PRIMITIVEFRACTION_SAFE_BANK_REPORT.md`.
+Only change to a pre-existing file: seven new `import` lines in `RequestProject/Main.lean`. Historical ledgers are imported and re-checked, not edited (`historical_status_preserved`).
+
+### STRICT OUTPUT
+
+```
+SPACING: PASS (unconditional)
+  primitiveFraction_inj, spacing_lower_bound, spacing_uniform,
+  primitiveFraction_separation.  Standard representatives 0 ≤ t < dm force the
+  integer shift to 0; only (t,m)=1 is needed, not (t,dm)=1.
+  separation ≥ 1/(d m1 m2) ≥ d/(4G²), G = dM.
+
+WEIGHTED LARGE SIEVE: PASS (reduction; analytic input carried as a hypothesis)
+  0 ≤ ρ ≤ ‖V‖_∞ with no friability estimate; ∑ρ|S|² ≤ ‖ρ‖_∞ ∑|S|².
+  exact factor = A + 4G²/d, from δ = d/(4G²);  no extra log, no X^ε.
+  The classical separated-frequency inequality itself is NOT formalised here;
+  it appears only as the explicit hypothesis hLS.
+
+COEFFICIENT ENERGY: PASS
+  exact bound = ∑_{M≤m<2M} E_{dm}/m² ≤ dB(1+B/G)L^{C_E}, implied constant 1,
+  from ∑1/m ≤ 1 and ∑1/m² ≤ 1/M.  No hidden log.  E_g ≤ (gB+B²)L^{C_E} is an input.
+
+FIXED-d (§5): PASS.  (A + 4G²/d)(dK) = (Ad + 4G²)K exactly; all powers of d verified.
+
+S1: PASS
+  exact bound = ∑_{d≤X}|λ_H(d)|/d ≤ c₁(1 + log⌊X/H⌋) ≤ c₁(1 + log(X/H)),
+  i.e. c₁(1 + log(2G/H)) for X = 2G.  The inner Möbius sum is genuinely truncated
+  at ⌊X/H⌋; no d ~ H assumption is used anywhere.
+
+S2: PASS
+  exact bound = ∑_{d≤X}|λ_H(d)|/d² ≤ 2c₁/H.
+
+OMEGA_H SOURCE NORMALISATION: SOURCE PIN
+  supp Ω_H ⊆ {e~H}, |Ω_H| ≪ 1, ∑|Ω_H|/e ≪ 1, ∑|Ω_H|/e² ≪ 1/H are not theorems
+  anywhere in this repository (λ_H is defined for arbitrary Ω).  Carried as the
+  hypotheses hsupp, hmass.  Only the lower support and the e⁻¹ mass were needed.
+
+GLOBAL Q_H: PASS
+  exact bound = |Q_H| ≤ B(1+B/G)L^{C_E}·( A c₁(1 + log⌊X/H⌋) + 8c₁G²/H )
+  envelope    = |Q_H| ≤ 8c₁·B(1+B/G)(A + G²/H)·L^{C_E+1}
+
+NORMALISED RATIO: PASS (exact identity, X = AB)
+  |Q_H|/(AB²) = L₁/B + L₁/G + L₀G²/(HX) + L₀G/(HA); four terms independent.
+
+B POLYNOMIAL: SOURCE PIN
+G POLYNOMIAL: SOURCE PIN
+  No statement A ≥ X^{η_A}, B ≥ X^{η_B}, G > X^{1/2−η₀} occurs in the repository;
+  none was manufactured.
+
+1/B: OPEN   1/G: OPEN
+  The mechanism is proved unconditionally ((log X)^K/X^η → 0, hence L^K/B ≤ ε
+  eventually whenever B ≥ X^η), but its input is an unresolved pin, so
+  SMALL-B and SMALL-G obstructions are NOT banked as closed.
+
+H-CRITICAL RANGE:
+  H ≤ L^{C_E+K_*}·max(G²/X, G/A),  K_* = 6 + 2η + C_route;
+  exponentially κ ≤ max(0, 2θ−1, θ−α) + o(1).
+
+PROMOTED THEOREMS:
+  DET1-ONELEVEL-PRIMITIVEFRACTION-SPACING45  : PASS (exact, unconditional)
+  DET1-ONELEVEL-dRESTRICTED-LS45             : PASS (conditional reduction)
+  DET1-ONELEVEL-COEFFENERGY45                : PASS (conditional on E_g input)
+  DET1-ONELEVEL-PROJECTOR-S1S2-45            : PASS (conditional on Ω_H pin)
+  DET1-ONELEVEL-PRIMITIVEFRACTION-GLOBAL45   : PASS (conditional on the above)
+  ERDOS287 CLOSED                            : NOT BANKED
+
+ERDOS287: OPEN
+
+FIRST EXACT RESIDUAL:
+  287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-PRIMITIVEFRACTION-CRITICAL45
+  range: H ≤ L^{C_E+K_*} max(G²/X, G/A)
+  retains: μ(m); primitive t mod dm; reciprocal-b source; friable a;
+           exact signed λ_H(d)/d² projector.
+```
+
+Two audit notes on the source statements as given: the sieve factor carries the explicit absolute constant 4 (`A + 4G²/d`) coming from `δ⁻¹ = 4G²/d`, and the S1 factorisation only yields `1 + log(2G/H)` if the inner Möbius sum is kept truncated at `⌊X/H⌋` — both are reflected in the banked statements. No work was done beyond this audit.
+
+
+# Summary of changes for run 5c7ec803-72e5-4b06-9236-9c455af6a33f
+Banked the requested **ONE-LEVEL MÖBIUS append-only delta** for Erdős #287 (§§0–16). The delta is strictly additive: no protected module was rebuilt or edited, and the only change to a pre-existing file is nine new `import` lines in `RequestProject/Main.lean`.
+
+## Files added
+
+**Exact algebra** (`RequestProject/CurrentProgramme/`):
+- `LevelPairProductModulus.lean` — §§1–3, §5
+- `LevelPairFixedDRigidity.lean` — §4
+- `LevelPairReciprocalNormalForm.lean` — §6
+- `LevelPairPrimeAssignment.lean` — §§7–8
+- `SharedGcdGramSquare.lean` — §§9–10
+- `PrimitiveTRamanujanFirewall.lean` — §12
+- `SharedGcdOneLevelMobiusSocket.lean` — §§11, 13
+
+**Status / audit** (`RequestProject/Status/`):
+- `CurrentStatusErdos287OneLevelMobius.lean` — §14
+- `AxiomAuditErdos287OneLevelMobius.lean` — §15
+
+**Report**: `ERDOS287_ONELEVEL_MOBIUS_SAFE_BANK_REPORT.md` — §16.
+
+## Principal theorems proved
+
+- **Product-modulus compression**: `moebius_levelPair_compress`, `moebius_levelPair_eq_moebius_n` (μ(g1)μ(g2)=μ(n)), `lcm_levelPair_eq` (lcm(g1,g2)=g0·n), `levelPair_norm_eq` (1/(g1g2)=1/(g0²n)).
+- **`gcd_D_n_eq_one`** — proved *directly* from primitivity, with the older `gcd(D,Λ) ∣ g0` recorded separately.
+- **Divisor split / reindexing**: `unitary_split_coprime/_dvd`, `levelPair_divisorSplit`, `levelPair_reindex_fixed_n`, `levelPair_reindex`. No asymptotic dyadic ranges formalised.
+- **Fixed-D rigidity**: `t1_congr_mod_r1`, `t2_congr_mod_r2`, `fixedD_solution_iff` (exact iff for `t1=xD+r1u`, `t2=yD+r2u`), `fixedD_u_period_g0` (`u mod g0`), `fixedD_primitive_reduces_to_g0_side`.
+- **Farey kernel**: `fareyDifference_eq_D_div_g0n` (`t1/g1 − t2/g2 = D/(g0n)`) and `fareyDifference_split_invariant` — independence of the split `r|n`. No analytic property of Φ_A formalised.
+- **CRT reciprocal normal form**: `exists_crtBeta`, `gcd_two_g0_beta_eq_one`, explicit numerator `crtNumerator` (Ξ_r), `reciprocal_phase_normalForm`, `reciprocal_normalForm_of_inverse`.
+- **Fixed-n prime assignment**: `fixed_n_two_state_product` — banked as a fixed-`n` factorisation only; **no** multiplicativity in `n` asserted.
+- **Non-multiplicativity firewall**: `localFactorK_not_multiplicative` — one explicit finite counterexample, K(15)=4 ≠ 1 = K(3)K(5). No universal negation.
+- **Shared-gcd Gram-as-square** (highest-priority bank): `sum_lambdaH_divisors` (Möbius inversion of Ω_H), `sharedGcd_gram_square`, and the one-level form `sharedGcd_oneLevel_gram`; plus `abs_lambdaH_le`, `lambdaH_harmonic_mass_le`, `omega_support_mass_le`. Only the exact convolution inequality is banked; the asymptotic `≤ C/H` is left as research metadata.
+- **Primitive-t Ramanujan firewall**: `ramanujan_prime_not_dvd` (c_p = −1), `ramanujan_prime_dvd` (c_p = p−1), `moebius_mul_ramanujan_prime`, and the re-exported divisor normal form. The ζ(1+w)/ζ(2+2w) Euler-product claim is **not** formalised.
+- **Status ledger** (§14, all rows as specified): `no_closed_rows`, `erdos287_open`, `uniform_k0_open_fcl_not_reached`, `amplitude_exponents` (near-density 1/2, final amplitude 1/4), `cauchyConfiguration_superseded_not_closed`, `largeSharedG0_retracted_and_nearFreq_open`, `energy_subpolytope_provisional_not_closed`, `oneLevelMobiusGram_is_first_exact_residual` (uniqueness of rank 1), `signed_levelPair_gram_strictly_reduced`, `exact_rows_are_theorems`, `gram_square_and_one_level_are_theorems`, `nonmultiplicativity_firewall_is_explicit`, `historical_sharedG0_status_preserved`.
+
+## Analytic firewall
+
+Both new analytic interfaces are left **UNINHABITED** by design, each with an explicit refutation showing the hypothesis is genuine and not automatic:
+- `SharedGcdOneLevelEnergyInput` (§11) — the subpolytope is **not** marked closed; only the satisfiability of the constraint set (`exists_valid_energyLedger`) is formal.
+- `SharedGcdOneLevelMobiusGramInput` (§13) — retains primitive `t`, the reciprocal `b` source, the friable `a` source and the harmonic/Perron parameters; primitive `t` is **not** completed inside the socket.
+
+All pre-existing analytic sockets remain uninhabited.
+
+## Build and axiom audit
+
+- Targeted builds of both new Status modules: success.
+- Full `lake build`: **Build completed successfully (8262 jobs), 0 errors.** No new warnings; the warnings present are pre-existing in historical modules, deliberately left untouched.
+- The audit module runs `#print axioms` over **90** audited declarations. Every one depends only on `propext`, `Classical.choice`, `Quot.sound` (several on strictly fewer; one on none). A filtered scan for any axiom outside the allowed list returns nothing.
+- Source scan of all ten new files for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `implemented_by`: **no occurrences** (only prose hits inside comments).
+
+## Commits
+
+Seven commits, all pushed to `origin`; working tree clean.
+
+**FINAL: ERDOS287 OPEN. CURRENT FIRST EXACT MAIN-LINE RESIDUAL: 287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45.**
+
+# Summary of changes for run b63c35a5-f054-4172-b072-f088bae33c4c
+Completed the append-only SHARED-g₀ / reduced-denominator / Cauchy-repair formal delta for Erdős #287. Nothing historical was rebuilt or superseded; the only change to an existing file is ten added `import` lines in `RequestProject/Main.lean`. `ARISTOTLE_SUMMARY.md` and `CurrentStatusErdos287PrimitiveLocalProfile.lean` were not edited, and both `ShortLiftEulerAnalyticInput` and `PrimitiveLocalProfileGramInput` remain uninhabited.
+
+**New files (all `sorry`-free and building):**
+
+- `RequestProject/CurrentProgramme/LocalProfileHarmonicTwists.lean` (§1) — the exact finite harmonic-twist identity `mProfile_harmonic_twist_expansion`: m_{g,b}(Δ) = Σ_{ℓ | rad(2bg)} (1/ℓ)·twistInner ℓ, over the repository's own `mProfile`, via `moebius_coprime_twist_sum`. The asymptotic L¹-cost claim is deliberately not formalised.
+- `RequestProject/CurrentProgramme/SharedG0PrimitiveUParam.lean` (§2) — `sharedG0_u_param_iff`, `sharedG0_u_period`, the primitive exclusions `primitive_not_dvd_t1/_t2`, `excludedU_eq_iff_dvd_D` (the two forbidden residues coincide iff p | D), and `card_excludedU` = ν_p(D).
+- `RequestProject/CurrentProgramme/SharedG0PrimitiveURouter.lean` (§3) — `primitiveUSum_eq_complete_sub_excluded` (exact local factor), the two elementary bounds `norm_primitiveUSum_le_modulus` (|U_p| ≤ p) and `norm_primitiveUSum_le_two` (|U_p| ≤ 2 when p ∤ C), the deduction `abs_prod_local_le` (|∏_p U_p| ≤ 2^ω(g₀)·gcd(g₀,C)), and the CRT factorisation `primitiveUSum_crt_split` in exact two-factor form U_{mn}(C) = U_m(Ca)·U_n(Cb).
+- `RequestProject/CurrentProgramme/SharedG0UnitSectorGcd.lean` (§4) — `sharedGcd_reciprocalDiff_eq_originalDiff`: gcd(g₀, (2b₁)⁻¹−(2b₂)⁻¹) = gcd(g₀, b₁−b₂), plus the unit-twisted version. The coprimality side condition is derived rather than assumed.
+- `RequestProject/CurrentProgramme/SharedG0BPairAveraged.lean` (§5) — `gcd_eq_sum_totient_divisors`, the exact-floor interval count `pairCountCongruentModulo_le`, and the finite precursor `bpair_gcd_sum_le_divisorCount`: Σ gcd(g₀,b₁−b₂) ≤ B²τ(g₀) + B·g₀.
+- `RequestProject/CurrentProgramme/PrimitiveReducedDenominator.lean` (§6) — `lcm_sharedG0_eq`, `gcd_D_lambda_dvd_g0` (proved via coprimality with r₁ and r₂ separately, so valuation-safe with no squarefree hypothesis), `reducedDenominator_eq` and `reducedDenominator_ge` (den(D/Λ) ≥ r₁r₂ = g₁g₂/g₀²).
+- `RequestProject/CurrentProgramme/PrimitiveNearFreqCount.lean` (§7) — reuses the banked Farey machinery: `nearFreqSet_eq`, `nearFreq_D_mem_Icc`, and the exact count `nearFreqSet_card_le`: N_near ≤ g₀ + 2g₀⌊g₀r₁r₂H/A⌋. No analytic saving is claimed.
+- `RequestProject/CurrentProgramme/SharedG0CauchyConfigurationSocket.lean` (§9) — the uninhabited `SharedG0CauchyConfigurationInput` over a `CauchyLedger` carrying the five ledger quantities, with audit item A (averaged router, θ_U < 1) and audit item B (root consistency, the 1/4-vs-1/2 dichotomy) formalised, a trivial conditional consumer, and `sharedG0CauchyConfiguration_not_automatic` refuting it with explicit data.
+- `RequestProject/Status/CurrentStatusErdos287SharedG0Repair.lean` (§11–12) — the new ledger with kernel-checked integrity theorems: no closed row, ERDOS287 open, UNIFORM k=0 open, FCL not reached, both analytic children `repairPending`, the hard-denominator child `pendingChild` (conditional, rank 0, not inhabited), LOCALPROFILE-GRAM45 `strictlyReducedBlocked`, the Cauchy configuration the unique first exact residual, every exact row backed by the actual quoted statement of §§1–7, and the historical LOCALPROFILE/BLOCK20 ledgers re-checked as unmodified. The short-lift Euler row carries `nancVerifiedPassUninhabited` — a research-metadata label only; no analytic statement is proved in Lean.
+- `RequestProject/Status/AxiomAuditErdos287SharedG0Repair.lean` (§13) — `#print axioms` for all 64 new principal declarations.
+- `ERDOS287_SHAREDG0_CAUCHY_REPAIR_SAFE_BANK_REPORT.md` (§14) — the full report.
+
+**Build:** each new module builds cleanly (no errors, no warnings), and the full `lake build` completes successfully (8253 jobs).
+
+**Placeholders:** none. No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, or `implemented_by` in any new file; the only textual match in the repository is the prose of the audit file's own docstring.
+
+**Axioms:** every audited declaration depends on a subset of `propext`, `Classical.choice`, `Quot.sound`; three of the ledger theorems depend on no axioms at all.
+
+All work is committed and pushed. ERDOS287 remains OPEN; the current first exact research residual is 287-K0-SP2-DET1-SHAREDG0-CAUCHY-CONFIGURATION45.
+
+# Summary of changes for run 73505396-e329-44ca-9d1a-3ad8016591e6
+Delivered the PRIMITIVE-CONDUCTOR / SHORT-LIFT → PRIMITIVE-LOCALPROFILE delta as an append-only layer. Everything is exact algebra / finite combinatorics; no analytic number theory is claimed, and Erdős #287 is **not** claimed solved.
+
+**Files added** (no historical file modified; `RequestProject/Main.lean` received import lines only):
+- `RequestProject/CurrentProgramme/PrimitiveRamanujanAlgebra.lean` (§A)
+- `RequestProject/CurrentProgramme/PrimitiveRamanujanReassembly.lean` (§B)
+- `RequestProject/CurrentProgramme/ShortLiftLocalProfile.lean` (§C)
+- `RequestProject/CurrentProgramme/PrimitiveDMultiplicity.lean` (§D)
+- `RequestProject/CurrentProgramme/PrimitiveFareyNearCollision.lean` (§E)
+- `RequestProject/CurrentProgramme/PrimitiveLocalProfileGramSocket.lean` (§F)
+- `RequestProject/Status/CurrentStatusErdos287PrimitiveLocalProfile.lean` (§G)
+- `RequestProject/Status/AxiomAuditErdos287PrimitiveLocalProfile.lean` (§H)
+- `ERDOS287_PRIMITIVE_LOCALPROFILE_SAFE_BANK_REPORT.md`
+
+**FORMALLY PROVED.** The Ramanujan sum is built from the repository's own additive phase e(x)=exp(2πix): c_g(N)=∑_{t<g, gcd(t,g)=1} e(tN/g). From that definition: the complete additive sum ∑_{t<g}e(tN/g)=g·1_{g∣N}; `ramanujan_eq_divisor_sum` (DET1-PRIMITIVE-RAMANUJAN-DIVISOR-NORMALFORM45) c_g(N)=∑_{r∣gcd(g,N)} r·μ(g/r); `ramanujan_unit_shift` (DET1-PRIMITIVE-T-RAMANUJAN45) c_g(a+s·w)=c_g(2ab+s) for 2b·w≡1 (mod g); `moebius_mul_moebius_div` (μ(g)μ(g/r)=μ(r) for squarefree g=rk, gcd(r,k)=1) and `ramanujan_moebius_normalForm` (DET1-RAMANUJAN-MOBIUS-SIMPLIFICATION45) μ(g)/g·c_g(N)=∑_{rk=g, r∣N} μ(r)/k. §B: the branch identity ∑_{kd=n} μ(d)1_{gcd(2b,k)=1}1_{gcd(b,d)=1}=[n=1] on the coprime sector (the r>1 cancellation), ∑_{d∣n,d<n}μ(d)=−μ(n) for n>1, and `primitive_ramanujan_reassembly` (DET1-PRIMITIVE-RAMANUJAN-REASSEMBLY45): reassembly returns exactly raw progression − additive zero mode — a representation loop, verified, not an estimate. §C: the finite/dyadic profile mProfile(g,b,D) with Ψ, plus the finite Euler product ∑_{d∣n,gcd(d,H)=1}μ(d)/d = ∏_{p∣n,p∤H}(1−1/p) = (∏_{p∣n}(1−1/p))·∏_{p∣n,p∣H}(1−1/p)⁻¹ (the finite-prime-product avatar of H_H/ζ). §D: the solution line t₁=t₁⁰+r₁u, t₂=t₂⁰+r₂u and DET1-PRIMITIVE-D-MULTIPLICITY45 (≤ g₀+1 solutions in the box; the sharp g₀ is also banked). §E: lcm(g₀r₁,g₀r₂)=g₀r₁r₂, the exact rational implication |t₁/g₁−t₂/g₂|≤1/A ⟹ |D|≤lcm(g₁,g₂)/A, and the exact finite count ≤ (2⌊lcm/A⌋+1)·g₀ with explicit integer floors.
+
+**ANALYTIC / UNINHABITED.** `ShortLiftEulerAnalyticInput` (Dirichlet-series ∑_{gcd(d,H)=1}μ(d)d^{-s}=H_H(s)/ζ(s)) and `PrimitiveLocalProfileGramInput` (|Gram| ≤ C·X·log^{−3−η}X over valid primitive-conductor configurations retaining π, s, τ, g, primitive t, friable a, Möbius b, mProfile(g,b,Q/g), μ(g), smooth weights) are stated and never inhabited; each has only a trivial conditional consumer, plus explicit refuting data and a nonempty valid-configuration witness, so neither is vacuous or automatic. Nothing of the shape exp(−c√(log D)) is formalised. The asymptotic wrapper gcd(g₁,g₂)+g₁g₂/A is left unformalised; only the exact finite precursor is banked.
+
+**STATUS LAYER (append-only).** New ledger: PRIMITIVE-CONDUCTOR-SHORTLIFT-GRAM45 = superseded-but-not-false (never closed, never false); PRIMITIVE-LOCALPROFILE-GRAM45 = analytic open / uninhabited / first exact main-line residual; UNIFORM k=0 = open; FCL = not reached; ERDOS287 = open; no closed row. The imported BLOCK20 ledger is unchanged and re-checked.
+
+**BUILD / AXIOM AUDIT.** `lake build` succeeds (8243 jobs, 0 errors); each new module also builds individually and is warning-free (the only repository warning is the pre-existing note in a historical file). No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `@[implemented_by]` in any new file. `#print axioms` over every principal new declaration yields only subsets of {propext, Classical.choice, Quot.sound} (two status rows use none). All work is committed and pushed.
+
+ERDOS287 OPEN. FIRST EXACT MAIN-LINE RESIDUAL: 287-K0-SP2-DET1-PRIMITIVE-LOCALPROFILE-GRAM45.
+
+# Summary of changes for run a4b08109-0d68-4e6a-902d-e7011eadcb70
+SOURCE-SEAL REPAIR:
+Attempted literally in `RequestProject/CurrentProgramme/FixedCertificateBalancedSevenSourceSeal.lean`, starting from the repository's own fixed-certificate smooth-parity packet (no model object). Proved: the k=0 / J=∅ / P⁺(n) ≤ n^σ_* reduction to the truncated Möbius sum (`fixedCertificate_k0_Jempty_reduction`, `fixedCertificate_smoothCut_reduction`); the finite seven-box identity `H_*(P) = −20` through the repository definitions (`fixedCertificate_sevenBox_eq_neg20`); the weight dictionary with explicit exclusion of hidden Λ(p), log p, 1/log p (`omegaBox_dictionary`, `omegaBox_carries_no_vonMangoldt_factor`, `_no_log_factor`, `_no_inverse_log_factor`), keeping the affine log r from Λ = μ∗log separate (`vonMangoldt_sum_divisors_eq_log`); and `balancedSevenSeal_of_cellIdentity`, which derives the whole seal from one remaining hypothesis. The seal is NOT inhabited.
+
+SOURCE-SEAL RESIDUAL:
+`Erdos287.Block20.FixedCertificateSP2PacketMatchesCompilerPacket` — identification of the literal repository fixed-certificate SP-2 packet with the packet consumed by the Balanced7 compiler (the `cell_identity` field). Status remains SOURCE_OPEN, with `sourceSeal_residual_not_automatic` refuting automaticity.
+
+BLOCK20 PACKING:
+Procedural greedy rule formalised (`bigAtoms`/`smallAtoms`/`groupSmall`/`packSide`/`packBoth`) with exact conservation (`packSide_perm`: no atom lost or duplicated), deterministic singleton vs grouped provenance, no d/m straddling, non-final block mass ≥ σ_*/3, block mass ≤ σ_*, ≤ 2 leftovers. `Block20PackingValidity` is separate and inhabited constructively by `packBoth_validity`, with `block20Validity_not_automatic` showing it is not vacuous. Ledger: ν₀ = 16623/100000 exactly (never 1/6), σ_* = ν₀ − 2ε_*, `sigmaStar_ge : σ_* ≥ 0.1629054`, `nineteen_blocks_overflow : 19·(σ_*/3) > 1`, `eps_one_over_600_not_admissible`.
+
+BLOCK20 COUNT:
+≤ 20 (`nonfinal_block_count_le_18` plus at most two leftovers; `template_block_count_le_20`).
+
+TRUNCATED MÖBIUS:
+Exact finite divisor factorisation e = e_d·e_m proved (`truncMobius_coprime_split`, `truncMobius_gamma_split`); smooth/rough split at z₀ = X^(1/420) with `block20_gcd_smooth_rough` (gcd(d,m)=1) and `bigOmega_rough_le_420`.
+
+BILINEAR SOURCE COMPILER:
+`template_product_split` (∏ all = u·v), `template_predicate_split`, `template_mass_split`, `fixed_template_source_factorisation` (ξ_π(u)·κ_π(v) once external inputs are supplied), with the remaining joint predicate exposed as `joint_coprimality_predicate_not_factorisable`. ξ/κ are defined from the packed block grammar (`mobius_factor_occurs_once`, `ordered_block_convolution`), and the divisor-norm bounds are the uninhabited `GeneratedCoefficientNormInput`.
+
+TYPE-II WINDOW:
+Proved finite: ε_* ≤ selectedMass < ε_* + σ_* = ν₀ − ε_* (`typeII_window_from_first_crossing`, `typeII_window_endpoint`, `typeII_size_window`); E is template-fixed (`template_selection_not_recomputed`). The log-mass → literal X-power conversion is kept as an explicit input, not faked.
+
+THREE-SMALL-PRIME STATUS:
+SUPERSESSION CANDIDATE / SOURCE COVERAGE OPEN; explicitly NOT false (`threeSmallPrime_not_false`, `threeSmallPrime_class_is_nonempty`, conditional `threeSmallPrime_supersession_of_coverage`).
+
+PERRON SOCKET:
+`PerronConditionRemovalInput` — granular (source cutoff, truncated integral representation, kernel K(τ), vertical range, kernel L¹ budget, boundary-strip source and estimate, truncation error, exact reconstruction), uninhabited, with a proved conditional compiler to `SeparatedPrefixCoefficientFamily`; C_Perron = 1 recorded as external audit metadata only.
+
+BOUNDARY ROUTER:
+`PerronBoundaryRouterInput`, uninhabited, plus the firewall theorems `boundaryRouter_preserves_literal_source` and `smoothed_certificate_is_a_different_source` (no replacement of H_* by a smoothed certificate).
+
+GENERATED TYPE-II SOCKET:
+`Block20GeneratedTypeIIInput` quantifies only over actual Block20 templates, actual ξ_π/κ_π, the supported window, both signs, physical weights. Uninhabited. Conditional compiler `k0_uniform_fragmentation_compiler` to `K0UniformFragmentationConclusion`, which is not inhabited.
+
+CURRENT MAIN-LINE ANALYTIC RESIDUAL:
+287-K0-SP2-BLOCK20-GENERATED-TYPEII45
+
+EFFECTIVITY RESIDUAL:
+287-EXCEPTIONAL-MAINTERM-COMPARISON-ADAPTER45 (uninhabited adapter, all three routes left undecided, conditional compiler to `EffectiveSmallQLowConductorConclusion`).
+
+FCL: OPEN
+ERDOS287: OPEN
+
+TARGETED BUILDS: all new modules built individually, 0 errors.
+
+FULL BUILD: `lake build` — 8235 jobs, 0 errors. Only the pre-existing linter warning in the historical file `RequestProject/Erdos287/FixedCertificateSmoothParity.lean:60` remains; it was left untouched.
+
+AXIOM AUDIT: `RequestProject/Status/AxiomAuditErdos287Block20.lean` prints axioms for every principal new declaration — all are subsets of {propext, Classical.choice, Quot.sound}. Trust scan of the new files: zero sorry, admit, axiom, opaque, unsafe, native_decide, @[implemented_by]. No analytic or source socket of this pass has an inhabitant anywhere in the repository.
+
+FILES: added `RequestProject/CurrentProgramme/{FixedCertificateBalancedSevenSourceSeal, Block20PackingCompiler, Block20LargePrimePowerRouter, Block20GeneratedBilinearCompiler, PerronConditionRemovalCompiler, ExceptionalMainTermComparisonAdapter}.lean`, `RequestProject/Status/{CurrentStatusErdos287Block20, AxiomAuditErdos287Block20}.lean`, and `ERDOS287_BLOCK20_DELTA_SAFE_BANK_REPORT.md`. `RequestProject/Main.lean` received import lines only. No historical file was otherwise modified.
+
+COMMITS: staged in phases (source seal; packing/bilinear compiler; Perron/generated Type-II/effectivity sockets; status + audit + Main imports + report).
+
+PUSH: all commits pushed to origin.
+
+FINAL FIREWALL: this formal layer certifies finite source algebra, deterministic Block20 packing, source dependency graphs and conditional compilers only. It does NOT prove 287-K0-SP2-BLOCK20-GENERATED-TYPEII45, Perron analytic error estimates, the exceptional comparison adapter, FCL, or Erdős #287.
+
+ERDOS287 OPEN —
+FIRST EXACT MAIN-LINE ANALYTIC RESIDUAL:
+287-K0-SP2-BLOCK20-GENERATED-TYPEII45
+
+# Summary of changes for run 2992f52e-6ca3-4d37-b918-35cb1438b1a0
+The Balanced7 hostile-audit safe bank is complete, built, and pushed. All work was append-only: no historical V15–V24 / SP-2 / PostBalanced7Pro file and no summary file was modified.
+
+**Files added**
+
+`RequestProject/HostileAudit/`
+- `BalancedSevenSP2SourceAdapter.lean` (§2) — `truncMobius_of_primeProduct`, `truncMobius_sevenBox_eq_neg20` (the literal finite identity `H_*(P) = 1−7+21−35 = −20`), `subsetAlternatingSum_eq_binomial`, `boxWeight` with `norm_boxWeight_le_one` / `boxWeight_eq_omegaBox` (|phase| = 1, 0 ≤ V ≤ 1), the seal structure `BalancedSevenSP2SourceSeal` (left **uninhabited**), `seal_rigidity`, `sp2SourceSeal_not_automatic`.
+- `GeneralModulusInducedCharacter.lean` (§3) — `induced_character_pointwise` (χ_r(n) = χ*(n)·1_{gcd(n,j)=1}, no squarefreeness or gcd(f,j)=1 hypotheses), `inducedSpec_holds_for_nonSquarefree_modulus`, `coprimeIndicator_moebius_expansion`, `induced_character_moebius_form`.
+- `TotientComplementaryFactor.lean` (§4) — `totient_mul_ge`, `totient_gcd_exact`, `complementary_factor_bound` (f > D ∧ R ≤ f·j < 2R ⇒ j < 2R/D), `divisorVariable_ne_complementaryFactor` firewall.
+- `GeneralModulusConductorSplitLargeSieve.lean` (§5) — uninhabited `PrimitiveWeightedLargeSieveInput` and `DivisorSumPolylogInput`, plus the conditional `general_modulus_cell_bound` and `general_modulus_conductorSplit_compiler`.
+- `SmallROwnerCapacity.lean` (§7) — `smallR_source_eq_principal_add_defect` and the exact defect identity, `smallR_owner_assignment` (principal → EulerPrincipal, defect → SmallRDirect), `smallR_modulus_capacity` (q ≥ X^{2/3}), uninhabited `SmallRPrincipalCapacityInput`.
+- `ShortTResidueGeometry.lean` (§8) — `shortT_unique_forbidden_class` (∃! residue class when ℓ ∤ q), `shortT_constant_class_of_dvd`, the rational scale ledger 2/105 < 15/105, `smallPrime_not_dividing_YscaleProduct`; the Selberg estimate stays uninhabited as `BalancedSevenShortTSieveInput`.
+- `ShiuHypothesisCompiler.lean` (§9) — exponent map 5/7, 3/4, margin 1/28; `shiu_shift_coprime` (gcd(±1, 2w′) = 1); uninhabited `BalancedSevenShiuInput` with a conditional consumer.
+- `RawRawVarianceCompiler.lean` (§10) — `rawRaw_variance_bound` with the corrected `log^{-5}` saving, `rawRaw_saving_is_five_not_ten` (explicit refutation of `log^{-10}`), `cross_variance_bound` (`log^{-15/2}`) and the principal `log^{-10}` bound.
+- `HardAmplitudeExponentCompiler.lean` (§11) — reuses `C_ext = 1`, `hard_amplitude_product` (M·W5 = X with M = X^{2/7}, W5 = X^{5/7}), `hard_cell_log_budget` (−5/2), `hard_dyadic_summation` (−3/2), uninhabited `HardAmplitudeAsymptoticInterface` for the o(1).
+- `FullQExactReassembly.lean` (§12) — literal boundary ownership of the disjoint partition SmallQ / SmallR / Hard, `region_principals_sum_eq_full`, `no_region_owns_the_full_principal`, `fullQ_no_double_spending`, `even_q_is_impossible`, `q_coprime_twoP`.
+- `EffectiveLowConductorExceptionalPNT.lean` (§15) — uninhabited `EffectiveLowConductorExceptionalPNTInput` (effective constants, exceptional-character secondary term, smooth Y-scale weight, f ≤ log^30 X, Mellin range, induction to q), the conditional consumer to `EffectiveSmallQLowConductorTarget`, and `effective_socket_is_not_siegelWalfisz`.
+- `BalancedSevenHostileAuditCompiler.lean` (§13) — `BalancedSevenHostileAuditInputs` (exactly the eight audited fields), the conditional `balancedSeven_hostileAudit_compiler`, and `hostile_audit_is_not_a_lean_proof`.
+
+`RequestProject/Status/`
+- `CurrentStatusErdos287Balanced7HostileAudit.lean` (§14, §6, §16) — the new append-only ledger with the recommended rows, the two **RETRACTED** death certificates with their reasons, the downstream frontier rows, `ledger_is_honest`, `rawRaw_row_uses_the_corrected_exponent`; no `Status.closed` row, ERDOS287 and FCL remain `open_`.
+- `AxiomAuditErdos287Balanced7HostileAudit.lean` (§17) — `#print axioms` over every principal new declaration.
+
+`RequestProject/Main.lean` — import lines only. Report: `ERDOS287_BALANCED7_HOSTILE_AUDIT_SAFE_BANK_REPORT.md`, containing the mandated final block and final firewall.
+
+**Build:** `lake build` succeeds — 8227 jobs, 0 errors. The only warning in the repository is the pre-existing linter note at `RequestProject/Erdos287/FixedCertificateSmoothParity.lean:60`, which was left untouched.
+
+**Trust:** no `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `@[implemented_by]` occurs in any new file (the only textual hits are prose in docstrings describing the scan). `#print axioms` reports only `propext`, `Classical.choice`, `Quot.sound` for the new principal declarations. Every analytic/source interface of this layer is uninhabited, each accompanied by a refutation theorem exhibiting explicit failing data.
+
+**Verdicts.** BALANCED7 SOURCE SEAL: **SOURCE_OPEN** — the finite `H_*(P) = −20` identity and the smooth-box weight bounds are kernel-proved, but the literal identification of the compiler-consumed packet with the repository's fixed-certificate SP-2 packet could not be derived from the current definitions, so Balanced7 is **not** recorded as source-sealed. SMALLQ, SMALLR GENERAL MODULUS, SHORT-t, SHIU, RAW-RAW: hostile-audited external pass recorded as conditional compilers only. SMALLR OWNER and FULL-q OWNER: proved algebraically. BALANCED7: research/paper pass, not a Lean analytic theorem; Balanced7-effective open. FCL and ERDOS287 remain open, and nothing is claimed closed.
+
+# Summary of changes for run 0b028c11-5b14-4718-88f5-d9d6ac7b179f
+## Post-Balanced7 safe bank — completed (append-only)
+
+The earlier BALANCED7 post-audit repair bank was already in place; this session completed the follow-on **conductor-split 34LS / SmallR owner / hard-δ / small-prime-prefix Type-II** pass. Everything is append-only: no historical V15–V24 / SP-2 bank, status row, report, or pass-1 module was modified.
+
+### Files added (all under the requested `RequestProject/CurrentProgramme/` and `RequestProject/Status/`)
+
+- `CurrentProgramme/SevenBoxPrimeWeights.lean`, `CurrentProgramme/PrimeTupleMultiplicity.lean` — prime-supported seven-box weights; exact labelled multiplicity `≤ k!`, giving `∑|a₃|² ≤ 6·∏E` and `∑|b₄|² ≤ 24·∏E` (repeated primes included, no injectivity assumed).
+- `CurrentProgramme/ConductorSplitLargeSieve.lean` — character families supplied as data (no ambient character-API dependence), literal character sums, the **exact conductor split** (cover / disjoint / monotone / reassembly), and the Möbius expansion of the coprimality indicator.
+- `CurrentProgramme/LowConductorSiegelWalfisz.lean` — internal cutoff `(log X)^30`, a proof that it is a *different function* from the physical cutoff `X^{1/3}`, an explicitly **ineffective** Siegel–Walfisz socket, and a finite aggregation consumer.
+- `CurrentProgramme/SmallQ34LSCompiler.lean` — three-child `ε/3` bundle → SmallQ target bound, plus a proof that the outstanding obligation really is the normalisation child.
+- `CurrentProgramme/SmallPrimePrefix.lean` — `z₀ = X^{1/420}`; smooth/rough factorisation with **existence and uniqueness**; the `Ω(d) ≥ 3` firewall; the truncated-Möbius **non-factorisation** obstruction (explicit counterexample `M₂(2)=0` vs `M₂(3)=1`); literal residual sum and its socket.
+- `CurrentProgramme/PostRepairOwnerCompiler.lean` — refined owner map (6 owners / 9 cells, dedicated short-`t` and `Ω(d)≥3` owners), unique ownership, no double spending, conditional compiler.
+- `CurrentProgramme/UniformFragmentationCompiler.lean` — K0 uniform fragmentation reassembly compiler, banked as REDUCED / CONDITIONAL and never activated.
+- `Status/CurrentStatusErdos287PostBalanced7Pro.lean`, `Status/AxiomAuditErdos287PostBalanced7Pro.lean` — new append-only ledger with `no_closed_rows`, `erdos287_open`, `balanced7_open`, `k0_is_reduced_not_closed`, residual-ordering and honesty theorems; full `#print axioms` audit.
+- `RequestProject/Main.lean` — import lines only, inserted inside the import block.
+- `ERDOS287_POST_BALANCED7_PRO_SAFE_BANK_REPORT.md` — full report with the mandated final block and firewall.
+
+### Verification
+
+- **Build:** full `lake build` succeeds (8213 jobs, 0 errors). One pre-existing, unrelated linter warning in `RequestProject/Erdos287/FixedCertificateSmoothParity.lean:60` remains untouched.
+- **Trust scan:** zero occurrences of `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `@[implemented_by]` in all new files.
+- **Axioms:** every principal declaration of this pass depends only on `propext`, `Classical.choice`, `Quot.sound`.
+- **Interfaces:** every analytic/source socket is uninhabited, each with an accompanying refutation theorem exhibiting explicit failing data.
+
+### Status kept open
+
+BALANCED7, FCL and Erdős #287 remain **open**; no `closed` row exists. The first exact residual is the SmallQ 3+4 coefficient/source normalisation; the first exact downstream residual is the `Ω(d) ≥ 3` small-prime-prefix Type-II input. The hard-θ `δ = 1/21` ledger is banked as rational/order arithmetic only.
+
+Note on naming: the requested `TwinPrimeProject.*` namespace does not exist in this repository, so the established `Erdos287.*` convention was used (`Erdos287.PostBalanced7Pro`, `Erdos287.PostBalanced7ProStatus`); this is recorded in the report. The referenced research-ledger markdown file is not present in the repository, so Lean declarations were used as the sole authority for formal claims.
+
+
+# Summary of changes for run 0c8f71d8-a099-4200-a479-de6e0f37f241
+Continued the Erdős #287 repository in place, append-only. The comparison / aggregate-Euler safe bank (V23) was already banked and pushed; this session completed and banked the follow-on **V24 full-`q` Balanced7 provider-exhaustiveness layer**, chosen as the next consistent version identifier after V23. `ARISTOTLE_SUMMARY.md` was not modified, and the V20/V21/V22/SP-2/V23 layers are untouched.
+
+**Files added** (all under `RequestProject/`):
+- `Erdos287/PhysicalLogPrefactorRepair3221.lean` — repaired physical log prefactor `C_ext = 1`, machine-checked retraction of the old `C_ext = 0` normalization, `Q = X^{3/5}` numerology (net log exponent `−5/2`, signed margin `3`).
+- `Erdos287/SP2LiteralPhysicalSource3221.lean` — literal one-sign SP-2 physical source, two-sign reassembly, and the non-circularity firewall that `2B(P)` is not recoverable from the principal q-cell.
+- `Erdos287/EulerUniformityLayer3221.lean` — repaired Euler local factor with explicit bound `|f − 1| ≤ 6·p^{−7/4}` (real `w ≥ −1/4`), at most seven on-`P` corrections, `H_P(0) = 2B(P)`, plus an uninhabited analytic uniformity interface.
+- `Erdos287/FullQStructuralPartition3221.lean` — cut `U = X^{1/3}`, exact SmallQ/SmallR/Hard cover, disjointness and reassembly, dyadic partition of unity with the proved firewall that smooth supports need not be disjoint, and provider ownership.
+- `Erdos287/SmallQSmallRAdapters3221.lean` — literal sector sums with exact reassembly; uninhabited SmallQ and switched-SmallR Type-I adapter interfaces plus conditional consumers; proof that `q ↔ r` is not a symmetry of the sector decomposition.
+- `Erdos287/HardDyadicProviders3221.lean` — `Q = X^{3/5}` cell metadata (with `Q·R = X`), hard dyadic census, and a *refuted* exhaustiveness interface.
+- `Erdos287/BalancedSevenFullQCompiler3221.lean` — conditional full-`q` compiler and firewalls, including the proof that the antecedent bundle is currently satisfiable by no parameter set.
+- `Status/Erdos287V24Status.lean`, `Status/AxiomAuditErdos287V24.lean`; `Main.lean` extended with import lines only; report `ERDOS287_FULLQ_BALANCED7_PROVIDER_SAFE_BANK_REPORT.md` with the mandated final block and final firewall.
+
+**Build and trust:** `lake build` completes successfully — 8190 jobs, 0 errors; the only warnings are pre-existing linter notes in older files (zero warnings in the new files). A scan of every new file finds no `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `@[implemented_by]`. `#print axioms` on all principal new declarations shows only `propext`, `Classical.choice`, `Quot.sound` (several depend on no axioms).
+
+**Status recorded:** finite/structural layers PASS; aggregate-Euler uniformity, SmallQ and SmallR adapters remain external and uninhabited; provider exhaustiveness FAILS as a global claim (proved); `SP2-BALANCED7-FULL-Q45` OPEN (conditional compiler only); Balanced7 asymptotic and effective statuses kept separate, both open; post-Balanced7 census not activated; first exact residual `AFFINE287-SP2-SMALLQ-TYPEI-ADAPTER45`; **Erdős #287 remains OPEN**. All work is committed and pushed.
+
+# Summary of changes for run ffa98343-83d2-4670-8663-8a6833eebf96
+## What was done
+
+Continued the Erdős #287 repository **in place, append-only**. Nothing earlier was deleted or rewritten, and `ARISTOTLE_SUMMARY.md` was not touched. Three layers are now banked: **V21** (two-high-projector / five-box sieve / source-normalization firewall), **V22** (source forensics + safe bad-character log re-ledger) and **SP-2** (direct Balanced7 source repair). Each has its own report with the mandated final block.
+
+### V21 (completed)
+Lean modules under `RequestProject/Erdos287/` — `TwoHighProjector3221`, `DoubleOrthogonalityFiveBox3221`, `BadCharacterCount3221`, `PrimeBoxNormalization3221`, `ShortShiftSieve3221`, `ShiuDivisorAverage3221`, `HighProjectorCutoff3221`, `PhysicalLogBudget3221`, `OuterTwoPrimeBlock3221`, `BalancedSevenV21Compiler`, plus `RequestProject/Status/Erdos287V21Status` and `AxiomAuditErdos287V21`. The missing deliverable, `ERDOS287_V21_TWO_PROJECTOR_SAFE_REPAIR_BANK_REPORT.md` (sections A–X + final block), has now been written.
+
+Key proved content: the exact two-variable indicator identity giving `HH = AA − BA − AB + BB` with explicit no-omission / no-overlap / no-double-counting lemmas; the pre-projector variance reconstructed from the repository's own character source, with the ξ-form equivalence **proved** rather than assumed; five-box double orthogonality (`−2smW ≡ 1`, `−2smW′ ≡ 1`, `W ≡ W′ (mod q)`, `W − W′ = qt`, `q ∣ 2mW′+s`, `(q,W′)=1`, both signs); the safe finite bad-character count `#Bad ≤ D(D+1)/2 + 1 ≤ (D+1)²` (the `D·τ(q)` heuristic is **not** banked); the kernel-checked exponent ledger `39/35`, `31/35`, sum `2`; the symbolic four-channel log compilers with `BA/AB/BB` kept separate; the outer/inner seven-box partition and prime-density anti-double-spending firewall; the phase-alignment lemma repairing the circular provenance; and the conditional LOGVAR / Balanced7 compilers.
+
+### V22 (new)
+`BadCharacterLogLedger3221`, `Ford723BalancedSevenAdapter3221`, `PrimeBoxL1Normalization3221`, `TwoProjectorPhysicalClosure3221`, `Status/Erdos287V22Status`, `Status/AxiomAuditErdos287V22`, report `ERDOS287_V22_SOURCE_FORENSICS_SAFE_BANK_REPORT.md`. The safe `(D+1)²` count is pushed through the log arithmetic with abstract cutoff exponent: `Cvar(B0) = min(5, 15/2 − 2B0, 10 − 4B0)`, kernel samples `Cvar(1)=5`, `Cvar(2)=2`, `Cvar(3)=−2`. Closure criterion proved in exact form: `netLogExponent < −1 ⟺ Cvar > 2·Cext`, with the capacity table for `B0 = 1, 2, 3`.
+
+### SP-2 (new)
+`SP2DirectSourceAdapter3221`, `SP2PrimeBoxWeights3221`, `SP2ClosureCompiler3221`, `Status/Erdos287SP2Status`, `Status/AxiomAuditErdos287SP2`, report `ERDOS287_SP2_DIRECT_BALANCED7_SAFE_BANK_REPORT.md`. Source forensics found **no** `G_*`/`H_*` object; what exists is the fixed smooth-parity certificate (`truncMobius`, the `k=0, J=∅` packet), so the Ford-(7.23) adapter is recorded as `RETRACTED / NOT THE LITERAL SOURCE` (file preserved). Proved: the divisor-depth threshold pinning `r = 3`; `∑_{j≤3}(−1)^j C(7,j) = −20` and `64` of `128` subsets; and — the substantive repair — the pointwise law `|ω_i(p)| ≤ 1` for the literal weight `V_{i,λ}` as a **theorem**, not an interface field, with `L¹` mass equal to the cell cardinality. The closure compiler gives `−(2+5)/2 + 0 = −7/2 < −1` contingent on `Cext = 0`, with both `sp2_closure_margin` and `sp2_closure_fails_without_audit` making the contingency explicit.
+
+## Required final block
+
+```
+FILES ADDED (V21): TwoHighProjector3221, DoubleOrthogonalityFiveBox3221,
+BadCharacterCount3221, PrimeBoxNormalization3221, ShortShiftSieve3221,
+ShiuDivisorAverage3221, HighProjectorCutoff3221, PhysicalLogBudget3221,
+OuterTwoPrimeBlock3221, BalancedSevenV21Compiler, Status/Erdos287V21Status,
+Status/AxiomAuditErdos287V21, ERDOS287_V21_TWO_PROJECTOR_SAFE_REPAIR_BANK_REPORT.md
+FILES ADDED (V22): BadCharacterLogLedger3221, Ford723BalancedSevenAdapter3221,
+PrimeBoxL1Normalization3221, TwoProjectorPhysicalClosure3221,
+Status/Erdos287V22Status, Status/AxiomAuditErdos287V22,
+ERDOS287_V22_SOURCE_FORENSICS_SAFE_BANK_REPORT.md
+FILES ADDED (SP-2): SP2DirectSourceAdapter3221, SP2PrimeBoxWeights3221,
+SP2ClosureCompiler3221, Status/Erdos287SP2Status, Status/AxiomAuditErdos287SP2,
+ERDOS287_SP2_DIRECT_BALANCED7_SAFE_BANK_REPORT.md
+
+FILES MODIFIED: RequestProject/Main.lean (import lines appended only)
+
+V20 PRESERVED: YES
+OLD HHH CLOSURE PROOF: RETRACTED (object and socket preserved)
+TWO-HIGHPROJECTOR ALGEBRA: EXACT / ALGEBRAIC PASS
+DOUBLE ORTHOGONALITY: EXACT PASS
+BAD-CHARACTER SAFE COUNT: FINITE PASS, #Bad ≤ (D+1)^2
+PRIMEBOX NORMALIZATION: pointwise law PROVED for V_{i,λ}; identification SOURCE_OPEN
+CUTOFF COMPATIBILITY: SOURCE_OPEN / UNINHABITED
+PHYSICAL LOG PREFACTOR: SOURCE_OPEN / UNINHABITED
+SHIU INTERFACE: EXTERNAL / UNINHABITED (φ(2W)=φ(W) proved)
+SHORT-t SIEVE INTERFACE: EXTERNAL / UNINHABITED (z = T^(1/20), dimension 1)
+BA / AB / BB: SEPARATE CHANNELS, BOUNDS ARE HYPOTHESES, NOT THEOREMS
+OUTER TWO-PRIME L2: ALGEBRA PROVED, DENSITY ANTECEDENT UNINHABITED
+TWO-PROJECTOR CLOSURE: CONDITIONAL (compiler proved, no inhabitant)
+3221-INVERSE-SAMPLED-HIGHCOND-LOGVAR45: OPEN / CONDITIONAL — NOT CLOSED
+SIXTH MOMENT: OPEN STRONGER SUFFICIENT FALLBACK (not deleted, not marked false)
+COMPARISON: SOURCE_OPEN
+BALANCED7: OPEN
+ERDOS287: OPEN
+FIRST EXACT RESIDUAL: V21/V22 — BALANCED7-PRIMEBOX-L1-NORMALIZATION45;
+  after SP-2 — COMPARISON-SMALLCOND-EXCEPTIONAL-SPLICE45
+LAKE BUILD: SUCCESS — 8171 jobs, 0 errors; new modules emit 0 warnings
+  (the warnings a from-source rebuild reports are pre-existing linter notes in older modules)
+TRUST SCAN: ZERO occurrences of sorry / admit / axiom / opaque / unsafe /
+  native_decide / @[implemented_by] in code across all new files (only prose mentions
+  in docstrings); #print axioms on every principal new declaration returns only
+  [propext, Classical.choice, Quot.sound]
+PUBLIC-MAIN SYNC: Main.lean extended with imports only; full build clean
+```
+
+**Final firewall.** No source-open or external analytic interface was inhabited merely to make a compiler execute. Nothing in V21, V22 or SP-2 proves Erdős #287, and nothing proves Balanced7 unless the explicit analytic/source antecedents — the SP-2 source identification, the prime count, the sieve and Shiu inputs, the `Cext = 0` audit and the comparison splice — are separately supplied. Erdős #287 and Balanced7 both remain OPEN.
+
+
+# Summary of changes for run 8a33d15a-18fa-43fa-b470-68e98c06199d
+## Erdős #287 — V20 safe bank: completed and verified
+
+The existing repository was continued **in place, append-only**. Nothing was deleted or rewritten; `ARISTOTLE_SUMMARY.md` was left untouched.
+
+### Files added
+- `RequestProject/Erdos287/HighConductorCharacterGram3221.lean`
+- `RequestProject/Erdos287/FiveBoxCharacterFactorization3221.lean`
+- `RequestProject/Erdos287/ConductorRouter3221.lean`
+- `RequestProject/Erdos287/HighQuotientShiftedGram3221.lean`
+- `RequestProject/Erdos287/HighConductorSixthMoment3221.lean`
+- `RequestProject/Erdos287/BalancedSevenV20Compiler.lean`
+- `RequestProject/Status/Erdos287V20Status.lean`
+- `RequestProject/Status/AxiomAuditErdos287V20.lean`
+- `ERDOS287_V20_HIGHQUOTIENT_HHH_SAFE_BANK_REPORT.md` (report sections A–V and the mandated final block)
+
+### File modified
+- `RequestProject/Main.lean` — import lines appended only.
+
+### Principal results proved (all sorry-free)
+- **Inverse-sampled character algebra:** `inverseSample_character_identity` (conj(χ(aₘ)) = χ(−2s)·χ(m), with `s²=1` and `2m` a unit stated explicitly), `affineSample_character_factor`, `cHigh_inverseSampled_expansion`.
+- **Five-box factorisation:** `fiveBox_characterTransform_eq_prod_five`, `fiveBox_characterTransform_factor`, `pairBlockSum_eq_mul`, `sum_mul_sum5`.
+- **Exact m-Gram (central V20 identity):** `inverseSampledVariance_eq_characterGram`, from `charSource_variance_eq_gram`; supporting `shortMGram`, `autocorr`, `autocorr_reindex`, `fixedModulus_samePrimitive_induced_unique`.
+- **Diagonal / low-quotient children:** `characterGram_diag_split`, `autocorr_principal_highCoeff`, `lowConductor_card_le`, `lowQuotient_child_le`, plus the conditional compilers `highCondDiagonal_of_largeSieve`, `lowQuotient_child_of_diagonal_budget`.
+- **Capacity firewalls:** `gram_parseval`, `autocorr_l2_sq_le`, `separateL2_compiler`, `separateGramL2_capacity_deficit` (12/35), `pointwiseBurgess_capacity_deficit` (51/112), `diagonal_power_room_rational`/`_rpow` (4/35).
+- **Conductor-pair router:** `ConductorCell`, `RouterCondition`, `conductorCell_routed`, `router_case_A/B/C`, `router_threshold_identity` (5/14 + 31/80 = 417/560).
+- **HHH frontier:** `SurvivingHHHConductorCell`, the exact object `hhhGram` (no analytic assumption in its definition, non-vacuity witnessed by `probeHHHData_gram`), the open socket `HighQuotientFiveBoxShiftedGram3221Input`, and the reassembly compiler `logVar_of_four_channels`.
+- **Sixth-moment bridge:** `injOn_affineSample`, `sixthMoment_holder_at`, `sixthMoment_holder_over_q`, `sixthMoment_power_margin` (1/105).
+- **Same-B0 comparison firewall and Balanced7 compiler:** `highConductorCutoff`, `MuLogComparisonAtCutoff`, `comparison_cutoff_must_match`, `balancedSeven_of_v20_package`, `v20_package_cutoff_consistent`.
+- **Non-vacuity / anti-circularity:** `largeSieve_not_automatic`, `pointwiseBurgess_not_automatic`, `hhh_input_not_automatic_v20`, `sixthMoment_input_not_automatic_v20`, `comparison_not_automatic_v20`, `logVar_cannot_construct_hhh`, `balancedSeven_compiler_cannot_construct_comparison`.
+- **Machine ledger:** `controlling_analytic_residual_unique`, `sixthMoment_not_controlling`, `logVar_reduced_not_proved`, `capacity_firewalls_are_not_proofs`, `children_are_conditional`, `comparison_source_open`, `terminal_nodes_open` (kernel `decide`).
+
+### Build and trust
+- `lake build`: **success — 8148 jobs, 0 errors, 0 warnings.**
+- Placeholder scan of all new Lean files for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `@[implemented_by]`: **zero occurrences.**
+- `#print axioms` on every principal new declaration reports either `[propext, Classical.choice, Quot.sound]` or no axioms at all. No external analytic or source interface is inhabited anywhere.
+
+### Status
+Erdős #287 is **OPEN** and Balanced7 is **OPEN**; nothing here claims either. The first exact analytic residual is the high-quotient five-box shifted character Gram (`3221-HIGHQUOTIENT-FIVEBOX-SHIFTED-GRAM45`), with the sixth-moment route recorded only as a stronger sufficient open alternative, and comparison recorded as SOURCE_OPEN.
+
+
+# Summary of changes for run 92ea5d66-6a71-4baf-b85e-90be38cdaccc
+## Erdős #287 — V19 pre-Poisson / high-conductor safe bank (append-only)
+
+**Erdős #287 remains OPEN. Balanced7 remains OPEN.** Nothing added proves either, no analytic or source interface is inhabited, and no `axiom` was introduced.
+
+### A. Regression
+Pre-edit `lake build`: success, 8135 jobs, 0 errors, tree clean. Every named prerequisite was located and reused unchanged (`FactorialEulerPolarization`, `FactorialEulerLocal`, `FactorialPolarizationLinearity`, `PascadiParameterLedger`, `NormalForm3221`, `MovingPhaseProvider3221`, `FactorialEndpoint3221Adapter`, `Erdos287V18Status`, and the whole V17 3221 finite/exponent bank). No existing theorem was restated, weakened, renamed or deleted; the seven-prime polarization was not redone (the V17 grouping and exponents are reused verbatim). Post-edit build: **success, 8140 jobs, 0 errors**.
+
+**Files changed** — added `RequestProject/Erdos287/PrePoissonDensity3221.lean`, `RequestProject/Erdos287/HighConductorVariance3221.lean`, `RequestProject/Erdos287/CharacterGram3221.lean`, `RequestProject/Erdos287/BalancedSevenV19Compiler.lean`, `RequestProject/Status/Erdos287V19Status.lean`, `ERDOS287_V19_PREPOISSON_HIGHCOND_SAFE_BANK_REPORT.md`; edited `RequestProject/Main.lean` (five import lines only).
+
+### B. Frontier reset
+A new V19 metadata ledger (`Erdos287.V19Status.ledger`) records the V18 DI/small-`Z` route as *superseded as controlling frontier* — not false — plus `SOURCE_MISMATCH`, `CONDITIONAL PROVIDER METADATA` and `RETIRED AS CURRENT ROUTE` for the other three nodes. `controlling_analytic_node_unique` proves the inverse-sampled high-conductor log-variance node is the **unique** `OPEN_ANALYTIC` node. No theorem converts a label into a mathematical claim, so no analytic falsity is derived from metadata.
+
+### C–H. New Lean-proved content (all sorry-free)
+* **Affine divisor identity** — `affineResidue_iff_dvd_two_mul_add`: for odd `q`, `m·w ≡ a (mod q) ↔ q ∣ 2mw + s`; plus `balancedSeven_affine_divisor_condition`, `exists_affineResidue`.
+* **First Cauchy / μ-sign** — `firstCauchy_sign_consumption`, `postCauchy_weight_sign_invariant`, and the firewall `firstCauchy_loses_sign_information` (the signed weight is provably not retained).
+* **High-conductor residue source** — `residueSum`, `residueSum_sum_over_classes`. Dirichlet-character machinery *is* available, so the projection is literal, not a placeholder.
+* **RR/RK/KK** — `normSq_sub_reassembly`, `highConductorEnergy_reassembles_crossTerms` (algebraic only; no claim that the physical comparison term is matched).
+* **Divisor density** — `sampled_q_card_le_divisorCount(_affine)`; `τ(n)=X^{o(1)}` is *not* proved or assumed and is isolated as the uninhabited `DivisorGrowthInput`.
+* **Second-copy density** — `secondCopy_shell_iff`, `congruence_interval_card_le` (`q·# ≤ (b−a)+q`), floor variant, `secondCopy_card_le_one_add_quotient`; exact ℤ arithmetic, no real intervals.
+* **Combined compiler** — `sampledQuadBox_card_le`, with no `X`-exponent inside.
+* **39/35 ledger** — `prePoisson_density_exponent = 39/35`, `cauchy_prefactor_exponent = 31/35`, `highCond_naturalScale_exponent = 39/35`, `naturalScale_matches_density` (`CAPACITY_ONLY`).
+* **Retired-lane arithmetic** — `BC3221_capacity_deficit_arithmetic` (47/350 > 0), `DRZ3221_capacity_deficit_arithmetic` (11/84 > 0); metadata only, no external theorem formalised or assumed.
+* **Variance socket** — `InverseSampledHighCond3221Data` (pure data, no free `Prop`), `Vhi`, and the load-bearing `samplePoint_iff_affineSampled` identifying `−s(2m)⁻¹` with `q ∣ 2mw+s`.
+* **Character Gram** — `totient_mul_residueSum_eq_sum_char`, the proved projection `residueSum_eq_cLow_add_cHigh`, `gram_expansion`, `highResidue_energy_gram`, `inverseSampled_highResidue_gram`, `cHat_fiveBox_factorisation`, `cHat_twoBox_factorisation`. Identities only; no character-sum bounds.
+
+### K/O/P. Socket, compiler, non-vacuity
+`InverseSampledHighCondLogVar3221Input` (target `V_hi ≤ naturalScale / Lsave`, explicit positive saving) is **never inhabited**; it occurs only as a declaration and as a hypothesis. The compiler `cauchyPrefactor_of_firstCauchy → highCond_source_bound_of_logVar → factorialEndpoint_of_highCondLogVar → balancedSeven_of_highCondLogVar` keeps the budget explicit (`prefactor·(scale/Lsave) ≤ E²`) and the comparison channel independent (`E + err`). Non-automaticity proved: `highCondLogVar_not_automatic`, `cauchyPrefactor_not_automatic`, `balancedSeven_not_automatic`, `comparison_stays_independent` (reusing the V18 refutation).
+
+### Q. Build / axiom audit
+`lake build` succeeds (8140 jobs, 0 errors). The five new files contain **no** `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `@[implemented_by]` (the only textual hits are the words inside doc comments). `#print axioms` is run on all 45 principal new theorems; every one reports only `propext`/`Classical.choice`/`Quot.sound` or a subset, and two ledger theorems report no axioms at all. No `sorryAx`, no `Lean.ofReduceBool`.
+
+### R–U
+Final status table, first source open (`AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45`), first analytic open, and the next unique action are written in `ERDOS287_V19_PREPOISSON_HIGHCOND_SAFE_BANK_REPORT.md`.
+
+```
+GATE / BALANCED7: OPEN
+FCL: OPEN
+WINDOWPAIRSUPPLY: OPEN
+ERDOS287: OPEN
+```
+```
+FIRST ANALYTIC OPEN:
+    3221-INVERSE-SAMPLED-HIGHCOND-LOGVAR45.
+```
+
+# Summary of changes for run afd7b265-8510-432f-8f62-3e3efb4cb741
+## Erdős #287 — V18: fixed-degree-seven source / normal-form / small-`Z` compiler
+
+**ERDŐS #287 REMAINS OPEN.** Nothing added here proves it, nor Balanced7, nor the factorial signed endpoint, nor the comparison match, nor any Kuznetsov/Deshouillers–Iwaniec/Pascadi estimate. No `axiom` was added and no analytic or source interface was inhabited.
+
+### Regression guard
+Baseline build 8131 jobs / 0 errors; final build **8135 jobs / 0 errors**. Every named prerequisite was located and reused unchanged (`FactorialEulerPolarization.lean`, `FactorialEulerLocal.lean`, `FactorialPolarizationLinearity.lean`, `PascadiParameterLedger.lean`, `Erdos287V16Status.lean`, plus the whole V17 3221 bank and `FactorialOmega7SignedEndpoint`, `MuLogComparisonLowCondMatch`, `BalancedSevenPacketInput`). Nothing was redefined, renamed, weakened or deleted; work is append-only apart from four import lines.
+
+### Files changed
+Added `RequestProject/Erdos287/NormalForm3221.lean`, `RequestProject/Erdos287/MovingPhaseProvider3221.lean`, `RequestProject/Erdos287/FactorialEndpoint3221Adapter.lean`, `RequestProject/Status/Erdos287V18Status.lean`, `ERDOS287_3221_SAFE_BANK_REPORT.md`. Edited `RequestProject/Main.lean` (imports only).
+
+### Status repair (the moving-phase overclaim)
+`PASCADI101-LEVELWISE-PHASE-LS45 PASS`, `PASCADI102-MOVINGPHASE45 PASS`, `PASCADI39-MOVINGPHASE-EXTENSION45 PASS` and `3221-SOURCE-MOVINGPHASE-DI45 CLOSED` are **retracted as controlling status** (provenance kept, nothing deleted): a repository-wide search finds no declaration mentioning a levelwise/moving phase and no phase provider is inhabited. They are replaced by a metadata-only four-regime dictionary (A, B published; C conditional provider; D open analytic), with the proved separations `largeRange_not_published`, `smallRange_is_conditional`. None of A–D is an axiom.
+
+### New Lean-proved content (sorry-free)
+* **Normal-form source pin** — `BalancedSeven3221NormalForm` records the schematic completed child as an exact equality on explicit finite data (coprime `q=rs`, phase, coefficients, Kloosterman leg literally equal to the banked `kloostermanLike` of modulus `s·c`, unit/gcd/zero-mode/low-conductor routing), with **no free `Prop` field and no inhabitant**. Search finding: a Kloosterman-shaped sum with its exact unit-change identity exists in the repository; **no** dispersion, Poisson/completion, additive character, gcd-extraction or low-conductor projection of the physical source exists. Status `SOURCE_BLOCKED`.
+* **Phase algebra** — `phase_int_add`, `phase_fract`, `phase_congr`, `norm_phase`, and `phase_leg_congr` (mod-1 representative invariance on the pinned data); `kloostLeg_unit_change`, `modulus_above_cut`, `factorisation_is_data`. The ω-dependence classification is recorded, not forced, with counterguard `omega_product_strictly_stronger` (`1·6 = 2·3`). No literal ω formula and no value for `Z_3221` are claimed — `Z`, `R0,S0,M0,N0,C0`, `Qlevel` exist only as fields.
+* **Small-`Z` range compiler** — `InSmallZRange`, `inSmallZRange_iff` (`N₀>0 ⇒ Z ≤ 1 ∨ Z N₀ ≤ Q`), dichotomy, disjointness, nonvacuity witness; unconditional levelwise algebra `levelValue`, `completedValue_eq_sum_levelValue`, `completedValue_norm_le`; and the compiler `diKuznetsov_of_perLevelSmallZ` from the **uninhabited** `PerLevelPhaseSmallZ3221Input` plus an explicit level-count budget to the existing analytic socket.
+* **Large-range firewall** — `LevelwisePhaseLargeRange3221Input` (uninhabited, `OPEN_ANALYTIC`) kept strictly apart by the proved `smallZ_largeRange_firewall`: the two inputs can never both apply to the same source.
+* **Endpoint adapter** — `FactorialEndpoint3221SourceAdapter` (`SOURCE_OPEN`, uninhabited) exposes the missing bridge; `factorialEndpoint_of_smallZ` and `balancedSeven_of_smallZ` are proved compilers that reuse the earlier balanced-seven implication unchanged and keep error channels separate (`E + err`).
+* **Non-vacuity firewall** — `endpoint_not_automatic`, `comparison_not_automatic`, `perLevelSmallZ_not_automatic`: each open interface genuinely constrains its data, so no compiler can be made unconditional by parameter choice. The Hilbert–Schmidt/nuclear-rank firewall is preserved.
+
+### Audit
+`lake build` succeeds (8135 jobs, 0 errors). A repository-wide scan for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `@[implemented_by]` finds **zero occurrences in Lean code** (all matches are documentation prose). `#print axioms` is emitted at build time for the 25 principal new theorems; each reports a subset of `[propext, Classical.choice, Quot.sound]` (one reports none). No user axiom.
+
+### Final block
+```
+REGRESSION: PASS
+BUILD: SUCCESS (8135 jobs, 0 errors)
+SORRY: NONE
+USER AXIOMS: NONE
+
+FACTORIAL EULER: PROVED_ALGEBRAIC
+EXPECTED-TERM LINEARITY: PROVED_ALGEBRAIC
+3221 GROUPING: PROVED_FINITE
+3221 EXPONENT LEDGER: PROVED_ALGEBRAIC / CAPACITY_ONLY
+SOURCE-ASSISTED DIAGONAL: PROVED_FINITE / CAPACITY_ONLY
+OFFDIAGONAL t: PROVED_FINITE / CAPACITY_ONLY
+EH NO-WRAP: PROVED_FINITE
+EH RATIO ENERGY: CONDITIONAL_FINITE
+LITERAL 3221 NORMAL FORM: SOURCE_BLOCKED
+omega FORMULA: SOURCE_OPEN
+Z_3221: SOURCE_OPEN
+SMALL-Z RANGE ADAPTER: CONDITIONAL_COMPILER
+LEVELWISE LARGE-RANGE PHASE: OPEN_ANALYTIC
+3221 ANALYTIC CHILD: OPEN_ANALYTIC
+FACTORIAL ENDPOINT: OPEN_ANALYTIC
+COMPARISON: SOURCE_OPEN
+BALANCED7: OPEN
+FCL: OPEN
+WINDOWPAIRSUPPLY: OPEN
+ERDOS287: OPEN
+```
+First source open: the dispersion/completion (Poisson) identity for the physical balanced-seven source. First analytic open: the per-level small-`Z` estimate for the pinned source (and, separately, the large-range input). Next unique action: derive a completed finite Fourier/Poisson identity for the `m`-box in terms of `levelValue`, `phase` and `kloostermanLike`, i.e. produce the first genuine inhabitant of the pinned normal form from repository definitions. Full details in `ERDOS287_3221_SAFE_BANK_REPORT.md`; all work is committed and pushed.
+
+# Summary of changes for run 5d1858c9-721b-40a2-8db0-d6de33736eb4
+## Erdős #287 — V17: 3221 source-assisted dispersion safe bank
+
+**ERDŐS #287 REMAINS OPEN.** Nothing in this run proves it, nor Balanced7, nor the factorial signed endpoint, nor any Deshouillers–Iwaniec/Kuznetsov estimate. No axiom was added.
+
+### Baseline / regression
+Baseline `lake build`: 8123 jobs, zero errors. Final: **8131 jobs, zero errors**. No V15/V16 statement was edited; work is append-only apart from eight import lines in `RequestProject/Main.lean`.
+
+**Search finding:** the named prerequisites `UnconditionalDivisorBound.lean`, `FixedDepthConvolution.lean` and `card_divisors_in_range_le_mul_rpow` **do not exist** in this repository, and there is no product-energy bank, no residue-class interval count, and no completed Fourier/Poisson identity. Nothing was assumed to exist: the finite divisor/energy facts were proved from scratch, the missing source objects were reported rather than fabricated.
+
+### Files added
+`RequestProject/Erdos287/Exponent3221Ledger.lean`, `BalancedSeven3221Grouping.lean`, `SourceAssistedDiagonal3221.lean`, `OffDiagonal3221.lean`, `EHNoWrap3221.lean`, `DIKuznetsov3221Interface.lean`, `BalancedSeven3221Compiler.lean`, `RequestProject/Status/Erdos287V17Status.lean`, `ERDOS287_3221_V17_SAFE_BANK_REPORT.md`. Edited: `RequestProject/Main.lean` (imports only).
+
+### Main proved theorems
+* **Regrouping** — `sevenfold_regrouping` (with `prod_apply_tuples`, the reusable exact expansion of an iterated Dirichlet convolution over ordered tuples): the ordered seven-prime sum of the V16 polarization equals `∑_{e·a·b·c=m} η α β γ` with exact convolution multiplicities. Numerically cross-checked at `m = 192` (both sides `1511208`). Multiplicity firewall discharged: `grouping_not_injective` (two distinct prime 7-tuples, same `(e,m,n,ℓ)`) and `alpha_not_one_bounded` (`α(6)=2`), with the correct majorant `alpha_norm_le_card_divisors` (`‖α(a)‖ ≤ τ(a)`).
+* **Exponent/range ledger** — exact ℚ arithmetic: `E+M+N+L=1`, `W−Q=4/35`, `H=11/35`, `E+H=16/35<Q` with margin `1/7`, `Texp=4/35`, diagonal margin `2/35`, the defect `(N+L)−Q=−1/35`, and the transcribed margins `1/10, 2/21, 19/35, 4/35, 2/35`.
+* **Diagonal** — `fiberwise_energy_le`, `productFibre_card_le` (`τ²`), `modulus_divisor_count_le` with the load-bearing zero guard `modulus_count_zero_case`, `diagonal_parent_bound`, `sourceAssisted_diagonal_finite`.
+* **Off-diagonal** — `offdiag_existsUnique_t`, `offdiag_t_ne_zero`, `offdiag_abs_t_le` (`|t|·Q_min ≤ 2W_max`), all over ℤ.
+* **No-wrap / hostile audit** — `ratio_eq_iff_cross` (unit sector), `nowrap_eq_of_dvd_of_abs_lt`, `ratioCollision_samePrime`, `ratioCollision_distinctPrimes_param` (`h₁=ce₁, h₂=ce₂`), `ratioCollision_card_bound` (`≤ #E·#H + (#E)²·#C`), `ehRatioEnergy_le_explicit`. Audit verdict: the claimed order `E·H` is reproduced **with no divisor factor and no `X^{o(1)}` loss**, so the claim is not retracted — but it is banked only as `CONDITIONAL_FINITE`, since every statement carries the literal no-wrap size hypothesis.
+* **Dictionary / socket / compiler** — `BalancedSeven3221CompletedSource` (concrete data + conditions, no free `Prop` field, no physical inhabitant), `DIKuznetsov3221Input` (source-specific, never inhabited, not an axiom), counterguards `slot_dependence_counterguard`, `zeroMode_separation_guard`, `modulus_factorisation_not_unique`, and the compilers `factorialEndpoint_of_3221`, `balancedSeven_of_3221` (reusing the V16 theorem unchanged). The bridge the 3221 child cannot supply is made explicit as the SOURCE-OPEN `Endpoint3221Decomposition`, never inhabited.
+
+### Comparison source audit
+`SOURCE_BLOCKED`. Missing definitions named exactly: `B(n)`/`4B(n)`, `M_phys`, the principal local density, the small-conductor subtraction, the exceptional-character convention, physical unit/nonunit routing. Nothing invented; polarization not redone.
+
+### Audit
+No `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide` or `@[implemented_by]` in Lean code (all matches are documentation prose). `#print axioms` is emitted for the 68 principal new theorems; every report across the repository is a subset of `[propext, Classical.choice, Quot.sound]`. Full A–V report in `ERDOS287_3221_V17_SAFE_BANK_REPORT.md`. Everything committed and pushed.
+
+```
+REGRESSION: NONE
+BUILD: SUCCESS (8131 jobs, 0 errors)
+SORRY: NONE
+USER AXIOMS: NONE
+
+FACTORIAL EULER POLARIZATION: PROVED_ALGEBRAIC
+3221 LABELLED GROUPING: PROVED_FINITE
+3221 COEFFICIENT MULTIPLICITY: PROVED_FINITE
+STANDARD Q<NL DEFECT: PROVED_ALGEBRAIC
+SOURCE-ASSISTED DIAGONAL: PROVED_FINITE
+OFFDIAGONAL t PARAMETER: PROVED_FINITE
+t RANGE: PROVED_FINITE
+EH<Q CAPACITY: CAPACITY_ONLY
+EH NO-WRAP: PROVED_FINITE
+EH RATIO ENERGY: CONDITIONAL_FINITE
+COMPLETED SOURCE DICTIONARY: SOURCE_OPEN
+DI/KUZNETSOV LITERAL SPLICE: OPEN_ANALYTIC
+FACTORIAL ENDPOINT: OPEN_ANALYTIC
+COMPARISON: SOURCE_BLOCKED
+BALANCED7: OPEN
+FCL: OPEN
+WINDOWPAIRSUPPLY: OPEN
+ERDOS287: OPEN
+```
+
+**First formal blocker:** the endpoint bridge, now explicit as `Endpoint3221Decomposition`. **First source blocker:** the completed post-Poisson identity (then the physical comparison objects; the `θ=7/32` inequality was supplied without a formula and was not transcribed). **First analytic blocker:** `3221-DI-KUZNETSOV-LITERAL-SPLICE45`. **Next exact action:** produce a completed finite Fourier/Poisson identity for the `m`-box in terms of the objects already defined here.
+
+# Summary of changes for run 09089103-b26b-402b-8253-fef2b27ed0e8
+## V16 formal update — resumed in place, `ERDŐS #287 REMAINS OPEN`
+
+**Workspace guard: PASS.** Every V15 object named in the task was located before any edit (`coeff_balanced_eq_perm_sum`, `coeff_balanced_scaled`, `balancedMonomial`, `balancedSevenMonomial`, `labelledPolynomial`, `SquarefreeEncoding`, and both V15 interfaces `PolarizedOmega7SignedEoD`, `MuLogComparisonLowCondMatch`). No compiling V15 file was restarted, rewritten, weakened or renamed; work is append-only apart from five import lines in `RequestProject/Main.lean`. No axiom was added.
+
+### Files changed
+Added `RequestProject/Erdos287/FactorialEulerPolarization.lean`, `FactorialEulerLocal.lean`, `FactorialPolarizationLinearity.lean`, `PascadiParameterLedger.lean`, `RequestProject/Status/Erdos287V16Status.lean`, `ERDOS287_FACTORIAL_V16_REPORT.md`. Edited `RequestProject/Main.lean` (imports only).
+
+### 1. Retirement
+"Complete multiplicativity is required for the polarized seven-box encoding" is retired **as controlling** in the V16 status docstring; nothing proved under it is withdrawn or deleted.
+
+### 2. New factorial Euler polarization — `PROVED_ALGEBRAIC`
+Over an arbitrary characteristic-zero field (ℂ instantiated separately), never a bare semiring: `factorialEulerPolarization_seven` gives, for Ω(m)=7 and `F_z(p^e)=a_z(p)^e/e!` extended multiplicatively with `a_z(p)=(1/7)Σ z_i ω_i(p)`,
+`7^7·[z_1⋯z_7] F_z(m) = Σ_{p_1⋯p_7=m, ordered} ∏_i ω_i(p_i)`,
+**including repeated primes**. Supporting theorems: `mem_ordFact_iff` (the index set really is the ordered prime tuples), `count_eq_factorization`, `exists_perm_comp`, `image_perm_eq_ordFact`, `fiber_card_eq` (the factorials cancel exactly the permutations of equal prime occurrences — proved, not assumed), `factorialEulerPolarization_of_listing`, `exists_prime_listing`, plus the general N-slot version `factorialEulerPolarization`, the ℂ form, and non-vacuity at the extreme repeated case `128 = 2^7`. The identity was cross-checked numerically on `m = 12`, `N = 3` (both sides `227`).
+
+### 3. Local Euler algebra — formal only
+`localSeries_eq_rescale_exp` (`Σ_e F_z(p^e)T^e = exp(aT)` as formal power series), `derivative_localSeries` (`d/dT S = a·S`), and — so the Λ-data is a theorem, not a convention — `localSeries_ne_zero`, `localLambdaSeries_unique`, `lambda_coeffs_of_logDeriv`: any family satisfying the log-derivative equation is forced to be `a` at `e=1` and `0` for `e≥2`; with the `log p` normalisation, `localLambda_one`, `localLambda_of_two_le`, `localLambdaSeries_eq_C`. **No class-C claim**: the repository contains no class-C definition, so only the finite/formal prime-power coefficient identity is banked. No analytic convergence anywhere.
+
+### 4. Expected-term linearity — `PROVED_ALGEBRAIC`
+`factorialPolarization_commutes_linearMap` (+ seven-slot, arithmetic-function and weighted-projection instances). Abstract and conditional; covers principal-character, low-conductor-character and exceptional-character linear operators as instances. `M_fac = M_phys` is **not** proved.
+
+### 5. Pascadi parameter ledger — `PROVED_ALGEBRAIC / PARAMETER_LEDGER`
+`pascadi_parameter_eta_le_one_div_4000`, `one_div_seven_gt_one_div_4000`, `pascadi_Q_three_fifths_y_one_seventh_incompatible`, plus the exact margin `−3993/280`. Exact ℚ arithmetic; Pascadi's analytic theorem is not formalised and is not claimed to fail.
+
+### 6–8. Interfaces and compiler
+`FactorialOmega7SignedEndpoint` (`AFFINE287-FACTORIAL-OMEGA7-SIGNED-ENDPOINT45`) is stated and **never inhabited**; `MuLogComparisonLowCondMatch` stays uninhabited and source-blocked; the only theorem about `BalancedSevenPacketInput` is the implication `balancedSeven_of_factorialEndpoint_and_comparison`, which keeps the two error channels separate (`E + err`) and inhabits nothing.
+
+### Audit
+`lake build` succeeds: 8123 jobs, **zero errors**, and the build log contains no `sorryAx`. A repository-wide scan of all Lean sources for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `@[implemented_by]` finds **zero occurrences in Lean code** (all matches are documentation prose). `#print axioms` is emitted at build time for the 32 principal new theorems; across the whole repository all 446 printed reports list only `[propext, Classical.choice, Quot.sound]`.
+
+### Status
+`OMEGA7-FACTORIAL-EULER-POLARIZATION45: PROVED_ALGEBRAIC` · `POLARIZED-EXPECTED-TERM-LINEARITY45: PROVED_ALGEBRAIC` · `PASCADI-Q3/5-Y1/7-PARAMETER-NOGO: PROVED_ALGEBRAIC/PARAMETER_LEDGER` · `AFFINE287-FACTORIAL-OMEGA7-SIGNED-ENDPOINT45: OPEN_ANALYTIC` · `AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45: SOURCE_BLOCKED/OPEN` · `BALANCED7: CONDITIONAL/OPEN` · `ERDOS287: OPEN`.
+
+No statement was found false and no target failed. Full ledger in `ERDOS287_FACTORIAL_V16_REPORT.md`.
+
+# Summary of changes for run 3a93e89b-e3c6-43b5-bcda-2e46b020bde4
+## V15 resumed in place — verdict `ERDOS287_V15_MULOG_POLARIZATION_SAFE_BANK`, `ERDOS287: OPEN`
+
+**Workspace guard: PASS.** All named V14 objects were located before any edit (`vaughan_identity_exact`, `vaughan_affine_pointwise` in `RequestProject/Erdos287/AffineVaughanIdentity.lean`; `AffineVaughanPrimeCell`, `lambdaU_eq_neg_truncMobius` in `AffineVaughanPrimeOuter.lean`; `AffinePrimeModulusTwoOuterPacket` and the determinant-one line theorems in `AffineTwoOuterSource.lean`; the three compilers in `AffineTwoOuterCompiler.lean`). No V14 theorem was deleted, weakened, renamed or rewritten; work is append-only apart from seven import lines in `RequestProject/Main.lean`. No user axiom was added.
+
+### Files added
+`RequestProject/Erdos287/AffineMuLogIdentity.lean`, `AffineMuLogHardSource.lean`, `AffineMuLogLine.lean`, `AffineMuLogExponentLedger.lean`, `BalancedSevenFinite.lean`, `BalancedSevenPolarization.lean`, `RequestProject/Status/Erdos287V15Status.lean`, `ERDOS287_MULOG_V15_REPORT.md`. Edited: `RequestProject/Main.lean` (imports only).
+
+### Proved (sorry-free, kernel-checked)
+- **Λ = μ ∗ log** (`vonMangoldt_eq_mobius_mul_log`), derived in an arbitrary commutative ring from `μζ = 1`, `log = Λζ`, instantiated with Mathlib's genuine von Mangoldt/Möbius/log/zeta; a `rfl`-check confirms it is the same statement as Mathlib's own `moebius_mul_log_eq_vonMangoldt`. Coefficientwise `Λ(N) = ∑_{qr=N} μ(q) log r` and its divisor form.
+- **Affine source** at `N = 2mn ± 1` (`muLog_affine_pointwise`), using the V14 natural-number sign firewall; the named source object is defined only after the equality is proved.
+- **Three-way `q`/`r` partition**: exhaustive, pairwise disjoint, with exact recombination for an arbitrary weight in any additive commutative monoid, then specialised to μ·log and to the affine argument. The hard piece is defined, never claimed small.
+- **Determinant-one line** `qr − 2mn = ±1`: `r ≠ 0` and `q ≠ 0` proved (not assumed), `gcd(r,2m)=1` and `gcd(q,2n)=1`, forward and reverse directions, the iff, and multiplicity-one uniqueness of the line parameter.
+- **Exponent ledger only**: `δ₀ = 1/6 − σ > 0`, `σ + 2/3 + 1/6 = 1 − δ₀`, hence `< 1`, plus `1/6 − ν₀ = 131/300000`. No `O`-estimate is stated as a theorem.
+- **Balanced-seven binomial certificate** `∑_{j≤3} (−1)^j C(7,j) = −20`, derived from the already-banked general alternating partial binomial identity; no physical source bridge is claimed.
+- **Repeated-prime finite router**: seven labelled slots with one imposed coincidence take at most six values (and the general `Fin n` form), plus `6/7 < 1` as a rational inequality only.
+- **Squarefree labelled polarization** (main new algebra): over an arbitrary commutative semiring, the coefficient of `z_1⋯z_n` in `∏_j (∑_i ω_i(p_j) z_i)` is `∑_{σ∈S_n} ∏_j ω_{σ(j)}(p_j)`, each permutation exactly once; specialised to `n = 7` and to ℂ, with `7! = 5040`. The normalisation is separate: scaling by `c` gives `c^n`, and the `1/7` case gives the factor `1/823543 = 7^{-7}`.
+- **Squarefree multiplicative encoding**, finite interface only: an abstract multiplicative arithmetic function with prescribed prime values and vanishing at exponent ≥ 2, with `f(p₁⋯p₇) = ∏ a(pᵢ)` under distinctness; shown inhabited by Mathlib's Möbius function so nothing downstream is vacuous.
+
+### Open / uninhabited
+`PolarizedOmega7SignedEoD` (`AFFINE287-POLARIZED-OMEGA7-SIGNED-EOD45`, OPEN_ANALYTIC) and `MuLogComparisonLowCondMatch` (`AFFINE287-MULOG-COMPARISON-LOWCOND-MATCH45`, SOURCE_OPEN) are stated as specifications and never inhabited. No Bombieri–Vinogradov, DGS, Pascadi, Kuznetsov, large-value, Gate1A/1B, WindowPairSupply or FCL statement is assumed or proved. V14's Vaughan route is recorded as a valid but nonminimal alternative — never as false.
+
+### Audit
+`lake build` succeeds (8118 jobs, no errors). A repository-wide scan for `sorry`, `admit`, `axiom`, `opaque`, `unsafe`, `native_decide`, `@[implemented_by]` finds zero occurrences in Lean code (all matches are documentation prose). `#print axioms` is emitted at build time for all 36 principal new theorems; each reports only a subset of `[propext, Classical.choice, Quot.sound]`. The twenty hostile tests are answered one by one in the docstring of the V15 status file; all pass with no downgrades. Everything is committed and pushed.
+
+**Erdős #287 remains OPEN.** Formalising the polarization algebra does not close the balanced-seven case of anything.
+
 # Summary of changes for run 0d849f24-cf9b-47cd-9af8-65f6801a897e
 ## Erdős #287 — V14: exact Vaughan source / prime-modulus two-outer structural spine
 

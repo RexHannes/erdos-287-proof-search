@@ -1,221 +1,243 @@
 # Erdős Problem #287 — Current Frontier
 
-**Last reconciled:** 30 August 2026  
+**Last reconciled:** 31 August 2026  
 **Status:** `ERDOS287 OPEN`  
 
-This file is a current-state research locator, not a proof. Historical reports remain append-only. Formal/publicly checked statements, conditional analytic statements, source pins, and open research nodes are kept separate below.
+This file is a current-state research locator, not a proof. Historical reports remain append-only. For the concise repository-wide ledger see [`../CURRENT_STATUS.md`](../CURRENT_STATUS.md).
 
-## Public / formal bank — unchanged
+## Public / formal bank
 
-- The public repository still contains the existing Lean-checked problem infrastructure and finite-exclusion work.
-- The CASE-B primitive-fraction bank has been re-proved append-only in Lean, including the primitive-fraction spacing lemma, the conditional `Q_H` compiler, the `AB \asymp X` comparability firewall, the critical-range exponent compiler, the audited `S1` truncation at `X=2G`, and frontier-bookkeeping statements.
-- These formal reductions do **not** close the analytic descendant nodes.
+The existing finite Lean-checked exclusion through `M <= 4,000,000,000` is unchanged.
 
-## Formal / source first residual
-
-The first sequential source pin remains
+The supplied 31-August Aristotle bundle records a completed C0 unitary-Fourier / transverse-carrier-interface safe bank with:
 
 ```text
-287-K0-SP2-DET1-
-SHAREDGCD-OMEGAH-
-NORMALISATION-SOURCEPIN45
+default lake build: PASS
+8298 jobs
+0 errors
 ```
 
-The exact identities
+The audited declarations report only ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) and no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
 
-```math
-\lambda_H=\mu*\Omega_H,
-\qquad
-\Omega_H((g_1,g_2))
-=\sum_{d\mid g_1,\,d\mid g_2}\lambda_H(d)
-```
+The latest named files depend on a larger `CurrentProgramme` / hostile-audit tree than is presently dependency-complete under public `RequestProject/Main.lean`. Consequently the 8298-job result is recorded as a supplied verified bank, not falsely represented as a build already reproduced from the current public main tree.
 
-are banked, but the literal `\Omega_H(e)=W(e/H)` normalisation, support constants, and packet norm have not been recovered as a source-exact theorem.
+## C0 — analytically closed conditional on formal normalisation
 
-Parallel source-margin owners remain the polynomial-`B` / SMALL-`B` and polynomial-`G` margins where the route calls them.
-
-## Hybrid-2 local theorem — promoted
-
-The one-sided `\Delta`–Möbius reciprocal Hybrid-2 estimate survived hostile audit and the subsequent source-repair run.
-
-Banked research statement:
+Bank:
 
 ```text
-DET1-FUSED-
-DELTA-MOBIUS-RECIPROCAL-
-HYBRID2-45: PASS
+FIXEDRATIO-BALANCED-b-UNITARYFOURIER45: PASS WITH REPAIRS
+EXACTPRODUCT-CONDITIONED-FIXEDRATIO-BALANCEDDOUBLEFRACTION-LEVEL45: CLOSED
+EXACTPRODUCT-CONDITIONED-INVERSECONV-LEVELLS45: CLOSED
+EXACT PRODUCT COLLISION: ANALYTICALLY CLOSED
+DOUBLE TYPE II: ANALYTICALLY CLOSED
+C0: ANALYTICALLY CLOSED / CONDITIONAL ON FORMAL NORMALISATION
 ```
 
-Key repaired inputs:
-
-- `SHORT-Q` is absorbed by the already-routed `SHORT-M` sector;
-- prime-power exactly,
-  ```math
-  g_0g_0'\mid e(b_2-b_1);
-  ```
-- the Archimedean phase parameter satisfies `\lambda_{\rm arch}=O(1)` from the literal dyadic ranges `e\asymp H`, `m_i\asymp M_i`, `M_i\asymp G/(er_i)`;
-- the local `\beta` packet has the source-exact pointwise bound
-  ```math
-  |\beta|\ll (\log\log X)^2=L^{o(1)};
-  ```
-- the Archimedean reciprocal factor admits a fixed smooth separated packet with bounded nuclear norm;
-- the standard separated-frequency additive large sieve is the analytic input.
-
-The local Hybrid-2 theorem itself is not dependent on the unresolved `\Omega_H` normalisation; `\Omega_H` remains an outer compiler/source pin.
-
-## Short-edge routing
-
-For the Hybrid-2 off-diagonal packet:
-
-```text
-SHORT-D: CLOSED
-SHORT-M: CLOSED
-SHORT-Q: CLOSED, via SHORT-Q ⊂ SHORT-M
-large d2: CLOSED
-```
-
-The exact lower bound behind the short-`Q` router is
+Exact finite contraction:
 
 ```math
-Q_i^\circ\gg G/e.
-```
-
-Hence `Q_i^\circ\le L^{K_Q}` forces both `M_1,M_2` into a fixed logarithmic `SHORT-M` range.
-
-For the `b`-diagonal, the short reduced conductor
-
-```math
-q_c=\frac{2eb}{(N,e)}\ge 2b
-```
-
-is routed to the existing SMALL-`B` source-margin sector.
-
-## Current `b_1\ne b_2` analytic residual
-
-After the short-edge routers, large-`d_2` router and Hybrid-2 contraction, the surviving long-edge conductor factors exactly as follows.
-
-Let
-
-```math
-D_b=b_2-b_1,
-\qquad
-z=(b_1,m_2),
-\qquad
-d_2=(m_2,D_b),
-```
-
-and write
-
-```math
-b_1=z b_1^\flat,
-\qquad
-m_2=z d_2m_2^\flat.
-```
-
-Then
-
-```math
-\boxed{Q_1^\circ=z^2q_Cq_m},
-```
-
-with pairwise-coprime factors in the audited source reduction,
-
-```math
-q_C
-=2\frac e{(e,N_1)}
-  \frac{r_2}{(r_2,D_b)}
-  b_1^\flat,
-\qquad
-q_m=m_2^\flat.
-```
-
-Short `q_C` is routed by the cross-gcd sparsity / SMALL-`B` owner. Short `q_m` is routed by the cross-gcd, large-`d_2`, or SHORT-`M` owners.
-
-The remaining packet has all of
-
-```text
-D, M1, M2, Q1circ, Q2circ,
-q_C, q_m, q_C', q_m'
-```
-
-above fixed logarithmic thresholds, together with the ultra-near long-edge restriction
-
-```math
-\mathcal D
+\eta_b^2
 \ll
-eB L^C
-\sqrt{\frac{R_{\rm aff,0}}{g_0g_0'}}.
+L^C\left[\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right].
 ```
 
-The exact one-sided phase has the three-factor form
+Hostile-audit repairs carried by this bank:
+
+1. product energy is source-specific to the literal bounded dyadic physical packet;
+2. the complete unit branch is
+   ```math
+   \gcd(b a_\rho b_\rho u_\rho,x)=1,
+   ```
+   and complementary nonunit cells route to D4;
+3. the finite estimate contains the `x^{-1/2}` contribution and small-`x` packets have an explicit short-conductor / low-`Q` owner.
+
+Legal constant order:
+
+```text
+structure -> packet losses -> K_* -> K_tr -> K_Y,K_x -> k chosen last.
+```
+
+The C0 mechanism is finite Fourier / `L^2`: after canonical reduced-projective conditioning the Kloosterman kernel is independent of the balanced `b` source, residue aggregation and inversion produce a restricted discrete Fourier operator of norm `sqrt(x)`, and source product energy supplies the remaining contraction. No conjectural Möbius cancellation or new spectral black box is used.
+
+## Formal/source residual
+
+```text
+SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
+```
+
+plus the complete physical Perron/nuclear normalisation unless already absorbed into the same source pin.
+
+`Omega_H` is not the analytic blocker in the transverse `q_C` Fourier step; its literal physical `L^2` normalisation remains a formal source obligation.
+
+## C0 corrections
+
+**RETRACTED:** old post-conditioning index `n=j inverse(u') mod x` as controlling architecture.
+
+**RETRACTED:** old wrap `1+UU'/B`.
+
+**SUPERSEDED:** any claim that the full physical C0 source still requires a moving-level inverse-convolution large sieve after canonical projective cancellation.
+
+Historical material is retained; these labels correct its controlling status.
+
+## Transverse — current bank
+
+For one packet,
 
 ```math
-e_{z^2}(\Delta A_z\overline{m_1})
-\;e_{q_C}(\text{reciprocal phase in }\Delta,m_1,q_m)
-\;e_{q_m}(\text{reciprocal phase in }\Delta D_b/d_2,m_1,q_C).
+R_P=z^2 q_C q_m,
 ```
 
-The `q_m` component sees the product `\Delta D_b/d_2`, while the simultaneous `q_C` component retains a genuinely moving matrix coefficient. A one-dimensional or ordinary separated bilinear large sieve does not directly accept this source architecture.
+with source factors including
 
-Therefore the current first analytic residual, conditional on the outer source normalisations, is
+```math
+q_C=2\,(e/a_1)\,(r_2/c_2)\,b_1^\flat.
+```
+
+After row-gcd reduction, one writes the corresponding unit carrier `q=\bar q_C` and `r=q_m`; the primed packet is symmetric. The reduced cross-packet conductor is built from the reduced packet moduli after their common row factor is removed.
+
+### Naïve two-signless DFT — RETRACTED
+
+Full CRT fusion of `q_C` and `q_m` produces cross-modulus inverse coefficients in the numerator. Therefore the transverse phase is not generally a fixed signless kernel of the old advertised form.
+
+### One-conductor reciprocity — PASS
 
 ```text
-287-K0-SP2-DET1-
-FUSED-SMALL-AFFINEDEFECT-
-COMMONE-SMALLH-
-HYBRID2-LONGEDGE-
-THREEFACTOR-MOVINGMOD-
-MATRIX45
+THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45: PASS
 ```
 
-Its missing mechanism is a source-specific two-parameter reciprocal large-sieve / matrix estimate for the simultaneous `q_C` and `q_m` phases while preserving the unspent opposite Möbius sign.
+For
 
-## Parallel `b`-diagonal analytic child
+```math
+\Phi_P=e_q(A\overline{rm})e_r(B\overline{qm}),
+```
 
-The `b_1=b_2` branch remains open after the product-modulus reduction. Its current long-conductor child is
+reciprocate only the `q` component. The repaired phase is
+
+```math
+\Phi_P=\operatorname{Arch}_P\,e_{m_P}(\Gamma_P^{\rm red}\bar q),
+```
+
+where
+
+```math
+\Gamma_P=-A+mB\overline m\pmod r,
+\qquad g_P=(B-A,r),
+\qquad m_P=rm/g_P,
+```
+
+and
+
+```math
+(\Gamma_P^{\rm red},m_P)=1.
+```
+
+This is the canonical transverse reciprocity normal form at the current research level.
+
+### qC unitary Fourier — PASS
 
 ```text
-287-K0-SP2-DET1-
-FUSED-SMALL-AFFINEDEFECT-
-BDIAGONAL-LONGQC-
-PRODUCTMOD-RECT45
+THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45: PASS
 ```
 
-The earlier character-fourth-moment route is natural-scale only and is not a closure theorem.
+For `q=S1*S2`, the finite-Fourier estimate gives relative contraction
+
+```math
+\eta_P^2
+\ll
+L^C\left[\frac{m_P}{L_1L_2}+\frac1{L_1}+\frac1{L_2}+\frac1{m_P}\right].
+```
+
+It accepts arbitrary `L^2` coefficient vectors and uses no Möbius cancellation.
+
+### Dense-qC compiler — strict subregion closed
+
+```text
+THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45:
+    CLOSED ON EXPLICIT HYPOTHESES
+```
+
+A packet closes when one orientation has `q_C` sufficiently dominant over `m_P` and admits two sufficiently long source groups. This is **not** a statement that all transverse packets close.
+
+## Current first transverse analytic residual
+
+The old first frontier
+
+```text
+THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45
+```
+
+is preserved historically but **SUPERSEDED AS FIRST FRONTIER**.
+
+Current first analytic residual:
+
+```text
+THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45
+```
+
+Status: **OPEN**.
+
+The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. Surviving cells include:
+
+- `q_C` not sufficiently dominant;
+- `q_C'` not sufficiently dominant;
+- every `q` partition with one short side;
+- single atomic-carrier dominance;
+- critical `q ~ r*m` geometry.
+
+## Next transverse attack
+
+Test whether the missing second Fourier axis can come from:
+
+- the Bézout numerator variable;
+- a dominant carrier from the opposite packet;
+- the `m` variable after `TT*`;
+- a signed-but-`L^2` carrier;
+- grouped products of short factors;
+- both source orientations.
+
+None of these is presently called proved.
+
+## Parallel b-diagonal
+
+```text
+BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45 : OPEN
+```
+
+Keep this branch separate from the transverse residual and do not automatically spend C0/transverse Fourier gain there.
+
+## Superseded 30-August public frontier
+
+The R7 node
+
+```text
+287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45
+```
+
+is retained in R7 and older frontier files as historical research provenance, but it is **SUPERSEDED AS THE CONTROLLING PUBLIC FIRST FRONTIER** by the 31-August C0/transverse audit. This does not retract every local identity or local gain developed in the R7 route.
 
 ## Current ledger
 
 | Node | Status |
 |---|---|
-| CASE-B primitive-fraction spacing / formal compiler bank | FORMALLY BANKED / CONDITIONAL WHERE HYPOTHESES EXPLICIT |
-| `Omega_H` normalisation | SOURCE PIN |
-| polynomial `B` / SMALL-`B` margin | PARALLEL SOURCE PIN / ROUTER |
-| polynomial `G` margin | PARALLEL SOURCE PIN / ROUTER |
-| complete one-sided conductor | PASS |
-| large `d2` sector | CLOSED |
-| Hybrid 2 | PASS |
-| SHORT-D | CLOSED |
-| SHORT-M | CLOSED |
-| SHORT-Q | CLOSED via SHORT-M |
-| `g0 g0' | e(b2-b1)` | PASS |
-| long-edge three-factor conductor reduction | PASS / STRICT REDUCTION |
-| three-factor moving-modulus matrix | OPEN ANALYTIC |
-| `b`-diagonal long-`q_c` product-modulus rectangle | OPEN ANALYTIC |
+| finite `M <= 4e9` exclusion | KERNEL-PROVED / unchanged |
+| C0 unitary-Fourier core | ANALYTICALLY BANKED |
+| exact product collision | ANALYTICALLY BANKED |
+| Double Type II | ANALYTICALLY BANKED |
+| C0 | CONDITIONAL SOURCE PIN after analytic closure |
+| `SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45` | CONDITIONAL SOURCE PIN |
+| naïve transverse two-signless DFT | RETRACTED |
+| one-conductor reciprocity | ANALYTICALLY BANKED |
+| qC unitary Fourier | ANALYTICALLY BANKED |
+| dense-qC compiler | ANALYTICALLY BANKED on explicit hypotheses |
+| full transverse branch | STRICT REDUCTION / OPEN |
+| critical Bézout-numerator / single-carrier core | OPEN |
+| parallel b-diagonal | OPEN |
 | Erdős #287 | OPEN |
-
-## Next mathematical action
-
-Do **not** reopen the generic Hybrid-2 estimate. Hostile-audit the exact factorisation
-
-```math
-Q_1^\circ=z^2q_Cq_m
-```
-
-and its three reciprocal phases, then test reciprocal fusion between the `q_C` and `q_m` components. If they do not fuse, expose the genuine two-parameter frequency in `(\Delta,\Delta D_b/d_2)` and attack the resulting source-weighted moving-modulus matrix directly.
 
 ## Publication firewall
 
-Nothing in this status file claims Erdős #287 is proved. `PASS` labels above refer only to the stated local research lemmas/reductions. The public theorem claim remains:
+No statement here claims a proof of Erdős #287, a closed full transverse branch, or a downstream Twin Prime proof.
 
 ```text
 ERDOS287 OPEN

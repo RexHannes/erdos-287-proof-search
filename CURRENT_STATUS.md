@@ -5,6 +5,8 @@
 
 This is the authoritative concise status ledger for the public repository. Historical files remain preserved and may describe earlier frontiers; when they conflict with this file, this file is controlling for the 31-August-2026 checkpoint.
 
+Companion provenance/audit records: [`RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md`](RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md), [`ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md`](ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md), and [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md).
+
 ## UNCONDITIONAL / FORMAL BANK
 
 - The finite Lean-checked exclusion through maximum denominator `M <= 4,000,000,000` is unchanged.

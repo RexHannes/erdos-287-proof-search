@@ -1,8 +1,8 @@
 # CURRENT RESEARCH FRONTIERS
 
-Last reconciled: 2026-08-30
+Last reconciled: 2026-08-31
 
-Purpose: current-state locator for Gate 1B and Erdős #287. This is not itself a proof. Historical provenance belongs in the append-only proof indexes. The directory is mirrored in both research repositories.
+Purpose: current-state locator for Gate 1B and Erdős #287. This is not itself a proof. Historical provenance belongs in the append-only proof indexes. The directory is mirrored in both research repositories where applicable.
 
 ---
 
@@ -169,39 +169,161 @@ Before a broader construction run, hostile-audit the D-census promotion: fixed `
 
 **Status:** `ERDOS287 OPEN`.
 
-**Uniform `k=0`:** open.  **FCL:** not reached.
+### C0 — current audited bank
 
-**Current first main-line residual:**
+`FIXEDRATIO-BALANCED-b-UNITARYFOURIER45`: **PASS WITH REPAIRS**.
 
-`287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45`.
-
-**Exact operator shape:**
+The exact finite contraction is
 
 \[
-\sum_d\frac{\lambda_H(d)}{d^2}
-\sum_{a\sim A}\rho(a)
-\left|\sum_{m\asymp G/d}\frac{\mu(m)}mV_{dm}(a)\right|^2.
+\eta_b^2\ll L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
 \]
 
-**Current generic bound:**
+The product-energy estimate is source-specific to the literal bounded dyadic physical packet; the complete unit branch is
 
 \[
-\frac{(A+G)(GB+B^2)}H(\log X)^{o(1)}.
+\gcd(b a_\rho b_\rho u_\rho,x)=1,
 \]
 
-**Required:**
+with complementary nonunit cells routed to D4; and the small-`x` owner is explicit.
+
+Therefore:
+
+```text
+EXACT PRODUCT COLLISION: ANALYTICALLY CLOSED
+DOUBLE TYPE II: ANALYTICALLY CLOSED
+C0: ANALYTICALLY CLOSED / CONDITIONAL ON FORMAL NORMALISATION
+```
+
+Formal/source pin:
+
+```text
+SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
+```
+
+plus the complete physical Perron/nuclear normalisation unless absorbed into that pin.
+
+### Why the C0 mechanism closes
+
+After canonical reduced-projective conditioning, the Kloosterman kernel is independent of the balanced `b` source. With
 
 \[
-AB^2(\log X)^{-6-2\eta-C_{\rm route}}.
+b=\ell_b d_b e_b,\qquad d_b,e_b>Y,
 \]
 
-Latest structural pivot: the shared-gcd Gram-as-square identity replaces the apparent two-level `G^2/H` pair bookkeeping by harmonic divisor mass plus a one-level signed Möbius `m`-operator. Product-modulus compression also gives `mu(g1)mu(g2)=mu(n)` with `(D,n)=1`, but the fixed-`n` two-state kernel is not ordinarily multiplicative in `n`, so a naive `1/zeta` route is unavailable.
+combine `n=ell_b d_b`; the reciprocal phase has the form
 
-**Retractions:** old `LARGESHAREDG0:CLOSED` and `PRIMITIVE-NEARFREQ:CLOSED` are retracted; the hard-denominator core was not promoted. Complete primitive-`t` Ramanujan reassembly is nonclosing because it neutralises the remaining Möbius sign.
+\[
+e_x(C_\Pi\bar n\bar e_b).
+\]
 
-**Provisional audit item:** `DET1-SHAREDGCD-ONELEVEL-ENERGY45` strict-subpolytope closure remains promotion-audit pending.
+Residue aggregation modulo `x` and inversion on unit residues produces a restricted finite Fourier matrix with exact operator norm `sqrt(x)`. Together with residue multiplicities and the fixed-depth source product energy this yields the four-term contraction. No conjectural Möbius cancellation and no new spectral black box are used.
 
-**Next attack:** split the one-level Ramanujan completion into the `r=1` local-main/pole component and the `r>1`, `r | 2ab+s` divisor-defect, preserving the Möbius resource before complete primitive-`t` reassembly.
+### Transverse — strictly reduced / open
+
+For one packet
+
+\[
+R_P=z^2q_Cq_m,
+\]
+
+with
+
+\[
+q_C=2(e/a_1)(r_2/c_2)b_1^\flat,
+\]
+
+and the symmetric primed packet. After row-gcd reduction the reduced conductor is encoded by the corresponding coprime carrier factors.
+
+The naïve full-CRT two-signless DFT is **RETRACTED**: CRT fusion of `q_C` and `q_m` produces cross-modulus inverse coefficients in the numerator.
+
+Banked repair:
+
+```text
+THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45: PASS
+```
+
+For
+
+\[
+\Phi_P=e_q(A\overline{rm})e_r(B\overline{qm}),
+\]
+
+reciprocating only the `q` component gives
+
+\[
+\Phi_P=\operatorname{Arch}_P\,e_{m_P}(\Gamma_P^{\rm red}\bar q),
+\]
+
+where
+
+\[
+\Gamma_P=-A+mB\overline m\pmod r,
+\qquad
+g_P=(B-A,r),
+\qquad
+m_P=rm/g_P,
+\]
+
+and `(Gamma_P^red,m_P)=1`.
+
+Banked finite-Fourier theorem:
+
+```text
+THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45: PASS
+```
+
+For a grouping `q=S1*S2`, the relative contraction is
+
+\[
+\eta_P^2\ll L^C\left(\frac{m_P}{L_1L_2}+\frac1{L_1}+\frac1{L_2}+\frac1{m_P}\right).
+\]
+
+It accepts arbitrary `L^2` coefficient vectors; no Möbius cancellation is required. `Omega_H` is therefore not the analytic blocker at this step; its physical `L^2` normalisation remains a source pin.
+
+The dense-`q_C` compiler is closed on explicit dominance/two-long-group hypotheses. This is a strict subregion, not the whole transverse family.
+
+### Current first analytic residual
+
+```text
+THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45
+```
+
+**Status:** `OPEN`.
+
+The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. Surviving cells include nondominant `q_C`, nondominant `q_C'`, partitions with one short side, single atomic-carrier dominance, and critical `q ~ r*m` geometry.
+
+The next mathematical run should test whether the missing second Fourier axis can come from the Bézout numerator, an opposite-packet carrier, the `m` variable after `TT*`, a signed-but-`L^2` carrier, grouped short factors, or both source orientations. None is currently proved.
+
+### Parallel b-diagonal
+
+```text
+BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45 : OPEN
+```
+
+Keep this separate from the transverse residual.
+
+### Formal / Aristotle checkpoint
+
+The latest completed bank actually supplied for this C0/unitary-Fourier checkpoint records:
+
+```text
+default lake build: PASS
+8298 jobs
+0 errors
+```
+
+with axiom reports limited to ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) and no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
+
+The named newest modules rely on a dependency graph not yet fully reproduced in public `RequestProject/Main.lean`. Until that dependency-complete graph is imported and rebuilt publicly, the research frontier is deliberately ahead of the public formal-main frontier. No newer one-conductor formal run is invented.
+
+### Retractions / supersessions
+
+- old `n=j inverse(u') mod x` C0 architecture: **RETRACTED**;
+- old `1+UU'/B` wrap: **RETRACTED**;
+- naïve transverse two-signless DFT: **RETRACTED**;
+- `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45` as first frontier: **SUPERSEDED**;
+- R7 `287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45` as the controlling public first frontier: **SUPERSEDED AS CONTROLLING**, with its historical/local research content retained.
 
 ---
 

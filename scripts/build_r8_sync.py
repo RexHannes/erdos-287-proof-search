@@ -25,7 +25,6 @@ req('Version 16.6 -- Public Prepublication Candidate R7 (not yet published)',
     'Version 16.7 -- Public Review R8 (31 August 2026 synchronization)', 1)
 req(r'\date{30 August 2026}', r'\date{31 August 2026}', 1)
 
-# Replace opening status box.
 start = s.index(r'\begin{center}', s.index(r'\begin{document}'))
 end = s.index(r'\end{center}', start) + len(r'\end{center}')
 status = r'''\begin{center}
@@ -72,7 +71,6 @@ fabricated or pre-promoted.
 \end{center}'''
 s = s[:start] + status + s[end:]
 
-# Replace abstract.
 a0 = s.index(r'\begin{abstract}')
 a1 = s.index(r'\end{abstract}', a0) + len(r'\end{abstract}')
 abstract = r'''\begin{abstract}
@@ -139,7 +137,6 @@ remain explicitly separated. Erd\H{o}s \#287 remains open.
 \end{abstract}'''
 s = s[:a0] + abstract + s[a1:]
 
-# Replace status-at-a-glance through TOC.
 g0 = s.index(r'\section*{Status at a glance}')
 g1 = s.index(r'\tableofcontents', g0)
 glance = r'''\section*{Status at a glance}
@@ -159,7 +156,7 @@ Double Type II & \status{ANALYTICALLY BANKED} & Closed analytic core, subject to
 C0 & \status{CONDITIONAL SOURCE PIN} & Analytically closed conditional on physical/formal normalisation.\\
 \texttt{SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45} & \status{OPEN SOURCE PIN} & Physical $\Omega_H$ and Perron/nuclear normalisation unless absorbed.\\
 Naive transverse two-signless DFT & \status{RETRACTED} & Full CRT leaves moving numerator coefficients.\\
-One-conductor reciprocity & \status{ANALICALLY BANKED} & Repaired transverse reciprocity normal form.\\
+One-conductor reciprocity & \status{ANALYTICALLY BANKED} & Repaired transverse reciprocity normal form.\\
 $q_C$ unitary Fourier & \status{ANALYTICALLY BANKED} & Arbitrary $L^2$ vectors; no M\"obius cancellation required.\\
 Dense-$q_C$ compiler & \status{BANKED ON EXPLICIT HYPOTHESES} & Strict subregion only.\\
 Full transverse branch & \status{STRICT REDUCTION / OPEN} & Critical cells survive.\\
@@ -184,7 +181,6 @@ provenance even when it is no longer controlling.
 '''
 s = s[:g0] + glance + s[g1:]
 
-# Insert controlling checkpoint before the original theory manual.
 anchor = r'\section{The problem and the scope of this note}'
 if anchor not in s:
     raise SystemExit('theory anchor missing')
@@ -282,7 +278,6 @@ that public \texttt{RequestProject/Main.lean} already reproduces the 8298-job bu
 '''
 s = s.replace(anchor, checkpoint + anchor, 1)
 
-# Sweep stale controlling R7 language without deleting the historical mathematics.
 for old, new in [
     ('The controlling main line has therefore moved downstream to the uniform $k=0$ SP-2\nreassembly.',
      'Historical R7 branch (superseded as controlling on 31 August 2026): the 30-August analysis had moved downstream to the uniform $k=0$ SP-2 reassembly.'),
@@ -293,15 +288,13 @@ for old, new in [
     ('The current first exact main-line\nanalytic residual is',
      'The superseded 30-August R7 branch recorded the first exact main-line analytic residual as'),
     ('CURRENT MAIN PARENT', 'HISTORICAL R7 PARENT / SUPERSEDED AS CONTROLLING'),
+    ('current first exact main-line analytic residual is',
+     'historical R7 first exact main-line analytic residual was'),
 ]:
     s = s.replace(old, new)
 
-# Preserve old label but mark its status every time it appears in texttt form.
 old_label = '287-K0-SP2-DET1-SHAREDGCD-ONELEVEL-MOBIUS-GRAM45'
-s = s.replace(r'\texttt{' + old_label + r'}',
-              r'\texttt{' + old_label + r'}\,\textsuperscript{\scriptsize historical R7; superseded as controlling}')
 
-# Final controlling status before end document.
 enddoc = s.rfind(r'\end{document}')
 if enddoc < 0:
     raise SystemExit('end document missing')
@@ -332,7 +325,6 @@ programme and is not proved by this manuscript.
 '''
 s = s[:enddoc] + final + s[enddoc:]
 
-# Publication firewall / consistency assertions.
 for needle in [
     r'Erd\H{o}s Problem \#287 remains open',
     'SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45',

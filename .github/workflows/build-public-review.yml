@@ -58,8 +58,12 @@ jobs:
           from pathlib import Path
           p = Path('ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex')
           s = p.read_text(encoding='utf-8')
+
+          # Literal Lean identifiers in prose.
           s = s.replace(r'\texttt{implemented_by}', r'\texttt{implemented\_by}')
           s = s.replace(r'\texttt{native_decide}', r'\texttt{native\_decide}')
+
+          # Long status-table identifiers: allow TeX line breaking.
           s = s.replace(
               r'\texttt{SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45} & \status{OPEN SOURCE PIN}',
               r'\path{SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45} & \status{OPEN SOURCE PIN}')
@@ -69,17 +73,69 @@ jobs:
           s = s.replace(
               r'\texttt{BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45} & \status{PARALLEL OPEN}',
               r'\path{BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45} & \status{PARALLEL OPEN}')
+
+          # Manuscript-wide R7 -> R8 consistency sweep.  Keep all mathematics and provenance,
+          # but remove every inherited wording that could still masquerade as the current R8 frontier.
+          replacements = {
+              r'\section{Current \#287 frontier after Balanced7}':
+                  r'\section{Historical R7 \#287 frontier after Balanced7 (superseded as controlling)}',
+              'The fixed-degree-seven Balanced7 packet is now an audited input to the next source layer,\nnot the first main-line analytic residual.  Its status is:':
+                  'Historical R7 checkpoint: the fixed-degree-seven Balanced7 packet was treated as an audited input to the next source layer,\nnot the first main-line analytic residual.  This entire section is provenance-only for R8 and is superseded as the controlling frontier by Section~\\ref{sec:aug31sync}.  Its R7 status was:',
+              'The next parent is\n\\[':
+                  'The historical R7 next parent was\n\\[',
+              'Within its determinant-one cross-level sector the latest exact reductions are:':
+                  'Within its determinant-one cross-level sector the R7 reductions recorded were:',
+              'The controlling one-level object is\n\\[':
+                  'The historical R7 one-level object was\n\\[',
+              'and the current first exact main-line target is\n\\[':
+                  'and the historical R7 first exact main-line target was\n\\[',
+              'This target remains open.\n\n\n\\section{Master current-status ledger}':
+                  'This target remained open in R7 and is superseded as the controlling public frontier by the 31-August transverse residual.\n\n\n\\section{Historical R7 master-status ledger (superseded by 31-August R8 status)}',
+              'Node & Current status & Publication interpretation\\\\':
+                  'Node & Historical R7 status & Publication interpretation\\\\',
+              r'\status{FIRST EXACT MAIN-LINE ANALYTIC RESIDUAL / OPEN}':
+                  r'\status{HISTORICAL R7 OPEN / SUPERSEDED AS CONTROLLING}',
+              'The project preserves failed and superseded routes because they explain the source\nfirewalls, but they do not control R7:':
+                  'The project preserves failed and superseded routes because they explain the source\nfirewalls.  They do not control R8; the entries below are retained as R7 and earlier provenance:',
+              r'\subsection*{Supplied later safe bank}':
+                  r'\subsection*{Historical pre-31-August supplied safe bank}',
+              'A later supplied report records an $8213$-job successful append-only build with':
+                  'An earlier supplied report recorded an $8213$-job successful append-only build with',
+              'Those modules are not currently present in this public manuscript repository.  Their R7\nstatus is \\status{SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING}.':
+                  'Those modules are not currently present in this public manuscript repository.  Their historical R7\nstatus was \\status{SUPPLIED LEAN SAFE BANK / REPOSITORY SYNC PENDING}.  The controlling 31-August formal checkpoint is the later 8298-job, zero-error C0 unitary-Fourier bank described in Section~\\ref{sec:aug31sync}; its full dependency graph is still not synchronized into public main.',
+              r'\subsection*{Latest research-exact layer, formal banking pending}':
+                  r'\subsection*{Historical R7 research-exact layer, formal banking pending}',
+              'The product-modulus M\\"obius-sign compression, fixed-$D$ frequency rigidity, CRT\n$n$-reciprocal normal form and shared-gcd Gram-as-square are currently research-exact\nmathematics.  R7 does not call them Lean-verified until a corresponding successful formal\nbank is supplied and synchronized.':
+                  'The product-modulus M\\"obius-sign compression, fixed-$D$ frequency rigidity, CRT\n$n$-reciprocal normal form and shared-gcd Gram-as-square were research-exact mathematics in R7.\nThat historical R7 layer did not call them Lean-verified until a corresponding successful formal\nbank was supplied and synchronized.',
+              'The first one-level M\\"obius Gram remains open.\nThus the formal compiler/source bank and the analytic research status remain deliberately\nseparate.':
+                  'The first one-level M\\"obius Gram remained open in R7 and is now superseded as the controlling public frontier by the 31-August transverse residual.\nThus the formal compiler/source bank and the analytic research status remain deliberately\nseparate.'
+          }
+          for old, new in replacements.items():
+              s = s.replace(old, new)
+
           p.write_text(s, encoding='utf-8')
           PY
+
           grep -F 'Erd\H{o}s Problem \#287 remains open' "$R8"
           grep -F 'SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45' "$R8"
           grep -F 'THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45' "$R8"
           grep -F 'BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45' "$R8"
           grep -F '8298 jobs' "$R8"
-          if grep -Fq 'The controlling main line has therefore moved downstream to the uniform $k=0$' "$R8"; then
-            echo 'stale R7 controlling language survived' >&2
-            exit 1
-          fi
+          grep -F 'Historical R7 \#287 frontier after Balanced7 (superseded as controlling)' "$R8"
+          grep -F 'Historical R7 master-status ledger (superseded by 31-August R8 status)' "$R8"
+
+          for stale in \
+            'The controlling main line has therefore moved downstream to the uniform $k=0$' \
+            '\section{Current \#287 frontier after Balanced7}' \
+            '\section{Master current-status ledger}' \
+            'FIRST EXACT MAIN-LINE ANALYTIC RESIDUAL / OPEN' \
+            'but they do not control R7:' \
+            '\subsection*{Latest research-exact layer, formal banking pending}'; do
+            if grep -Fq "$stale" "$R8"; then
+              echo "stale R7 controlling language survived: $stale" >&2
+              exit 1
+            fi
+          done
 
       - name: Write reproducibility metadata
         shell: bash
@@ -146,7 +202,9 @@ jobs:
           - Parallel `BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45` remains OPEN.
           - Naive two-signless transverse DFT marked retracted.
           - R7 uniform-k0 residual retained as historical/superseded-as-controlling provenance.
-          - Supplied Aristotle bank recorded as 8298 jobs / 0 errors, without claiming dependency-complete public-main reproduction.
+          - Inherited R7 “current frontier”, “master current-status”, and “latest research-exact” labels were swept to explicit historical/superseded wording.
+          - The older 8213-job formal-bank paragraph is explicitly historical; the controlling supplied formal checkpoint is 8298 jobs / 0 errors.
+          - Supplied Aristotle bank recorded without claiming dependency-complete public-main reproduction.
           - Erdős #287 remains OPEN.
           - No separate repair paper was created.
           - PDF typesetting quality gate passed: no overfull boxes and no unresolved references/citations.

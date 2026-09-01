@@ -1,3 +1,168 @@
+# Summary of changes for run c64ebf2a-a8c0-42c5-93a9-1a12c55266a0
+Append-only bank added; nothing existing was deleted, renamed or weakened. The only edit to a pre-existing file is ten new `import` lines at the end of the import block of `RequestProject/Main.lean`.
+
+STRICT FINAL REPORT
+```
+LAKE BUILD:                      PASS   (full `lake build`, 8362 jobs, 0 errors)
+NEW JOB COUNT:                   10     (8352 → 8362)
+SORRYAX:                         NONE
+CUSTOM AXIOMS:                   NONE
+UNSAFE:                          NONE
+opaque / native_decide /
+  implemented_by / admit:        NONE
+K0-SP2 SOURCE PARTITION:         KERNEL-PROVED
+UNIFORM FRAGMENTATION SOURCE
+  COMPILER:                      KERNEL-PROVED SOURCE/COMBINATORIAL (re-checked, unchanged)
+REGULAR PERRON PARENT INTERFACE: DEFINED
+REGULAR PERRON ANALYTIC INPUT:   UNINHABITED
+FCL→WINDOWPAIR:                  KERNEL-PROVED CONDITIONAL
+EFFECTIVE WINDOWPAIR:            UNINHABITED
+ERDOS287:                        OPEN
+PROOF-CLAIM CERTIFIED:           NO
+FIRST OPEN ANALYTIC NODE:        287-K0-SP2-REGULAR-PERRON-SMOOTH-MOBIUS-CORRELATION45
+```
+Every principal new theorem was checked with `#print axioms`; each reports `[propext, Classical.choice, Quot.sound]` or "does not depend on any axioms". The audit is banked as a Lean file, so it re-runs on every build.
+
+FILES ADDED
+- `RequestProject/CurrentProgramme/Erdos287K0SP2SourceObject.lean` — the exact source object: greatest prime factor P⁺, the parameter package (σ*, γ* as rationals, conditions written in equivalent integer-power form so everything is decidable), the audited finite set S_X = {n : X/2 < n ≤ X, P⁺(n) ≤ n^σ*}, the truncated Möbius coefficient M_γ, and the two-sign source with W and D_s as explicit parameters. Finite identities: two-sign expansion, sector additivity, four-sector reassembly.
+- `RequestProject/CurrentProgramme/Erdos287K0SP2FourClassPartition.lean` — `k0SP2_fourClass_partition_exact` (six disjointness statements, union = source, no row with two owners) with the regular complement defined by exact set difference, plus the exact source-level reassembly identity.
+- `RequestProject/CurrentProgramme/Erdos287RepeatedBalanced7FiniteArithmetic.lean` — the divisor-count identity, via a genuine bijection between the divisors of a squarefree row and the subsets of its prime support: `depthMoebius_eq_alternating`, `depthMoebius_three_eq_Hrepeat`, `depthMoebius_three_eq_neg_choose` (= −C(r−1,3)), and the table 7↦−20, 6↦−10, 5↦−4, 4↦−1, 1≤r≤3↦0. The X^(6/7) count is kept as a named external input, uninhabited.
+- `RequestProject/CurrentProgramme/Erdos287RegularPerronParent.lean` — the abstract regular-parent coefficient interface (support + Euler reconstruction fields, no complex exponentiation needed); `RegularPerronSmoothMobiusCorrelationInput` as an explicit fixed-budget inequality, left uninhabited; separate `PerronMainInput` / `PerronBoundaryInput` / `PerronTruncationInput` and the purely algebraic reconstruction schema.
+- `RequestProject/CurrentProgramme/Erdos287RegularTemplateReassembly.lean` — a finite, scale-independent template index with the pointwise parent identity, `template_correlation_reassembly` (∑_π C_{s,π} = C_s^reg for every finite row set), the triangle-inequality firewall counterexample, and `Cfrag = 0` as metadata only.
+- `RequestProject/CurrentProgramme/Erdos287Balanced7ScopeAndCauchyFirewall.lean` — scope classifier, the explicit seven-box adapter, `genericAdapter_uninhabited`, refutation of "same shape ⇒ owner"; and the first-Cauchy firewall (linear small-prefix factorisation recorded structurally, algebraic sign-consumption identities proved, analytic insufficiency recorded as metadata).
+- `RequestProject/CurrentProgramme/Erdos287FCLErrorStrengthFirewall.lean` — `ArbitraryLogSaving` vs `FixedRelativeSaving`, their separation, and a re-export showing the finite FCL compiler's statement contains no all-A hypothesis.
+- `RequestProject/CurrentProgramme/Erdos287FCLWindowPairBridge.lean` — `windowPairSupply_of_positiveFCLMass`: for M ≥ 20 and X = M/2, a prime q in the support (7M ≤ 20q ≤ 9M) with 2q ± 1 = r^a yields every literal field of `WindowPairSupply M` in both the plus case (x = 2q) and the minus case (x = 2q − 1). Non-vacuity is checked at M = 20 (q = 7, 2q − 1 = 13). Also the effectivity firewall separating a real "sufficiently large" threshold from a bounded Nat threshold.
+- `RequestProject/Status/CurrentStatusErdos287RegularPerronSourceFrontier.lean` — the new authoritative layer `regularPerronSourceFrontier`, proved strictly later than `dualLevelSimultaneousCritical`; earlier layers retained by precedence, not deletion.
+- `RequestProject/Status/AxiomAuditErdos287RegularPerronSourceFrontier.lean` — `#print axioms` on every principal new theorem.
+- `ERDOS287_REGULAR_PERRON_SOURCE_FRONTIER_SAFE_BANK_REPORT.md` — the full report.
+
+ONE CORRECTION TO THE REQUESTED CONTENT
+The requested coefficient row "r ≤ 3 ⇒ 0" is false at r = 0: the empty row is n = 1, where the depth-3 truncated Möbius sum is μ(1) = 1. The banked table therefore reads `1 ≤ r ≤ 3 ⇒ 0`, and the r = 0 value is recorded explicitly as `depthMoebius_three_one : depthMoebius 1 3 = 1`. All other requested rows (7 ↦ −20, 6 ↦ −10, 5 ↦ −4, 4 ↦ −1) are exactly as stated.
+
+EXPLICIT NON-CLAIMS
+Erdős #287 is not proved and nothing here asserts it. No external analytic estimate is inhabited, no arbitrary-L^{-A} theorem is formalised, the FCL→WindowPair bridge is strictly conditional on an input that is never constructed, and all status values are metadata with no mathematical force.
+
+# Summary of changes for run 61bb0102-8544-4b83-abe8-8751c37038f1
+Both requested append-only layers are now banked, building and audited.  Nothing was deleted, renamed, weakened or rewritten; the only change to an existing file is the appending of eighteen `import` lines to `RequestProject/Main.lean`.
+
+## Layer A — semantic repair + super-square-root frontier
+
+New files under `RequestProject/CurrentProgramme/`: `Erdos287StrictCellSemanticRepair.lean`, `Erdos287RepeatedPrimePhysicalSource.lean`, `Erdos287WeightedSP2PhysicalSource.lean`, `Erdos287PhysicalBComparisonV2.lean`, `Erdos287PhysicalBridgeV2.lean`, `Erdos287CenteredQCellPhysical.lean`, `Erdos287Supersqrt3221Dictionary.lean`, `Erdos287SupersqrtAnalyticInterface.lean`; status/audit files `RequestProject/Status/CurrentStatusErdos287SupersqrtFrontier.lean` and `AxiomAuditErdos287SupersqrtFrontier.lean`; report `ERDOS287_SUPERSQRT_SEMANTIC_REPAIR_SAFE_BANK_REPORT.md`.
+
+Content: `hStar` classified as a combinatorial surrogate with a separately typed, uninhabited `FordHPhysicalBinding` and the conditional value −20; strict-collapse classified as an abstract certificate with a physical binding kept explicit; the full weighted slot source `ω^phys_i(p) = sp2Omega·V_i(p/Y)·exp(i t_i log p)` reusing the repository `omegaBox`, with its exact support identity and an exact weighted integer pushforward (no `Ω♯ = 1` assumed); the repeated-prime sector included exactly (`Hrepeat r = −C(r−1,3)`, giving −20/−10/−4/−1/0) with the old weight-zero routing shown to change the total mass; the finite `Bsrc(S₂,P)` with `0 < Bsrc < 128`; V2 B-comparison interfaces carrying both `Cerr` and `z₀`, with old ⇒ V2 proved and the converse refuted; the exact centered q-cell, character orthogonality and seven-slot character product; the literal 2+5 split, the inverse-sampled 3221 dictionary, the five-box factorisation and outer finite norms; the sign-blind first-Cauchy firewall; and a super-sqrt data object with a one-field analytic interface left uninhabited.
+
+## Layer B — fixed-budget V22 / FCL / effectivity firewall
+
+New files: `Erdos287FixedBudgetV22Arithmetic.lean` (`Cvar(1) = 5`, `CextStar = 9/4`, `2·CextStar < 5`, `netLogExponent = −5/4 < −1`, plus the exact break-even at `5/2`), `Erdos287FixedDCutoffRepair.lean` (source-exact fixed cutoff at `D = log X`, `B0 = 1`; valid adapter from the stronger banked interface, converse refuted), `Erdos287FixedBudgetPhysicalWrapper.lean` (uninhabited physical wrapper and its conditional closure compiler), `Erdos287AllAFirewall.lean` (fixed-budget vs arbitrary-`A` correlation inputs; all-A ⇒ fixed proved, fixed ⇏ all-A refuted), `Erdos287FCLAlgebraicBridge.lean` (generic scaling bridge `B ≥ cB·X/log X`, `E ≤ cE·X/(log X)^{1+η}`, explicit threshold ⇒ `E ≤ δ·B`, feeding the banked positivity compiler; margin firewall with `δ = (1+Cc)/6`, `3δ < 1+Cc`; `N2` slack kept strictly additive), `Erdos287WindowPairExportEffectivity.lean` (complete window-pair export dictionary whose conclusion is literally `WindowPairSupply M`, eventual-vs-effective separation with the `≤ 4·10⁹` bound recorded separately, and the conditional end-to-end adapter to the public statement); status/audit files `CurrentStatusErdos287FixedBudgetEffectivity.lean`, `AxiomAuditErdos287FixedBudgetEffectivity.lean`; report `ERDOS287_FIXED_BUDGET_FCL_EFFECTIVITY_SAFE_BANK_REPORT.md`.
+
+## Build and audit
+
+`lake build`: **8352 jobs, 0 errors, 32 warnings** — all 32 pre-existing in older files, **0 from any new file** (the pre-existing baseline was 8334 jobs / 32 warnings). Every new module also builds individually.
+
+Axiom audit: 136 declarations audited in the first layer (117 with axioms, 19 with none) and 55 in the second (47 with axioms, 8 with none). Every reported axiom set is a subset of `{propext, Classical.choice, Quot.sound}`. No `sorry`, `sorryAx`, custom `axiom`, `native_decide`, `unsafe` or `implemented_by` occurs in any new file. No external analytic statement is encoded as an axiom: `FordHPhysicalBinding`, `PhysicalCollapseBinding`, the weighted source adapter, `BalancedSevenSP2PhysicalBridgeV2`, the three V2 B-comparison inputs, the sub-sqrt and super-sqrt interfaces, the fixed-budget physical wrapper, `PositiveMarginSupply`, `CertificatePinned` and the window-pair export/effective-supply objects are all left uninhabited, each with an explicit counterguard where one is possible.
+
+Erdős #287 itself is **not** proved and is recorded as OPEN in both status layers, as are the strong all-`A` supersqrt statement, the full-source analytic kernel, the window-pair supply and effectivity. All work is committed and pushed.
+
+# Summary of changes for run db5e1e60-2410-4512-82bc-d52666e80b6c
+Completed the requested append-only strict-cell canonical-singleton bank for Erdős #287. Nothing existing was deleted, renamed, weakened or relocated; the only change to an existing file is four appended `import` lines in `RequestProject/Main.lean` (diff versus the pre-pass commit: 6 files changed, 1412 insertions, **0 deletions**). Erdős #287 is **not** claimed to be solved, and the analytic singleton Type-II estimate is **not** proved.
+
+FILES ADDED
+- `RequestProject/CurrentProgramme/Erdos287StrictCellCanonicalSingleton.lean`
+- `RequestProject/CurrentProgramme/Erdos287StrictCellProductWeightBridge.lean`
+- `RequestProject/Status/CurrentStatusErdos287StrictCellCanonicalSingleton.lean`
+- `RequestProject/Status/AxiomAuditErdos287StrictCellCanonicalSingleton.lean`
+- `ERDOS287_STRICTCELL_CANONICAL_SINGLETON_SAFE_BANK_REPORT.md` (full report)
+
+WHAT IS PROVED (kernel-checked, no placeholders)
+1. `OmegaSharp` — the exact weighted prime-vector → integer pushforward Ω♯_C along `v ↦ ∏ᵢ vᵢ`, with fibre lemmas and vanishing off the image.
+2. `omegaSharp_one_not_automatic` — countermodel: the balanced certificate `λᵢ = {2,3}` satisfies the banked SP-2 packet normalisation, yet the fibre over `2⁶·3 = 192` has mass `7`, so `Ω♯_C = 1` is never automatic.
+3. `StrictCellHypotheses` with `strictCell_k_zero` (k = 0) and `strictCell_J_empty` (J = ∅) derived from the collapse field, plus a non-vacuity witness.
+4. Balanced-seven divisor-depth theorem (`C(6,3) = 20` depth-3 patterns) and `hStar_eq_neg_twenty` (`H* = −20`). No `HStar` symbol existed previously; the already banked value `∑_{j≤3}(−1)^j C(7,j) = −20` was reused, not re-proved, and `hStar_eq_balancedSevenLowSum` records that the two readings agree.
+5. `ford_coordCount_eq_nine`: `s = |U|+1`, `r = 8−|U|`, `N = s + r = 9` for every branch label.
+6. `fordBranches_card`: `#{U ⊆ Fin 7 : |U| ≤ 3} = 64`.
+7. `physicalPrimeCoords_card = 7` and `terminalUnitCoords_card = 2`, with the 7+2 = 9 partition.
+8. `PhysicalK0Conditions720` (twelve fields) proved wholly from the strict-cell hypotheses via `physicalK0_of_strictCell`.
+9. `dIndex_eq_empty` — no `d_{h,j}` variables for k = 0, with a guard showing the hypothesis is load-bearing.
+10. `canonicalSingleton` — the deterministic selection i(U) (least coordinate outside U), with minimality and a uniqueness/pinning theorem.
+11. Singleton Type-II *window* from the physical prime size bounds: `singleton_mem_window`, `complement_pushforward_bounds` ([Y⁶,Z⁶]), `pushforward_bounds` ([Y⁷,Z⁷]).
+12. Exact mass factorisation (`omegaSharp_total_mass`, `productWeight_total_mass`) — no generic subsum inclusion–exclusion is required.
+13. `perronContourCount_eq_zero` — zero Ford hard-condition Perron contours.
+15. Counterguards `weight_not_product_separable` and `kernel_not_automatically_separable`: an arbitrary coefficient does not imply rank-one/product separation.
+16.–17. Conditional on the bridge, the exact factorisation `K(m,n) = ξ(m)·κ(n)` with canonical deterministic factors `ξ(m)=K(m,n₀)`, `κ(n)=K(m₀,n)`; the six-prime complement definition and `complementDepth_eq_six`.
+18. Deterministic finite interfaces: `finite_cauchy_schwarz`, `productEnergy_factorises`, `cell_cauchy_productEnergy`.
+
+LEFT UNINHABITED (as required)
+- `BalancedSevenSP2StrictCellProductWeightPhysicalBridge`, with explicit fields for the slot-box physical cell, product/fixed-nuclear vector weight, distinctness/repeated-prime routing, Ford-H binding, cutoff binding and physical B binding (plus kernel data). No inhabitant is constructed; `bridge_not_automatic` refutes it at explicit data, and `bridge_is_an_input_not_a_theorem` records that all census results are implications only.
+- `SP2LabelledSingletonGeneratedTypeIIInput`, the exact analytic inequality; `typeII_input_not_automatic` refutes it at explicit parameters.
+
+STATUS LAYER (new, later, controlling; earlier layers untouched)
+GENERIC FORD723 CENSUS: SUPERSEDED as immediate physical frontier (superseded ≠ retracted, proved); SP2-LABELLED64-CANONICALSINGLETON-PACKETCENSUS45: kernel-proved conditional on the physical bridge; BALANCED7-SP2-STRICTCELL-PRODUCTWEIGHT-PHYSICAL-BRIDGE45: OPEN/UNINHABITED; SP2-LABELLED-SINGLETON-GENERATEDTYPEII45: OPEN ANALYTIC; ERDOS287: OPEN. Eleven `backing_*` theorems tie the single kernel-proved row to actual theorems, and scope guards record that no analytic Type-II claim and no closure of #287 is made.
+
+BUILD AND AUDIT
+- `lake build` succeeds: 8334 jobs, **0 errors**; the 32 warnings are pre-existing in older files, **0 from the new modules** (baseline was 8330 jobs / same 32 warnings).
+- The audit module runs 83 `#print axioms` reports over every principal new theorem; across the whole build log every axiom set is contained in {propext, Classical.choice, Quot.sound}, with zero `sorryAx`.
+- No `sorry`, custom `axiom`, `unsafe`, `opaque`, `native_decide` or `implemented_by` occurs as Lean code in the new files (those words appear only in docstring prose). All finite censuses (64, 7, 2, 9, 20, 6, 128) are closed by kernel `decide`.
+- All work is committed and pushed; `ARISTOTLE_SUMMARY.md` was not edited.
+
+# Summary of changes for run 82d56e05-e25e-485b-8dc9-5c54b836498c
+Completed the append-only master-source-frontier pass for Erdős #287. Nothing was deleted, renamed, weakened or relocated; the only change to an existing file is ten appended `import` lines in `RequestProject/Main.lean`. Erdős #287 is **not** claimed to be solved, no `Erdos287ClosureInputs` inhabitant is constructed, and no theorem named `erdos287` exists.
+
+FILES ADDED
+- `RequestProject/CurrentProgramme/Erdos287MasterSourceInterface.lean`
+- `RequestProject/CurrentProgramme/Erdos287ProofOmegaPartition.lean`
+- `RequestProject/CurrentProgramme/Erdos287PerronSingleContour.lean`
+- `RequestProject/CurrentProgramme/Erdos287TypedSourcePacketCompiler.lean`
+- `RequestProject/CurrentProgramme/Erdos287PerronInterfaceCounterguard.lean`
+- `RequestProject/CurrentProgramme/Erdos287BDiagonalDeltaQAbstract.lean`
+- `RequestProject/CurrentProgramme/Erdos287PhysicalDictionaryInterfaces.lean`
+- `RequestProject/CurrentProgramme/Erdos287SourceCoverageCompiler.lean`
+- `RequestProject/Status/CurrentStatusErdos287MasterSourceFrontier.lean`
+- `RequestProject/Status/AxiomAuditErdos287MasterSourceFrontier.lean`
+- `ERDOS287_MASTER_SOURCE_FRONTIER_SAFE_BANK_REPORT.md` (full report with the required final block)
+
+WHAT IS PROVED (kernel-checked, no placeholders)
+- Master source: finite test model `unprojectedSource` with its deterministic bounds; the realisation interface `MasterPhysicalSourceRealisation` (parent identification, exact index family, exact coefficient factorisation, positive shared-gcd coordinate, coprimality data, outer variables) left **uninhabited**; the dictionary-vs-realisation firewall `sourceDictionary_ne_physicalRealisation` with an explicit finite countermodel where the dictionary is populated but the claimed physical equality fails, plus `no_realisation_zeroGcdSpec` and a toy realisable spec showing the interface is a genuine condition.
+- Proof-local Ω (new namespace, not identified with historical Ω objects): `DyadicPartition` certificate (exact partition of unity, local support, bounded overlap) with `weight_le_one`, `one_le_overlapBound`, `reconstruction`; the exact insertion identity `unprojectedSource_eq_sum_projectedSource`; local finiteness `dyadicLocalFiniteness` (at most 3 dyadic scales with g/2 ≤ H ≤ 2g, sharpness shown); the physical insertion input left uninhabited with `abstractProofOmegaPartition_does_not_construct_physicalInsertion`.
+- Single Perron contour: the exact real integral `∫_{-T}^{T}(c²+t²)^{-1/2} dt = 2·arsinh(T/c)` for c>0 (proved, not assumed), `arsinh x ≤ log(1+2x)`, the budget at c = 1/L, T = L^K (`2·arsinh(L^{K+1}) ≤ 2·log(1+2L^{K+1})`), the `SingleContourL1Bound` interface (inhabited) and deterministic compilers with cardinality explicit.
+- Typed packets: `SourcePacketDecomposition` with the **explicit global** `totalNuclearMass ≤ nuclearBudget` field; compiler `‖source‖ ≤ nuclear·packetBound + errorBound` plus the log-budget specialisation; `packetwise_coefficient_bound_does_not_bound_total` proving the global field cannot be derived packetwise.
+- Perron interface counterguard: `perContour_bound_does_not_imply_total_without_cardinality` and `no_global_total_from_perContour_bound` (FAIL verdict, finite countermodel), with the positive cardinality-explicit companion.
+- Abstract Δ × q_a kernel: `deltaQ_unitaryFourier_bound` (reusing, not re-proving, the banked reciprocal unitary Fourier theorem), generic residue-aggregation `phase_fiberwise`, the exact finite aggregation compiler `‖S‖² ≤ n·M_Δ·M_q·E_A·E_B` with square-root form and the interval instantiation supplying `M = length/n + 1` (the 1+D/n, 1+E/n factors), and the Cauchy step over t.
+- Physical bridges: `BDiagonalDeltaQPhysicalDictionary` (Archimedean factors, U_e(Δ), local harmonic profile, Perron labels, A0/C0 dependence, gcd mask, dyadic/source factors), `C0SourceRealisationBridge`, `TransverseSourceRealisationBridge`, `PhysicalSourceCoverage100` — all **uninhabited**, each with an emptiness theorem at the countermodel spec; the physical b-diagonal compiler is proved only conditionally on the dictionary plus explicit energy inputs.
+- Coverage: `PhysicalOwnerMap` with no-double-spending and exhaustive-over-domain accounting, and the firewall that abstract ownership does not give 100% physical coverage.
+- Status: a later, controlling append-only layer recording ERDŐS287 OPEN, first frontier UNPROJECTED-MASTER-PHYSICAL-SOURCE-REALISATION45 OPEN, next MASTER-SOURCE-TO-TYPED-PERRON-PACKETS45 OPEN, WindowPairSupply OPEN, the FAIL verdict on current Perron interface sufficiency, the b-diagonal abstract/physical split, and the supersession ledger for the two old claims — with six `backing_*` theorems tying every "proved" row to an actual theorem, the reconfirmed end-to-end compiler and the still-visible `supply` field. Earlier status layers were not rewritten.
+
+BUILD AND AUDIT
+- Every new module builds individually; default `lake build` succeeds with **8330 jobs, 0 errors**, 32 warnings — all pre-existing in older files, **0 from the new modules**.
+- `AxiomAuditErdos287MasterSourceFrontier.lean` runs 100 `#print axioms` reports: 89 × {propext, Classical.choice, Quot.sound}, 1 × {propext}, 10 axiom-free. No `sorry`, `sorryAx`, custom axiom, `unsafe`, `opaque`, `native_decide` or `implemented_by` occurs as code anywhere in the new files (those words appear only in docstring prose).
+- Diff versus the pre-pass commit: 12 files changed, 2268 insertions, **0 deletions**. All work is committed and pushed; `ARISTOTLE_SUMMARY.md` was not edited.
+
+# Summary of changes for run 70ede315-c408-474e-af0b-42cac5fb2441
+Completed the append-only public-tree reconciliation pass for Erdős #287. Nothing was deleted or rewritten; the only modification to an existing file is three appended `import` lines in `RequestProject/Main.lean`. Erdős #287 is **not** claimed to be solved.
+
+REGRESSION
+- Baseline `lake build` on the unmodified tree: success, **8317 jobs**, 0 errors, 32 cosmetic linter warnings (unused variables / unused simp arguments in pre-existing files).
+- After this pass: `lake build` success, **8320 jobs**, 0 errors.
+- Repository-wide scan for `sorry`, `sorryAx`, `admit`, custom `axiom`, `unsafe`, `opaque`, `native_decide`, `implemented_by`: no occurrence as Lean code anywhere; the words appear only in docstrings and `.md` prose.
+- Axiom audit: 2276 `#print axioms` reports in the build log; parsing every reported axiom set yields exactly `{propext, Classical.choice, Quot.sound}`, with zero `sorryAx` and no user axiom. The end-to-end chain (`no_Erdos287Counterexample_of_closure`, `erdos287_seq_of_closure`, `Gap2CE.no_of_windowPairSupply`, `windowPairSupply_of_sophieWitness`, `no_Erdos287Counterexample_of_max_le_4e9`, `no_Erdos287Counterexample_of_prime_max`, `erdos287_seq_of_no_counterexample`) was re-printed in this pass.
+
+FILES ADDED
+- `RequestProject/Erdos287/OrderedSequenceBridge.lean` — the statement-equivalence layer.
+- `RequestProject/Status/PublicTreeReconciliation20260901.lean` — the new append-only status layer (node classification, DAG, end-to-end firewall, extra semantic guards).
+- `RequestProject/Status/AxiomAuditPublicTreeReconciliation20260901.lean` — `#print axioms` for all new declarations plus an end-to-end regression re-print.
+- `ERDOS287_PUBLIC_FORMAL_RECONCILIATION_2026-09-01.md` and `ERDOS287_STATEMENT_EQUIVALENCE_2026-09-01.md`.
+
+THEOREMS PROVED (all kernel-checked, no placeholders)
+- Statement equivalence: `Erdos287SeqStatement` (published ordered form), `erdos287SeqStatement_of_statement`, the previously missing converse `erdos287Statement_of_seqStatement`, the equivalence `erdos287Statement_iff_seqStatement`, the adjacent-gap dictionary `gap_le_two_iff_orderEmb_gap`, the `ℚ`/`ℝ` reciprocal-sum dictionary `sum_recip_rat_iff_real`, and the enumeration lemmas `enum_mem`, `enum_lt_enum`, `exists_enum_eq`, `enum_succ_le`, `sum_enum_recip`. The problem statement is not weakened anywhere.
+- End-to-end firewall: `reconfirm_endToEnd` (`Erdos287ClosureInputs → Erdos287Statement`), its ordered form `reconfirm_endToEnd_seq`, `closureInputs_supply_visible` (the `supply` field stays exposed), and genuine non-vacuity guards `not_windowPairSupply_zero/_one/_two`, `closureInputs_threshold_ge_three`, `windowPairSupply_forces_large_primePowers` (a window pair forces two consecutive positions in the top half of `[1,M]`, each carrying a prime power `> M/10`). The ledger `no_banked_interface_constructs_closureInputs` records — explicitly as metadata, not as an impossibility theorem — that none of the eight banked local analytic/source interfaces constructs a closure-inputs inhabitant.
+- Current formal frontier: `nodeStatus`/`nodeKind` classify every listed node as kernel-proved, analytic-bank metadata only, conditional source interface, open, superseded or retracted, with `classification_of_open_nodes`, `analytic_nodes_not_kernelProved`, `kernelProved_node_count`. No unreleased claim (b-diagonal closure, Ω proof-local reconstruction, total Perron ledger, local analytic kernel closure) was promoted.
+- Dependency DAG terminating at `Erdos287Statement`: `dependsOn`, `rank`, `dependsOn_rank_decreasing`, `dependsOn_irrefl`, `erdos287Statement_terminal`, and the guard `implication_does_not_close_target` (a proved implication never closes its target).
+- Extra semantic guards where earlier coverage was prose-level: `plain_l2_ne_weighted_l2` (weighted vs unweighted Ω-norms), `packetwise_not_aggregate`, `interface_status_not_theorem`, `supply_is_input_not_output`.
+
+STATUS
+- WINDOWPAIR SUPPLY: OPEN. END-TO-END ERDŐS287: OPEN (only the implication is proved). No theorem named `erdos287` exists in the repository. Statement-equivalence audit: PASS. Semantic firewall audit: PASS.
+- The four authoritative files (`Status/SemanticFirewallsErdos287.lean`, `Status/CurrentAuthoritativeStatusErdos287.lean`, `Status/Erdos287EndToEndStatus.lean`, `Erdos287/ClosureInputs.lean`) are byte-identical to their previous state; historical status files were not rewritten.
+- No `sorry`, custom axiom, `unsafe`, `opaque`, `native_decide` or `implemented_by` remains. All work is committed and pushed.
+
 # Summary of changes for run 0a482901-8cc2-4fd0-97db-6b9300048e52
 Completed the append-only dual-level / simultaneous-critical extension of the Erdős #287 formal bank, plus the semantic re-anchoring hygiene layer. Everything is committed and pushed.
 

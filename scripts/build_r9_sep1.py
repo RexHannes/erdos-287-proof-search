@@ -40,12 +40,13 @@ bound.
 
 The exact vector-to-integer pushforward carries the physical fibre coefficient
 $\Omega_C^{\#}(n)$; it is therefore not silently identified with the older unweighted
-integer source.  The next controlling source/compiler nodes are
-\[
-\boxed{\path{BALANCED7-SP2-STRICTCELL-PHYSICAL-BRIDGE45}}
-\quad\text{and then}\quad
-\boxed{\path{FORD723-GENERATED-PACKET-CENSUS-AND-REPLACEMENT45}}.
-\]
+integer source.  The next controlling source/compiler nodes are:
+\begin{center}
+\small
+\path{BALANCED7-SP2-STRICTCELL-PHYSICAL-BRIDGE45}\\
+then\\
+\path{FORD723-GENERATED-PACKET-CENSUS-AND-REPLACEMENT45}.
+\end{center}
 The generated Ford packet census, exact physical Perron census, full-source local analytic
 kernel, and final large-$M$/public-predicate bridge remain open.
 

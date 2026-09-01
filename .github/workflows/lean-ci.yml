@@ -8,6 +8,9 @@ on:
       - 'RequestProject/**'
       - 'README.md'
       - 'CURRENT_STATUS.md'
+      - 'ARISTOTLE_SUMMARY.md'
+      - 'PROJECT_SCOPE.md'
+      - 'CONTAMINATION_AUDIT_2026-09-01.md'
       - 'RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md'
       - 'lakefile.toml'
       - 'lake-manifest.json'
@@ -37,14 +40,28 @@ jobs:
       - name: Build full RequestProject library
         run: ~/.elan/bin/lake build RequestProject
 
-      - name: Check living Erdős 287 graph for cross-project active labels
+      - name: Build living Erdős 287 entrypoint explicitly
+        run: ~/.elan/bin/lake build RequestProject.CurrentErdos287
+
+      - name: Check living entrypoint imports for cross-project dependencies
         shell: bash
         run: |
           set -euo pipefail
           files=(
-            README.md
-            CURRENT_STATUS.md
-            RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md
+            RequestProject/Main.lean
+            RequestProject/CurrentErdos287.lean
+          )
+          if grep -niE '^import[[:space:]].*(TrustedBank\.Gate1A|TrustedBank\.Gate1B|TwinPrime|Gate1B|FM722|HSTAR)' "${files[@]}"; then
+            echo 'Cross-project import found in a living Erdős-287 formal entrypoint.' >&2
+            exit 1
+          fi
+          echo 'Erdős-287 living entrypoint import firewall: PASS'
+
+      - name: Check living Sep-1 modules for Twin-Prime-owned symbols
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
             RequestProject/CurrentProgramme/Erdos287Direct3221CenteredDefect.lean
             RequestProject/CurrentProgramme/Erdos287Direct3221Interfaces.lean
             RequestProject/CurrentProgramme/Erdos287Direct3221RawRawGeometry.lean
@@ -52,17 +69,18 @@ jobs:
             RequestProject/CurrentProgramme/Erdos287K0SP2LogBudget.lean
             RequestProject/Status/CurrentStatusErdos287Direct3221Reassembly.lean
           )
-          if grep -niE 'GATE1B|TWIN_PRIME|FM722|HSTAR' "${files[@]}"; then
-            echo 'Cross-project active label found in the living Erdős-287 status/graph.' >&2
+          if grep -niE 'TwinPrimeProject|TWIN_PRIME_CONJECTURE|FM722|HSTAR-K0J0|GLOBAL[[:space:]_-]*GATE1B' "${files[@]}"; then
+            echo 'Twin-Prime-owned symbol found in the living Erdős-287 Sep-1 layer.' >&2
             exit 1
           fi
-          echo 'Erdős-287 living graph scope scan: PASS'
+          echo 'Erdős-287 Sep-1 symbol scope scan: PASS'
 
       - name: Forbidden-proof-shortcut scan in new Sep-1 modules
         shell: bash
         run: |
           set -euo pipefail
           files=(
+            RequestProject/CurrentErdos287.lean
             RequestProject/CurrentProgramme/Erdos287Direct3221CenteredDefect.lean
             RequestProject/CurrentProgramme/Erdos287Direct3221Interfaces.lean
             RequestProject/CurrentProgramme/Erdos287Direct3221RawRawGeometry.lean

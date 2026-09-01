@@ -1,0 +1,57 @@
+name: Lean CI — Erdős 287
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'RequestProject/**'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+      - '.github/workflows/lean-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+
+      - name: Build full RequestProject library
+        run: ~/.elan/bin/lake build RequestProject
+
+      - name: Forbidden-proof-shortcut scan in new Sep-1 modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            RequestProject/CurrentProgramme/Erdos287Direct3221CenteredDefect.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221Interfaces.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221RawRawGeometry.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2FragmentationInterfaces.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2LogBudget.lean
+            RequestProject/Status/CurrentStatusErdos287Direct3221Reassembly.lean
+            RequestProject/Status/AxiomAuditErdos287Direct3221CenteredDefect.lean
+            RequestProject/Status/AxiomAuditErdos287Direct3221RawRawGeometry.lean
+            RequestProject/Status/AxiomAuditErdos287Direct3221Reassembly.lean
+            RequestProject/Status/AxiomAuditErdos287K0SP2Fragmentation.lean
+          )
+          if grep -nE '\b(sorry|admit|unsafe|native_decide|implemented_by)\b' "${files[@]}"; then
+            echo 'Forbidden proof shortcut found in the Sep-1 delta.' >&2
+            exit 1
+          fi
+          echo 'Sep-1 shortcut scan: PASS'

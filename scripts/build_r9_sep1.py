@@ -135,9 +135,10 @@ that the stated source, compiler, analytic, or global bridge is not discharged.
 '''
 s = s[:g0] + glance + s[g1:]
 
-# Place the full September source update immediately after the TOC.
+# Place the full September source update immediately after the TOC. Use real newline
+# characters; a raw-string "\\n" would be emitted as an invalid TeX command.
 req(r'\tableofcontents',
-    r'\tableofcontents\n\n\input{ERDOS287_SEPT1_SOURCE_RECONSTRUCTION_UPDATE.tex}')
+    '\\tableofcontents\n\n\\input{ERDOS287_SEPT1_SOURCE_RECONSTRUCTION_UPDATE.tex}')
 
 # Mark the prior checkpoint and final ledger as historical rather than controlling.
 s = s.replace(

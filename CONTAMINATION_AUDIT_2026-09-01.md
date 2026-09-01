@@ -36,21 +36,22 @@ They are therefore classified as:
 LEGACY / NONCONTROLLING / NOT IMPORTED BY THE LIVING #287 ENTRYPOINT.
 ```
 
-They remain in the tree for provenance and reproducibility of historical runs; Git compilation of a legacy module is not theorem ownership and does not make it an analytic input to the current #287 programme.
+They remain in the tree for provenance and reproducibility of historical runs. Compiling a legacy module is not theorem ownership and does not make it an analytic input to the current #287 programme.
 
 No legacy problem-specific status/source/compiler statement may enter the current #287 chain without an explicitly #287-owned reintroduction and fresh audit.
 
 ## Automated firewall
 
-The current CI enforces exactly:
+The blocking CI validates the **living dependency graph**, not every quarantined historical module. It enforces:
 
-1. a full `lake build RequestProject`;
-2. a separate build of the living `RequestProject.CurrentErdos287` entrypoint;
-3. an import-line scan of `RequestProject/Main.lean` and `RequestProject/CurrentErdos287.lean`, rejecting active imports from `TrustedBank.Gate1A`, `TrustedBank.Gate1B`, `TwinPrime`, `Gate1B`, `FM722`, or `HSTAR`;
-4. a symbol scan of the new Sep-1 #287 Lean layer rejecting Twin-Prime-owned symbols such as `TwinPrimeProject`, `TWIN_PRIME_CONJECTURE`, `FM722`, `HSTAR-K0J0`, or `GLOBAL-GATE1B` variants;
-5. a forbidden-proof-shortcut scan over the new Sep-1 modules for `sorry`, `admit`, `unsafe`, `native_decide`, or `implemented_by`.
+1. `lake build RequestProject.CurrentErdos287`; because this entrypoint imports `RequestProject.Main`, this compiles the full active #287 spine plus the new 1-Sep layer;
+2. an import-line scan of `RequestProject/Main.lean` and `RequestProject/CurrentErdos287.lean`, rejecting active imports from `TrustedBank.Gate1A`, `TrustedBank.Gate1B`, `TwinPrime`, `Gate1B`, `FM722`, or `HSTAR`;
+3. a symbol scan of the new Sep-1 #287 Lean layer rejecting Twin-Prime-owned symbols such as `TwinPrimeProject`, `TWIN_PRIME_CONJECTURE`, `FM722`, `HSTAR-K0J0`, or `GLOBAL-GATE1B` variants;
+4. a forbidden-proof-shortcut scan over the new Sep-1 modules for `sorry`, `admit`, `unsafe`, `native_decide`, or `implemented_by`.
 
-The living README/status/frontier documents are separately reviewed as public status documents; they are not falsely described here as a substitute for the formal import/symbol checks above.
+A separate manual `workflow_dispatch` job remains available to build **every historical `RequestProject` module**, including quarantined legacy banks. That historical all-files build is a reproducibility audit, not the definition of the current #287 theorem graph and not a prerequisite for project-scope cleanliness.
+
+The living README/status/frontier documents are separately reviewed as public status documents; they are not substitutes for the formal import/symbol checks above.
 
 ## Public-status firewall
 

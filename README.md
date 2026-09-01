@@ -1,20 +1,22 @@
-# Erdős Problem #287 — Gate 0–2 Theory Manual / Current Public Frontier
+# Erdős Problem #287 — public research and Lean audit repository
 
 **Status:** open research programme / partial formal verification.  
 **ERDŐS PROBLEM #287 REMAINS OPEN.**
 
-The authoritative concise ledger is [`CURRENT_STATUS.md`](CURRENT_STATUS.md). Historical R4/R5/R7 manuscripts and research reports remain preserved for provenance; where an older frontier conflicts with the 31-August-2026 ledger, the later ledger controls.
+This repository is scoped to **Erdős Problem #287**. The authoritative living ledger is [`CURRENT_STATUS.md`](CURRENT_STATUS.md); historical manuscripts and reports are retained for provenance, but the later living ledger controls whenever statuses conflict.
 
 ## Start here
 
-- [Living public review — stable path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path — same living manuscript](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
 - [Authoritative current status](CURRENT_STATUS.md)
-- [Current research frontiers](RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md)
-- [31 Aug 2026 checkpoint changelog](CHANGELOG_2026-08-31.md)
+- [Current research frontier](RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md)
+- [Current Aristotle / Lean summary](ARISTOTLE_SUMMARY.md)
+- [Clean 1-Sep formal entrypoint](RequestProject/CurrentErdos287.lean)
+- [1 Sep 2026 research update](PUBLIC_REVIEW_UPDATE_2026-09-01.md)
+- [1 Sep 2026 changelog](CHANGELOG_2026-09-01.md)
+- [1 Sep 2026 contamination audit](CONTAMINATION_AUDIT_2026-09-01.md)
+- [Living public review — stable path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
 - [Corrections and retractions](CORRECTIONS_AND_RETRACTIONS.md)
-
-The Gate 0–2 theory manual remains part of the living manuscript: the repository is not being converted into a status-only note.
+- [Project-scope firewall](PROJECT_SCOPE.md)
 
 ## Strongest unconditional public theorem
 
@@ -24,105 +26,76 @@ The existing Lean-checked finite theorem excludes every exact counterexample wit
 M <= 4,000,000,000.
 ```
 
-The conditional large-`M` interface `Erdos287.WindowPairSupply` remains separate. No eventual supply theorem, effective final threshold, or unconditional solution of Erdős #287 is claimed.
+The large-`M` interface `Erdos287.WindowPairSupply` remains conditional. No eventual supply theorem, effective final threshold, or unconditional solution of Erdős #287 is claimed.
 
-## Latest analytic milestone — C0
+## 1 September 2026 analytic milestone
 
-The canonical C0 exact-product / double-Type-II analytic core is now **analytically closed conditional on the separately identified physical-normalisation source pin**.
-
-Banked C0 statements include:
+The newest research layer isolates the physical Balanced7 super-square-root cell and uses the literal `2+5` source split
 
 ```text
-FIXEDRATIO-BALANCED-b-UNITARYFOURIER45: PASS WITH REPAIRS
-EXACT PRODUCT COLLISION: ANALYTICALLY CLOSED
-DOUBLE TYPE II: ANALYTICALLY CLOSED
-C0: ANALYTICALLY CLOSED / CONDITIONAL ON FORMAL NORMALISATION
+m = p1*p2,
+w = p3*p4*p5*p6*p7,
+q | 2*m*w+s  <->  w = -s*(2*m)^(-1) mod q.
 ```
 
-The exact finite contraction is
-
-```math
-\eta_b^2
-\ll
-L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
-```
-
-This is a finite-Fourier / `L^2` closure. It uses neither conjectural Möbius cancellation nor a new spectral black box.
-
-The remaining formal/source pin is
+The direct centered raw-minus-principal variance gives, at the research/paper level,
 
 ```text
-SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
+per dyadic Q:
+    |D_{Q,s}| << X L^(-5/2+o(1));
+
+after the full super-square-root dyadic band:
+    sum_Q |D_{Q,s}| << X L^(-3/2+o(1)) = o(X/L).
 ```
 
-plus the complete physical Perron/nuclear normalisation unless it is absorbed into the same source pin.
-
-## Transverse long-conductor — strictly reduced, still OPEN
-
-Banked research/paper-level reductions:
+Accordingly the source-specific physical status is
 
 ```text
-THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45: PASS
-THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45: PASS
-THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45: CLOSED ON EXPLICIT HYPOTHESES
+SP2-BALANCED7-SUPERSQRT-DIRECT3221-DEFECT45:
+    PAPER / RESEARCH CLOSED.
+
+SP2-BALANCED7-FULL-Q45:
+    PAPER / RESEARCH CLOSED.
+
+BALANCED7:
+    PAPER / RESEARCH CLOSED.
 ```
 
-These close a strict dense-`q_C` subregion only. They do **not** close all transverse packets.
+This does **not** close the stronger reusable socket asking for `X L^(-A)` for every fixed `A`. That generic arbitrary-`A` statement remains open.
 
-The naïve full-CRT two-signless-carrier DFT is **RETRACTED**: the fused numerator retains cross-modulus inverse coefficients.
+## Current controlling frontier
 
-The current first analytic residual is
+The first downstream research residual is now
 
 ```text
-THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45 : OPEN
+287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45
 ```
 
-The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. The next research test is whether a missing second Fourier axis can be supplied by the Bézout numerator, an opposite-packet dominant carrier, the `m` variable after `TT*`, a signed `L^2` carrier, grouped short factors, or both source orientations. None is yet promoted as proved.
+The key audit is source exhaustivity plus the logarithmic reassembly budget. The physical super-square-root estimate has base exponent `-3/2`, while the final criterion requires an exponent strictly below `-1`; therefore naive absolute reassembly may spend **strictly less than one half logarithmic power**.
 
-## Parallel b-diagonal
-
-Kept visibly separate:
+Still open:
 
 ```text
-BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45 : OPEN
+287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45
+FULL-SOURCE-LOCAL-ANALYTIC-KERNEL45
+WindowPair
+ERDOS287
 ```
 
-C0 or transverse Fourier gain is not automatically spent on this branch.
+## Formal status
 
-## Formal / Aristotle checkpoint
+The living formal entrypoint is `RequestProject/CurrentErdos287.lean`. It imports the established #287 `RequestProject.Main` spine plus only the new #287 1-Sep direct3221/K0-SP2 layer.
 
-The supplied 31-August Aristotle bundle records a completed C0 unitary-Fourier / transverse-carrier-interface bank with
+The new Lean files are deliberately **interfaces, exact finite algebra, geometry, status declarations, and log-budget firewalls**. They do not turn the external Selberg-sieve/Shiu estimates, the paper-level direct3221 endpoint, or the K0-SP2 reassembly bound into axioms or automatic inhabitants.
 
-```text
-default lake build: PASS
-8298 jobs
-0 errors
-```
+Earlier formal banks remain valid only under their stated hypotheses. The public repository is rebuilt by CI after current-layer changes; a successful historical build is not treated as proof of the newest analytic research claims.
 
-and declaration axiom audits reporting only ordinary Mathlib foundations such as `propext`, `Classical.choice`, and `Quot.sound`, with no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
+## Contamination firewall
 
-The newest named formal files depend on a larger unpublished `CurrentProgramme` / hostile-audit dependency graph than is currently present under public `RequestProject/Main.lean`. The repository therefore records the attached verified bank without falsely claiming that the public main tree has already reproduced the same 8298-job build. No newer transverse one-conductor formal module is fabricated or pre-promoted.
+The active 1-Sep status, frontier and `RequestProject/CurrentErdos287.lean` entrypoint are Erdős-287-only. Neither the living entrypoint nor its `RequestProject.Main` base imports the legacy `TrustedBank/Gate1A` / `TrustedBank/Gate1B` banks.
 
-## Explicit corrections
+Those older cross-project-named banks remain only as **legacy/noncontrolling provenance** for reproducibility of historical runs. Compilation of a legacy generic lemma is not theorem ownership; no legacy problem-specific source/status/compiler statement is admissible in the living #287 chain without an explicitly #287-owned reintroduction and fresh audit.
 
-Retained historically but no longer controlling:
-
-- old C0 post-conditioning index `n = j inverse(u') mod x` — **RETRACTED**;
-- old C0 wrap `1 + UU'/B` — **RETRACTED**;
-- naïve transverse full-CRT two-signless DFT — **RETRACTED**;
-- `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45` as first frontier — **SUPERSEDED**;
-- the 30-August R7 uniform-`k=0` / one-level-Möbius residual as the controlling public first frontier — **SUPERSEDED AS CONTROLLING**, while its historical/local research content remains preserved.
-
-See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md).
-
-## Dependency firewall
-
-```text
-C0 analytic closure != full transverse closure.
-Dense-qC transverse closure != all transverse packets.
-Transverse progress != parallel b-diagonal closure.
-Local analytic closure != Gate 0–2 / FCL / effective WindowPairSupply.
-Erdős #287 progress != Twin Prime closure.
-```
+The separate Twin-Prime programme is maintained in its own repository and is not an active dependency here.
 
 **ERDŐS PROBLEM #287 REMAINS OPEN.**

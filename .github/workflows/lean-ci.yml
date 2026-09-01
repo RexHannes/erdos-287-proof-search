@@ -1,0 +1,113 @@
+name: Lean CI — Erdős 287 living graph
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'RequestProject/**'
+      - 'README.md'
+      - 'CURRENT_STATUS.md'
+      - 'ARISTOTLE_SUMMARY.md'
+      - 'PROJECT_SCOPE.md'
+      - 'CONTAMINATION_AUDIT_2026-09-01.md'
+      - 'RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'lean-toolchain'
+      - '.github/workflows/lean-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  living-graph:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+
+      - name: Build living Erdős 287 entrypoint
+        run: ~/.elan/bin/lake build RequestProject.CurrentErdos287
+
+      - name: Check living entrypoint imports for cross-project dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            RequestProject/Main.lean
+            RequestProject/CurrentErdos287.lean
+          )
+          if grep -niE '^import[[:space:]].*(TrustedBank\.Gate1A|TrustedBank\.Gate1B|TwinPrime|Gate1B|FM722|HSTAR)' "${files[@]}"; then
+            echo 'Cross-project import found in a living Erdős-287 formal entrypoint.' >&2
+            exit 1
+          fi
+          echo 'Erdős-287 living entrypoint import firewall: PASS'
+
+      - name: Check living Sep-1 modules for Twin-Prime-owned symbols
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            RequestProject/CurrentProgramme/Erdos287Direct3221CenteredDefect.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221Interfaces.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221RawRawGeometry.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2FragmentationInterfaces.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2LogBudget.lean
+            RequestProject/Status/CurrentStatusErdos287Direct3221Reassembly.lean
+          )
+          if grep -niE 'TwinPrimeProject|TWIN_PRIME_CONJECTURE|FM722|HSTAR-K0J0|GLOBAL[[:space:]_-]*GATE1B' "${files[@]}"; then
+            echo 'Twin-Prime-owned symbol found in the living Erdős-287 Sep-1 layer.' >&2
+            exit 1
+          fi
+          echo 'Erdős-287 Sep-1 symbol scope scan: PASS'
+
+      - name: Forbidden-proof-shortcut scan in new Sep-1 modules
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            RequestProject/CurrentErdos287.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221CenteredDefect.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221Interfaces.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221RawRawGeometry.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2FragmentationInterfaces.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2LogBudget.lean
+            RequestProject/Status/CurrentStatusErdos287Direct3221Reassembly.lean
+            RequestProject/Status/AxiomAuditErdos287Direct3221CenteredDefect.lean
+            RequestProject/Status/AxiomAuditErdos287Direct3221RawRawGeometry.lean
+            RequestProject/Status/AxiomAuditErdos287Direct3221Reassembly.lean
+            RequestProject/Status/AxiomAuditErdos287K0SP2Fragmentation.lean
+          )
+          if grep -nE '\b(sorry|admit|unsafe|native_decide|implemented_by)\b' "${files[@]}"; then
+            echo 'Forbidden proof shortcut found in the Sep-1 delta.' >&2
+            exit 1
+          fi
+          echo 'Sep-1 shortcut scan: PASS'
+
+  legacy-full-bank:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+      - name: Build every historical RequestProject module
+        run: ~/.elan/bin/lake build RequestProject

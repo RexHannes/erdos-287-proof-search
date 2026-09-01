@@ -1,0 +1,4 @@
+import RequestProject.CurrentProgramme.Erdos287Direct3221CenteredDefect
+
+#print axioms Erdos287Direct3221CenteredDefect.sq_sub_le_two_sq_add_two_sq
+#print axioms Erdos287Direct3221CenteredDefect.centered_linear

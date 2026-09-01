@@ -1,0 +1,3 @@
+import RequestProject.CurrentProgramme.Erdos287K0SP2FragmentationInterfaces
+
+#print axioms Erdos287K0SP2Fragmentation.owner_is_metadata

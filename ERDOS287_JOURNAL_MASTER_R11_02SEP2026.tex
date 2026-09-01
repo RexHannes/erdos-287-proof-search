@@ -1,0 +1,445 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\BX}{\mathcal B_X}
+\newcommand{\TX}{\mathcal T_X}
+\newcommand{\LX}{\mathcal L_X}
+\newcommand{\WPS}{\operatorname{WindowPairSupply}}
+\newcommand{\paperclosed}{\textsc{paper-closed external}}
+\newcommand{\kernelproved}{\textsc{kernel-proved}}
+\newcommand{\conditional}{\textsc{conditional}}
+\newcommand{\openstatus}{\textsc{open}}
+\newcommand{\reduced}{\textsc{strictly reduced}}
+
+\title{\textbf{A Machine-Checked Finite Reduction and a Source-Explicit Large-$M$ Programme for Erd\H{o}s Problem \#287}\\[0.6ex]
+\large Journal master R11 --- self-contained current research version}
+\author{Research draft with Lean/Aristotle-assisted verification}
+\date{2 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fbox{\begin{minipage}{0.93\textwidth}
+\textbf{Current status.} Erd\H{o}s Problem \#287 is \textbf{not proved in this manuscript}. The unconditional finite exclusion through maximum denominator $M\le 4\cdot10^9$ is retained as the strongest kernel-checked result. The large-$M$ programme is presented as a source-explicit conditional reduction with several paper-level estimates and several explicitly open source/analytic/effectivity nodes. In particular, the $b$-diagonal local owner is currently \emph{strictly reduced/open}, the hard $U$-lane $k\ge1$ Ford parent remains open through a shared source-specific Type-II theorem, and the final explicit threshold is not yet available. No statement in this file should be read as an unconditional solution of Problem \#287.
+\end{minipage}}
+\end{center}
+
+\begin{abstract}
+Erd\H{o}s Problem \#287 asks whether every representation of $1$ as a sum of reciprocals of distinct increasing integers contains two consecutive denominators separated by at least $3$. We give a self-contained account of the present verification programme. The finite range $M\le 4\cdot10^9$ is reduced and checked in Lean, and a large-$M$ bridge is isolated through an explicit arithmetic predicate $\WPS(M)$. We then describe the Ford--Maynard shifted-prime architecture used to seek eventual $\WPS(M)$: Gate~0 Type-I control, the Gate~1A centered two-view Hilbert-frame route, the Gate~1B source-specific reciprocal Type-II route, and the Gate~2/fixed-certificate transference step. The newest source audit separates the full correlation (Tot lane) from the leakage $U$ lane. The Tot lane is paper-level closed by the one-copy Type-I theorem, while the $U$ lane reduces to already-owned easy and $k=0$ packets plus one hard $k\ge1$ Ford-generated other-parent family. The physical $N_2$ von-Mangoldt collar and the $B_{\rm src}/N_1$ comparison are paper-level closed asymptotically. We record all current corrections, including the reopened $b$-diagonal compiler/source obligations and the separation between asymptotic and effective closure. The purpose of this article is a reviewable conditional criterion and proof architecture, not a claim that the open analytic inputs have already been discharged.
+\end{abstract}
+
+\tableofcontents
+
+\section{The problem and the exact claim status}
+
+The problem is the following \cite{ErdosGraham1980,ErdosProblems287}.
+
+\begin{definition}[Erd\H{o}s \#287]
+Let $k\ge2$ and let
+\[
+1<n_1<\cdots<n_k,\qquad \sum_{i=1}^k\frac1{n_i}=1.
+\]
+Must one have
+\[
+\max_{1\le i<k}(n_{i+1}-n_i)\ge3?
+\]
+\end{definition}
+
+The example $1=1/2+1/3+1/6$ shows that $3$ is best possible. The public Erd\H{o}s Problems archive continues to list the problem as open. The present manuscript therefore uses four status labels throughout:
+\begin{itemize}[leftmargin=*]
+\item \kernelproved: the exact stated Lean theorem is kernel-checked;
+\item \paperclosed: a paper-level mathematical argument is currently banked, but the analytic theorem is not fully formalized in Lean;
+\item \conditional: the conclusion is proved from visible external/source inputs;
+\item \openstatus: a genuine source, analytic, compiler, or effectivity obligation remains.
+\end{itemize}
+
+\section{Finite reduction and the exact large-$M$ interface}
+
+The formal development uses an exact finite-set counterexample predicate. It requires at least two denominators, every denominator $>1$, reciprocal sum $1$, and every consecutive gap at most $2$. This predicate is mapped one-way into the older broader internal compiler type; the converse is intentionally not assumed.
+
+\begin{definition}[Window-pair supply]
+For $M\in\N$, $\WPS(M)$ asserts the existence of consecutive integers $x,x+1$ in the top half of $[1,M]$, together with prime powers $p^a\mid x$ and $q^b\mid x+1$, such that the two quotient windows are at most $9$ and the prime bases beat the certified finite numerator bounds for those windows.
+\end{definition}
+
+The Lean project proves the deterministic implication
+\[
+\WPS(M)\Longrightarrow \text{no Erd\H{o}s-287 counterexample with maximum denominator }M,
+\]
+and combines it with the machine-checked finite range.
+
+\begin{theorem}[Conditional large-$M$ compiler; kernel-checked]
+Assume an explicit integer $M_0\le 4\cdot10^9$ such that $\WPS(M)$ holds for every $M\ge M_0$. Then Erd\H{o}s Problem \#287 holds.
+\end{theorem}
+
+The antecedent is not proved for large $M$ in the present formal development. This is the precise point at which the analytic programme enters.
+
+\section{Shifted-prime source and fixed-certificate transference}
+
+Fix a smooth nonnegative weight $W$ supported in $[7/10,9/10]$. The physical comparison sequence is
+\[
+B_{\rm src}(n)=\mathfrak S_2\prod_{\substack{p\mid n\\p>2}}\frac{p-1}{p-2},
+\qquad
+\mathfrak S_2=\prod_{p>2}\left(1-\frac1{(p-1)^2}\right),
+\]
+and the centered shifted-prime weight is
+\[
+w_X(n)=W(n/X)\bigl(\Lambda(2n-1)+\Lambda(2n+1)-4B_{\rm src}(n)\bigr).
+\]
+The Ford fixed certificate supplies a divisor weight $H_\varepsilon(n)$, and the principal physical correlation is
+\[
+\TX=\sum_{X/2<n\le X}w_X(n)H_\varepsilon(n).
+\]
+The support is divided into prime supply, $N_1$, $N_2$, and leakage $U$ regions. The current four-error ledger is
+\[
+\operatorname{primeMass}\ge m_\varepsilon\BX-E_T-E_L-E_2-E_M,
+\tag{3.1}
+\]
+where $m_\varepsilon>0$ is the fixed-certificate comparison margin and the four errors correspond respectively to total correlation, leakage, the geometric $N_2$ collar, and the $N_1$ comparison error. There is no additional factor $3$ in this ledger.
+
+The elementary compiler from fixed-certificate positivity to the arithmetic window condition has already been reduced to
+\[
+\mathrm{FCL}_W(M/2)\Longrightarrow \WPS(M),\qquad M\ge12.
+\tag{3.2}
+\]
+Thus the remaining tasks are to justify the four errors at the physical source and to make the resulting threshold explicit.
+
+\section{Gate 0: Type-I control and the Tot lane}
+
+Ford--Maynard develop a general prime-producing sieve from simultaneous Type-I and Type-II information \cite{FordMaynard2024}. The current source audit shows that the full physical correlation and the leakage term must not be forced into a single packet grammar. The correct source is a disjoint union
+\[
+\mathsf I_{\rm raw}=\mathsf I_{\rm Tot}\sqcup\mathsf I_U.
+\]
+The Tot lane is the Lemma-7.21/Type-I lane. In particular it carries no fabricated $k,J$, Heath--Brown block, selected-subproduct family, shared gcd, or two-copy determinant coordinate.
+
+Writing
+\[
+w_s(n)=W(n/X)(\Lambda(2n+s)-2B_{\rm src}(n)),\qquad s\in\{-1,+1\},
+\]
+the exact Tot decomposition yields interval Type-I sums after the divisor factorization $d=m_1m_2$. The latest paper-level source audit obtains, for one fixed $B_T>1$,
+\[
+E_T=|\TX|\ll X(\log X)^{-B_T}=o(X/\log X).
+\tag{4.1}
+\]
+Status: \paperclosed. This route uses no two-copy dispersion, no shared-gcd partition, and no C0/transverse/$b$-diagonal owner.
+
+\section{Gate 1A: physical $t$-states and the synchronized centered frame}
+
+Gate~1A is retained as a separate analytic provider framework. It is not silently identified with the $U$-lane other-parent theorem below, and it is not presently required as an additional antecedent in the shortest \#287 FCL chain.
+
+The newest source calculation removes the old least-representative coordinates. For a physical row $e=(r,k,m,w_0)$ the determinant shell
+\[
+ms-prn=2
+\]
+is equivalent, with multiplicity one, to the integer $t$-state
+\[
+t=-\frac{s+w_0}{r},\qquad s=-w_0-rt,\qquad n=-\frac{A_e(t)}p.
+\tag{5.1}
+\]
+The corresponding one-$q$ coefficient is
+\[
+\mathcal F^{V2}_{q,e}(\chi)=\frac Hq\tau(\chi)\chi(r)
+\sum_{\substack{p\asymp L,\ t\in\mathbb Z\\p\mid A_e(t)}}
+ b_p\,W_D\!\left(t+\frac{2}{mr}\right)\overline\chi(-w_0-rt).
+\tag{5.2}
+\]
+The scalar smooth-state factorization previously used in exploratory work is not source-exact. The correct object is a fixed Hilbert ambient space with a moving row projection/unitary
+\[
+c_r(x)=B_xF_x(r/R)U_r(x),
+\]
+where $U_r$ contains the physical incidence projector and row character permutation. The latest paper-level source calculation proves the absolute Hilbert scale
+\[
+\mathcal B_{\rm Hilb}\ll M^2L^4X^{o(1)}.
+\tag{5.3}
+\]
+It also shows that all $g=(m,m')$ rows belong to the same V2 two-line source; the former separate small-$g$ proper-conductor child is superseded.
+
+What remains is source binding through the complete post-$\nu$ transform and a synchronized cross-row frame estimate. The controlling target is
+\[
+\boxed{\texttt{GATE1A-V2-ALLG-PHYSICAL-tSTATE-SYNCHRONIZED-CENTERED-FRAME45}}.
+\]
+Status: \openstatus. In particular the complete post-$\nu$ phase census, principal/mixed-zero normalization, projective pushforward, and full five-face recombination are not claimed proved.
+
+\section{Gate 1B: source-specific reciprocal Type II}
+
+The present Gate~1B source keeps the physical modulus $q=d\wp$, the Möbius sign $\mu(d)$, the prime factor $\wp$, the generated cofactor $\Gamma^{(z,y)}(c)$, anchor $2$, and the typed centered model. After additive reciprocity the two $c$-phases combine exactly to a linear phase in $c$; after $c=ab$ it is linear in $a$.
+
+For a genuinely pure Möbius atom
+\[
+\mu(a)a^{it}V(a/A),\qquad A\ge x^\eta,\quad |t|\le x^{200},
+\]
+the current paper-level argument obtains arbitrary logarithmic cancellation by partitioning into $A^{2/3}$ intervals and invoking the short-interval higher-uniformity theorem of Matom\"aki--Shao--Tao--Ter\"av\"ainen \cite{MSTT2022}. Thus the pure-Möbius source cells are closed.
+
+Two genuine source classes remain.
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Canonical Möbius blocks.} Ford's literal block carries $P^\pm$-dependent arithmetic support and phases. A singleton-prime block shows that ``contains $\mu$'' does not by itself imply arbitrary-log Davenport cancellation.
+\item \textbf{Möbius-free hard cells.} The legal $k=0,J=\varnothing,u=1$ child can have no Möbius atom in $\Gamma,z,y$. The surviving sign $\mu(d)$ occurs inside the reciprocal phase
+\[
+\sum_{d\sim D}\mu(d)e_r(-A\,\overline\wp\,\overline d),
+\]
+not a linear Davenport phase.
+\end{enumerate}
+The current controlling residuals are therefore
+\[
+\texttt{FM722-CANONICALBLOCK-CENTERED-MOBIUS-POLYPHASE45}
+\]
+and
+\[
+\texttt{FM722-ANCHOR2-MOBIUSFREE-GAMMA-MUD-RECIPROCAL45}.
+\]
+Consequently \texttt{RUN1B\_00\textasciicircum(2)} and Global Gate~1B remain \openstatus.
+
+\section{The $U$ lane and the shared Ford other-parent theorem}
+
+Only the $U$ lane carries the Proposition-7.22 generated source data: $k,J$, the literal Heath--Brown grammar, the nonempty subproduct collection $\mathcal E$, and a deterministic distinguished $E_*(\mathcal E)$. Continuous Perron/Mellin ordinates remain bound integration variables, not discrete packet labels.
+
+For the selected subproduct one obtains source-exact generated coefficients $A_\eta(a;\boldsymbol\tau)$ and $B_\eta(b;\boldsymbol\tau)$ and an exact centered bilinear packet. The $\Lambda=\mu*\log$ opening, affine determinant line, full four-channel centered two-copy expansion, shared-gcd construction, and $\Delta$ router have been source-audited algebraically. Easy, LowQ, Pascadi, local, and already-typed $k=0$ packets are banked. The hard $k\ge1$ descendants do not automatically inhabit the older $k=0$ C0/transverse/$b$-diagonal source profiles.
+
+The resulting leakage is
+\[
+E_L\le o(X/\log X)+
+\sum_{\substack{\eta\in\mathsf I_U^{\rm hard}\\k(\eta)\ge1}}
+\int_{\Gamma_\eta}|K_\eta(\boldsymbol\tau)|\,|S_\eta(\boldsymbol\tau)|\,d\boldsymbol\tau.
+\tag{7.1}
+\]
+The weakest sufficient common analytic theorem is the Ford-generated other-parent estimate. It is best viewed in a neutral shared namespace: it has one adapter to the Twin/HSTAR programme and a separate adapter to the \#287 leakage $E_L$; neither downstream conclusion is an assumption of the other.
+
+The latest source compression first extracts a distinguished prime $\pi$ from the selected side, writes $m=\pi z$, opens one complement atom $n=yc$, and obtains
+\[
+\ell q-(\pi zy)c=2.
+\tag{7.2}
+\]
+If the complement has depth $d\ge3$, the deterministic smallest atom satisfies the two-atom $4/9$ geometry
+\[
+\pi zy\le X^{4/9-\delta_d(\theta)+o(1)},\qquad
+\frac{Q}{\pi zy}\ge X^{5/18+\delta_d(\theta)-o(1)},
+\]
+with $\delta_d(\theta)>0$. After routing these cells, the genuinely coarse residual has complement depth exactly $2$, and both surviving complement atoms are distinct large linear-Heath--Brown $f$-leaves with only the coefficient patterns $1\times1$, $(\log y_1)\times1$, and $(\log y_1)(\log y_2)$, up to Mellin twists. The remaining coarse-two-$f$ covariance theorem is \openstatus.
+
+\section{$N_2$ collar and $B_{\rm src}/N_1$ comparison}
+
+The physical $N_2$ term is treated with the actual von Mangoldt weight; the older bounded-sequence shortcut is not used. The latest paper-level argument gives
+\[
+\frac{E_2}{\BX}\le K_{\rm collar}\varepsilon+o(1)
+\tag{8.1}
+\]
+for fixed $\varepsilon$, and hence, after choosing one sufficiently small fixed $\varepsilon$, eventually
+\[
+E_2\le \frac{m_\varepsilon}{8}\BX.
+\tag{8.2}
+\]
+It is important that (8.1) is not rewritten as $E_2=o(\BX)$ for fixed $\varepsilon$.
+
+The same endgame bank records the physical comparison
+\[
+b_X(n)=4W(n/X)B_{\rm src}(n),
+\]
+the $N_1$ dictionary, and
+\[
+E_M=o(\BX),\qquad
+\BX=(4\mathfrak S_2\int W+o(1))\frac{X}{\log X}.
+\tag{8.3}
+\]
+These statements are currently \paperclosed, not complete Lean analytic proofs.
+
+\section{The $b$-diagonal hostile-audit corrections}
+
+A later hostile audit re-opened the broad claim that the complete local analytic kernel had been closed. The corrected $b$-diagonal ledger is as follows.
+\begin{itemize}[leftmargin=*]
+\item The Archimedean nuclear cost is $L^C$, not uniformly $O(1)$.
+\item The small-$d$ Fourier algebra survives, but the quadratic triangle cost is $Y^2$, not $Y$.
+\item The large-$d$ incidence counts are correct; at the $\ell^2$ level the repaired relative bound is
+\[
+L^C\left(\frac1Y+\frac1{\sqrt{YE_a}}+\frac1{\sqrt{YT}}+\frac1{TE_a}\right),
+\]
+which reduces to $L^C/Y$ only under the explicit threshold conditions $E_a,T\gg Y$.
+\item The source must provide the required coprimalities, including the condition that prevents hidden factors of $r_1r_2$ from entering the gcd mask.
+\end{itemize}
+Three principal obligations remain: an explicit Perron/Mellin total nuclear ledger, a sourced rectangle inequality, and a source-history determination that the inserted $\Omega_H$ is proof-local rather than a fixed physical coefficient. Hence the current status is
+\[
+\boxed{\text{$b$-diagonal: \reduced/\openstatus}.}
+\]
+The manuscript therefore does not claim global closure of the full local analytic kernel.
+
+\section{Gate 2 / fixed-certificate assembly}
+
+Gate~2 is the downstream transference step: once the physical source estimates supply
+\[
+E_T+E_L+E_2+E_M<m_\varepsilon\BX,
+\tag{10.1}
+\]
+with $\BX>0$, the prime mass is positive by (3.1). The elementary FCL-to-window bridge (3.2) then gives $\WPS(M)$ at the corresponding scale.
+
+At the present research frontier, $E_T$ is paper-level closed, $E_2$ and $E_M$ are paper-level controlled, while $E_L$ remains conditional on the shared hard $k\ge1$ Ford theorem. Independently, the reopened $b$-diagonal source/compiler obligations must be repaired before any broad local-owner closure claim is restored.
+
+\section{Effectivity and the finite splice}
+
+The asymptotic programme is not by itself sufficient for the exact public theorem: the eventual large-$M$ threshold must overlap the verified finite range. The formal closure structure requires an explicit $M_0\le4\cdot10^9$.
+
+An explicit reconnaissance has already extracted the following source-independent data:
+\[
+\int W\ge\frac1{15},\qquad \|W\|_\infty=1,
+\]
+\[
+\mathfrak S_2>\frac{3273}{5000},
+\]
+\[
+K_{\rm pert}=0
+\]
+for the correctly separated $N_1$ comparison margin, and
+\[
+K_{\rm geo}=22{,}263{,}245.
+\]
+Moreover, for $X\ge100000$,
+\[
+\BX\ge\frac{1091}{12500}\frac{X}{\log X}.
+\tag{11.1}
+\]
+One explicit rough-source component threshold is $X_{\rm rough}=193{,}840{,}344$.
+
+The first unresolved effectivity input is a numerical two-linear-form upper sieve, uniform over the moving physical family
+\[
+q,\qquad 2Mq+s.
+\]
+The available Selberg-sieve framework is explicit \cite{BordignonLee2022}, but the required uniform specialization and translated-interval constants have not yet been numerically evaluated. Consequently $K_{\rm collar}$, a numerical $\varepsilon$, $X_{N_2}$, and the final $M_0$ are not presently available. No phrase ``for sufficiently large $X$'' is allowed to substitute for $M_0\le4\cdot10^9$.
+
+\section{Formal verification layer and semantic hygiene}
+
+The repository separates exact formal theorems from external mathematical inputs. In particular:
+\begin{enumerate}[leftmargin=*]
+\item the public counterexample predicate and ordered formulation are explicit;
+\item $\WPS$ is a concrete arithmetic predicate rather than a tautological status flag;
+\item the final closure compiler assumes eventual $\WPS$ above an explicit threshold rather than assuming the conclusion itself;
+\item source dictionaries are distinguished from physical source realizations, with countermodels showing that dictionary population alone does not imply the physical equality;
+\item many analytic ``Input'' structures are conditional theorem sockets. A Lean theorem obtained by projecting such a field is a conditional compiler, not a formal proof of the external analytic estimate.
+\end{enumerate}
+
+The present project should therefore be described as a Lean-assisted verification scaffold with substantial kernel-checked finite mathematics and explicit external analytic sockets. A final claim of full formal verification would require the external research-input list to be empty, a current-stable Lean rebuild, fresh proof replay, and independent challenge/comparator checking.
+
+\section{Current dependency graph}
+
+The shortest current \#287 research chain is
+\[
+\begin{array}{c}
+\text{finite Lean theorem }(M\le4\cdot10^9)\\[1mm]
+\text{and exact }\WPS\text{ compiler}\[1mm]
+\uparrow\\[-1mm]
+\text{explicit threshold / finite splice}\[1mm]
+\uparrow\\[-1mm]
+\text{FCL positivity}\[1mm]
+\uparrow\\[-1mm]
+E_T+E_L+E_2+E_M<m_\varepsilon\BX\\[1mm]
+\uparrow\\[-1mm]
+\begin{array}{c}
+E_T\ \paperclosed,\quad E_2\ \paperclosed,\quad E_M\ \paperclosed,\\
+E_L\ \openstatus\text{ on hard }U,k\ge1,\\
+\text{$b$-diagonal source/compiler hygiene }\openstatus.
+\end{array}
+\end{array}
+\]
+Gate~1A and Gate~1B are retained in this article because they are important provider architectures and share source geometry with the broader shifted-prime programme, but neither is silently inserted as an already-proved premise of the current \#287 FCL chain.
+
+\section{What this article proves and does not prove}
+
+\subsection*{Proved or currently banked with explicit qualification}
+\begin{itemize}[leftmargin=*]
+\item exact finite reduction and finite exclusion through $M\le4\cdot10^9$: \kernelproved;
+\item conditional $\WPS$-to-\#287 compiler: \kernelproved;
+\item Tot-lane $E_T=o(X/\log X)$: \paperclosed;
+\item physical fixed-$\varepsilon$ $N_2$ collar: \paperclosed;
+\item $B_{\rm src}/N_1$ dictionary and $E_M=o(\BX)$: \paperclosed;
+\item four-error transference and FCL-to-window algebra: deterministic/conditional compiler;
+\item Gate~1A literal $t$-state and Hilbert source ceiling: \paperclosed;
+\item Gate~1B pure-Möbius subfamily: \paperclosed.
+\end{itemize}
+
+\subsection*{Not proved}
+\begin{itemize}[leftmargin=*]
+\item full Gate~1A synchronized centered frame;
+\item full Gate~1B reciprocal Type II;
+\item hard $U$-lane $k\ge1$ shared other-parent theorem / $E_L$ closure;
+\item global $b$-diagonal source/compiler closure;
+\item complete asymptotic FCL from the present bank;
+\item explicit final threshold $M_0\le4\cdot10^9$;
+\item Erd\H{o}s Problem \#287.
+\end{itemize}
+
+\section{Reviewer falsification checklist}
+
+A review of this programme should attempt, in order, to falsify the following items.
+\begin{enumerate}[leftmargin=*]
+\item The exact public counterexample predicate and the one-way bridge into the internal compiler type.
+\item The finite certificate chain through $4\cdot10^9$.
+\item The statement and use of $\WPS$.
+\item The separation of Tot and $U$ lanes and the absence of fabricated selected-$E$ data on Tot.
+\item The Type-I source dictionary giving (4.1).
+\item The physical $N_2$ Lambda collar and the fixed-$\varepsilon$ quantifier order.
+\item The $B_{\rm src}/N_1$ normalization.
+\item The two-copy $U$-lane source, shared-gcd order, and hard-$k\ge1$ adapter.
+\item The corrected $b$-diagonal $L^C$, $Y^2$, large-$d$, rectangle, Perron-ledger, and $\Omega_H$ obligations.
+\item The distinction between paper-level closure and kernel proof.
+\item The explicit-threshold splice; no eventual theorem may be substituted for a numerical $M_0$.
+\end{enumerate}
+
+\section{Conclusion}
+
+The present project has a rigorous finite endpoint and an increasingly source-explicit asymptotic architecture, but the large-$M$ proof is not complete. The value of the current formulation is that the remaining obligations are visible rather than hidden behind theorem names: the shared hard Ford-generated $U$ family, the reopened $b$-diagonal compiler/source pins, the Gate~1A/Gate~1B provider endpoints, and the explicit numerical splice. A future proof claim must discharge those nodes and then survive an independent semantic and formal audit.
+
+\begin{thebibliography}{99}
+
+\bibitem{ErdosGraham1980}
+P. Erd\H{o}s and R. L. Graham,
+\emph{Old and New Problems and Results in Combinatorial Number Theory},
+Monographies de L'Enseignement Math\'ematique, vol.~28, Universit\'e de Gen\`eve, 1980.
+
+\bibitem{ErdosProblems287}
+T. F. Bloom,
+\emph{Erd\H{o}s Problem \#287},
+Erd\H{o}s Problems archive,
+\url{https://www.erdosproblems.com/287}, accessed 2 September 2026.
+
+\bibitem{Vaughan1999}
+Various authors,
+\emph{Some of Paul's Favorite Problems},
+booklet produced for the conference ``Paul Erd\H{o}s and his mathematics'', Budapest, 1999; Problem 1.15.
+
+\bibitem{FordMaynard2024}
+K. Ford and J. Maynard,
+\emph{On the theory of prime producing sieves},
+arXiv:2407.14368, 2024.
+
+\bibitem{MSTT2022}
+K. Matom\"aki, X. Shao, T. Tao and J. Ter\"av\"ainen,
+\emph{Higher uniformity of arithmetic functions in short intervals I. All intervals},
+arXiv:2204.03754.
+
+\bibitem{BordignonLee2022}
+M. Bordignon and B. Lee,
+\emph{An explicit Selberg sieve and applications},
+arXiv:2211.11012.
+
+\end{thebibliography}
+
+\end{document}

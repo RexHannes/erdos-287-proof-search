@@ -42,12 +42,15 @@ No legacy problem-specific status/source/compiler statement may enter the curren
 
 ## Automated firewall
 
-CI checks:
+The current CI enforces exactly:
 
-1. full Lean compilation;
-2. the living `RequestProject/Main.lean` / `RequestProject/CurrentErdos287.lean` entrypoints for active cross-project imports/labels;
-3. current README/status/frontier files for active `GATE1B`, `TWIN_PRIME`, `FM722`, or `HSTAR` ownership;
-4. the new Sep-1 modules for forbidden proof shortcuts.
+1. a full `lake build RequestProject`;
+2. a separate build of the living `RequestProject.CurrentErdos287` entrypoint;
+3. an import-line scan of `RequestProject/Main.lean` and `RequestProject/CurrentErdos287.lean`, rejecting active imports from `TrustedBank.Gate1A`, `TrustedBank.Gate1B`, `TwinPrime`, `Gate1B`, `FM722`, or `HSTAR`;
+4. a symbol scan of the new Sep-1 #287 Lean layer rejecting Twin-Prime-owned symbols such as `TwinPrimeProject`, `TWIN_PRIME_CONJECTURE`, `FM722`, `HSTAR-K0J0`, or `GLOBAL-GATE1B` variants;
+5. a forbidden-proof-shortcut scan over the new Sep-1 modules for `sorry`, `admit`, `unsafe`, `native_decide`, or `implemented_by`.
+
+The living README/status/frontier documents are separately reviewed as public status documents; they are not falsely described here as a substitute for the formal import/symbol checks above.
 
 ## Public-status firewall
 

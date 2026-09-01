@@ -9,8 +9,11 @@ This repository is scoped to **Erdős Problem #287**. The authoritative living l
 
 - [Authoritative current status](CURRENT_STATUS.md)
 - [Current research frontier](RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md)
+- [Current Aristotle / Lean summary](ARISTOTLE_SUMMARY.md)
+- [Clean 1-Sep formal entrypoint](RequestProject/CurrentErdos287.lean)
 - [1 Sep 2026 research update](PUBLIC_REVIEW_UPDATE_2026-09-01.md)
 - [1 Sep 2026 changelog](CHANGELOG_2026-09-01.md)
+- [1 Sep 2026 contamination audit](CONTAMINATION_AUDIT_2026-09-01.md)
 - [Living public review — stable path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
 - [Corrections and retractions](CORRECTIONS_AND_RETRACTIONS.md)
 - [Project-scope firewall](PROJECT_SCOPE.md)
@@ -81,12 +84,18 @@ ERDOS287
 
 ## Formal status
 
-The new Lean files are deliberately **append-only interfaces, exact finite algebra, geometry, status declarations, and log-budget firewalls**. They do not turn the external Selberg-sieve/Shiu estimates, the paper-level direct3221 endpoint, or the K0-SP2 reassembly bound into axioms or automatic inhabitants.
+The living formal entrypoint is `RequestProject/CurrentErdos287.lean`. It imports the established #287 `RequestProject.Main` spine plus only the new #287 1-Sep direct3221/K0-SP2 layer.
 
-Earlier formal banks remain valid only under their stated hypotheses. The public repository should be independently rebuilt after each status-layer update; a successful historical build is not treated as proof of the newest analytic research claims.
+The new Lean files are deliberately **interfaces, exact finite algebra, geometry, status declarations, and log-budget firewalls**. They do not turn the external Selberg-sieve/Shiu estimates, the paper-level direct3221 endpoint, or the K0-SP2 reassembly bound into axioms or automatic inhabitants.
+
+Earlier formal banks remain valid only under their stated hypotheses. The public repository is rebuilt by CI after current-layer changes; a successful historical build is not treated as proof of the newest analytic research claims.
 
 ## Contamination firewall
 
-The active 1-Sep status, frontier and entrypoint are Erdős-287-only. Cross-project research is not imported as evidence or as an analytic owner. Historical provenance may remain in old commits or archived reports, but it does not control the current dependency graph.
+The active 1-Sep status, frontier and `RequestProject/CurrentErdos287.lean` entrypoint are Erdős-287-only. Neither the living entrypoint nor its `RequestProject.Main` base imports the legacy `TrustedBank/Gate1A` / `TrustedBank/Gate1B` banks.
+
+Those older cross-project-named banks remain only as **legacy/noncontrolling provenance** for reproducibility of historical runs. Compilation of a legacy generic lemma is not theorem ownership; no legacy problem-specific source/status/compiler statement is admissible in the living #287 chain without an explicitly #287-owned reintroduction and fresh audit.
+
+The separate Twin-Prime programme is maintained in its own repository and is not an active dependency here.
 
 **ERDŐS PROBLEM #287 REMAINS OPEN.**

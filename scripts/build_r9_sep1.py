@@ -158,6 +158,10 @@ s = s.replace(
     r'\addcontentsline{toc}{section}{31 August 2026 historical final status}',
     1)
 
+# Literal Lean identifiers inherited from the R8 generator must remain valid TeX prose.
+s = s.replace(r'\texttt{implemented_by}', r'\texttt{implemented\_by}')
+s = s.replace(r'\texttt{native_decide}', r'\texttt{native\_decide}')
+
 # Safety checks.
 for needle in [
     'Erd\\H{o}s Problem \\#287 remains open',

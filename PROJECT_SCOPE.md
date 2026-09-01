@@ -22,7 +22,9 @@ Older source files and dated reports carrying historical `Gate1A` / `Gate1B` nam
 
 Source-neutral finite/algebraic lemmas inside such historical banks do not become #287 analytic inputs by being compilable. Conversely, no problem-specific status/source/compiler claim from those banks may be used by the living #287 programme unless it is reintroduced through an explicitly #287-owned module and independently audited.
 
-CI checks both the living status/frontier files and the living formal entrypoint for prohibited active cross-project labels/imports.
+CI enforces this active-scope boundary at the formal layer by building the full project and the living #287 entrypoint separately, scanning the two living entrypoint import lists for cross-project imports, scanning the new Sep-1 Lean layer for Twin-Prime-owned symbols, and rejecting forbidden proof shortcuts in the new modules.
+
+The living README, status and frontier documents are separately maintained as #287-only public-status views.
 
 ## Separate repository rule
 

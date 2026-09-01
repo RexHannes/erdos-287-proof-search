@@ -1,0 +1,53 @@
+name: Build Erdos 287 R11 journal master
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ERDOS287_JOURNAL_MASTER_R11_02SEP2026.tex'
+      - 'ERDOS287_JOURNAL_SUBMISSION_READINESS_R11.md'
+      - '.github/workflows/build-journal-r11.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-r11:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile R11 journal master
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: ERDOS287_JOURNAL_MASTER_R11_02SEP2026.tex
+
+      - name: R11 typesetting and citation quality gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          LOG='ERDOS287_JOURNAL_MASTER_R11_02SEP2026.log'
+          PDF='ERDOS287_JOURNAL_MASTER_R11_02SEP2026.pdf'
+          test -s "$LOG"
+          test -s "$PDF"
+          if grep -F 'Overfull \hbox' "$LOG"; then
+            echo 'R11 has an overfull box.' >&2
+            exit 1
+          fi
+          if grep -E 'LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|There were undefined citations' "$LOG"; then
+            echo 'R11 has unresolved references/citations.' >&2
+            exit 1
+          fi
+          if grep -E '^! ' "$LOG"; then
+            echo 'R11 LaTeX error detected.' >&2
+            exit 1
+          fi
+          echo 'R11 journal-master quality gate: PASS'
+
+      - name: Upload compiled journal PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: erdos287-journal-r11
+          path: ERDOS287_JOURNAL_MASTER_R11_02SEP2026.pdf

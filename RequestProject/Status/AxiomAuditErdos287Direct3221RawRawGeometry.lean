@@ -1,0 +1,4 @@
+import RequestProject.CurrentProgramme.Erdos287Direct3221RawRawGeometry
+
+#print axioms Erdos287Direct3221RawRawGeometry.exists_shift_of_modEq
+#print axioms Erdos287Direct3221RawRawGeometry.affine_divisibility_restate

@@ -1,136 +1,191 @@
 # Erdős Problem #287 — Authoritative Current Status
 
-**Checkpoint:** 31 August 2026  
+**Checkpoint:** 2 September 2026  
 **Public verdict:** **ERDŐS #287: OPEN.**
 
-This is the authoritative concise status ledger for the public repository. Historical files remain preserved and may describe earlier frontiers; when they conflict with this file, this file is controlling for the 31-August-2026 checkpoint.
+This file is the controlling concise status ledger. Historical R4/R5/R7/R9 manuscripts and earlier status files remain preserved for provenance. The latest public-review research delta is [`ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md`](ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md).
 
-Companion provenance/audit records: [`RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md`](RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md), [`ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md`](ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md), and [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md).
+## Unconditional / formal bank
 
-## UNCONDITIONAL / FORMAL BANK
+- The machine-checked finite exclusion through maximum denominator `M <= 4,000,000,000` is unchanged.
+- Existing Lean/Aristotle safe banks remain valid only under their stated hypotheses.
+- Paper/research analytic closure is **not** silently promoted to Lean theoremhood. Explicit analytic/source interfaces remain uninhabited unless a dependency-complete formal proof has actually been supplied.
 
-- The finite Lean-checked exclusion through maximum denominator `M <= 4,000,000,000` is unchanged.
-- Existing public formal banks remain valid according to their own stated hypotheses.
-- The attached 31-August Aristotle bundle records a later completed C0 unitary-Fourier / transverse-carrier interface bank with `lake build: PASS`, **8298 jobs, 0 errors**. Its axiom audit reports only ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) and no `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
-- That attached formal bank has a larger dependency graph than the present public `RequestProject/Main.lean`; until the dependency-complete tree is imported and rebuilt in this repository, the research status below is intentionally ahead of the public formal-main status.
+## Paper/research bank now closed
 
-## ANALYTIC BANK
+The following are banked at the paper/research level under their exact source dictionaries:
 
-### C0
+```text
+287-K0-SP2-REGULAR-PERRON-SMOOTH-MOBIUS-CORRELATION45
+287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45
+FULL-SOURCE-LOCAL-ANALYTIC-KERNEL45          [for already-typed packets]
+GLOBAL-BSRC-COMPARISON-MARGIN45              [asymptotic]
+N1-BSRC-DICTIONARY                           [asymptotic]
+E_M = o(B_X)                                 [asymptotic]
+FIXEDCERTIFICATE-N2-LAMBDA-COLLAR45          [fixed-epsilon asymptotic]
+FOUR-ERROR FIXED-CERTIFICATE TRANSFERENCE
+FCL_W(M/2) -> WindowPairSupply(M), M >= 12
+```
 
-`FIXEDRATIO-BALANCED-b-UNITARYFOURIER45`: **PASS WITH REPAIRS**.
+### Physical N2 Lambda collar
 
-The exact finite contraction is
+The physical von Mangoldt-weighted `N_2` source is handled directly; the Ford bounded-sequence shortcut is not used. The banked result is
 
 ```math
-\eta_b^2 \ll L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
+E_2/B_X <= K_collar * epsilon + o(1),
 ```
 
-The three hostile-audit repairs are part of the statement:
+and for one fixed sufficiently small `epsilon`, eventually
 
-1. product energy is source-specific to the literal bounded dyadic physical packet, not an arbitrary-vector multiplicative-convolution theorem;
-2. the complete unit branch is
-   ```math
-   \gcd(b\,a_\rho b_\rho u_\rho,x)=1,
-   ```
-   with complementary nonunit cells routed to D4;
-3. the finite estimate contains the `x^{-1/2}` term, with small-`x` packets routed to the already banked short-conductor / low-`Q` owner.
+```math
+E_2 <= (m_epsilon/8) B_X.
+```
 
-The legal constant order is
+No explicit numerical `epsilon`, `K_collar`, or large-`X` threshold is claimed yet.
+
+### Bsrc / N1 / comparison margin
+
+The physical comparison is
+
+```math
+B_src(n)=S_2\prod_{p|n,\,p>2}(p-1)/(p-2),
+```
+
+with
+
+```math
+b_X(n)=4W(n/X)B_src(n).
+```
+
+The latest source audit gives
+
+```math
+E_M=o(B_X),
+```
+
+and
+
+```math
+B_X=(4S_2\int W+o(1))X/log X.
+```
+
+The Ford limiting margin satisfies `m_0 >= 6e-6`, and the support-truncated perturbed certificate has positive margin for sufficiently small fixed `epsilon`.
+
+## Exact four-error FCL algebra
+
+The controlling physical inequality is
+
+```math
+primeMass >= m_epsilon B_X - E_T - E_L - E_2 - E_M.
+```
+
+There is no factor `3` multiplying the four separate errors in this formulation.
+
+Since `E_2` and `E_M` are now controlled asymptotically, the unresolved asymptotic FCL work is the source-exact derivation of `E_T` and `E_L` from the banked analytic owners.
+
+## Correct Ford source architecture — two raw lanes
+
+A hostile source audit superseded the old single-master-index picture.
 
 ```text
-structure -> packet losses -> K_* -> K_tr -> K_Y,K_x -> k chosen last.
+I_raw = I_Tot disjoint_union I_U.
 ```
 
-Accordingly:
+- `I_Tot` reconstructs the full `T_X` correlation and is sourced through Ford–Maynard Lemma 7.21 / Type-I machinery.
+- `I_U` reconstructs the leakage `L_X`; Proposition 7.22 is the `U`-lane expansion and is the lane carrying Type-II subproduct bookkeeping.
 
-- `EXACTPRODUCT-CONDITIONED-FIXEDRATIO-BALANCEDDOUBLEFRACTION-LEVEL45`: **ANALYTICALLY BANKED**;
-- `EXACTPRODUCT-CONDITIONED-INVERSECONV-LEVELLS45`: **ANALYTICALLY BANKED**;
-- **EXACT PRODUCT COLLISION:** **ANALYTICALLY BANKED**;
-- **DOUBLE TYPE II:** **ANALYTICALLY BANKED**;
-- **C0:** **ANALYTICALLY CLOSED, CONDITIONAL ON FORMAL NORMALISATION**.
+Only the `U` lane carries the nonempty selected-subproduct family `mathcal E` and a deterministic distinguished `E_*(mathcal E)`. Selected-E data must not be fabricated on the `Tot` lane.
 
-### Transverse bank
+Continuous Perron/Mellin ordinates remain bound integration variables inside finitely indexed contour packets rather than becoming elements of a finite discrete source index.
 
-- `THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45`: **ANALYTICALLY BANKED** at the research/paper level.
-- `THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45`: **ANALYTICALLY BANKED** at the research/paper level.
-- `THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45`: **ANALYTICALLY BANKED ON EXPLICIT HYPOTHESES**.
+## Correct owner typing — one copy versus two copies
 
-These results close a strict dense-`q_C` subregion only. They do **not** close the full transverse branch.
+`C0`, `Transverse`, and `bDiagonal` are two-copy dispersion classifications. They depend on variables such as
 
-## CONDITIONAL SOURCE PINS
+```math
+Delta=t1*n2-t2*n1
+```
 
-Primary formal/source residual:
+and on the relation between `b1` and `b2`; they therefore cannot be unique owners of a one-copy physical source row.
+
+The correct hierarchy is
 
 ```text
-SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
+one-copy raw packet
+  -> Owner1 in {LowQ, Pascadi, Local}, when source-legitimate
+  -> otherwise source-exact Cauchy/dispersion
+  -> two-copy descendant
+  -> shared-gcd formation
+  -> proof-local Omega_H partition
+  -> Owner2 in {C0, Transverse, bDiagonal, Local}.
 ```
 
-plus the complete physical Perron/nuclear normalisation unless it is absorbed into the same source pin.
+The proof-local shared-gcd coordinate is introduced only after two copies exist.
 
-`Omega_H` is not an analytic blocker for the `q_C` unitary-Fourier theorem; its literal physical `L^2`/normalisation data remain a formal source obligation.
+## Running master-source refinement
 
-## RETRACTED MECHANISMS
+The currently running source audit has exposed a further typing obstruction in the previous compiler target: the `Tot` lane actually follows Lemma 7.21 / Type-I, while the three dispersion owners cover a specific K0 smooth-parent two-copy normal form. The run is now locating the first literal coefficient-dictionary mismatch.
 
-**RETRACTED:** old post-conditioning index `n = j inverse(u') mod x` as controlling C0 architecture.
+This is **not** a retraction of the banked C0/transverse/`b`-diagonal estimates. It means the previous demand that every hard raw packet enter one common two-copy normal form was too strong.
 
-**RETRACTED:** old wrap `1 + UU'/B`.
-
-**RETRACTED:** naïve full-CRT two-signless-carrier DFT for the transverse branch. Full CRT fusion introduces moving cross-modulus inverse coefficients in the numerator, so the kernel is not generally a fixed `e_m(Gamma inverse(E) inverse(R))` form.
-
-**SUPERSEDED AS FIRST FRONTIER:** `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45`.
-
-Earlier 30-August uniform-`k=0` / one-level-Möbius material remains in R7 as historical research provenance, but it is no longer the controlling public first frontier after the 31-August C0/transverse audit.
-
-## CURRENT FIRST ANALYTIC RESIDUAL
+The controlling compiler target remains, in corrected two-lane form,
 
 ```text
-THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45
+FORD-Hepsilon-TWOLANE-RAWPACKET-TO-TWOCOPY-TYPEDOWNER-REFINEMENT45
 ```
 
-Status: **OPEN**.
+with the proviso that only source-legitimate hard descendants are sent into the two-copy dispersion owner tree.
 
-The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. Surviving cells include:
-
-- `q_C` not sufficiently dominant;
-- primed `q_C'` not sufficiently dominant;
-- every `q` partition having one short side;
-- single atomic-carrier dominance;
-- critical `q ~ r*m` geometry.
-
-The next analytic test is whether the missing second Fourier axis can be supplied by the Bézout numerator, a dominant carrier from the opposite packet, the `m`-variable after `TT*`, a signed-but-`L^2` carrier, grouped products of short factors, or both source orientations. None of these is presently claimed proved.
-
-## PARALLEL OPEN BRANCH
+## Downstream status
 
 ```text
-BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45
+physical N2 Lambda collar        CLOSED asymptotically
+Bsrc / N1 / E_M                  CLOSED asymptotically
+four-error transference          CLOSED
+FCL -> WindowPair, M>=12         CLOSED mathematically
+E_T / E_L source compilation     OPEN
+asymptotic FCL                   OPEN pending E_T/E_L
+explicit threshold / finite splice OPEN
+Erdos287ClosureInputs            UNINHABITED
+Erdos287Statement                OPEN
 ```
 
-Status: **OPEN**.
+## Effectivity / explicit-threshold firewall
 
-This branch is kept separate from the transverse residual. C0/transverse Fourier gain is not automatically spent here.
-
-## CURRENT LEAN BUILD / AXIOM STATUS
-
-Latest build actually recorded in the supplied 31-August Aristotle C0/unitary-Fourier bank:
+The final formal splice requires an explicit `M0` with
 
 ```text
-default lake build: PASS
-8298 jobs
-0 errors
+M0 <= 4,000,000,000
 ```
 
-Axiom audit: only ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) for the newly audited declarations; no forbidden proof shortcuts listed above.
+and eventual `WindowPairSupply` for all `M >= M0`. This is a last-mile explicit-constant problem, not another Type-II theorem. It should be finalized only after the asymptotic FCL source compiler is closed.
 
-No newer transverse one-conductor Aristotle module is promoted here unless and until a dependency-complete, kernel-checked run is supplied and reproduced.
+## Current dependency chain
 
-## DOWNSTREAM FIREWALL
+```text
+Tot lane -> Lemma 7.21 / Type-I dictionary
+                 \
+                  > exact E_T/E_L source compiler
+                 /
+U lane -> Proposition 7.22 / selected-E hard packets
+       -> source-legitimate two-copy descendants
+       -> C0 / Transverse / bDiagonal / Local
 
-C0 analytic closure does not by itself prove the full transverse branch.  
-Transverse local closure does not close the parallel `b`-diagonal.  
-Neither C0 nor transverse progress alone proves Gate 0–2, FCL, effective `WindowPairSupply`, or Erdős #287.  
-Downstream Twin Prime work, if mentioned elsewhere, is a separate dependency programme.
+N2 collar CLOSED + Bsrc/N1/E_M CLOSED
+                 |
+                 v
+          asymptotic FCL
+                 |
+                 v
+WindowPairSupply (already closed from FCL, M>=12)
+                 |
+                 v
+explicit threshold / finite splice
+                 |
+                 v
+Erdos287Statement
+```
 
-## ERDOS287
+## Erdős #287
 
-**OPEN.**
+**OPEN.** No unconditional large-`M` theorem, no explicit final `M0`, and no `Erdos287ClosureInputs` inhabitant are claimed.

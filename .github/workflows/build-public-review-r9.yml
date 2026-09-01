@@ -1,0 +1,147 @@
+name: Build Erdos 287 public review V16.8 R9 Sep 1 source reconstruction
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ERDOS287_SEPT1_SOURCE_RECONSTRUCTION_UPDATE.tex'
+      - 'scripts/build_r9_sep1.py'
+      - '.github/workflows/build-public-review-r9.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-public-review-r9:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify or reconstruct immutable R7 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          R4='ERDOS287_PUBLIC_REVIEW_V16_3_R4_SELF_CONTAINED_THEORY_MANUAL.tex'
+          R7='ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex'
+          R4SUM='eb8359b997b62fc9535e52a259aa8dfd6b115257e19a5883182dddb7716e3f47'
+          R7SUM='8e08c3a6340b513a356bf0cbf39e25377c46230d4a430e85e11379878c8397a1'
+          echo "$R4SUM  $R4" | sha256sum -c -
+          if [ -f "$R7" ] && echo "$R7SUM  $R7" | sha256sum -c -; then
+            echo 'Using checksum-verified immutable R7 source.'
+          else
+            rm -f "$R7"
+            cat \
+              .r7-src/r4-to-r7.zstpatch.b64.part00 \
+              .r7-src/r4-to-r7.zstpatch.b64.part01 \
+              .r7-src/r4-to-r7.zstpatch.b64.part02 \
+              | base64 --decode > /tmp/r4-to-r7.zstpatch
+            zstd -f -d --patch-from="$R4" /tmp/r4-to-r7.zstpatch -o "$R7"
+            echo "$R7SUM  $R7" | sha256sum -c -
+          fi
+
+      - name: Generate R8 base then R9 source update
+        shell: bash
+        run: |
+          set -euo pipefail
+          R7='ERDOS287_PUBLIC_REVIEW_V16_6_R7_CURRENT_FRONTIER.tex'
+          R8='ERDOS287_PUBLIC_REVIEW_V16_7_R8_31AUG_C0_TRANSVERSE_SYNC.tex'
+          R9='ERDOS287_PUBLIC_REVIEW_V16_8_R9_01SEP_SOURCE_RECONSTRUCTION.tex'
+          python3 scripts/build_r8_sync.py "$R7" "$R8"
+          python3 scripts/build_r9_sep1.py "$R8" "$R9"
+          grep -F 'Status -- 1 September 2026 source reconstruction.' "$R9"
+          grep -F 'BALANCED7-SP2-STRICTCELL-PHYSICAL-BRIDGE45' "$R9"
+          grep -F 'FORD723-GENERATED-PACKET-CENSUS-AND-REPLACEMENT45' "$R9"
+          grep -F '8330 jobs' "$R9"
+          grep -F 'Erd\H{o}s Problem \#287 remains open' "$R9"
+
+      - name: Write reproducibility metadata
+        shell: bash
+        run: |
+          short_sha="${GITHUB_SHA::12}"
+          cat > buildmeta.tex <<META
+          \\newcommand{\\BuildCommit}{${short_sha}}
+          \\newcommand{\\BuildDate}{1 September 2026}
+          META
+
+      - name: Compile R9 public review
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: ERDOS287_PUBLIC_REVIEW_V16_8_R9_01SEP_SOURCE_RECONSTRUCTION.tex
+
+      - name: R9 PDF typesetting quality gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          LOG='ERDOS287_PUBLIC_REVIEW_V16_8_R9_01SEP_SOURCE_RECONSTRUCTION.log'
+          test -s "$LOG"
+          if grep -F 'Overfull \hbox' "$LOG"; then
+            echo 'R9 has an overfull box; refusing publication.' >&2
+            exit 1
+          fi
+          if grep -E 'LaTeX Warning: (Reference|Citation).*undefined|There were undefined references' "$LOG"; then
+            echo 'R9 has unresolved references/citations; refusing publication.' >&2
+            exit 1
+          fi
+          echo 'R9 typesetting quality gate: PASS'
+
+      - name: Stage immutable and living public PDF paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          PDF='ERDOS287_PUBLIC_REVIEW_V16_8_R9_01SEP_SOURCE_RECONSTRUCTION.pdf'
+          test -s "$PDF"
+          cp "$PDF" ERDOS287_PUBLIC_REVIEW_CURRENT.pdf
+          cp "$PDF" ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf
+          sha256sum "$PDF" ERDOS287_PUBLIC_REVIEW_CURRENT.pdf ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf | tee /tmp/r9-sha.txt
+          a=$(sha256sum "$PDF" | awk '{print $1}')
+          b=$(sha256sum ERDOS287_PUBLIC_REVIEW_CURRENT.pdf | awk '{print $1}')
+          c=$(sha256sum ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf | awk '{print $1}')
+          test "$a" = "$b"
+          test "$a" = "$c"
+
+      - name: Write R9 synchronization audit
+        shell: bash
+        run: |
+          cat > ERDOS287_V16_8_R9_SYNC_AUDIT.md <<'EOF'
+          # V16.8 / R9 public synchronization audit
+
+          Checkpoint: 1 September 2026.
+
+          - Stable living PDF path preserved: `ERDOS287_PUBLIC_REVIEW_CURRENT.pdf`.
+          - Legacy/forum PDF path preserved: `ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf`.
+          - Immutable R7 and R8 provenance preserved.
+          - New immutable R9 source/PDF created.
+          - Erdős #287 remains OPEN.
+          - Supplied master-source-frontier Aristotle checkpoint recorded as 8330 jobs / 0 errors without promoting uninhabited physical interfaces.
+          - Ford–Maynard G/H source recovery recorded at paper/research level.
+          - Balanced-seven strict threshold and factor-8 divisor repair recorded; H_*(P) = -20 remains paper/research-level until physical Lean binding.
+          - Labelled prime-vector master source and exact weighted integer pushforward recorded.
+          - Unweighted integer P_sm equality is not assumed; physical pushforward carries Omega_C#(n).
+          - One-copy shared-gcd interpretation superseded; proof-local Omega belongs after generated two-copy packets.
+          - Physical Ford contour at T = X^delta is recorded with O(log X) per-contour L1 cost, not O(log log X).
+          - Next controlling source/compiler nodes: BALANCED7-SP2-STRICTCELL-PHYSICAL-BRIDGE45 and FORD723-GENERATED-PACKET-CENSUS-AND-REPLACEMENT45.
+          - MASTER-SOURCE-TO-TYPED-PERRON-PACKETS45, FULL-SOURCE-LOCAL-ANALYTIC-KERNEL45, WindowPairSupply and end-to-end Erdős #287 remain OPEN.
+          - No separate proof claim is created by this synchronization.
+          - PDF typesetting quality gate passed before publication.
+          EOF
+
+      - name: Commit R9 source and public PDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            ERDOS287_PUBLIC_REVIEW_V16_8_R9_01SEP_SOURCE_RECONSTRUCTION.tex \
+            ERDOS287_PUBLIC_REVIEW_V16_8_R9_01SEP_SOURCE_RECONSTRUCTION.pdf \
+            ERDOS287_PUBLIC_REVIEW_CURRENT.pdf \
+            ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf \
+            ERDOS287_V16_8_R9_SYNC_AUDIT.md
+          if git diff --cached --quiet; then
+            echo 'R9 public-review files already current.'
+            exit 0
+          fi
+          git commit -m 'Publish Erdos 287 public review R9 source reconstruction update'
+          git push

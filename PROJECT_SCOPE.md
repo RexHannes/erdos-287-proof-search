@@ -4,15 +4,31 @@ This repository is the authoritative public research/formalization record for **
 
 ## Active-scope rule
 
-The living status files, current frontier, current Lean status/audit layer, and current source-owner graph must contain only #287-owned mathematics and #287-specific external inputs.
+The living status files, current frontier, living Lean entrypoint, and current source-owner graph must contain only #287-owned mathematics and #287-specific external inputs.
+
+The living formal entrypoint is:
+
+```text
+RequestProject/CurrentErdos287.lean
+```
+
+It imports the established #287 `RequestProject.Main` spine and the newest #287 Sep-1 direct3221/K0-SP2 layer. Neither entrypoint imports the legacy `TrustedBank/Gate1A` or `TrustedBank/Gate1B` banks.
 
 A result from another research programme is **not** an admissible theorem owner, source pin, analytic input, or closure certificate here merely because related sieve/Type-II terminology appears in both projects.
 
+## Legacy-bank rule
+
+Older source files and dated reports carrying historical `Gate1A` / `Gate1B` names remain in the repository for provenance and reproducibility of old runs. They are **legacy/noncontrolling**, not members of the living #287 dependency graph.
+
+Source-neutral finite/algebraic lemmas inside such historical banks do not become #287 analytic inputs by being compilable. Conversely, no problem-specific status/source/compiler claim from those banks may be used by the living #287 programme unless it is reintroduced through an explicitly #287-owned module and independently audited.
+
+CI checks both the living status/frontier files and the living formal entrypoint for prohibited active cross-project labels/imports.
+
 ## Separate repository rule
 
-The separate fixed-shift / twin-prime research programme is maintained in its own repository and is not an active dependency of the #287 compiler.
+The separate fixed-shift / Twin-Prime research programme is maintained in `RexHannes/twin-prime-proof-search` and is not an active dependency of the #287 compiler.
 
-Cross-project references may appear in immutable Git history or old archived reports as provenance. They are noncontrolling and must not be imported into the current #287 status or proof graph.
+Cross-project references may appear in immutable Git history, legacy source banks, or archived reports as provenance. They are noncontrolling and must not be imported into the current #287 status or proof graph.
 
 ## Public-status rule
 

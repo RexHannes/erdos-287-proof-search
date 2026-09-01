@@ -1,4 +1,4 @@
-name: Lean CI — Erdős 287
+name: Lean CI — Erdős 287 living graph
 
 on:
   pull_request:
@@ -22,7 +22,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  living-graph:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,10 +37,7 @@ jobs:
           test: false
           lint: false
 
-      - name: Build full RequestProject library
-        run: ~/.elan/bin/lake build RequestProject
-
-      - name: Build living Erdős 287 entrypoint explicitly
+      - name: Build living Erdős 287 entrypoint
         run: ~/.elan/bin/lake build RequestProject.CurrentErdos287
 
       - name: Check living entrypoint imports for cross-project dependencies
@@ -97,3 +94,20 @@ jobs:
             exit 1
           fi
           echo 'Sep-1 shortcut scan: PASS'
+
+  legacy-full-bank:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          build: false
+          test: false
+          lint: false
+      - name: Build every historical RequestProject module
+        run: ~/.elan/bin/lake build RequestProject

@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - 'RequestProject/**'
+      - 'README.md'
+      - 'CURRENT_STATUS.md'
+      - 'RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md'
       - 'lakefile.toml'
       - 'lake-manifest.json'
       - 'lean-toolchain'
@@ -33,6 +36,27 @@ jobs:
 
       - name: Build full RequestProject library
         run: ~/.elan/bin/lake build RequestProject
+
+      - name: Check living Erdős 287 graph for cross-project active labels
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            README.md
+            CURRENT_STATUS.md
+            RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md
+            RequestProject/CurrentProgramme/Erdos287Direct3221CenteredDefect.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221Interfaces.lean
+            RequestProject/CurrentProgramme/Erdos287Direct3221RawRawGeometry.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2FragmentationInterfaces.lean
+            RequestProject/CurrentProgramme/Erdos287K0SP2LogBudget.lean
+            RequestProject/Status/CurrentStatusErdos287Direct3221Reassembly.lean
+          )
+          if grep -niE 'GATE1B|TWIN_PRIME|FM722|HSTAR' "${files[@]}"; then
+            echo 'Cross-project active label found in the living Erdős-287 status/graph.' >&2
+            exit 1
+          fi
+          echo 'Erdős-287 living graph scope scan: PASS'
 
       - name: Forbidden-proof-shortcut scan in new Sep-1 modules
         shell: bash

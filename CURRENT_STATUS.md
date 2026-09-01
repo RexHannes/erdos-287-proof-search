@@ -1,135 +1,159 @@
 # Erdős Problem #287 — Authoritative Current Status
 
-**Checkpoint:** 31 August 2026  
+**Checkpoint:** 1 September 2026  
 **Public verdict:** **ERDŐS #287: OPEN.**
 
-This is the authoritative concise status ledger for the public repository. Historical files remain preserved and may describe earlier frontiers; when they conflict with this file, this file is controlling for the 31-August-2026 checkpoint.
+This file is the authoritative concise ledger for the current public repository. Historical files are preserved for provenance; where an older status conflicts with this ledger, this file controls.
 
-Companion provenance/audit records: [`RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md`](RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md), [`ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md`](ERDOS287_C0_UNITARYFOURIER_SAFE_BANK_REPORT.md), and [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md).
+## 1. Unconditional / formal bank
 
-## UNCONDITIONAL / FORMAL BANK
+- The Lean-checked finite exclusion through maximum denominator `M <= 4,000,000,000` is unchanged.
+- Existing formal banks remain valid only under their stated hypotheses.
+- Earlier recorded successful builds do not automatically certify analytic research added after those builds.
+- The new 1-Sep modules are source/finite-algebra/status/audit layers. External analytic providers are not encoded as axioms or automatic inhabitants.
 
-- The finite Lean-checked exclusion through maximum denominator `M <= 4,000,000,000` is unchanged.
-- Existing public formal banks remain valid according to their own stated hypotheses.
-- The attached 31-August Aristotle bundle records a later completed C0 unitary-Fourier / transverse-carrier interface bank with `lake build: PASS`, **8298 jobs, 0 errors**. Its axiom audit reports only ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) and no `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
-- That attached formal bank has a larger dependency graph than the present public `RequestProject/Main.lean`; until the dependency-complete tree is imported and rebuilt in this repository, the research status below is intentionally ahead of the public formal-main status.
+## 2. Source-specific direct3221 physical milestone
 
-## ANALYTIC BANK
-
-### C0
-
-`FIXEDRATIO-BALANCED-b-UNITARYFOURIER45`: **PASS WITH REPAIRS**.
-
-The exact finite contraction is
-
-```math
-\eta_b^2 \ll L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
-```
-
-The three hostile-audit repairs are part of the statement:
-
-1. product energy is source-specific to the literal bounded dyadic physical packet, not an arbitrary-vector multiplicative-convolution theorem;
-2. the complete unit branch is
-   ```math
-   \gcd(b\,a_\rho b_\rho u_\rho,x)=1,
-   ```
-   with complementary nonunit cells routed to D4;
-3. the finite estimate contains the `x^{-1/2}` term, with small-`x` packets routed to the already banked short-conductor / low-`Q` owner.
-
-The legal constant order is
+For the literal Balanced7 physical source, take
 
 ```text
-structure -> packet losses -> K_* -> K_tr -> K_Y,K_x -> k chosen last.
+m = p1*p2,
+w = p3*p4*p5*p6*p7.
 ```
 
-Accordingly:
-
-- `EXACTPRODUCT-CONDITIONED-FIXEDRATIO-BALANCEDDOUBLEFRACTION-LEVEL45`: **ANALYTICALLY BANKED**;
-- `EXACTPRODUCT-CONDITIONED-INVERSECONV-LEVELLS45`: **ANALYTICALLY BANKED**;
-- **EXACT PRODUCT COLLISION:** **ANALYTICALLY BANKED**;
-- **DOUBLE TYPE II:** **ANALYTICALLY BANKED**;
-- **C0:** **ANALYTICALLY CLOSED, CONDITIONAL ON FORMAL NORMALISATION**.
-
-### Transverse bank
-
-- `THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45`: **ANALYTICALLY BANKED** at the research/paper level.
-- `THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45`: **ANALYTICALLY BANKED** at the research/paper level.
-- `THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45`: **ANALYTICALLY BANKED ON EXPLICIT HYPOTHESES**.
-
-These results close a strict dense-`q_C` subregion only. They do **not** close the full transverse branch.
-
-## CONDITIONAL SOURCE PINS
-
-Primary formal/source residual:
+The inverse-sampled dictionary is
 
 ```text
-SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
+q | 2*m*w+s
+    <->
+w = -s*(2*m)^(-1) mod q.
 ```
 
-plus the complete physical Perron/nuclear normalisation unless it is absorbed into the same source pin.
+The outer two-prime and inner five-box source norms are instantiated from the physical labelled source. The direct proof estimates the complete centered raw-minus-principal defect before any high/low conductor projector split.
 
-`Omega_H` is not an analytic blocker for the `q_C` unitary-Fourier theorem; its literal physical `L^2`/normalisation data remain a formal source obligation.
-
-## RETRACTED MECHANISMS
-
-**RETRACTED:** old post-conditioning index `n = j inverse(u') mod x` as controlling C0 architecture.
-
-**RETRACTED:** old wrap `1 + UU'/B`.
-
-**RETRACTED:** naïve full-CRT two-signless-carrier DFT for the transverse branch. Full CRT fusion introduces moving cross-modulus inverse coefficients in the numerator, so the kernel is not generally a fixed `e_m(Gamma inverse(E) inverse(R))` form.
-
-**SUPERSEDED AS FIRST FRONTIER:** `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45`.
-
-Earlier 30-August uniform-`k=0` / one-level-Möbius material remains in R7 as historical research provenance, but it is no longer the controlling public first frontier after the 31-August C0/transverse audit.
-
-## CURRENT FIRST ANALYTIC RESIDUAL
+Research/paper estimate:
 
 ```text
-THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45
+per dyadic Q:
+    |D_{Q,s}| << X L^(-5/2+o(1));
+
+full super-square-root band:
+    sum_Q |D_{Q,s}| << X L^(-3/2+o(1)) = o(X/L).
 ```
 
-Status: **OPEN**.
-
-The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. Surviving cells include:
-
-- `q_C` not sufficiently dominant;
-- primed `q_C'` not sufficiently dominant;
-- every `q` partition having one short side;
-- single atomic-carrier dominance;
-- critical `q ~ r*m` geometry.
-
-The next analytic test is whether the missing second Fourier axis can be supplied by the Bézout numerator, a dominant carrier from the opposite packet, the `m`-variable after `TT*`, a signed-but-`L^2` carrier, grouped products of short factors, or both source orientations. None of these is presently claimed proved.
-
-## PARALLEL OPEN BRANCH
+Research classification:
 
 ```text
-BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45
+SP2-SUPERSQRT-TO-INVERSESAMPLED3221-PHYSICAL-DICTIONARY45:
+    PASS.
+
+SP2-BALANCED7-SUPERSQRT-DIRECT3221-DEFECT45:
+    PAPER / RESEARCH CLOSED.
+
+SP2-BALANCED7-FULL-Q45:
+    PAPER / RESEARCH CLOSED.
+
+BALANCED7:
+    PAPER / RESEARCH CLOSED.
 ```
 
-Status: **OPEN**.
+## 3. Generic-strength firewall
 
-This branch is kept separate from the transverse residual. C0/transverse Fourier gain is not automatically spent here.
-
-## CURRENT LEAN BUILD / AXIOM STATUS
-
-Latest build actually recorded in the supplied 31-August Aristotle C0/unitary-Fourier bank:
+The reusable generic target
 
 ```text
-default lake build: PASS
-8298 jobs
-0 errors
+X L^(-A)
 ```
 
-Axiom audit: only ordinary Mathlib foundations (`propext`, `Classical.choice`, `Quot.sound`) for the newly audited declarations; no forbidden proof shortcuts listed above.
+for every fixed `A` is **not** proved by the direct physical estimate. Therefore
 
-No newer transverse one-conductor Aristotle module is promoted here unless and until a dependency-complete, kernel-checked run is supplied and reproduced.
+```text
+SP2-LABELLED-SINGLETON-CENTERED-QCELL-SUPERSQRT45
+```
 
-## DOWNSTREAM FIREWALL
+in its literal arbitrary-`A` formulation remains **OPEN**, and the generic `SP2-LABELLED-SINGLETON-GENERATEDTYPEII45` socket remains open as a reusable theorem.
 
-C0 analytic closure does not by itself prove the full transverse branch.  
-Transverse local closure does not close the parallel `b`-diagonal.  
-Neither C0 nor transverse progress alone proves Gate 0–2, FCL, effective `WindowPairSupply`, or Erdős #287.  
-Downstream Twin Prime work, if mentioned elsewhere, is a separate dependency programme.
+The source-specific physical closure must not be promoted into that stronger generic statement.
+
+## 4. Direct route ownership
+
+For the physical Balanced7 endpoint:
+
+```text
+FIRST CAUCHY: USED
+MOBIUS q-SIGN: CONSUMED
+V21 AA/BA/AB/BB: NOT REQUIRED AS SEPARATE OWNERS
+V20 HHH: NOT REQUIRED
+SIGNED PRE-CAUCHY FALLBACK: NOT REQUIRED FOR o(X/L)
+```
+
+No later cancellation may reuse the consumed linear modulus sign.
+
+## 5. Current controlling frontier
+
+The first exact downstream research residual is
+
+```text
+287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45
+```
+
+Its job is to prove an exhaustive source partition and reassemble every K0-SP2 fragment without losing the remaining logarithmic margin.
+
+The direct physical super-square-root estimate contributes exponent
+
+```text
+-3/2 + o(1),
+```
+
+while the final physical error criterion requires a net exponent strictly below
+
+```text
+-1.
+```
+
+Hence a naive absolute fragment reassembly must have total extra logarithmic cost
+
+```text
+C_total < 1/2.
+```
+
+If `C_total >= 1/2`, the fragments must be recombined before triangle inequality or controlled jointly; it is not legitimate to call the multiplicity merely `polylogarithmic`.
+
+## 6. Downstream status
+
+```text
+287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45:
+    OPEN.
+
+FULL-SOURCE-LOCAL-ANALYTIC-KERNEL45:
+    OPEN.
+
+WindowPair:
+    OPEN / not yet shown unnecessary.
+
+ERDOS287:
+    OPEN.
+```
+
+Balanced7 is one physical source family; its paper-level closure is not by itself a full source-exhaustive proof of Erdős #287.
+
+## 7. Formal / analytic separation
+
+The 1-Sep Lean delta formalizes only what is appropriate to formalize without importing unproved analytic number theory:
+
+- exact finite centered-defect data;
+- exact raw/raw shift geometry;
+- separate uninhabited analytic-provider interfaces;
+- generic-versus-physical endpoint type firewalls;
+- K0-SP2 fragment metadata and source-reassembly interfaces;
+- the symbolic half-log budget;
+- authoritative status and axiom-audit files.
+
+The external short-shift sieve, Shiu divisor-average estimate, physical direct3221 analytic endpoint, and full K0-SP2 reassembly remain separately typed unless genuinely formalized.
+
+## 8. Project-scope firewall
+
+The active 1-Sep dependency graph is scoped to Erdős #287. No result from another research programme is treated as an imported analytic input, theorem owner, or closure certificate. Historical provenance may remain in old commits or archived reports but is noncontrolling.
 
 ## ERDOS287
 

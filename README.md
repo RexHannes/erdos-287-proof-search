@@ -1,22 +1,22 @@
-# Erdős Problem #287 — Gate 0–2 Theory Manual / Current Public Frontier
+# Erdős Problem #287 — Current Public Frontier
 
 **Status:** open research programme / partial formal verification.  
 **ERDŐS PROBLEM #287 REMAINS OPEN.**
 
-The authoritative concise ledger is [`CURRENT_STATUS.md`](CURRENT_STATUS.md). Historical R4/R5/R7 manuscripts and research reports remain preserved for provenance; where an older frontier conflicts with the 31-August-2026 ledger, the later ledger controls.
+The controlling concise ledger is [`CURRENT_STATUS.md`](CURRENT_STATUS.md). The newest research update is [`ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md`](ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md). Historical R4/R5/R7/R9 manuscripts remain preserved for provenance; where an older frontier conflicts with the 2-September-2026 ledger, the later ledger controls.
 
 ## Start here
 
-- [Living public review — stable path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path — same living manuscript](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Latest R10 research delta — 2 Sep 2026](ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md)
 - [Authoritative current status](CURRENT_STATUS.md)
-- [Current research frontiers](RESEARCH_FRONTIERS/CURRENT_FRONTIERS.md)
-- [31 Aug 2026 checkpoint changelog](CHANGELOG_2026-08-31.md)
+- [Living public review PDF — stable R9 path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
+- [Legacy forum PDF path](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
+- [Research proof index](RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md)
 - [Corrections and retractions](CORRECTIONS_AND_RETRACTIONS.md)
 
-The Gate 0–2 theory manual remains part of the living manuscript: the repository is not being converted into a status-only note.
+The stable PDF alias is still the R9 build until a new PDF build is produced. The R10 delta and `CURRENT_STATUS.md` are the controlling research-status documents in the meantime.
 
-## Strongest unconditional public theorem
+## Strongest unconditional theorem
 
 The existing Lean-checked finite theorem excludes every exact counterexample with maximum denominator
 
@@ -24,105 +24,113 @@ The existing Lean-checked finite theorem excludes every exact counterexample wit
 M <= 4,000,000,000.
 ```
 
-The conditional large-`M` interface `Erdos287.WindowPairSupply` remains separate. No eventual supply theorem, effective final threshold, or unconditional solution of Erdős #287 is claimed.
+No eventual large-`M` supply theorem, explicit final threshold, or unconditional solution of Erdős #287 is claimed.
 
-## Latest analytic milestone — C0
+## Latest mathematical progress
 
-The canonical C0 exact-product / double-Type-II analytic core is now **analytically closed conditional on the separately identified physical-normalisation source pin**.
-
-Banked C0 statements include:
+### Closed at paper/research level
 
 ```text
-FIXEDRATIO-BALANCED-b-UNITARYFOURIER45: PASS WITH REPAIRS
-EXACT PRODUCT COLLISION: ANALYTICALLY CLOSED
-DOUBLE TYPE II: ANALYTICALLY CLOSED
-C0: ANALYTICALLY CLOSED / CONDITIONAL ON FORMAL NORMALISATION
+regular Perron / smooth-Mobius correlation
+uniform fragmentation reassembly
+local analytic kernel for already-typed packets
+global Bsrc physical comparison
+N1/Bsrc dictionary
+E_M = o(B_X)
+physical N2 Lambda collar at fixed-epsilon asymptotic level
+four-error fixed-certificate transference
+FCL_W(M/2) -> WindowPairSupply(M), M>=12
 ```
 
-The exact finite contraction is
+The physical `N_2` proof retains the von Mangoldt weight and obtains
 
 ```math
-\eta_b^2
-\ll
-L^C\left(\frac{x}{B}+\frac1N+\frac1{E_b}+\frac1x\right).
+E_2/B_X <= K_collar * epsilon + o(1),
 ```
 
-This is a finite-Fourier / `L^2` closure. It uses neither conjectural Möbius cancellation nor a new spectral black box.
+so for one fixed sufficiently small `epsilon`, eventually
 
-The remaining formal/source pin is
+```math
+E_2 <= (m_epsilon/8) B_X.
+```
+
+This does not use the Ford bounded-sequence `N_2` shortcut.
+
+The comparison side gives
+
+```math
+E_M=o(B_X),
+```
+
+and
+
+```math
+B_X=(4 S_2 integral(W)+o(1)) X/log X.
+```
+
+### Exact FCL algebra
+
+```math
+primeMass >= m_epsilon B_X - E_T - E_L - E_2 - E_M.
+```
+
+Since `E_2` and `E_M` are now controlled asymptotically, the remaining asymptotic FCL problem is the source-exact construction of `E_T` and `E_L` from the banked owner estimates.
+
+## Correct two-lane Ford source architecture
+
+The latest hostile source audit supersedes the old single-master-index picture:
 
 ```text
-SHAREDGCD-OMEGAH-NORMALISATION-SOURCEPIN45
+I_raw = I_Tot disjoint_union I_U.
 ```
 
-plus the complete physical Perron/nuclear normalisation unless it is absorbed into the same source pin.
+- `I_Tot` reconstructs the full `T_X` correlation and follows Ford–Maynard Lemma 7.21 / Type-I machinery.
+- `I_U` reconstructs the leakage `L_X`; Proposition 7.22 is the `U`-lane expansion and carries the Type-II subproduct bookkeeping.
 
-## Transverse long-conductor — strictly reduced, still OPEN
+Only `I_U` carries the nonempty family `mathcal E` and deterministic selected subset `E_*(mathcal E)`. The `Tot` lane must not be given fabricated selected-E data.
 
-Banked research/paper-level reductions:
+## Correct owner hierarchy
+
+`C0`, `Transverse`, and `bDiagonal` are **two-copy** owner classes. They cannot be assigned directly to a one-copy physical packet.
 
 ```text
-THREEFACTOR-TRANSVERSE-ONECONDUCTOR-RECIPROCITY45: PASS
-THREEFACTOR-TRANSVERSE-qC-UNITARYFOURIER45: PASS
-THREEFACTOR-TRANSVERSE-DENSE-qC-COMPILER45: CLOSED ON EXPLICIT HYPOTHESES
+one-copy raw packet
+  -> LowQ / Pascadi / Local when directly source-legitimate
+  -> otherwise exact Cauchy/dispersion
+  -> two-copy descendant
+  -> shared-gcd formation
+  -> proof-local Omega_H
+  -> C0 / Transverse / bDiagonal / Local.
 ```
 
-These close a strict dense-`q_C` subregion only. They do **not** close all transverse packets.
+The current running source audit is checking the first literal coefficient dictionary in this corrected architecture. In particular, the `Tot` lane should not be forced through the K0 smooth-parent dispersion owners merely because those owners exist; it follows its own Lemma-7.21 Type-I path.
 
-The naïve full-CRT two-signless-carrier DFT is **RETRACTED**: the fused numerator retains cross-modulus inverse coefficients.
-
-The current first analytic residual is
+Current compiler frontier:
 
 ```text
-THREEFACTOR-TRANSVERSE-CRITICAL-BEZOUTNUMERATOR-SINGLECARRIER45 : OPEN
+FORD-Hepsilon-TWOLANE-RAWPACKET-TO-TWOCOPY-TYPEDOWNER-REFINEMENT45
 ```
 
-The critical operator retains both packet orientations and the full Bézout-dependent reciprocal numerator. The next research test is whether a missing second Fourier axis can be supplied by the Bézout numerator, an opposite-packet dominant carrier, the `m` variable after `TT*`, a signed `L^2` carrier, grouped short factors, or both source orientations. None is yet promoted as proved.
+Status: **OPEN / under active source audit.**
 
-## Parallel b-diagonal
-
-Kept visibly separate:
+## Current endgame
 
 ```text
-BDIAGONAL-AFFINEA-SURVIVING-VERTEX-RECT45 : OPEN
+physical N2 Lambda collar        CLOSED asymptotically
+Bsrc / N1 / E_M                  CLOSED asymptotically
+four-error transference          CLOSED
+FCL -> WindowPair, M>=12         CLOSED mathematically
+E_T / E_L source compiler        OPEN
+asymptotic FCL                   OPEN pending E_T/E_L
+explicit-threshold finite splice OPEN
+Erdos287ClosureInputs            UNINHABITED
+ERDOS287                         OPEN
 ```
 
-C0 or transverse Fourier gain is not automatically spent on this branch.
+If the current two-lane source compiler supplies the required `E_T,E_L=o(B_X)` bounds, the asymptotic FCL stage should compile from the already banked N2/comparison inputs. The remaining last mile would then be explicit-threshold extraction and the finite/asymptotic splice.
 
-## Formal / Aristotle checkpoint
+## Formal / Aristotle firewall
 
-The supplied 31-August Aristotle bundle records a completed C0 unitary-Fourier / transverse-carrier-interface bank with
-
-```text
-default lake build: PASS
-8298 jobs
-0 errors
-```
-
-and declaration axiom audits reporting only ordinary Mathlib foundations such as `propext`, `Classical.choice`, and `Quot.sound`, with no reported `sorry`, custom axiom, `unsafe`, opaque shortcut, `implemented_by`, or `native_decide`.
-
-The newest named formal files depend on a larger unpublished `CurrentProgramme` / hostile-audit dependency graph than is currently present under public `RequestProject/Main.lean`. The repository therefore records the attached verified bank without falsely claiming that the public main tree has already reproduced the same 8298-job build. No newer transverse one-conductor formal module is fabricated or pre-promoted.
-
-## Explicit corrections
-
-Retained historically but no longer controlling:
-
-- old C0 post-conditioning index `n = j inverse(u') mod x` — **RETRACTED**;
-- old C0 wrap `1 + UU'/B` — **RETRACTED**;
-- naïve transverse full-CRT two-signless DFT — **RETRACTED**;
-- `THREEFACTOR-TRANSVERSE-CARRIERFACTORIZATION-PAIR-EXISTENCE45` as first frontier — **SUPERSEDED**;
-- the 30-August R7 uniform-`k=0` / one-level-Möbius residual as the controlling public first frontier — **SUPERSEDED AS CONTROLLING**, while its historical/local research content remains preserved.
-
-See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md).
-
-## Dependency firewall
-
-```text
-C0 analytic closure != full transverse closure.
-Dense-qC transverse closure != all transverse packets.
-Transverse progress != parallel b-diagonal closure.
-Local analytic closure != Gate 0–2 / FCL / effective WindowPairSupply.
-Erdős #287 progress != Twin Prime closure.
-```
+Paper/research analytic closure is not the same as Lean analytic closure. New N2 and Bsrc/N1 results should be represented formally as explicit external/paper-banked inputs until genuinely formalized. Source/compiler and effectivity inputs remain uninhabited where appropriate.
 
 **ERDŐS PROBLEM #287 REMAINS OPEN.**

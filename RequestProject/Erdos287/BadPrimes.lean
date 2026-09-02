@@ -73,7 +73,7 @@ theorem topLayer_badPrime_witness
     · rw [ Finset.sum_image ];
       · convert topLayer_congruence A p hp hpos hsum he using 1;
         exact Finset.sum_congr rfl fun x hx => by rw [ mem_topLayer.mp hx |>.2 ] ;
-      · intro a ha b hb; have := Nat.div_mul_cancel ( Nat.ordProj_dvd a p ) ; have := Nat.div_mul_cancel ( Nat.ordProj_dvd b p ) ; simp_all +decide [ Nat.factorization_eq_zero_iff ] ;
+      · intro a ha b hb; have := Nat.div_mul_cancel ( Nat.ordProj_dvd a p ) ; have := Nat.div_mul_cancel ( Nat.ordProj_dvd b p ) ; simp_all +decide ;
         simp_all +decide [ mem_topLayer ];
         aesop
 

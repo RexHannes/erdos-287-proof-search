@@ -107,7 +107,7 @@ def altWord (n : ℕ) : Cell := if n % 2 = 0 then Cell.inA else Cell.hole
 The alternating word is `2`-periodic.
 -/
 theorem altWord_periodic : Function.Periodic altWord 2 := by
-  intro n; unfold altWord; simp +decide [ Nat.add_mod ] ;
+  intro n; unfold altWord; simp +decide ;
 
 /-
 **Dichotomy (B): a cycle is a symbolic fake.**  The alternating word satisfies the

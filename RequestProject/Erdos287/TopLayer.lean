@@ -36,29 +36,29 @@ theorem topLayer_congruence
   have h_identity : (∑ a ∈ A, (p ^ (topExp A p - Nat.factorization a p) * (∏ b ∈ A.erase a, (b / p ^ Nat.factorization b p)) : ℕ)) = p ^ topExp A p * (∏ a ∈ A, (a / p ^ Nat.factorization a p)) := by
     -- Multiply both sides of the equation by $p^e * N$ to clear the denominators.
     have h_mul : (∑ a ∈ A, (p ^ topExp A p * (∏ b ∈ A, (b / p ^ Nat.factorization b p)) : ℚ) / a) = p ^ topExp A p * (∏ a ∈ A, (a / p ^ Nat.factorization a p)) := by
-      simp_all +decide [ div_eq_mul_inv, ← Finset.mul_sum _ _ _, ← Finset.sum_mul ];
+      simp_all +decide [ div_eq_mul_inv, ← Finset.mul_sum _ _ _ ];
     convert h_mul using 1;
     rw [ ← @Nat.cast_inj ℚ ] ; push_cast ; rw [ Finset.sum_congr rfl ];
-    intro a ha; rw [ eq_div_iff ( Nat.cast_ne_zero.mpr <| ne_of_gt <| hpos a ha ) ] ; rw [ ← Finset.mul_prod_erase _ _ ha ] ; simp +decide [ mul_assoc, mul_comm, mul_left_comm, pow_add, Nat.cast_mul, Nat.cast_pow, Nat.cast_div, hp.pos ] ;
+    intro a ha; rw [ eq_div_iff ( Nat.cast_ne_zero.mpr <| ne_of_gt <| hpos a ha ) ] ; rw [ ← Finset.mul_prod_erase _ _ ha ] ; simp +decide [ mul_comm ] ;
     rw [ Nat.cast_div ( Nat.ordProj_dvd _ _ ) ( by aesop ) ] ; ring;
     field_simp;
     rw [ show ( p : ℚ ) ^ topExp A p = p ^ ( Nat.factorization a p ) * p ^ ( topExp A p - Nat.factorization a p ) by rw [ ← pow_add, Nat.add_sub_of_le ( show Nat.factorization a p ≤ topExp A p from Finset.le_sup ( f := fun a => Nat.factorization a p ) ha ) ] ] ; push_cast ; ring;
   have h_identity_mod : (∑ a ∈ A, (p ^ (topExp A p - Nat.factorization a p) * (∏ b ∈ A.erase a, (b / p ^ Nat.factorization b p)) : ZMod p)) = 0 := by
-    norm_cast ; simp_all +decide [ ← ZMod.natCast_eq_zero_iff ];
+    norm_cast ; simp_all +decide;
     rw [ zero_pow ( by linarith ), MulZeroClass.zero_mul ];
   have h_identity_mod_top : (∑ a ∈ topLayer A p, (∏ b ∈ A.erase a, (b / p ^ Nat.factorization b p) : ZMod p)) = 0 := by
     have h_identity_mod_top : (∑ a ∈ A \ topLayer A p, (p ^ (topExp A p - Nat.factorization a p) * (∏ b ∈ A.erase a, (b / p ^ Nat.factorization b p)) : ZMod p)) = 0 := by
       refine' Finset.sum_eq_zero fun x hx => _;
-      simp_all +decide [ Finset.mem_sdiff, Finset.mem_filter ];
+      simp_all +decide [ Finset.mem_sdiff ];
       rw [ zero_pow ] <;> norm_num;
       exact Nat.sub_ne_zero_of_lt ( lt_of_le_of_ne ( Finset.le_sup ( f := fun a => Nat.factorization a p ) hx.1 ) fun h => hx.2 <| Finset.mem_filter.mpr ⟨ hx.1, h ⟩ );
-    simp_all +decide [ Finset.sum_sdiff, topLayer ];
+    simp_all +decide [ topLayer ];
     convert h_identity_mod_top using 2 ; aesop;
   convert congr_arg ( fun x : ZMod p => x * ( ∏ a ∈ A, ( a / p ^ a.factorization p : ZMod p ) ) ⁻¹ ) h_identity_mod_top using 1;
   · rw [ Finset.sum_mul _ _ _ ];
     refine' Finset.sum_congr rfl fun x hx => _;
     rw [ ← Finset.prod_erase_mul _ _ ( Finset.mem_coe.mpr ( Finset.mem_of_mem_filter _ hx ) ), mul_comm ];
-    haveI := Fact.mk hp; simp_all +decide [ Finset.prod_eq_zero_iff, Nat.factorization_eq_zero_iff ] ;
+    haveI := Fact.mk hp; simp_all +decide [ Finset.prod_eq_zero_iff ] ;
   · ring
 
 /-
@@ -77,7 +77,7 @@ theorem topLayer_card_ne_one
   obtain ⟨a, ha⟩ := h_singleton
   have h_sum : ((ordCompl[p] a : ZMod p))⁻¹ = 0 := by
     have := topLayer_congruence A p hp hpos hsum he; simp_all +decide [ Finset.sum_singleton ] ;
-  haveI := Fact.mk hp; simp_all +decide [ Nat.not_dvd_ordCompl hp ( ne_of_gt ( hpos a ( Finset.mem_filter.mp ( ha.symm ▸ Finset.mem_singleton_self _ ) |>.1 ) ) ) ] ;
+  haveI := Fact.mk hp; simp_all +decide ;
   rw [ ZMod.natCast_eq_zero_iff ] at h_sum ; exact Nat.not_dvd_ordCompl hp ( ne_of_gt ( hpos a ( Finset.mem_filter.mp ( ha.symm ▸ Finset.mem_singleton_self _ ) |>.1 ) ) ) h_sum;
 
 /-

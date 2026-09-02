@@ -82,7 +82,7 @@ def AggregateBound {n : ℕ} (f : Fin n → ℝ) (K : ℝ) : Prop := ∑ i, f i 
 theorem pointwise_not_aggregate :
     ∃ (f : Fin 2 → ℝ) (K : ℝ), PointwiseBound f K ∧ ¬ AggregateBound f K := by
   refine ⟨fun _ => 1, 1, fun _ => le_refl 1, ?_⟩
-  simp [AggregateBound, Fin.sum_univ_two]
+  simp [AggregateBound]
 
 /-- **Firewall.**  An aggregate bound does not give the pointwise bound with the same constant. -/
 theorem aggregate_not_pointwise :

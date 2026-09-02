@@ -179,7 +179,7 @@ theorem goodPrime_blocker_sub {p d r e : ℕ}
     (hpN : ce.N + 1 ≤ p) (hpM : p ≤ ce.M) (hM2 : ce.M < 2 * p)
     (heq : p = d * r ^ e + 1) (hrC : C (2 * d) < (r : ℤ)) : False := by
   convert BlockerCert.refutes _ _ _ _ using 1;
-  exact ⟨ ce.N, ce.M, d * r ^ e, r ^ e, p, by omega, by omega, by simp +decide [ heq ], by simp +decide [ heq ], by
+  exact ⟨ ce.N, ce.M, d * r ^ e, r ^ e, p, by omega, by omega, by simp +decide, by simp +decide [ heq ], by
     apply excludedPP_of_le hr he (window_le_of_good_prime hr he hd hM2 (Or.inl heq)) hrC, by
     exact excludedPP_self_of_large hp hpM hM2 ⟩
   all_goals generalize_proofs at *;

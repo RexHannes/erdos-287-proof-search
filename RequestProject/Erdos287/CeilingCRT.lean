@@ -91,7 +91,7 @@ theorem exists_crt_adjacent {N M Q1 Q2 : ℕ} (hcop : Nat.Coprime Q1 Q2)
     · exact le_add_of_nonneg_of_le ( Nat.zero_le _ ) ( Nat.le_of_lt ( Nat.mod_lt _ ( by positivity ) ) );
   · rw [ ← Int.natCast_dvd_natCast ] ; simp_all +decide [ ← ZMod.intCast_zmod_eq_zero_iff_dvd, ← ZMod.intCast_eq_intCast_iff ] ;
     rw [ Nat.cast_sub ] <;> norm_num [ Int.add_emod, Int.sub_emod, Int.mul_emod, hk.2 ];
-    · simp_all +decide [ ← ZMod.intCast_eq_intCast_iff', Int.emod_def ];
+    · simp_all +decide [ Int.emod_def ];
     · exact le_add_of_nonneg_of_le ( Nat.zero_le _ ) ( Nat.le_of_lt ( Nat.mod_lt _ ( by positivity ) ) )
 
 namespace Gap2CE

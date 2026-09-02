@@ -31,7 +31,7 @@ namespace Erdos287
 
 /-- If every element of `A` is at most `M` and `M < q²`, then no element of `A` carries
 `q`-adic valuation `≥ 2`, so the top exponent is at most `1`. -/
-theorem topExp_le_one_of_lt_sq {A : Finset ℕ} {M q : ℕ} (hq : q.Prime)
+theorem topExp_le_one_of_lt_sq {A : Finset ℕ} {M q : ℕ}
     (hpos : ∀ a ∈ A, 0 < a) (hAM : ∀ a ∈ A, a ≤ M) (hsq : M < q * q) :
     topExp A q ≤ 1 := by
   refine Finset.sup_le fun a ha => ?_
@@ -113,7 +113,7 @@ theorem q_and_two_mul_q_holes {A : Finset ℕ} {M q : ℕ} (hq : q.Prime) (hq3 :
   -- the key: neither `q` nor `2q` can be a denominator
   have key : ¬ (q ∈ A ∨ 2 * q ∈ A) := by
     intro hmem
-    have hle : topExp A q ≤ 1 := topExp_le_one_of_lt_sq hq hpos hAM hsq
+    have hle : topExp A q ≤ 1 := topExp_le_one_of_lt_sq hpos hAM hsq
     have hge : 1 ≤ topExp A q := by
       rcases hmem with h | h
       · have : Nat.factorization q q ≤ topExp A q :=
@@ -238,11 +238,11 @@ theorem halfRange_min_le (hM : 2 ≤ ce.M) : ce.N ≤ ce.M / 2 := by
 /-- A `q`/`2q` hole pair for the counterexample. -/
 theorem holes_q_two_q {q : ℕ} (hq : q.Prime) (hq3 : 3 < q)
     (hsq : ce.M < q * q) (hM3 : ce.M < 3 * q) : q ∉ ce.A ∧ 2 * q ∉ ce.A :=
-  q_and_two_mul_q_holes hq hq3 ce.hpos (fun a ha => Finset.le_max' _ _ ha) ce.hsum hsq hM3
+  q_and_two_mul_q_holes hq hq3 ce.hpos (fun _ ha => Finset.le_max' _ _ ha) ce.hsum hsq hM3
 
 /-- A top-half prime is a hole of the counterexample. -/
 theorem hole_topHalf_prime {p : ℕ} (hp : p.Prime) (hM2 : ce.M < 2 * p) : p ∉ ce.A :=
-  topHalf_prime_hole hp ce.hpos (fun a ha => Finset.le_max' _ _ ha) ce.hsum hM2
+  topHalf_prime_hole hp ce.hpos (fun _ ha => Finset.le_max' _ _ ha) ce.hsum hM2
 
 /-- **V2 plus Sophie blocker.**  `q > 3` prime, `p = 2q + 1` prime, `p ≤ M`, `M < 3q`,
 `M < q²` ⟹ no gap-`≤2` counterexample.

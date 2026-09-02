@@ -127,7 +127,7 @@ theorem num_le_C (j : ℕ) (S : Finset ℕ) (hne : S.Nonempty)
         · intro x hx; have := hsub ( Finset.mem_sort ( α := ℕ ) ( · ≤ · ) |>.1 hx ) ; simp_all +decide [ Finset.subset_iff ] ;
           exact ⟨ x - 1, by linarith [ hsub hx, Nat.sub_add_cancel ( h_l_pos x hx ) ], Nat.succ_pred_eq_of_pos ( h_l_pos x hx ) ⟩;
       · grind +suggestions;
-      · intro i j hij; simp +decide [ List.get ] ;
+      · intro i j hij; simp +decide ;
         exact hij;
     · exact List.ne_nil_of_mem ( Finset.mem_sort ( α := ℕ ) ( · ≤ · ) |>.2 hne.choose_spec );
   have h_foldr_max : ∀ (a : ℤ) (L : List ℤ), a ∈ L → a ≤ L.foldr max 0 := by
@@ -158,7 +158,7 @@ theorem C_attained (j : ℕ) (hj : 1 ≤ j) :
     grind;
   refine' ⟨ l₀.toFinset, _, _, _ ⟩;
   · aesop;
-  · intro x hx; simp_all +decide [ Finset.subset_iff ] ;
+  · intro x hx; simp_all +decide ;
     have := List.mem_sublists.mp ( List.mem_filter.mp hl₀.1 |>.1 ) ; ( have := List.mem_map.mp ( this.subset hx ) ; aesop; );
   · convert numOf_eq_num l₀ _ _;
     · exact hl₀.2.symm;
@@ -188,9 +188,9 @@ theorem C_mono {i j : ℕ} (hij : i ≤ j) : C i ≤ C j := by
     exact this.choose_spec.2.2 ▸ num_le_C j _ this.choose_spec.1 ( this.choose_spec.2.1.trans ( Finset.Icc_subset_Icc_right hij ) );
   · interval_cases i;
     unfold C;
-    induction' ( List.range j ) with j hj <;> simp_all +decide [ List.range_succ ];
+    induction' ( List.range j ) with j hj <;> simp_all +decide;
     simp_all +decide [ List.sublists_cons ];
     induction ( List.map ( fun x => x + 1 ) hj ).sublists <;> simp_all +decide [ List.flatMap ];
-    induction ( List.filter ( fun l => !decide ( l = [] ) ) ( ‹_› :: ( ( j + 1 ) :: ‹_› ) :: ( List.map ( fun x => [ x, ( j + 1 ) :: x ] ) ‹_› ).flatten ) ) <;> simp_all +decide [ List.foldr ]
+    induction ( List.filter ( fun l => !decide ( l = [] ) ) ( ‹_› :: ( ( j + 1 ) :: ‹_› ) :: ( List.map ( fun x => [ x, ( j + 1 ) :: x ] ) ‹_› ).flatten ) ) <;> simp_all +decide
 
 end Erdos287

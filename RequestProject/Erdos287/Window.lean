@@ -84,7 +84,7 @@ theorem primePower_window_exclusion
     intro s hs; obtain ⟨ a, ha, rfl ⟩ := Finset.mem_image.mp hs; exact Nat.not_dvd_ordCompl hp ( ne_of_gt ( hpos a ( topLayer_subset _ _ ha ) ) ) ;
   have hS_sum_inv_zero : (∑ s ∈ S, ((s : ZMod p))⁻¹) = 0 := by
     rw [ Finset.sum_image ] ; aesop;
-    intros a ha b hb hab; have := Nat.div_mul_cancel ( Nat.ordProj_dvd a p ) ; have := Nat.div_mul_cancel ( Nat.ordProj_dvd b p ) ; simp_all +decide [ Nat.factorization_eq_zero_iff ] ;
+    intros a ha b hb hab; have := Nat.div_mul_cancel ( Nat.ordProj_dvd a p ) ; have := Nat.div_mul_cancel ( Nat.ordProj_dvd b p ) ; simp_all +decide ;
     simp_all +decide [ topLayer ]
   have hS_num_div : (p : ℤ) ∣ (∑ s ∈ S, (1 : ℚ) / s).num := by
     convert dvd_num_of_sum_inv_zero S p hp hS_pos hS_not_div _ using 1 ; aesop

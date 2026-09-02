@@ -57,7 +57,7 @@ def truncMobius (n T : ℕ) : ℤ :=
 theorem truncMobius_one {T : ℕ} (hT : 1 ≤ T) : truncMobius 1 T = 1 := by
   have hset : (1 : ℕ).divisors.filter (fun d => d ≤ T) = {1} := by
     ext d
-    simp only [Finset.mem_filter, Nat.mem_divisors, Finset.mem_singleton,
+    simp only [Finset.mem_filter, Finset.mem_singleton,
       Nat.divisors_one, Finset.mem_singleton]
     constructor
     · rintro ⟨rfl, -⟩; rfl

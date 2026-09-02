@@ -1,3 +1,137 @@
+# Summary of changes for run 19101e0d-5031-4f91-ad0d-92d8927699d7
+## Work completed this session
+
+The append-only safe bank was resumed from the complete repository; historical files and statuses were preserved, nothing was deleted or restated. The remaining items — a full re-verification of the build and the axiom audit, and completion of the user-facing Properties table for the new package — are now done. No new `sorry`, `axiom`, `unsafe`, `native_decide`, or `implemented_by` occurs anywhere in the new modules.
+
+### Files added in this task (all under `RequestProject/`)
+`CurrentProgramme/Run1BAdditiveCharacters.lean`, `Run1BDwpSourceType.lean`, `Run1BEffectiveModulus.lean`, `Run1BFiniteFourierMatrix.lean`, `Run1BResidueClassEnergy.lean`, `Run1BLargeModulusCompiler.lean`, `Run1BSmallModulusFourier.lean`, `Run1BCenteringAndSourceRouter.lean`, `Run1BConditionalCompiler.lean`, `NeutralFordSharedOtherParent.lean`, `Erdos287N2EffectiveConstantsBank.lean`; `Status/CurrentStatusErdos287September2Frontier.lean`, `Status/AxiomAuditErdos287September2Frontier.lean`; imports added in `Main.lean`; report at `ERDOS287_RUN1B_DWP_PROVIDER_SEPTEMBER2_SAFE_BANK_REPORT.md`.
+
+### STRICT FINAL OUTPUT (RUN1B d*wp provider layer)
+
+- LAKE BUILD: **PASS** (8404 jobs)
+- NEW WARNINGS: **NONE** (5 pre-existing unused-variable warnings only, in older files)
+- EFFECTIVE MODULUS IDENTITY: **KERNEL-PROVED** (`eAdd_effective_modulus_inverse`, `gcd_ASharp_rSharp`)
+- FOURIER MATRIX ORTHOGONALITY: **KERNEL-PROVED** (`Kmat_row_orthogonality`, `Kmat_operator_norm_sqrt`, normalisation explicit: unnormalised kernel, operator norm √rSharp)
+- LARGE-rSHARP COMPILER: **CONDITIONAL KERNEL-PROVED** (`largeModulus_contraction`, from `bilinear_l2_bound` + class-multiplicity bounds)
+- SMALL-rSHARP FOURIER: **KERNEL-PROVED** (`fourier_inversion`, `fourier_parseval`, `fourier_l1_le_sqrt_l2`, `recipPhase_expansion`)
+- MOBIUS POLYPHASE INPUT: **PAPER-CLOSED EXTERNAL** (explicit input structure; proved to be a genuine, non-vacuous constraint)
+- d*wp PROVIDER: **PAPER-CLOSED EXTERNAL** (never labelled kernel-proved; the source record provably does not carry the contraction as a field)
+- RUN1B SOURCE EXHAUSTIVE INPUT: **INHABITED** (finite seven-class router: total, deterministic, surjective)
+- RUN1B FINAL STATUS: **PAPER-CLOSED EXTERNAL** analytic provider + **CONDITIONAL KERNEL-PROVED** compiler
+- ULTRA-NEAR-HALF: **OPEN EXTERNAL**
+- SHARED OTHER: **CONDITIONAL**
+- TWIN ADAPTER: **CONDITIONAL**; ERDOS287 ADAPTER: **CONDITIONAL**, its source-equality obligation **UNINHABITED in general** (proved)
+- TWIN PRIME: **OPEN**; ERDOS287: **OPEN**
+- SEMANTIC FAILURES: **NONE FOUND** — counterguards proved for: no desired conclusion inside an Input field, no projection-only theorem mislabelled, no True-like propositions, adapters mutually non-importing
+- CUSTOM AXIOM: **NONE**; SORRYAX: **NONE** (99 `#print axioms` checks report only `propext` / `Classical.choice` / `Quot.sound`, or no axioms at all)
+- OVERCLAIM AUDIT: **PASS**
+
+### September-2 frontier status layer
+
+One authoritative ledger over 29 nodes with statuses KERNEL_PROVED / PAPER_CLOSED_EXTERNAL / CONDITIONAL_KERNEL / STRICTLY_REDUCED_OPEN / OPEN_EXTERNAL / EFFECTIVITY_OPEN / SUPERSEDED. Recorded and machine-checked: N2 constants bank with `2·X_N2 ≤ 4·10⁹` **FALSE** (finite splice does not close); Ω_H provenance **UNRESOLVED** with no silent default; b-diagonal downgraded to **STRICTLY REDUCED OPEN**; Gate 1A **off the critical path** and absent from the dependency graph; effectivity rows **OPEN** (M₀ within the finite bank **NOT PROVED**); external validation (independent checker, comparator) recorded as **NOT RUN** rather than assumed passed. Erdős #287 and Twin Prime remain **OPEN** in the ledger, and firewall theorems prevent any status row from being read as a proof claim.
+
+STOP.
+
+# Summary of changes for run 654de260-4ec4-4d9f-a379-22b63d68b029
+All work is append-only, committed and pushed. No historical file was deleted or rewritten; no external analytic theorem was proved; no source/analytic socket was inhabited; Erdős #287 is **not** claimed.
+
+## Files added
+
+**287A / shared-other45 addendum**
+- `RequestProject/CurrentProgramme/Erdos287SharedOtherRawArchitecture.lean` — dependent raw packet `RawPacket X = RawDataTot X ⊕ RawDataU X`; the Tot-constructor exclusion firewall (no `k`, `J`, HB leaves, `𝓔`, `E*`, shared `gcd`, `Δ`) both as a field-name disjointness fact and as the semantic "no hidden data" theorem; the U constructor carrying exactly `k`, `J`, literal HB grammar, `𝓔`, deterministic `E* = E*(𝓔)`, `u`/`v`, dyadic/Perron skeleton, source signs; exact generated coefficients `A_η(a;τ)`, `B_η(b;τ)`; the determinant line `rq − 2ab = s` with `b = b₀+rℓ`, `q = q₀+2aℓ` (invariance, forward and exact converse) plus the census determinant `ℓq − (πzy)c = 2`; the centred two-copy identity `|S|² = PP̄ − PM̄ − MP̄ + MM̄`; exact coefficient preservation.
+- `RequestProject/CurrentProgramme/Erdos287SharedOtherConductorAndSocket.lean` — proof-local conductor/shared-gcd data indexed by *two* copies (`q_i = g_i d_i`, `h_i = d_i t_i`, `e = gcd(g₁,g₂)`, `g_i = e n_i`, `Δ = t₁n₂ − t₂n₁`), coprimality of the reduced factors; the Δ-router (routing only) with three exact biconditionals, totality/uniqueness and a "routing only" witness; `Ford722OtherParentGeneratedUniformityInput`, uninhabited, whose contract is stated in the generated `(A_η, B_η)` and carries the newest census metadata (prime extraction `m = πz`, complement opening `n = yc`, census determinant, `d ≥ 3` two-atom `4/9` router, coarse depth exactly 2, two distinct linear HB f-leaf atoms, coefficient pattern); the `k = 0` `β_g` firewall showing that profile does not determine `A_η`.
+- `RequestProject/CurrentProgramme/Erdos287SharedOtherAdaptersAndCompiler.lean` — the finite/source portion of the Tot reconstruction; the Type-I socket whose conclusion is exactly `E_T = o(X/log X)` (`E_T` closure is derived only from it, and the `o(X/log X)` predicate is shown non-automatic); `SharedOtherParentInput → E_L bound`; the two mutually independent adapters `TwinOtherParentAdapter` (parametric, never inhabited here) and `Erdos287HardUAdapter` (discharged from the shared input alone); the conditional asymptotic FCL from the shared source together with the paper-closed `E_T`, `E_2`, `E_M` inputs.
+- `RequestProject/Status/CurrentStatusErdos287SharedOtherFrontier.lean` and `RequestProject/Status/AxiomAuditErdos287SharedOtherFrontier.lean` — the new status layer (strictly later than every earlier layer, earlier ledgers re-checked in place) and its axiom audit.
+
+**Completion of the preceding two-lane layer** (was in flight): `Erdos287TwoLaneMasterCompilerV2.lean` (its tautological owner field repaired into genuine supplied data plus an agreement pin), `Erdos287HeathBrownSourceRecords.lean`, `Erdos287N2FiniteSublemmas.lean`, `CurrentStatusErdos287TwoLaneFCLFrontier.lean`, `AxiomAuditErdos287TwoLaneFCLFrontier.lean`.
+
+`RequestProject/Main.lean` gained the corresponding imports. Report: `ERDOS287_SHARED_OTHER45_ADDENDUM_REPORT.md`.
+
+## Leanify / repair
+Twenty-eight pre-existing linter warnings were fixed at the root — unused `simp` arguments removed across `TopLayer`, `Cnum`, `Window`, `Blocker`, `BadPrimes`, `SFTAudit`, `CeilingCRT`, `FixedCertificateSmoothParity`, `SemanticFirewallsErdos287`; one genuinely unused hypothesis dropped from `topExp_le_one_of_lt_sq` (and its call site updated); two unused lambda binders replaced. No linter was disabled and no `nolint` added. The five remaining warnings are the deliberately kept, docstring-documented hypotheses that the original problem statements request but the proofs do not need.
+
+## Strict final output
+```
+LAKE BUILD:                 PASS
+JOB COUNT:                  8391
+NEW WARNINGS:               NONE (28 pre-existing repaired; 5 documented intentional remain)
+SORRYAX:                    NONE
+CUSTOM AXIOM:               NONE
+AXIOMS OBSERVED:            propext, Classical.choice, Quot.sound (and subsets)
+DEPENDENT RAW PACKET:       PASS
+TOT EXCLUSION FIREWALL:     PASS
+DETERMINANT LINE:           KERNEL-PROVED
+CENTRED TWO-COPY IDENTITY:  KERNEL-PROVED
+COEFFICIENT PRESERVATION:   KERNEL-PROVED
+CONDUCTOR / SHARED-gcd:     KERNEL-PROVED
+DELTA ROUTER:               KERNEL-PROVED (routing only)
+TYPE-I E_T SOCKET:          PAPER-CLOSED EXTERNAL / UNINHABITED
+N2 LAMBDA-COLLAR SOCKET:    PAPER-CLOSED EXTERNAL / UNINHABITED
+BSRC / N1 / E_M SOCKET:     PAPER-CLOSED EXTERNAL / UNINHABITED
+FORD 7.22 HARD-U SOCKET:    OPEN EXTERNAL / UNINHABITED
+POSITIVE MARGIN SOCKET:     UNINHABITED
+E_L COMPILER:               KERNEL-PROVED CONDITIONAL
+TWO ADAPTERS:               KERNEL-PROVED, MUTUALLY INDEPENDENT
+ASYMPTOTIC FCL:             KERNEL-PROVED CONDITIONAL
+EFFECTIVITY SOCKET:         UNINHABITED
+Erdos287ClosureInputs:      UNINHABITED
+ERDOS287:                   OPEN
+FIRST FORMAL RESEARCH SOCKET:
+  Erdos287.SharedOtherParent.Ford722OtherParentGeneratedUniformityInput
+PROOF CLAIM CERTIFIED:      NO
+```
+STOP.
+
+# Summary of changes for run 31b168b4-a9c5-44cd-b8a1-9b3f442a08ab
+Appended the full analytic-kernel import frontier as a new, strictly later status layer. Nothing was rewritten or deleted: all historical files and status layers are preserved. **Erdős #287 is NOT claimed proved**, no external analytic theorem was formalized or manufactured, and no analytic estimate was inhabited by axiom.
+
+## Files added (append-only)
+- `RequestProject/CurrentProgramme/Erdos287FullSourceAnalyticKernelInput.lean` — the typed external analytic input.
+- `RequestProject/CurrentProgramme/Erdos287MasterSourceTypedPerronPackets.lean` — the compiler chain, de-regularisation identity, owner type and owner partition.
+- `RequestProject/CurrentProgramme/Erdos287OneBoundedSourceFactor.lean` — the algebraic one-bounded `A·B` factorisation.
+- `RequestProject/CurrentProgramme/Erdos287DeterminantOneCompiler.lean` — `rq − 2ab = s` → `b = b₀ + rt`, `q = q₀ + 2at`.
+- `RequestProject/CurrentProgramme/Erdos287TwoCopyRouterAndOmega.lean` — the `Δ`-router and the proof-local shared-gcd `Ω` partition.
+- `RequestProject/CurrentProgramme/Erdos287FullAnalyticKernelFCLChannels.lean` — analytic input → correlation bound, physical source pin, the four FCL error channels, reuse firewalls.
+- `RequestProject/Status/CurrentStatusErdos287FullAnalyticKernelImportFrontier.lean` — the new layer `fullAnalyticKernelImportFrontier`.
+- `RequestProject/Status/AxiomAuditErdos287FullAnalyticKernelImportFrontier.lean` — `#print axioms` on every principal new theorem.
+- `RequestProject/Main.lean` — the eight new imports appended.
+- `ERDOS287_FULL_ANALYTIC_KERNEL_IMPORT_FRONTIER_SAFE_BANK_REPORT.md` — the written report.
+
+## STRICT FINAL REPORT
+```
+LAKE BUILD:            PASS
+JOB COUNT:             8370
+NEW WARNINGS:          none in the new modules (older files unchanged)
+SORRYAX:               none
+CUSTOM AXIOMS:         none — 87 audited new declarations depend only on
+                       [propext, Classical.choice, Quot.sound] or a subset;
+                       11 depend on no axioms at all
+FULL ANALYTIC KERNEL:  EXTERNAL / PAPER-BANKED
+ANALYTIC INPUT:        UNINHABITED (refutable at explicit data; proved not
+                       derivable from the finite/source combinatorics)
+MASTER-SOURCE-TO-TYPED-PERRON-PACKETS45: KERNEL-PROVED source/formal compiler
+OWNER PARTITION:       PASS (exactly six owners; one owner per packet; no two
+                       owners; disjoint, exhaustive; exact reassembly; Ω only
+                       after two copies)
+DET1 COMPILER:         PASS (shift, coprimality, exhaustiveness, uniqueness)
+TWO-COPY ROUTER:       PASS (exhaustive + disjoint on Δ = t₁n₂ − t₂n₁)
+PROOF-LOCAL OMEGA:     PASS (1 = Σ_H Ω_H(gcd(g₁,g₂)); genuine two-copy coordinate)
+PHYSICAL P/N1/N2/U:    SOURCE-PIN OPEN (typed interface + adapter proved; the
+                       pin predicate is uninhabited — nothing invented)
+E_T / E_L / E_2 / E_M: DEFINED (only their combination identity is proved)
+FCL:                   OPEN (budget inequality is an explicit, unconstructed input)
+FCL→WINDOWPAIR:        KERNEL-PROVED CONDITIONAL (reused, not duplicated)
+EFFECTIVE WINDOWPAIR:  UNINHABITED (asymptotic kept distinct; M₀ ≤ 4·10⁹ retained)
+ERDOS287:              OPEN
+FIRST EXACT FORMAL/SOURCE RESIDUAL: the literal physical fixed-certificate
+                       source pin (then the FCL channel budget) — NOT the
+                       regular-Perron analytics
+PROOF CLAIM CERTIFIED: NO
+STOP.
+```
+
+Scans of the new code found no `sorry`, `sorryAx`, `admit`, `axiom`, `native_decide`, `unsafe`, `opaque` or `implemented_by`. The metadata firewalls (`no_row_is_a_proof_claim`, `analyticBanked_is_not_kernelProved`) are themselves machine-checked, so no status value carries a proof implication. All work is committed and pushed.
+
 # Summary of changes for run c64ebf2a-a8c0-42c5-93a9-1a12c55266a0
 Append-only bank added; nothing existing was deleted, renamed or weakened. The only edit to a pre-existing file is ten new `import` lines at the end of the import block of `RequestProject/Main.lean`.
 

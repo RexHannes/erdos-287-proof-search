@@ -1,0 +1,38 @@
+name: Build Erdős 287 effectivity R12
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.r12-src/erdos287_r12.tex.gz.b64.part*'
+      - '.r12-src/README.md'
+      - '.github/workflows/build-erdos287-effectivity-r12.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reconstruct LaTeX source
+        shell: bash
+        run: |
+          cat .r12-src/erdos287_r12.tex.gz.b64.part00 \
+              .r12-src/erdos287_r12.tex.gz.b64.part01 \
+              .r12-src/erdos287_r12.tex.gz.b64.part02 \
+            | base64 -d | gzip -dc \
+            > ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
+          echo '62bbb029fa34cc0f251e6be35c97adaf399ac6811664fdc8cb037c7b09904b31  ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex' | sha256sum -c -
+
+      - name: Compile PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
+
+      - name: Upload manuscript artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026
+          path: |
+            ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
+            ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.pdf

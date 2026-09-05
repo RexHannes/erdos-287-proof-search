@@ -1,0 +1,84 @@
+{
+  "aggregate_threshold": {
+    "bankable_sufficient_C_agg": "69/5000 = 0.0138",
+    "charge_at_C_agg_decimal": 3.6005626127419187e-07,
+    "critical_constant_lower_decimal": 0.013821652054200405,
+    "normalization_coefficient_upper_decimal": 3.0650024384947045e-06,
+    "status": "PASS AS A SUFFICIENT THRESHOLD; THE SQUARE-FUNCTION THEOREM ITSELF IS NOT PROVED"
+  },
+  "all_q_resummation": {
+    "exact_rational_checks": 800,
+    "identity": "sum_{q|n,(q,b)=1} beta(q)=B_src(bn)/B_src(b)",
+    "medium_identity": "same identity minus the finite divisors with bq<=31",
+    "status": "PASS"
+  },
+  "edge_V_lt_1000": {
+    "A_c": {
+      "1": {
+        "decimal_upper": 2619.379769810346,
+        "fraction": "2619379769810346031223/1000000000000000000"
+      },
+      "2": {
+        "decimal_upper": 2817.138890836101,
+        "fraction": "2817138890836100872397/1000000000000000000"
+      }
+    },
+    "T": 1000,
+    "bankable": "<7.22e-10 B_X",
+    "fixed_point_scale": 1000000000,
+    "maximum_beta_table_argument": 1999999,
+    "normalized_safe_decimal": 7.200776796516957e-10,
+    "normalized_safe_fraction": "1571209497/2182000000000000000",
+    "replaces": "older V<50 charge <2.459e-8 B_X",
+    "safe_A1": "<2620",
+    "safe_A2": "<2818",
+    "status": "PASS"
+  },
+  "endpoint_complete_period_main": {
+    "J_W_claim": "<67/1000",
+    "J_W_upper_fraction": "1323/20000",
+    "diagonal_constant_claim": "<47/10000",
+    "diagonal_constant_decimal": 0.004598361975495641,
+    "finite_prime_cutoff": 10000,
+    "full_weighted_numerator_upper_decimal": 2.1744421530175284,
+    "offdiagonal_constant_claim": "<17/10000",
+    "offdiagonal_constant_decimal": 0.0015591715849480388,
+    "physical_b_mass_lower_b_le_1000_decimal": 1.947136113389523,
+    "remainder_allowance_decimal": 0.007546666666666667,
+    "signed_covariance_remainder_allowance_under_Cagg_0.0138": "283/37500",
+    "square_function_main_constant": "469/75000",
+    "square_function_main_constant_decimal": 0.006253333333333333,
+    "status": "PASS FOR THE COMPLETE-PERIOD ENDPOINT MAIN; FINITE-PERIOD AND DERIVATIVE COVARIANCE REMAIN OPEN",
+    "weighted_ratio_claim": "<28/25",
+    "weighted_ratio_upper_decimal": 1.1167386491704048
+  },
+  "lambda_summatory": {
+    "H_lambda_claim": "H_lambda(0)<8/3",
+    "H_lambda_upper_decimal": 2.6444900611877107,
+    "claim": "sum_{b<=B} lambda(b) < 8(1+log B) for B>1",
+    "finite_prime_cutoff": 1000,
+    "proof_inputs": [
+      "e<3",
+      "zeta(1+s)<=1+1/s",
+      "local monotonicity in p^{-s}"
+    ],
+    "status": "PASS"
+  },
+  "not_certified": [
+    "lambda-weighted finite-period endpoint covariance remainder",
+    "reciprocal derivative covariance",
+    "complete long-fibre medium-k charge",
+    "two-high nonlinear gap",
+    "signed floor closure",
+    "Maynard effectivization",
+    "Erdos problem 287"
+  ],
+  "revised_incremental_ledger": {
+    "certified_subtotal": 5.257263872e-07,
+    "certified_subtotal_exact": "20536187/39062500000000",
+    "remaining_capacity": 3.603386128e-07,
+    "remaining_capacity_exact": "225211633/625000000000000",
+    "target": 8.86065e-07
+  },
+  "status": "STRICT_REDUCTION_NOT_CLOSURE"
+}

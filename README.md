@@ -1,90 +1,143 @@
-# Erdős Problem #287 — Audited Proof-Search Programme
+# Erdős Problem #287 — Audited Proof / Proof-Search Programme
 
 > **Status: OPEN. No solution of Erdős Problem #287 is claimed.**
 
-This repository contains a public research programme combining paper proofs, Lean-checked finite/algebraic modules, deterministic certificates, independent audits, and live proof-search work.
+This repository contains the formal, analytic, computational, audit, and proof-search work for Erdős Problem #287. The public information architecture is organized by **mathematical role**, not by revision number.
 
 ## The problem
 
-For a representation
+For
 
 \[
 1=\frac1{n_1}+\cdots+\frac1{n_k},
 \qquad n_1<\cdots<n_k,
 \]
 
-Erdős Problem #287 asks whether one must have
+Erdős Problem #287 asks whether necessarily
 
 \[
-\max_i (n_{i+1}-n_i)\ge 3.
+\max_i(n_{i+1}-n_i)\ge 3.
 \]
 
-The problem remains open in this repository.
+The problem remains open.
 
-## Start here
+## Start here — six links
 
-- **[Read the audited R12 release](paper/audited-release/2026-09-05-r12/README.md)** — latest independently audited effectivity synthesis.
-- **[View the proof map](PROOF_MAP.md)** — the theorem/dependency DAG and the audited-vs-candidate firewall.
-- **[View current status](CURRENT_STATUS.md)** — concise controlling status and capacity ledger.
-- **[View the live research frontier](frontier/README.md)** — newer candidate work, kept separate from the audited baseline.
-- **[View the claims ledger](CLAIMS_LEDGER.md)** — claim-by-claim status, evidence class, and current/retired designation.
-- **[View formal verification](RequestProject/)** — Lean source; exact scope is mapped in the audited release.
+1. **[`PROOF_MAP.md`](PROOF_MAP.md)** — canonical theorem/dependency map: what is banked, what is current, what is superseded.
+2. **[`CURRENT_STATUS.md`](CURRENT_STATUS.md)** — concise current state and downstream entry guards.
+3. **[`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md)** — claim-by-claim evidence and strategy classification.
+4. **[`banked/`](banked/)** — trusted mathematics, separated by evidence class.
+5. **[`frontier/`](frontier/)** — current parent, candidate reductions, and downstream nodes.
+6. **[`graveyard/`](graveyard/)** / **[`archive/`](archive/)** — what not to reopen, and the full historical research archaeology.
 
-## Current audited baseline — 5 September 2026
+A new reader should not need to infer the current theorem from filenames such as `R7`, `R10`, `R12`, `V16`, or dozens of historical safe-bank reports.
 
-| Node | Status |
-|---|---|
-| Certified subtotal | `5.257263872e-7` |
-| Remaining capacity | `3.603386128e-7` |
-| `V<1000` edge | **FINITE-CERTIFIED / AUDITED / CLOSED** |
-| Complete-period endpoint | **KERNEL-PROVED / FINITE-CERTIFIED / AUDITED** |
-| Medium-`k` | **STRICTLY REDUCED / OPEN** |
-| Two-high | **OPEN / NOT ENTERED** |
-| Signed floor | **OPEN** |
-| Maynard effectivization | **OPEN / NOT ENTERED** |
-| Erdős #287 | **OPEN** |
-
-The audited residual requires the physical `lambda(b)`-weighted covariance bound
-
-\[
-C_F+2C_{ED}+C_{DD}+C_S<\frac{283}{37500},
-\]
-
-or its exactly equivalent all-`q` discrepancy formulation. No current audited result proves this residual.
-
-## Audited vs live research
-
-The repository has two deliberately separate public layers:
-
-**AUDITED RELEASE.** Results in `paper/audited-release/` have an explicit status ledger, provenance record, formal-scope map, and certificate where applicable.
-
-**LIVE CANDIDATE FRONTIER.** Newer research in `frontier/` may strictly reduce the problem, but it does not alter the audited numerical ledger until independently reviewed.
-
-Candidate numbers do not supersede the audited ledger until independently reviewed.
-
-## Repository layout
+## Current proof-search route
 
 ```text
-README.md                       public landing page
-PROOF_MAP.md                    proof/dependency map
-CURRENT_STATUS.md               concise controlling status
-CLAIMS_LEDGER.md                evidence and claim-status matrix
-CORRECTIONS_AND_RETRACTIONS.md  retired/false claims
-
-paper/                          audited releases
-frontier/                       live candidate research
-RequestProject/                 Lean/formal source tree
-certificates/                   public certificate index/material
-reviews/                        audit and formal-review navigation
-archive/                        historical manuscripts, safe banks, source packages
-scripts/                        reproducibility utilities
-.github/                        CI/build workflows
+BANKED SOURCE / ALGEBRA
+    |
+    +-- B_src normalization
+    +-- odd half-divisor correction
+    +-- c1/c2 splice
+    +-- full unselected Z(s,s)=0 at banked scope
+    +-- V<1000 finite closure
+    +-- complete-period endpoint main
+    |
+    v
+corrected selector Γ
+    |
+    +-- j>=4      CANDIDATE-EMPTY
+    +-- j=3       CANDIDATE-CLOSED, reported <3e-9 B_X
+    +-- j=0 + j=1 + active j=2
+            |
+            v
+           R_012
+           OPEN
+            |
+            v
+       signed floor
+           OPEN
+            |
+            v
+   Maynard effectivization
+        NOT ENTERED
+            |
+            v
+  finite/asymptotic splice
+        NOT ENTERED
+            |
+            v
+       Erdős #287
+           OPEN
 ```
 
-`RequestProject/` deliberately keeps its historical path in this cleanup so that Lean imports and reproducibility are not broken merely for cosmetic reasons.
+Inside `R_012`, the live obstacles are incomplete low-divisor fibres, rough defect, selector-sensitive Perron/hyperbola terms, and large ratio-frequency decay. The active `j=2` source has been reduced in the latest proof-search census to `71` prefix families for `c=1` and `37` for `c=2`; these reductions remain candidate-level until independently promoted.
 
-## Provenance
+## Audited baseline versus live proof search
 
-Historical files have not been discarded. They are moved under [`archive/`](archive/) with a legacy-path index, while Git history remains intact. This reorganisation changes the public information architecture; it does not rewrite load-bearing mathematics.
+The current independently audited quantitative baseline is the **R12 effectivity synthesis, 5 September 2026**:
 
-See also [Corrections and retractions](CORRECTIONS_AND_RETRACTIONS.md).
+```text
+certified subtotal:  5.257263872e-7
+remaining capacity:  3.603386128e-7
+V<1000 edge:         CLOSED / FINITE-CERTIFIED / AUDITED
+complete endpoint:   CLOSED at its stated scope
+Erdős #287:          OPEN
+```
+
+R12 is retained at [`paper/audited-release/2026-09-05-r12/`](paper/audited-release/2026-09-05-r12/).
+
+The live proof map is newer than R12 as a **dependency reassembly**. This does not silently upgrade candidate `j`-sector results or rewrite R12 history. It means several R12-era coordinates are no longer treated as mandatory standalone gates.
+
+## The four researcher-facing buckets
+
+```text
+banked/
+    trusted inputs, with formal / audited-analytic / certificate / manuscript distinctions
+
+frontier/
+    current controlling physical parent
+    candidate results awaiting audit
+    guarded downstream stages
+
+graveyard/
+    false
+    retired / nonclosing / source-mismatched
+    superseded coordinate systems
+
+archive/
+    historical reports, manuscripts, source packs, old frontier notes
+```
+
+`banked` is intentionally not called `proven`: kernel-checked algebra, audited analytic work, and finite certificates are different evidence classes.
+
+`graveyard` does intentionally distinguish **false** from **retired** and **superseded**. An old route can stop controlling the proof without its mathematics becoming false.
+
+## Technical evidence stores
+
+The following paths remain because they are useful or required for reproducibility; they are **backing stores**, not competing proof ontologies:
+
+- [`RequestProject/`](RequestProject/) — Lean source and formal modules;
+- [`paper/`](paper/) — audited release packages;
+- [`certificates/`](certificates/) — certificate navigation/material;
+- [`reviews/`](reviews/) — audit/review navigation;
+- [`scripts/`](scripts/) — reproducibility utilities;
+- [`.github/`](.github/) — CI/build workflows.
+
+Historical root clutter has been moved into `archive/` on the cleanup branch rather than deleted. Git history is preserved.
+
+## Hard publication firewall
+
+Do not infer any of the following from folder names or source transformations:
+
+- a candidate result is audited because it is newer;
+- a superseded node is proved;
+- a retired theorem is false unless an explicit counterexample/retraction exists;
+- a finite or Lean theorem supplies an external analytic estimate;
+- diagonal cancellation by itself supplies the required directed ratio-frequency bound;
+- Erdős #287 is solved.
+
+See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md) for the dated no-reopen ledger.
+
+**ERDŐS PROBLEM #287 REMAINS OPEN.**

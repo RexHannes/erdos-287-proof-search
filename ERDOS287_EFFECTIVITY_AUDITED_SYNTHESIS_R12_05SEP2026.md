@@ -1,19 +1,32 @@
 # Erdős #287 Effectivity — Audited Synthesis R12
 
-**Release date:** 5 September 2026
+**Release date:** 5 September 2026  
 **Status:** research draft; **Erdős Problem #287 remains open**.
 
 This release converts the current Aristotle/Lean bank and the latest long-fibre research report into a full journal-style mathematical manuscript. It is deliberately not a compressed progress memo. It preserves the physical source normalisation, the corrected odd half-divisor chart, the `c=1/c=2` splice, the diagonal Euler-product cancellation, the Perron algebra, the exact counterexample to the retired unweighted joined theorem, the corrected `lambda(b)`-weighted norm, the `V<1000` finite edge certificate, the complete-period Farey covariance, the all-`q` resummation, the exact numerical ledger, and every downstream open guard.
 
 ## Principal files
 
-- `ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex` — full journal-style LaTeX source.
-- `ERDOS287_EFFECTIVITY_R12_AUDIT/docs/STATUS_LEDGER.md` — compact authoritative status and capacity ledger.
+- `.r12-src/erdos287_r12.tex.gz.b64.part00` through `part02` — lossless gzip/base64 encoding of the complete journal LaTeX source.
+- `.r12-src/README.md` — reconstruction instructions and controlling source/PDF hashes.
+- `.github/workflows/build-erdos287-effectivity-r12.yml` — reconstructs the exact LaTeX source, verifies its SHA-256, compiles the manuscript, and publishes TeX/PDF workflow artifacts.
+- `ERDOS287_EFFECTIVITY_R12_AUDIT/docs/STATUS_LEDGER.md` — authoritative status and capacity ledger.
 - `ERDOS287_EFFECTIVITY_R12_AUDIT/docs/SOURCE_PROVENANCE_AND_PRECEDENCE.md` — source order, hashes, and discrepancy resolutions.
 - `ERDOS287_EFFECTIVITY_R12_AUDIT/docs/FORMAL_MODULE_MAP.md` — theorem-to-Lean-module map and scope firewall.
-- `ERDOS287_EFFECTIVITY_R12_AUDIT/certificates/ERDOS287_LONGFIBRE_PIVOT_CERTIFICATE.json` — exact/fixed-point numerical certificate.
-- `ERDOS287_EFFECTIVITY_R12_AUDIT/scripts/erdos287_longfibre_pivot_verifier.py` — deterministic certificate generator.
-- `ERDOS287_EFFECTIVITY_R12_AUDIT/source_reports/` — current analytic and audit reports retained as provenance.
+- `ERDOS287_EFFECTIVITY_R12_AUDIT/docs/CHANGELOG_R12.md` — material changes and retired routes.
+- `ERDOS287_EFFECTIVITY_R12_AUDIT/certificates/ERDOS287_LONGFIBRE_PIVOT_CERTIFICATE.json` — exact/fixed-point certificate produced by the audited replay package.
+
+The reconstructed LaTeX source has SHA-256
+
+```text
+62bbb029fa34cc0f251e6be35c97adaf399ac6811664fdc8cb037c7b09904b31
+```
+
+and the locally audited 36-page reference PDF has SHA-256
+
+```text
+c84f0516896794ade6d93a0c926cd5d599ce3a922a7fbe166356e8ea89b0b324
+```
 
 ## Authoritative frontier
 
@@ -39,19 +52,28 @@ C_F + 2 C_ED + C_DD + C_S < 283/37500,
 
 or as the equivalent uniform smooth singular-series discrepancy after exact all-`q` resummation. These are two formulations of the same physical residual and must not be charged twice.
 
-## Reproduce the numerical certificate
+## Reconstruct and compile the full manuscript
+
+From the repository root:
 
 ```bash
-python3 ERDOS287_EFFECTIVITY_R12_AUDIT/scripts/erdos287_longfibre_pivot_verifier.py
+cat .r12-src/erdos287_r12.tex.gz.b64.part00 \
+    .r12-src/erdos287_r12.tex.gz.b64.part01 \
+    .r12-src/erdos287_r12.tex.gz.b64.part02 \
+  | base64 -d | gzip -dc \
+  > ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
+
+sha256sum ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
+latexmk -pdf ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
 ```
 
-Expected terminal status:
+The committed finite certificate has global status
 
 ```text
 STRICT_REDUCTION_NOT_CLOSURE
 ```
 
-The verifier certifies the summatory `lambda` bound, the entire `V<1000` edge, the aggregate threshold arithmetic, the complete-period endpoint main term, the revised directed ledger, and 800 exact all-`q` regression checks. It explicitly does **not** certify the remaining covariance, medium-`k`, two-high, signed floor, Maynard effectivisation, or Erdős #287.
+and explicitly does **not** certify the remaining covariance, medium-`k`, two-high, signed floor, Maynard effectivisation, or Erdős #287.
 
 ## Status vocabulary
 

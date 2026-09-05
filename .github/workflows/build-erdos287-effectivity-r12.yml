@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.r12-src/erdos287_r12.tex.gz.b64.part*'
+      - '.r12-src/erdos287_r12.tex.gz.b64.head*'
+      - '.r12-src/erdos287_r12.tex.gz.b64.part01'
+      - '.r12-src/erdos287_r12.tex.gz.b64.part02'
       - '.r12-src/README.md'
       - '.github/workflows/build-erdos287-effectivity-r12.yml'
 
@@ -17,7 +19,9 @@ jobs:
       - name: Reconstruct LaTeX source
         shell: bash
         run: |
-          cat .r12-src/erdos287_r12.tex.gz.b64.part00 \
+          cat .r12-src/erdos287_r12.tex.gz.b64.head00 \
+              .r12-src/erdos287_r12.tex.gz.b64.head01 \
+              .r12-src/erdos287_r12.tex.gz.b64.head02 \
               .r12-src/erdos287_r12.tex.gz.b64.part01 \
               .r12-src/erdos287_r12.tex.gz.b64.part02 \
             | base64 -d | gzip -dc \

@@ -1,146 +1,170 @@
-# Erdős Problem #287 — Current Status
+# Erdős Problem #287 — Authoritative Current Status
 
 **Checkpoint:** 5 September 2026  
 **Global verdict:** **OPEN — no solution claimed.**
 
-This is the concise public status file. It distinguishes the **latest audited baseline** from newer **live candidate research**. Where a candidate snapshot and an audited release differ, the audited release controls until a later independent audit promotes the candidate result.
+This file separates the **audited mathematical baseline** from the **current source-minimal proof-search route**. A newer dependency reassembly can change which theorem is strategically controlling without promoting unaudited subresults into the bank.
 
-## 1. Audited baseline — R12 effectivity synthesis
-
-The current independently audited release is:
-
-[`paper/audited-release/2026-09-05-r12/README.md`](paper/audited-release/2026-09-05-r12/README.md)
-
-Its exact directed capacity ledger is
+## 1. Thirty-second status
 
 ```text
-AUDITED TARGET:       8.860650000e-7
-AUDITED SUBTOTAL:     5.257263872e-7
-AUDITED REMAINING:    3.603386128e-7
-```
+AUDITED BASELINE:
+    R12 effectivity synthesis — 5 Sep 2026
 
-with the exact identity
+AUDITED SUBTOTAL:
+    5.257263872e-7
 
-\[
-C_{\rm cert}+C_{\rm rem}=C_{\rm target}.
-\]
+AUDITED REMAINING CAPACITY:
+    3.603386128e-7
 
-### Audited nodes
-
-```text
-V < 1000 edge:
-    CLOSED — FINITE-CERTIFIED / AUDITED
-
-complete-period endpoint main:
-    CLOSED — KERNEL-PROVED / FINITE-CERTIFIED / AUDITED
-    C_endpoint < 469/75000
-
-aggregate sufficient target:
-    C_agg <= 69/5000
-    ANALYTICALLY-PROVED / CONDITIONAL implication
-    physical aggregate estimate itself OPEN
-
-remaining covariance allowance:
-    283/37500
-
-required physical residual:
-    C_F + 2 C_ED + C_DD + C_S < 283/37500
+CURRENT LIVE PHYSICAL PARENT:
+    R_012 = signed (j=0 + j=1 + active j=2)
     OPEN
 
-medium-k:
-    STRICTLY REDUCED / OPEN
+NEXT DOWNSTREAM:
+    signed floor              OPEN
+    Maynard effectivization   NOT ENTERED
+    finite/asymptotic splice NOT ENTERED
 
-two-high:
-    OPEN / NOT ENTERED
-
-signed floor:
-    OPEN
-
-Maynard effectivization:
-    OPEN / NOT ENTERED
-
-Erdős #287:
+ERDŐS #287:
     OPEN
 ```
 
-The outer coefficient `lambda(b)` is part of the physical norm and may not be dropped. The factor `2` in front of `C_ED` is mandatory.
+## 2. Banked foundation
 
-## 2. Latest live candidate frontier — not audited into R12
+The current trusted bank retains, at each result's stated evidence scope:
 
-The newest research-session snapshot is recorded separately at:
+- physical `B_src` normalization;
+- corrected odd half-divisor algebra;
+- exact `c=1/c=2` reflection/splice;
+- full unselected `Z(s,s)=0` at the scope stated in the audited bank;
+- Perron algebra / variable change, without conflating it with the open directed truncation estimate;
+- complete `V<1000` finite edge closure;
+- complete-period endpoint/Farey covariance main;
+- exact R12 capacity arithmetic and finite certificates.
 
-[`frontier/2026-09-05-static-ramanujan/FRONTIER.md`](frontier/2026-09-05-static-ramanujan/FRONTIER.md)
+See [`banked/`](banked/) for the evidence-class index and [`paper/audited-release/2026-09-05-r12/`](paper/audited-release/2026-09-05-r12/) for the latest independently audited synthesis.
 
-Its current candidate ledger is
+## 3. Current proof-search parent
+
+The latest source reassembly is
 
 ```text
-LATEST UNAUDITED / CANDIDATE FRONTIER:
-    static Ramanujan r > 200 signed tail
-
-LATEST CANDIDATE SUBTOTAL:
-    6.341463872e-7
-
-LATEST CANDIDATE GLOBAL CAPACITY:
-    2.519186128e-7
-
-primitive/static r <= 200:
-    CANDIDATE-CLOSED / awaiting independent audit
-
-moving Ramanujan window:
-    CANDIDATE-REMOVED / superseded by static freeze
-
-static signed r > 200 tail:
-    OPEN
-
-medium-k:
-    STRICTLY REDUCED / OPEN
-
-two-high:
-    NOT ENTERED
-
-signed floor:
-    OPEN
-
-Maynard:
-    NOT ENTERED
-
-Erdős #287:
-    OPEN
+corrected selector Γ
+    |
+    +-- j>=4      CANDIDATE-EMPTY
+    +-- j=3       CANDIDATE-CLOSED, reported |R_3| < 3e-9 B_X
+    |
+    +-- j=0
+    +-- j=1
+    +-- active j=2
+            |
+            v
+          R_012
+            OPEN
 ```
 
-> **Candidate numbers do not supersede the audited R12 ledger until independently reviewed.**
+The active `j=2` census is reduced to
 
-In particular, `6.341463872e-7` and `2.519186128e-7` are not certified R12 numbers and must not be quoted as audited capacity.
+```text
+c=1: 71 prefix families
+c=2: 37 prefix families.
+```
 
-## 3. Corrections / firewalls that remain active
+The current hard content inside `R_012` is concentrated in:
 
-The following statements are retired or prohibited:
+```text
+complete low-divisor fibres      cancellation available in current chart
+incomplete low-divisor fibres    OPEN
+rough defect                     OPEN
+selector-sensitive Perron        OPEN at the required directed estimate
+large ratio-frequency decay      OPEN
+active j=2 finite source census  71 + 37 families
+```
 
-1. unweighted per-fibre `C_joint <= 0.09` — **FALSE**; a one-point physical fibre gives `C_joint >= 9/64`;
-2. inserting the global singular-series factor independently at each prime — **SOURCE-MISMATCHED**;
-3. retaining both the old `V<50` charge and the `V<1000` replacement — **DOUBLE COUNTING**;
-4. combining the full half-divisor replacement chart with the incremental medium chart — **INVALID**, because they are alternative decompositions;
-5. using `Z(s,s)=0` as a bound for the directed anti-diagonal Perron truncation — **INVALID INFERENCE**;
-6. identifying the complete-period endpoint main with the complete joined covariance — **INVALID INFERENCE**.
+`j>=4` and `j=3` are newer candidate reductions and are **not promoted into R12** merely by appearing here. See [`frontier/current-parent/`](frontier/current-parent/) and [`frontier/candidate-results/`](frontier/candidate-results/).
 
-See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md) and the R12 audited status ledger.
+## 4. What happened to medium-k and the old covariance chain?
 
-## 4. Formal verification firewall
+The audited R12 checkpoint correctly recorded
 
-The formal source tree remains at [`RequestProject/`](RequestProject/). The R12 formal map records which results are kernel-checked and where the formal scope stops.
+```text
+C_F + 2 C_ED + C_DD + C_S < 283/37500
+```
 
-A Lean theorem for a finite algebraic identity does not automatically establish an infinite Euler product, a contour shift, an analytic estimate, or the existence of a populated physical certificate. Conditional compilers remain conditional until their analytic inputs are supplied.
+as a sufficient weighted covariance residual and recorded medium-`k` as strictly reduced/open.
 
-## 5. Source-of-truth order
+Later source work reassembled the physical source so that
 
-For public status questions, read the repository in this order:
+```text
+F / ED / DD / S,
+all-q discrepancy,
+Ramanujan charts,
+medium-k,
+two-high
+```
 
-1. `CURRENT_STATUS.md` and `CLAIMS_LEDGER.md` for the concise public state;
-2. the latest audited release in `paper/audited-release/` for mathematical detail and exact capacity;
-3. `RequestProject/` plus the formal module map for kernel-checked scope;
-4. `frontier/` for newer candidate research;
-5. `archive/` for historical provenance and superseded routes.
+are no longer required as a linear sequence of independent gates. In particular:
 
-The former 2 September R10 `CURRENT_STATUS.md` has been preserved in the historical archive and no longer controls the public frontier.
+```text
+medium-k is RETIRED AS AN INDEPENDENT SEQUENTIAL NODE,
+not declared globally proved.
+```
+
+Its mathematics is absorbed into the signed selector parent and can still appear as a local coordinate or diagnostic subproblem. This distinction is recorded under [`graveyard/superseded/`](graveyard/superseded/).
+
+## 5. Selected diagonal zero
+
+The full unselected identity `Z(s,s)=0` remains banked at its stated scope. The active selector produces a live defect
+
+```text
+Z_{Theta,c}(s,s) = -H_c(s).
+```
+
+A candidate auxiliary completion `Ztilde_c = Z_{Theta,c}+H_c` restores the diagonal zero, with reported finite-height correction `<2.4e-13 B_X`. This does **not** prove the remaining large ratio-frequency / incomplete-fibre estimate. The selected repair remains candidate until audit.
+
+## 6. Downstream entry guards
+
+```text
+R_012 signed parent             OPEN
+        |
+        v
+signed floor                    OPEN
+        |
+        v
+Maynard effectivization         NOT ENTERED
+        |
+        v
+finite / asymptotic splice      NOT ENTERED
+        |
+        v
+Erdős #287                      OPEN
+```
+
+No downstream stage is considered entered merely because a structural compiler or finite bank already exists.
+
+## 7. Evidence and strategy firewall
+
+Use these categories precisely:
+
+```text
+BANKED      trusted result at stated evidence scope
+CANDIDATE   substantial new result awaiting independent audit
+OPEN        current missing theorem / estimate / instantiation
+RETIRED     do not use as controlling route; not necessarily false
+SUPERSEDED  older coordinate replaced by a better parent
+FALSE       explicit counterexample / retraction
+```
+
+The audited R12 numbers remain the public quantitative baseline until a later audit explicitly replaces them. New proof-search recompilations change the dependency graph, not the historical truth of the R12 checkpoint.
+
+## 8. Read next
+
+- [`PROOF_MAP.md`](PROOF_MAP.md) — canonical dependency map;
+- [`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md) — claim/evidence/status matrix;
+- [`banked/`](banked/) — trusted inputs;
+- [`frontier/`](frontier/) — live parent, candidates, downstream;
+- [`graveyard/`](graveyard/) — false, retired, superseded routes;
+- [`archive/`](archive/) — historical material, preserved rather than deleted.
 
 **ERDŐS PROBLEM #287 REMAINS OPEN.**

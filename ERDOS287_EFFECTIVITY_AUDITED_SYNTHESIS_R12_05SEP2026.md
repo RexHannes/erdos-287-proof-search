@@ -7,7 +7,7 @@ This release converts the current Aristotle/Lean bank and the latest long-fibre 
 
 ## Principal files
 
-- `.r12-src/erdos287_r12.tex.gz.b64.part00` through `part02` — lossless gzip/base64 encoding of the complete journal LaTeX source.
+- `.r12-src/erdos287_r12.tex.gz.b64.head00` through `head02`, followed by `part01` and `part02` — lossless gzip/base64 chunks of the complete journal LaTeX source.
 - `.r12-src/README.md` — reconstruction instructions and controlling source/PDF hashes.
 - `.github/workflows/build-erdos287-effectivity-r12.yml` — reconstructs the exact LaTeX source, verifies its SHA-256, compiles the manuscript, and publishes TeX/PDF workflow artifacts.
 - `ERDOS287_EFFECTIVITY_R12_AUDIT/docs/STATUS_LEDGER.md` — authoritative status and capacity ledger.
@@ -57,7 +57,9 @@ or as the equivalent uniform smooth singular-series discrepancy after exact all-
 From the repository root:
 
 ```bash
-cat .r12-src/erdos287_r12.tex.gz.b64.part00 \
+cat .r12-src/erdos287_r12.tex.gz.b64.head00 \
+    .r12-src/erdos287_r12.tex.gz.b64.head01 \
+    .r12-src/erdos287_r12.tex.gz.b64.head02 \
     .r12-src/erdos287_r12.tex.gz.b64.part01 \
     .r12-src/erdos287_r12.tex.gz.b64.part02 \
   | base64 -d | gzip -dc \

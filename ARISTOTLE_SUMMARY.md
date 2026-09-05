@@ -1,3 +1,145 @@
+# Summary of changes for run 61962c4d-c5c0-4dd9-944e-43a4d968eba9
+Added a new, self-contained Erdős #287 **effectivity kernel bank** to the project — thirteen Lean modules, all proved, all wired into the default build. Full `lake build` **PASSES** (8450 jobs); no `sorry`, `admit`, custom `axiom`, `unsafe`, `native_decide`, `implemented_by` or `opaque` occurs in any new file, and `#print axioms` on all fifty principal theorems reports only `propext, Classical.choice, Quot.sound` (or none). **Erdős #287 is not claimed**; the joined square function, `C_joint ≤ 0.09`, medium-k, the two-high gap, the signed floor and Maynard are untouched.
+
+Files added (`RequestProject/Erdos287/`): `BsrcWeights`, `AllComplement`, `OddHalfDivisor`, `Reflection`, `MediumLedger`, `C1C2Splice`, `OddLineCancellation`, `RatioBoundary`, `EulerLocal`, `TwoVariableZ`, `PerronAlgebra`, `IncrementalDirectedLedger`, `CurrentStatusEffectivity`; plus the report `ERDOS287_EFFECTIVITY_KERNEL_BANK_REPORT.md`. `RequestProject/Main.lean` gained the thirteen imports.
+
+STRICT OUTPUT — PHYSICAL B1 NORMALIZATION: KERNEL-PROVED (B0/β multiplicative, `B1·B(ab)=B(a)B(b)`, plus a firewall showing one-B1-per-prime is a different normalisation) · ALL-COMPLEMENT DISCRETE: KERNEL-PROVED (`B(d)·∑_{k|n,(k,d)=1}β(k)=B(dn)`, by finite prime-factor products only) · CONTINUOUS EULER IDENTITY: KERNEL-PROVED finite / CONDITIONAL infinite (convergence is a `Tendsto` hypothesis, never postulated) · ODD HALF-DIVISOR: KERNEL-PROVED (exact variable change `n>cd ↔ c d²<w`) · w=6 FIREWALL: KERNEL-PROVED (`H₁^odd(6)=1` vs unrestricted `0`) · FULL-vs-MEDIUM TYPING: KERNEL-PROVED · INCREMENTAL LEDGER TYPE: KERNEL-PROVED (no coercion inserts a full estimate without an explicit removal list) · HALF-DIVISOR REFLECTION: KERNEL-PROVED, both boundary forms, plus special cases A and B · c1/c2 DISCRETE SPLICE: KERNEL-PROVED (the `4d` endpoint is derived from `n↦2n`) · c1/c2 CONTINUOUS SPLICE: KERNEL-PROVED, both ½'s coming from the substitution, integrability an explicit hypothesis · FULL ODD DISCRETE CANCELLATION: KERNEL-PROVED · CONTINUOUS COEFFICIENT CONVOLUTION: KERNEL-PROVED (`μ1_odd/φ = mOdd ⋆ r`), downstream cancellation conditional on `∑ mOdd = 0` · RATIO-BOUNDARY: KERNEL-PROVED (conditional on the two cancellations) · G_p LOCAL FACTOR and FINITE `B1·G(u,0)=1`: KERNEL-PROVED · TWO-VARIABLE LOCAL EULER IDENTITY and FINITE `Z(s,s)=0`: KERNEL-PROVED · INFINITE `Z(s,s)=0`: BLOCKED BY ANALYTIC CONVERGENCE (only a formal-product congruence is recorded, clearly labelled) · G ABSOLUTE-CONVERGENCE REGION: PARTIAL (`|G_p(u,0)−1| = 1/(p(p−2)) ≤ 3/p²`; the two missing analytic inputs are isolated in the docstring) · PERRON VARIABLE CHANGE: KERNEL-PROVED (algebra/Jacobian/kernel compensation only, no contour theorem) · STRICT EQUALITY ALGEBRA: KERNEL-PROVED conditional, giving `2(Δ₁−Δ₂)` from the −4 outer factor · INCREMENTAL LEDGER ARITHMETIC: KERNEL-PROVED (`8.86065e-7 − 5.250043872e-7 = 3.610606128e-7`, capacity `> 3.610606128e-7`) · JOINED SQUAREFUNCTION / MEDIUM-k / TWO-HIGH GAP / SIGNED FLOOR: OPEN · MAYNARD: NOT ENTERED · ERDOS287: OPEN.
+
+Two places where the specification was ambiguous are documented explicitly rather than guessed silently: the `c=2` lanes are defined as the `n↦2n`-substituted lanes (which is what makes the `4d` endpoint and the two ½'s derived, not assumed), and `Z_P(u,v)` is defined as the difference of the two finite prime products. One statement was also weakened in hypotheses rather than strengthened: the all-complement identity turned out not to need `d` odd, so it is proved for all `d ≠ 0` with the requested odd-`d` form as a corollary.
+
+# Summary of changes for run ff3caa6e-75f3-41eb-90ea-f831247718b8
+Delivered both requested pieces: the Erdős #287 effectivity certificate bank and the surgical P0 `B_src` normalisation repair. Full `lake build` passes (8437 targets, no errors); a detailed report is in `ERDOS287_CERTIFICATE_BANK_AND_P0_REPAIR_REPORT.md`.
+
+LEAN FILES (new)
+`RequestProject/Erdos287/{SourceWeights, GcdDescent, BernoulliKernel, MediumKSource, RepeatedCores, DirectedLedger, FloorInterface, Bank}.lean` and `RequestProject/Status/CurrentStatusErdos287CertificateBank.lean`.
+Edited surgically: `RequestProject/CurrentProgramme/Erdos287September4BsrcLocalMobiusCollapse.lean`, `RequestProject/Status/AxiomAuditErdos287September4SignedFloorBank.lean`, `RequestProject/Main.lean`. No proved bank was deleted.
+
+NO SORRY: YES. NO CUSTOM AXIOMS: YES (no `axiom`, `@[implemented_by]`, `native_decide`, `unsafe`, `opaque`). LAKE BUILD: PASS.
+
+P0 BUG LOCATED — confirmed exactly as suspected. The September‑4 module models the source as a purely local product `Bsrc Bloc d = ∏_{p|d} Bloc p` with the hypothesis `bloc p − Bloc p = −S₂` at every prime; multiplying that over `primeFactors(q)` inserts the global `S₂` once per prime and necessarily yields `S₂^{ω(q)}·μ(q)`. The theorems are true but describe an artificially locally‑normalised model, not the physical source.
+OLD FALSE PHYSICAL THEOREM: RETYPED (nothing deleted). A P0 notice was added, §4.4/§4.5 retitled as the abstract model, and the counterexample renamed `literal_S2_mu_form_fails → abstractLocalNormalisation_S2_mu_form_fails` (its witness uses artificial local values, so it refutes only the over‑general abstract form). Exactly one physical local‑collapse theorem now exists.
+CORRECT PHYSICAL DEFINITION: `B0(d)=∏(p−1)/(p−2)`, `B_src(d)=S₂·B0(d)`, `β(d)=∏1/(p−2)`, `λ(b)=∏(p−1)/(p−2)²`, with the typed relation `S₂·B_src(ab)=B_src(a)B_src(b)`.
+CORRECT LOCAL COLLAPSE: KERNEL-PROVED — `β(p)−B0(p) = −1` for odd primes (and `= 0` at p=2, which is why oddness is required), hence `∑_{d|q} μ(d)B_src(d)β(q/d) = S₂·μ(q)` for odd squarefree q (`physicalBsrcMobiusCollapse45`).
+q=15 REGRESSION: KERNEL-PROVED (`β(15) − B0(3)β(5) − B0(5)β(3) + B0(15) = 1`; divisor sum `= S₂`).
+AFFECTED DECLARATIONS: only the four abstract `S₂^{ω(q)}` statements, referenced solely by the axiom-audit `#print axioms`; no physical compiler depended on them, so nothing had to be downgraded. UNAFFECTED BANK REBUILT: PASS.
+
+CORE (all KERNEL-PROVED): coprime Möbius indicator; β/B0/λ multiplicativity and the typed `B_src` relation; λ local factor; exact local coefficient identity `μ(b)μ(bv)B_src(bv)β(bq) = λ(b)μ(v)B_src(v)β(q)`; the central `squarefree_gcd_descent` (stated over an arbitrary coefficient ring hom, with ℚ and ℝ instances), plus `gcd(b,q·v)=1` (with `gcd(q,v)` deliberately unconstrained) and a one-prime cancellation sanity check; phase / W-argument / derivative descent; hyperbola support descent (`0.9` always as exact `9/10`); medium-k exact source normal form (conditional on the finite truncation, no analytic bound claimed); `jointKernel_noLattice` — PROVED, by exact integration by parts, no Euler-summation lemma introduced; repeated-core ledger disjointness and exhaustiveness (no double counting), with the r=1/p²/p³ classification carried abstractly. The strict-endpoint sawtooth convention `ψ(n) = −1/2` is preserved, and the API firewall (only `jointKernel` is a k-consumer) is recorded.
+
+CERTIFICATE — no compact machine certificate was attached, so the five analytic bounds are recorded as EXTERNAL-CERT inputs transcribed as exact rationals; only the arithmetic on them is kernel-checked, and nothing became an axiom.
+CERTIFIED SUBTOTAL: 52188738751/10^17 = 5.2188738751e-7.
+PRINTED 5.218873872e-7 CONSISTENT: NO — it is strictly smaller than the exact outward sum, short by exactly 3.1e-16, so it is not a valid outward subtotal.
+REMAINING CAPACITY: 36417761249/10^17 = 3.6417761249e-7.
+PRINTED 3.641776128e-7 CONSISTENT: NO — it overstates capacity by 3.1e-16. Use the corrected value.
+The q=3 row (2.17e-8) is recorded as a sub-item of the k ≤ 31 total and proved not to be double-counted.
+LARGE-SIEVE CONSTANTS: `∑λ(b)/√b < 7/2` and `∑β(q)² < 241/100` are NOT AVAILABLE (recorded, not kernel-checked); the sawtooth L² mass IS kernel-checked: `(1/q)∑_{a<q}(a/q−1/2)² = (q²+2)/(12q²)` and `≤ 11/108` for q ≥ 3.
+q=3 CERTIFICATE: format/checker interface formalised only; the 4.5e9 search is not replayed and the claim is not asserted.
+CONDITIONAL BUDGET THEOREM: KERNEL-PROVED, both abstractly and with the audited ledger numbers substituted.
+
+OPEN: medium-k joint Bernoulli — OPEN; two-high a ≤ 180 — OPEN; signed B_src floor — OPEN (all three exist only as predicates); Maynard — NOT ENTERED (no predicate at all); Erdős #287 — OPEN, nothing here claims it.
+FIRST EXACT REMAINING NODE: ERDOS287-TOT-BSRC-SQFREE-LATTICEBEARING-MEDIUMK-GCDDESCENT-JOINT-BERNOULLI-DIRECTED45.
+
+`RequestProject/Erdos287/Bank.lean` runs `#print axioms` on every major theorem; each reports exactly `[propext, Classical.choice, Quot.sound]`, with no `sorryAx` and no custom axiom.
+
+# Summary of changes for run caa78c95-832f-4710-8a9b-9cba8bd17ac4
+Append-only September-4 signed `B_src` floor bank added. Nothing existing was deleted, edited or downgraded; **Erdős #287 is not claimed**, no Maynard theorem, no numerical Mertens statement and no analytic estimate is asserted. Full report: `ERDOS287_SEPTEMBER4_SIGNED_FLOOR_SAFE_BANK_REPORT.md`.
+
+**Files added** (all under `RequestProject/`): `CurrentProgramme/Erdos287September4PhysicalW.lean`, `…CanonicalStateSign.lean`, `…T0T2DeepEvenCancellation.lean`, `…BsrcLocalMobiusCollapse.lean`, `…BoundaryDivisorLattice.lean`, `…SignedBsrcCompiler.lean`, `…BoundaryCertificateChecker.lean`, `…LargeLTailCompiler.lean`, plus `Status/CurrentStatusErdos287September4SignedFloorBank.lean` and `Status/AxiomAuditErdos287September4SignedFloorBank.lean`; `Main.lean` gained the ten imports.
+
+**Kernel-proved.** Physical W: exact definition with rational break points 7/10, 4/5, 9/10; support ⊆ [7/10,9/10]; W(7/10)=W(9/10)=0, W(4/5)=1; 0 ≤ W ≤ 1; strictly increasing on [7/10,4/5], strictly decreasing on [4/5,9/10]; sup norm `IsGreatest (range W) 1`; **Var(W)=2** in Mathlib's own `eVariationOn` (no bespoke variation notion was invented); hence **C_W = 2‖W‖_∞ + Var(W) = 4** with every term proved; plus the derivative W′ = −20uv²e^{1−v} inside the support. Canonical-state sign invariance κ_ε = μ(d_low)·g_j = (−1)^{ω(d)} = μ(d) with all hypotheses explicit binders (not structure fields), and the one-prime threshold-crossing invariance. The exact T⁰−T² decomposition into the odd family plus the even collar 1_{d ≤ Y(dr) < 2d}, the r = 2u reindexing facts (same n, same κ, same weight, B_src(2m)=B_src(m)), and deep-even cancellation `t0t2DeepEvenCancellation45`, with a firewall theorem witnessing that this is *not* a complete signed-floor closure. Interior divisor-lattice Möbius collapse `interiorLocalMobiusCollapse45` via the local prime-factor identity and multiplicativity over `q.primeFactors` (finite; no infinite Euler product). The exact signed source `R_signed = −4 Σ_{d odd}(E_d[V0,d] − E_d[V2,d])` with −4 *derived* from the two affine sign families times the T⁰−T² comparison sign. Exact rational budget 14164610/10¹⁵ + 985835/10¹² < 10⁻⁶ (sharper pole value kept, slack preserved) and the ordered-field budget compiler. The boundary certificate checker: coverage soundness over 42.9 ≤ L ≤ 62.5, per-box budget check, and the aggregate bound. Tail envelope 9360L(1+L)e^{−L/2} strictly decreasing on [4,∞) and the endpoint decimal envelope(62.5) < 10⁻⁶ proved *inside the kernel* from 7889/6144 ≤ exp(1/4) and 37147500·10⁶ < (7889/6144)¹²⁵ — so both MONOTONICITY and ENDPOINT DECIMAL are kernel-proved, with no numerical socket needed.
+
+**Repair found (§4).** The literally requested identity Σ_{d∣q} μ(d)B_src(d)β(q/d) = S₂·μ(q) is **false** once ω(q) ≥ 2: kernel-proved counterexample q = 15, S₂ = 2, B_loc ≡ 0, β_loc ≡ −2 gives 4, not 2. The correct global form S₂^{ω(q)}·μ(q) is proved, and the requested shape holds exactly under the explicit hypothesis S₂^{ω(q)} = S₂ (in particular on a one-prime fibre). Both forms are stated; nothing was silently reinterpreted.
+
+**Partial / external, as declared.** Boundary datatype BUILT (7 source-native causes, record reconstructing the omitted fibre) and the interior-or-boundary dichotomy kernel-proved, with a firewall counterexample showing the collapse fails on a truncated fibre; physical exhaustiveness of the cause list is PARTIAL and isolated as a stated (unproved) obligation. Secondary pole: analytic residue EXTERNAL / NOT FORMALIZED, only the downstream shoulder implication proved; the socket contains mathematical fields only and no floor conclusion. Compact slab 42.9–62.5 is CONDITIONAL; **no actual numerical certificate exists** (`bankedCertificates = []`), and the domination socket is never inhabited — a single clearly-labelled structural demo with an empty class list only shows the checker is non-vacuous. Mertens interface uninhabited; Maynard socket untouched and uninhabited; numerical E_T not banked; E_T, E_L, global effectivity and Erdős #287 remain open.
+
+**Audit.** `lake build` PASSES (all 8428 jobs, `RequestProject.Main` included). `#print axioms` is run on all 92 principal new declarations: every one reports no axioms or a subset of `propext, Classical.choice, Quot.sound`. No `sorry`/`sorryAx`, no custom `axiom`, no `unsafe`, `native_decide`, `implemented_by`, `opaque` or `skipKernelTC` in any new file; no lint warnings in the new files. The status ledger, its firewalls and its row-backing theorems are machine-checked. First exact remaining node: the boundary numerical certificate (no event-box data for 42.9 ≤ L ≤ 62.5, and no inhabitant of the domination input). All work committed and pushed.
+
+# Summary of changes for run eccaa4cc-2cfa-4ca3-b6aa-a412e582fb3d
+All requested September-3 work is complete, append-only, and building. Nothing existing was deleted, rewritten, or weakened; Erdős #287 is **not** claimed and stays open.
+
+**Priority A — 24-window finite extension: KERNEL-PROVED.**
+No pre-existing Lean draft or certificate data for the interval `4000000001 … 67108856338751594` was in the repository, so the chain was reconstructed and is now replayed entirely in the kernel:
+- `RequestProject/CurrentProgramme/Erdos287September3PrattEngine.lean` — a recursive (Pratt/Lucas) primality-certificate engine: a fuel-driven binary modular exponentiation `powMod` with a **proved** correctness theorem, and `Erdos287.Pratt.prime_of_certificate`. This was necessary because trial division cannot reach the ~10^16 primes the new windows need.
+- `…Erdos287September3PrattCertificateBank.lean` — 72 leaf primes (`norm_num`, all `< 10^9`) plus **52 recursive Pratt certificates**, bottom-up, up to `33554428169375797`. No oracle, no `native_decide`.
+- `…Erdos287September3FiniteExtension24Window.lean` — the **24 contiguous windows** (`L_{i+1} = U_i + 1`, no gaps) and `Erdos287.Gap2CE.no_of_M_le_extendedCeiling`, `Erdos287.no_Erdos287Counterexample_of_max_le_extendedCeiling` — the *same* predicates and interval blocker as the existing 4·10^9 bank, with the ceiling extended to exactly **67108856338751594**; plus `arithmeticCoverage_exceeds_twoExp375 : 38643198608805673 < extendedCeiling`. Firewall recorded: this is finite arithmetic only and does not close the medium analytic branch.
+
+**Priority B — 2-adic Möbius pairing: KERNEL-PROVED.** `…Erdos287September3TotTwoAdicMobiusPairing.lean`: `μ(2a) = −μ(a)` for odd `a`, the canonical coefficients `kappaEps`/`sigmaEps`, the exact odd-divisor source identity `oddDivisorTotSourceIdentity` (stated before any triangle inequality, with the two pairing equations as explicit hypotheses, discharged for the canonical coefficient), the split `totLaneSourceSplit : T = T⁰ − T²` for supplied weights, and an algebraic witness that a termwise triangle bound destroys the `μ(a)/μ(2a)` cancellation.
+
+**§3 fixed-residue arithmetic: KERNEL-PROVED.** `…Erdos287September3TotFixedResidueArithmetic.lean`: `p = 2dr+s ⇒ p ≡ s (mod d)`, `p = 4du+s ⇒ p ≡ s (mod 4d)`, and the converse integrality `p ≡ s (mod d), p odd, d odd, s = ±1 ⇒ 2d ∣ p − s` (parity hypotheses not weakened). Firewall: fixed-residue source ≠ analytic prime-distribution theorem.
+
+**§5–§6 conditional compiler.** `…Erdos287September3TotFixedResidueConditionalCompiler.lean`: an **uninhabited** external AP socket exposing residue, modulus (`q1·d`, `q1 ∈ {1,4}`), finite interval endpoints, prime discrepancy, numerical error function/bound and activation threshold — with no endpoint-supremum field and no stored `E_T` conclusion — and the implication-only `totLaneFixedResidueConditionalBound45`, with the slot index `D ×ˢ {1,4} ×ˢ {−1,+1}` (four slots per modulus: two signs once, two families once).
+
+**Priority C (optional): KERNEL-PROVED.** `…Erdos287September3CanonicalSplitFourInterval.lean`: abstract monotone crossing lemma, two thresholds per window, coefficient = signed sum of ≤ 4 interval indicators, with the numerical exponent content isolated and computed exactly (`d ≤ n^(1/2) ↔ d² ≤ n`).
+
+**Status/audit/report.** Added `RequestProject/Status/CurrentStatusErdos287September3SourceBank.lean` (append-only ledger with the requested rows, firewall theorems and five rows backed by the theorems they label) and `…/AxiomAuditErdos287September3SourceBank.lean`; `RequestProject/Main.lean` gained the nine imports; full details in `ERDOS287_SEPTEMBER3_FINITE_AND_2ADIC_SAFE_BANK_REPORT.md` (window table, certificate counts, firewalls, axiom summary). The generator scripts are in `scripts/` and are untrusted — every statement they produce is re-proved by the kernel.
+
+STRICT OUTPUT — 24-WINDOW FINITE CHAIN: KERNEL-PROVED · FINITE CEILING: 67108856338751594 · COVERS ceil(2 exp(37.5)): KERNEL-PROVED · 2-ADIC MÖBIUS PAIR: KERNEL-PROVED · ODD-DIVISOR TOT SOURCE: KERNEL-PROVED · d FIXED-RESIDUE: KERNEL-PROVED · 4d FIXED-RESIDUE: KERNEL-PROVED · TOT SOURCE SPLIT T0-T2: KERNEL-PROVED · CANONICAL FOUR-INTERVAL: KERNEL-PROVED · AP ANALYTIC SOCKET: UNINHABITED · ENDPOINT-SUPREMUM ASSUMED: NO · MAYNARD THEOREM ASSERTED: NO · CONDITIONAL E_T COMPILER: KERNEL-PROVED (implication only) · NUMERICAL E_T: NOT BANKED · E_L: OPEN/CONDITIONAL · GLOBAL EFFECTIVITY: OPEN · ERDOS287: OPEN · LAKE BUILD: PASS (8418 jobs) · SORRY/SORRYAX: NONE · NEW CUSTOM AXIOMS: NONE (all new declarations use only propext / Classical.choice / Quot.sound or fewer) · OVERCLAIM AUDIT: PASS.
+
+# Summary of changes for run f7a1242f-400f-4a54-b51d-ff89318e9bd0
+## What was added (append-only; nothing existing was deleted or rewritten)
+
+**New Lean modules**
+
+- `RequestProject/CurrentProgramme/Erdos287September2TaggedTwoLaneSource.lean` — the tagged two-lane source `RawIndex = ({tot} × TotDiscIndex) ⊎ ({u} × UDiscIndex)`: lane dichotomy, fibre disjointness, finite census split, equivalence with the plain disjoint union, the algebraic lane-split identity for supplied weights, the recorded (external) intended semantics `tot ↦ T_X`, `u ↦ L_X`, the explicit witness that **source-tag disjointness is not physical n-support disjointness**, and the selected-E **typing guard** (the Tot occurrence type has no selected-E field, so no constructor can attach it).
+- `RequestProject/CurrentProgramme/Erdos287September2OneSlotPerron.lean` — `c = X⁻²⁰⁰`, `T = X²⁰⁰`, `T/c = X⁴⁰⁰`; the one-slot Perron mass bound `(1/π)·arsinh(X⁴⁰⁰) < 128·log X` for `X ≥ 3`; `⌈1/(1−γ)⌉ = 2` for `γ = 1/2 − 5·10⁻²²`; `N = kℓ + r + s ≤ 112` (sharp) with `ℓ = 12`, `k ≤ 6`, `r,s ≤ 20`; nonempty coordinate subsets `≤ 2¹¹² − 1`, plus the record that this ceiling is not an effectivity closure.
+- `RequestProject/CurrentProgramme/Erdos287September2LedgerAdaptersAndCompilers.lean` — the typed Perron/nuclear ledger socket and the hard-U → shared-Ford literal source-equality socket (**both left uninhabited**, with firewalls: the ledger contract is a genuine constraint and does not store its conclusion; the selected-E clause of the adapter certificate is load-bearing); the direct-provider / b-diagonal **conditional** bypass with an unasserted antecedent; the conditional `E_L` bound; `C_pair = 11`; the renamed generic lemma and the genuine survival bridge (below); `2·X_N2 > 4·10⁹`; the four-error algebraic interface with its budget-is-an-input firewall.
+- `RequestProject/Status/CurrentStatusErdos287September2TwoLaneMaster.lean` (18-node later status layer, §0 vocabulary, firewalls, five rows explicitly backed by the theorems they label) and `RequestProject/Status/AxiomAuditErdos287September2TwoLaneMaster.lean` (`#print axioms` on every principal declaration). `RequestProject/Main.lean` gained the five imports. Report: `ERDOS287_SEPTEMBER2_TWO_LANE_MASTER_SAFE_BANK_REPORT.md`.
+
+## Requested semantic correction (done)
+
+- The old generic lemma is renamed **`fourLossSurvivalPositivity`** and documented as real arithmetic only, explicitly *not* a sieve-survival bridge.
+- The genuine **`PrimePairSieve.primePairSieveSurvival45`** was added over the banked window data (`Q = X/(2M)`, `I(M) ⊆ (Q,2Q]`, `H = |I(M) ∩ ℤ| ≤ Q+1`, `z = H^(49/100)`, long sector `H − 1 > H^(49/100)`), with the finite chains `q > Q ≥ H − 1 > z` and, for `s = ±1`, `M ≥ 1`, `2Mq + s ≥ 2Mq − 1 > q > z`, and the exact consequence: if `q` and `n = 2Mq + s` are both prime then neither is divisible by any prime `p < z` — every simultaneous-prime pair survives the z-sieve. The window hypotheses are proved consistent (so the bridge is non-vacuous), and a firewall records that surviving the z-sieve is strictly weaker than primality. No Bordignon–Lee analytic sieve theorem is formalized or asserted.
+
+## Audit finding (statement corrected, original recorded)
+
+The requested chain `asinh(X⁴⁰⁰) < log(2X⁴⁰⁰) < 401 log X` has a **false first step**: since `√(1+t²) > t`, one always has `arsinh t > log(2t)`. This negation is kernel-proved as `arsinh_gt_log_two_mul`; the chain was repaired via `√(1+t²) ≤ (3/2)t`, giving `arsinh t ≤ log(5t/2) < 401 log X` for `X ≥ 3`, and hence the intended conclusion `< 128 log X` (using `401 < 128π`) unchanged.
+
+## STRICT OUTPUT
+
+```
+TWO-LANE TAGGED SOURCE:        KERNEL-PROVED
+SELECTED-E TYPE FIREWALL:      KERNEL-PROVED
+ONE-SLOT PERRON:               KERNEL-PROVED (chain repaired; false step recorded)
+N<=112 ARITHMETIC:             KERNEL-PROVED
+COMPLETE PERRON LEDGER:        UNINHABITED
+E_T:                           PAPER_CLOSED_EXTERNAL
+HARD-U SHARED-FORD ADAPTER:    UNINHABITED
+E_L:                           CONDITIONAL / OPEN
+b-DIAGONAL BYPASS:             CONDITIONAL (antecedent not asserted)
+E_M:                           PAPER_CLOSED_EXTERNAL
+N2 (analytic lane):            PAPER_CLOSED_EXTERNAL
+PRIME-PAIR-SIEVE-SURVIVAL45:   KERNEL-PROVED (elementary inclusion bridge only)
+CURRENT N2 FINITE SPLICE:      FAIL (2·X_N2 > 4·10⁹ kernel-proved)
+FOUR-ERROR ASYMPTOTIC FCL:     CONDITIONAL
+GLOBAL EFFECTIVITY:            OPEN
+ERDOS287:                      OPEN
+TWIN/HSTAR CONTAMINATION:      NONE (no such import or dependency)
+LAKE BUILD:                    PASS (8409 jobs, 0 errors, no new warnings)
+SORRY / SORRYAX:               NONE
+CUSTOM AXIOM / unsafe / native_decide / implemented_by / skipKernelTC: NONE
+AXIOMS OBSERVED:               propext, Classical.choice, Quot.sound (or fewer)
+OVERCLAIM AUDIT:               PASS
+INDEPENDENT CHECKER/COMPARATOR: NOT RUN (not claimed)
+```
+
+The Properties table was updated with the new deliverables (all listed theorems marked proved; the two sockets and the status ledger recorded as definitions).
+
+
+# Summary of changes for run cfae4aad-f6af-42fa-acec-226300b76646
+Paused as requested — no new proof work was started this round, and no file in the project was changed (the working tree is clean and identical to the state you handed over; all reports, including the last round's, are untouched on disk).
+
+What I did: cleared the Run1B (d*wp / Fourier provider) entries out of the Properties table so it tracks only #287 material. Fourteen entries were removed, covering the whole 1B layer:
+
+- effective-modulus layer: the gcd(A♯, r♯) coprimality fact and the effective-modulus reciprocal-phase identity;
+- finite Fourier matrix: row orthogonality and the operator-norm statement;
+- small-modulus Fourier: Parseval, the L¹ ≤ √n·L² bound, and the small-modulus compiler;
+- residue-class energy: the bilinear L² bound and the class-multiplicity bound;
+- large-modulus contraction compiler;
+- the Möbius polyphase input, the d*wp source type, the source-exhaustive router inhabitation, and the conditional 1B compiler.
+
+What I deliberately kept in the table (these are #287-side, not 1B): the N2 effective-constants results (`two_XN2_exceeds_finite_bank`, the Ω_H provenance fact), the shared other-parent adapter items (`adapters_are_independent`, `hardU_adapter_uninhabited_in_general`, `sharedOtherParent_conditional`, the hard-U adapter obligation), the September-2 status ledger, and everything from earlier rounds. Their recorded statuses are unchanged (the previously proved ones are still marked proved).
+
+Nothing about Erdős #287 is claimed as solved, and no statement in the project was weakened, added, or removed. Ready to resume on the #287 top-layer / prime-power exclusion package whenever you want.
+
 # Summary of changes for run 19101e0d-5031-4f91-ad0d-92d8927699d7
 ## Work completed this session
 

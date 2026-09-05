@@ -1,25 +1,37 @@
-# Live Research Frontier
+# FRONTIER — live proof search
 
-This directory contains research that is newer than the latest independently audited release.
+This directory contains mathematics that is newer than, downstream of, or not yet promoted into the latest independently audited release.
 
-> **Candidate material does not supersede the audited ledger until independently reviewed.**
+> **Candidate material does not become banked merely because it is newer.**
 
-## Current candidate snapshot
+## Read in this order
 
-- [`2026-09-05-static-ramanujan/FRONTIER.md`](2026-09-05-static-ramanujan/FRONTIER.md)
+- [`current-parent/`](current-parent/) — **current controlling physical parent:** signed `R_012 = j=0 + j=1 + active j=2`;
+- [`candidate-results/`](candidate-results/) — candidate `j`-sector reductions and selected diagonal repair awaiting independent promotion;
+- [`downstream/`](downstream/) — signed floor, Maynard effectivization, and final finite/asymptotic splice with explicit entry guards.
 
-Current live target: the **static signed `r>200` Ramanujan tail**, with medium-`k` still open.
-
-The latest audited baseline remains [`../paper/audited-release/2026-09-05-r12/`](../paper/audited-release/2026-09-05-r12/).
-
-## Naming convention
-
-New live research directories use
+## Current wall
 
 ```text
-YYYY-MM-DD-semantic-name/
+R_012 signed parent        OPEN
+  |
+  +-- incomplete fibres   OPEN
+  +-- rough defect        OPEN
+  +-- selected Perron / large ratio-frequency decay OPEN
+  +-- active j=2          71 + 37 prefix families
 ```
 
-rather than treating internal revision labels such as `R12`, `V16`, or `V16_8_R9` as the repository ontology. Revision labels may remain inside manuscripts where they are useful.
+The latest proof-search input also records `j>=4` as candidate-empty and `j=3` as candidate-closed with reported charge `<3e-9 B_X`; these remain candidate until independent audit.
 
-Historical frontier notes from the old flat layout are preserved under `archive/frontier-legacy/`.
+## Previous live snapshot
+
+[`2026-09-05-static-ramanujan/`](2026-09-05-static-ramanujan/) is retained for research archaeology. It is **superseded as the controlling top-level coordinate** by the signed selector parent above. Its local identities or candidate estimates are not thereby declared false.
+
+## Audited baseline
+
+The quantitative audited baseline remains [`../paper/audited-release/2026-09-05-r12/`](../paper/audited-release/2026-09-05-r12/). R12 and the live frontier answer different questions:
+
+- R12: what has been independently audited and what numerical capacity is certified?
+- frontier: what is the source-minimal theorem we should attack next?
+
+For the combined view, use [`../PROOF_MAP.md`](../PROOF_MAP.md).

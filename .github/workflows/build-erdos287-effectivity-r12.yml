@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.r12-src/erdos287_r12.tex.gz.b64.head*'
-      - '.r12-src/erdos287_r12.tex.gz.b64.part01'
-      - '.r12-src/erdos287_r12.tex.gz.b64.part02'
-      - '.r12-src/README.md'
+      - 'paper/audited-release/2026-09-05-r12/source-package/erdos287_r12.tex.gz.b64.head*'
+      - 'paper/audited-release/2026-09-05-r12/source-package/erdos287_r12.tex.gz.b64.part01'
+      - 'paper/audited-release/2026-09-05-r12/source-package/erdos287_r12.tex.gz.b64.part02'
+      - 'paper/audited-release/2026-09-05-r12/source-package/README.md'
       - '.github/workflows/build-erdos287-effectivity-r12.yml'
 
 jobs:
@@ -19,11 +19,12 @@ jobs:
       - name: Reconstruct LaTeX source
         shell: bash
         run: |
-          cat .r12-src/erdos287_r12.tex.gz.b64.head00 \
-              .r12-src/erdos287_r12.tex.gz.b64.head01 \
-              .r12-src/erdos287_r12.tex.gz.b64.head02 \
-              .r12-src/erdos287_r12.tex.gz.b64.part01 \
-              .r12-src/erdos287_r12.tex.gz.b64.part02 \
+          SRC='paper/audited-release/2026-09-05-r12/source-package'
+          cat "$SRC/erdos287_r12.tex.gz.b64.head00" \
+              "$SRC/erdos287_r12.tex.gz.b64.head01" \
+              "$SRC/erdos287_r12.tex.gz.b64.head02" \
+              "$SRC/erdos287_r12.tex.gz.b64.part01" \
+              "$SRC/erdos287_r12.tex.gz.b64.part02" \
             | base64 -d | gzip -dc \
             > ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex
           echo '62bbb029fa34cc0f251e6be35c97adaf399ac6811664fdc8cb037c7b09904b31  ERDOS287_EFFECTIVITY_AUDITED_SYNTHESIS_R12_05SEP2026.tex' | sha256sum -c -

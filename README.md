@@ -1,136 +1,143 @@
-# Erdős Problem #287 — Current Public Frontier
+# Erdős Problem #287 — Audited Proof / Proof-Search Programme
 
-**Status:** open research programme / partial formal verification.  
-**ERDŐS PROBLEM #287 REMAINS OPEN.**
+> **Status: OPEN. No solution of Erdős Problem #287 is claimed.**
 
-The controlling concise ledger is [`CURRENT_STATUS.md`](CURRENT_STATUS.md). The newest research update is [`ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md`](ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md). Historical R4/R5/R7/R9 manuscripts remain preserved for provenance; where an older frontier conflicts with the 2-September-2026 ledger, the later ledger controls.
+This repository contains the formal, analytic, computational, audit, and proof-search work for Erdős Problem #287. The public information architecture is organized by **mathematical role**, not by revision number.
 
-## Start here
+## The problem
 
-- [Latest R10 research delta — 2 Sep 2026](ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md)
-- [Authoritative current status](CURRENT_STATUS.md)
-- [Living public review PDF — stable R9 path](ERDOS287_PUBLIC_REVIEW_CURRENT.pdf)
-- [Legacy forum PDF path](ERDOS287_PUBLIC_REVIEW_DRAFT_V2_FINAL.pdf)
-- [Research proof index](RESEARCH_FRONTIERS/ERDOS287_PROOF_INDEX.md)
-- [Corrections and retractions](CORRECTIONS_AND_RETRACTIONS.md)
+For
 
-The stable PDF alias is still the R9 build until a new PDF build is produced. The R10 delta and `CURRENT_STATUS.md` are the controlling research-status documents in the meantime.
+\[
+1=\frac1{n_1}+\cdots+\frac1{n_k},
+\qquad n_1<\cdots<n_k,
+\]
 
-## Strongest unconditional theorem
+Erdős Problem #287 asks whether necessarily
 
-The existing Lean-checked finite theorem excludes every exact counterexample with maximum denominator
+\[
+\max_i(n_{i+1}-n_i)\ge 3.
+\]
 
-```text
-M <= 4,000,000,000.
-```
+The problem remains open.
 
-No eventual large-`M` supply theorem, explicit final threshold, or unconditional solution of Erdős #287 is claimed.
+## Start here — six links
 
-## Latest mathematical progress
+1. **[`PROOF_MAP.md`](PROOF_MAP.md)** — canonical theorem/dependency map: what is banked, what is current, what is superseded.
+2. **[`CURRENT_STATUS.md`](CURRENT_STATUS.md)** — concise current state and downstream entry guards.
+3. **[`CLAIMS_LEDGER.md`](CLAIMS_LEDGER.md)** — claim-by-claim evidence and strategy classification.
+4. **[`banked/`](banked/)** — trusted mathematics, separated by evidence class.
+5. **[`frontier/`](frontier/)** — current parent, candidate reductions, and downstream nodes.
+6. **[`graveyard/`](graveyard/)** / **[`archive/`](archive/)** — what not to reopen, and the full historical research archaeology.
 
-### Closed at paper/research level
+A new reader should not need to infer the current theorem from filenames such as `R7`, `R10`, `R12`, `V16`, or dozens of historical safe-bank reports.
 
-```text
-regular Perron / smooth-Mobius correlation
-uniform fragmentation reassembly
-local analytic kernel for already-typed packets
-global Bsrc physical comparison
-N1/Bsrc dictionary
-E_M = o(B_X)
-physical N2 Lambda collar at fixed-epsilon asymptotic level
-four-error fixed-certificate transference
-FCL_W(M/2) -> WindowPairSupply(M), M>=12
-```
-
-The physical `N_2` proof retains the von Mangoldt weight and obtains
-
-```math
-E_2/B_X <= K_collar * epsilon + o(1),
-```
-
-so for one fixed sufficiently small `epsilon`, eventually
-
-```math
-E_2 <= (m_epsilon/8) B_X.
-```
-
-This does not use the Ford bounded-sequence `N_2` shortcut.
-
-The comparison side gives
-
-```math
-E_M=o(B_X),
-```
-
-and
-
-```math
-B_X=(4 S_2 integral(W)+o(1)) X/log X.
-```
-
-### Exact FCL algebra
-
-```math
-primeMass >= m_epsilon B_X - E_T - E_L - E_2 - E_M.
-```
-
-Since `E_2` and `E_M` are now controlled asymptotically, the remaining asymptotic FCL problem is the source-exact construction of `E_T` and `E_L` from the banked owner estimates.
-
-## Correct two-lane Ford source architecture
-
-The latest hostile source audit supersedes the old single-master-index picture:
+## Current proof-search route
 
 ```text
-I_raw = I_Tot disjoint_union I_U.
+BANKED SOURCE / ALGEBRA
+    |
+    +-- B_src normalization
+    +-- odd half-divisor correction
+    +-- c1/c2 splice
+    +-- full unselected Z(s,s)=0 at banked scope
+    +-- V<1000 finite closure
+    +-- complete-period endpoint main
+    |
+    v
+corrected selector Γ
+    |
+    +-- j>=4      CANDIDATE-EMPTY
+    +-- j=3       CANDIDATE-CLOSED, reported <3e-9 B_X
+    +-- j=0 + j=1 + active j=2
+            |
+            v
+           R_012
+           OPEN
+            |
+            v
+       signed floor
+           OPEN
+            |
+            v
+   Maynard effectivization
+        NOT ENTERED
+            |
+            v
+  finite/asymptotic splice
+        NOT ENTERED
+            |
+            v
+       Erdős #287
+           OPEN
 ```
 
-- `I_Tot` reconstructs the full `T_X` correlation and follows Ford–Maynard Lemma 7.21 / Type-I machinery.
-- `I_U` reconstructs the leakage `L_X`; Proposition 7.22 is the `U`-lane expansion and carries the Type-II subproduct bookkeeping.
+Inside `R_012`, the live obstacles are incomplete low-divisor fibres, rough defect, selector-sensitive Perron/hyperbola terms, and large ratio-frequency decay. The active `j=2` source has been reduced in the latest proof-search census to `71` prefix families for `c=1` and `37` for `c=2`; these reductions remain candidate-level until independently promoted.
 
-Only `I_U` carries the nonempty family `mathcal E` and deterministic selected subset `E_*(mathcal E)`. The `Tot` lane must not be given fabricated selected-E data.
+## Audited baseline versus live proof search
 
-## Correct owner hierarchy
-
-`C0`, `Transverse`, and `bDiagonal` are **two-copy** owner classes. They cannot be assigned directly to a one-copy physical packet.
+The current independently audited quantitative baseline is the **R12 effectivity synthesis, 5 September 2026**:
 
 ```text
-one-copy raw packet
-  -> LowQ / Pascadi / Local when directly source-legitimate
-  -> otherwise exact Cauchy/dispersion
-  -> two-copy descendant
-  -> shared-gcd formation
-  -> proof-local Omega_H
-  -> C0 / Transverse / bDiagonal / Local.
+certified subtotal:  5.257263872e-7
+remaining capacity:  3.603386128e-7
+V<1000 edge:         CLOSED / FINITE-CERTIFIED / AUDITED
+complete endpoint:   CLOSED at its stated scope
+Erdős #287:          OPEN
 ```
 
-The current running source audit is checking the first literal coefficient dictionary in this corrected architecture. In particular, the `Tot` lane should not be forced through the K0 smooth-parent dispersion owners merely because those owners exist; it follows its own Lemma-7.21 Type-I path.
+R12 is retained at [`paper/audited-release/2026-09-05-r12/`](paper/audited-release/2026-09-05-r12/).
 
-Current compiler frontier:
+The live proof map is newer than R12 as a **dependency reassembly**. This does not silently upgrade candidate `j`-sector results or rewrite R12 history. It means several R12-era coordinates are no longer treated as mandatory standalone gates.
+
+## The four researcher-facing buckets
 
 ```text
-FORD-Hepsilon-TWOLANE-RAWPACKET-TO-TWOCOPY-TYPEDOWNER-REFINEMENT45
+banked/
+    trusted inputs, with formal / audited-analytic / certificate / manuscript distinctions
+
+frontier/
+    current controlling physical parent
+    candidate results awaiting audit
+    guarded downstream stages
+
+graveyard/
+    false
+    retired / nonclosing / source-mismatched
+    superseded coordinate systems
+
+archive/
+    historical reports, manuscripts, source packs, old frontier notes
 ```
 
-Status: **OPEN / under active source audit.**
+`banked` is intentionally not called `proven`: kernel-checked algebra, audited analytic work, and finite certificates are different evidence classes.
 
-## Current endgame
+`graveyard` does intentionally distinguish **false** from **retired** and **superseded**. An old route can stop controlling the proof without its mathematics becoming false.
 
-```text
-physical N2 Lambda collar        CLOSED asymptotically
-Bsrc / N1 / E_M                  CLOSED asymptotically
-four-error transference          CLOSED
-FCL -> WindowPair, M>=12         CLOSED mathematically
-E_T / E_L source compiler        OPEN
-asymptotic FCL                   OPEN pending E_T/E_L
-explicit-threshold finite splice OPEN
-Erdos287ClosureInputs            UNINHABITED
-ERDOS287                         OPEN
-```
+## Technical evidence stores
 
-If the current two-lane source compiler supplies the required `E_T,E_L=o(B_X)` bounds, the asymptotic FCL stage should compile from the already banked N2/comparison inputs. The remaining last mile would then be explicit-threshold extraction and the finite/asymptotic splice.
+The following paths remain because they are useful or required for reproducibility; they are **backing stores**, not competing proof ontologies:
 
-## Formal / Aristotle firewall
+- [`RequestProject/`](RequestProject/) — Lean source and formal modules;
+- [`paper/`](paper/) — audited release packages;
+- [`certificates/`](certificates/) — certificate navigation/material;
+- [`reviews/`](reviews/) — audit/review navigation;
+- [`scripts/`](scripts/) — reproducibility utilities;
+- [`.github/`](.github/) — CI/build workflows.
 
-Paper/research analytic closure is not the same as Lean analytic closure. New N2 and Bsrc/N1 results should be represented formally as explicit external/paper-banked inputs until genuinely formalized. Source/compiler and effectivity inputs remain uninhabited where appropriate.
+Historical root clutter has been moved into `archive/` on the cleanup branch rather than deleted. Git history is preserved.
+
+## Hard publication firewall
+
+Do not infer any of the following from folder names or source transformations:
+
+- a candidate result is audited because it is newer;
+- a superseded node is proved;
+- a retired theorem is false unless an explicit counterexample/retraction exists;
+- a finite or Lean theorem supplies an external analytic estimate;
+- diagonal cancellation by itself supplies the required directed ratio-frequency bound;
+- Erdős #287 is solved.
+
+See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md) for the dated no-reopen ledger.
 
 **ERDŐS PROBLEM #287 REMAINS OPEN.**

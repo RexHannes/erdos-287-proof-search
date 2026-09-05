@@ -27,3 +27,7 @@ c84f0516896794ade6d93a0c926cd5d599ce3a922a7fbe166356e8ea89b0b324
 ```
 
 The PDF is a rendered convenience artifact; the mathematical source, exact status ledger, provenance record and finite certificate are the reviewable controlling materials. Erdős Problem #287 remains open.
+
+---
+
+**Archive note.** This is the exact legacy `.r12-src/README.md` text preserved after the source chunks were moved to the semantic audited-release path. The current reconstruction instructions are in `paper/audited-release/2026-09-05-r12/source-package/README.md`.

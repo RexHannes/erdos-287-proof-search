@@ -1,11 +1,13 @@
 # R12 manuscript source
 
-The full journal LaTeX source is stored as three gzip/base64 text parts so that the repository update remains text-only and reviewable through the connected GitHub interface.
+The full journal LaTeX source is stored as gzip/base64 text chunks so that the repository update remains text-only and byte-verifiable through the connected GitHub interface.
 
 Reconstruct it from the repository root with:
 
 ```bash
-cat .r12-src/erdos287_r12.tex.gz.b64.part00 \
+cat .r12-src/erdos287_r12.tex.gz.b64.head00 \
+    .r12-src/erdos287_r12.tex.gz.b64.head01 \
+    .r12-src/erdos287_r12.tex.gz.b64.head02 \
     .r12-src/erdos287_r12.tex.gz.b64.part01 \
     .r12-src/erdos287_r12.tex.gz.b64.part02 \
   | base64 -d | gzip -dc \
@@ -18,7 +20,7 @@ Expected SHA-256 of the reconstructed source:
 62bbb029fa34cc0f251e6be35c97adaf399ac6811664fdc8cb037c7b09904b31
 ```
 
-The GitHub Actions workflow `build-erdos287-effectivity-r12.yml` reconstructs this source and compiles the PDF as a workflow artifact. The locally audited reference PDF has SHA-256
+The GitHub Actions workflow `build-erdos287-effectivity-r12.yml` performs this reconstruction, verifies the hash, and compiles the PDF as a workflow artifact. The locally audited reference PDF has SHA-256
 
 ```text
 c84f0516896794ade6d93a0c926cd5d599ce3a922a7fbe166356e8ea89b0b324

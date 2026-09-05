@@ -1,191 +1,146 @@
-# Erdős Problem #287 — Authoritative Current Status
+# Erdős Problem #287 — Current Status
 
-**Checkpoint:** 2 September 2026  
-**Public verdict:** **ERDŐS #287: OPEN.**
+**Checkpoint:** 5 September 2026  
+**Global verdict:** **OPEN — no solution claimed.**
 
-This file is the controlling concise status ledger. Historical R4/R5/R7/R9 manuscripts and earlier status files remain preserved for provenance. The latest public-review research delta is [`ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md`](ERDOS287_PUBLIC_REVIEW_R10_02SEP_TWO_LANE_FCL_DELTA.md).
+This is the concise public status file. It distinguishes the **latest audited baseline** from newer **live candidate research**. Where a candidate snapshot and an audited release differ, the audited release controls until a later independent audit promotes the candidate result.
 
-## Unconditional / formal bank
+## 1. Audited baseline — R12 effectivity synthesis
 
-- The machine-checked finite exclusion through maximum denominator `M <= 4,000,000,000` is unchanged.
-- Existing Lean/Aristotle safe banks remain valid only under their stated hypotheses.
-- Paper/research analytic closure is **not** silently promoted to Lean theoremhood. Explicit analytic/source interfaces remain uninhabited unless a dependency-complete formal proof has actually been supplied.
+The current independently audited release is:
 
-## Paper/research bank now closed
+[`paper/audited-release/2026-09-05-r12/README.md`](paper/audited-release/2026-09-05-r12/README.md)
 
-The following are banked at the paper/research level under their exact source dictionaries:
+Its exact directed capacity ledger is
 
 ```text
-287-K0-SP2-REGULAR-PERRON-SMOOTH-MOBIUS-CORRELATION45
-287-K0-SP2-UNIFORM-FRAGMENTATION-REASSEMBLY45
-FULL-SOURCE-LOCAL-ANALYTIC-KERNEL45          [for already-typed packets]
-GLOBAL-BSRC-COMPARISON-MARGIN45              [asymptotic]
-N1-BSRC-DICTIONARY                           [asymptotic]
-E_M = o(B_X)                                 [asymptotic]
-FIXEDCERTIFICATE-N2-LAMBDA-COLLAR45          [fixed-epsilon asymptotic]
-FOUR-ERROR FIXED-CERTIFICATE TRANSFERENCE
-FCL_W(M/2) -> WindowPairSupply(M), M >= 12
+AUDITED TARGET:       8.860650000e-7
+AUDITED SUBTOTAL:     5.257263872e-7
+AUDITED REMAINING:    3.603386128e-7
 ```
 
-### Physical N2 Lambda collar
+with the exact identity
 
-The physical von Mangoldt-weighted `N_2` source is handled directly; the Ford bounded-sequence shortcut is not used. The banked result is
+\[
+C_{\rm cert}+C_{\rm rem}=C_{\rm target}.
+\]
 
-```math
-E_2/B_X <= K_collar * epsilon + o(1),
-```
-
-and for one fixed sufficiently small `epsilon`, eventually
-
-```math
-E_2 <= (m_epsilon/8) B_X.
-```
-
-No explicit numerical `epsilon`, `K_collar`, or large-`X` threshold is claimed yet.
-
-### Bsrc / N1 / comparison margin
-
-The physical comparison is
-
-```math
-B_src(n)=S_2\prod_{p|n,\,p>2}(p-1)/(p-2),
-```
-
-with
-
-```math
-b_X(n)=4W(n/X)B_src(n).
-```
-
-The latest source audit gives
-
-```math
-E_M=o(B_X),
-```
-
-and
-
-```math
-B_X=(4S_2\int W+o(1))X/log X.
-```
-
-The Ford limiting margin satisfies `m_0 >= 6e-6`, and the support-truncated perturbed certificate has positive margin for sufficiently small fixed `epsilon`.
-
-## Exact four-error FCL algebra
-
-The controlling physical inequality is
-
-```math
-primeMass >= m_epsilon B_X - E_T - E_L - E_2 - E_M.
-```
-
-There is no factor `3` multiplying the four separate errors in this formulation.
-
-Since `E_2` and `E_M` are now controlled asymptotically, the unresolved asymptotic FCL work is the source-exact derivation of `E_T` and `E_L` from the banked analytic owners.
-
-## Correct Ford source architecture — two raw lanes
-
-A hostile source audit superseded the old single-master-index picture.
+### Audited nodes
 
 ```text
-I_raw = I_Tot disjoint_union I_U.
+V < 1000 edge:
+    CLOSED — FINITE-CERTIFIED / AUDITED
+
+complete-period endpoint main:
+    CLOSED — KERNEL-PROVED / FINITE-CERTIFIED / AUDITED
+    C_endpoint < 469/75000
+
+aggregate sufficient target:
+    C_agg <= 69/5000
+    ANALYTICALLY-PROVED / CONDITIONAL implication
+    physical aggregate estimate itself OPEN
+
+remaining covariance allowance:
+    283/37500
+
+required physical residual:
+    C_F + 2 C_ED + C_DD + C_S < 283/37500
+    OPEN
+
+medium-k:
+    STRICTLY REDUCED / OPEN
+
+two-high:
+    OPEN / NOT ENTERED
+
+signed floor:
+    OPEN
+
+Maynard effectivization:
+    OPEN / NOT ENTERED
+
+Erdős #287:
+    OPEN
 ```
 
-- `I_Tot` reconstructs the full `T_X` correlation and is sourced through Ford–Maynard Lemma 7.21 / Type-I machinery.
-- `I_U` reconstructs the leakage `L_X`; Proposition 7.22 is the `U`-lane expansion and is the lane carrying Type-II subproduct bookkeeping.
+The outer coefficient `lambda(b)` is part of the physical norm and may not be dropped. The factor `2` in front of `C_ED` is mandatory.
 
-Only the `U` lane carries the nonempty selected-subproduct family `mathcal E` and a deterministic distinguished `E_*(mathcal E)`. Selected-E data must not be fabricated on the `Tot` lane.
+## 2. Latest live candidate frontier — not audited into R12
 
-Continuous Perron/Mellin ordinates remain bound integration variables inside finitely indexed contour packets rather than becoming elements of a finite discrete source index.
+The newest research-session snapshot is recorded separately at:
 
-## Correct owner typing — one copy versus two copies
+[`frontier/2026-09-05-static-ramanujan/FRONTIER.md`](frontier/2026-09-05-static-ramanujan/FRONTIER.md)
 
-`C0`, `Transverse`, and `bDiagonal` are two-copy dispersion classifications. They depend on variables such as
-
-```math
-Delta=t1*n2-t2*n1
-```
-
-and on the relation between `b1` and `b2`; they therefore cannot be unique owners of a one-copy physical source row.
-
-The correct hierarchy is
+Its current candidate ledger is
 
 ```text
-one-copy raw packet
-  -> Owner1 in {LowQ, Pascadi, Local}, when source-legitimate
-  -> otherwise source-exact Cauchy/dispersion
-  -> two-copy descendant
-  -> shared-gcd formation
-  -> proof-local Omega_H partition
-  -> Owner2 in {C0, Transverse, bDiagonal, Local}.
+LATEST UNAUDITED / CANDIDATE FRONTIER:
+    static Ramanujan r > 200 signed tail
+
+LATEST CANDIDATE SUBTOTAL:
+    6.341463872e-7
+
+LATEST CANDIDATE GLOBAL CAPACITY:
+    2.519186128e-7
+
+primitive/static r <= 200:
+    CANDIDATE-CLOSED / awaiting independent audit
+
+moving Ramanujan window:
+    CANDIDATE-REMOVED / superseded by static freeze
+
+static signed r > 200 tail:
+    OPEN
+
+medium-k:
+    STRICTLY REDUCED / OPEN
+
+two-high:
+    NOT ENTERED
+
+signed floor:
+    OPEN
+
+Maynard:
+    NOT ENTERED
+
+Erdős #287:
+    OPEN
 ```
 
-The proof-local shared-gcd coordinate is introduced only after two copies exist.
+> **Candidate numbers do not supersede the audited R12 ledger until independently reviewed.**
 
-## Running master-source refinement
+In particular, `6.341463872e-7` and `2.519186128e-7` are not certified R12 numbers and must not be quoted as audited capacity.
 
-The currently running source audit has exposed a further typing obstruction in the previous compiler target: the `Tot` lane actually follows Lemma 7.21 / Type-I, while the three dispersion owners cover a specific K0 smooth-parent two-copy normal form. The run is now locating the first literal coefficient-dictionary mismatch.
+## 3. Corrections / firewalls that remain active
 
-This is **not** a retraction of the banked C0/transverse/`b`-diagonal estimates. It means the previous demand that every hard raw packet enter one common two-copy normal form was too strong.
+The following statements are retired or prohibited:
 
-The controlling compiler target remains, in corrected two-lane form,
+1. unweighted per-fibre `C_joint <= 0.09` — **FALSE**; a one-point physical fibre gives `C_joint >= 9/64`;
+2. inserting the global singular-series factor independently at each prime — **SOURCE-MISMATCHED**;
+3. retaining both the old `V<50` charge and the `V<1000` replacement — **DOUBLE COUNTING**;
+4. combining the full half-divisor replacement chart with the incremental medium chart — **INVALID**, because they are alternative decompositions;
+5. using `Z(s,s)=0` as a bound for the directed anti-diagonal Perron truncation — **INVALID INFERENCE**;
+6. identifying the complete-period endpoint main with the complete joined covariance — **INVALID INFERENCE**.
 
-```text
-FORD-Hepsilon-TWOLANE-RAWPACKET-TO-TWOCOPY-TYPEDOWNER-REFINEMENT45
-```
+See [`CORRECTIONS_AND_RETRACTIONS.md`](CORRECTIONS_AND_RETRACTIONS.md) and the R12 audited status ledger.
 
-with the proviso that only source-legitimate hard descendants are sent into the two-copy dispersion owner tree.
+## 4. Formal verification firewall
 
-## Downstream status
+The formal source tree remains at [`RequestProject/`](RequestProject/). The R12 formal map records which results are kernel-checked and where the formal scope stops.
 
-```text
-physical N2 Lambda collar        CLOSED asymptotically
-Bsrc / N1 / E_M                  CLOSED asymptotically
-four-error transference          CLOSED
-FCL -> WindowPair, M>=12         CLOSED mathematically
-E_T / E_L source compilation     OPEN
-asymptotic FCL                   OPEN pending E_T/E_L
-explicit threshold / finite splice OPEN
-Erdos287ClosureInputs            UNINHABITED
-Erdos287Statement                OPEN
-```
+A Lean theorem for a finite algebraic identity does not automatically establish an infinite Euler product, a contour shift, an analytic estimate, or the existence of a populated physical certificate. Conditional compilers remain conditional until their analytic inputs are supplied.
 
-## Effectivity / explicit-threshold firewall
+## 5. Source-of-truth order
 
-The final formal splice requires an explicit `M0` with
+For public status questions, read the repository in this order:
 
-```text
-M0 <= 4,000,000,000
-```
+1. `CURRENT_STATUS.md` and `CLAIMS_LEDGER.md` for the concise public state;
+2. the latest audited release in `paper/audited-release/` for mathematical detail and exact capacity;
+3. `RequestProject/` plus the formal module map for kernel-checked scope;
+4. `frontier/` for newer candidate research;
+5. `archive/` for historical provenance and superseded routes.
 
-and eventual `WindowPairSupply` for all `M >= M0`. This is a last-mile explicit-constant problem, not another Type-II theorem. It should be finalized only after the asymptotic FCL source compiler is closed.
+The former 2 September R10 `CURRENT_STATUS.md` has been preserved in the historical archive and no longer controls the public frontier.
 
-## Current dependency chain
-
-```text
-Tot lane -> Lemma 7.21 / Type-I dictionary
-                 \
-                  > exact E_T/E_L source compiler
-                 /
-U lane -> Proposition 7.22 / selected-E hard packets
-       -> source-legitimate two-copy descendants
-       -> C0 / Transverse / bDiagonal / Local
-
-N2 collar CLOSED + Bsrc/N1/E_M CLOSED
-                 |
-                 v
-          asymptotic FCL
-                 |
-                 v
-WindowPairSupply (already closed from FCL, M>=12)
-                 |
-                 v
-explicit threshold / finite splice
-                 |
-                 v
-Erdos287Statement
-```
-
-## Erdős #287
-
-**OPEN.** No unconditional large-`M` theorem, no explicit final `M0`, and no `Erdos287ClosureInputs` inhabitant are claimed.
+**ERDŐS PROBLEM #287 REMAINS OPEN.**

@@ -1,47 +1,50 @@
-# Live Candidate Frontier — Static Ramanujan Signed Tail
+# Historical Candidate Snapshot — Static Ramanujan Signed Tail
+
+> **SUPERSEDED AS THE CONTROLLING FRONTIER.** The current live proof-search parent is [`../current-parent/`](../current-parent/), namely the signed `R_012 = j=0+j=1+active j=2` source. This snapshot is retained for research archaeology and possible reusable local lemmas; superseded does **not** mean false or proved.
 
 **Date:** 5 September 2026  
-**Evidence class:** **LIVE CANDIDATE / NOT YET INDEPENDENTLY AUDITED**  
+**Evidence class:** **HISTORICAL LIVE CANDIDATE / NOT INDEPENDENTLY AUDITED INTO R12**  
 **Global verdict:** **Erdős Problem #287 remains OPEN.**
 
-This file records the latest research-session snapshot separately from the R12 audited release. Nothing in this file changes the audited R12 capacity ledger until an independent audit promotes it.
+This file records an earlier same-day research snapshot separately from the R12 audited release. Nothing in this file changes the audited R12 capacity ledger unless independently promoted.
 
-## Candidate ledger
+## Historical candidate ledger
 
 ```text
-Audited R12 subtotal:               5.257263872e-7
-Audited R12 remaining capacity:     3.603386128e-7
+Audited R12 subtotal:                5.257263872e-7
+Audited R12 remaining capacity:      3.603386128e-7
 
-Candidate subtotal:                 6.341463872e-7
-Candidate remaining global capacity:2.519186128e-7
+Historical candidate subtotal:       6.341463872e-7
+Historical candidate remaining:      2.519186128e-7
 ```
 
-The second pair is **candidate-only**.
+The second pair is **candidate-only and superseded as the current proof-search ledger**.
 
-## Candidate reduction
+## Historical candidate reduction
 
 ```text
 primitive/static r <= 200:
-    CANDIDATE-CLOSED
-    independent audit pending
+    CANDIDATE-CLOSED at this checkpoint
+    independent audit was pending
 
 moving Ramanujan window:
     CANDIDATE-REMOVED / SUPERSEDED
 
 static signed r > 200 tail:
-    OPEN — controlling live candidate residual
+    OPEN in this coordinate chart
+    NO LONGER the controlling top-level frontier
 ```
 
-The live research direction freezes the relevant Ramanujan coefficient structure rather than paying again for a moving-window formulation. The exact physical signed tail above `r=200` remains the point requiring proof.
+The later source reassembly treats the old covariance / all-`q` / Ramanujan / medium-sector charts as coordinates of a more direct signed selector parent. Therefore the static `r>200` tail is not the theorem future proof-search should automatically attack first.
 
-## Downstream state
+## Downstream state at this historical checkpoint
 
 ```text
 medium-k:
-    STRICTLY REDUCED / OPEN
+    STRICTLY REDUCED / OPEN in this chart
 
 two-high:
-    NOT ENTERED
+    NOT ENTERED in this chart
 
 signed floor:
     OPEN
@@ -53,14 +56,13 @@ Erdős #287:
     OPEN
 ```
 
-## Promotion rule
+## Current navigation
 
-Before any candidate closure or candidate capacity is moved into `CURRENT_STATUS.md` as an audited fact, it should receive:
+For the current theorem graph, use:
 
-1. an exact source/dictionary check;
-2. a numerical/certificate replay where applicable;
-3. an independent hostile audit of constants and double-counting;
-4. a reconciliation against the R12 exact directed ledger;
-5. an update to `CLAIMS_LEDGER.md` identifying the new audited owner.
+- [`../../PROOF_MAP.md`](../../PROOF_MAP.md)
+- [`../current-parent/`](../current-parent/)
+- [`../candidate-results/`](../candidate-results/)
+- [`../../graveyard/superseded/`](../../graveyard/superseded/)
 
-Until then, the audited baseline remains R12.
+This file is intentionally preserved rather than deleted so that the transition from Ramanujan coordinates to the signed selector parent remains reviewable.

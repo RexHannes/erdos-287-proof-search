@@ -1,0 +1,26 @@
+name: Lean finite 1e60 certificate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - formal/finite-1e60-lean
+    paths:
+      - 'RequestProject/Erdos287/PrimeProbe1e60.lean'
+      - 'RequestProject/Erdos287/Finite1e60*.lean'
+      - '.github/workflows/lean-finite-1e60.yml'
+
+jobs:
+  prime-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-mathlib-cache: true
+          use-github-cache: true
+      - name: Check largest certificate primes
+        run: lake build RequestProject.Erdos287.PrimeProbe1e60

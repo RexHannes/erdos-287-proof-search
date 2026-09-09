@@ -34,13 +34,15 @@ theorem windowPairSupply_of_safePrimePair
   have hwv : M / q ^ 1 ≤ 3 := by
     rw [pow_one]
     exact div_le_of_lt_mul hqpos (by omega)
+  have hwu9 : M / P ^ 1 ≤ 9 := le_trans hwu (by omega)
+  have hwv9 : M / q ^ 1 ≤ 9 := le_trans hwv (by omega)
   have hcu : CVal (M / P ^ 1) < P := by
     have hc := CVal_le_three_of_le_two hwu
     omega
   have hcv : CVal (M / q ^ 1) < q := by
     have hc := CVal_le_eleven_of_le_three hwv
     omega
-  refine ⟨P, P, 1, q, 1, hP, hq, by omega, by omega, ?_, ?_, hwu, hcu, hwv, hcv, hhi, hlo⟩
+  refine ⟨P, P, 1, q, 1, hP, hq, by omega, by omega, ?_, ?_, hwu9, hcu, hwv9, hcv, hhi, hlo⟩
   · simp
   · rw [pow_one]
     refine ⟨2, ?_⟩

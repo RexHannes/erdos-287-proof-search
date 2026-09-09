@@ -6,6 +6,11 @@ name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
 rev = "v4.28.0"
 
+[[require]]
+name = "PrimeCert"
+git = "https://github.com/b-mehta/PrimeCert.git"
+rev = "f44bd20f85905af5a49c5da53cb4f7411288b71a"
+
 [[lean_lib]]
 name = "RequestProject"
 globs = ["RequestProject.+"]

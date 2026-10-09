@@ -1,0 +1,99 @@
+import RequestProject.Erdos287.ResearchBankV27.DecoratedMaynardSetup
+import RequestProject.Erdos287.ResearchBankV27.OuterInnerSeparation
+import RequestProject.Erdos287.ResearchBankV27.CommonCauchy
+import RequestProject.Erdos287.ResearchBankV27.GroupedCoefficient
+import RequestProject.Erdos287.ResearchBankV27.RepresentationMoment
+import RequestProject.Erdos287.ResearchBankV27.DISpectralProvider
+import RequestProject.Erdos287.ResearchBankV27.DecoratedLemma
+import RequestProject.Erdos287.ResearchBankV27.FiniteLabelEnergy
+import RequestProject.Erdos287.ResearchBankV27.CRTColourOrbit
+import RequestProject.Erdos287.ResearchBankV27.SmoothFrequencyRecovery
+import RequestProject.Erdos287.ResearchBankV27.CleanNonzero
+import RequestProject.Erdos287.ResearchBankV27.GlobalConductorSum
+import RequestProject.Erdos287.ResearchBankV27.Ledger
+
+/-!
+# Erdős #287 — Research Bank V27: axiom audit
+
+INTERNAL #287 RESEARCH PROGRAMME ONLY.  **Erdős #287 is `OPEN` here and is not claimed.**
+
+`#print axioms` for every theorem of Research Bank V27 (76 theorems).  Expected output:
+only `propext`, `Classical.choice`, `Quot.sound` (or subsets).
+-/
+
+#print axioms Erdos287.ResearchBankV27.DecoratedMaynardSetup.clean_substitution
+#print axioms Erdos287.ResearchBankV27.DecoratedMaynardSetup.rpow_pow_nat
+#print axioms Erdos287.ResearchBankV27.DecoratedMaynardSetup.delta1_rpow
+#print axioms Erdos287.ResearchBankV27.DecoratedMaynardSetup.delta2_rpow
+#print axioms Erdos287.ResearchBankV27.DecoratedMaynardSetup.delta3_rpow
+#print axioms Erdos287.ResearchBankV27.DecoratedMaynardSetup.rangeConditions_iff_exponents
+#print axioms Erdos287.ResearchBankV27.OuterInnerSeparation.decoration_firewall
+#print axioms Erdos287.ResearchBankV27.OuterInnerSeparation.joint_dependence_allowed
+#print axioms Erdos287.ResearchBankV27.OuterInnerSeparation.product_cutoff_separation
+#print axioms Erdos287.ResearchBankV27.OuterInnerSeparation.separated_inner_coeff_bounded
+#print axioms Erdos287.ResearchBankV27.CommonCauchy.common_cauchy
+#print axioms Erdos287.ResearchBankV27.CommonCauchy.decorated_cauchy
+#print axioms Erdos287.ResearchBankV27.CommonCauchy.decorated_cauchy_normalized
+#print axioms Erdos287.ResearchBankV27.CommonCauchy.cauchy_direction_audit
+#print axioms Erdos287.ResearchBankV27.GroupedCoefficient.energy_eq_sum_pairs
+#print axioms Erdos287.ResearchBankV27.GroupedCoefficient.grouped_expansion
+#print axioms Erdos287.ResearchBankV27.GroupedCoefficient.concrete_grouping_ell
+#print axioms Erdos287.ResearchBankV27.RepresentationMoment.repCount_nonneg
+#print axioms Erdos287.ResearchBankV27.RepresentationMoment.bPsi_norm_le
+#print axioms Erdos287.ResearchBankV27.RepresentationMoment.bPsi_L2_le
+#print axioms Erdos287.ResearchBankV27.RepresentationMoment.same_rep_relation
+#print axioms Erdos287.ResearchBankV27.RepresentationMoment.antidiagonal_card
+#print axioms Erdos287.ResearchBankV27.RepresentationMoment.diagonal_count_le
+#print axioms Erdos287.ResearchBankV27.DISpectral.degenerateForm_admissible
+#print axioms Erdos287.ResearchBankV27.DISpectral.degenerateForm_not_DI
+#print axioms Erdos287.ResearchBankV27.DISpectral.DI_not_automatic
+#print axioms Erdos287.ResearchBankV27.DISpectral.unrestricted_provider_false
+#print axioms Erdos287.ResearchBankV27.DISpectral.admissible_delta_bounds
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.sqrt_add_le_sqrt_add
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.sqrt_rpow_half
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.mass_nonneg
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.decorated_energy_bound
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.decorated_master_bound
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.rpow_mono_exp
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.first_part_saving
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.second_part_saving
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.energy_instantiation
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.decorated_conservative
+#print axioms Erdos287.ResearchBankV27.DecoratedLemma.decorated_conservative_linear
+#print axioms Erdos287.ResearchBankV27.FiniteLabelEnergy.label_energy_le
+#print axioms Erdos287.ResearchBankV27.FiniteLabelEnergy.labelled_cauchy
+#print axioms Erdos287.ResearchBankV27.FiniteLabelEnergy.labelled_sqrt_cost
+#print axioms Erdos287.ResearchBankV27.FiniteLabelEnergy.label_energy_not_le_max
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.dvd_mul_iff_div_gcd
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.orbit_card
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.orbit_card_le
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.eD_norm
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.colourPhase_norm_le
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.colour_mem_orbit
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.labelCoeff_norm_le
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.coloured_eq_labelled
+#print axioms Erdos287.ResearchBankV27.CRTColourOrbit.colour_sqrt_phi_bound
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.reciprocity_dvd
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.reciprocity_frac
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.reciprocity_instance
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.real_correction_conditional
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.real_correction_exponent_facts
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.fixed_J_exists
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.frequency_tail_absorbed
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.frequency_cap_conditional
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.colour_partial_summation
+#print axioms Erdos287.ResearchBankV27.SmoothFrequencyRecovery.smooth_recovery_conditional
+#print axioms Erdos287.ResearchBankV27.CleanNonzero.clean_state_bound
+#print axioms Erdos287.ResearchBankV27.CleanNonzero.clean_global_bound
+#print axioms Erdos287.ResearchBankV27.CleanNonzero.log_power_absorbed
+#print axioms Erdos287.ResearchBankV27.CleanNonzero.clean_nonzero_derived
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.denominator_split
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.exact_one_over_d
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.fixed_lifted_scale_factor
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.fixing_Q0_alone_invalid
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.global_aggregation
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.clean_energy_saving
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.clean_discrepancy_saving
+#print axioms Erdos287.ResearchBankV27.GlobalConductorSum.global_saving_rpow
+#print axioms Erdos287.ResearchBankV27.Ledger.v27_final_status
+#print axioms Erdos287.ResearchBankV27.Ledger.v27_bank_certificate

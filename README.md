@@ -4,6 +4,8 @@
 
 This repository contains the formal, analytic, computational, audit, and proof-search work for Erdős Problem #287. The public information architecture is organized by **mathematical role**, not by revision number.
 
+**Source update, 9 October 2026:** the missing Aristotle formal modules and complete supplied reports are now indexed in [the source-sync record](docs/ARISTOTLE_SYNC_2026-10-09.md). This adds reproducible source material and conditional compilers; Erdős #287 remains open, and the earlier independently audited baseline is not silently replaced.
+
 ## The problem
 
 For

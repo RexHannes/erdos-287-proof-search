@@ -1,0 +1,127 @@
+import RequestProject.Erdos287.ResearchBankV22.CellColouring
+import RequestProject.Erdos287.ResearchBankV22.CompletedPositiveWeight
+import RequestProject.Erdos287.ResearchBankV22.ExceptionalPrimeSet
+import RequestProject.Erdos287.ResearchBankV22.FirstForbiddenPrefix
+import RequestProject.Erdos287.ResearchBankV22.IndependentFactorization
+import RequestProject.Erdos287.ResearchBankV22.Ledger
+import RequestProject.Erdos287.ResearchBankV22.PackingRanges
+import RequestProject.Erdos287.ResearchBankV22.PositiveSieveParameters
+import RequestProject.Erdos287.ResearchBankV22.RosserCostProvider
+import RequestProject.Erdos287.ResearchBankV22.RoundedRoughSieve
+import RequestProject.Erdos287.ResearchBankV22.SmallPrimeUpperSieve
+
+/-!
+# Erdős #287 — Research Bank V22: axiom audit
+
+INTERNAL #287 RESEARCH PROGRAMME ONLY.  **Erdős #287 is `OPEN` here and is not claimed.**
+
+`#print axioms` for every theorem of Research Bank V22 (106 theorems).  Expected output:
+only `propext`, `Classical.choice`, `Quot.sound` (or subsets).
+-/
+
+#print axioms Erdos287.ResearchBankV22.CellColouring.conv_collapse
+#print axioms Erdos287.ResearchBankV22.CellColouring.conv_oneBounded_of_disjoint
+#print axioms Erdos287.ResearchBankV22.CellColouring.fact3_pos
+#print axioms Erdos287.ResearchBankV22.CellColouring.pascal3
+#print axioms Erdos287.ResearchBankV22.CellColouring.card_eval_eq
+#print axioms Erdos287.ResearchBankV22.CellColouring.cnt_insert
+#print axioms Erdos287.ResearchBankV22.CellColouring.pat_insert
+#print axioms Erdos287.ResearchBankV22.CellColouring.pat_update
+#print axioms Erdos287.ResearchBankV22.CellColouring.N_insert
+#print axioms Erdos287.ResearchBankV22.CellColouring.patCond_dec
+#print axioms Erdos287.ResearchBankV22.CellColouring.piProb_insert
+#print axioms Erdos287.ResearchBankV22.CellColouring.card_pattern
+#print axioms Erdos287.ResearchBankV22.CellColouring.G_zero_or_one
+#print axioms Erdos287.ResearchBankV22.CellColouring.G_oneBounded
+#print axioms Erdos287.ResearchBankV22.CellColouring.G_supported
+#print axioms Erdos287.ResearchBankV22.CellColouring.G_supported_rough
+#print axioms Erdos287.ResearchBankV22.CellColouring.colourClass_disjoint
+#print axioms Erdos287.ResearchBankV22.CellColouring.cnt_filter_colour
+#print axioms Erdos287.ResearchBankV22.CellColouring.colourConv_eq
+#print axioms Erdos287.ResearchBankV22.CellColouring.colouring_mass_one
+#print axioms Erdos287.ResearchBankV22.CellColouring.piConst_pos
+#print axioms Erdos287.ResearchBankV22.CellColouring.exact_colouring_identity
+#print axioms Erdos287.ResearchBankV22.CellColouring.piProb_inv_le
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.dsum_conv_eq
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.dsum_conv_disjoint
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.conv_supported
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.muE_supported
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.dsum_muE
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.dsum_completed_eq
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.dsum_completed_nonneg
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.dsum_completed_ge_survivor
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.LambdaNewPlus_nonneg
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.LambdaNewPlus_ge_survivor
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.LambdaNewPlus_supported
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.natDivSum_lift
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.natDivSum_LambdaNewPlus
+#print axioms Erdos287.ResearchBankV22.CompletedPositiveWeight.completed_support_budget
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.mem_excSet_prime
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.small_prime_mem
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.base_prime_mem
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.slope_prime_mem
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.diff_prime_mem
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.P_E_pos
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.not_dvd_P_E_of_not_mem
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.good_prime_gt
+#print axioms Erdos287.ResearchBankV22.ExceptionalPrimeSet.coprime_P_E_iff
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.firstFail_odd
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.above_eq_erase_of_min
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.firstFail_not_adm
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.adm_insert_min
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.firstFail_insert_iff
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.mobius_tail
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.mobius_tail_zero_or_one
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.dsum_ellW_classification
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.dsum_ellW_ge
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.dsum_ellW_nonneg
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.dsum_ellRd_ge
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.dsum_ellRd_nonneg
+#print axioms Erdos287.ResearchBankV22.FirstForbiddenPrefix.ellW_support_prod_le
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.supportedIn_inter
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.conv_assoc_disjoint
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.beta_G0_oneBounded
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.G1_G2_oneBounded
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.G1_G2_rough
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.coloured_weight_source_contract
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.colourConv_supported
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.colouredWeight_eq
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.colouring_factorization_identity
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.literal_cell_convolution_multiplicity_two
+#print axioms Erdos287.ResearchBankV22.IndependentFactorization.colour_convolution_le_one
+#print axioms Erdos287.ResearchBankV22.Ledger.v22_preserves_v21_ledger
+#print axioms Erdos287.ResearchBankV22.Ledger.v22_final_status
+#print axioms Erdos287.ResearchBankV22.Ledger.v22_erdos287_open
+#print axioms Erdos287.ResearchBankV22.PackingRanges.repaired_margins
+#print axioms Erdos287.ResearchBankV22.PackingRanges.margin_relations
+#print axioms Erdos287.ResearchBankV22.PackingRanges.budgets_pos
+#print axioms Erdos287.ResearchBankV22.PackingRanges.support_exponent_budget
+#print axioms Erdos287.ResearchBankV22.PackingRanges.rho_genuine_power
+#print axioms Erdos287.ResearchBankV22.PackingRanges.completed_weight_independent_of_HB_length
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.vartheta0_eq
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.rho_add_vartheta0
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.s0_eq
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.one_lt_s0
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.b_z_gt_half
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.rho_pos
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.nu_pos
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.nu_le_b_z
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.R_mul_nu_le
+#print axioms Erdos287.ResearchBankV22.PositiveSieveParameters.rho_exponent_not_o1
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.sum_univ_pull
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.divSum_pull
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.costU_eq_normCost
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.costU_mono
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.costU_conv
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.thinLayer_length_le_R
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.CnuR_nonneg
+#print axioms Erdos287.ResearchBankV22.RosserCostProvider.completed_cost_bound
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.dsum_inter
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.adm_empty
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.ellW_empty
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.ellW_abs_le
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.ellRd_supported
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.ellRd_oneBounded
+#print axioms Erdos287.ResearchBankV22.RoundedRoughSieve.roundingData_id
+#print axioms Erdos287.ResearchBankV22.SmallPrimeUpperSieve.smallUniverse_disjoint
+#print axioms Erdos287.ResearchBankV22.SmallPrimeUpperSieve.SmallPrimeRosserProvider.dsum_beta_nonneg

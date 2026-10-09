@@ -3,6 +3,8 @@
 **Checkpoint:** 5 September 2026  
 **Global verdict:** **OPEN — no solution claimed.**
 
+**Source-sync checkpoint, 9 October 2026:** additional Aristotle modules, including `CurrentTail`, `SourceChain` and the V100R4S W₄ ledger, are available. See [the source-sync record](docs/ARISTOTLE_SYNC_2026-10-09.md) for complete report sources, import provenance and verification. These sources contain conditional tail theorems and explicit open providers; this import does not promote them into an independently audited infinite-tail result. The 5 September baseline and route below are retained as their dated checkpoint.
+
 This file separates the **audited mathematical baseline** from the **current source-minimal proof-search route**. A newer dependency reassembly can change which theorem is strategically controlling without promoting unaudited subresults into the bank.
 
 ## 1. Thirty-second status

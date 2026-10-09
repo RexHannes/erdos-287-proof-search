@@ -1,0 +1,149 @@
+import RequestProject.Erdos287.ResearchBankV12.ConcreteParameters
+import RequestProject.Erdos287.ResearchBankV12.EndpointCounterfixture
+import RequestProject.Erdos287.ResearchBankV12.CompatibleCellsConcrete
+import RequestProject.Erdos287.ResearchBankV12.RestoredTypeIIEnvelope
+import RequestProject.Erdos287.ResearchBankV12.TypeIIWholeRectangle
+import RequestProject.Erdos287.ResearchBankV12.HBSelectionConcrete
+import RequestProject.Erdos287.ResearchBankV12.HBCaseI
+import RequestProject.Erdos287.ResearchBankV12.HBCaseII
+import RequestProject.Erdos287.ResearchBankV12.HBCaseIII
+import RequestProject.Erdos287.ResearchBankV12.HBFullSupportConcrete
+import RequestProject.Erdos287.ResearchBankV12.RoughSeedConcrete
+import RequestProject.Erdos287.ResearchBankV12.ConcreteAsymptoticGate
+import RequestProject.Erdos287.ResearchBankV12.Ledger
+
+/-!
+# Research Bank V12 — axiom audit
+
+`#print axioms` for every theorem of the V12 layer (126 theorems).  Expected output: only
+`propext`, `Classical.choice`, `Quot.sound` (or a subset).  No `sorryAx`, no native-evaluation
+axiom, no `Lean.trustCompiler`, no custom research axiom.
+-/
+
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.theta0_eq
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.theta0_pos
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.theta0_lt
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.epsilon0_pos
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.epsilon0_le
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.zeta_eq
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.zeta_pos
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.loss_eq
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.loss_lt
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.lam_eq_vartheta
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.vartheta_eq
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.lam_eq
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.vartheta_gt
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.pair_gap
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.lam_zeta
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.concreteParams_ζ
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.concreteParams_lam
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.concreteParams_θ₀
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.concreteParams_eq_repaired
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.agrees_with_v10
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.smallBV_iff_InBV
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.rStar_add_sStar
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.sStar_eq_v10
+#print axioms Erdos287.ResearchBankV12.ConcreteParameters.rStar_eq_v10
+#print axioms Erdos287.ResearchBankV12.EndpointCounterfixture.point_in_support
+#print axioms Erdos287.ResearchBankV12.EndpointCounterfixture.point_not_smallBV
+#print axioms Erdos287.ResearchBankV12.EndpointCounterfixture.point_margin_negative
+#print axioms Erdos287.ResearchBankV12.EndpointCounterfixture.top_corner_margin_positive
+#print axioms Erdos287.ResearchBankV12.EndpointCounterfixture.endpointOnlyHBArgument_false
+#print axioms Erdos287.ResearchBankV12.EndpointCounterfixture.topCorner_check_does_not_cover
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.detectorClasses_eq
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.detectorClasses_card
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.mem_detectorClasses_iff
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.lift_injective
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.detector_n₂_compatible
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.old_count_wrong
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.TypeIIInterface.saving_factor
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.fixtureA_card
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.fixtureB_card
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.fixtureB_classes
+#print axioms Erdos287.ResearchBankV12.CompatibleCellsConcrete.old_count_fails_concrete
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.e_eq_neg_g
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.term1_eq
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.term2_eq
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.term3_eq
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.envelope_le
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.envelope_nonneg
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.cauchy_compatible_factor
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.restoredTypeII_of_provider
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.caseII_powerSaving_of_provider
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.spectralProvider_zero
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.spectralProvider_not_automatic
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.indexMap_concrete
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.lowH_index
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.leading_le_highHNorm
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.prefactor_comparison
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.lowH_cheaper
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.diagonal_cheaper
+#print axioms Erdos287.ResearchBankV12.RestoredTypeIIEnvelope.lowH_without_prefactor_fails
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.g1_lower
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.g2_lower
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.g3_lower
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.nu_sub_s
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.s_sub_two_theta
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.one_sub_pos
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.worst_case_margins
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.all_gaps_ge
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.g1_is_affine
+#print axioms Erdos287.ResearchBankV12.TypeIIWholeRectangle.g1_bound_attained
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.concrete_selection
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.selection_without_length_bound
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.mobius_label_is_minimal
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.isPartialProduct_iff
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.caseI_fixture
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.caseII_fixture
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.maxSmooth_caseIII
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.caseIII_fixture
+#print axioms Erdos287.ResearchBankV12.HBSelectionConcrete.caseIII_fixture_only
+#print axioms Erdos287.ResearchBankV12.HBCaseI.sI_add_rI
+#print axioms Erdos287.ResearchBankV12.HBCaseI.rI_neg_no_box
+#print axioms Erdos287.ResearchBankV12.HBCaseI.rI_neg_iff
+#print axioms Erdos287.ResearchBankV12.HBCaseI.rapidDecay_margin
+#print axioms Erdos287.ResearchBankV12.HBCaseI.rapidDecay_declared_margin
+#print axioms Erdos287.ResearchBankV12.HBCaseI.typeI_domain_facts
+#print axioms Erdos287.ResearchBankV12.HBCaseI.reserve
+#print axioms Erdos287.ResearchBankV12.HBCaseI.caseI_routed
+#print axioms Erdos287.ResearchBankV12.HBCaseI.mu_one_rapidDecay
+#print axioms Erdos287.ResearchBankV12.HBCaseII.caseII_routed
+#print axioms Erdos287.ResearchBankV12.HBCaseII.caseII_reaches_outside_BV
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.dStar_eq_v10
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.overlap
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_ge_of_ge_B
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_ge_window_B
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_ge_window_lam
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_pos_on_typeII_window
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_ge_of_ge_dStar
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_337_pos
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.typeI_level_reserve
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_337_fails_on_full_window
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.typeI_covers_all_in_lam_branch
+#print axioms Erdos287.ResearchBankV12.HBCaseIII.g1_337_fails_in_lam_branch
+#print axioms Erdos287.ResearchBankV12.HBFullSupportConcrete.selection_available
+#print axioms Erdos287.ResearchBankV12.HBFullSupportConcrete.every_actual_HB_box_routed
+#print axioms Erdos287.ResearchBankV12.HBFullSupportConcrete.every_actual_HB_box_routed_with_margins
+#print axioms Erdos287.ResearchBankV12.HBFullSupportConcrete.fixtureBox_routed
+#print axioms Erdos287.ResearchBankV12.HBFullSupportConcrete.wf_truncation_firewall
+#print axioms Erdos287.ResearchBankV12.HBFullSupportConcrete.legal_cutoff_dataflow
+#print axioms Erdos287.ResearchBankV12.RoughSeedConcrete.rho_z_identity
+#print axioms Erdos287.ResearchBankV12.RoughSeedConcrete.mu_rho_z_identity
+#print axioms Erdos287.ResearchBankV12.RoughSeedConcrete.rho_z_apply
+#print axioms Erdos287.ResearchBankV12.RoughSeedConcrete.mu_rho_z_apply
+#print axioms Erdos287.ResearchBankV12.RoughSeedConcrete.roughSeedSW_external
+#print axioms Erdos287.ResearchBankV12.ConcreteAsymptoticGate.exact_gate
+#print axioms Erdos287.ResearchBankV12.ConcreteAsymptoticGate.mtSpecificAsymptotic_concrete
+#print axioms Erdos287.ResearchBankV12.ConcreteAsymptoticGate.concrete_hypotheses_satisfiable
+#print axioms Erdos287.ResearchBankV12.ConcreteAsymptoticGate.composition_does_not_construct_constants
+#print axioms Erdos287.ResearchBankV12.Ledger.embed_injective
+#print axioms Erdos287.ResearchBankV12.Ledger.v12_preserves_v11_ledger
+#print axioms Erdos287.ResearchBankV12.Ledger.v11_finite_architecture_history_preserved
+#print axioms Erdos287.ResearchBankV12.Ledger.v12New_no_closed
+#print axioms Erdos287.ResearchBankV12.Ledger.v12_frontier
+#print axioms Erdos287.ResearchBankV12.Ledger.v12_leanBank_implies_kernel
+#print axioms Erdos287.ResearchBankV12.Ledger.v12_external_not_kernel
+#print axioms Erdos287.ResearchBankV12.Ledger.step_baseNodes
+#print axioms Erdos287.ResearchBankV12.Ledger.derivable_eq
+#print axioms Erdos287.ResearchBankV12.Ledger.no_ledger_path_closes_erdos287_v12
+

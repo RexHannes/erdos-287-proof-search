@@ -1,0 +1,76 @@
+import RequestProject.Erdos287.ResearchBankV25.FixedModulusCentering
+import RequestProject.Erdos287.ResearchBankV25.FixedResidueEnergy
+import RequestProject.Erdos287.ResearchBankV25.GoodModulusClearing
+import RequestProject.Erdos287.ResearchBankV25.ExceptionalStateLocalization
+import RequestProject.Erdos287.ResearchBankV25.CorrectionAggregation
+import RequestProject.Erdos287.ResearchBankV25.LocalizationContract
+import RequestProject.Erdos287.ResearchBankV25.Counterfixtures
+import RequestProject.Erdos287.ResearchBankV25.Ledger
+
+/-!
+# Erdős #287 — Research Bank V25: axiom audit
+
+INTERNAL #287 RESEARCH PROGRAMME ONLY.  **Erdős #287 is `OPEN` here and is not claimed.**
+
+`#print axioms` for every theorem of Research Bank V25 (58 theorems).  Expected output:
+only `propext`, `Classical.choice`, `Quot.sound` (or subsets).
+-/
+
+#print axioms Erdos287.ResearchBankV25.FixedModulusCentering.indMod_mul
+#print axioms Erdos287.ResearchBankV25.FixedModulusCentering.indCop_mul
+#print axioms Erdos287.ResearchBankV25.FixedModulusCentering.indMod_congr
+#print axioms Erdos287.ResearchBankV25.FixedModulusCentering.full_centering_fixed_modulus_exact
+#print axioms Erdos287.ResearchBankV25.FixedModulusCentering.correction_term_needed
+#print axioms Erdos287.ResearchBankV25.FixedModulusCentering.centered_sum_split
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.fibre_one
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.fibre_pythagoras
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.conditioned_energy_le
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.overlap_fibre_card
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.overlap_pythagoras
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.prod_fibre_card
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.prod_fibre_sum
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.product_pythagoras
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.coprime_conditioned_energy_le
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.sum_units_ite
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.sum_units_prod_ite
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.coprime_iff_isUnit
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.localized_discrepancy_eq
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.crtUnits_val
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.natCast_eq_iff
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.full_discrepancy_eq
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.localized_energy_le_full
+#print axioms Erdos287.ResearchBankV25.FixedResidueEnergy.divisor_reindexing
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.clearing_identity_j
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.clearing_identity_k
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.physical_divisibility_j
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.physical_divisibility_prod
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.clearing_iff_of_coprime
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.betaLift_lattice
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.betaLift_off_lattice
+#print axioms Erdos287.ResearchBankV25.GoodModulusClearing.integer_map_on_lattice
+#print axioms Erdos287.ResearchBankV25.ExceptionalStateLocalization.alphaLoc_partition
+#print axioms Erdos287.ResearchBankV25.ExceptionalStateLocalization.indMod_natCast
+#print axioms Erdos287.ResearchBankV25.ExceptionalStateLocalization.indCop_natCast
+#print axioms Erdos287.ResearchBankV25.ExceptionalStateLocalization.sum_delta_eq_Disc
+#print axioms Erdos287.ResearchBankV25.ExceptionalStateLocalization.sum_localized_delta_eq_Disc
+#print axioms Erdos287.ResearchBankV25.CorrectionAggregation.full_eq_loc_add_corr
+#print axioms Erdos287.ResearchBankV25.CorrectionAggregation.correction_aggregation_conditional
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.fullE_nonneg
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.locE_nonneg
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.locE_le_fullE
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.single_le_locE
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.tauJ_nonneg
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.weighted_localized_le_full
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.weighted_cauchy
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.loc_bound
+#print axioms Erdos287.ResearchBankV25.LocalizationContract.zero_frequency_localized_bound
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.totient_three
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.count_residue
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.count_coprime
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.count_restricted
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.const_sequence_balanced
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.restricted_sequence_unbalanced
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.residue_restriction_breaks_SW
+#print axioms Erdos287.ResearchBankV25.Counterfixtures.slope_destroys_unit
+#print axioms Erdos287.ResearchBankV25.Ledger.v25_final_status
+#print axioms Erdos287.ResearchBankV25.Ledger.v25_bank_certificate

@@ -1,0 +1,34 @@
+OAI.LargePrimeGaps.siegelWalfisz : OAI.LargePrimeGaps.SiegelWalfisz
+OAI.LargePrimeGaps.bombieriVinogradov : OAI.LargePrimeGaps.BombieriVinogradov
+def OAI.LargePrimeGaps.SiegelWalfisz : Prop :=
+∀ (A B : ℝ),
+  0 < A →
+    0 < B →
+      ∃ M,
+        0 < M ∧
+          ∃ x₀,
+            1 < x₀ ∧
+              ∀ (x : ℝ),
+                x₀ ≤ x →
+                  ∀ (d : ℕ),
+                    0 < d →
+                      ↑d ≤ Real.log x ^ B →
+                        ∀ (χ : DirichletCharacter ℂ d),
+                          χ.IsPrimitive → ‖OAI.LargePrimeGaps.primeCharacterError x χ‖ ≤ M * x * Real.log x ^ (-A)
+def OAI.LargePrimeGaps.BombieriVinogradov : Prop :=
+∀ (A : ℝ),
+  0 < A →
+    ∃ b,
+      0 < b ∧
+        ∃ M,
+          0 < M ∧
+            ∃ x₀,
+              1 < x₀ ∧
+                ∀ (x : ℝ),
+                  x₀ ≤ x →
+                    ∑ q ∈ Finset.Icc 1 ⌊x ^ (1 / 2) * Real.log x ^ (-b)⌋₊, ↑(OAI.LargePrimeGaps.endpointError x q) ≤
+                      M * x * Real.log x ^ (-A)
+'OAI.LargePrimeGaps.siegelWalfisz' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.LargePrimeGaps.bombieriVinogradov' depends on axioms: [propext, Classical.choice, Quot.sound]
+'transcribed_SW_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'transcribed_BV_holds' depends on axioms: [propext, Classical.choice, Quot.sound]

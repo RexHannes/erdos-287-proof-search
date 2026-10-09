@@ -386,6 +386,16 @@ import RequestProject.Erdos287.TwoVariableZ
 import RequestProject.Erdos287.PerronAlgebra
 import RequestProject.Erdos287.IncrementalDirectedLedger
 import RequestProject.Erdos287.CurrentStatusEffectivity
+import RequestProject.Erdos287.CurrentStatusEffectivityMultiplicity
+import RequestProject.Erdos287.CurrentStatusEffectivityEarly4490
+import RequestProject.Erdos287.CurrentStatusEffectivityBoundedConductor
+import RequestProject.Erdos287.CurrentStatusEffectivityFrontierAudit
+import RequestProject.Erdos287.CurrentStatusLatest
+import RequestProject.Erdos287.Direct
+import RequestProject.Erdos287.Anchored
+import RequestProject.Erdos287.AnchoredV2
+import RequestProject.Erdos287.AnchoredV3
+import RequestProject.Erdos287.AnchoredV4
 
 open scoped BigOperators
 open scoped Real

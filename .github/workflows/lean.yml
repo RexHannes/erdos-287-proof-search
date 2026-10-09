@@ -1,0 +1,44 @@
+name: Lean formal source build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'RequestProject/**'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'scripts/erdos287_source_fit_audit.py'
+      - '.github/workflows/lean.yml'
+  pull_request:
+    paths:
+      - 'RequestProject/**'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - 'lake-manifest.json'
+      - 'scripts/erdos287_source_fit_audit.py'
+      - '.github/workflows/lean.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build all formal modules
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: true
+      - name: Replay W4 repair axiom audit
+        run: lake build RequestProject.Erdos287.SourceChain.RepairAudit
+      - name: Replay finite source-fit checks
+        run: python3 scripts/erdos287_source_fit_audit.py

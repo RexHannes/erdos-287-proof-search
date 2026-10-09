@@ -2,6 +2,8 @@
 
 > **Global status: OPEN. No solution is claimed.**
 
+**9 October source availability update:** [the Aristotle sync index](docs/ARISTOTLE_SYNC_2026-10-09.md) links the additional `CurrentTail` / `SourceChain` modules, exact W₄ written sources and conditional-provider reports. The map below remains the 5 September evidence/strategy checkpoint; importing later sources does not independently audit or close its open nodes.
+
 This is the canonical dependency map for deciding **what is proved, what is merely candidate, what is currently worth attacking, and what should not be reopened**.
 
 It deliberately separates two questions:

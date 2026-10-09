@@ -1,0 +1,113 @@
+import RequestProject.Erdos287.ResearchBankV13.FiniteRepresentationModel
+import RequestProject.Erdos287.ResearchBankV13.PrimeLayer
+import RequestProject.Erdos287.ResearchBankV13.HarmonicTwoHole
+import RequestProject.Erdos287.ResearchBankV13.AdjacentPrimeLayer
+import RequestProject.Erdos287.ResearchBankV13.PrimeCertificates
+import RequestProject.Erdos287.ResearchBankV13.FiniteIntervalCertificate
+import RequestProject.Erdos287.ResearchBankV13.DemonstrationPayload
+import RequestProject.Erdos287.ResearchBankV13.AuditedEndpoint
+import RequestProject.Erdos287.ResearchBankV13.UpdatedSplice
+import RequestProject.Erdos287.ResearchBankV13.EffectiveFrontier
+import RequestProject.Erdos287.ResearchBankV13.Ledger
+
+/-!
+# Research Bank V13 — axiom audit
+
+`#print axioms` for every theorem of the V13 layer (92 theorems).  Expected output: only
+`propext`, `Classical.choice`, `Quot.sound` (or a subset).  No `sorryAx`, no native-evaluation
+axiom, no `Lean.trustCompiler`, no custom research axiom.
+-/
+
+#print axioms Erdos287.ResearchBankV13.FiniteRepresentationModel.noCounterexampleUpTo_iff_finiteVerified
+#print axioms Erdos287.ResearchBankV13.FiniteRepresentationModel.noCounterexample_all_iff
+#print axioms Erdos287.ResearchBankV13.FiniteRepresentationModel.NoCounterexampleUpTo.mono
+#print axioms Erdos287.ResearchBankV13.FiniteRepresentationModel.noCounterexampleUpTo_4e9
+#print axioms Erdos287.ResearchBankV13.FiniteRepresentationModel.noCounterexampleUpTo_3
+#print axioms Erdos287.ResearchBankV13.FiniteRepresentationModel.mem_le_max
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.L_2
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.A_2
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.L_5
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.A_5
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.L_10
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.A_10
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.A_eq
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.num_le_A
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.C_le_A
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.primeLayer_exclusion
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.r_multiples
+#print axioms Erdos287.ResearchBankV13.PrimeLayer.coprime_L
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.eta_lt_exp
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.log_eta_lt_one
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.etaFloor_eq_floor
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.le_eta_mul_of_le_etaFloor
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.inv_succ_le_log_diff
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.harmonic_tail_le_log
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.cannot_cross_two_holes
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.two_hole_exclusion
+#print axioms Erdos287.ResearchBankV13.HarmonicTwoHole.interval_exclusion_of_adjacent_holes
+#print axioms Erdos287.ResearchBankV13.AdjacentPrimeLayer.familyA_interval
+#print axioms Erdos287.ResearchBankV13.AdjacentPrimeLayer.familyB_interval
+#print axioms Erdos287.ResearchBankV13.AdjacentPrimeLayer.familyB_outside_goodPrimeHalf
+#print axioms Erdos287.ResearchBankV13.AdjacentPrimeLayer.familyA_instance
+#print axioms Erdos287.ResearchBankV13.AdjacentPrimeLayer.etaFloor_347
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.cast_mod_of_dvd
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.exists_small_prime_factor
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.pocklington_sound
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.proth_sound
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.prothCheck_sound
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.pocklingtonCheck_sound
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.prime_13
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.prime_97
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.prime_173
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.prime_347
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.malformed_proth_rejected
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.malformed_pocklington_rejected
+#print axioms Erdos287.ResearchBankV13.PrimeCertificates.familyA_from_certificates
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.Chain.covers
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.FiniteIntervalCertificate.sound
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.IntervalRecord.sound
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.checkChain_sound
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.noCounterexampleUpTo_of_records
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.initialCoverage_4e9
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.noncontiguous_rejected
+#print axioms Erdos287.ResearchBankV13.IntervalCertificate.checkChain_rejects_gap
+#print axioms Erdos287.ResearchBankV13.DemonstrationPayload.demoRecords_length
+#print axioms Erdos287.ResearchBankV13.DemonstrationPayload.demo_chain_check
+#print axioms Erdos287.ResearchBankV13.DemonstrationPayload.demo_noCounterexampleUpTo
+#print axioms Erdos287.ResearchBankV13.DemonstrationPayload.demoCertificate_last
+#print axioms Erdos287.ResearchBankV13.DemonstrationPayload.demoEndpoint_lt
+#print axioms Erdos287.ResearchBankV13.AuditedEndpoint.concreteFinitePayload_eq
+#print axioms Erdos287.ResearchBankV13.AuditedEndpoint.externalRecord_not_theorem
+#print axioms Erdos287.ResearchBankV13.AuditedEndpoint.bankLeanReplayedEndpoint_sound
+#print axioms Erdos287.ResearchBankV13.AuditedEndpoint.checker_is_not_payload_replay
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.finite_eventual_splice
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.erdos287_of_splice
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.splice_exact_boundary
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.splice_gap_fixture
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.finite_certificate_not_eventual
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.eventual_without_threshold_does_not_splice
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.oldProvider_eventual
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.certificate_does_not_instantiate_architecture
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.routes_have_different_shapes
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.spliceInputV13_sound
+#print axioms Erdos287.ResearchBankV13.UpdatedSplice.missing_M_an_blocks_splice
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.current_M_an_none
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.splice_closes_of_future_constants
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.overlap_needed
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.v11_reasons_preserved
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.v13_reason_updated
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.v13_reason_justified
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.current_global_splice_blocked
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.finiteSide_not_blurred
+#print axioms Erdos287.ResearchBankV13.EffectiveFrontier.overlap_test_pending
+#print axioms Erdos287.ResearchBankV13.Ledger.v13_preserves_v12_ledger
+#print axioms Erdos287.ResearchBankV13.Ledger.v11_finite_architecture_history_preserved_v13
+#print axioms Erdos287.ResearchBankV13.Ledger.v13New_no_closed
+#print axioms Erdos287.ResearchBankV13.Ledger.v13_status_ledger
+#print axioms Erdos287.ResearchBankV13.Ledger.v13_leanBank_implies_kernel
+#print axioms Erdos287.ResearchBankV13.Ledger.v13_payload_not_kernel
+#print axioms Erdos287.ResearchBankV13.Ledger.step_baseNodes
+#print axioms Erdos287.ResearchBankV13.Ledger.derivable_eq
+#print axioms Erdos287.ResearchBankV13.Ledger.no_ledger_path_closes_erdos287_v13
+#print axioms Erdos287.ResearchBankV13.Ledger.all_regression_fixtures
+

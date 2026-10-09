@@ -1,0 +1,196 @@
+import RequestProject.Erdos287.ResearchBankV10.AsymptoticComposition
+import RequestProject.Erdos287.ResearchBankV10.EndpointCounterfixture
+import RequestProject.Erdos287.ResearchBankV10.ExponentGate
+import RequestProject.Erdos287.ResearchBankV10.FrozenFrontier
+import RequestProject.Erdos287.ResearchBankV10.HBSelection
+import RequestProject.Erdos287.ResearchBankV10.HBSupportCoverage
+import RequestProject.Erdos287.ResearchBankV10.Ledger
+import RequestProject.Erdos287.ResearchBankV10.Providers
+import RequestProject.Erdos287.ResearchBankV10.RoughSeedIdentities
+import RequestProject.Erdos287.ResearchBankV10.TypeIGroupedCoefficient
+import RequestProject.Erdos287.ResearchBankV10.TypeIICoefficient
+import RequestProject.Erdos287.ResearchBankV10.TypeIICompatibleCells
+import RequestProject.Erdos287.ResearchBankV10.TypeIIHighLow
+import RequestProject.Erdos287.ResearchBankV10.TypeIProvider
+import RequestProject.Erdos287.ResearchBankV10.TypeIRescaling
+import RequestProject.Erdos287.ResearchBankV10.TypeIRoughness
+import RequestProject.Erdos287.ResearchBankV10.WellFactorableCutoff
+
+/-!
+# Research Bank V10 — axiom audit
+
+`#print axioms` for every theorem of the V10 layer (170 theorems).  Expected output: only
+`propext`, `Classical.choice`, `Quot.sound` (or no axioms at all).  No `sorryAx`, no
+native-evaluation axiom, no `Lean.trustCompiler`, no custom research axiom.
+-/
+
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.logPowerSaving_abs
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.logPowerSaving_of_abs_le
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.level_gate_iff
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.mtSpecificAsymptotic_of_repairedProviders
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.repairedParams_lam
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.mtSpecific_at_repaired_parameters
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.providers_jointly_satisfiable
+#print axioms Erdos287.ResearchBankV10.AsymptoticComposition.composition_does_not_constrain_counterexamples
+#print axioms Erdos287.ResearchBankV10.EndpointCounterfixture.endpointCornerChecks_do_not_cover_support
+#print axioms Erdos287.ResearchBankV10.EndpointCounterfixture.cornerPoint_not_BV
+#print axioms Erdos287.ResearchBankV10.ExponentGate.theta0_eq
+#print axioms Erdos287.ResearchBankV10.ExponentGate.theta0_pos
+#print axioms Erdos287.ResearchBankV10.ExponentGate.theta0_lt
+#print axioms Erdos287.ResearchBankV10.ExponentGate.eps0_pos
+#print axioms Erdos287.ResearchBankV10.ExponentGate.eps0_le
+#print axioms Erdos287.ResearchBankV10.ExponentGate.loss_lt
+#print axioms Erdos287.ResearchBankV10.ExponentGate.vartheta_eq
+#print axioms Erdos287.ResearchBankV10.ExponentGate.vartheta_gt_gate
+#print axioms Erdos287.ResearchBankV10.ExponentGate.pair_coefficient_gap
+#print axioms Erdos287.ResearchBankV10.ExponentGate.gate_pass_real
+#print axioms Erdos287.ResearchBankV10.FrozenFrontier.frozenV9Bank_holds
+#print axioms Erdos287.ResearchBankV10.FrozenFrontier.erdos287Closed_iff_effectiveSplice
+#print axioms Erdos287.ResearchBankV10.HBSelection.le_foldr_max
+#print axioms Erdos287.ResearchBankV10.HBSelection.le_maxSmooth
+#print axioms Erdos287.ResearchBankV10.HBSelection.greedy_prefix
+#print axioms Erdos287.ResearchBankV10.HBSelection.sum_filter_add
+#print axioms Erdos287.ResearchBankV10.HBSelection.sum_le_length_mul
+#print axioms Erdos287.ResearchBankV10.HBSelection.length_mul_lt_sum
+#print axioms Erdos287.ResearchBankV10.HBSelection.hb_selection_list
+#print axioms Erdos287.ResearchBankV10.HBSelection.hb_selection
+#print axioms Erdos287.ResearchBankV10.HBSelection.no_case_of_singleton_one
+#print axioms Erdos287.ResearchBankV10.HBSelection.mobius_bound_needed
+#print axioms Erdos287.ResearchBankV10.HBSelection.sum_one_needed
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.CoverageParams.ζ_pos
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.CoverageParams.ζ_le
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.CoverageParams.lam_bounds
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.caseIII_overlap
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.caseIII_routed
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.dStar_le_lam
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.every_box_routed
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.caseII_params
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.affine_ge_min_1d
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.affine_ge_of_vertices
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.GapSystem.covers_rectangle
+#print axioms Erdos287.ResearchBankV10.HBSupportCoverage.corners_do_not_certify_outside
+#print axioms Erdos287.ResearchBankV10.Ledger.ofV8_injective
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_preserves_v9_ledger
+#print axioms Erdos287.ResearchBankV10.Ledger.v10New_no_closed
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_no_closed
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_no_reclassification
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_erdos287_open
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_frontier
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_proved_implies_kernel
+#print axioms Erdos287.ResearchBankV10.Ledger.v10_record_external_not_proved
+#print axioms Erdos287.ResearchBankV10.Ledger.step_baseNodes
+#print axioms Erdos287.ResearchBankV10.Ledger.derivable_eq
+#print axioms Erdos287.ResearchBankV10.Ledger.no_ledger_path_closes_erdos287_v10
+#print axioms Erdos287.ResearchBankV10.Ledger.every_edge_has_open_premise
+#print axioms Erdos287.ResearchBankV10.Providers.logPowerSaving_zero
+#print axioms Erdos287.ResearchBankV10.Providers.logPowerSaving_add
+#print axioms Erdos287.ResearchBankV10.Providers.logPowerSaving_sum
+#print axioms Erdos287.ResearchBankV10.Providers.not_logPowerSaving_sq
+#print axioms Erdos287.ResearchBankV10.Providers.typeICombinatorialFacts_holds
+#print axioms Erdos287.ResearchBankV10.Providers.compatibleCellFacts_holds
+#print axioms Erdos287.ResearchBankV10.Providers.reciprocalPhaseFacts_of_coprime
+#print axioms Erdos287.ResearchBankV10.Providers.seed_aggregate_of_SW
+#print axioms Erdos287.ResearchBankV10.Providers.boxI_typeI
+#print axioms Erdos287.ResearchBankV10.Providers.boxII_typeII
+#print axioms Erdos287.ResearchBankV10.Providers.boxI_BV
+#print axioms Erdos287.ResearchBankV10.Providers.zheng_zero
+#print axioms Erdos287.ResearchBankV10.Providers.zheng_not_automatic
+#print axioms Erdos287.ResearchBankV10.Providers.ordinaryBV_zero
+#print axioms Erdos287.ResearchBankV10.Providers.ordinaryBV_not_automatic
+#print axioms Erdos287.ResearchBankV10.Providers.typeI_zero
+#print axioms Erdos287.ResearchBankV10.Providers.typeI_not_automatic
+#print axioms Erdos287.ResearchBankV10.Providers.typeII_zero
+#print axioms Erdos287.ResearchBankV10.Providers.typeII_not_automatic
+#print axioms Erdos287.ResearchBankV10.Providers.gbv_not_automatic
+#print axioms Erdos287.ResearchBankV10.Providers.sw_not_automatic
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.primeInd_apply
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.primeInd_isMultiplicative
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.primeInd_prime_pow
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.moebius_prime_pow_int
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.rough_eq_zeta_mul
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.moebius_rough_eq
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.rankin_split
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.roughSeedSW_zero
+#print axioms Erdos287.ResearchBankV10.RoughSeedIdentities.roughSeedSW_not_automatic
+#print axioms Erdos287.ResearchBankV10.TypeIGroupedCoefficient.GroupedCoeff.lift_spectral_invariant
+#print axioms Erdos287.ResearchBankV10.TypeIGroupedCoefficient.not_factorsThrough_of_depends
+#print axioms Erdos287.ResearchBankV10.TypeIGroupedCoefficient.spectralDependent_fails_interface
+#print axioms Erdos287.ResearchBankV10.TypeIGroupedCoefficient.coeffSide_inhabits
+#print axioms Erdos287.ResearchBankV10.TypeIGroupedCoefficient.root_removed_in_abs
+#print axioms Erdos287.ResearchBankV10.TypeIGroupedCoefficient.root_depending_on_inner_not_removable
+#print axioms Erdos287.ResearchBankV10.TypeIICoefficient.grouped_factorization
+#print axioms Erdos287.ResearchBankV10.TypeIICoefficient.grouped_depends_only_on_triple
+#print axioms Erdos287.ResearchBankV10.TypeIICoefficient.u_coprime_v
+#print axioms Erdos287.ResearchBankV10.TypeIICoefficient.exists_reciprocal
+#print axioms Erdos287.ResearchBankV10.TypeIICoefficient.w_ne_zero_iff
+#print axioms Erdos287.ResearchBankV10.TypeIICoefficient.w_eq_zero_iff
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.compatibleAlpha_card_eq_d
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.compatibleAlpha_card_eq_d_int
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.old_count_fails_2_3
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.old_count_fails
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.detector_n2_determined
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.outer_cell_ratio
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.outer_total_comparison
+#print axioms Erdos287.ResearchBankV10.TypeIICompatibleCells.outer_total_uniform
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.collision_identity
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.collisions_split
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.fibre_norm_sq_le
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.norm_sq_le_collisions
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.normSqNonzero_le
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.highH_norm_bound
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.wZero_count_le
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.lowH_w_eq
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.lowH_diag_card
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.lowH_cost_identity
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.lowH_cost_lt_one
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.lowH_cost_comparison
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.smaller_norm_insufficient
+#print axioms Erdos287.ResearchBankV10.TypeIIHighLow.wrong_prefactor_fails
+#print axioms Erdos287.ResearchBankV10.TypeIProvider.sum_e_T_e_bound
+#print axioms Erdos287.ResearchBankV10.TypeIProvider.sum_e_T_e_bound_exp
+#print axioms Erdos287.ResearchBankV10.TypeIProvider.smoothTypeI_of_spectral
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.rescale_product
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.betaE_mul
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.betaE_of_not_dvd
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.betaE_support
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.betaE_divisor_bound
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.betaE_sum
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.physical_product_preserved
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.reference_term_preserved
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_card
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_density
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_congruence_iff
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_set_iff
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_spacing
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_translate
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.lattice_sum
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.correct_count_2_5_1
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.old_count_2_5_1
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.density_diagnostic_2_5_1
+#print axioms Erdos287.ResearchBankV10.TypeIRescaling.old_transform_rejected
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.mem_allowedPrimes
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.prod_dvd_iff
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.bonf_eq_sum_T
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.bonf_eq
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.roughInd_eq
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.lowerBonf_le
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.le_upperBonf
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.upper_sub_lower_eq_shell
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.shell_modulus_le
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.allowedPrimes_prime
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.pow_succ_add_le
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.esymm_le
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.shell_reciprocal_le
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.pow_div_factorial_le_exp_bound
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.shell_reciprocal_le_exp
+#print axioms Erdos287.ResearchBankV10.TypeIRoughness.exp_loglog_sq_le_rpow
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.dconv_delta_one_left
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.dconv_delta_one_right
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.abs_delta_le
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.delta_supported
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.delta3_wellFactorable_6
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.delta3_truncated_not_wellFactorable_4
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.wf_truncation_not_automatic
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.truncated_eq_product_cutoff
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.piece_supported
+#print axioms Erdos287.ResearchBankV10.WellFactorableCutoff.cutoff_separated_bilinear

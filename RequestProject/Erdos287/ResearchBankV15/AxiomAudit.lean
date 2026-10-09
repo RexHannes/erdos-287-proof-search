@@ -1,0 +1,108 @@
+import RequestProject.Erdos287.ResearchBankV15.BombieriVinogradovProvider
+import RequestProject.Erdos287.ResearchBankV15.CRTResidues
+import RequestProject.Erdos287.ResearchBankV15.CollisionLocalFactors
+import RequestProject.Erdos287.ResearchBankV15.CompleteLCMModulus
+import RequestProject.Erdos287.ResearchBankV15.DerivativeKernel
+import RequestProject.Erdos287.ResearchBankV15.DivisorMultiplicity
+import RequestProject.Erdos287.ResearchBankV15.FirstMomentContract
+import RequestProject.Erdos287.ResearchBankV15.FixedAffineSource
+import RequestProject.Erdos287.ResearchBankV15.Ledger
+import RequestProject.Erdos287.ResearchBankV15.MobiusCoefficients
+import RequestProject.Erdos287.ResearchBankV15.Normalization
+import RequestProject.Erdos287.ResearchBankV15.OneLemmaReduction
+import RequestProject.Erdos287.ResearchBankV15.PairProvider
+import RequestProject.Erdos287.ResearchBankV15.ScopeFirewalls
+import RequestProject.Erdos287.ResearchBankV15.ZerothMomentContract
+
+/-!
+# Erdős #287 — Research Bank V15: axiom audit
+
+INTERNAL #287 RESEARCH PROGRAMME ONLY.  **Erdős #287 is `OPEN` here and is not claimed.**
+
+`#print axioms` for every theorem of Research Bank V15.  Expected output: only `propext`,
+`Classical.choice`, `Quot.sound` (or subsets).
+-/
+
+#print axioms Erdos287.ResearchBankV15.BombieriVinogradovProvider.primeCount_10
+#print axioms Erdos287.ResearchBankV15.BombieriVinogradovProvider.primeAPCount_fixture
+#print axioms Erdos287.ResearchBankV15.CRTResidues.dvd_Lmod
+#print axioms Erdos287.ResearchBankV15.CRTResidues.collision_prime_dvd_diff
+#print axioms Erdos287.ResearchBankV15.CRTResidues.solves_periodic
+#print axioms Erdos287.ResearchBankV15.CRTResidues.solves_mod
+#print axioms Erdos287.ResearchBankV15.CRTResidues.solves_unique_mod
+#print axioms Erdos287.ResearchBankV15.CRTResidues.solves_of_compatible
+#print axioms Erdos287.ResearchBankV15.CRTResidues.crtResidue_spec
+#print axioms Erdos287.ResearchBankV15.CRTResidues.crtResidue_isSome
+#print axioms Erdos287.ResearchBankV15.CRTResidues.residue_moves_with_tuple
+#print axioms Erdos287.ResearchBankV15.CollisionLocalFactors.roots_subset
+#print axioms Erdos287.ResearchBankV15.CollisionLocalFactors.nu_le_card
+#print axioms Erdos287.ResearchBankV15.CollisionLocalFactors.nu_good
+#print axioms Erdos287.ResearchBankV15.CollisionLocalFactors.localFactor_good
+#print axioms Erdos287.ResearchBankV15.CollisionLocalFactors.nu_eq_zero_of_dvd_all
+#print axioms Erdos287.ResearchBankV15.CollisionLocalFactors.collision_only_at_differences
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.dvd_completeModulus_iff
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.squarefree_lcm
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.squarefree_finset_lcm
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.squarefree_completeModulus
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.shared_primes_once
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.fixture_lcm_vs_product
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.q_dvd_firstMomentModulus
+#print axioms Erdos287.ResearchBankV15.CompleteLCMModulus.firstMoment_modulus_ne_q
+#print axioms Erdos287.ResearchBankV15.DerivativeKernel.fixture_relation
+#print axioms Erdos287.ResearchBankV15.DerivativeKernel.fixture_G_ne_F
+#print axioms Erdos287.ResearchBankV15.DerivativeKernel.identify_G_with_F_fails
+#print axioms Erdos287.ResearchBankV15.DivisorMultiplicity.mem_moduli
+#print axioms Erdos287.ResearchBankV15.DivisorMultiplicity.sum_group_by_modulus
+#print axioms Erdos287.ResearchBankV15.DivisorMultiplicity.sum_pairMultiplicity
+#print axioms Erdos287.ResearchBankV15.DivisorMultiplicity.abs_sum_le_multiplicity
+#print axioms Erdos287.ResearchBankV15.DivisorMultiplicity.multiplicity_fixture
+#print axioms Erdos287.ResearchBankV15.FirstMomentContract.card_primeSet
+#print axioms Erdos287.ResearchBankV15.FirstMomentContract.S1_expansion
+#print axioms Erdos287.ResearchBankV15.FirstMomentContract.L_modEq
+#print axioms Erdos287.ResearchBankV15.FirstMomentContract.S1_split
+#print axioms Erdos287.ResearchBankV15.FirstMomentContract.s1_contract
+#print axioms Erdos287.ResearchBankV15.FixedAffineSource.admissible_of_affine_one
+#print axioms Erdos287.ResearchBankV15.FixedAffineSource.fixed_admissible
+#print axioms Erdos287.ResearchBankV15.FixedAffineSource.fixed_slopes_ge
+#print axioms Erdos287.ResearchBankV15.FixedAffineSource.fixed_edge_identity
+#print axioms Erdos287.ResearchBankV15.FixedAffineSource.L_pos
+#print axioms Erdos287.ResearchBankV15.Ledger.v15_preserves_v14_ledger
+#print axioms Erdos287.ResearchBankV15.Ledger.v15_final_status
+#print axioms Erdos287.ResearchBankV15.Ledger.v15_erdos287_open
+#print axioms Erdos287.ResearchBankV15.Ledger.v15_pair_provider_open
+#print axioms Erdos287.ResearchBankV15.Ledger.v15_no_open_item_promoted
+#print axioms Erdos287.ResearchBankV15.MobiusCoefficients.lam_eq_zero_of_not_coprime
+#print axioms Erdos287.ResearchBankV15.MobiusCoefficients.lam_eq_zero_of_not_squarefree
+#print axioms Erdos287.ResearchBankV15.MobiusCoefficients.lam_smul
+#print axioms Erdos287.ResearchBankV15.MobiusCoefficients.shared_primes_allowed
+#print axioms Erdos287.ResearchBankV15.Normalization.weight_nonneg
+#print axioms Erdos287.ResearchBankV15.Normalization.sieveSum_scale
+#print axioms Erdos287.ResearchBankV15.Normalization.weight_scale
+#print axioms Erdos287.ResearchBankV15.Normalization.S0_scale
+#print axioms Erdos287.ResearchBankV15.Normalization.NX_scale
+#print axioms Erdos287.ResearchBankV15.Normalization.normalization_scale_invariant
+#print axioms Erdos287.ResearchBankV15.Normalization.omitting_I_breaks_invariance
+#print axioms Erdos287.ResearchBankV15.OneLemmaReduction.one_lemma_reduction
+#print axioms Erdos287.ResearchBankV15.OneLemmaReduction.open_content_concentrated
+#print axioms Erdos287.ResearchBankV15.OneLemmaReduction.contracts_of_providers
+#print axioms Erdos287.ResearchBankV15.PairProvider.toV14
+#print axioms Erdos287.ResearchBankV15.PairProvider.ofV14
+#print axioms Erdos287.ResearchBankV15.PairProvider.pair_expansion
+#print axioms Erdos287.ResearchBankV15.ScopeFirewalls.A0_real
+#print axioms Erdos287.ResearchBankV15.ScopeFirewalls.provider_fails_degenerate
+#print axioms Erdos287.ResearchBankV15.ScopeFirewalls.exponent_fact_does_not_construct_provider
+#print axioms Erdos287.ResearchBankV15.ScopeFirewalls.residue_is_root_dependent
+#print axioms Erdos287.ResearchBankV15.ScopeFirewalls.v15_effectivity_firewall
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.card_blocks
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.periodic_count_bounds
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.periodic_count_abs
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.weight_expand
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.weighted_expansion
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.S0_expansion
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.hit_periodic
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.window_eq_Ico
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.lam_eq_zero_of_zero
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.completeModulus_pos
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.count_error
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.S0_error_bound
+#print axioms Erdos287.ResearchBankV15.ZerothMomentContract.s0_contract

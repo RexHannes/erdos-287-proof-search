@@ -52,6 +52,8 @@ paper/audited-release/2026-09-05-r12/audit/FORMAL_MODULE_MAP.md
 
 A successful Lean build validates the encoded formal statements. It does not upgrade conditional analytic interfaces into proved physical estimates.
 
+The [9 October Aristotle source sync](ARISTOTLE_SYNC_2026-10-09.md) supplies missing later modules and a full incoming-file manifest. Its narrow W₄ audit can be replayed with `lake build RequestProject.Erdos287.SourceChain.RepairAudit`; the finite source-fit replay is `python scripts/erdos287_source_fit_audit.py`.
+
 ## 3. Numerical certificate
 
 The current R12 certificate is

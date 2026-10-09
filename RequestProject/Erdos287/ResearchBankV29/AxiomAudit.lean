@@ -1,0 +1,62 @@
+import RequestProject.Erdos287.ResearchBankV29.DIClassRealization
+import RequestProject.Erdos287.ResearchBankV29.FunctionalCertificate
+import RequestProject.Erdos287.ResearchBankV29.KernelRealization
+import RequestProject.Erdos287.ResearchBankV29.Ledger
+import RequestProject.Erdos287.ResearchBankV29.NonzeroPruning
+import RequestProject.Erdos287.ResearchBankV29.OneLargeComposition
+import RequestProject.Erdos287.ResearchBankV29.PhysicalCleanState
+import RequestProject.Erdos287.ResearchBankV29.ProviderElimination
+import RequestProject.Erdos287.ResearchBankV29.SourceNormalization
+import RequestProject.Erdos287.ResearchBankV29.TwoLargeComposition
+import RequestProject.Erdos287.ResearchBankV29.TypeIIBranchComposition
+import RequestProject.Erdos287.ResearchBankV29.ZeroBranchComposition
+
+/-!
+# Erdős #287 — Research Bank V29: axiom audit
+
+INTERNAL #287 RESEARCH PROGRAMME ONLY.  **Erdős #287 is `OPEN` here and is not claimed.**
+
+`#print axioms` for every theorem and proof-carrying definition of Research Bank V29.
+Expected output: only `propext`, `Classical.choice`, `Quot.sound` (or subsets).
+-/
+
+#print axioms Erdos287.ResearchBankV29.DIClassRealization.di_provider_empty_class
+#print axioms Erdos287.ResearchBankV29.DIClassRealization.di_provider_full_class_false
+#print axioms Erdos287.ResearchBankV29.DIClassRealization.DIClass_underdetermined
+#print axioms Erdos287.ResearchBankV29.DIClassRealization.cleanAdmissible_empty_class
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.mu_F_lower
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.W_F_upper
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.certificate_iff_thin
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.exponent_supplied_facts
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.consumer_check_iff
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.consumedMargin_value
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.score_formula_relation
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.taskScore_value
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.task_score_implies_consumer
+#print axioms Erdos287.ResearchBankV29.FunctionalCertificate.taskScore_ne_consumed
+#print axioms Erdos287.ResearchBankV29.KernelRealization.zeroKernelForm_DI
+#print axioms Erdos287.ResearchBankV29.KernelRealization.kernel_is_load_bearing
+#print axioms Erdos287.ResearchBankV29.Ledger.internal_not_external
+#print axioms Erdos287.ResearchBankV29.Ledger.remaining_internal
+#print axioms Erdos287.ResearchBankV29.Ledger.cert_isolated
+#print axioms Erdos287.ResearchBankV29.NonzeroPruning.nonzero_pruning_from_sector_decomposition
+#print axioms Erdos287.ResearchBankV29.NonzeroPruning.pruning_contract_empty
+#print axioms Erdos287.ResearchBankV29.NonzeroPruning.pruning_contract_nontrivial
+#print axioms Erdos287.ResearchBankV29.NonzeroPruning.nonzero_realization_zero
+#print axioms Erdos287.ResearchBankV29.OneLargeComposition.oneLarge_sum_split
+#print axioms Erdos287.ResearchBankV29.PhysicalCleanState.DIArithmeticConditions_satisfiable
+#print axioms Erdos287.ResearchBankV29.PhysicalCleanState.DIArithmeticConditions_nontrivial
+#print axioms Erdos287.ResearchBankV29.PhysicalCleanState.degenerateArith_conditions
+#print axioms Erdos287.ResearchBankV29.PhysicalCleanState.arithOnlyClass_provider_false
+#print axioms Erdos287.ResearchBankV29.SourceNormalization.all_components_same_normalization
+#print axioms Erdos287.ResearchBankV29.SourceNormalization.lamFam_eq_lambdaNewPlus
+#print axioms Erdos287.ResearchBankV29.SourceNormalization.principal_weight_eq_error_weight
+#print axioms Erdos287.ResearchBankV29.TwoLargeComposition.twoLarge_sum_split
+#print axioms Erdos287.ResearchBankV29.TwoLargeComposition.four_branch_sum_small
+#print axioms Erdos287.ResearchBankV29.TypeIIBranchComposition.typeII_coverage
+#print axioms Erdos287.ResearchBankV29.TypeIIBranchComposition.typeII_branch_small_of_realization
+#print axioms Erdos287.ResearchBankV29.ZeroBranchComposition.branchClassBound_zero
+#print axioms Erdos287.ResearchBankV29.ZeroBranchComposition.branchClassBound_of_uniform
+#print axioms Erdos287.ResearchBankV29.ZeroBranchComposition.zero_frequency_eventually_le
+#print axioms Erdos287.ResearchBankV29.ProviderElimination.old_FinalAnalyticProviders_of_minimal
+#print axioms Erdos287.ResearchBankV29.ProviderElimination.old_FinalAnalyticProviders_of_degenerate

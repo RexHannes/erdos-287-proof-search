@@ -1,0 +1,61 @@
+import RequestProject.Erdos287.ResearchBankV11.AnalyticActivation
+import RequestProject.Erdos287.ResearchBankV11.EffectiveConstants
+import RequestProject.Erdos287.ResearchBankV11.EffectiveSplice
+import RequestProject.Erdos287.ResearchBankV11.ExceptionalFactor
+import RequestProject.Erdos287.ResearchBankV11.FiniteArchitectureFrontier
+import RequestProject.Erdos287.ResearchBankV11.Ledger
+import RequestProject.Erdos287.ResearchBankV11.PowerToLog
+
+/-!
+# Research Bank V11 — axiom audit
+
+`#print axioms` for every theorem of the V11 layer (45 theorems).  Expected output: only
+`propext`, `Classical.choice`, `Quot.sound` (or no axioms at all).  No `sorryAx`, no
+native-evaluation axiom, no `Lean.trustCompiler`, no custom research axiom.
+-/
+
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.le_foldr_max_real
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.base_le_foldr_max
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.sum_map_le
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.analyticActivation_sufficient
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.current_M_an_eq_none
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.effective_composition
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.effectiveActivation_needs_constants
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.effectiveActivation_false
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.asymptoticCompositionHolds_in_zero_model
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.asymptotic_does_not_imply_effective
+#print axioms Erdos287.ResearchBankV11.AnalyticActivation.fixture_asymptotic_vs_effective
+#print axioms Erdos287.ResearchBankV11.EffectiveConstants.NumericalExternalConstants.powerTerms_length
+#print axioms Erdos287.ResearchBankV11.EffectiveConstants.NumericalExternalConstants.powerTerms_pos
+#print axioms Erdos287.ResearchBankV11.EffectiveConstants.currentConstants_eq_none
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.effectiveSplice_sound
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.splice_blocked_of_M_an_none
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.splice_blocked_of_no_architecture
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.current_effective_splice_blocked
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.erdos287ClosedInBank_false
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.finitePrimeSupplyInBank_false
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.asymptotic_does_not_imply_closed
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.asymptotic_does_not_imply_finitePrimeSupply
+#print axioms Erdos287.ResearchBankV11.EffectiveSplice.fixture_analytic_vs_finite
+#print axioms Erdos287.ResearchBankV11.ExceptionalFactor.no_exceptional_safe
+#print axioms Erdos287.ResearchBankV11.ExceptionalFactor.exceptional_in_W_divides_full
+#print axioms Erdos287.ResearchBankV11.ExceptionalFactor.W_shortcut_invalid
+#print axioms Erdos287.ResearchBankV11.ExceptionalFactor.W_shortcut_claim_false
+#print axioms Erdos287.ResearchBankV11.FiniteArchitectureFrontier.eventual_exclusion_of_architecture
+#print axioms Erdos287.ResearchBankV11.FiniteArchitectureFrontier.killed_architecture_no_provider
+#print axioms Erdos287.ResearchBankV11.FiniteArchitectureFrontier.kills_are_scoped
+#print axioms Erdos287.ResearchBankV11.FiniteArchitectureFrontier.graph_existence_frozen
+#print axioms Erdos287.ResearchBankV11.FiniteArchitectureFrontier.currentArchitecture_eq_none
+#print axioms Erdos287.ResearchBankV11.FiniteArchitectureFrontier.record_not_killed
+#print axioms Erdos287.ResearchBankV11.Ledger.v11_preserves_v10_ledger
+#print axioms Erdos287.ResearchBankV11.Ledger.v11_preserves_v9_ledger
+#print axioms Erdos287.ResearchBankV11.Ledger.v11_no_reclassification
+#print axioms Erdos287.ResearchBankV11.Ledger.v11New_no_closed
+#print axioms Erdos287.ResearchBankV11.Ledger.v11_no_closed
+#print axioms Erdos287.ResearchBankV11.Ledger.v11_frontier
+#print axioms Erdos287.ResearchBankV11.Ledger.v11_proved_implies_kernel
+#print axioms Erdos287.ResearchBankV11.Ledger.step_baseNodes
+#print axioms Erdos287.ResearchBankV11.Ledger.derivable_eq
+#print axioms Erdos287.ResearchBankV11.Ledger.no_ledger_path_closes_erdos287_v11
+#print axioms Erdos287.ResearchBankV11.PowerToLog.power_to_log
+#print axioms Erdos287.ResearchBankV11.PowerToLog.power_to_log_of_threshold

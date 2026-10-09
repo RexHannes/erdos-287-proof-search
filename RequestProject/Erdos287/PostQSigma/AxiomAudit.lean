@@ -1,0 +1,55 @@
+import RequestProject.Erdos287.PostQSigma
+
+/-! # Axiom audit for the post-`Q_Σ` bank (§47–48). -/
+
+#print axioms Erdos287.PostQSigma.original_erdos287_iff_exact_source
+#print axioms Erdos287.PostQSigma.QSigmaStrong_dvd_prod
+#print axioms Erdos287.PostQSigma.no_solution_of_QSigmaStrong_gt_Pmax
+#print axioms Erdos287.PostQSigma.Qold_dvd_QSigmaStrong
+#print axioms Erdos287.PostQSigma.Fixture.fixture_strict_improvement
+#print axioms Erdos287.PostQSigma.weighted_primary_cover_excludes
+#print axioms Erdos287.PostQSigma.no_solution_of_marginalLP_infeasible
+#print axioms Erdos287.PostQSigma.mandatory_adjacency_excludes
+#print axioms Erdos287.PostQSigma.exact_mass_automaton_iff
+#print axioms Erdos287.PostQSigma.modW_false_acceptance
+#print axioms Erdos287.PostQSigma.mandatory_iff_local
+#print axioms Erdos287.PostQSigma.exists_unreachable_iff_deepest
+#print axioms Erdos287.PostQSigma.deep_mandatory_classification
+#print axioms Erdos287.PostQSigma.deep_classification_needs_harmonic
+#print axioms Erdos287.PostQSigma.mandatory_eq_first_digit_union_deep_exception
+#print axioms Erdos287.PostQSigma.Ddeep_localised
+#print axioms Erdos287.PostQSigma.firstDigit_singleton
+#print axioms Erdos287.PostQSigma.harmonic_source_le_half
+#print axioms Erdos287.PostQSigma.exp_mul_pred_lt_of_harmonic
+#print axioms Erdos287.PostQSigma.translated_row_mandatory
+#print axioms Erdos287.PostQSigma.fixture_prefix_fails
+#print axioms Erdos287.PostQSigma.source_qualification
+#print axioms Erdos287.PostQSigma.contact_matching
+#print axioms Erdos287.PostQSigma.diameter_primary_cap
+#print axioms Erdos287.PostQSigma.top_strip_omitted
+#print axioms Erdos287.PostQSigma.defect_contradiction
+#print axioms Erdos287.PostQSigma.CoreCarry.core_carry_iff
+#print axioms Erdos287.PostQSigma.CoreCarry.contact_carry_lower_bound
+#print axioms Erdos287.PostQSigma.CoreCarry.contact_carry_cut
+#print axioms Erdos287.PostQSigma.StatusCarry.three_status_factorisation
+#print axioms Erdos287.PostQSigma.StatusCarry.gco_eq_one_of_lcm_complete
+#print axioms Erdos287.PostQSigma.square_certificate_excludes
+#print axioms Erdos287.PostQSigma.interpolation_firewall
+#print axioms Erdos287.PostQSigma.punctured_cube_degree
+#print axioms Erdos287.PostQSigma.hard_core_coefficient_exact
+#print axioms Erdos287.PostQSigma.no_wrap
+#print axioms Erdos287.PostQSigma.root_of_unity_exact_coefficient
+#print axioms Erdos287.PostQSigma.physical_conductor_decomposition
+#print axioms Erdos287.PostQSigma.physical_ramanujan_block_identity
+#print axioms Erdos287.PostQSigma.Transfer.transfer_matrix_product
+#print axioms Erdos287.PostQSigma.prime_resonance_fib
+#print axioms Erdos287.PostQSigma.SC287.prime_moduleA_false
+#print axioms Erdos287.PostQSigma.proper_modulus_gram_psd
+#print axioms Erdos287.PostQSigma.proper_modulus_majorant
+#print axioms Erdos287.PostQSigma.proper_modulus_firewall
+#print axioms Erdos287.PostQSigma.W30.constrained_optimum_ge_one
+#print axioms Erdos287.PostQSigma.PG287_implies_no_tail_source
+#print axioms Erdos287.PostQSigma.finiteExclusionUpTo_4e9
+#print axioms Erdos287.PostQSigma.finite_exclusion_and_PG287_imply_erdos287
+#print axioms Erdos287.PostQSigma.erdos287_of_PG287_repository_native
+#print axioms Erdos287.PostQSigma.Ledger.open_entries

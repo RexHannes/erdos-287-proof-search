@@ -1,0 +1,142 @@
+import RequestProject.Erdos287.ResearchBankV14.BalancedBlowup
+import RequestProject.Erdos287.ResearchBankV14.BalancedKernelParameters
+import RequestProject.Erdos287.ResearchBankV14.CompilerApplication
+import RequestProject.Erdos287.ResearchBankV14.ConditionalAsymptoticImplication
+import RequestProject.Erdos287.ResearchBankV14.ContactAnnulus
+import RequestProject.Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface
+import RequestProject.Erdos287.ResearchBankV14.EffectivityFirewall
+import RequestProject.Erdos287.ResearchBankV14.HarmonicTail
+import RequestProject.Erdos287.ResearchBankV14.Ledger
+import RequestProject.Erdos287.ResearchBankV14.MacroGraph11
+import RequestProject.Erdos287.ResearchBankV14.RowRigidity
+import RequestProject.Erdos287.ResearchBankV14.ScoreCombinatorics
+import RequestProject.Erdos287.ResearchBankV14.UsefulPairIdentity
+
+/-!
+# Erdős #287 — Research Bank V14: axiom audit
+
+INTERNAL #287 RESEARCH PROGRAMME ONLY.  **Erdős #287 is `OPEN` here and is not claimed.**
+
+`#print axioms` for every theorem of Research Bank V14.  Expected output: only `propext`,
+`Classical.choice`, `Quot.sound` (or subsets).
+-/
+
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.cellCount_eq
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.cellSize_eq_count
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.cellSize_K
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.cells_balanced
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.cellSize_sum
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.blowup_adj_iff
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.no_edge_in_cell
+#print axioms Erdos287.ResearchBankV14.BalancedBlowup.blowupColouring_apply
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.K_eq
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.K_pos
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.P_eq
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.K_mod_11
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.eleven_le_K
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.A0_pos
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.margin_at_bounds
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.budget_split
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.remainingMargin_pos
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.margin_gt
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.remaining_margin_gt
+#print axioms Erdos287.ResearchBankV14.BalancedKernelParameters.eta_budget
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.lo_lt_hi
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.lo_pos
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.compiler_exists
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.b_pos
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.A_pos
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.a_cast
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.a_ge
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.a_lt_iff
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.edge_oriented_bounds
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.edge_gcd
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.coeff_cast
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.tuple_ratio
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.CompilerOutput.has_edge
+#print axioms Erdos287.ResearchBankV14.CompilerApplication.compilerTuple_conditional
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.mem_edges
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.coeff_pos
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.edges_nonempty
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.le_Zmax
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.Zmax_pos
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.rho_real
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.window_good
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.sum_occ
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.scoreR_eq
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.score_identity
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.pair_contradiction
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.no_counterexample_of_good_t
+#print axioms Erdos287.ResearchBankV14.ConditionalAsymptoticImplication.eventually_no_counterexample
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.Rstar_eq
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.Rstar_lt
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.Rstar_chain
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.c_eq
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.c_gt_inv_e
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.c_mul_Rstar_lt_one
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.c_mul_Rstar_buffer_lt_one
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.edge_difference_range
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.scaled_edge_difference
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.adj_oriented
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.ratio_of_translation
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.contact_coeff_ratio
+#print axioms Erdos287.ResearchBankV14.ContactAnnulus.one_window
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.cliqueVals_pos
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.cliqueVals_dvd_prod
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.cliqueVals_clique
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.cliqueVals_4
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.dom_ne_zero
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.four_term_ne_zero
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.eq_zero_of_mul_add
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.resultantProd_pos
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.resultant_dvd_prod
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.compat_core
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.compat_all
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.prescribedShape_gcdClique
+#print axioms Erdos287.ResearchBankV14.EdgeOnlyCompilerInterface.edgeOnly_compiler
+#print axioms Erdos287.ResearchBankV14.EffectivityFirewall.compiler_outputs_unbounded
+#print axioms Erdos287.ResearchBankV14.EffectivityFirewall.effectivity_firewall
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.log_100_37_lt_one
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.c_gt_inv_e
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.selected_set_above
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.harmonic_tail_lt_log
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.log_ratio_le
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.two_hole_contradiction_c
+#print axioms Erdos287.ResearchBankV14.HarmonicTail.c_window_in_eta
+#print axioms Erdos287.ResearchBankV14.Ledger.old_injective
+#print axioms Erdos287.ResearchBankV14.Ledger.v14_preserves_v13_ledger
+#print axioms Erdos287.ResearchBankV14.Ledger.v14_status_ledger
+#print axioms Erdos287.ResearchBankV14.Ledger.v14_erdos287_open
+#print axioms Erdos287.ResearchBankV14.Ledger.v14_no_open_item_promoted
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.adj_iff
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.four_has_edge
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.indep_card_le_three
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.arc_indep
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.alpha_eq_three
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.col4_classes
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.col4_proper
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.no_proper_three_colouring
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.occupied_four_forces_edge
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.adj_diff_range
+#print axioms Erdos287.ResearchBankV14.MacroGraph11.adj_diff_le
+#print axioms Erdos287.ResearchBankV14.RowRigidity.D_pos
+#print axioms Erdos287.ResearchBankV14.RowRigidity.clearing_bounds
+#print axioms Erdos287.ResearchBankV14.RowRigidity.clearing_contradiction
+#print axioms Erdos287.ResearchBankV14.RowRigidity.floor_le_iff
+#print axioms Erdos287.ResearchBankV14.RowRigidity.row_rigidity
+#print axioms Erdos287.ResearchBankV14.RowRigidity.multiples_omitted
+#print axioms Erdos287.ResearchBankV14.RowRigidity.NH_values
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.six_sub_cellScore
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.sq_form_nonneg
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.cellScore_le_six
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.cellScore_zero
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.score_le_18_of_three
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.four_occupied_of_score_gt
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.exists_gt_of_weighted_pos
+#print axioms Erdos287.ResearchBankV14.ScoreCombinatorics.signed_weights_fail
+#print axioms Erdos287.ResearchBankV14.UsefulPairIdentity.useful_identity_oriented
+#print axioms Erdos287.ResearchBankV14.UsefulPairIdentity.expr_oriented
+#print axioms Erdos287.ResearchBankV14.UsefulPairIdentity.expr_reversed
+#print axioms Erdos287.ResearchBankV14.UsefulPairIdentity.useful_identity_pm_one
+#print axioms Erdos287.ResearchBankV14.UsefulPairIdentity.signless_identity_false
+#print axioms Erdos287.ResearchBankV14.UsefulPairIdentity.fixture_value

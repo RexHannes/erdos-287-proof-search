@@ -1,0 +1,129 @@
+{
+  "AC_287": "OPEN",
+  "certificate_sha256": "248cf1ac74b51fe60c7f3e7dd78f4740ea893a1f0788e4789c85b35421f10fb6",
+  "evidence_boundary": "Exact arithmetic and finite regression gates support the written audit, not a proof of AC-287, formal certification, or human independent refereeing.",
+  "external_analytic_proofs_reproved": false,
+  "finite_bank_replayed": false,
+  "global_erdos_287": "OPEN",
+  "gzip_only_repository_replay": true,
+  "negative_control_count": 16,
+  "negative_controls": [
+    {
+      "mutation": "numerator_root_32",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT numerator_root_32"
+    },
+    {
+      "mutation": "numerator_root_32",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT numerator_root_32"
+    },
+    {
+      "mutation": "window_three_fifths",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT window_three_fifths"
+    },
+    {
+      "mutation": "window_three_fifths",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT window_three_fifths"
+    },
+    {
+      "mutation": "first_moment_implies_adjacency",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT first_moment_implies_adjacency"
+    },
+    {
+      "mutation": "first_moment_implies_adjacency",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT first_moment_implies_adjacency"
+    },
+    {
+      "mutation": "drop_p_squared_guard",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT drop_p_squared_guard"
+    },
+    {
+      "mutation": "drop_p_squared_guard",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT drop_p_squared_guard"
+    },
+    {
+      "mutation": "drop_numerator_magnitude_guard",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT drop_numerator_magnitude_guard"
+    },
+    {
+      "mutation": "drop_numerator_magnitude_guard",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT drop_numerator_magnitude_guard"
+    },
+    {
+      "mutation": "allow_empty_row_as_contradiction",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT allow_empty_row_as_contradiction"
+    },
+    {
+      "mutation": "allow_empty_row_as_contradiction",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT allow_empty_row_as_contradiction"
+    },
+    {
+      "mutation": "reverse_determinant",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT reverse_determinant"
+    },
+    {
+      "mutation": "reverse_determinant",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT reverse_determinant"
+    },
+    {
+      "mutation": "omit_upper_endpoint",
+      "optimized": false,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT omit_upper_endpoint"
+    },
+    {
+      "mutation": "omit_upper_endpoint",
+      "optimized": true,
+      "output_file_created": false,
+      "returncode": 2,
+      "stdout": "REJECTED: REJECT omit_upper_endpoint"
+    }
+  ],
+  "normal_optimized_byte_equal": true,
+  "source_extraction_files": 7,
+  "source_extraction_replayed": true,
+  "status": "PASS_SCOPED_AUDIT",
+  "verifier_sha256": "51babf60b856189f725cbdc122116315dd4f6c4de02d63ba6d970d70a4b1951d"
+}

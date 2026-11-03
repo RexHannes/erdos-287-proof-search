@@ -1,0 +1,38 @@
+ℹ [8028/8035] Replayed RequestProject.Erdos287.TopLayer
+info: RequestProject/Erdos287/TopLayer.lean:43:63: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+ℹ [8029/8035] Replayed RequestProject.Erdos287.Cnum
+info: RequestProject/Erdos287/Cnum.lean:42:49: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: RequestProject/Erdos287/Cnum.lean:42:49: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+⚠ [8030/8035] Replayed RequestProject.Erdos287.Window
+warning: RequestProject/Erdos287/Window.lean:57:5: unused variable `hqM`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ℹ [8031/8035] Replayed RequestProject.Erdos287.Counterexample
+info: RequestProject/Erdos287/Counterexample.lean:139:92: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: RequestProject/Erdos287/Counterexample.lean:139:92: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Build completed successfully (8035 jobs).

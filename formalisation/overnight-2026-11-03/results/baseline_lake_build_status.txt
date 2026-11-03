@@ -1,0 +1,5 @@
+Baseline command: `lake build`
+Date (UTC): 2026-11-03
+Status: INTERRUPTED (manual stop due runtime/quota limits).
+Observed output before stop: thousands of targets built/replayed up through index [8194/9119], with no hard errors seen in captured stream; only pre-existing warnings/hints from existing files.
+Interpretation: baseline was executed and progressed substantially, but this run did not produce a completed exit status in this session.

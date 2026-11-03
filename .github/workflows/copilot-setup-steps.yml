@@ -1,0 +1,32 @@
+name: Prepare Lean cloud agent
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/copilot-setup-steps.yml'
+      - 'automation/lean-cloud/setup.sh'
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install pinned Lean and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+      - name: Verify pins and expose Elan to later agent commands
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/lean" --version
+          git diff --exit-code -- lean-toolchain lakefile.toml lake-manifest.json

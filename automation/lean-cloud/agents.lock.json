@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "reviewed_date": "2026-11-04",
+  "tools": {
+    "merlean": {
+      "repository": "https://github.com/MerLeanProver/MerLean.git",
+      "commit": "4d9c24a72d988e57867d67cd825bd4b0299780c7",
+      "entrypoint": "plugins/merlean-heavy-codex/skills/merlean-heavy/SKILL.md",
+      "mode": "heavy",
+      "integration": "pinned package preparation; host supplies reasoning; no automatic API calls"
+    },
+    "openproof": {
+      "repository": "https://github.com/mxthematic/openproof.git",
+      "commit": "d49b7e3223962f806aeabf330f6717b3ecdc914b",
+      "lean_toolchain": "leanprover/lean4:v4.28.0",
+      "integration": "reviewed optional harness; provider and corpus configuration required; not installed"
+    },
+    "lean_prover": {
+      "repository": "https://github.com/Lean-Prover/lean-prover.git",
+      "commit": "db5a860e190d745f24353d2fe8ca4ebec3f214f4",
+      "lean_toolchain": "leanprover/lean4:v4.33.0",
+      "integration": "reviewed optional harness; test separately before any 4.28 compatibility work; not installed"
+    }
+  },
+  "provider_policy": {
+    "default": "existing hosted agent",
+    "direct_openai": {
+      "permitted": true,
+      "authorization": "User explicitly permitted direct OpenAI API use for MerLean when needed on 2026-11-04",
+      "required_secret": "OPENAI_API_KEY",
+      "automatic_calls": false
+    },
+    "openrouter": {
+      "free_only": true,
+      "allow_paid": false,
+      "required_model_suffix": ":free"
+    },
+    "credentials": "Never copy ChatGPT OAuth credentials, commit keys, or print secret values."
+  }
+}

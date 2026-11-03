@@ -27,3 +27,11 @@ Create new completed Lean modules under `RequestProject/Erdos287/Gold41/`, with 
 ## Completion
 
 Produce a draft pull request containing actual checked source, logs, and the precise frontier ledger. Keep the overall research problem OPEN unless a complete unconditional proof was actually established and checked. Do not merge your PR or modify historical status claims. Work within the hosted task's time/usage limits; checkpoint useful completed results rather than idling or scheduling recurring jobs. Missing manuscripts must be reported, but should not block independent rigorous finite work.
+
+## Autonomous continuation (user update, 4 November 2026)
+
+Follow `AUTONOMOUS_FORMALISATION.md`. Plan and discover intermediate lemmas autonomously, search the existing bank/Mathlib, repair proofs from actual compiler diagnostics, and continue through independent valid results. Initial priority lists are guidance rather than an exhaustive lemma specification. Preserve the exact original target; separately record and justify repaired statements rather than silently weakening it. Maintain the dependency plan, proof/repair checkpoints and open-frontier ledger.
+
+A pinned MerLean Heavy package can be prepared with `python3 automation/lean-cloud/prepare_merlean.py`; read and adapt its Heavy workflow to the actual host. Preparation is not model execution, plugin registration or proof certification. OpenProof and Lean-Prover are reviewed optional harnesses in `automation/lean-cloud/agents.lock.json`; Lean-Prover's 4.33 pin must not replace this bank's 4.28 pin.
+
+The user authorized direct OpenAI API use if MerLean needs it. It requires a securely configured genuine API key; do not copy ChatGPT OAuth credentials or expose keys to unrelated code. Keep the existing host as the default. OpenRouter remains free-only, with explicit `:free` models and no paid or automatic fallback.
